@@ -14,31 +14,56 @@ $footerServices = [
 ?>
 
     <!-- CTA Section -->
-    <section class="relative py-24 overflow-hidden">
-        <div class="absolute inset-0 gradient-bg"></div>
-        <div class="blob w-96 h-96 bg-cyan-accent -top-20 -right-20"></div>
-        <div class="blob w-96 h-96 bg-electric-blue -bottom-20 -left-20"></div>
+    <section class="relative py-12 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Main CTA Card -->
+            <div class="relative bg-gradient-to-r from-electric-blue to-cyan-accent rounded-[36px] overflow-hidden shadow-2xl p-8 md:p-14 lg:p-16">
+                
+                <!-- Concentric Circles Pattern (Right Side) -->
+                <div class="absolute -right-64 top-1/2 -translate-y-1/2 w-[850px] h-[850px] flex items-center justify-center pointer-events-none z-0">
+                    <div class="absolute w-[850px] h-[850px] bg-white/[0.03] rounded-full"></div>
+                    <div class="absolute w-[720px] h-[720px] bg-white/[0.05] rounded-full"></div>
+                    <div class="absolute w-[590px] h-[590px] bg-white/[0.07] rounded-full"></div>
+                    <div class="absolute w-[460px] h-[460px] bg-white/[0.09] rounded-full"></div>
+                    <div class="absolute w-[330px] h-[330px] bg-white/[0.11] rounded-full"></div>
+                    <div class="absolute w-[200px] h-[200px] bg-white/[0.13] rounded-full"></div>
+                    <div class="absolute w-[70px]  h-[70px]  bg-white/[0.15] rounded-full"></div>
+                </div>
 
-        <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-                <i class="fas fa-heartbeat text-cyan-accent animate-pulse"></i>
-                <span class="text-white text-sm font-medium">Your Health, Our Priority</span>
-            </div>
-            <h2 class="text-4xl md:text-6xl font-serif font-bold text-white mb-6">
-                Ready to Prioritize<br>Your Health?
-            </h2>
-            <p class="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
-                Schedule a consultation with Dr. Praveen Gupta today and take the first step towards a healthier tomorrow.
-            </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="contact.php" class="px-8 py-4 bg-white text-electric-blue font-semibold rounded-full hover:bg-soft-cyan transition-all duration-300 transform hover:-translate-y-1 shadow-2xl flex items-center space-x-2">
-                    <i class="fas fa-calendar-check"></i>
-                    <span>Book Appointment</span>
-                </a>
-                <a href="tel:<?php echo SITE_PHONE; ?>" class="px-8 py-4 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-electric-blue transition-all duration-300 transform hover:-translate-y-1 flex items-center space-x-2">
-                    <i class="fas fa-phone"></i>
-                    <span>Call Now</span>
-                </a>
+                <!-- Content (Left Aligned) -->
+                <div class="relative z-10 max-w-2xl text-left">
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-sans font-extrabold text-white mb-4 leading-tight tracking-tight">
+                        Let's Get In Touch.
+                    </h2>
+                    
+                    <p class="text-white/85 text-sm md:text-base mb-10 max-w-lg leading-relaxed">
+                        Ready to prioritize your health? Schedule a consultation with Dr. Praveen Gupta today and take the first step towards a healthier tomorrow.
+                    </p>
+                    
+                    <!-- Buttons Row -->
+                    <div class="flex flex-wrap gap-4 items-center">
+                        <!-- Book Appointment Button -->
+                        <a href="contact.php" 
+                           class="inline-flex items-center space-x-6 bg-[#111827] text-white text-xs md:text-sm font-semibold pl-6 pr-2.5 py-2.5 rounded-full hover:bg-black transition-all duration-300 shadow-lg hover:-translate-y-0.5 active:translate-y-0 group">
+                            <span>Book Appointment</span>
+                            <!-- Glossy metallic dot indicator -->
+                            <div class="w-7 h-7 rounded-full bg-gradient-to-b from-white via-slate-100 to-slate-400 shadow-[inset_0_1px_2px_rgba(255,255,255,0.8),0_2px_4px_rgba(0,0,0,0.3)] flex items-center justify-center text-[#111827] text-xs font-bold transition-transform duration-300 group-hover:scale-110 flex-shrink-0">
+                                <i class="fas fa-chevron-right text-[9px]"></i>
+                            </div>
+                        </a>
+                        
+                        <!-- Call Now Button -->
+                        <a href="tel:<?php echo SITE_PHONE; ?>" 
+                           class="inline-flex items-center space-x-6 bg-[#111827] text-white text-xs md:text-sm font-semibold pl-6 pr-2.5 py-2.5 rounded-full hover:bg-black transition-all duration-300 shadow-lg hover:-translate-y-0.5 active:translate-y-0 group">
+                            <span>Call Now</span>
+                            <!-- Glossy metallic dot indicator -->
+                            <div class="w-7 h-7 rounded-full bg-gradient-to-b from-white via-slate-100 to-slate-400 shadow-[inset_0_1px_2px_rgba(255,255,255,0.8),0_2px_4px_rgba(0,0,0,0.3)] flex items-center justify-center text-[#111827] text-xs font-bold transition-transform duration-300 group-hover:scale-110 flex-shrink-0">
+                                <i class="fas fa-phone text-[9px]"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </section>

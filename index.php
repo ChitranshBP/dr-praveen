@@ -6,113 +6,17 @@ require_once __DIR__ . '/includes/header.php';
 ?>
 
 <!-- Hero Section -->
-<section class="relative overflow-hidden bg-white">
-    <!-- Background decorations -->
-    <div class="blob w-96 h-96 bg-cyan-accent/20 -top-20 -right-20 animate-float"></div>
-    <div class="blob w-96 h-96 bg-electric-blue/20 -bottom-20 -left-20 animate-float" style="animation-delay: 2s;"></div>
-
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <!-- Left Content -->
-            <div class="animate-fade-in-up">
-                <div class="inline-flex items-center space-x-2 bg-soft-cyan px-4 py-2 rounded-full mb-6">
-                    <span class="w-2 h-2 bg-cyan-accent rounded-full animate-pulse"></span>
-                    <span class="text-electric-blue text-sm font-medium">Available for Consultations</span>
-                </div>
-
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-deep-indigo leading-tight mb-6">
-                    Your Health,
-                    <span class="gradient-text block">Our Mission</span>
-                </h1>
-
-                <p class="text-lg text-dark-grey/70 mb-8 leading-relaxed max-w-lg">
-                    With over 25 years of experience in advanced healthcare, Dr. Praveen Gupta provides personalized, compassionate medical care that puts patients first.
-                </p>
-
-                <div class="flex flex-col sm:flex-row gap-4 mb-12">
-                    <a href="contact.php" class="group px-8 py-4 bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold rounded-full hover:shadow-2xl hover:shadow-electric-blue/30 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center space-x-2">
-                        <span>Book Appointment</span>
-                        <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                    </a>
-                    <a href="about.php" class="px-8 py-4 border-2 border-deep-indigo text-deep-indigo font-semibold rounded-full hover:bg-deep-indigo hover:text-white transition-all duration-300 flex items-center justify-center space-x-2">
-                        <i class="fas fa-play-circle"></i>
-                        <span>Learn More</span>
-                    </a>
-                </div>
-
-                <!-- Trust Indicators -->
-                <div class="grid grid-cols-3 gap-4 max-w-md">
-                    <div class="text-center">
-                        <div class="text-3xl font-bold gradient-text">25+</div>
-                        <div class="text-xs text-dark-grey/60 mt-1">Years</div>
-                    </div>
-                    <div class="text-center border-x border-silver-grey">
-                        <div class="text-3xl font-bold gradient-text">50K+</div>
-                        <div class="text-xs text-dark-grey/60 mt-1">Patients</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold gradient-text">15+</div>
-                        <div class="text-xs text-dark-grey/60 mt-1">Awards</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Content - Doctor Image -->
-            <div class="relative animate-fade-in">
-                <div class="relative">
-                    <!-- Decorative elements -->
-                    <div class="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-cyan-accent to-electric-blue rounded-full opacity-20 animate-pulse-slow"></div>
-                    <div class="absolute -bottom-6 -left-6 w-40 h-40 bg-gradient-to-br from-electric-blue to-deep-indigo rounded-full opacity-20 animate-pulse-slow" style="animation-delay: 1s;"></div>
-
-                    <!-- Main image container -->
-                    <div class="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-soft-cyan to-silver-grey">
-                        <!-- Doctor illustration placeholder -->
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="text-center p-8">
-                                <div class="w-48 h-48 mx-auto mb-6 rounded-full bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center shadow-xl">
-                                    <i class="fas fa-user-md text-7xl text-white"></i>
-                                </div>
-                                <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
-                                    <h3 class="text-xl font-bold text-deep-indigo">Dr. Praveen Gupta</h3>
-                                    <p class="text-sm text-cyan-accent font-medium">MBBS, MD - Internal Medicine</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Floating badges -->
-                        <div class="absolute top-6 right-6 glass-effect rounded-2xl p-3 animate-float">
-                            <div class="flex items-center space-x-2">
-                                <div class="w-10 h-10 rounded-full bg-cyan-accent/20 flex items-center justify-center">
-                                    <i class="fas fa-award text-cyan-accent"></i>
-                                </div>
-                                <div>
-                                    <p class="text-xs font-semibold text-deep-indigo">Verified</p>
-                                    <p class="text-xs text-dark-grey/60">Specialist</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="absolute bottom-6 left-6 glass-effect rounded-2xl p-3 animate-float" style="animation-delay: 1.5s;">
-                            <div class="flex items-center space-x-2">
-                                <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
-                                    <i class="fas fa-star text-green-500"></i>
-                                </div>
-                                <div>
-                                    <p class="text-xs font-semibold text-deep-indigo">4.9 Rating</p>
-                                    <p class="text-xs text-dark-grey/60">2000+ Reviews</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<section class="relative overflow-hidden bg-[#edf5f9] -mt-20">
+    <div class="w-full max-w-[1920px] mx-auto relative">
+        <img src="assets/banner/DR-parveen-gupta-banner-1.png" alt="Dr. Praveen Gupta Banner"
+            class="w-full h-auto block">
     </div>
 </section>
 
 <!-- Services Section -->
-<section class="py-24 bg-soft-cyan/30 relative overflow-hidden">
-    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-electric-blue via-cyan-accent to-electric-blue"></div>
+<section class="py-12 bg-soft-cyan/30 relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-electric-blue via-cyan-accent to-electric-blue">
+    </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-16 observe">
@@ -124,141 +28,359 @@ require_once __DIR__ . '/includes/header.php';
                 Comprehensive <span class="gradient-text">Healthcare</span> Solutions
             </h2>
             <p class="text-lg text-dark-grey/70">
-                From preventive care to specialized treatments, we offer a full spectrum of medical services tailored to your unique needs.
+                From preventive care to specialized treatments, we offer a full spectrum of medical services tailored to
+                your unique needs.
             </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <?php foreach ($services as $index => $service): ?>
-                <div class="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 observe" style="animation-delay: <?php echo $index * 100; ?>ms;">
-                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg shadow-electric-blue/20">
-                        <i class="fas fa-<?php echo $service['icon']; ?> text-white text-2xl"></i>
+                <div class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe"
+                    style="animation-delay: <?php echo $index * 100; ?>ms;">
+                    <div>
+                        <!-- Image Container -->
+                        <div
+                            class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-6 bg-gradient-to-br from-soft-cyan to-silver-grey">
+                            <img src="<?php echo $service['image']; ?>" alt="<?php echo $service['title']; ?>"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+
+                        <!-- Title & Arrow Row -->
+                        <div class="flex justify-between items-start mb-3">
+                            <h3
+                                class="text-2xl font-bold text-deep-indigo group-hover:text-electric-blue transition-colors leading-tight">
+                                <?php echo $service['title']; ?>
+                            </h3>
+                            <div
+                                class="w-10 h-10 rounded-full border border-silver-grey flex items-center justify-center text-dark-grey group-hover:text-white group-hover:bg-gradient-to-r group-hover:from-electric-blue group-hover:to-cyan-accent group-hover:border-transparent transition-all duration-300 flex-shrink-0 ml-4">
+                                <i class="fas fa-arrow-right group-hover:-rotate-45 transition-transform duration-300"></i>
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <p class="text-dark-grey/70 leading-relaxed text-sm">
+                            <?php echo $service['description']; ?>
+                        </p>
                     </div>
-                    <h3 class="text-2xl font-bold text-deep-indigo mb-3 group-hover:text-electric-blue transition-colors">
-                        <?php echo $service['title']; ?>
-                    </h3>
-                    <p class="text-dark-grey/70 leading-relaxed mb-6">
-                        <?php echo $service['description']; ?>
-                    </p>
-                    <a href="services.php" class="inline-flex items-center space-x-2 text-electric-blue font-semibold group-hover:text-cyan-accent transition-colors">
-                        <span>Learn More</span>
-                        <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
-                    </a>
                 </div>
             <?php endforeach; ?>
         </div>
     </div>
 </section>
 
-<!-- Stats Section -->
-<section class="py-20 gradient-bg relative overflow-hidden">
-    <div class="blob w-72 h-72 bg-white/20 top-10 left-10"></div>
-    <div class="blob w-72 h-72 bg-white/20 bottom-10 right-10"></div>
+<!-- Full Width Banner Slideshow Section -->
+<section class="relative overflow-hidden pb-16 w-full bg-white select-none">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Slider Wrapper -->
+        <div id="banner-slider" class="relative w-full overflow-hidden rounded-[32px] shadow-lg border border-silver-grey/30">
+            <div id="banner-track" class="flex transition-transform duration-700 ease-in-out">
+                <div class="min-w-full relative">
+                    <img src="assets/full-image/Dr-Praveen-Banner-1.png" alt="Dr. Praveen Gupta Slide 1" class="w-full h-auto block">
+                </div>
+                <div class="min-w-full relative">
+                    <img src="assets/full-image/Dr-Praveen-Banner-2.png" alt="Dr. Praveen Gupta Slide 2" class="w-full h-auto block">
+                </div>
+                <div class="min-w-full relative">
+                    <img src="assets/full-image/Dr-Praveen-Banner-6.png" alt="Dr. Praveen Gupta Slide 3" class="w-full h-auto block">
+                </div>
+            </div>
 
+            <!-- Navigation Buttons -->
+            <button id="banner-prev" class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/20 hover:bg-black/45 text-white backdrop-blur-sm border border-white/10 flex items-center justify-center transition-all duration-300 active:scale-95 focus:outline-none z-20 shadow-md">
+                <i class="fas fa-chevron-left text-sm md:text-base"></i>
+            </button>
+            <button id="banner-next" class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/20 hover:bg-black/45 text-white backdrop-blur-sm border border-white/10 flex items-center justify-center transition-all duration-300 active:scale-95 focus:outline-none z-20 shadow-md">
+                <i class="fas fa-chevron-right text-sm md:text-base"></i>
+            </button>
+
+            <!-- Pagination Dots -->
+            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center space-x-2.5 z-20">
+                <button class="banner-dot w-2 h-2 rounded-full bg-white/45 transition-all duration-300 hover:bg-white" data-slide="0"></button>
+                <button class="banner-dot w-2 h-2 rounded-full bg-white/45 transition-all duration-300 hover:bg-white" data-slide="1"></button>
+                <button class="banner-dot w-2 h-2 rounded-full bg-white/45 transition-all duration-300 hover:bg-white" data-slide="2"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS for Banner Slideshow -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const track = document.getElementById('banner-track');
+        const slides = track.children;
+        const dots = document.querySelectorAll('.banner-dot');
+        const prevBtn = document.getElementById('banner-prev');
+        const nextBtn = document.getElementById('banner-next');
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+        let autoplayTimer;
+
+        function updateSlider(index) {
+            currentIndex = index;
+            track.style.transform = `translateX(-${index * 100}%)`;
+            
+            // Update dots
+            dots.forEach((dot, idx) => {
+                if (idx === index) {
+                    dot.classList.add('bg-white', 'w-6');
+                    dot.classList.remove('bg-white/45');
+                } else {
+                    dot.classList.remove('bg-white', 'w-6');
+                    dot.classList.add('bg-white/45');
+                }
+            });
+        }
+
+        function nextSlide() {
+            updateSlider((currentIndex + 1) % totalSlides);
+        }
+
+        function prevSlide() {
+            updateSlider((currentIndex - 1 + totalSlides) % totalSlides);
+        }
+
+        function startAutoplay() {
+            stopAutoplay();
+            autoplayTimer = setInterval(nextSlide, 5000);
+        }
+
+        function stopAutoplay() {
+            if (autoplayTimer) {
+                clearInterval(autoplayTimer);
+            }
+        }
+
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            startAutoplay();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            startAutoplay();
+        });
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const index = parseInt(dot.dataset.slide);
+                updateSlider(index);
+                startAutoplay();
+            });
+        });
+
+        updateSlider(0);
+        startAutoplay();
+    });
+    </script>
+</section>
+
+<!-- Stats Section -->
+<section class="py-12 bg-[#d4e9f7] relative overflow-hidden">
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <?php foreach ($stats as $stat): ?>
-                <div class="text-center text-white observe">
-                    <div class="text-5xl md:text-6xl font-bold mb-2 font-serif"><?php echo $stat['number']; ?></div>
-                    <div class="text-white/80 text-sm md:text-base"><?php echo $stat['label']; ?></div>
+                <div
+                    class="bg-white rounded-2xl p-6 md:p-8 shadow-sm flex flex-col justify-between h-full text-left observe">
+                    <div>
+                        <div class="text-4xl font-extrabold text-dark-grey mb-1"><?php echo $stat['number']; ?></div>
+                        <div class="text-base font-bold text-deep-indigo mb-4"><?php echo $stat['label']; ?></div>
+                        <div class="w-full h-px bg-gray-100 my-4"></div>
+                        <p class="text-sm text-dark-grey/70 leading-relaxed mt-4"><?php echo $stat['description']; ?></p>
+                    </div>
                 </div>
             <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+
+<!-- About Doctor Section -->
+<section id="about" class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            <!-- Image Side -->
+            <div class="lg:col-span-5 relative observe">
+                <div
+                    class="aspect-[4/5] rounded-3xl overflow-hidden shadow-xl bg-gradient-to-br from-soft-cyan to-silver-grey">
+                    <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=800&h=1000&q=80"
+                        alt="Neurology Care Team" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <!-- Content Side -->
+            <div class="lg:col-span-7 observe">
+                <span class="text-xs font-bold tracking-wider text-dark-grey/60 uppercase block mb-3 font-sans">
+                    About Dr. Praveen Gupta
+                </span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo leading-tight mb-4">
+                    Dr. Praveen Gupta – Best Neurologist in India
+                </h2>
+
+                <!-- Prestigious Appointments -->
+                <div class="flex flex-col space-y-2.5 mb-6">
+                    <div class="flex items-center space-x-2.5 text-electric-blue font-medium text-xs md:text-sm">
+                        <i class="fa-solid fa-award text-cyan-accent flex-shrink-0 text-base"></i>
+                        <span>Chairman – Marengo Asia International Institute of Neuro and Spine</span>
+                    </div>
+                    <div class="flex items-center space-x-2.5 text-electric-blue font-medium text-xs md:text-sm">
+                        <i class="fa-solid fa-chart-line text-cyan-accent flex-shrink-0 text-base"></i>
+                        <span>Chief Clinical Strategy Growth and Innovation, North India</span>
+                    </div>
+                    <div class="flex items-center space-x-2.5 text-electric-blue font-medium text-xs md:text-sm">
+                        <i class="fa-solid fa-lightbulb text-cyan-accent flex-shrink-0 text-base"></i>
+                        <span>Chief Mentor for Start-ups</span>
+                    </div>
+                </div>
+
+                <p class="text-base text-dark-grey/85 mb-4 leading-relaxed">
+                    Neurology is one of the most complex medical fields, requiring precision, innovation, and
+                    compassionate care. At the heart of this field stands Dr. Praveen Gupta, a name synonymous with
+                    excellence and trust in neurology across India and beyond. With over 20 years of clinical
+                    experience, Dr. Praveen Gupta has emerged as a pioneering force in the diagnosis, treatment, and
+                    advancement of neurological sciences.
+                </p>
+
+                <p class="text-base text-dark-grey/85 mb-4 leading-relaxed font-semibold">
+                    A true innovator, he has been responsible for several firsts in the country’s neurology landscape:
+                </p>
+
+                <!-- List of Firsts -->
+                <ul
+                    class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 text-sm text-dark-grey/80 border-l-2 border-cyan-accent/30 pl-4 py-1">
+                    <li class="flex items-start space-x-2">
+                        <span class="w-1.5 h-1.5 bg-electric-blue rounded-full mt-2 flex-shrink-0"></span>
+                        <span>Founder of the first stroke centre in Gurugram</span>
+                    </li>
+                    <li class="flex items-start space-x-2">
+                        <span class="w-1.5 h-1.5 bg-electric-blue rounded-full mt-2 flex-shrink-0"></span>
+                        <span>Performed the first solo mechanical thrombolysis in the region</span>
+                    </li>
+                    <li class="flex items-start space-x-2">
+                        <span class="w-1.5 h-1.5 bg-electric-blue rounded-full mt-2 flex-shrink-0"></span>
+                        <span>Led the first Deep Brain Stimulation (DBS) procedure in Gurugram</span>
+                    </li>
+                    <li class="flex items-start space-x-2">
+                        <span class="w-1.5 h-1.5 bg-electric-blue rounded-full mt-2 flex-shrink-0"></span>
+                        <span>Conducted the first epileptic DBS surgery in Asia</span>
+                    </li>
+                </ul>
+
+                <p class="text-base text-dark-grey/85 mb-8 leading-relaxed">
+                    Through his vision and dedication, Dr. Gupta has transformed neurological care in India and
+                    positioned himself as one of the best neurologists in India.
+                </p>
+
+                <!-- Button -->
+                <div class="mb-10">
+                    <a href="about.php"
+                        class="inline-flex items-center space-x-4 border-2 border-dark-grey px-6 py-2.5 rounded-full hover:bg-dark-grey hover:text-white transition-all duration-300 group">
+                        <span
+                            class="text-sm font-bold text-dark-grey group-hover:text-white transition-colors duration-300">More
+                            About us</span>
+                        <div
+                            class="w-8 h-8 rounded-full bg-dark-grey text-white flex items-center justify-center text-xs group-hover:bg-white group-hover:text-dark-grey transition-colors duration-300 flex-shrink-0">
+                            <i class="fas fa-arrow-right -rotate-45 transition-transform duration-300"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
 <!-- Why Choose Us Section -->
-<section class="py-24 bg-white">
+<section class="py-12 bg-slate-50/50 relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <!-- Image Side -->
-            <div class="relative observe">
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="space-y-4">
-                        <div class="aspect-square rounded-3xl bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center shadow-xl">
-                            <i class="fas fa-heartbeat text-white text-6xl"></i>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            <!-- Content Side -->
+            <div class="lg:col-span-6 observe">
+                <span class="text-xs font-bold tracking-wider text-dark-grey/60 uppercase block mb-3 font-sans">
+                    Why Choose Dr. Praveen Gupta?
+                </span>
+
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-deep-indigo leading-tight mb-6">
+                    Providing Best Treatment
+                </h2>
+
+                <p class="text-base text-dark-grey/70 mb-10 leading-relaxed max-w-lg">
+                    With an unwavering commitment to clinical excellence, Dr. Praveen Gupta combines advanced technology
+                    and patient-centric therapies to deliver world-class neurological care.
+                </p>
+
+                <!-- Grid of 4 Items -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
+                    <!-- Feature 1 -->
+                    <div class="flex items-start space-x-4">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-white border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
+                            <i class="fa-solid fa-earth-americas text-xl text-electric-blue"></i>
                         </div>
-                        <div class="aspect-square rounded-3xl bg-soft-cyan flex items-center justify-center shadow-lg">
-                            <i class="fas fa-shield-alt text-electric-blue text-5xl"></i>
+                        <div>
+                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Global Standards of Care
+                            </h4>
+                            <p class="text-xs text-dark-grey/65 leading-relaxed">Treatments backed by advanced
+                                technology and international guidelines.</p>
                         </div>
                     </div>
-                    <div class="space-y-4 pt-8">
-                        <div class="aspect-square rounded-3xl bg-soft-cyan flex items-center justify-center shadow-lg">
-                            <i class="fas fa-user-md text-electric-blue text-5xl"></i>
+
+                    <!-- Feature 2 -->
+                    <div class="flex items-start space-x-4">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-white border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
+                            <i class="fa-solid fa-lightbulb text-xl text-electric-blue"></i>
                         </div>
-                        <div class="aspect-square rounded-3xl bg-gradient-to-br from-deep-indigo to-electric-blue flex items-center justify-center shadow-xl">
-                            <i class="fas fa-hospital text-white text-6xl"></i>
+                        <div>
+                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Innovative Procedures</h4>
+                            <p class="text-xs text-dark-grey/65 leading-relaxed">Pioneer in stroke care, DBS, and
+                                epilepsy surgery in India.</p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="flex items-start space-x-4">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-white border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
+                            <i class="fa-solid fa-circle-check text-xl text-electric-blue"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Proven Results</h4>
+                            <p class="text-xs text-dark-grey/65 leading-relaxed">Thousands of patients treated
+                                successfully with rapid recovery.</p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div class="flex items-start space-x-4">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-white border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
+                            <i class="fa-solid fa-hand-holding-heart text-xl text-electric-blue"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Compassionate Consultation
+                            </h4>
+                            <p class="text-xs text-dark-grey/65 leading-relaxed">Empowering patients with knowledge,
+                                compassion, and personalized care.</p>
                         </div>
                     </div>
                 </div>
-                <!-- Floating badge -->
-                <div class="absolute -bottom-6 -right-6 bg-white rounded-2xl p-6 shadow-2xl animate-float">
-                    <div class="flex items-center space-x-4">
-                        <div class="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center">
-                            <i class="fas fa-check-circle text-green-500 text-2xl"></i>
-                        </div>
-                        <div>
-                            <p class="text-2xl font-bold text-deep-indigo">100%</p>
-                            <p class="text-sm text-dark-grey/60">Patient Safety</p>
-                        </div>
-                    </div>
+
+                <!-- Action Button -->
+                <div>
+                    <a href="#appointment"
+                        class="inline-flex items-center px-8 py-3.5 bg-[#111827] text-white text-sm font-bold rounded-full hover:bg-electric-blue transition-colors duration-300 shadow-lg shadow-dark-grey/10">
+                        Get Started
+                    </a>
                 </div>
             </div>
 
-            <!-- Content Side -->
-            <div class="observe">
-                <div class="inline-flex items-center space-x-2 bg-soft-cyan px-4 py-2 rounded-full mb-4">
-                    <i class="fas fa-star text-cyan-accent text-sm"></i>
-                    <span class="text-electric-blue text-sm font-semibold">Why Choose Us</span>
-                </div>
-                <h2 class="text-4xl md:text-5xl font-serif font-bold text-deep-indigo mb-6">
-                    Healthcare That
-                    <span class="gradient-text">Puts You First</span>
-                </h2>
-                <p class="text-lg text-dark-grey/70 mb-8 leading-relaxed">
-                    We combine cutting-edge medical technology with personalized care to deliver the best possible outcomes for our patients.
-                </p>
+            <!-- Image Side -->
+            <div class="lg:col-span-6 relative flex justify-center lg:justify-end observe">
+                <div
+                    class="relative w-full max-w-md lg:max-w-none aspect-[4/5] rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-soft-cyan to-silver-grey">
+                    <!-- Background Portrait Photo -->
+                    <img src="https://images.unsplash.com/photo-1594824813573-246434de83fb?auto=format&fit=crop&w=800&h=1000&q=80"
+                        alt="Compassionate Care Nurse" class="w-full h-full object-cover">
 
-                <div class="space-y-6">
-                    <div class="flex items-start space-x-4 group">
-                        <div class="w-12 h-12 rounded-xl bg-electric-blue/10 group-hover:bg-electric-blue flex items-center justify-center flex-shrink-0 transition-colors duration-300">
-                            <i class="fas fa-certificate text-electric-blue group-hover:text-white transition-colors"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-bold text-deep-indigo mb-1">Board Certified Expert</h3>
-                            <p class="text-dark-grey/70">Highly qualified with international certifications and continuous medical education.</p>
-                        </div>
-                    </div>
+                    <!-- Floating Overlaid Card -->
 
-                    <div class="flex items-start space-x-4 group">
-                        <div class="w-12 h-12 rounded-xl bg-electric-blue/10 group-hover:bg-electric-blue flex items-center justify-center flex-shrink-0 transition-colors duration-300">
-                            <i class="fas fa-clock text-electric-blue group-hover:text-white transition-colors"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-bold text-deep-indigo mb-1">24/7 Patient Support</h3>
-                            <p class="text-dark-grey/70">Round-the-clock availability for emergencies and patient queries.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start space-x-4 group">
-                        <div class="w-12 h-12 rounded-xl bg-electric-blue/10 group-hover:bg-electric-blue flex items-center justify-center flex-shrink-0 transition-colors duration-300">
-                            <i class="fas fa-microscope text-electric-blue group-hover:text-white transition-colors"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-bold text-deep-indigo mb-1">Advanced Technology</h3>
-                            <p class="text-dark-grey/70">State-of-the-art equipment and modern diagnostic facilities.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start space-x-4 group">
-                        <div class="w-12 h-12 rounded-xl bg-electric-blue/10 group-hover:bg-electric-blue flex items-center justify-center flex-shrink-0 transition-colors duration-300">
-                            <i class="fas fa-hand-holding-heart text-electric-blue group-hover:text-white transition-colors"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-bold text-deep-indigo mb-1">Personalized Care</h3>
-                            <p class="text-dark-grey/70">Treatment plans customized to your unique health needs and goals.</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -266,150 +388,402 @@ require_once __DIR__ . '/includes/header.php';
 </section>
 
 <!-- Testimonials Section -->
-<section class="py-24 bg-soft-cyan/40 relative overflow-hidden">
-    <div class="absolute top-20 left-10 w-32 h-32 bg-cyan-accent/20 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-20 right-10 w-40 h-40 bg-electric-blue/20 rounded-full blur-3xl"></div>
+<section class="py-12 bg-soft-cyan/30 relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-electric-blue via-cyan-accent to-electric-blue"></div>
 
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Section Header -->
         <div class="text-center max-w-3xl mx-auto mb-16 observe">
-            <div class="inline-flex items-center space-x-2 bg-white px-4 py-2 rounded-full mb-4 shadow-sm">
-                <i class="fas fa-comments text-cyan-accent text-sm"></i>
+            <div class="inline-flex items-center space-x-2 bg-electric-blue/10 px-4 py-2 rounded-full mb-4">
+                <i class="fas fa-comments text-electric-blue text-sm"></i>
                 <span class="text-electric-blue text-sm font-semibold">Testimonials</span>
             </div>
             <h2 class="text-4xl md:text-5xl font-serif font-bold text-deep-indigo mb-4">
                 What Our <span class="gradient-text">Patients</span> Say
             </h2>
             <p class="text-lg text-dark-grey/70">
-                Real stories from real patients who experienced exceptional care.
+                Real stories from real patients who experienced exceptional neurological care.
             </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <?php foreach ($testimonials as $testimonial): ?>
-                <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 observe">
-                    <!-- Stars -->
-                    <div class="flex space-x-1 mb-4">
-                        <?php for ($i = 0; $i < $testimonial['rating']; $i++): ?>
-                            <i class="fas fa-star text-yellow-400"></i>
-                        <?php endfor; ?>
+        <!-- Two-column grid: phone left | reviews right -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+
+            <!-- ── LEFT: Phone Mockup + Video Slider ── -->
+            <div class="flex flex-col items-center observe">
+
+                <!-- Phone shell -->
+                <div class="relative w-[272px] h-[510px] bg-deep-indigo rounded-[44px] p-[10px] shadow-2xl border-4 border-deep-indigo/80 ring-8 ring-deep-indigo/10">
+                    <!-- Notch -->
+                    <div class="absolute top-3 left-1/2 -translate-x-1/2 w-24 h-[22px] bg-deep-indigo rounded-full z-20 flex items-center justify-center gap-2">
+                        <div class="w-8 h-[5px] bg-white/10 rounded-full"></div>
+                        <div class="w-[7px] h-[7px] bg-cyan-accent/30 rounded-full border border-cyan-accent/40"></div>
+                    </div>
+                    <!-- Screen -->
+                    <div class="relative w-full h-full rounded-[36px] overflow-hidden bg-dark-grey z-10">
+                        <?php if (!empty($videoTestimonials)): ?>
+                            <?php $firstVideo = $videoTestimonials[0]['id']; ?>
+                            <iframe id="youtube-shorts-player" class="w-full h-full"
+                                src="https://www.youtube.com/embed/<?php echo $firstVideo; ?>?autoplay=0&mute=1&loop=1&playlist=<?php echo $firstVideo; ?>&controls=1"
+                                title="YouTube Shorts" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen></iframe>
+                        <?php endif; ?>
+                    </div>
+                    <!-- Home bar -->
+                    <div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-20 h-[4px] bg-silver-grey/40 rounded-full z-20"></div>
+                </div>
+
+                <!-- Video slider controls -->
+                <div class="flex items-center justify-center space-x-4 mt-7">
+                    <button id="prev-short"
+                        class="w-11 h-11 rounded-full bg-white hover:bg-electric-blue hover:text-white text-deep-indigo border border-silver-grey shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center active:scale-95">
+                        <i class="fas fa-chevron-left text-sm"></i>
+                    </button>
+                    <span class="text-xs font-semibold text-deep-indigo bg-white px-5 py-2.5 rounded-full border border-silver-grey shadow-sm">
+                        Video <span id="current-short-num">1</span> of <span id="total-shorts-num"><?php echo count($videoTestimonials); ?></span>
+                    </span>
+                    <button id="next-short"
+                        class="w-11 h-11 rounded-full bg-white hover:bg-electric-blue hover:text-white text-deep-indigo border border-silver-grey shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center active:scale-95">
+                        <i class="fas fa-chevron-right text-sm"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ── RIGHT: 2×2 Review Grid with Slider ── -->
+            <div class="flex flex-col observe">
+
+                <!-- Sliding viewport — clipping wrapper -->
+                <div class="overflow-hidden">
+                    <div id="reviews-track" class="flex transition-transform duration-500 ease-in-out">
+
+                        <?php
+                        $avatarColors = [
+                            'from-electric-blue to-cyan-accent',
+                            'from-cyan-accent to-electric-blue',
+                            'from-deep-indigo to-electric-blue',
+                            'from-electric-blue to-deep-indigo',
+                        ];
+                        // Group testimonials into pages of 4
+                        $pages = array_chunk($testimonials, 4);
+                        foreach ($pages as $pageIdx => $page):
+                        ?>
+                            <!-- Page <?php echo $pageIdx + 1; ?> -->
+                            <div class="min-w-full grid grid-cols-2 gap-5">
+                                <?php foreach ($page as $cardIdx => $testimonial):
+                                    $globalIdx = $pageIdx * 4 + $cardIdx;
+                                    $color = $avatarColors[$globalIdx % count($avatarColors)];
+                                ?>
+                                    <div class="group bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col">
+
+
+                                        <!-- Quote icon -->
+                                        <i class="fas fa-quote-left text-electric-blue/20 text-2xl mb-2"></i>
+
+                                        <!-- Review text -->
+                                        <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                                            <?php echo $testimonial['message']; ?>
+                                        </p>
+
+                                        <!-- Divider -->
+                                        <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                                        <!-- Author -->
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-10 h-10 rounded-full bg-gradient-to-br <?php echo $color; ?> flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                                                <?php echo strtoupper(substr($testimonial['name'], 0, 1)); ?>
+                                            </div>
+                                            <div>
+                                                <p class="font-bold text-deep-indigo text-sm leading-tight"><?php echo $testimonial['name']; ?></p>
+                                                <p class="text-xs text-cyan-accent font-medium mt-0.5"><?php echo $testimonial['role']; ?></p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php endforeach; ?>
+
+                    </div>
+                </div>
+
+                <!-- Review slider controls -->
+                <div class="flex items-center justify-between mt-8">
+
+                    <!-- Dot indicators -->
+                    <div class="flex items-center space-x-2" id="review-dots">
+                        <?php foreach ($pages as $pageIdx => $page): ?>
+                            <button class="review-dot w-2.5 h-2.5 rounded-full transition-all duration-300 <?php echo $pageIdx === 0 ? 'bg-electric-blue w-6' : 'bg-silver-grey'; ?>"
+                                data-page="<?php echo $pageIdx; ?>"></button>
+                        <?php endforeach; ?>
                     </div>
 
-                    <p class="text-dark-grey/80 italic mb-6 leading-relaxed">
-                        "<?php echo $testimonial['message']; ?>"
+                    <!-- Prev / Next -->
+                    <div class="flex items-center space-x-3">
+                        <button id="prev-review"
+                            class="w-11 h-11 rounded-full bg-white hover:bg-electric-blue hover:text-white text-deep-indigo border border-silver-grey shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center active:scale-95">
+                            <i class="fas fa-chevron-left text-sm"></i>
+                        </button>
+                        <button id="next-review"
+                            class="w-11 h-11 rounded-full bg-electric-blue text-white hover:bg-deep-indigo border border-electric-blue shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center active:scale-95">
+                            <i class="fas fa-chevron-right text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- JS: Video Slider + Review Slider -->
+        <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // ── Video Slider ──
+            const videoShorts = <?php echo json_encode($videoTestimonials); ?>;
+            let currentShortIndex = 0;
+            const player      = document.getElementById('youtube-shorts-player');
+            const currentNum  = document.getElementById('current-short-num');
+            const prevShort   = document.getElementById('prev-short');
+            const nextShort   = document.getElementById('next-short');
+
+            function loadShort(index) {
+                currentShortIndex = index;
+                const v = videoShorts[index];
+                player.src = `https://www.youtube.com/embed/${v.id}?autoplay=0&mute=1&loop=1&playlist=${v.id}&controls=1`;
+                currentNum.textContent = index + 1;
+            }
+
+            prevShort.addEventListener('click', () => loadShort((currentShortIndex - 1 + videoShorts.length) % videoShorts.length));
+            nextShort.addEventListener('click', () => loadShort((currentShortIndex + 1) % videoShorts.length));
+
+            // ── Review Slider ──
+            const track      = document.getElementById('reviews-track');
+            const dots       = document.querySelectorAll('.review-dot');
+            const prevReview = document.getElementById('prev-review');
+            const nextReview = document.getElementById('next-review');
+            const totalPages = track.children.length;
+            let currentPage  = 0;
+
+            function goToPage(page) {
+                currentPage = page;
+                track.style.transform = `translateX(-${page * 100}%)`;
+
+                dots.forEach((dot, i) => {
+                    if (i === page) {
+                        dot.classList.add('bg-electric-blue', 'w-6');
+                        dot.classList.remove('bg-silver-grey');
+                    } else {
+                        dot.classList.remove('bg-electric-blue', 'w-6');
+                        dot.classList.add('bg-silver-grey');
+                    }
+                });
+            }
+
+            dots.forEach(dot => dot.addEventListener('click', () => goToPage(+dot.dataset.page)));
+            prevReview.addEventListener('click', () => goToPage((currentPage - 1 + totalPages) % totalPages));
+            nextReview.addEventListener('click', () => goToPage((currentPage + 1) % totalPages));
+        });
+        </script>
+
+    </div>
+</section>
+
+<!-- Blog Section -->
+<section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Left-aligned header (matches reference image) -->
+        <div class="mb-12 observe">
+            <div class="flex items-center space-x-2 mb-3">
+                <i class="fas fa-newspaper text-dark-grey/40 text-sm"></i>
+                <span class="text-sm text-dark-grey/50 font-medium">Blogs</span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-serif font-bold text-dark-grey leading-tight">
+                Latest Articles
+            </h2>
+        </div>
+
+        <!-- 3-column card grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <?php foreach ($blogs as $blog): ?>
+                <a href="<?php echo $blog['url']; ?>"
+                   class="group flex flex-col observe">
+
+                    <!-- Image -->
+                    <div class="w-full aspect-[16/10] rounded-2xl overflow-hidden mb-5 bg-silver-grey">
+                        <img src="<?php echo $blog['image']; ?>"
+                             alt="<?php echo htmlspecialchars($blog['title']); ?>"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+
+                    <!-- Title -->
+                    <h3 class="text-lg font-bold text-dark-grey leading-snug mb-2 group-hover:text-electric-blue transition-colors duration-300">
+                        <?php echo $blog['title']; ?>
+                    </h3>
+
+                    <!-- Excerpt -->
+                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-5 flex-1">
+                        <?php echo $blog['excerpt']; ?>
                     </p>
 
-                    <div class="flex items-center space-x-3 pt-4 border-t border-silver-grey">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center text-white font-bold text-lg">
-                            <?php echo strtoupper(substr($testimonial['name'], 0, 1)); ?>
-                        </div>
-                        <div>
-                            <p class="font-bold text-deep-indigo"><?php echo $testimonial['name']; ?></p>
-                            <p class="text-sm text-cyan-accent"><?php echo $testimonial['role']; ?></p>
-                        </div>
+                    <!-- Footer: category pill + date -->
+                    <div class="flex items-center space-x-4">
+                        <span class="inline-block border border-silver-grey text-dark-grey/70 text-xs font-medium px-3 py-1.5 rounded-full">
+                            <?php echo $blog['category']; ?>
+                        </span>
+                        <span class="text-xs text-dark-grey/45 font-medium"><?php echo $blog['date']; ?></span>
                     </div>
+                </a>
+            <?php endforeach; ?>
+        </div>
+
+    </div>
+</section>
+
+<!-- Awards & Recognition Section -->
+<section class="py-12 bg-soft-cyan/30 relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-electric-blue via-cyan-accent to-electric-blue"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Left-aligned header -->
+        <div class="mb-12 observe">
+            <div class="flex items-center space-x-2 mb-3">
+                <i class="fas fa-trophy text-amber-400 text-sm"></i>
+                <span class="text-sm text-dark-grey/50 font-medium">Awards & Recognition</span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-serif font-bold text-dark-grey leading-tight">
+                Honours & Achievements
+            </h2>
+        </div>
+
+        <!-- Grid of award/honour images only -->
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-8">
+            <?php foreach ($awards as $award): ?>
+                <div class="group overflow-hidden rounded-3xl bg-white shadow-md border border-silver-grey/50 aspect-[2/3] observe">
+                    <img src="<?php echo $award['image']; ?>" 
+                         alt="<?php echo htmlspecialchars($award['title']); ?>" 
+                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                 </div>
             <?php endforeach; ?>
         </div>
+
     </div>
 </section>
 
-<!-- Appointment Form Section -->
-<section class="py-24 bg-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent rounded-3xl shadow-2xl overflow-hidden relative">
-            <div class="blob w-64 h-64 bg-white/10 top-0 right-0"></div>
-            <div class="blob w-64 h-64 bg-white/10 bottom-0 left-0"></div>
+<!-- Education / Knowledge Videos Section -->
+<section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            <div class="relative grid grid-cols-1 lg:grid-cols-2">
-                <!-- Left Content -->
-                <div class="p-8 md:p-12 text-white">
-                    <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4">
-                        Book Your Appointment
-                    </h2>
-                    <p class="text-white/80 mb-8 leading-relaxed">
-                        Schedule your consultation today and take the first step towards better health.
-                    </p>
+        <!-- Left-aligned header -->
+        <div class="mb-12 observe">
+            <div class="flex items-center space-x-2 mb-3">
+                <i class="fas fa-play-circle text-electric-blue text-sm"></i>
+                <span class="text-sm text-dark-grey/50 font-medium">Education</span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-serif font-bold text-dark-grey leading-tight">
+                Knowledge & Awareness
+            </h2>
+        </div>
 
-                    <div class="space-y-4 mb-8">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                                <i class="fas fa-check text-white"></i>
+        <!-- Sliding viewport: shows 4 videos (2×2) per page -->
+        <div class="overflow-hidden">
+            <div id="edu-track" class="flex transition-transform duration-500 ease-in-out">
+                <?php
+                $eduPages = array_chunk($educationVideos, 4);
+                foreach ($eduPages as $epIdx => $epPage):
+                ?>
+                    <div class="min-w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <?php foreach ($epPage as $video): ?>
+                            <div class="group bg-white rounded-2xl overflow-hidden border border-silver-grey/50 shadow-sm hover:shadow-xl transition-all duration-400 hover:-translate-y-1 observe">
+
+                                <!-- Embed -->
+                                <div class="relative w-full aspect-video bg-dark-grey">
+                                    <iframe
+                                        class="w-full h-full"
+                                        src="https://www.youtube.com/embed/<?php echo $video['id']; ?>?rel=0&modestbranding=1"
+                                        title="<?php echo htmlspecialchars($video['title']); ?>"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen
+                                        loading="lazy">
+                                    </iframe>
+                                </div>
+
+                                <!-- Card footer -->
+                                <div class="p-4">
+                                    <h3 class="font-bold text-deep-indigo text-sm md:text-base leading-snug mb-1 group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                                        <?php echo $video['title']; ?>
+                                    </h3>
+                                    <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2">
+                                        <?php echo $video['desc']; ?>
+                                    </p>
+                                </div>
                             </div>
-                            <span>Free initial consultation</span>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                                <i class="fas fa-check text-white"></i>
-                            </div>
-                            <span>Flexible scheduling options</span>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                                <i class="fas fa-check text-white"></i>
-                            </div>
-                            <span>Same-day appointments available</span>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                                <i class="fas fa-check text-white"></i>
-                            </div>
-                            <span>Insurance accepted</span>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
-
-                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
-                        <div class="flex items-center space-x-3">
-                            <i class="fas fa-phone-volume text-2xl"></i>
-                            <div>
-                                <p class="text-sm text-white/70">Emergency? Call us now</p>
-                                <a href="tel:<?php echo SITE_PHONE; ?>" class="text-lg font-bold hover:text-cyan-accent transition-colors"><?php echo SITE_PHONE; ?></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Form -->
-                <div class="bg-white p-8 md:p-12">
-                    <h3 class="text-2xl font-bold text-deep-indigo mb-6">Schedule Now</h3>
-                    <form class="space-y-4" onsubmit="event.preventDefault(); alert('Appointment request submitted! We will contact you shortly.');">
-                        <div>
-                            <label class="block text-sm font-medium text-dark-grey mb-2">Full Name</label>
-                            <input type="text" required placeholder="John Doe"
-                                   class="w-full px-4 py-3 rounded-xl border border-silver-grey focus:border-electric-blue focus:ring-2 focus:ring-electric-blue/20 outline-none transition-all">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-dark-grey mb-2">Email Address</label>
-                            <input type="email" required placeholder="john@example.com"
-                                   class="w-full px-4 py-3 rounded-xl border border-silver-grey focus:border-electric-blue focus:ring-2 focus:ring-electric-blue/20 outline-none transition-all">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-dark-grey mb-2">Phone Number</label>
-                            <input type="tel" required placeholder="+91 98765 43210"
-                                   class="w-full px-4 py-3 rounded-xl border border-silver-grey focus:border-electric-blue focus:ring-2 focus:ring-electric-blue/20 outline-none transition-all">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-dark-grey mb-2">Preferred Date</label>
-                            <input type="date" required
-                                   class="w-full px-4 py-3 rounded-xl border border-silver-grey focus:border-electric-blue focus:ring-2 focus:ring-electric-blue/20 outline-none transition-all">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-dark-grey mb-2">Service Required</label>
-                            <select required
-                                    class="w-full px-4 py-3 rounded-xl border border-silver-grey focus:border-electric-blue focus:ring-2 focus:ring-electric-blue/20 outline-none transition-all">
-                                <option value="">Select a service</option>
-                                <?php foreach ($services as $service): ?>
-                                    <option value="<?php echo $service['title']; ?>"><?php echo $service['title']; ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
-                        <button type="submit" class="w-full px-6 py-4 bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-electric-blue/30 transition-all duration-300 transform hover:-translate-y-0.5">
-                            Confirm Appointment
-                        </button>
-                    </form>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
+
+        <!-- Slider controls -->
+        <div class="flex items-center justify-between mt-8">
+
+            <!-- Dot indicators -->
+            <div class="flex items-center space-x-2" id="edu-dots">
+                <?php foreach ($eduPages as $epIdx => $epPage): ?>
+                    <button class="edu-dot rounded-full transition-all duration-300 <?php echo $epIdx === 0 ? 'w-6 h-2.5 bg-electric-blue' : 'w-2.5 h-2.5 bg-silver-grey'; ?>"
+                        data-page="<?php echo $epIdx; ?>"></button>
+                <?php endforeach; ?>
+            </div>
+
+            <!-- Prev / Next -->
+            <div class="flex items-center space-x-3">
+                <button id="edu-prev"
+                    class="w-11 h-11 rounded-full bg-white hover:bg-electric-blue hover:text-white text-deep-indigo border border-silver-grey shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center active:scale-95">
+                    <i class="fas fa-chevron-left text-sm"></i>
+                </button>
+                <button id="edu-next"
+                    class="w-11 h-11 rounded-full bg-electric-blue text-white hover:bg-deep-indigo border border-electric-blue shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center active:scale-95">
+                    <i class="fas fa-chevron-right text-sm"></i>
+                </button>
+            </div>
+        </div>
+
     </div>
+
+    <!-- Education Slider JS -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const track     = document.getElementById('edu-track');
+        const dots      = document.querySelectorAll('.edu-dot');
+        const prevBtn   = document.getElementById('edu-prev');
+        const nextBtn   = document.getElementById('edu-next');
+        const total     = track.children.length;
+        let current     = 0;
+
+        function goTo(page) {
+            current = page;
+            track.style.transform = `translateX(-${page * 100}%)`;
+            dots.forEach((d, i) => {
+                if (i === page) {
+                    d.classList.add('bg-electric-blue', 'w-6');
+                    d.classList.remove('bg-silver-grey', 'w-2.5');
+                } else {
+                    d.classList.remove('bg-electric-blue', 'w-6');
+                    d.classList.add('bg-silver-grey', 'w-2.5');
+                }
+            });
+        }
+
+        dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.page)));
+        prevBtn.addEventListener('click', () => goTo((current - 1 + total) % total));
+        nextBtn.addEventListener('click', () => goTo((current + 1) % total));
+    });
+    </script>
 </section>
+
+
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

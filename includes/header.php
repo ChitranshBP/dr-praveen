@@ -115,6 +115,23 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             opacity: 0.4;
             z-index: 0;
         }
+        
+        /* Transparent Navbar overrides */
+        .navbar-transparent .nav-title {
+            color: #ffffff !important;
+        }
+        .navbar-transparent .nav-link {
+            color: rgba(255, 255, 255, 0.85) !important;
+        }
+        .navbar-transparent .nav-link:hover {
+            color: #06B6D4 !important;
+        }
+        .navbar-transparent .nav-link-active {
+            color: #06B6D4 !important;
+        }
+        .navbar-transparent .nav-mobile-btn {
+            color: #ffffff !important;
+        }
     </style>
 </head>
 <body class="bg-white text-dark-grey antialiased">
@@ -146,7 +163,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     </div>
 
     <!-- Main Navigation -->
-    <nav id="navbar" class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm transition-all duration-300">
+    <?php $isHomepage = ($currentPage === 'index.php'); ?>
+    <nav id="navbar" class="sticky top-0 z-50 transition-all duration-300 <?php echo $isHomepage ? 'navbar-transparent bg-transparent shadow-none' : 'bg-white/95 backdrop-blur-md shadow-sm'; ?>">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
@@ -155,7 +173,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                         <i class="fas fa-plus text-white text-xl"></i>
                     </div>
                     <div>
-                        <h1 class="text-xl font-bold text-deep-indigo leading-tight">Dr. Praveen Gupta</h1>
+                        <h1 class="text-xl font-bold text-deep-indigo leading-tight nav-title transition-colors duration-300">Dr. Praveen Gupta</h1>
                         <p class="text-xs text-cyan-accent font-medium">MBBS, MD - Internal Medicine</p>
                     </div>
                 </a>
@@ -164,7 +182,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 <div class="hidden lg:flex items-center space-x-1">
                     <?php foreach ($navItems as $item): ?>
                         <a href="<?php echo $item['url']; ?>"
-                           class="relative px-4 py-2 text-sm font-medium transition-colors duration-300 <?php echo $currentPage === $item['url'] ? 'text-electric-blue' : 'text-dark-grey hover:text-electric-blue'; ?>">
+                           class="relative px-4 py-2 text-sm font-medium transition-colors duration-300 nav-link <?php echo $currentPage === $item['url'] ? 'text-electric-blue nav-link-active' : 'text-dark-grey hover:text-electric-blue'; ?>">
                             <?php echo $item['name']; ?>
                             <?php if ($currentPage === $item['url']): ?>
                                 <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/2 h-0.5 bg-gradient-to-r from-electric-blue to-cyan-accent rounded-full"></span>
@@ -181,7 +199,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg text-dark-grey hover:bg-soft-cyan transition-colors">
+                <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg text-dark-grey hover:bg-soft-cyan transition-colors nav-mobile-btn">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
@@ -207,16 +225,49 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         // Mobile menu toggle
         document.getElementById('mobile-menu-btn').addEventListener('click', function() {
             const menu = document.getElementById('mobile-menu');
+            const navbar = document.getElementById('navbar');
+            const isHomepage = <?php echo $isHomepage ? 'true' : 'false'; ?>;
+            
             menu.classList.toggle('hidden');
+            
+            // If mobile menu is open, make navbar solid white
+            if (!menu.classList.contains('hidden')) {
+                navbar.classList.remove('navbar-transparent', 'bg-transparent', 'shadow-none');
+                navbar.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-md');
+            } else if (isHomepage && window.scrollY <= 50) {
+                // If closed and scroll is at top of homepage, make transparent again
+                navbar.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-md');
+                navbar.classList.add('navbar-transparent', 'bg-transparent', 'shadow-none');
+            }
         });
 
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('shadow-md');
+            const menu = document.getElementById('mobile-menu');
+            const isHomepage = <?php echo $isHomepage ? 'true' : 'false'; ?>;
+            
+            // If mobile menu is open, keep navbar white regardless of scroll
+            if (menu && !menu.classList.contains('hidden')) {
+                return;
+            }
+            
+            if (isHomepage) {
+                if (window.scrollY > 50) {
+                    navbar.classList.remove('navbar-transparent', 'bg-transparent', 'shadow-none');
+                    navbar.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-md');
+                } else {
+                    navbar.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-md');
+                    navbar.classList.add('navbar-transparent', 'bg-transparent', 'shadow-none');
+                }
             } else {
-                navbar.classList.remove('shadow-md');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('shadow-md');
+                    navbar.classList.remove('shadow-sm');
+                } else {
+                    navbar.classList.remove('shadow-md');
+                    navbar.classList.add('shadow-sm');
+                }
             }
         });
     </script>
