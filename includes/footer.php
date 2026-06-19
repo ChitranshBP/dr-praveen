@@ -3,14 +3,27 @@
  * Footer Include
  */
 $currentYear = date('Y');
-$footerServices = [
-    ['name' => 'Cardiology', 'icon' => 'heartbeat'],
-    ['name' => 'General Medicine', 'icon' => 'stethoscope'],
-    ['name' => 'Preventive Care', 'icon' => 'shield-alt'],
-    ['name' => 'Neurology', 'icon' => 'brain'],
-    ['name' => 'Diagnostics', 'icon' => 'microscope'],
-    ['name' => 'Family Health', 'icon' => 'users'],
+
+// Build footer services from main config (limit to 6 for layout)
+$serviceIcons = [
+    'Epilepsy' => 'bolt',
+    'Headache' => 'head-side-virus',
+    'Migraine' => 'brain',
+    'Stroke' => 'heart-pulse',
+    'Vertigo' => 'sync',
+    "Parkinson's Disease" => 'walking',
+    'Multiple Sclerosis' => 'ribbon',
+    'Movement Disorders' => 'person-walking',
+    'Peripheral Neuropathy' => 'hand-holding-medical',
 ];
+
+$footerServices = [];
+foreach (array_slice($services, 0, 6) as $svc) {
+    $footerServices[] = [
+        'name' => $svc['title'],
+        'icon' => $serviceIcons[$svc['title']] ?? 'stethoscope',
+    ];
+}
 ?>
 
     <!-- CTA Section -->
