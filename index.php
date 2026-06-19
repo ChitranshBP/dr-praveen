@@ -8,8 +8,46 @@ require_once __DIR__ . '/includes/header.php';
 <!-- Hero Section -->
 <section class="relative overflow-hidden bg-[#edf5f9] -mt-20">
     <div class="w-full max-w-[1920px] mx-auto relative">
-        <img src="assets/banner/DR-parveen-gupta-banner-1.png" alt="Dr. Praveen Gupta Banner"
-            class="w-full h-auto block">
+        <img src="assets\banner\web-banner-hero.webp" alt="Dr. Praveen Gupta – Best Neurologist in India"
+            class="w-full h-auto block min-h-[480px] sm:min-h-[550px] md:min-h-0 object-cover object-[75%_center]">
+        
+        <!-- Content Overlay -->
+        <div class="absolute inset-0 flex items-center bg-gradient-to-r from-deep-indigo/70 via-deep-indigo/35 to-transparent">
+            <div class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="max-w-lg md:max-w-xl lg:max-w-2xl text-white">
+                    <!-- Pill Tagline -->
+                    <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20 mb-6 animate-fade-in-up">
+                        <span class="w-2 h-2 rounded-full bg-cyan-accent animate-pulse"></span>
+                        <span class="text-white text-xs font-semibold uppercase tracking-wider">A New Era in Brain & Spine Care</span>
+                    </div>
+
+                    <!-- SEO Optimized H1 Title -->
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white leading-tight mb-5 animate-fade-in-up drop-shadow-[0_4px_12px_rgba(0,0,0,0.55)]" style="animation-delay: 100ms;">
+                        Led by <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-cyan-100 font-extrabold">Dr. Praveen Gupta</span>
+                        <span class="block text-xl sm:text-2xl md:text-3xl font-sans font-bold text-cyan-200 mt-2">Best Neurologist in India</span>
+                    </h1>
+
+                    <!-- Description / Subtitle -->
+                    <p class="text-sm sm:text-base md:text-lg text-white/90 leading-relaxed mb-8 max-w-xl animate-fade-in-up font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)]" style="animation-delay: 200ms;">
+                        Chairman at Marengo Asia International Institute of Neuro & Spine. Providing world-class, advanced neurological treatments for Stroke, Epilepsy, Parkinson's, Migraine, and movement disorders.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-wrap gap-4 items-center animate-fade-in-up" style="animation-delay: 300ms;">
+                        <a href="contact.php"
+                           class="inline-flex items-center space-x-2.5 bg-gradient-to-r from-cyan-accent to-blue-500 hover:from-cyan-400 hover:to-blue-600 text-white font-bold px-6 py-3 rounded-full shadow-lg shadow-cyan-accent/20 hover:shadow-cyan-accent/40 hover:-translate-y-0.5 transition-all duration-300">
+                            <span>Book Consultation</span>
+                            <i class="fas fa-calendar-check text-xs"></i>
+                        </a>
+                        <a href="#about"
+                           class="inline-flex items-center space-x-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/40 text-white font-bold px-6 py-3 rounded-full hover:-translate-y-0.5 transition-all duration-300">
+                            <span>Learn More</span>
+                            <i class="fas fa-arrow-down text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -200,7 +238,7 @@ require_once __DIR__ . '/includes/header.php';
             <div class="lg:col-span-5 relative observe">
                 <div
                     class="aspect-[4/5] rounded-3xl overflow-hidden shadow-xl bg-gradient-to-br from-soft-cyan to-silver-grey">
-                    <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=800&h=1000&q=80"
+                    <img src="assets\dpg-1.webp"
                         alt="Neurology Care Team" class="w-full h-full object-cover">
                 </div>
             </div>
@@ -374,9 +412,9 @@ require_once __DIR__ . '/includes/header.php';
             <!-- Image Side -->
             <div class="lg:col-span-6 relative flex justify-center lg:justify-end observe">
                 <div
-                    class="relative w-full max-w-md lg:max-w-none aspect-[4/5] rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-soft-cyan to-silver-grey">
+                    class="relative w-full max-w-md lg:max-w-none aspect-[3:4] rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-soft-cyan to-silver-grey">
                     <!-- Background Portrait Photo -->
-                    <img src="https://images.unsplash.com/photo-1594824813573-246434de83fb?auto=format&fit=crop&w=800&h=1000&q=80"
+                    <img src="assets\full-image\dpg-award.webp"
                         alt="Compassionate Care Nurse" class="w-full h-full object-cover">
 
                     <!-- Floating Overlaid Card -->

@@ -4,12 +4,12 @@
  */
 $currentYear = date('Y');
 $footerServices = [
-    'Cardiology',
-    'General Medicine',
-    'Preventive Care',
-    'Neurology',
-    'Diagnostics',
-    'Family Health'
+    ['name' => 'Cardiology', 'icon' => 'heartbeat'],
+    ['name' => 'General Medicine', 'icon' => 'stethoscope'],
+    ['name' => 'Preventive Care', 'icon' => 'shield-alt'],
+    ['name' => 'Neurology', 'icon' => 'brain'],
+    ['name' => 'Diagnostics', 'icon' => 'microscope'],
+    ['name' => 'Family Health', 'icon' => 'users'],
 ];
 ?>
 
@@ -18,7 +18,7 @@ $footerServices = [
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <!-- Main CTA Card -->
             <div class="relative bg-gradient-to-r from-electric-blue to-cyan-accent rounded-[36px] overflow-hidden shadow-2xl p-8 md:p-14 lg:p-16">
-                
+
                 <!-- Concentric Circles Pattern (Right Side) -->
                 <div class="absolute -right-64 top-1/2 -translate-y-1/2 w-[850px] h-[850px] flex items-center justify-center pointer-events-none z-0">
                     <div class="absolute w-[850px] h-[850px] bg-white/[0.03] rounded-full"></div>
@@ -35,15 +35,15 @@ $footerServices = [
                     <h2 class="text-4xl md:text-5xl lg:text-6xl font-sans font-extrabold text-white mb-4 leading-tight tracking-tight">
                         Let's Get In Touch.
                     </h2>
-                    
+
                     <p class="text-white/85 text-sm md:text-base mb-10 max-w-lg leading-relaxed">
                         Ready to prioritize your health? Schedule a consultation with Dr. Praveen Gupta today and take the first step towards a healthier tomorrow.
                     </p>
-                    
+
                     <!-- Buttons Row -->
                     <div class="flex flex-wrap gap-4 items-center">
                         <!-- Book Appointment Button -->
-                        <a href="contact.php" 
+                        <a href="contact.php"
                            class="inline-flex items-center space-x-6 bg-[#111827] text-white text-xs md:text-sm font-semibold pl-6 pr-2.5 py-2.5 rounded-full hover:bg-black transition-all duration-300 shadow-lg hover:-translate-y-0.5 active:translate-y-0 group">
                             <span>Book Appointment</span>
                             <!-- Glossy metallic dot indicator -->
@@ -51,9 +51,9 @@ $footerServices = [
                                 <i class="fas fa-chevron-right text-[9px]"></i>
                             </div>
                         </a>
-                        
+
                         <!-- Call Now Button -->
-                        <a href="tel:<?php echo SITE_PHONE; ?>" 
+                        <a href="tel:<?php echo SITE_PHONE; ?>"
                            class="inline-flex items-center space-x-6 bg-[#111827] text-white text-xs md:text-sm font-semibold pl-6 pr-2.5 py-2.5 rounded-full hover:bg-black transition-all duration-300 shadow-lg hover:-translate-y-0.5 active:translate-y-0 group">
                             <span>Call Now</span>
                             <!-- Glossy metallic dot indicator -->
@@ -63,61 +63,87 @@ $footerServices = [
                         </a>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-deep-indigo text-white">
+    <footer class="bg-deep-indigo text-white relative overflow-hidden">
+        <!-- Decorative background -->
+        <div class="absolute inset-0 opacity-30 pointer-events-none">
+            <div class="absolute -top-20 -left-20 w-96 h-96 bg-electric-blue/20 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-20 -right-20 w-96 h-96 bg-cyan-accent/20 rounded-full blur-3xl"></div>
+        </div>
+
+        <!-- Top accent line -->
+        <div class="h-1 bg-gradient-to-r from-electric-blue via-cyan-accent to-electric-blue"></div>
+
         <!-- Main Footer -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
                 <!-- About -->
-                <div>
-                    <div class="flex items-center space-x-3 mb-6">
-                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center">
-                            <i class="fas fa-plus text-white text-xl"></i>
+                <div class="lg:col-span-4">
+                    <div class="mb-6">
+                        <a href="index.php" class="inline-block group">
+                            <img src="assets/logo/dr-praveen-logo.webp" alt="Dr. Praveen Gupta Logo" class="h-12 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300">
+                        </a>
+                    </div>
+                    <p class="text-white/70 leading-relaxed mb-6 text-sm">
+                        Providing exceptional medical care with compassion and expertise for over 25 years. Your trusted partner in health and wellness journey.
+                    </p>
+
+                    <!-- Stats badges -->
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="px-3 py-2 rounded-lg bg-white/5 border border-white/10">
+                            <div class="text-lg font-bold text-white">25+</div>
+                            <div class="text-[10px] text-white/60 uppercase tracking-wide">Years</div>
                         </div>
-                        <div>
-                            <h3 class="text-xl font-bold">Dr. Praveen Gupta</h3>
-                            <p class="text-xs text-cyan-accent">Healthcare Excellence</p>
+                        <div class="px-3 py-2 rounded-lg bg-white/5 border border-white/10">
+                            <div class="text-lg font-bold text-white">50K+</div>
+                            <div class="text-[10px] text-white/60 uppercase tracking-wide">Patients</div>
+                        </div>
+                        <div class="px-3 py-2 rounded-lg bg-white/5 border border-white/10">
+                            <div class="text-lg font-bold text-white">4.9★</div>
+                            <div class="text-[10px] text-white/60 uppercase tracking-wide">Rating</div>
                         </div>
                     </div>
-                    <p class="text-white/70 leading-relaxed mb-6">
-                        Providing exceptional medical care with compassion and expertise for over 25 years. Your trusted partner in health and wellness.
-                    </p>
-                    <div class="flex space-x-3">
-                        <a href="<?php echo SOCIAL_FACEBOOK; ?>" class="w-10 h-10 rounded-full bg-white/10 hover:bg-electric-blue flex items-center justify-center transition-all duration-300">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="<?php echo SOCIAL_INSTAGRAM; ?>" class="w-10 h-10 rounded-full bg-white/10 hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 flex items-center justify-center transition-all duration-300">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="<?php echo SOCIAL_TWITTER; ?>" class="w-10 h-10 rounded-full bg-white/10 hover:bg-cyan-accent flex items-center justify-center transition-all duration-300">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="<?php echo SOCIAL_YOUTUBE; ?>" class="w-10 h-10 rounded-full bg-white/10 hover:bg-red-500 flex items-center justify-center transition-all duration-300">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="<?php echo SOCIAL_LINKEDIN; ?>" class="w-10 h-10 rounded-full bg-white/10 hover:bg-blue-600 flex items-center justify-center transition-all duration-300">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
+
+                    <!-- Social -->
+                    <div>
+                        <p class="text-xs text-white/60 uppercase tracking-wider font-semibold mb-3">Follow Us</p>
+                        <div class="flex space-x-2">
+                            <a href="<?php echo SOCIAL_FACEBOOK; ?>" class="group relative w-10 h-10 rounded-xl bg-white/5 hover:bg-electric-blue border border-white/10 hover:border-electric-blue flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
+                                <i class="fab fa-facebook-f text-sm"></i>
+                            </a>
+                            <a href="<?php echo SOCIAL_INSTAGRAM; ?>" class="group relative w-10 h-10 rounded-xl bg-white/5 hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 border border-white/10 hover:border-pink-500 flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
+                                <i class="fab fa-instagram text-sm"></i>
+                            </a>
+                            <a href="<?php echo SOCIAL_TWITTER; ?>" class="group relative w-10 h-10 rounded-xl bg-white/5 hover:bg-cyan-accent border border-white/10 hover:border-cyan-accent flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
+                                <i class="fab fa-twitter text-sm"></i>
+                            </a>
+                            <a href="<?php echo SOCIAL_YOUTUBE; ?>" class="group relative w-10 h-10 rounded-xl bg-white/5 hover:bg-red-500 border border-white/10 hover:border-red-500 flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
+                                <i class="fab fa-youtube text-sm"></i>
+                            </a>
+                            <a href="<?php echo SOCIAL_LINKEDIN; ?>" class="group relative w-10 h-10 rounded-xl bg-white/5 hover:bg-blue-600 border border-white/10 hover:border-blue-600 flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
+                                <i class="fab fa-linkedin-in text-sm"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Quick Links -->
-                <div>
-                    <h3 class="text-lg font-semibold mb-6 flex items-center">
-                        <span class="w-8 h-0.5 bg-cyan-accent mr-3"></span>
+                <div class="lg:col-span-2">
+                    <h3 class="text-base font-bold mb-5 flex items-center">
+                        <span class="w-1 h-5 bg-gradient-to-b from-electric-blue to-cyan-accent rounded-full mr-3"></span>
                         Quick Links
                     </h3>
-                    <ul class="space-y-3">
+                    <ul class="space-y-2.5">
                         <?php foreach ($navItems as $item): ?>
                             <li>
-                                <a href="<?php echo $item['url']; ?>" class="text-white/70 hover:text-cyan-accent transition-colors duration-300 flex items-center space-x-2 group">
-                                    <i class="fas fa-chevron-right text-xs text-cyan-accent group-hover:translate-x-1 transition-transform"></i>
-                                    <span><?php echo $item['name']; ?></span>
+                                <a href="<?php echo $item['url']; ?>" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                                    <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
+                                    <span class="group-hover:translate-x-0.5 transition-transform"><?php echo $item['name']; ?></span>
                                 </a>
                             </li>
                         <?php endforeach; ?>
@@ -125,17 +151,19 @@ $footerServices = [
                 </div>
 
                 <!-- Services -->
-                <div>
-                    <h3 class="text-lg font-semibold mb-6 flex items-center">
-                        <span class="w-8 h-0.5 bg-cyan-accent mr-3"></span>
+                <div class="lg:col-span-3">
+                    <h3 class="text-base font-bold mb-5 flex items-center">
+                        <span class="w-1 h-5 bg-gradient-to-b from-electric-blue to-cyan-accent rounded-full mr-3"></span>
                         Our Services
                     </h3>
-                    <ul class="space-y-3">
+                    <ul class="space-y-2.5">
                         <?php foreach ($footerServices as $service): ?>
                             <li>
-                                <a href="services.php" class="text-white/70 hover:text-cyan-accent transition-colors duration-300 flex items-center space-x-2 group">
-                                    <i class="fas fa-chevron-right text-xs text-cyan-accent group-hover:translate-x-1 transition-transform"></i>
-                                    <span><?php echo $service; ?></span>
+                                <a href="services.php" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-3 group text-sm">
+                                    <span class="w-7 h-7 rounded-lg bg-white/5 group-hover:bg-cyan-accent/20 flex items-center justify-center transition-all duration-300 flex-shrink-0">
+                                        <i class="fas fa-<?php echo $service['icon']; ?> text-[10px] text-cyan-accent/70 group-hover:text-cyan-accent transition-colors"></i>
+                                    </span>
+                                    <span class="group-hover:translate-x-0.5 transition-transform"><?php echo $service['name']; ?></span>
                                 </a>
                             </li>
                         <?php endforeach; ?>
@@ -143,47 +171,51 @@ $footerServices = [
                 </div>
 
                 <!-- Contact Info -->
-                <div>
-                    <h3 class="text-lg font-semibold mb-6 flex items-center">
-                        <span class="w-8 h-0.5 bg-cyan-accent mr-3"></span>
+                <div class="lg:col-span-3">
+                    <h3 class="text-base font-bold mb-5 flex items-center">
+                        <span class="w-1 h-5 bg-gradient-to-b from-electric-blue to-cyan-accent rounded-full mr-3"></span>
                         Get In Touch
                     </h3>
-                    <ul class="space-y-4">
-                        <li class="flex items-start space-x-3">
-                            <div class="w-10 h-10 rounded-lg bg-electric-blue/20 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-map-marker-alt text-cyan-accent"></i>
+                    <ul class="space-y-3">
+                        <li class="flex items-start space-x-3 group">
+                            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-electric-blue/20 to-cyan-accent/20 group-hover:from-electric-blue group-hover:to-cyan-accent flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                <i class="fas fa-map-marker-alt text-cyan-accent group-hover:text-white transition-colors text-sm"></i>
                             </div>
-                            <div>
-                                <p class="text-white/70 text-sm"><?php echo SITE_ADDRESS; ?></p>
+                            <div class="pt-1">
+                                <p class="text-white/70 text-xs font-medium">Our Location</p>
+                                <p class="text-white/90 text-sm font-semibold"><?php echo SITE_ADDRESS; ?></p>
                             </div>
                         </li>
-                        <li class="flex items-start space-x-3">
-                            <div class="w-10 h-10 rounded-lg bg-electric-blue/20 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-phone text-cyan-accent"></i>
+                        <li class="flex items-start space-x-3 group">
+                            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-electric-blue/20 to-cyan-accent/20 group-hover:from-electric-blue group-hover:to-cyan-accent flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                <i class="fas fa-phone text-cyan-accent group-hover:text-white transition-colors text-sm"></i>
                             </div>
-                            <div>
-                                <a href="tel:<?php echo SITE_PHONE; ?>" class="text-white/70 hover:text-cyan-accent transition-colors text-sm">
+                            <div class="pt-1">
+                                <p class="text-white/70 text-xs font-medium">Call Us</p>
+                                <a href="tel:<?php echo SITE_PHONE; ?>" class="text-white/90 text-sm font-semibold hover:text-cyan-accent transition-colors">
                                     <?php echo SITE_PHONE; ?>
                                 </a>
                             </div>
                         </li>
-                        <li class="flex items-start space-x-3">
-                            <div class="w-10 h-10 rounded-lg bg-electric-blue/20 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-envelope text-cyan-accent"></i>
+                        <li class="flex items-start space-x-3 group">
+                            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-electric-blue/20 to-cyan-accent/20 group-hover:from-electric-blue group-hover:to-cyan-accent flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                <i class="fas fa-envelope text-cyan-accent group-hover:text-white transition-colors text-sm"></i>
                             </div>
-                            <div>
-                                <a href="mailto:<?php echo SITE_EMAIL; ?>" class="text-white/70 hover:text-cyan-accent transition-colors text-sm break-all">
+                            <div class="pt-1">
+                                <p class="text-white/70 text-xs font-medium">Email Us</p>
+                                <a href="mailto:<?php echo SITE_EMAIL; ?>" class="text-white/90 text-sm font-semibold hover:text-cyan-accent transition-colors break-all">
                                     <?php echo SITE_EMAIL; ?>
                                 </a>
                             </div>
                         </li>
-                        <li class="flex items-start space-x-3">
-                            <div class="w-10 h-10 rounded-lg bg-electric-blue/20 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-clock text-cyan-accent"></i>
+                        <li class="flex items-start space-x-3 group">
+                            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-electric-blue/20 to-cyan-accent/20 group-hover:from-electric-blue group-hover:to-cyan-accent flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                <i class="fas fa-clock text-cyan-accent group-hover:text-white transition-colors text-sm"></i>
                             </div>
-                            <div>
-                                <p class="text-white/70 text-sm">Mon - Sat: 9:00 AM - 7:00 PM</p>
-                                <p class="text-white/70 text-sm">Sun: Closed</p>
+                            <div class="pt-1">
+                                <p class="text-white/70 text-xs font-medium">Working Hours</p>
+                                <p class="text-white/90 text-sm font-semibold">Mon - Sat: 9 AM - 7 PM</p>
+                                <p class="text-white/60 text-xs">Sunday: Closed</p>
                             </div>
                         </li>
                     </ul>
@@ -192,18 +224,27 @@ $footerServices = [
         </div>
 
         <!-- Newsletter -->
-        <div class="border-t border-white/10">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-                    <div>
-                        <h4 class="text-xl font-semibold mb-1">Subscribe to Our Newsletter</h4>
-                        <p class="text-white/70 text-sm">Get health tips and updates directly in your inbox.</p>
+        <div class="relative border-t border-white/10 bg-black/20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center shadow-lg flex-shrink-0">
+                            <i class="fas fa-paper-plane text-white text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-1">Subscribe to Our Newsletter</h4>
+                            <p class="text-white/70 text-sm">Get health tips, latest updates and medical insights directly in your inbox.</p>
+                        </div>
                     </div>
-                    <form class="flex w-full md:w-auto" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
-                        <input type="email" placeholder="Enter your email" required
-                               class="px-5 py-3 bg-white/10 border border-white/20 rounded-l-full text-white placeholder-white/50 focus:outline-none focus:border-cyan-accent w-full md:w-80">
-                        <button type="submit" class="px-6 py-3 bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold rounded-r-full hover:opacity-90 transition-opacity">
-                            Subscribe
+                    <form class="flex w-full" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+                        <div class="relative flex-1">
+                            <i class="fas fa-envelope absolute left-5 top-1/2 -translate-y-1/2 text-white/40 text-sm"></i>
+                            <input type="email" placeholder="Enter your email address" required
+                                   class="w-full pl-12 pr-5 py-4 bg-white/10 border border-white/20 rounded-l-full text-white placeholder-white/50 focus:outline-none focus:border-cyan-accent focus:bg-white/15 transition-all">
+                        </div>
+                        <button type="submit" class="px-7 py-4 bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold rounded-r-full hover:shadow-lg hover:shadow-electric-blue/50 transition-all duration-300 flex items-center space-x-2 group">
+                            <span class="hidden sm:inline">Subscribe</span>
+                            <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                         </button>
                     </form>
                 </div>
@@ -211,14 +252,16 @@ $footerServices = [
         </div>
 
         <!-- Bottom Bar -->
-        <div class="border-t border-white/10">
+        <div class="relative border-t border-white/10">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
                 <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/60">
-                    <p>&copy; <?php echo $currentYear; ?> Dr. Praveen Gupta. All rights reserved.</p>
-                    <div class="flex items-center space-x-6">
-                        <a href="#" class="hover:text-cyan-accent transition-colors">Privacy Policy</a>
-                        <a href="#" class="hover:text-cyan-accent transition-colors">Terms of Service</a>
-                        <a href="#" class="hover:text-cyan-accent transition-colors">Sitemap</a>
+                    <p>&copy; <?php echo $currentYear; ?> <span class="text-white font-semibold">Dr. Praveen Gupta</span>. All rights reserved.</p>
+                    <div class="flex items-center space-x-1">
+                        <a href="#" class="px-3 py-1.5 rounded-full hover:bg-white/5 hover:text-cyan-accent transition-all">Privacy Policy</a>
+                        <span class="text-white/20">•</span>
+                        <a href="#" class="px-3 py-1.5 rounded-full hover:bg-white/5 hover:text-cyan-accent transition-all">Terms of Service</a>
+                        <span class="text-white/20">•</span>
+                        <a href="#" class="px-3 py-1.5 rounded-full hover:bg-white/5 hover:text-cyan-accent transition-all">Sitemap</a>
                     </div>
                 </div>
             </div>
@@ -226,8 +269,8 @@ $footerServices = [
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-gradient-to-r from-electric-blue to-cyan-accent text-white shadow-lg hover:shadow-xl transition-all duration-300 transform translate-y-20 opacity-0 z-50 flex items-center justify-center">
-        <i class="fas fa-arrow-up"></i>
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-gradient-to-r from-electric-blue to-cyan-accent text-white shadow-lg hover:shadow-xl hover:shadow-electric-blue/40 transition-all duration-300 transform translate-y-20 opacity-0 z-50 flex items-center justify-center group">
+        <i class="fas fa-arrow-up group-hover:-translate-y-0.5 transition-transform"></i>
     </button>
 
     <!-- Floating Appointment Button (Mobile) -->

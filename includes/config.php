@@ -34,47 +34,47 @@ $services = [
     [
         'title' => 'Epilepsy',
         'description' => 'Advanced diagnosis and comprehensive management of seizures, using state-of-the-art EEG and personalized care plans.',
-        'image' => 'https://images.unsplash.com/photo-1551076805-e18690bab3b4?auto=format&fit=crop&w=600&h=450&q=80'
+        'image' => 'assets/services/epilepsy.png'
     ],
     [
         'title' => 'Headache',
         'description' => 'Accurate diagnosis and targeted therapy for chronic, acute, and complex headache disorders to restore daily function.',
-        'image' => 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&h=450&q=80'
+        'image' => 'assets/services/headache.png'
     ],
     [
         'title' => 'Migraine',
         'description' => 'Specialized migraine care plans including lifestyle advice, preventive medications, and advanced rescue therapies.',
-        'image' => 'https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=600&h=450&q=80'
+        'image' => 'assets/services/migraine.png'
     ],
     [
         'title' => 'Stroke',
         'description' => 'Rapid evaluation, stroke prevention strategies, and long-term neurological rehabilitation support.',
-        'image' => 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=600&h=450&q=80'
+        'image' => 'assets/services/stroke.png'
     ],
     [
         'title' => 'Vertigo',
         'description' => 'Detailed balance assessment and effective vestibular rehabilitation to address dizziness and inner-ear balance disorders.',
-        'image' => 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&h=450&q=80'
+        'image' => 'assets/services/vertigo.png'
     ],
     [
         'title' => 'Parkinson\'s Disease',
         'description' => 'Comprehensive care plans combining modern pharmacology, motor therapy, and support for movement coordination.',
-        'image' => 'https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?auto=format&fit=crop&w=600&h=450&q=80'
+        'image' => 'assets/services/parkinsons.png'
     ],
     [
         'title' => 'Multiple Sclerosis',
         'description' => 'Advanced immunomodulatory therapies and tailored symptom management to improve mobility and slow progression.',
-        'image' => 'https://images.unsplash.com/photo-1579154261294-11452aae9768?auto=format&fit=crop&w=600&h=450&q=80'
+        'image' => 'assets/services/ms.png'
     ],
     [
         'title' => 'Movement Disorders',
         'description' => 'Expert management of tremors, dystonia, and other involuntary movements through clinical precision.',
-        'image' => 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=600&h=450&q=80'
+        'image' => 'assets/services/movement.png'
     ],
     [
         'title' => 'Peripheral Neuropathy',
         'description' => 'Diagnosis and targeted treatments to manage nerve damage, relieve chronic neuropathic pain, and restore sensation.',
-        'image' => 'https://images.unsplash.com/photo-1603398938378-e54eab446dde?auto=format&fit=crop&w=600&h=450&q=80'
+        'image' => 'assets/services/neuropathy.png'
     ],
 ];
 
