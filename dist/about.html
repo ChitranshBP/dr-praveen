@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dr. Praveen Gupta - Leading healthcare professional providing exceptional medical care with 25+ years of experience.">
+    <meta name="keywords" content="Dr Praveen Gupta, healthcare, medical services, doctor, clinic">
+    <meta name="author" content="Dr. Praveen Gupta">
+    <title>Dr. Praveen Gupta - Excellence in Healthcare</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'electric-blue': '#2563EB',
+                        'cyan-accent': '#06B6D4',
+                        'deep-indigo': '#1E1B4B',
+                        'soft-cyan': '#ECFEFF',
+                        'silver-grey': '#E5E7EB',
+                        'dark-grey': '#111827',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'serif': ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out',
+                        'fade-in': 'fadeIn 1s ease-out',
+                        'slide-in-left': 'slideInLeft 0.8s ease-out',
+                        'slide-in-right': 'slideInRight 0.8s ease-out',
+                        'pulse-slow': 'pulse 3s infinite',
+                        'gradient': 'gradient 8s ease infinite',
+                        'shimmer': 'shimmer 2s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-50px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        slideInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(50px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        gradient: {
+                            '0%, 100%': { 'background-position': '0% 50%' },
+                            '50%': { 'background-position': '100% 50%' },
+                        },
+                        shimmer: {
+                            '0%': { 'background-position': '-200% 0' },
+                            '100%': { 'background-position': '200% 0' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%232563EB'/%3E%3Cpath d='M50 25 L50 75 M25 50 L75 50' stroke='white' stroke-width='12' stroke-linecap='round'/%3E%3C/svg%3E">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #2563EB 0%, #06B6D4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #1E1B4B 0%, #2563EB 50%, #06B6D4 100%);
+            background-size: 200% 200%;
+            animation: gradient 8s ease infinite;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.4;
+            z-index: 0;
+        }
+
+        /* ===== NAVBAR STYLES ===== */
+        .nav-link-anim {
+            position: relative;
+            overflow: hidden;
+        }
+        .nav-link-anim::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #2563EB, #06B6D4);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+        .nav-link-anim:hover::before,
+        .nav-link-anim.active::before {
+            width: 70%;
+        }
+
+        /* Glass navbar (transparent) */
+        .navbar-glass {
+            background: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            border-bottom: 1px solid transparent;
+        }
+        .navbar-solid {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.6);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Navbar text colors for glass state */
+        .navbar-glass .nav-title {
+            color: #ffffff !important;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+        .navbar-glass .nav-subtitle {
+            color: rgba(255, 255, 255, 0.85) !important;
+        }
+        .navbar-glass .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-glass .nav-link:hover {
+            color: #06B6D4 !important;
+        }
+        .navbar-glass .nav-link.active {
+            color: #06B6D4 !important;
+        }
+        .navbar-glass .nav-icon-btn {
+            color: #ffffff !important;
+        }
+        .navbar-glass .nav-icon-btn:hover {
+            background: rgba(255, 255, 255, 0.15) !important;
+        }
+
+        /* Shimmer effect on CTA */
+        .btn-shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shimmer::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+        .btn-shimmer:hover::after {
+            left: 100%;
+        }
+
+        /* Logo pulse ring */
+        .logo-ring {
+            position: relative;
+        }
+        .logo-ring::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #2563EB, #06B6D4);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        .logo-ring:hover::before {
+            opacity: 0.3;
+        }
+
+        /* Mobile menu animation */
+        .mobile-menu-anim {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        .mobile-menu-anim.open {
+            max-height: 500px;
+        }
+
+        /* Scroll progress bar */
+        .scroll-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #2563EB, #06B6D4);
+            transition: width 0.1s ease;
+        }
+    </style>
+</head>
+<body class="bg-white text-dark-grey antialiased">
+
+    <!-- Top Bar - Modern -->
+    <!-- <div class="bg-gradient-to-r from-deep-indigo via-[#1E1B4B] to-deep-indigo text-white py-2.5 text-xs hidden md:block relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-0 left-1/4 w-32 h-full bg-cyan-accent/20 blur-2xl"></div>
+            <div class="absolute top-0 right-1/4 w-32 h-full bg-electric-blue/20 blur-2xl"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div class="flex items-center space-x-6">
+                <a href="tel:+91-9876543210" class="flex items-center space-x-2 hover:text-cyan-accent transition-all duration-300 group">
+                    <span class="w-7 h-7 rounded-full bg-cyan-accent/10 flex items-center justify-center group-hover:bg-cyan-accent/20 transition-colors">
+                        <i class="fas fa-phone text-cyan-accent text-[10px]"></i>
+                    </span>
+                    <span class="font-medium">+91-9876543210</span>
+                </a>
+                <span class="w-px h-4 bg-white/20"></span>
+                <a href="mailto:contact@drpraveengupta.com" class="flex items-center space-x-2 hover:text-cyan-accent transition-all duration-300 group">
+                    <span class="w-7 h-7 rounded-full bg-cyan-accent/10 flex items-center justify-center group-hover:bg-cyan-accent/20 transition-colors">
+                        <i class="fas fa-envelope text-cyan-accent text-[10px]"></i>
+                    </span>
+                    <span class="font-medium">contact@drpraveengupta.com</span>
+                </a>
+                <span class="w-px h-4 bg-white/20"></span>
+                <div class="flex items-center space-x-2">
+                    <span class="w-7 h-7 rounded-full bg-cyan-accent/10 flex items-center justify-center">
+                        <i class="fas fa-clock text-cyan-accent text-[10px]"></i>
+                    </span>
+                    <span class="font-medium">Mon - Sat: 9:00 AM - 7:00 PM</span>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <span class="text-white/60 mr-2">Follow:</span>
+                <a href="https://facebook.com/drpraveengupta" class="w-7 h-7 rounded-full bg-white/5 hover:bg-electric-blue flex items-center justify-center transition-all duration-300 hover:scale-110">
+                    <i class="fab fa-facebook-f text-[11px]"></i>
+                </a>
+                <a href="https://instagram.com/drpraveengupta" class="w-7 h-7 rounded-full bg-white/5 hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 flex items-center justify-center transition-all duration-300 hover:scale-110">
+                    <i class="fab fa-instagram text-[11px]"></i>
+                </a>
+                <a href="https://twitter.com/drpraveengupta" class="w-7 h-7 rounded-full bg-white/5 hover:bg-cyan-accent flex items-center justify-center transition-all duration-300 hover:scale-110">
+                    <i class="fab fa-twitter text-[11px]"></i>
+                </a>
+                <a href="https://youtube.com/drpraveengupta" class="w-7 h-7 rounded-full bg-white/5 hover:bg-red-500 flex items-center justify-center transition-all duration-300 hover:scale-110">
+                    <i class="fab fa-youtube text-[11px]"></i>
+                </a>
+                <a href="https://linkedin.com/in/drpraveengupta" class="w-7 h-7 rounded-full bg-white/5 hover:bg-blue-600 flex items-center justify-center transition-all duration-300 hover:scale-110">
+                    <i class="fab fa-linkedin-in text-[11px]"></i>
+                </a>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- Main Navigation -->
+    <nav id="navbar" class="sticky top-0 z-50 transition-all duration-500 navbar-solid">
+        <!-- Scroll Progress Bar -->
+        <div class="scroll-progress" id="scroll-progress" style="width: 0%"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center group">
+                    <img src="assets/logo/dr-praveen-logo.webp" alt="Dr. Praveen Gupta - NeuroDoc Logo" class="h-10 sm:h-12 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300">
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-1 bg-white/5 backdrop-blur-sm rounded-full px-2 py-1.5 border border-white/10">
+                                            <a href="index.html"
+                           class="nav-link-anim relative px-5 py-2 text-sm font-semibold transition-colors duration-300 nav-link rounded-full text-dark-grey hover:bg-white/5">
+                            Home                        </a>
+                                            <a href="about.html"
+                           class="nav-link-anim relative px-5 py-2 text-sm font-semibold transition-colors duration-300 nav-link rounded-full active bg-white/10">
+                            About                        </a>
+                                            <a href="services.html"
+                           class="nav-link-anim relative px-5 py-2 text-sm font-semibold transition-colors duration-300 nav-link rounded-full text-dark-grey hover:bg-white/5">
+                            Services                        </a>
+                                            <a href="gallery.html"
+                           class="nav-link-anim relative px-5 py-2 text-sm font-semibold transition-colors duration-300 nav-link rounded-full text-dark-grey hover:bg-white/5">
+                            Gallery                        </a>
+                                            <a href="blog.html"
+                           class="nav-link-anim relative px-5 py-2 text-sm font-semibold transition-colors duration-300 nav-link rounded-full text-dark-grey hover:bg-white/5">
+                            Blog                        </a>
+                                            <a href="contact.html"
+                           class="nav-link-anim relative px-5 py-2 text-sm font-semibold transition-colors duration-300 nav-link rounded-full text-dark-grey hover:bg-white/5">
+                            Contact                        </a>
+                                    </div>
+
+                <!-- Right Actions -->
+                <div class="hidden lg:flex items-center space-x-3">
+                    <!-- Search Icon -->
+                    <button class="nav-icon-btn w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-all duration-300 text-dark-grey border border-white/10">
+                        <i class="fas fa-search text-sm"></i>
+                    </button>
+
+                    <!-- CTA Button - Premium Style -->
+                    <a href="contact.html" class="btn-shimmer group relative inline-flex items-center space-x-2 bg-gradient-to-r from-electric-blue to-cyan-accent text-white text-sm font-semibold pl-5 pr-2 py-2 rounded-full hover:shadow-xl hover:shadow-electric-blue/40 transition-all duration-300 transform hover:-translate-y-0.5">
+                        <span>Book Appointment</span>
+                        <span class="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center group-hover:rotate-45 transition-transform duration-300">
+                            <i class="fas fa-arrow-right text-[10px]"></i>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 nav-icon-btn border border-white/10">
+                    <i class="fas fa-bars text-lg" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu-anim lg:hidden bg-white/95 backdrop-blur-xl border-t border-silver-grey/50">
+            <div class="max-w-7xl mx-auto px-4 py-4 space-y-1">
+                                    <a href="index.html"
+                       class="flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-all text-dark-grey hover:bg-soft-cyan hover:text-electric-blue">
+                        <span class="flex items-center space-x-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-silver-grey"></span>
+                            <span>Home</span>
+                        </span>
+                        <i class="fas fa-chevron-right text-xs text-cyan-accent"></i>
+                    </a>
+                                    <a href="about.html"
+                       class="flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-all bg-gradient-to-r from-electric-blue/10 to-cyan-accent/10 text-electric-blue border border-electric-blue/20">
+                        <span class="flex items-center space-x-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-cyan-accent"></span>
+                            <span>About</span>
+                        </span>
+                        <i class="fas fa-chevron-right text-xs text-cyan-accent"></i>
+                    </a>
+                                    <a href="services.html"
+                       class="flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-all text-dark-grey hover:bg-soft-cyan hover:text-electric-blue">
+                        <span class="flex items-center space-x-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-silver-grey"></span>
+                            <span>Services</span>
+                        </span>
+                        <i class="fas fa-chevron-right text-xs text-cyan-accent"></i>
+                    </a>
+                                    <a href="gallery.html"
+                       class="flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-all text-dark-grey hover:bg-soft-cyan hover:text-electric-blue">
+                        <span class="flex items-center space-x-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-silver-grey"></span>
+                            <span>Gallery</span>
+                        </span>
+                        <i class="fas fa-chevron-right text-xs text-cyan-accent"></i>
+                    </a>
+                                    <a href="blog.html"
+                       class="flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-all text-dark-grey hover:bg-soft-cyan hover:text-electric-blue">
+                        <span class="flex items-center space-x-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-silver-grey"></span>
+                            <span>Blog</span>
+                        </span>
+                        <i class="fas fa-chevron-right text-xs text-cyan-accent"></i>
+                    </a>
+                                    <a href="contact.html"
+                       class="flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-all text-dark-grey hover:bg-soft-cyan hover:text-electric-blue">
+                        <span class="flex items-center space-x-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-silver-grey"></span>
+                            <span>Contact</span>
+                        </span>
+                        <i class="fas fa-chevron-right text-xs text-cyan-accent"></i>
+                    </a>
+                                <a href="contact.html" class="block mt-3 px-4 py-3 text-center bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold rounded-xl shadow-lg shadow-electric-blue/20">
+                    Book Appointment
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const isHomepage = false;
+        let menuOpen = false;
+
+        mobileMenuBtn.addEventListener('click', function() {
+            menuOpen = !menuOpen;
+            mobileMenu.classList.toggle('open');
+            mobileMenu.classList.toggle('hidden');
+
+            if (menuOpen) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+                navbar.classList.remove('navbar-glass');
+                navbar.classList.add('navbar-solid');
+            } else {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+                updateNavbar();
+            }
+        });
+
+        // Navbar scroll effect + scroll progress
+        const navbar = document.getElementById('navbar');
+        const scrollProgress = document.getElementById('scroll-progress');
+
+        function updateNavbar() {
+            const scrollY = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
+            scrollProgress.style.width = progress + '%';
+
+            // Don't change navbar when mobile menu is open
+            if (menuOpen) return;
+
+            if (isHomepage) {
+                if (scrollY > 50) {
+                    navbar.classList.remove('navbar-glass');
+                    navbar.classList.add('navbar-solid');
+                } else {
+                    navbar.classList.remove('navbar-solid');
+                    navbar.classList.add('navbar-glass');
+                }
+            } else {
+                if (scrollY > 50) {
+                    navbar.classList.add('shadow-lg');
+                } else {
+                    navbar.classList.remove('shadow-lg');
+                }
+            }
+        }
+
+        window.addEventListener('scroll', updateNavbar);
+        updateNavbar();
+    </script>
+
+<!-- About Page Hero -->
+<section class="relative overflow-hidden bg-white">
+    <div class="absolute inset-0 -z-0">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-accent/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-electric-blue/10 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+        <!-- Breadcrumb -->
+        <div class="flex items-center space-x-2 text-xs text-dark-grey/50 mb-8 animate-fade-in tracking-wide uppercase">
+            <a href="index.html" class="hover:text-electric-blue transition-colors">Home</a>
+            <span class="text-cyan-accent">/</span>
+            <span class="text-electric-blue font-semibold">About</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            <!-- Left Content -->
+            <div class="lg:col-span-7">
+                <div class="inline-flex items-center space-x-2 mb-6 animate-fade-in-up">
+                    <span class="w-8 h-px bg-electric-blue"></span>
+                    <span class="text-electric-blue text-xs font-semibold tracking-[0.2em] uppercase">Neurologist • Chairman MAIINS</span>
+                </div>
+
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-deep-indigo leading-[1.05] mb-6 animate-fade-in-up tracking-tight" style="animation-delay: 100ms;">
+                    Dr. Praveen
+                    <span class="block gradient-text">Gupta</span>
+                </h1>
+
+                <p class="text-lg md:text-xl text-dark-grey/70 mb-6 leading-relaxed max-w-xl font-light animate-fade-in-up" style="animation-delay: 200ms;">
+                    A leading neurologist with over <span class="text-deep-indigo font-medium">20 years</span> of experience pioneering advanced treatments in stroke, epilepsy, and movement disorders.
+                </p>
+
+                <!-- Minimal meta -->
+                <div class="flex flex-wrap items-center gap-x-8 gap-y-3 mb-7 text-sm text-dark-grey/60 animate-fade-in-up" style="animation-delay: 300ms;">
+                    <span class="flex items-center space-x-2">
+                        <i class="fas fa-graduation-cap text-cyan-accent"></i>
+                        <span>MBBS, MD</span>
+                    </span>
+                    <span class="flex items-center space-x-2">
+                        <i class="fas fa-hospital text-cyan-accent"></i>
+                        <span>Marengo Asia</span>
+                    </span>
+                    <span class="flex items-center space-x-2">
+                        <i class="fas fa-award text-cyan-accent"></i>
+                        <span>First DBS, Gurugram</span>
+                    </span>
+                </div>
+
+                <!-- CTAs -->
+                <div class="flex flex-wrap items-center gap-4 animate-fade-in-up" style="animation-delay: 400ms;">
+                    <a href="contact.html" class="group inline-flex items-center space-x-3 bg-deep-indigo text-white text-sm font-medium pl-6 pr-2 py-2.5 rounded-full hover:bg-electric-blue transition-colors duration-300">
+                        <span>Book Consultation</span>
+                        <span class="w-7 h-7 rounded-full bg-white/10 group-hover:bg-white/20 flex items-center justify-center transition-colors">
+                            <i class="fas fa-arrow-right text-[10px] group-hover:rotate-45 transition-transform duration-300"></i>
+                        </span>
+                    </a>
+                    <a href="#specializations" class="group text-sm font-medium text-deep-indigo hover:text-electric-blue transition-colors flex items-center space-x-2">
+                        <span>Specializations</span>
+                        <i class="fas fa-arrow-down text-xs group-hover:translate-y-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right - Doctor Portrait -->
+            <div class="lg:col-span-5 animate-fade-in" style="animation-delay: 200ms;">
+                <div class="relative max-w-sm mx-auto">
+                    <!-- Soft glow -->
+                    <div class="absolute -inset-4 bg-gradient-to-br from-electric-blue/20 to-cyan-accent/20 rounded-3xl blur-2xl"></div>
+
+                    <!-- Portrait image with gradient frame -->
+                    <div class="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-xl bg-gradient-to-br from-deep-indigo to-electric-blue p-1">
+                        <div class="relative w-full h-full rounded-[1.4rem] overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent">
+                            <img src="assets/dpg-1.webp" alt="Dr. Praveen Gupta" class="absolute inset-0 w-full h-full object-cover">
+                            <!-- Subtle gradient overlay for legibility -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-deep-indigo/60 via-transparent to-transparent"></div>
+
+                            <!-- Bottom info -->
+                            <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                                <p class="text-cyan-200 text-xs tracking-widest uppercase">Chairman</p>
+                                <p class="text-white font-serif text-lg font-semibold mt-1">Marengo Asia Neuro & Spine</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Small floating badge -->
+                    <div class="absolute -top-3 -right-3 w-14 h-14 rounded-full bg-white shadow-lg flex items-center justify-center border border-silver-grey/50">
+                        <i class="fas fa-award text-cyan-accent text-lg"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Minimal Stats Strip -->
+<section class="py-12 border-y border-silver-grey/60 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-silver-grey/60">
+            <div class="text-center px-4 py-4">
+                <div class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo">20+</div>
+                <div class="text-xs text-dark-grey/60 mt-1 tracking-wide uppercase">Years</div>
+            </div>
+            <div class="text-center px-4 py-4">
+                <div class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo">500K+</div>
+                <div class="text-xs text-dark-grey/60 mt-1 tracking-wide uppercase">Patients</div>
+            </div>
+            <div class="text-center px-4 py-4">
+                <div class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo">70+</div>
+                <div class="text-xs text-dark-grey/60 mt-1 tracking-wide uppercase">Publications</div>
+            </div>
+            <div class="text-center px-4 py-4">
+                <div class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo">4.9</div>
+                <div class="text-xs text-dark-grey/60 mt-1 tracking-wide uppercase">Rating</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About / Bio Section with Image -->
+<section class="py-14 lg:py-20 bg-white overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+            <!-- Single Image -->
+            <div class="lg:col-span-5 order-2 lg:order-1">
+                <div class="relative max-w-md mx-auto">
+                    <!-- Main single image -->
+                    <div class="aspect-[3/4] rounded-3xl overflow-hidden shadow-xl ring-1 ring-silver-grey/50">
+                        <img src="assets/awards/AWARD-PRAVEEN.webp" alt="Dr. Praveen Gupta Award Recognition" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <!-- Decorative gradient blobs -->
+                    <div class="absolute -top-4 -left-4 w-24 h-24 rounded-full bg-gradient-to-br from-electric-blue/20 to-cyan-accent/20 blur-xl -z-10"></div>
+                    <div class="absolute -bottom-4 -right-4 w-32 h-32 rounded-full bg-gradient-to-br from-cyan-accent/20 to-electric-blue/20 blur-xl -z-10"></div>
+                </div>
+            </div>
+
+            <!-- Text -->
+            <div class="lg:col-span-7 order-1 lg:order-2">
+                <div class="inline-flex items-center space-x-2 mb-6">
+                    <span class="w-8 h-px bg-electric-blue"></span>
+                    <span class="text-electric-blue text-xs font-semibold tracking-[0.2em] uppercase">About</span>
+                </div>
+
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo mb-5 leading-tight">
+                    Pioneering the Future of <span class="gradient-text">Neurology in India</span>
+                </h2>
+
+                <p class="text-base text-dark-grey/70 mb-4 leading-relaxed">
+                    Driven by passion and precision, Dr. Gupta has played a pioneering role in shaping the future of neurology in India. He established <strong class="text-deep-indigo">Gurgaon's first dedicated stroke centre</strong> and became the first neurologist to perform solo mechanical thrombolysis in the region.
+                </p>
+
+                <p class="text-base text-dark-grey/70 leading-relaxed">
+                    His groundbreaking achievements include conducting the <strong class="text-deep-indigo">first Deep Brain Stimulation (DBS) procedure in Gurugram</strong> and performing the <strong class="text-deep-indigo">first epileptic DBS in Asia</strong> — setting new benchmarks for neurological innovation.
+                </p>
+
+                <!-- Key Highlights Grid -->
+                <div class="grid grid-cols-2 gap-3 mt-7">
+                    <div class="group flex items-start space-x-3 p-3 rounded-xl bg-soft-cyan/50 border border-silver-grey/40 hover:border-electric-blue/40 hover:bg-white transition-all duration-300">
+                        <span class="w-9 h-9 rounded-lg bg-electric-blue/10 group-hover:bg-electric-blue flex items-center justify-center flex-shrink-0 transition-colors">
+                            <i class="fas fa-bolt text-electric-blue group-hover:text-white text-xs transition-colors"></i>
+                        </span>
+                        <div>
+                            <p class="font-semibold text-deep-indigo text-xs leading-tight">Pioneer of Stroke Care</p>
+                            <p class="text-dark-grey/60 text-[11px] mt-0.5">Gurgaon's 1st stroke centre</p>
+                        </div>
+                    </div>
+                    <div class="group flex items-start space-x-3 p-3 rounded-xl bg-soft-cyan/50 border border-silver-grey/40 hover:border-electric-blue/40 hover:bg-white transition-all duration-300">
+                        <span class="w-9 h-9 rounded-lg bg-electric-blue/10 group-hover:bg-electric-blue flex items-center justify-center flex-shrink-0 transition-colors">
+                            <i class="fas fa-brain text-electric-blue group-hover:text-white text-xs transition-colors"></i>
+                        </span>
+                        <div>
+                            <p class="font-semibold text-deep-indigo text-xs leading-tight">First DBS, Gurugram</p>
+                            <p class="text-dark-grey/60 text-[11px] mt-0.5">Deep brain stimulation</p>
+                        </div>
+                    </div>
+                    <div class="group flex items-start space-x-3 p-3 rounded-xl bg-soft-cyan/50 border border-silver-grey/40 hover:border-electric-blue/40 hover:bg-white transition-all duration-300">
+                        <span class="w-9 h-9 rounded-lg bg-electric-blue/10 group-hover:bg-electric-blue flex items-center justify-center flex-shrink-0 transition-colors">
+                            <i class="fas fa-globe-asia text-electric-blue group-hover:text-white text-xs transition-colors"></i>
+                        </span>
+                        <div>
+                            <p class="font-semibold text-deep-indigo text-xs leading-tight">First Epileptic DBS, Asia</p>
+                            <p class="text-dark-grey/60 text-[11px] mt-0.5">Continental benchmark</p>
+                        </div>
+                    </div>
+                    <div class="group flex items-start space-x-3 p-3 rounded-xl bg-soft-cyan/50 border border-silver-grey/40 hover:border-electric-blue/40 hover:bg-white transition-all duration-300">
+                        <span class="w-9 h-9 rounded-lg bg-electric-blue/10 group-hover:bg-electric-blue flex items-center justify-center flex-shrink-0 transition-colors">
+                            <i class="fas fa-stethoscope text-electric-blue group-hover:text-white text-xs transition-colors"></i>
+                        </span>
+                        <div>
+                            <p class="font-semibold text-deep-indigo text-xs leading-tight">20+ Years of Practice</p>
+                            <p class="text-dark-grey/60 text-[11px] mt-0.5">Neurology expertise</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Clinical Excellence Section with Service Images -->
+<section id="specializations" class="py-14 lg:py-20 bg-soft-cyan/30 relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center mb-10">
+            <div class="inline-flex items-center space-x-2 mb-6">
+                <span class="w-8 h-px bg-electric-blue"></span>
+                <span class="text-electric-blue text-xs font-semibold tracking-[0.2em] uppercase">Clinical Excellence</span>
+                <span class="w-8 h-px bg-electric-blue"></span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-serif font-bold text-deep-indigo mb-4 leading-tight">
+                Areas of <span class="gradient-text">Expertise</span>
+            </h2>
+            <p class="text-base text-dark-grey/70 max-w-2xl mx-auto leading-relaxed">
+                A deep commitment to patient-centric care and innovation has shaped comprehensive stroke, epilepsy, and movement disorder programs — setting new benchmarks in neurology.
+            </p>
+        </div>
+
+        <!-- Specialty Cards with Images -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Stroke -->
+            <div class="group bg-white rounded-2xl overflow-hidden border border-silver-grey/50 hover:shadow-xl transition-all duration-500">
+                <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-soft-cyan to-silver-grey">
+                    <img src="assets/services/stroke.png" alt="Stroke & Vascular Neurology"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center space-x-3 mb-3">
+                        <div class="w-9 h-9 rounded-full border border-electric-blue/30 group-hover:bg-electric-blue group-hover:border-electric-blue flex items-center justify-center transition-all duration-300">
+                            <i class="fas fa-heartbeat text-electric-blue group-hover:text-white text-xs transition-colors"></i>
+                        </div>
+                        <h3 class="text-base font-semibold text-deep-indigo">Stroke & Vascular</h3>
+                    </div>
+                    <p class="text-sm text-dark-grey/60 leading-relaxed">Pioneer of Gurgaon's first dedicated stroke centre with advanced management protocols.</p>
+                </div>
+            </div>
+
+            <!-- Epilepsy -->
+            <div class="group bg-white rounded-2xl overflow-hidden border border-silver-grey/50 hover:shadow-xl transition-all duration-500">
+                <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-soft-cyan to-silver-grey">
+                    <img src="assets/services/epilepsy.png" alt="Epilepsy & Seizure Management"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center space-x-3 mb-3">
+                        <div class="w-9 h-9 rounded-full border border-electric-blue/30 group-hover:bg-electric-blue group-hover:border-electric-blue flex items-center justify-center transition-all duration-300">
+                            <i class="fas fa-bolt text-electric-blue group-hover:text-white text-xs transition-colors"></i>
+                        </div>
+                        <h3 class="text-base font-semibold text-deep-indigo">Epilepsy & Seizures</h3>
+                    </div>
+                    <p class="text-sm text-dark-grey/60 leading-relaxed">Performed the first epileptic DBS in Asia — redefining advanced epilepsy treatment.</p>
+                </div>
+            </div>
+
+            <!-- Movement Disorders -->
+            <div class="group bg-white rounded-2xl overflow-hidden border border-silver-grey/50 hover:shadow-xl transition-all duration-500">
+                <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-soft-cyan to-silver-grey">
+                    <img src="assets/services/parkinsons.png" alt="Movement Disorders & Parkinson's"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center space-x-3 mb-3">
+                        <div class="w-9 h-9 rounded-full border border-electric-blue/30 group-hover:bg-electric-blue group-hover:border-electric-blue flex items-center justify-center transition-all duration-300">
+                            <i class="fas fa-walking text-electric-blue group-hover:text-white text-xs transition-colors"></i>
+                        </div>
+                        <h3 class="text-base font-semibold text-deep-indigo">Movement Disorders</h3>
+                    </div>
+                    <p class="text-sm text-dark-grey/60 leading-relaxed">Conducted the first Deep Brain Stimulation (DBS) procedure in Gurugram.</p>
+                </div>
+            </div>
+
+            <!-- Headache -->
+            <div class="group bg-white rounded-2xl overflow-hidden border border-silver-grey/50 hover:shadow-xl transition-all duration-500">
+                <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-soft-cyan to-silver-grey">
+                    <img src="assets/services/headache.png" alt="Headache & Migraine"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center space-x-3 mb-3">
+                        <div class="w-9 h-9 rounded-full border border-electric-blue/30 group-hover:bg-electric-blue group-hover:border-electric-blue flex items-center justify-center transition-all duration-300">
+                            <i class="fas fa-head-side-virus text-electric-blue group-hover:text-white text-xs transition-colors"></i>
+                        </div>
+                        <h3 class="text-base font-semibold text-deep-indigo">Headache & Migraine</h3>
+                    </div>
+                    <p class="text-sm text-dark-grey/60 leading-relaxed">Comprehensive therapeutic approaches for chronic and complex headache disorders.</p>
+                </div>
+            </div>
+
+            <!-- MS -->
+            <div class="group bg-white rounded-2xl overflow-hidden border border-silver-grey/50 hover:shadow-xl transition-all duration-500">
+                <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-soft-cyan to-silver-grey">
+                    <img src="assets/services/ms.png" alt="Multiple Sclerosis"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center space-x-3 mb-3">
+                        <div class="w-9 h-9 rounded-full border border-electric-blue/30 group-hover:bg-electric-blue group-hover:border-electric-blue flex items-center justify-center transition-all duration-300">
+                            <i class="fas fa-ribbon text-electric-blue group-hover:text-white text-xs transition-colors"></i>
+                        </div>
+                        <h3 class="text-base font-semibold text-deep-indigo">Multiple Sclerosis</h3>
+                    </div>
+                    <p class="text-sm text-dark-grey/60 leading-relaxed">Advanced immunomodulatory therapies and tailored symptom management.</p>
+                </div>
+            </div>
+
+            <!-- Neuropathy -->
+            <div class="group bg-white rounded-2xl overflow-hidden border border-silver-grey/50 hover:shadow-xl transition-all duration-500">
+                <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-soft-cyan to-silver-grey">
+                    <img src="assets/services/neuropathy.png" alt="Peripheral Neuropathy"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center space-x-3 mb-3">
+                        <div class="w-9 h-9 rounded-full border border-electric-blue/30 group-hover:bg-electric-blue group-hover:border-electric-blue flex items-center justify-center transition-all duration-300">
+                            <i class="fas fa-hand-holding-medical text-electric-blue group-hover:text-white text-xs transition-colors"></i>
+                        </div>
+                        <h3 class="text-base font-semibold text-deep-indigo">Peripheral Neuropathy</h3>
+                    </div>
+                    <p class="text-sm text-dark-grey/60 leading-relaxed">Expert diagnosis and targeted treatments for nerve damage and neurodegenerative conditions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Achievements — Image Carousel Style -->
+<section class="py-14 lg:py-20 bg-white overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+            <!-- Main Award Image -->
+            <div class="lg:col-span-5 order-2 lg:order-1">
+                <div class="relative max-w-md mx-auto">
+                    <!-- Main large image -->
+                    <div class="aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-silver-grey/50">
+                        <img src="assets/full-image/dpg-award.webp" alt="Dr. Praveen Gupta - Award Recognition" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <!-- Floating accent: small image top-right -->
+                    <div class="absolute -top-6 -right-4 w-28 h-28 rounded-2xl overflow-hidden shadow-xl border-4 border-white hidden md:block">
+                        <img src="assets/awards/1.jpg" alt="Award" class="w-full h-full object-cover">
+                    </div>
+                    <!-- Floating accent: small image bottom-left -->
+                    <div class="absolute -bottom-6 -left-6 w-24 h-24 rounded-2xl overflow-hidden shadow-xl border-4 border-white hidden md:block">
+                        <img src="assets/awards/3.jpg" alt="Award" class="w-full h-full object-cover">
+                    </div>
+                    <!-- Decorative gradient blob -->
+                    <div class="absolute -top-4 -left-4 w-24 h-24 rounded-full bg-gradient-to-br from-electric-blue/20 to-cyan-accent/20 blur-xl -z-10"></div>
+                    <div class="absolute -bottom-4 -right-4 w-32 h-32 rounded-full bg-gradient-to-br from-cyan-accent/20 to-electric-blue/20 blur-xl -z-10"></div>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="lg:col-span-7 order-1 lg:order-2">
+                <div class="inline-flex items-center space-x-2 mb-6">
+                    <span class="w-8 h-px bg-electric-blue"></span>
+                    <span class="text-electric-blue text-xs font-semibold tracking-[0.2em] uppercase">Achievements</span>
+                </div>
+
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-deep-indigo mb-5 leading-tight">
+                    A Career of <span class="gradient-text">Firsts</span>
+                </h2>
+
+                <p class="text-base text-dark-grey/70 mb-6 leading-relaxed">
+                    A career decorated with honors, awards, and milestones that reflect a relentless pursuit of medical excellence and innovation in Indian neurology.
+                </p>
+
+                <!-- Minimal list -->
+                <ul class="space-y-5">
+                    <li class="flex items-start space-x-4 group">
+                        <span class="w-6 h-6 rounded-full bg-electric-blue/10 group-hover:bg-electric-blue flex items-center justify-center flex-shrink-0 mt-0.5 transition-colors">
+                            <i class="fas fa-check text-electric-blue group-hover:text-white text-[10px] transition-colors"></i>
+                        </span>
+                        <div>
+                            <p class="font-semibold text-deep-indigo text-sm">First Dedicated Stroke Centre in Gurgaon</p>
+                            <p class="text-dark-grey/60 text-xs mt-0.5">Established pioneering stroke protocols for the region</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start space-x-4 group">
+                        <span class="w-6 h-6 rounded-full bg-electric-blue/10 group-hover:bg-electric-blue flex items-center justify-center flex-shrink-0 mt-0.5 transition-colors">
+                            <i class="fas fa-check text-electric-blue group-hover:text-white text-[10px] transition-colors"></i>
+                        </span>
+                        <div>
+                            <p class="font-semibold text-deep-indigo text-sm">First Solo Mechanical Thrombolysis in the Region</p>
+                            <p class="text-dark-grey/60 text-xs mt-0.5">A breakthrough in advanced stroke intervention</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start space-x-4 group">
+                        <span class="w-6 h-6 rounded-full bg-electric-blue/10 group-hover:bg-electric-blue flex items-center justify-center flex-shrink-0 mt-0.5 transition-colors">
+                            <i class="fas fa-check text-electric-blue group-hover:text-white text-[10px] transition-colors"></i>
+                        </span>
+                        <div>
+                            <p class="font-semibold text-deep-indigo text-sm">First Deep Brain Stimulation in Gurugram</p>
+                            <p class="text-dark-grey/60 text-xs mt-0.5">Transforming treatment for movement disorders</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start space-x-4 group">
+                        <span class="w-6 h-6 rounded-full bg-electric-blue/10 group-hover:bg-electric-blue flex items-center justify-center flex-shrink-0 mt-0.5 transition-colors">
+                            <i class="fas fa-check text-electric-blue group-hover:text-white text-[10px] transition-colors"></i>
+                        </span>
+                        <div>
+                            <p class="font-semibold text-deep-indigo text-sm">First Epileptic DBS in Asia</p>
+                            <p class="text-dark-grey/60 text-xs mt-0.5">Setting a continental benchmark in epilepsy care</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Awards Gallery — Grid -->
+<section class="py-14 lg:py-20 bg-soft-cyan/30 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center mb-10">
+            <div class="inline-flex items-center space-x-2 mb-4">
+                <span class="w-8 h-px bg-electric-blue"></span>
+                <span class="text-electric-blue text-xs font-semibold tracking-[0.2em] uppercase">Gallery</span>
+                <span class="w-8 h-px bg-electric-blue"></span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-serif font-bold text-deep-indigo mb-4">
+                Moments of <span class="gradient-text">Recognition</span>
+            </h2>
+            <p class="text-sm text-dark-grey/60 max-w-xl mx-auto">
+                A curated glimpse into the awards, honors, and milestones that have shaped a career dedicated to neurological excellence.
+            </p>
+        </div>
+
+        <!-- Uniform Image Grid using all 10 award images -->
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 lg:gap-4">
+                            <div class="aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer">
+                    <img src="assets/awards/9.jpg"
+                         alt="Honours &amp; Recognition - Image 9"
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                            <div class="aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer">
+                    <img src="assets/awards/8.jpg"
+                         alt="Honours &amp; Recognition - Image 8"
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                            <div class="aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer">
+                    <img src="assets/awards/7.jpg"
+                         alt="Honours &amp; Recognition - Image 7"
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                            <div class="aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer">
+                    <img src="assets/awards/6.jpg"
+                         alt="Honours &amp; Recognition - Image 6"
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                            <div class="aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer">
+                    <img src="assets/awards/5.jpg"
+                         alt="Honours &amp; Recognition - Image 5"
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                            <div class="aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer">
+                    <img src="assets/awards/4.jpg"
+                         alt="Honours &amp; Recognition - Image 4"
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                            <div class="aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer">
+                    <img src="assets/awards/3.jpg"
+                         alt="Honours &amp; Recognition - Image 3"
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                            <div class="aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer">
+                    <img src="assets/awards/2.jpg"
+                         alt="Honours &amp; Recognition - Image 2"
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                            <div class="aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer">
+                    <img src="assets/awards/1.jpg"
+                         alt="Honours &amp; Recognition - Image 1"
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                            <div class="aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer">
+                    <img src="assets/awards/15.jpg"
+                         alt="Honours &amp; Recognition - Image 15"
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                    </div>
+
+        <!-- View More Link -->
+        <div class="text-center mt-10">
+            <a href="#" class="group inline-flex items-center space-x-2 text-sm font-medium text-deep-indigo hover:text-electric-blue transition-colors">
+                <span>View All Recognitions</span>
+                <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Vision — Minimal Quote Section -->
+<section class="py-14 lg:py-20 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center space-x-2 mb-8">
+            <span class="w-8 h-px bg-electric-blue"></span>
+            <span class="text-electric-blue text-xs font-semibold tracking-[0.2em] uppercase">Vision</span>
+            <span class="w-8 h-px bg-electric-blue"></span>
+        </div>
+
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo mb-10 leading-tight">
+            Technology with <span class="gradient-text">Empathy</span>
+        </h2>
+
+        <div class="relative">
+            <i class="fas fa-quote-left text-cyan-accent/20 text-5xl absolute -top-4 -left-4"></i>
+            <p class="text-xl md:text-2xl text-deep-indigo/90 font-serif italic leading-relaxed relative">
+                Integrating technology with empathy — ensuring every patient receives personalized, evidence-based treatment aimed at improving quality of life.
+            </p>
+        </div>
+
+        <p class="text-sm text-dark-grey/60 mt-10 max-w-xl mx-auto leading-relaxed">
+            As one of India's leading neurologists, Dr. Gupta's vision extends beyond treatment — focusing on awareness, prevention, and rehabilitation to make advanced neurological therapies more accessible and affordable.
+        </p>
+    </div>
+</section>
+
+<!-- Testimonials — Minimal Slider -->
+<section class="py-14 lg:py-20 bg-soft-cyan/30">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+            <div class="inline-flex items-center space-x-2 mb-4">
+                <span class="w-8 h-px bg-electric-blue"></span>
+                <span class="text-electric-blue text-xs font-semibold tracking-[0.2em] uppercase">Testimonials</span>
+                <span class="w-8 h-px bg-electric-blue"></span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-serif font-bold text-deep-indigo mb-3">
+                What Patients <span class="gradient-text">Say</span>
+            </h2>
+            <p class="text-sm text-dark-grey/60">
+                Showing <span id="testimonial-current">3</span> of 6 reviews
+            </p>
+        </div>
+
+        <!-- Slider — All 6 cards visible, scroll between pages -->
+        <div class="relative">
+            <div class="overflow-hidden">
+                <div id="testimonial-track" class="flex transition-transform duration-500 ease-in-out" style="will-change: transform;">
+                                            <div class="testimonial-card w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
+                            <div class="h-full border-l-2 border-silver-grey hover:border-electric-blue pl-5 py-2 transition-colors duration-300">
+                                <div class="flex space-x-0.5 mb-3">
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                    </div>
+                                <p class="text-dark-grey/80 text-sm italic leading-relaxed mb-5">
+                                    "Dr. Praveen Gupta transformed my health journey. His expertise and compassion are unmatched."
+                                </p>
+                                <div>
+                                    <p class="font-semibold text-deep-indigo text-sm">Priya Sharma</p>
+                                    <p class="text-xs text-dark-grey/50 mt-0.5">Patient</p>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="testimonial-card w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
+                            <div class="h-full border-l-2 border-silver-grey hover:border-electric-blue pl-5 py-2 transition-colors duration-300">
+                                <div class="flex space-x-0.5 mb-3">
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                    </div>
+                                <p class="text-dark-grey/80 text-sm italic leading-relaxed mb-5">
+                                    "The level of care and attention I received was exceptional. Truly a world-class professional."
+                                </p>
+                                <div>
+                                    <p class="font-semibold text-deep-indigo text-sm">Rajesh Kumar</p>
+                                    <p class="text-xs text-dark-grey/50 mt-0.5">Patient</p>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="testimonial-card w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
+                            <div class="h-full border-l-2 border-silver-grey hover:border-electric-blue pl-5 py-2 transition-colors duration-300">
+                                <div class="flex space-x-0.5 mb-3">
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                    </div>
+                                <p class="text-dark-grey/80 text-sm italic leading-relaxed mb-5">
+                                    "Outstanding doctor with a wonderful bedside manner. Highly recommend to everyone."
+                                </p>
+                                <div>
+                                    <p class="font-semibold text-deep-indigo text-sm">Anita Desai</p>
+                                    <p class="text-xs text-dark-grey/50 mt-0.5">Patient</p>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="testimonial-card w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
+                            <div class="h-full border-l-2 border-silver-grey hover:border-electric-blue pl-5 py-2 transition-colors duration-300">
+                                <div class="flex space-x-0.5 mb-3">
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                    </div>
+                                <p class="text-dark-grey/80 text-sm italic leading-relaxed mb-5">
+                                    "After struggling with migraines for years, Dr. Gupta's treatment gave me my life back. Truly exceptional care."
+                                </p>
+                                <div>
+                                    <p class="font-semibold text-deep-indigo text-sm">Suresh Mehta</p>
+                                    <p class="text-xs text-dark-grey/50 mt-0.5">Patient</p>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="testimonial-card w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
+                            <div class="h-full border-l-2 border-silver-grey hover:border-electric-blue pl-5 py-2 transition-colors duration-300">
+                                <div class="flex space-x-0.5 mb-3">
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                    </div>
+                                <p class="text-dark-grey/80 text-sm italic leading-relaxed mb-5">
+                                    "I was diagnosed with Parkinson's and was devastated. Dr. Gupta's calm guidance and advanced treatment plan gave me renewed hope."
+                                </p>
+                                <div>
+                                    <p class="font-semibold text-deep-indigo text-sm">Kavita Singh</p>
+                                    <p class="text-xs text-dark-grey/50 mt-0.5">Patient</p>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="testimonial-card w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
+                            <div class="h-full border-l-2 border-silver-grey hover:border-electric-blue pl-5 py-2 transition-colors duration-300">
+                                <div class="flex space-x-0.5 mb-3">
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                                                                    </div>
+                                <p class="text-dark-grey/80 text-sm italic leading-relaxed mb-5">
+                                    "Best neurologist I have ever consulted. Diagnosed my condition accurately in the first visit and the treatment worked remarkably well."
+                                </p>
+                                <div>
+                                    <p class="font-semibold text-deep-indigo text-sm">Deepak Nair</p>
+                                    <p class="text-xs text-dark-grey/50 mt-0.5">Patient</p>
+                                </div>
+                            </div>
+                        </div>
+                                    </div>
+            </div>
+
+            <!-- Slider Controls -->
+            <div class="flex items-center justify-center space-x-3 mt-8">
+                <button id="testimonial-prev" type="button"
+                        class="w-10 h-10 rounded-full bg-white border border-silver-grey hover:border-electric-blue hover:bg-electric-blue hover:text-white text-deep-indigo flex items-center justify-center transition-all duration-300 shadow-sm disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-deep-indigo">
+                    <i class="fas fa-chevron-left text-xs"></i>
+                </button>
+
+                <div id="testimonial-dots" class="flex space-x-1.5">
+                                            <button type="button"
+                                class="testimonial-dot h-2 rounded-full bg-silver-grey hover:bg-electric-blue transition-all duration-300"
+                                style="width: 0.5rem;"
+                                data-index="0"
+                                aria-label="Go to page 1"></button>
+                                            <button type="button"
+                                class="testimonial-dot h-2 rounded-full bg-silver-grey hover:bg-electric-blue transition-all duration-300"
+                                style="width: 0.5rem;"
+                                data-index="1"
+                                aria-label="Go to page 2"></button>
+                                    </div>
+
+                <button id="testimonial-next" type="button"
+                        class="w-10 h-10 rounded-full bg-white border border-silver-grey hover:border-electric-blue hover:bg-electric-blue hover:text-white text-deep-indigo flex items-center justify-center transition-all duration-300 shadow-sm disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-deep-indigo">
+                    <i class="fas fa-chevron-right text-xs"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Slider Script -->
+<script>
+(function() {
+    const track = document.getElementById('testimonial-track');
+    const prevBtn = document.getElementById('testimonial-prev');
+    const nextBtn = document.getElementById('testimonial-next');
+    const dots = document.querySelectorAll('.testimonial-dot');
+    const currentLabel = document.getElementById('testimonial-current');
+    const totalCards = 6;
+    const totalPages = 2;
+    let currentPage = 0;
+
+    function getCardsPerPage() {
+        return window.innerWidth >= 1024 ? 3 : (window.innerWidth >= 768 ? 2 : 1);
+    }
+
+    function update(page) {
+        const cardsPerPage = getCardsPerPage();
+        const maxPage = Math.max(0, Math.ceil(totalCards / cardsPerPage) - 1);
+        currentPage = Math.max(0, Math.min(page, maxPage));
+
+        // Each step moves by 1 card (full card width = 100 / cardsPerPage %)
+        const stepPercent = 100 / cardsPerPage;
+        const translatePercent = currentPage * stepPercent;
+        track.style.transform = `translateX(-${translatePercent}%)`;
+
+        // Update counter
+        if (currentLabel) currentLabel.textContent = Math.min(currentPage + cardsPerPage, totalCards);
+
+        // Update dots (active dot becomes wider + blue)
+        dots.forEach((d, i) => {
+            if (i === currentPage) {
+                d.classList.add('bg-electric-blue');
+                d.classList.remove('bg-silver-grey');
+                d.style.width = '1.5rem';
+            } else {
+                d.classList.remove('bg-electric-blue');
+                d.classList.add('bg-silver-grey');
+                d.style.width = '0.5rem';
+            }
+        });
+
+        // Disable buttons at ends
+        prevBtn.disabled = currentPage === 0;
+        nextBtn.disabled = currentPage >= maxPage;
+    }
+
+    prevBtn.addEventListener('click', () => update(currentPage - 1));
+    nextBtn.addEventListener('click', () => update(currentPage + 1));
+
+    dots.forEach((d) => {
+        d.addEventListener('click', () => {
+            const idx = parseInt(d.getAttribute('data-index'), 10);
+            update(idx);
+        });
+    });
+
+    // Recalculate on resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => update(currentPage), 100);
+    });
+
+    // Initialize
+    update(0);
+})();
+</script>
+
+
+    <!-- CTA Section -->
+    <section class="relative py-12 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Main CTA Card -->
+            <div class="relative bg-gradient-to-r from-electric-blue to-cyan-accent rounded-[36px] overflow-hidden shadow-2xl p-8 md:p-14 lg:p-16">
+
+                <!-- Concentric Circles Pattern (Right Side) -->
+                <div class="absolute -right-64 top-1/2 -translate-y-1/2 w-[850px] h-[850px] flex items-center justify-center pointer-events-none z-0">
+                    <div class="absolute w-[850px] h-[850px] bg-white/[0.03] rounded-full"></div>
+                    <div class="absolute w-[720px] h-[720px] bg-white/[0.05] rounded-full"></div>
+                    <div class="absolute w-[590px] h-[590px] bg-white/[0.07] rounded-full"></div>
+                    <div class="absolute w-[460px] h-[460px] bg-white/[0.09] rounded-full"></div>
+                    <div class="absolute w-[330px] h-[330px] bg-white/[0.11] rounded-full"></div>
+                    <div class="absolute w-[200px] h-[200px] bg-white/[0.13] rounded-full"></div>
+                    <div class="absolute w-[70px]  h-[70px]  bg-white/[0.15] rounded-full"></div>
+                </div>
+
+                <!-- Content (Left Aligned) -->
+                <div class="relative z-10 max-w-2xl text-left">
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-sans font-extrabold text-white mb-4 leading-tight tracking-tight">
+                        Let's Get In Touch.
+                    </h2>
+
+                    <p class="text-white/85 text-sm md:text-base mb-10 max-w-lg leading-relaxed">
+                        Ready to prioritize your health? Schedule a consultation with Dr. Praveen Gupta today and take the first step towards a healthier tomorrow.
+                    </p>
+
+                    <!-- Buttons Row -->
+                    <div class="flex flex-wrap gap-4 items-center">
+                        <!-- Book Appointment Button -->
+                        <a href="contact.html"
+                           class="inline-flex items-center space-x-6 bg-[#111827] text-white text-xs md:text-sm font-semibold pl-6 pr-2.5 py-2.5 rounded-full hover:bg-black transition-all duration-300 shadow-lg hover:-translate-y-0.5 active:translate-y-0 group">
+                            <span>Book Appointment</span>
+                            <!-- Glossy metallic dot indicator -->
+                            <div class="w-7 h-7 rounded-full bg-gradient-to-b from-white via-slate-100 to-slate-400 shadow-[inset_0_1px_2px_rgba(255,255,255,0.8),0_2px_4px_rgba(0,0,0,0.3)] flex items-center justify-center text-[#111827] text-xs font-bold transition-transform duration-300 group-hover:scale-110 flex-shrink-0">
+                                <i class="fas fa-chevron-right text-[9px]"></i>
+                            </div>
+                        </a>
+
+                        <!-- Call Now Button -->
+                        <a href="tel:+91-9876543210"
+                           class="inline-flex items-center space-x-6 bg-[#111827] text-white text-xs md:text-sm font-semibold pl-6 pr-2.5 py-2.5 rounded-full hover:bg-black transition-all duration-300 shadow-lg hover:-translate-y-0.5 active:translate-y-0 group">
+                            <span>Call Now</span>
+                            <!-- Glossy metallic dot indicator -->
+                            <div class="w-7 h-7 rounded-full bg-gradient-to-b from-white via-slate-100 to-slate-400 shadow-[inset_0_1px_2px_rgba(255,255,255,0.8),0_2px_4px_rgba(0,0,0,0.3)] flex items-center justify-center text-[#111827] text-xs font-bold transition-transform duration-300 group-hover:scale-110 flex-shrink-0">
+                                <i class="fas fa-phone text-[9px]"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-deep-indigo text-white relative overflow-hidden">
+        <!-- Decorative background -->
+        <div class="absolute inset-0 opacity-30 pointer-events-none">
+            <div class="absolute -top-20 -left-20 w-96 h-96 bg-electric-blue/20 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-20 -right-20 w-96 h-96 bg-cyan-accent/20 rounded-full blur-3xl"></div>
+        </div>
+
+        <!-- Top accent line -->
+        <div class="h-1 bg-gradient-to-r from-electric-blue via-cyan-accent to-electric-blue"></div>
+
+        <!-- Main Footer -->
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
+                <!-- About -->
+                <div class="lg:col-span-4">
+                    <div class="mb-6">
+                        <a href="index.html" class="inline-block group">
+                            <img src="assets/logo/dr-praveen-logo.webp" alt="Dr. Praveen Gupta Logo" class="h-12 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300">
+                        </a>
+                    </div>
+                    <p class="text-white/70 leading-relaxed mb-6 text-sm">
+                        Providing exceptional medical care with compassion and expertise for over 25 years. Your trusted partner in health and wellness journey.
+                    </p>
+
+                    <!-- Stats badges -->
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="px-3 py-2 rounded-lg bg-white/5 border border-white/10">
+                            <div class="text-lg font-bold text-white">25+</div>
+                            <div class="text-[10px] text-white/60 uppercase tracking-wide">Years</div>
+                        </div>
+                        <div class="px-3 py-2 rounded-lg bg-white/5 border border-white/10">
+                            <div class="text-lg font-bold text-white">50K+</div>
+                            <div class="text-[10px] text-white/60 uppercase tracking-wide">Patients</div>
+                        </div>
+                        <div class="px-3 py-2 rounded-lg bg-white/5 border border-white/10">
+                            <div class="text-lg font-bold text-white">4.9★</div>
+                            <div class="text-[10px] text-white/60 uppercase tracking-wide">Rating</div>
+                        </div>
+                    </div>
+
+                    <!-- Social -->
+                    <div>
+                        <p class="text-xs text-white/60 uppercase tracking-wider font-semibold mb-3">Follow Us</p>
+                        <div class="flex space-x-2">
+                            <a href="https://facebook.com/drpraveengupta" class="group relative w-10 h-10 rounded-xl bg-white/5 hover:bg-electric-blue border border-white/10 hover:border-electric-blue flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
+                                <i class="fab fa-facebook-f text-sm"></i>
+                            </a>
+                            <a href="https://instagram.com/drpraveengupta" class="group relative w-10 h-10 rounded-xl bg-white/5 hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 border border-white/10 hover:border-pink-500 flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
+                                <i class="fab fa-instagram text-sm"></i>
+                            </a>
+                            <a href="https://twitter.com/drpraveengupta" class="group relative w-10 h-10 rounded-xl bg-white/5 hover:bg-cyan-accent border border-white/10 hover:border-cyan-accent flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
+                                <i class="fab fa-twitter text-sm"></i>
+                            </a>
+                            <a href="https://youtube.com/drpraveengupta" class="group relative w-10 h-10 rounded-xl bg-white/5 hover:bg-red-500 border border-white/10 hover:border-red-500 flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
+                                <i class="fab fa-youtube text-sm"></i>
+                            </a>
+                            <a href="https://linkedin.com/in/drpraveengupta" class="group relative w-10 h-10 rounded-xl bg-white/5 hover:bg-blue-600 border border-white/10 hover:border-blue-600 flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
+                                <i class="fab fa-linkedin-in text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="lg:col-span-2">
+                    <h3 class="text-base font-bold mb-5 flex items-center">
+                        <span class="w-1 h-5 bg-gradient-to-b from-electric-blue to-cyan-accent rounded-full mr-3"></span>
+                        Quick Links
+                    </h3>
+                    <ul class="space-y-2.5">
+                                                    <li>
+                                <a href="index.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                                    <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
+                                    <span class="group-hover:translate-x-0.5 transition-transform">Home</span>
+                                </a>
+                            </li>
+                                                    <li>
+                                <a href="about.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                                    <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
+                                    <span class="group-hover:translate-x-0.5 transition-transform">About</span>
+                                </a>
+                            </li>
+                                                    <li>
+                                <a href="services.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                                    <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
+                                    <span class="group-hover:translate-x-0.5 transition-transform">Services</span>
+                                </a>
+                            </li>
+                                                    <li>
+                                <a href="gallery.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                                    <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
+                                    <span class="group-hover:translate-x-0.5 transition-transform">Gallery</span>
+                                </a>
+                            </li>
+                                                    <li>
+                                <a href="blog.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                                    <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
+                                    <span class="group-hover:translate-x-0.5 transition-transform">Blog</span>
+                                </a>
+                            </li>
+                                                    <li>
+                                <a href="contact.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                                    <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
+                                    <span class="group-hover:translate-x-0.5 transition-transform">Contact</span>
+                                </a>
+                            </li>
+                                            </ul>
+                </div>
+
+                <!-- Services -->
+                <div class="lg:col-span-3">
+                    <h3 class="text-base font-bold mb-5 flex items-center">
+                        <span class="w-1 h-5 bg-gradient-to-b from-electric-blue to-cyan-accent rounded-full mr-3"></span>
+                        Our Services
+                    </h3>
+                    <ul class="space-y-2.5">
+                                                    <li>
+                                <a href="services.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-3 group text-sm">
+                                    <span class="w-7 h-7 rounded-lg bg-white/5 group-hover:bg-cyan-accent/20 flex items-center justify-center transition-all duration-300 flex-shrink-0">
+                                        <i class="fas fa-bolt text-[10px] text-cyan-accent/70 group-hover:text-cyan-accent transition-colors"></i>
+                                    </span>
+                                    <span class="group-hover:translate-x-0.5 transition-transform">Epilepsy</span>
+                                </a>
+                            </li>
+                                                    <li>
+                                <a href="services.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-3 group text-sm">
+                                    <span class="w-7 h-7 rounded-lg bg-white/5 group-hover:bg-cyan-accent/20 flex items-center justify-center transition-all duration-300 flex-shrink-0">
+                                        <i class="fas fa-head-side-virus text-[10px] text-cyan-accent/70 group-hover:text-cyan-accent transition-colors"></i>
+                                    </span>
+                                    <span class="group-hover:translate-x-0.5 transition-transform">Headache</span>
+                                </a>
+                            </li>
+                                                    <li>
+                                <a href="services.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-3 group text-sm">
+                                    <span class="w-7 h-7 rounded-lg bg-white/5 group-hover:bg-cyan-accent/20 flex items-center justify-center transition-all duration-300 flex-shrink-0">
+                                        <i class="fas fa-brain text-[10px] text-cyan-accent/70 group-hover:text-cyan-accent transition-colors"></i>
+                                    </span>
+                                    <span class="group-hover:translate-x-0.5 transition-transform">Migraine</span>
+                                </a>
+                            </li>
+                                                    <li>
+                                <a href="services.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-3 group text-sm">
+                                    <span class="w-7 h-7 rounded-lg bg-white/5 group-hover:bg-cyan-accent/20 flex items-center justify-center transition-all duration-300 flex-shrink-0">
+                                        <i class="fas fa-heart-pulse text-[10px] text-cyan-accent/70 group-hover:text-cyan-accent transition-colors"></i>
+                                    </span>
+                                    <span class="group-hover:translate-x-0.5 transition-transform">Stroke</span>
+                                </a>
+                            </li>
+                                                    <li>
+                                <a href="services.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-3 group text-sm">
+                                    <span class="w-7 h-7 rounded-lg bg-white/5 group-hover:bg-cyan-accent/20 flex items-center justify-center transition-all duration-300 flex-shrink-0">
+                                        <i class="fas fa-sync text-[10px] text-cyan-accent/70 group-hover:text-cyan-accent transition-colors"></i>
+                                    </span>
+                                    <span class="group-hover:translate-x-0.5 transition-transform">Vertigo</span>
+                                </a>
+                            </li>
+                                                    <li>
+                                <a href="services.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-3 group text-sm">
+                                    <span class="w-7 h-7 rounded-lg bg-white/5 group-hover:bg-cyan-accent/20 flex items-center justify-center transition-all duration-300 flex-shrink-0">
+                                        <i class="fas fa-walking text-[10px] text-cyan-accent/70 group-hover:text-cyan-accent transition-colors"></i>
+                                    </span>
+                                    <span class="group-hover:translate-x-0.5 transition-transform">Parkinson's Disease</span>
+                                </a>
+                            </li>
+                                            </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="lg:col-span-3">
+                    <h3 class="text-base font-bold mb-5 flex items-center">
+                        <span class="w-1 h-5 bg-gradient-to-b from-electric-blue to-cyan-accent rounded-full mr-3"></span>
+                        Get In Touch
+                    </h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start space-x-3 group">
+                            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-electric-blue/20 to-cyan-accent/20 group-hover:from-electric-blue group-hover:to-cyan-accent flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                <i class="fas fa-map-marker-alt text-cyan-accent group-hover:text-white transition-colors text-sm"></i>
+                            </div>
+                            <div class="pt-1">
+                                <p class="text-white/70 text-xs font-medium">Our Location</p>
+                                <p class="text-white/90 text-sm font-semibold">New Delhi, India</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-3 group">
+                            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-electric-blue/20 to-cyan-accent/20 group-hover:from-electric-blue group-hover:to-cyan-accent flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                <i class="fas fa-phone text-cyan-accent group-hover:text-white transition-colors text-sm"></i>
+                            </div>
+                            <div class="pt-1">
+                                <p class="text-white/70 text-xs font-medium">Call Us</p>
+                                <a href="tel:+91-9876543210" class="text-white/90 text-sm font-semibold hover:text-cyan-accent transition-colors">
+                                    +91-9876543210                                </a>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-3 group">
+                            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-electric-blue/20 to-cyan-accent/20 group-hover:from-electric-blue group-hover:to-cyan-accent flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                <i class="fas fa-envelope text-cyan-accent group-hover:text-white transition-colors text-sm"></i>
+                            </div>
+                            <div class="pt-1">
+                                <p class="text-white/70 text-xs font-medium">Email Us</p>
+                                <a href="mailto:contact@drpraveengupta.com" class="text-white/90 text-sm font-semibold hover:text-cyan-accent transition-colors break-all">
+                                    contact@drpraveengupta.com                                </a>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-3 group">
+                            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-electric-blue/20 to-cyan-accent/20 group-hover:from-electric-blue group-hover:to-cyan-accent flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                <i class="fas fa-clock text-cyan-accent group-hover:text-white transition-colors text-sm"></i>
+                            </div>
+                            <div class="pt-1">
+                                <p class="text-white/70 text-xs font-medium">Working Hours</p>
+                                <p class="text-white/90 text-sm font-semibold">Mon - Sat: 9 AM - 7 PM</p>
+                                <p class="text-white/60 text-xs">Sunday: Closed</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="relative border-t border-white/10 bg-black/20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center shadow-lg flex-shrink-0">
+                            <i class="fas fa-paper-plane text-white text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-1">Subscribe to Our Newsletter</h4>
+                            <p class="text-white/70 text-sm">Get health tips, latest updates and medical insights directly in your inbox.</p>
+                        </div>
+                    </div>
+                    <form class="flex w-full" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+                        <div class="relative flex-1">
+                            <i class="fas fa-envelope absolute left-5 top-1/2 -translate-y-1/2 text-white/40 text-sm"></i>
+                            <input type="email" placeholder="Enter your email address" required
+                                   class="w-full pl-12 pr-5 py-4 bg-white/10 border border-white/20 rounded-l-full text-white placeholder-white/50 focus:outline-none focus:border-cyan-accent focus:bg-white/15 transition-all">
+                        </div>
+                        <button type="submit" class="px-7 py-4 bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold rounded-r-full hover:shadow-lg hover:shadow-electric-blue/50 transition-all duration-300 flex items-center space-x-2 group">
+                            <span class="hidden sm:inline">Subscribe</span>
+                            <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="relative border-t border-white/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/60">
+                    <p>&copy; 2026 <span class="text-white font-semibold">Dr. Praveen Gupta</span>. All rights reserved.</p>
+                    <div class="flex items-center space-x-1">
+                        <a href="#" class="px-3 py-1.5 rounded-full hover:bg-white/5 hover:text-cyan-accent transition-all">Privacy Policy</a>
+                        <span class="text-white/20">•</span>
+                        <a href="#" class="px-3 py-1.5 rounded-full hover:bg-white/5 hover:text-cyan-accent transition-all">Terms of Service</a>
+                        <span class="text-white/20">•</span>
+                        <a href="#" class="px-3 py-1.5 rounded-full hover:bg-white/5 hover:text-cyan-accent transition-all">Sitemap</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-gradient-to-r from-electric-blue to-cyan-accent text-white shadow-lg hover:shadow-xl hover:shadow-electric-blue/40 transition-all duration-300 transform translate-y-20 opacity-0 z-50 flex items-center justify-center group">
+        <i class="fas fa-arrow-up group-hover:-translate-y-0.5 transition-transform"></i>
+    </button>
+
+    <!-- Floating Appointment Button (Mobile) -->
+    <a href="contact.html" class="lg:hidden fixed bottom-6 left-6 w-14 h-14 rounded-full bg-gradient-to-r from-electric-blue to-cyan-accent text-white shadow-lg flex items-center justify-center z-50 animate-pulse-slow">
+        <i class="fas fa-calendar-plus text-lg"></i>
+    </a>
+
+    <script>
+        // Back to top button
+        const backToTopBtn = document.getElementById('back-to-top');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('translate-y-20', 'opacity-0');
+                backToTopBtn.classList.add('translate-y-0', 'opacity-100');
+            } else {
+                backToTopBtn.classList.add('translate-y-20', 'opacity-0');
+                backToTopBtn.classList.remove('translate-y-0', 'opacity-100');
+            }
+        });
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.observe').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
