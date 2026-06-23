@@ -26,7 +26,7 @@ if (empty($pages)) {
 echo "Starting build process...\n";
 echo "Found " . count($pages) . " page(s) to compile.\n\n";
 
-// Build each page
+// Build each page in a separate PHP subprocess so require_once behaves correctly
 foreach ($pages as $srcFile) {
     $outFile = str_replace('.php', '.html', $srcFile);
     $destPath = $distFolder . '/' . $outFile;
@@ -36,28 +36,26 @@ foreach ($pages as $srcFile) {
         unlink($destPath);
     }
 
-    // Capture output from PHP file execution
-    ob_start();
-    try {
-        // Set up server context variables that might be used in template parsing
-        $_SERVER['PHP_SELF'] = '/' . $srcFile;
-        include $srcFile;
-    } catch (Exception $e) {
-        ob_end_clean();
-        echo "Error building $srcFile: " . $e->getMessage() . "\n";
-        continue;
-    }
-    $html = ob_get_clean();
+    // Write a temporary build script that includes the PHP file
+    $tmpScript = $distFolder . '/_build_tmp.php';
+    $scriptContent = '<?php' . "\n"
+        . '$_SERVER["PHP_SELF"] = "/' . $srcFile . '";' . "\n"
+        . 'ob_start();' . "\n"
+        . 'try { include "' . $srcFile . '"; }' . "\n"
+        . 'catch (Exception $e) { ob_end_clean(); echo "Error: " . $e->getMessage(); exit(1); }' . "\n"
+        . '$html = ob_get_clean();' . "\n"
+        . '$html = str_replace([\'php"\', "php\'", \'php#\', \'php/\'], [\'html"\', "html\'", \'html#\', \'html/\'], $html);' . "\n"
+        . 'file_put_contents("' . $destPath . '", $html);' . "\n"
+        . 'echo "[Compiled] ' . $srcFile . ' => ' . $outFile . ' (length: " . strlen($html) . " bytes)\\n";' . "\n";
 
-    // Convert internal PHP links to HTML links for static hosting
-    $html = str_replace('.php"', '.html"', $html);
-    $html = str_replace(".php'", ".html'", $html);
-    $html = str_replace('.php#', '.html#', $html);
-    $html = str_replace('.php/', '.html/', $html);
+    file_put_contents($tmpScript, $scriptContent);
 
-    // Save to dist folder
-    file_put_contents($destPath, $html);
-    echo "  [Compiled] $srcFile => $outFile\n";
+    // Execute the temp script in a subprocess
+    $output = shell_exec('php ' . $tmpScript . ' 2>&1');
+    echo '  ' . trim($output) . "\n";
+
+    // Clean up temp script
+    @unlink($tmpScript);
 }
 
 // Copy assets directory to dist

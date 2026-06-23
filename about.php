@@ -481,7 +481,6 @@ require_once __DIR__ . '/includes/header.php';
 </section>
 
 <!-- Testimonials — Minimal Slider -->
-<?php $totalPages = (int) ceil(count($testimonials) / 3); ?>
 <section class="py-14 lg:py-20 bg-soft-cyan/30">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-10">
@@ -500,10 +499,10 @@ require_once __DIR__ . '/includes/header.php';
 
         <!-- Slider — All 6 cards visible, scroll between pages -->
         <div class="relative">
-            <div class="overflow-hidden">
-                <div id="testimonial-track" class="flex transition-transform duration-500 ease-in-out" style="will-change: transform;">
+            <div id="testimonial-viewport" class="overflow-hidden">
+                <div id="testimonial-track" class="flex transition-transform duration-500 ease-in-out">
                     <?php foreach ($testimonials as $testimonial): ?>
-                        <div class="testimonial-card w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
+                        <div class="testimonial-card flex-shrink-0 px-3" style="width: 33.333333%; min-width: 33.333333%; box-sizing: border-box;">
                             <div class="h-full border-l-2 border-silver-grey hover:border-electric-blue pl-5 py-2 transition-colors duration-300">
                                 <div class="flex space-x-0.5 mb-3">
                                     <?php for ($i = 0; $i < $testimonial['rating']; $i++): ?>
@@ -526,28 +525,57 @@ require_once __DIR__ . '/includes/header.php';
             <!-- Slider Controls -->
             <div class="flex items-center justify-center space-x-3 mt-8">
                 <button id="testimonial-prev" type="button"
-                        class="w-10 h-10 rounded-full bg-white border border-silver-grey hover:border-electric-blue hover:bg-electric-blue hover:text-white text-deep-indigo flex items-center justify-center transition-all duration-300 shadow-sm disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-deep-indigo">
+                        class="w-10 h-10 rounded-full bg-white border border-silver-grey hover:border-electric-blue hover:bg-electric-blue hover:text-white text-deep-indigo flex items-center justify-center transition-all duration-300 shadow-sm">
                     <i class="fas fa-chevron-left text-xs"></i>
                 </button>
 
-                <div id="testimonial-dots" class="flex space-x-1.5">
-                    <?php for ($i = 0; $i < $totalPages; $i++): ?>
+                <div id="testimonial-dots" class="flex items-center space-x-2">
+                    <?php
+                    // One dot per page. With 6 cards, 3 per page = 2 pages
+                    $totalPages = 2;
+                    for ($i = 0; $i < $totalPages; $i++): ?>
                         <button type="button"
-                                class="testimonial-dot h-2 rounded-full bg-silver-grey hover:bg-electric-blue transition-all duration-300"
-                                style="width: 0.5rem;"
+                                class="testimonial-dot rounded-full bg-silver-grey hover:bg-electric-blue transition-all duration-300"
+                                style="width: 8px; height: 8px;"
                                 data-index="<?php echo $i; ?>"
                                 aria-label="Go to page <?php echo $i + 1; ?>"></button>
                     <?php endfor; ?>
                 </div>
 
                 <button id="testimonial-next" type="button"
-                        class="w-10 h-10 rounded-full bg-white border border-silver-grey hover:border-electric-blue hover:bg-electric-blue hover:text-white text-deep-indigo flex items-center justify-center transition-all duration-300 shadow-sm disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-deep-indigo">
+                        class="w-10 h-10 rounded-full bg-white border border-silver-grey hover:border-electric-blue hover:bg-electric-blue hover:text-white text-deep-indigo flex items-center justify-center transition-all duration-300 shadow-sm">
                     <i class="fas fa-chevron-right text-xs"></i>
                 </button>
             </div>
         </div>
     </div>
 </section>
+
+<style>
+    /* Testimonials slider: 3 cards visible on desktop, 2 on tablet, 1 on mobile */
+    @media (max-width: 767px) {
+        .testimonial-card {
+            width: 100% !important;
+            min-width: 100% !important;
+        }
+    }
+    @media (min-width: 768px) and (max-width: 1023px) {
+        .testimonial-card {
+            width: 50% !important;
+            min-width: 50% !important;
+        }
+    }
+    @media (min-width: 1024px) {
+        .testimonial-card {
+            width: 33.333333% !important;
+            min-width: 33.333333% !important;
+        }
+    }
+    .testimonial-dot.active {
+        background-color: #2563EB !important;
+        width: 24px !important;
+    }
+</style>
 
 <!-- Testimonials Slider Script -->
 <script>
@@ -557,64 +585,73 @@ require_once __DIR__ . '/includes/header.php';
     const nextBtn = document.getElementById('testimonial-next');
     const dots = document.querySelectorAll('.testimonial-dot');
     const currentLabel = document.getElementById('testimonial-current');
+    const viewport = document.getElementById('testimonial-viewport');
     const totalCards = <?php echo count($testimonials); ?>;
     const totalPages = <?php echo $totalPages; ?>;
     let currentPage = 0;
 
     function getCardsPerPage() {
-        return window.innerWidth >= 1024 ? 3 : (window.innerWidth >= 768 ? 2 : 1);
+        const w = window.innerWidth;
+        if (w >= 1024) return 3;
+        if (w >= 768) return 2;
+        return 1;
     }
 
-    function update(page) {
+    function update() {
         const cardsPerPage = getCardsPerPage();
         const maxPage = Math.max(0, Math.ceil(totalCards / cardsPerPage) - 1);
-        currentPage = Math.max(0, Math.min(page, maxPage));
+        if (currentPage > maxPage) currentPage = maxPage;
 
-        // Each step moves by 1 card (full card width = 100 / cardsPerPage %)
-        const stepPercent = 100 / cardsPerPage;
-        const translatePercent = currentPage * stepPercent;
-        track.style.transform = `translateX(-${translatePercent}%)`;
+        // Translate by viewport width
+        const viewportWidth = viewport.offsetWidth;
+        const offset = currentPage * viewportWidth;
+        track.style.transform = 'translateX(-' + offset + 'px)';
 
         // Update counter
-        if (currentLabel) currentLabel.textContent = Math.min(currentPage + cardsPerPage, totalCards);
+        if (currentLabel) currentLabel.textContent = Math.min(currentPage * cardsPerPage + cardsPerPage, totalCards);
 
-        // Update dots (active dot becomes wider + blue)
-        dots.forEach((d, i) => {
+        // Update dots
+        dots.forEach(function(d, i) {
             if (i === currentPage) {
-                d.classList.add('bg-electric-blue');
-                d.classList.remove('bg-silver-grey');
-                d.style.width = '1.5rem';
+                d.classList.add('active');
             } else {
-                d.classList.remove('bg-electric-blue');
-                d.classList.add('bg-silver-grey');
-                d.style.width = '0.5rem';
+                d.classList.remove('active');
             }
         });
-
-        // Disable buttons at ends
-        prevBtn.disabled = currentPage === 0;
-        nextBtn.disabled = currentPage >= maxPage;
     }
 
-    prevBtn.addEventListener('click', () => update(currentPage - 1));
-    nextBtn.addEventListener('click', () => update(currentPage + 1));
-
-    dots.forEach((d) => {
-        d.addEventListener('click', () => {
-            const idx = parseInt(d.getAttribute('data-index'), 10);
-            update(idx);
-        });
+    prevBtn.addEventListener('click', function() {
+        if (currentPage > 0) {
+            currentPage--;
+            update();
+        }
     });
+
+    nextBtn.addEventListener('click', function() {
+        const cardsPerPage = getCardsPerPage();
+        const maxPage = Math.max(0, Math.ceil(totalCards / cardsPerPage) - 1);
+        if (currentPage < maxPage) {
+            currentPage++;
+            update();
+        }
+    });
+
+    for (let i = 0; i < dots.length; i++) {
+        dots[i].addEventListener('click', function() {
+            currentPage = parseInt(this.getAttribute('data-index'), 10);
+            update();
+        });
+    }
 
     // Recalculate on resize
     let resizeTimer;
-    window.addEventListener('resize', () => {
+    window.addEventListener('resize', function() {
         clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => update(currentPage), 100);
+        resizeTimer = setTimeout(update, 100);
     });
 
     // Initialize
-    update(0);
+    update();
 })();
 </script>
 
