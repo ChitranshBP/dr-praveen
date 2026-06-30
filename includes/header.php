@@ -5,6 +5,7 @@
 require_once __DIR__ . '/config.php';
 $currentPage = basename($_SERVER['PHP_SELF']);
 $isHomepage = ($currentPage === 'index.php');
+$isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
 ?>
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
@@ -240,6 +241,24 @@ $isHomepage = ($currentPage === 'index.php');
             background: linear-gradient(90deg, #2563EB, #06B6D4);
             transition: width 0.1s ease;
         }
+
+        /* Solid navbar: make glass-style elements visible on white background */
+        .navbar-solid .nav-glass-el {
+            background: rgba(0, 0, 0, 0.05) !important;
+            border-color: rgba(0, 0, 0, 0.1) !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+        }
+        .navbar-solid .nav-glass-el:hover {
+            background: rgba(0, 0, 0, 0.08) !important;
+        }
+        .navbar-solid .nav-link.active {
+            background: rgba(37, 99, 235, 0.1) !important;
+            color: #2563EB !important;
+        }
+        .navbar-solid .nav-link:hover {
+            background: rgba(0, 0, 0, 0.05) !important;
+        }
     </style>
 </head>
 <body class="bg-white text-dark-grey antialiased">
@@ -295,7 +314,7 @@ $isHomepage = ($currentPage === 'index.php');
     </div> -->
 
     <!-- Main Navigation -->
-    <nav id="navbar" class="sticky top-0 z-50 transition-all duration-500 <?php echo $isHomepage ? 'navbar-glass' : 'navbar-solid'; ?>">
+    <nav id="navbar" class="sticky top-0 z-50 transition-all duration-500 <?php echo $isHomepage || $isDarkHero ? 'navbar-glass' : 'navbar-solid'; ?>">
         <!-- Scroll Progress Bar -->
         <div class="scroll-progress" id="scroll-progress" style="width: 0%"></div>
 
@@ -303,28 +322,45 @@ $isHomepage = ($currentPage === 'index.php');
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <a href="index.php" class="flex items-center group">
-                    <img src="assets/logo/dr-praveen-logo.webp" alt="Dr. Praveen Gupta - NeuroDoc Logo" class="h-10 sm:h-12 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300">
+                    <img id="header-logo" src="assets/logo/NeuroDoc - logo_highquality.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" class="h-14 sm:h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 invert brightness-0">
                 </a>
 
                 <!-- Desktop Navigation -->
-                <div class="hidden lg:flex items-center space-x-1 bg-white/5 backdrop-blur-sm rounded-full px-2 py-1.5 border border-white/10">
+                <div class="hidden lg:flex items-center space-x-1 bg-white/5 backdrop-blur-sm rounded-full px-2 py-1.5 border border-white/10 nav-glass-el">
                     <?php foreach ($navItems as $item): ?>
-                        <a href="<?php echo $item['url']; ?>"
-                           class="nav-link-anim relative px-5 py-2 text-sm font-semibold transition-colors duration-300 nav-link rounded-full <?php echo $currentPage === $item['url'] ? 'active bg-white/10' : 'text-dark-grey hover:bg-white/5'; ?>">
-                            <?php echo $item['name']; ?>
-                        </a>
+                        <?php if (isset($item['children'])): ?>
+                            <div class="relative group">
+                                <button class="nav-link flex items-center space-x-1 px-5 py-2 text-sm font-semibold text-dark-grey hover:bg-white/5 rounded-full focus:outline-none">
+                                    <span><?php echo $item['name']; ?></span>
+                                    <i class="fas fa-chevron-down text-[10px] transition-transform duration-300 group-hover:rotate-180"></i>
+                                </button>
+                                <div class="absolute left-0 mt-2 w-56 rounded-2xl bg-white shadow-xl border border-slate-200/50 p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform scale-95 group-hover:scale-100 z-50">
+                                    <?php foreach ($item['children'] as $child): ?>
+                                        <a href="<?php echo $child['url']; ?>"
+                                           class="block px-4 py-2.5 text-sm font-medium rounded-xl text-dark-grey/80 hover:bg-slate-50 hover:text-electric-blue transition-colors">
+                                            <?php echo $child['name']; ?>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        <?php else: ?>
+                            <a href="<?php echo $item['url']; ?>"
+                               class="nav-link-anim relative px-5 py-2 text-sm font-semibold transition-colors duration-300 nav-link rounded-full <?php echo $currentPage === $item['url'] ? 'active bg-white/10' : 'text-dark-grey hover:bg-white/5'; ?>">
+                                <?php echo $item['name']; ?>
+                            </a>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 </div>
 
                 <!-- Right Actions -->
                 <div class="hidden lg:flex items-center space-x-3">
                     <!-- Search Icon -->
-                    <button class="nav-icon-btn w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-all duration-300 text-dark-grey border border-white/10">
+                    <button class="nav-icon-btn w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-all duration-300 text-dark-grey border border-white/10 nav-glass-el">
                         <i class="fas fa-search text-sm"></i>
                     </button>
 
                     <!-- CTA Button - Premium Style -->
-                    <a href="contact.php" class="btn-shimmer group relative inline-flex items-center space-x-2 bg-gradient-to-r from-electric-blue to-cyan-accent text-white text-sm font-semibold pl-5 pr-2 py-2 rounded-full hover:shadow-xl hover:shadow-electric-blue/40 transition-all duration-300 transform hover:-translate-y-0.5">
+                    <a href="contact-us-top-neurologist-delhi-ncr.php" class="btn-shimmer group relative inline-flex items-center space-x-2 bg-gradient-to-r from-electric-blue to-cyan-accent text-white text-sm font-semibold pl-5 pr-2 py-2 rounded-full hover:shadow-xl hover:shadow-electric-blue/40 transition-all duration-300 transform hover:-translate-y-0.5">
                         <span>Book Appointment</span>
                         <span class="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center group-hover:rotate-45 transition-transform duration-300">
                             <i class="fas fa-arrow-right text-[10px]"></i>
@@ -333,7 +369,7 @@ $isHomepage = ($currentPage === 'index.php');
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="lg:hidden w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 nav-icon-btn border border-white/10">
+                <button id="mobile-menu-btn" class="lg:hidden w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 nav-icon-btn border border-white/10 nav-glass-el">
                     <i class="fas fa-bars text-lg" id="menu-icon"></i>
                 </button>
             </div>
@@ -343,16 +379,37 @@ $isHomepage = ($currentPage === 'index.php');
         <div id="mobile-menu" class="mobile-menu-anim lg:hidden bg-white/95 backdrop-blur-xl border-t border-silver-grey/50">
             <div class="max-w-7xl mx-auto px-4 py-4 space-y-1">
                 <?php foreach ($navItems as $item): ?>
-                    <a href="<?php echo $item['url']; ?>"
-                       class="flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-all <?php echo $currentPage === $item['url'] ? 'bg-gradient-to-r from-electric-blue/10 to-cyan-accent/10 text-electric-blue border border-electric-blue/20' : 'text-dark-grey hover:bg-soft-cyan hover:text-electric-blue'; ?>">
-                        <span class="flex items-center space-x-3">
-                            <span class="w-1.5 h-1.5 rounded-full <?php echo $currentPage === $item['url'] ? 'bg-cyan-accent' : 'bg-silver-grey'; ?>"></span>
-                            <span><?php echo $item['name']; ?></span>
-                        </span>
-                        <i class="fas fa-chevron-right text-xs text-cyan-accent"></i>
-                    </a>
+                    <?php if (isset($item['children'])): ?>
+                        <div class="mobile-dropdown">
+                            <button onclick="toggleMobileDropdown(this)" class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold text-dark-grey hover:bg-soft-cyan hover:text-electric-blue focus:outline-none">
+                                <span class="flex items-center space-x-3">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-silver-grey"></span>
+                                    <span><?php echo $item['name']; ?></span>
+                                </span>
+                                <i class="fas fa-chevron-down text-xs transition-transform duration-300"></i>
+                            </button>
+                            <div class="hidden pl-6 py-1 space-y-1 bg-slate-50/50 rounded-xl mt-1 border border-slate-100">
+                                <?php foreach ($item['children'] as $child): ?>
+                                    <a href="<?php echo $child['url']; ?>"
+                                       class="flex items-center justify-between px-4 py-2.5 rounded-lg text-sm font-medium text-dark-grey/70 hover:text-electric-blue">
+                                        <span><?php echo $child['name']; ?></span>
+                                        <i class="fas fa-chevron-right text-[10px] text-cyan-accent"></i>
+                                    </a>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    <?php else: ?>
+                        <a href="<?php echo $item['url']; ?>"
+                           class="flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-all <?php echo $currentPage === $item['url'] ? 'bg-gradient-to-r from-electric-blue/10 to-cyan-accent/10 text-electric-blue border border-electric-blue/20' : 'text-dark-grey hover:bg-soft-cyan hover:text-electric-blue'; ?>">
+                            <span class="flex items-center space-x-3">
+                                <span class="w-1.5 h-1.5 rounded-full <?php echo $currentPage === $item['url'] ? 'bg-cyan-accent' : 'bg-silver-grey'; ?>"></span>
+                                <span><?php echo $item['name']; ?></span>
+                            </span>
+                            <i class="fas fa-chevron-right text-xs text-cyan-accent"></i>
+                        </a>
+                    <?php endif; ?>
                 <?php endforeach; ?>
-                <a href="contact.php" class="block mt-3 px-4 py-3 text-center bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold rounded-xl shadow-lg shadow-electric-blue/20">
+                <a href="contact-us-top-neurologist-delhi-ncr.php" class="block mt-3 px-4 py-3 text-center bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold rounded-xl shadow-lg shadow-electric-blue/20">
                     Book Appointment
                 </a>
             </div>
@@ -360,11 +417,20 @@ $isHomepage = ($currentPage === 'index.php');
     </nav>
 
     <script>
+        // Toggle mobile sub-menus
+        function toggleMobileDropdown(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            content.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+
         // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const menuIcon = document.getElementById('menu-icon');
         const isHomepage = <?php echo $isHomepage ? 'true' : 'false'; ?>;
+        const isDarkHero = <?php echo isset($isDarkHero) && $isDarkHero ? 'true' : 'false'; ?>;
         let menuOpen = false;
 
         mobileMenuBtn.addEventListener('click', function() {
@@ -387,6 +453,7 @@ $isHomepage = ($currentPage === 'index.php');
         // Navbar scroll effect + scroll progress
         const navbar = document.getElementById('navbar');
         const scrollProgress = document.getElementById('scroll-progress');
+        const headerLogo = document.getElementById('header-logo');
 
         function updateNavbar() {
             const scrollY = window.scrollY;
@@ -397,19 +464,31 @@ $isHomepage = ($currentPage === 'index.php');
             // Don't change navbar when mobile menu is open
             if (menuOpen) return;
 
-            if (isHomepage) {
+            if (isHomepage || isDarkHero) {
                 if (scrollY > 50) {
                     navbar.classList.remove('navbar-glass');
                     navbar.classList.add('navbar-solid');
+                    if (headerLogo) {
+                        headerLogo.classList.remove('invert', 'brightness-0');
+                    }
                 } else {
                     navbar.classList.remove('navbar-solid');
                     navbar.classList.add('navbar-glass');
+                    if (headerLogo) {
+                        headerLogo.classList.add('invert', 'brightness-0');
+                    }
                 }
             } else {
                 if (scrollY > 50) {
                     navbar.classList.add('shadow-lg');
+                    if (headerLogo) {
+                        headerLogo.classList.remove('invert', 'brightness-0');
+                    }
                 } else {
                     navbar.classList.remove('shadow-lg');
+                    if (headerLogo) {
+                        headerLogo.classList.add('invert', 'brightness-0');
+                    }
                 }
             }
         }

@@ -232,6 +232,24 @@
             background: linear-gradient(90deg, #2563EB, #06B6D4);
             transition: width 0.1s ease;
         }
+
+        /* Solid navbar: make glass-style elements visible on white background */
+        .navbar-solid .nav-glass-el {
+            background: rgba(0, 0, 0, 0.05) !important;
+            border-color: rgba(0, 0, 0, 0.1) !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+        }
+        .navbar-solid .nav-glass-el:hover {
+            background: rgba(0, 0, 0, 0.08) !important;
+        }
+        .navbar-solid .nav-link.active {
+            background: rgba(37, 99, 235, 0.1) !important;
+            color: #2563EB !important;
+        }
+        .navbar-solid .nav-link:hover {
+            background: rgba(0, 0, 0, 0.05) !important;
+        }
     </style>
 </head>
 <body class="bg-white text-dark-grey antialiased">
@@ -295,40 +313,77 @@
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <a href="index.html" class="flex items-center group">
-                    <img src="assets/logo/dr-praveen-logo.webp" alt="Dr. Praveen Gupta - NeuroDoc Logo" class="h-10 sm:h-12 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300">
+                    <img id="header-logo" src="assets/logo/NeuroDoc - logo_highquality.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" class="h-14 sm:h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 invert brightness-0">
                 </a>
 
                 <!-- Desktop Navigation -->
-                <div class="hidden lg:flex items-center space-x-1 bg-white/5 backdrop-blur-sm rounded-full px-2 py-1.5 border border-white/10">
-                                            <a href="index.html"
-                           class="nav-link-anim relative px-5 py-2 text-sm font-semibold transition-colors duration-300 nav-link rounded-full active bg-white/10">
-                            Home                        </a>
-                                            <a href="about.html"
-                           class="nav-link-anim relative px-5 py-2 text-sm font-semibold transition-colors duration-300 nav-link rounded-full text-dark-grey hover:bg-white/5">
-                            About                        </a>
-                                            <a href="services.html"
-                           class="nav-link-anim relative px-5 py-2 text-sm font-semibold transition-colors duration-300 nav-link rounded-full text-dark-grey hover:bg-white/5">
-                            Services                        </a>
-                                            <a href="gallery.html"
-                           class="nav-link-anim relative px-5 py-2 text-sm font-semibold transition-colors duration-300 nav-link rounded-full text-dark-grey hover:bg-white/5">
-                            Gallery                        </a>
-                                            <a href="blog.html"
-                           class="nav-link-anim relative px-5 py-2 text-sm font-semibold transition-colors duration-300 nav-link rounded-full text-dark-grey hover:bg-white/5">
-                            Blog                        </a>
-                                            <a href="contact.html"
-                           class="nav-link-anim relative px-5 py-2 text-sm font-semibold transition-colors duration-300 nav-link rounded-full text-dark-grey hover:bg-white/5">
-                            Contact                        </a>
-                                    </div>
+                <div class="hidden lg:flex items-center space-x-1 bg-white/5 backdrop-blur-sm rounded-full px-2 py-1.5 border border-white/10 nav-glass-el">
+                                                                        <a href="index.html"
+                               class="nav-link-anim relative px-5 py-2 text-sm font-semibold transition-colors duration-300 nav-link rounded-full active bg-white/10">
+                                Home                            </a>
+                                                                                                <a href="about.html"
+                               class="nav-link-anim relative px-5 py-2 text-sm font-semibold transition-colors duration-300 nav-link rounded-full text-dark-grey hover:bg-white/5">
+                                About                            </a>
+                                                                                                <a href="services.html"
+                               class="nav-link-anim relative px-5 py-2 text-sm font-semibold transition-colors duration-300 nav-link rounded-full text-dark-grey hover:bg-white/5">
+                                Services                            </a>
+                                                                                                <div class="relative group">
+                                <button class="nav-link flex items-center space-x-1 px-5 py-2 text-sm font-semibold text-dark-grey hover:bg-white/5 rounded-full focus:outline-none">
+                                    <span>Patient Info</span>
+                                    <i class="fas fa-chevron-down text-[10px] transition-transform duration-300 group-hover:rotate-180"></i>
+                                </button>
+                                <div class="absolute left-0 mt-2 w-56 rounded-2xl bg-white shadow-xl border border-slate-200/50 p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform scale-95 group-hover:scale-100 z-50">
+                                                                            <a href="patient-info.html"
+                                           class="block px-4 py-2.5 text-sm font-medium rounded-xl text-dark-grey/80 hover:bg-slate-50 hover:text-electric-blue transition-colors">
+                                            Patient Info                                        </a>
+                                                                            <a href="neurology-patient-testimonials.html"
+                                           class="block px-4 py-2.5 text-sm font-medium rounded-xl text-dark-grey/80 hover:bg-slate-50 hover:text-electric-blue transition-colors">
+                                            Testimonials                                        </a>
+                                                                            <a href="faqs-neurologist-near-me.html"
+                                           class="block px-4 py-2.5 text-sm font-medium rounded-xl text-dark-grey/80 hover:bg-slate-50 hover:text-electric-blue transition-colors">
+                                            FAQs                                        </a>
+                                                                            <a href="brain-stroke-helpline.html"
+                                           class="block px-4 py-2.5 text-sm font-medium rounded-xl text-dark-grey/80 hover:bg-slate-50 hover:text-electric-blue transition-colors">
+                                            Stroke Helpline                                        </a>
+                                                                    </div>
+                            </div>
+                                                                                                <div class="relative group">
+                                <button class="nav-link flex items-center space-x-1 px-5 py-2 text-sm font-semibold text-dark-grey hover:bg-white/5 rounded-full focus:outline-none">
+                                    <span>Media</span>
+                                    <i class="fas fa-chevron-down text-[10px] transition-transform duration-300 group-hover:rotate-180"></i>
+                                </button>
+                                <div class="absolute left-0 mt-2 w-56 rounded-2xl bg-white shadow-xl border border-slate-200/50 p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform scale-95 group-hover:scale-100 z-50">
+                                                                            <a href="videos.html"
+                                           class="block px-4 py-2.5 text-sm font-medium rounded-xl text-dark-grey/80 hover:bg-slate-50 hover:text-electric-blue transition-colors">
+                                            Videos Hub                                        </a>
+                                                                            <a href="media-coverage.html"
+                                           class="block px-4 py-2.5 text-sm font-medium rounded-xl text-dark-grey/80 hover:bg-slate-50 hover:text-electric-blue transition-colors">
+                                            Media Coverage                                        </a>
+                                                                            <a href="media-updates.html"
+                                           class="block px-4 py-2.5 text-sm font-medium rounded-xl text-dark-grey/80 hover:bg-slate-50 hover:text-electric-blue transition-colors">
+                                            Media Updates                                        </a>
+                                                                    </div>
+                            </div>
+                                                                                                <a href="gallery.html"
+                               class="nav-link-anim relative px-5 py-2 text-sm font-semibold transition-colors duration-300 nav-link rounded-full text-dark-grey hover:bg-white/5">
+                                Gallery                            </a>
+                                                                                                <a href="dr-praveen-gupta-blog.html"
+                               class="nav-link-anim relative px-5 py-2 text-sm font-semibold transition-colors duration-300 nav-link rounded-full text-dark-grey hover:bg-white/5">
+                                Blog                            </a>
+                                                                                                <a href="contact-us-top-neurologist-delhi-ncr.html"
+                               class="nav-link-anim relative px-5 py-2 text-sm font-semibold transition-colors duration-300 nav-link rounded-full text-dark-grey hover:bg-white/5">
+                                Contact                            </a>
+                                                            </div>
 
                 <!-- Right Actions -->
                 <div class="hidden lg:flex items-center space-x-3">
                     <!-- Search Icon -->
-                    <button class="nav-icon-btn w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-all duration-300 text-dark-grey border border-white/10">
+                    <button class="nav-icon-btn w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-all duration-300 text-dark-grey border border-white/10 nav-glass-el">
                         <i class="fas fa-search text-sm"></i>
                     </button>
 
                     <!-- CTA Button - Premium Style -->
-                    <a href="contact.html" class="btn-shimmer group relative inline-flex items-center space-x-2 bg-gradient-to-r from-electric-blue to-cyan-accent text-white text-sm font-semibold pl-5 pr-2 py-2 rounded-full hover:shadow-xl hover:shadow-electric-blue/40 transition-all duration-300 transform hover:-translate-y-0.5">
+                    <a href="contact-us-top-neurologist-delhi-ncr.html" class="btn-shimmer group relative inline-flex items-center space-x-2 bg-gradient-to-r from-electric-blue to-cyan-accent text-white text-sm font-semibold pl-5 pr-2 py-2 rounded-full hover:shadow-xl hover:shadow-electric-blue/40 transition-all duration-300 transform hover:-translate-y-0.5">
                         <span>Book Appointment</span>
                         <span class="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center group-hover:rotate-45 transition-transform duration-300">
                             <i class="fas fa-arrow-right text-[10px]"></i>
@@ -337,7 +392,7 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="lg:hidden w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 nav-icon-btn border border-white/10">
+                <button id="mobile-menu-btn" class="lg:hidden w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 nav-icon-btn border border-white/10 nav-glass-el">
                     <i class="fas fa-bars text-lg" id="menu-icon"></i>
                 </button>
             </div>
@@ -346,55 +401,112 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="mobile-menu-anim lg:hidden bg-white/95 backdrop-blur-xl border-t border-silver-grey/50">
             <div class="max-w-7xl mx-auto px-4 py-4 space-y-1">
-                                    <a href="index.html"
-                       class="flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-all bg-gradient-to-r from-electric-blue/10 to-cyan-accent/10 text-electric-blue border border-electric-blue/20">
-                        <span class="flex items-center space-x-3">
-                            <span class="w-1.5 h-1.5 rounded-full bg-cyan-accent"></span>
-                            <span>Home</span>
-                        </span>
-                        <i class="fas fa-chevron-right text-xs text-cyan-accent"></i>
-                    </a>
-                                    <a href="about.html"
-                       class="flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-all text-dark-grey hover:bg-soft-cyan hover:text-electric-blue">
-                        <span class="flex items-center space-x-3">
-                            <span class="w-1.5 h-1.5 rounded-full bg-silver-grey"></span>
-                            <span>About</span>
-                        </span>
-                        <i class="fas fa-chevron-right text-xs text-cyan-accent"></i>
-                    </a>
-                                    <a href="services.html"
-                       class="flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-all text-dark-grey hover:bg-soft-cyan hover:text-electric-blue">
-                        <span class="flex items-center space-x-3">
-                            <span class="w-1.5 h-1.5 rounded-full bg-silver-grey"></span>
-                            <span>Services</span>
-                        </span>
-                        <i class="fas fa-chevron-right text-xs text-cyan-accent"></i>
-                    </a>
-                                    <a href="gallery.html"
-                       class="flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-all text-dark-grey hover:bg-soft-cyan hover:text-electric-blue">
-                        <span class="flex items-center space-x-3">
-                            <span class="w-1.5 h-1.5 rounded-full bg-silver-grey"></span>
-                            <span>Gallery</span>
-                        </span>
-                        <i class="fas fa-chevron-right text-xs text-cyan-accent"></i>
-                    </a>
-                                    <a href="blog.html"
-                       class="flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-all text-dark-grey hover:bg-soft-cyan hover:text-electric-blue">
-                        <span class="flex items-center space-x-3">
-                            <span class="w-1.5 h-1.5 rounded-full bg-silver-grey"></span>
-                            <span>Blog</span>
-                        </span>
-                        <i class="fas fa-chevron-right text-xs text-cyan-accent"></i>
-                    </a>
-                                    <a href="contact.html"
-                       class="flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-all text-dark-grey hover:bg-soft-cyan hover:text-electric-blue">
-                        <span class="flex items-center space-x-3">
-                            <span class="w-1.5 h-1.5 rounded-full bg-silver-grey"></span>
-                            <span>Contact</span>
-                        </span>
-                        <i class="fas fa-chevron-right text-xs text-cyan-accent"></i>
-                    </a>
-                                <a href="contact.html" class="block mt-3 px-4 py-3 text-center bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold rounded-xl shadow-lg shadow-electric-blue/20">
+                                                            <a href="index.html"
+                           class="flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-all bg-gradient-to-r from-electric-blue/10 to-cyan-accent/10 text-electric-blue border border-electric-blue/20">
+                            <span class="flex items-center space-x-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-cyan-accent"></span>
+                                <span>Home</span>
+                            </span>
+                            <i class="fas fa-chevron-right text-xs text-cyan-accent"></i>
+                        </a>
+                                                                                <a href="about.html"
+                           class="flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-all text-dark-grey hover:bg-soft-cyan hover:text-electric-blue">
+                            <span class="flex items-center space-x-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-silver-grey"></span>
+                                <span>About</span>
+                            </span>
+                            <i class="fas fa-chevron-right text-xs text-cyan-accent"></i>
+                        </a>
+                                                                                <a href="services.html"
+                           class="flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-all text-dark-grey hover:bg-soft-cyan hover:text-electric-blue">
+                            <span class="flex items-center space-x-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-silver-grey"></span>
+                                <span>Services</span>
+                            </span>
+                            <i class="fas fa-chevron-right text-xs text-cyan-accent"></i>
+                        </a>
+                                                                                <div class="mobile-dropdown">
+                            <button onclick="toggleMobileDropdown(this)" class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold text-dark-grey hover:bg-soft-cyan hover:text-electric-blue focus:outline-none">
+                                <span class="flex items-center space-x-3">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-silver-grey"></span>
+                                    <span>Patient Info</span>
+                                </span>
+                                <i class="fas fa-chevron-down text-xs transition-transform duration-300"></i>
+                            </button>
+                            <div class="hidden pl-6 py-1 space-y-1 bg-slate-50/50 rounded-xl mt-1 border border-slate-100">
+                                                                    <a href="patient-info.html"
+                                       class="flex items-center justify-between px-4 py-2.5 rounded-lg text-sm font-medium text-dark-grey/70 hover:text-electric-blue">
+                                        <span>Patient Info</span>
+                                        <i class="fas fa-chevron-right text-[10px] text-cyan-accent"></i>
+                                    </a>
+                                                                    <a href="neurology-patient-testimonials.html"
+                                       class="flex items-center justify-between px-4 py-2.5 rounded-lg text-sm font-medium text-dark-grey/70 hover:text-electric-blue">
+                                        <span>Testimonials</span>
+                                        <i class="fas fa-chevron-right text-[10px] text-cyan-accent"></i>
+                                    </a>
+                                                                    <a href="faqs-neurologist-near-me.html"
+                                       class="flex items-center justify-between px-4 py-2.5 rounded-lg text-sm font-medium text-dark-grey/70 hover:text-electric-blue">
+                                        <span>FAQs</span>
+                                        <i class="fas fa-chevron-right text-[10px] text-cyan-accent"></i>
+                                    </a>
+                                                                    <a href="brain-stroke-helpline.html"
+                                       class="flex items-center justify-between px-4 py-2.5 rounded-lg text-sm font-medium text-dark-grey/70 hover:text-electric-blue">
+                                        <span>Stroke Helpline</span>
+                                        <i class="fas fa-chevron-right text-[10px] text-cyan-accent"></i>
+                                    </a>
+                                                            </div>
+                        </div>
+                                                                                <div class="mobile-dropdown">
+                            <button onclick="toggleMobileDropdown(this)" class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold text-dark-grey hover:bg-soft-cyan hover:text-electric-blue focus:outline-none">
+                                <span class="flex items-center space-x-3">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-silver-grey"></span>
+                                    <span>Media</span>
+                                </span>
+                                <i class="fas fa-chevron-down text-xs transition-transform duration-300"></i>
+                            </button>
+                            <div class="hidden pl-6 py-1 space-y-1 bg-slate-50/50 rounded-xl mt-1 border border-slate-100">
+                                                                    <a href="videos.html"
+                                       class="flex items-center justify-between px-4 py-2.5 rounded-lg text-sm font-medium text-dark-grey/70 hover:text-electric-blue">
+                                        <span>Videos Hub</span>
+                                        <i class="fas fa-chevron-right text-[10px] text-cyan-accent"></i>
+                                    </a>
+                                                                    <a href="media-coverage.html"
+                                       class="flex items-center justify-between px-4 py-2.5 rounded-lg text-sm font-medium text-dark-grey/70 hover:text-electric-blue">
+                                        <span>Media Coverage</span>
+                                        <i class="fas fa-chevron-right text-[10px] text-cyan-accent"></i>
+                                    </a>
+                                                                    <a href="media-updates.html"
+                                       class="flex items-center justify-between px-4 py-2.5 rounded-lg text-sm font-medium text-dark-grey/70 hover:text-electric-blue">
+                                        <span>Media Updates</span>
+                                        <i class="fas fa-chevron-right text-[10px] text-cyan-accent"></i>
+                                    </a>
+                                                            </div>
+                        </div>
+                                                                                <a href="gallery.html"
+                           class="flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-all text-dark-grey hover:bg-soft-cyan hover:text-electric-blue">
+                            <span class="flex items-center space-x-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-silver-grey"></span>
+                                <span>Gallery</span>
+                            </span>
+                            <i class="fas fa-chevron-right text-xs text-cyan-accent"></i>
+                        </a>
+                                                                                <a href="dr-praveen-gupta-blog.html"
+                           class="flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-all text-dark-grey hover:bg-soft-cyan hover:text-electric-blue">
+                            <span class="flex items-center space-x-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-silver-grey"></span>
+                                <span>Blog</span>
+                            </span>
+                            <i class="fas fa-chevron-right text-xs text-cyan-accent"></i>
+                        </a>
+                                                                                <a href="contact-us-top-neurologist-delhi-ncr.html"
+                           class="flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-all text-dark-grey hover:bg-soft-cyan hover:text-electric-blue">
+                            <span class="flex items-center space-x-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-silver-grey"></span>
+                                <span>Contact</span>
+                            </span>
+                            <i class="fas fa-chevron-right text-xs text-cyan-accent"></i>
+                        </a>
+                                                    <a href="contact-us-top-neurologist-delhi-ncr.html" class="block mt-3 px-4 py-3 text-center bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold rounded-xl shadow-lg shadow-electric-blue/20">
                     Book Appointment
                 </a>
             </div>
@@ -402,11 +514,20 @@
     </nav>
 
     <script>
+        // Toggle mobile sub-menus
+        function toggleMobileDropdown(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            content.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+
         // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const menuIcon = document.getElementById('menu-icon');
         const isHomepage = true;
+        const isDarkHero = false;
         let menuOpen = false;
 
         mobileMenuBtn.addEventListener('click', function() {
@@ -429,6 +550,7 @@
         // Navbar scroll effect + scroll progress
         const navbar = document.getElementById('navbar');
         const scrollProgress = document.getElementById('scroll-progress');
+        const headerLogo = document.getElementById('header-logo');
 
         function updateNavbar() {
             const scrollY = window.scrollY;
@@ -439,19 +561,31 @@
             // Don't change navbar when mobile menu is open
             if (menuOpen) return;
 
-            if (isHomepage) {
+            if (isHomepage || isDarkHero) {
                 if (scrollY > 50) {
                     navbar.classList.remove('navbar-glass');
                     navbar.classList.add('navbar-solid');
+                    if (headerLogo) {
+                        headerLogo.classList.remove('invert', 'brightness-0');
+                    }
                 } else {
                     navbar.classList.remove('navbar-solid');
                     navbar.classList.add('navbar-glass');
+                    if (headerLogo) {
+                        headerLogo.classList.add('invert', 'brightness-0');
+                    }
                 }
             } else {
                 if (scrollY > 50) {
                     navbar.classList.add('shadow-lg');
+                    if (headerLogo) {
+                        headerLogo.classList.remove('invert', 'brightness-0');
+                    }
                 } else {
                     navbar.classList.remove('shadow-lg');
+                    if (headerLogo) {
+                        headerLogo.classList.add('invert', 'brightness-0');
+                    }
                 }
             }
         }
@@ -1829,7 +1963,7 @@
                 <div class="lg:col-span-4">
                     <div class="mb-6">
                         <a href="index.html" class="inline-block group">
-                            <img src="assets/logo/dr-praveen-logo.webp" alt="Dr. Praveen Gupta Logo" class="h-12 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300">
+                            <img src="assets/logo/NeuroDoc - logo_highquality.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" class="h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 invert brightness-0">
                         </a>
                     </div>
                     <p class="text-white/70 leading-relaxed mb-6 text-sm">
@@ -1882,43 +2016,85 @@
                         Quick Links
                     </h3>
                     <ul class="space-y-2.5">
-                                                    <li>
-                                <a href="index.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
-                                    <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
-                                    <span class="group-hover:translate-x-0.5 transition-transform">Home</span>
-                                </a>
-                            </li>
-                                                    <li>
-                                <a href="about.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
-                                    <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
-                                    <span class="group-hover:translate-x-0.5 transition-transform">About</span>
-                                </a>
-                            </li>
-                                                    <li>
-                                <a href="services.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
-                                    <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
-                                    <span class="group-hover:translate-x-0.5 transition-transform">Services</span>
-                                </a>
-                            </li>
-                                                    <li>
-                                <a href="gallery.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
-                                    <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
-                                    <span class="group-hover:translate-x-0.5 transition-transform">Gallery</span>
-                                </a>
-                            </li>
-                                                    <li>
-                                <a href="blog.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
-                                    <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
-                                    <span class="group-hover:translate-x-0.5 transition-transform">Blog</span>
-                                </a>
-                            </li>
-                                                    <li>
-                                <a href="contact.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
-                                    <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
-                                    <span class="group-hover:translate-x-0.5 transition-transform">Contact</span>
-                                </a>
-                            </li>
-                                            </ul>
+                                                                                    <li>
+                                    <a href="index.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                                        <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
+                                        <span class="group-hover:translate-x-0.5 transition-transform">Home</span>
+                                    </a>
+                                </li>
+                                                                                                                <li>
+                                    <a href="about.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                                        <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
+                                        <span class="group-hover:translate-x-0.5 transition-transform">About</span>
+                                    </a>
+                                </li>
+                                                                                                                <li>
+                                    <a href="services.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                                        <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
+                                        <span class="group-hover:translate-x-0.5 transition-transform">Services</span>
+                                    </a>
+                                </li>
+                                                                                                                                                    <li>
+                                        <a href="patient-info.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                                            <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
+                                            <span class="group-hover:translate-x-0.5 transition-transform">Patient Info</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="neurology-patient-testimonials.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                                            <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
+                                            <span class="group-hover:translate-x-0.5 transition-transform">Testimonials</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="faqs-neurologist-near-me.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                                            <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
+                                            <span class="group-hover:translate-x-0.5 transition-transform">FAQs</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="brain-stroke-helpline.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                                            <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
+                                            <span class="group-hover:translate-x-0.5 transition-transform">Stroke Helpline</span>
+                                        </a>
+                                    </li>
+                                                                                                                                                                                    <li>
+                                        <a href="videos.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                                            <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
+                                            <span class="group-hover:translate-x-0.5 transition-transform">Videos Hub</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="media-coverage.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                                            <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
+                                            <span class="group-hover:translate-x-0.5 transition-transform">Media Coverage</span>
+                                        </a>
+                                    </li>
+                                                                    <li>
+                                        <a href="media-updates.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                                            <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
+                                            <span class="group-hover:translate-x-0.5 transition-transform">Media Updates</span>
+                                        </a>
+                                    </li>
+                                                                                                                                                <li>
+                                    <a href="gallery.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                                        <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
+                                        <span class="group-hover:translate-x-0.5 transition-transform">Gallery</span>
+                                    </a>
+                                </li>
+                                                                                                                <li>
+                                    <a href="dr-praveen-gupta-blog.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                                        <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
+                                        <span class="group-hover:translate-x-0.5 transition-transform">Blog</span>
+                                    </a>
+                                </li>
+                                                                                                                <li>
+                                    <a href="contact-us-top-neurologist-delhi-ncr.html" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                                        <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
+                                        <span class="group-hover:translate-x-0.5 transition-transform">Contact</span>
+                                    </a>
+                                </li>
+                                                                        </ul>
                 </div>
 
                 <!-- Services -->

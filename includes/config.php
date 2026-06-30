@@ -21,12 +21,23 @@ define('SOCIAL_LINKEDIN', 'https://linkedin.com/in/drpraveengupta');
 
 // Navigation
 $navItems = [
-    ['name' => 'Home', 'url' => 'index.php', 'active' => true],
-    ['name' => 'About', 'url' => 'about.php', 'active' => false],
-    ['name' => 'Services', 'url' => 'services.php', 'active' => false],
-    ['name' => 'Gallery', 'url' => 'gallery.php', 'active' => false],
-    ['name' => 'Blog', 'url' => 'blog.php', 'active' => false],
-    ['name' => 'Contact', 'url' => 'contact.php', 'active' => false],
+    ['name' => 'Home', 'url' => 'index.php'],
+    ['name' => 'About', 'url' => 'about.php'],
+    ['name' => 'Services', 'url' => 'services.php'],
+    ['name' => 'Patient Info', 'url' => '#', 'children' => [
+        ['name' => 'Patient Info', 'url' => 'patient-info.php'],
+        ['name' => 'Testimonials', 'url' => 'neurology-patient-testimonials.php'],
+        ['name' => 'FAQs', 'url' => 'faqs-neurologist-near-me.php'],
+        ['name' => 'Stroke Helpline', 'url' => 'brain-stroke-helpline.php'],
+    ]],
+    ['name' => 'Media', 'url' => '#', 'children' => [
+        ['name' => 'Videos Hub', 'url' => 'videos.php'],
+        ['name' => 'Media Coverage', 'url' => 'media-coverage.php'],
+        ['name' => 'Media Updates', 'url' => 'media-updates.php'],
+    ]],
+    ['name' => 'Gallery', 'url' => 'gallery.php'],
+    ['name' => 'Blog', 'url' => 'dr-praveen-gupta-blog.php'],
+    ['name' => 'Contact', 'url' => 'contact-us-top-neurologist-delhi-ncr.php'],
 ];
 
 // Services

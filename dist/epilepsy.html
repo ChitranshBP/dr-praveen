@@ -305,7 +305,7 @@
     </div> -->
 
     <!-- Main Navigation -->
-    <nav id="navbar" class="sticky top-0 z-50 transition-all duration-500 navbar-solid">
+    <nav id="navbar" class="sticky top-0 z-50 transition-all duration-500 navbar-glass">
         <!-- Scroll Progress Bar -->
         <div class="scroll-progress" id="scroll-progress" style="width: 0%"></div>
 
@@ -322,7 +322,7 @@
                                class="nav-link-anim relative px-5 py-2 text-sm font-semibold transition-colors duration-300 nav-link rounded-full text-dark-grey hover:bg-white/5">
                                 Home                            </a>
                                                                                                 <a href="about.html"
-                               class="nav-link-anim relative px-5 py-2 text-sm font-semibold transition-colors duration-300 nav-link rounded-full active bg-white/10">
+                               class="nav-link-anim relative px-5 py-2 text-sm font-semibold transition-colors duration-300 nav-link rounded-full text-dark-grey hover:bg-white/5">
                                 About                            </a>
                                                                                                 <a href="services.html"
                                class="nav-link-anim relative px-5 py-2 text-sm font-semibold transition-colors duration-300 nav-link rounded-full text-dark-grey hover:bg-white/5">
@@ -410,9 +410,9 @@
                             <i class="fas fa-chevron-right text-xs text-cyan-accent"></i>
                         </a>
                                                                                 <a href="about.html"
-                           class="flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-all bg-gradient-to-r from-electric-blue/10 to-cyan-accent/10 text-electric-blue border border-electric-blue/20">
+                           class="flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-all text-dark-grey hover:bg-soft-cyan hover:text-electric-blue">
                             <span class="flex items-center space-x-3">
-                                <span class="w-1.5 h-1.5 rounded-full bg-cyan-accent"></span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-silver-grey"></span>
                                 <span>About</span>
                             </span>
                             <i class="fas fa-chevron-right text-xs text-cyan-accent"></i>
@@ -527,7 +527,7 @@
         const mobileMenu = document.getElementById('mobile-menu');
         const menuIcon = document.getElementById('menu-icon');
         const isHomepage = false;
-        const isDarkHero = false;
+        const isDarkHero = true;
         let menuOpen = false;
 
         mobileMenuBtn.addEventListener('click', function() {
@@ -594,409 +594,615 @@
         updateNavbar();
     </script>
 
-<!-- About Page Hero -->
-<section class="relative overflow-hidden bg-white">
-    <div class="absolute inset-0 -z-0">
-        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-accent/10 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-electric-blue/10 rounded-full blur-3xl"></div>
-    </div>
+<!-- Page Hero -->
+<section class="relative overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20">
+    <div class="absolute inset-0 bg-black/5"></div>
 
-    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <!-- Breadcrumb -->
-        <div class="flex items-center space-x-2 text-xs text-dark-grey/50 mb-8 animate-fade-in tracking-wide uppercase">
-            <a href="index.html" class="hover:text-electric-blue transition-colors">Home</a>
-            <span class="text-cyan-accent">/</span>
-            <span class="text-electric-blue font-semibold">About</span>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-3xl text-left animate-fade-in-up">
+            <!-- Breadcrumb -->
+            <nav class="flex items-center space-x-2 text-white/80 text-sm mb-3">
+                <a href="index.html" class="hover:text-white transition-colors">Home</a>
+                <i class="fas fa-chevron-right text-[8px]"></i>
+                <a href="services.html" class="hover:text-white transition-colors">Services</a>
+                <i class="fas fa-chevron-right text-[8px]"></i>
+                <span class="text-white font-medium">Epilepsy</span>
+            </nav>
+
+            <!-- Badge -->
+            <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4">
+                <i class="fas fa-bolt text-[10px]"></i>
+                <span>Specialized Neurological Care</span>
+            </div>
+
+            <!-- Heading -->
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-3">
+                Expert <span class="text-white">Epilepsy</span> Treatment
+            </h1>
+
+            <p class="text-sm md:text-base text-white/80 leading-relaxed mb-6 max-w-2xl">
+                Comprehensive care for seizures and epilepsy disorders. Dr. Praveen Gupta provides advanced diagnosis and personalized treatment plans to help you achieve seizure freedom.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-wrap gap-3">
+                <a href="contact.html" class="inline-flex items-center space-x-2.5 bg-white text-deep-indigo font-semibold px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-white/30 transition-all duration-300 transform hover:-translate-y-1 text-sm">
+                    <span>Book Appointment</span>
+                    <i class="fas fa-arrow-right text-xs"></i>
+                </a>
+                <a href="tel:+91-9876543210" class="inline-flex items-center space-x-2.5 bg-white/20 backdrop-blur-sm text-white font-semibold px-6 py-2.5 rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 text-sm">
+                    <i class="fas fa-phone text-xs"></i>
+                    <span>Call Now</span>
+                </a>
+            </div>
         </div>
+    </div>
+</section>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            <!-- Left Content -->
-            <div class="lg:col-span-7">
-                <div class="inline-flex items-center space-x-2 mb-6 animate-fade-in-up">
-                    <span class="w-8 h-px bg-electric-blue"></span>
-                    <span class="text-electric-blue text-xs font-semibold tracking-[0.2em] uppercase">Neurologist • Chairman MAIINS</span>
-                </div>
-
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-deep-indigo leading-[1.05] mb-6 animate-fade-in-up tracking-tight" style="animation-delay: 100ms;">
-                    Dr. Praveen
-                    <span class="block gradient-text">Gupta</span>
-                </h1>
-
-                <p class="text-lg md:text-xl text-dark-grey/70 mb-6 leading-relaxed max-w-xl font-light animate-fade-in-up" style="animation-delay: 200ms;">
-                    A leading neurologist with over <span class="text-deep-indigo font-medium">20 years</span> of experience pioneering advanced treatments in stroke, epilepsy, and movement disorders.
+<!-- What is Epilepsy Section -->
+<section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="animate-slide-in-left">
+                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Understanding</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">What is Epilepsy?</h2>
+                <p class="text-dark-grey/70 leading-relaxed mb-6">
+                    Epilepsy is a neurological disorder characterized by recurrent, unprovoked seizures. It affects over 50 million people worldwide, making it one of the most common neurological conditions. While epilepsy can develop at any age, it often begins in childhood or after age 60.
+                </p>
+                <p class="text-dark-grey/70 leading-relaxed mb-8">
+                    At our clinic, we understand that living with epilepsy affects every aspect of your life—from daily activities to personal relationships. Our comprehensive approach focuses not just on controlling seizures, but on improving your overall quality of life through evidence-based treatments and compassionate care.
                 </p>
 
-                <!-- Minimal meta -->
-                <div class="flex flex-wrap items-center gap-x-8 gap-y-3 mb-7 text-sm text-dark-grey/60 animate-fade-in-up" style="animation-delay: 300ms;">
-                    <span class="flex items-center space-x-2">
-                        <i class="fas fa-graduation-cap text-cyan-accent"></i>
-                        <span>MBBS, MD</span>
-                    </span>
-                    <span class="flex items-center space-x-2">
-                        <i class="fas fa-hospital text-cyan-accent"></i>
-                        <span>Marengo Asia</span>
-                    </span>
-                    <span class="flex items-center space-x-2">
-                        <i class="fas fa-award text-cyan-accent"></i>
-                        <span>First DBS, Gurugram</span>
-                    </span>
-                </div>
-
-                <!-- CTAs -->
-                <div class="flex flex-wrap items-center gap-4 animate-fade-in-up" style="animation-delay: 400ms;">
-                    <a href="contact.html" class="group inline-flex items-center space-x-3 bg-deep-indigo text-white text-sm font-medium pl-6 pr-2 py-2.5 rounded-full hover:bg-electric-blue transition-colors duration-300">
-                        <span>Book Consultation</span>
-                        <span class="w-7 h-7 rounded-full bg-white/10 group-hover:bg-white/20 flex items-center justify-center transition-colors">
-                            <i class="fas fa-arrow-right text-[10px] group-hover:rotate-45 transition-transform duration-300"></i>
-                        </span>
-                    </a>
-                    <a href="#specializations" class="group text-sm font-medium text-deep-indigo hover:text-electric-blue transition-colors flex items-center space-x-2">
-                        <span>Specializations</span>
-                        <i class="fas fa-arrow-down text-xs group-hover:translate-y-1 transition-transform"></i>
-                    </a>
+                <!-- Key Facts -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-electric-blue text-xs"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-dark-grey text-sm">Neurological Disorder</div>
+                            <div class="text-xs text-dark-grey/60">Brain-based condition</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-electric-blue text-xs"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-dark-grey text-sm">Treatable Condition</div>
+                            <div class="text-xs text-dark-grey/60">70% can be seizure-free</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-electric-blue text-xs"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-dark-grey text-sm">All Ages</div>
+                            <div class="text-xs text-dark-grey/60">Can affect anyone</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-electric-blue text-xs"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-dark-grey text-sm">Not a Mental Illness</div>
+                            <div class="text-xs text-dark-grey/60">Separate from psychiatric</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Right - Doctor Portrait -->
-            <div class="lg:col-span-5 animate-fade-in" style="animation-delay: 200ms;">
-                <div class="relative max-w-sm mx-auto">
-                    <!-- Soft glow -->
-                    <div class="absolute -inset-4 bg-gradient-to-br from-electric-blue/20 to-cyan-accent/20 rounded-3xl blur-2xl"></div>
-
-                    <!-- Portrait image with gradient frame -->
-                    <div class="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-xl bg-gradient-to-br from-deep-indigo to-electric-blue p-1">
-                        <div class="relative w-full h-full rounded-[1.4rem] overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent">
-                            <img src="assets/dpg-1.webp" alt="Dr. Praveen Gupta" class="absolute inset-0 w-full h-full object-cover">
-                            <!-- Subtle gradient overlay for legibility -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-deep-indigo/60 via-transparent to-transparent"></div>
-
-                            <!-- Bottom info -->
-                            <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
-                                <p class="text-cyan-200 text-xs tracking-widest uppercase">Chairman</p>
-                                <p class="text-white font-serif text-lg font-semibold mt-1">Marengo Asia Neuro & Spine</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Small floating badge -->
-                    <div class="absolute -top-3 -right-3 w-14 h-14 rounded-full bg-white shadow-lg flex items-center justify-center border border-silver-grey/50">
-                        <i class="fas fa-award text-cyan-accent text-lg"></i>
-                    </div>
+            <!-- Image Side -->
+            <div class="relative flex justify-center lg:justify-end animate-slide-in-right">
+                <div class="relative w-full max-w-md lg:max-w-none aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-soft-cyan to-silver-grey border border-silver-grey/20">
+                    <img src="assets/services/epilepsy.png" alt="Understanding Epilepsy" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Minimal Stats Strip -->
-<section class="py-12 border-y border-silver-grey/60 bg-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-silver-grey/60">
-            <div class="text-center px-4 py-4">
-                <div class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo">20+</div>
-                <div class="text-xs text-dark-grey/60 mt-1 tracking-wide uppercase">Years</div>
-            </div>
-            <div class="text-center px-4 py-4">
-                <div class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo">500K+</div>
-                <div class="text-xs text-dark-grey/60 mt-1 tracking-wide uppercase">Patients</div>
-            </div>
-            <div class="text-center px-4 py-4">
-                <div class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo">70+</div>
-                <div class="text-xs text-dark-grey/60 mt-1 tracking-wide uppercase">Publications</div>
-            </div>
-            <div class="text-center px-4 py-4">
-                <div class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo">4.9</div>
-                <div class="text-xs text-dark-grey/60 mt-1 tracking-wide uppercase">Rating</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- About / Bio Section with Image -->
-<section class="py-14 lg:py-20 bg-white overflow-hidden">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-
-            <!-- Single Image -->
-            <div class="lg:col-span-5 order-2 lg:order-1">
-                <div class="relative max-w-md mx-auto">
-                    <!-- Main single image -->
-                    <div class="aspect-[3/4] rounded-3xl overflow-hidden shadow-xl ring-1 ring-silver-grey/50">
-                        <img src="assets/awards/AWARD-PRAVEEN.webp" alt="Dr. Praveen Gupta Award Recognition" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                    </div>
-                    <!-- Decorative gradient blobs -->
-                    <div class="absolute -top-4 -left-4 w-24 h-24 rounded-full bg-gradient-to-br from-electric-blue/20 to-cyan-accent/20 blur-xl -z-10"></div>
-                    <div class="absolute -bottom-4 -right-4 w-32 h-32 rounded-full bg-gradient-to-br from-cyan-accent/20 to-electric-blue/20 blur-xl -z-10"></div>
-                </div>
-            </div>
-
-            <!-- Text -->
-            <div class="lg:col-span-7 order-1 lg:order-2">
-                <div class="inline-flex items-center space-x-2 mb-6">
-                    <span class="w-8 h-px bg-electric-blue"></span>
-                    <span class="text-electric-blue text-xs font-semibold tracking-[0.2em] uppercase">About</span>
-                </div>
-
-                <h2 class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo mb-5 leading-tight">
-                    Pioneering the Future of <span class="gradient-text">Neurology in India</span>
-                </h2>
-
-                <p class="text-base text-dark-grey/70 mb-4 leading-relaxed">
-                    Driven by passion and precision, Dr. Gupta has played a pioneering role in shaping the future of neurology in India. He established <strong class="text-deep-indigo">Gurgaon's first dedicated stroke centre</strong> and became the first neurologist to perform solo mechanical thrombolysis in the region.
-                </p>
-
-                <p class="text-base text-dark-grey/70 leading-relaxed">
-                    His groundbreaking achievements include conducting the <strong class="text-deep-indigo">first Deep Brain Stimulation (DBS) procedure in Gurugram</strong> and performing the <strong class="text-deep-indigo">first epileptic DBS in Asia</strong> — setting new benchmarks for neurological innovation.
-                </p>
-
-                <!-- Key Highlights Grid -->
-                <div class="grid grid-cols-2 gap-3 mt-7">
-                    <div class="group flex items-start space-x-3 p-3 rounded-xl bg-soft-cyan/50 border border-silver-grey/40 hover:border-electric-blue/40 hover:bg-white transition-all duration-300">
-                        <span class="w-9 h-9 rounded-lg bg-electric-blue/10 group-hover:bg-electric-blue flex items-center justify-center flex-shrink-0 transition-colors">
-                            <i class="fas fa-bolt text-electric-blue group-hover:text-white text-xs transition-colors"></i>
-                        </span>
-                        <div>
-                            <p class="font-semibold text-deep-indigo text-xs leading-tight">Pioneer of Stroke Care</p>
-                            <p class="text-dark-grey/60 text-[11px] mt-0.5">Gurgaon's 1st stroke centre</p>
-                        </div>
-                    </div>
-                    <div class="group flex items-start space-x-3 p-3 rounded-xl bg-soft-cyan/50 border border-silver-grey/40 hover:border-electric-blue/40 hover:bg-white transition-all duration-300">
-                        <span class="w-9 h-9 rounded-lg bg-electric-blue/10 group-hover:bg-electric-blue flex items-center justify-center flex-shrink-0 transition-colors">
-                            <i class="fas fa-brain text-electric-blue group-hover:text-white text-xs transition-colors"></i>
-                        </span>
-                        <div>
-                            <p class="font-semibold text-deep-indigo text-xs leading-tight">First DBS, Gurugram</p>
-                            <p class="text-dark-grey/60 text-[11px] mt-0.5">Deep brain stimulation</p>
-                        </div>
-                    </div>
-                    <div class="group flex items-start space-x-3 p-3 rounded-xl bg-soft-cyan/50 border border-silver-grey/40 hover:border-electric-blue/40 hover:bg-white transition-all duration-300">
-                        <span class="w-9 h-9 rounded-lg bg-electric-blue/10 group-hover:bg-electric-blue flex items-center justify-center flex-shrink-0 transition-colors">
-                            <i class="fas fa-globe-asia text-electric-blue group-hover:text-white text-xs transition-colors"></i>
-                        </span>
-                        <div>
-                            <p class="font-semibold text-deep-indigo text-xs leading-tight">First Epileptic DBS, Asia</p>
-                            <p class="text-dark-grey/60 text-[11px] mt-0.5">Continental benchmark</p>
-                        </div>
-                    </div>
-                    <div class="group flex items-start space-x-3 p-3 rounded-xl bg-soft-cyan/50 border border-silver-grey/40 hover:border-electric-blue/40 hover:bg-white transition-all duration-300">
-                        <span class="w-9 h-9 rounded-lg bg-electric-blue/10 group-hover:bg-electric-blue flex items-center justify-center flex-shrink-0 transition-colors">
-                            <i class="fas fa-stethoscope text-electric-blue group-hover:text-white text-xs transition-colors"></i>
-                        </span>
-                        <div>
-                            <p class="font-semibold text-deep-indigo text-xs leading-tight">20+ Years of Practice</p>
-                            <p class="text-dark-grey/60 text-[11px] mt-0.5">Neurology expertise</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Clinical Excellence Section with Service Images -->
-<section id="specializations" class="py-14 lg:py-20 bg-soft-cyan/30 relative overflow-hidden">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Section Header -->
-        <div class="text-center mb-10">
-            <div class="inline-flex items-center space-x-2 mb-6">
-                <span class="w-8 h-px bg-electric-blue"></span>
-                <span class="text-electric-blue text-xs font-semibold tracking-[0.2em] uppercase">Clinical Excellence</span>
-                <span class="w-8 h-px bg-electric-blue"></span>
-            </div>
-            <h2 class="text-4xl md:text-5xl font-serif font-bold text-deep-indigo mb-4 leading-tight">
-                Areas of <span class="gradient-text">Expertise</span>
-            </h2>
-            <p class="text-base text-dark-grey/70 max-w-2xl mx-auto leading-relaxed">
-                A deep commitment to patient-centric care and innovation has shaped comprehensive stroke, epilepsy, and movement disorder programs — setting new benchmarks in neurology.
+<!-- Types of Seizures -->
+<section class="py-12 bg-[#edf5f9]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Recognition</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Types of Seizures</h2>
+            <p class="text-dark-grey/70 leading-relaxed">
+                Understanding the different types of seizures is crucial for proper diagnosis and treatment. Seizures are categorized based on where they begin in the brain.
             </p>
         </div>
 
-        <!-- Specialty Cards with Images -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-            <!-- Stroke -->
-            <div class="group bg-white rounded-2xl overflow-hidden border border-silver-grey/50 hover:shadow-xl transition-all duration-500">
-                <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-soft-cyan to-silver-grey">
-                    <img src="assets/services/stroke.png" alt="Stroke & Vascular Neurology"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Focal Onset Seizures -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
+                <div class="w-14 h-14 bg-electric-blue/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-electric-blue group-hover:text-white transition-all duration-300">
+                    <i class="fas fa-brain text-electric-blue text-xl group-hover:text-white transition-colors"></i>
                 </div>
-                <div class="p-6">
-                    <div class="flex items-center space-x-3 mb-3">
-                        <div class="w-9 h-9 rounded-full border border-electric-blue/30 group-hover:bg-electric-blue group-hover:border-electric-blue flex items-center justify-center transition-all duration-300">
-                            <i class="fas fa-heartbeat text-electric-blue group-hover:text-white text-xs transition-colors"></i>
-                        </div>
-                        <h3 class="text-base font-semibold text-deep-indigo">Stroke & Vascular</h3>
-                    </div>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed">Pioneer of Gurgaon's first dedicated stroke centre with advanced management protocols.</p>
+                <h3 class="text-lg font-bold text-dark-grey mb-3">Focal Onset Seizures</h3>
+                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
+                    Begin in one area of the brain. May cause changes in sensation, emotions, or movements while the person remains conscious (focal aware) or may cause loss of awareness (focal impaired awareness).
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Motor</span>
+                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Non-Motor</span>
                 </div>
             </div>
 
-            <!-- Epilepsy -->
-            <div class="group bg-white rounded-2xl overflow-hidden border border-silver-grey/50 hover:shadow-xl transition-all duration-500">
-                <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-soft-cyan to-silver-grey">
-                    <img src="assets/services/epilepsy.png" alt="Epilepsy & Seizure Management"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <!-- Generalized Onset -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
+                <div class="w-14 h-14 bg-cyan-accent/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-cyan-accent transition-all duration-300">
+                    <i class="fas fa-bolt text-cyan-accent text-xl group-hover:text-white transition-colors"></i>
                 </div>
-                <div class="p-6">
-                    <div class="flex items-center space-x-3 mb-3">
-                        <div class="w-9 h-9 rounded-full border border-electric-blue/30 group-hover:bg-electric-blue group-hover:border-electric-blue flex items-center justify-center transition-all duration-300">
-                            <i class="fas fa-bolt text-electric-blue group-hover:text-white text-xs transition-colors"></i>
-                        </div>
-                        <h3 class="text-base font-semibold text-deep-indigo">Epilepsy & Seizures</h3>
-                    </div>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed">Performed the first epileptic DBS in Asia — redefining advanced epilepsy treatment.</p>
+                <h3 class="text-lg font-bold text-dark-grey mb-3">Generalized Onset Seizures</h3>
+                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
+                    Affect both sides of the brain simultaneously from the start. These include absence seizures (brief loss of awareness), tonic seizures (muscle stiffening), and clonic seizures (rhythmic jerking).
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Tonic-Clonic</span>
+                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Absence</span>
                 </div>
             </div>
 
-            <!-- Movement Disorders -->
-            <div class="group bg-white rounded-2xl overflow-hidden border border-silver-grey/50 hover:shadow-xl transition-all duration-500">
-                <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-soft-cyan to-silver-grey">
-                    <img src="assets/services/parkinsons.png" alt="Movement Disorders & Parkinson's"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <!-- Unknown Onset -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
+                <div class="w-14 h-14 bg-deep-indigo/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-deep-indigo transition-all duration-300">
+                    <i class="fas fa-question text-deep-indigo text-xl group-hover:text-white transition-colors"></i>
                 </div>
-                <div class="p-6">
-                    <div class="flex items-center space-x-3 mb-3">
-                        <div class="w-9 h-9 rounded-full border border-electric-blue/30 group-hover:bg-electric-blue group-hover:border-electric-blue flex items-center justify-center transition-all duration-300">
-                            <i class="fas fa-walking text-electric-blue group-hover:text-white text-xs transition-colors"></i>
-                        </div>
-                        <h3 class="text-base font-semibold text-deep-indigo">Movement Disorders</h3>
-                    </div>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed">Conducted the first Deep Brain Stimulation (DBS) procedure in Gurugram.</p>
+                <h3 class="text-lg font-bold text-dark-grey mb-3">Unknown Onset Seizures</h3>
+                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
+                    When the beginning of a seizure cannot be determined as focal or generalized. Further testing and monitoring may be needed to classify the seizure type accurately.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Unclassified</span>
+                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Diagnostic</span>
                 </div>
             </div>
+        </div>
 
-            <!-- Headache -->
-            <div class="group bg-white rounded-2xl overflow-hidden border border-silver-grey/50 hover:shadow-xl transition-all duration-500">
-                <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-soft-cyan to-silver-grey">
-                    <img src="assets/services/headache.png" alt="Headache & Migraine"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        <!-- Warning Signs -->
+        <div class="mt-12 bg-white rounded-2xl p-8 border border-silver-grey/20">
+            <div class="flex items-start space-x-4 mb-6">
+                <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-triangle-exclamation text-red-500 text-lg"></i>
                 </div>
-                <div class="p-6">
-                    <div class="flex items-center space-x-3 mb-3">
-                        <div class="w-9 h-9 rounded-full border border-electric-blue/30 group-hover:bg-electric-blue group-hover:border-electric-blue flex items-center justify-center transition-all duration-300">
-                            <i class="fas fa-head-side-virus text-electric-blue group-hover:text-white text-xs transition-colors"></i>
-                        </div>
-                        <h3 class="text-base font-semibold text-deep-indigo">Headache & Migraine</h3>
-                    </div>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed">Comprehensive therapeutic approaches for chronic and complex headache disorders.</p>
+                <div>
+                    <h4 class="text-lg font-bold text-dark-grey">When to Seek Emergency Care</h4>
+                    <p class="text-sm text-dark-grey/60 mt-1">Call emergency services immediately if:</p>
                 </div>
             </div>
-
-            <!-- MS -->
-            <div class="group bg-white rounded-2xl overflow-hidden border border-silver-grey/50 hover:shadow-xl transition-all duration-500">
-                <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-soft-cyan to-silver-grey">
-                    <img src="assets/services/ms.png" alt="Multiple Sclerosis"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="flex items-center space-x-3 text-sm">
+                    <i class="fas fa-circle text-red-400 text-[6px]"></i>
+                    <span class="text-dark-grey/80">Seizure lasts more than 5 minutes</span>
                 </div>
-                <div class="p-6">
-                    <div class="flex items-center space-x-3 mb-3">
-                        <div class="w-9 h-9 rounded-full border border-electric-blue/30 group-hover:bg-electric-blue group-hover:border-electric-blue flex items-center justify-center transition-all duration-300">
-                            <i class="fas fa-ribbon text-electric-blue group-hover:text-white text-xs transition-colors"></i>
-                        </div>
-                        <h3 class="text-base font-semibold text-deep-indigo">Multiple Sclerosis</h3>
-                    </div>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed">Advanced immunomodulatory therapies and tailored symptom management.</p>
+                <div class="flex items-center space-x-3 text-sm">
+                    <i class="fas fa-circle text-red-400 text-[6px]"></i>
+                    <span class="text-dark-grey/80">Second seizure follows immediately</span>
                 </div>
-            </div>
-
-            <!-- Neuropathy -->
-            <div class="group bg-white rounded-2xl overflow-hidden border border-silver-grey/50 hover:shadow-xl transition-all duration-500">
-                <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-soft-cyan to-silver-grey">
-                    <img src="assets/services/neuropathy.png" alt="Peripheral Neuropathy"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                <div class="flex items-center space-x-3 text-sm">
+                    <i class="fas fa-circle text-red-400 text-[6px]"></i>
+                    <span class="text-dark-grey/80">Person doesn't breathe normally after</span>
                 </div>
-                <div class="p-6">
-                    <div class="flex items-center space-x-3 mb-3">
-                        <div class="w-9 h-9 rounded-full border border-electric-blue/30 group-hover:bg-electric-blue group-hover:border-electric-blue flex items-center justify-center transition-all duration-300">
-                            <i class="fas fa-hand-holding-medical text-electric-blue group-hover:text-white text-xs transition-colors"></i>
-                        </div>
-                        <h3 class="text-base font-semibold text-deep-indigo">Peripheral Neuropathy</h3>
-                    </div>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed">Expert diagnosis and targeted treatments for nerve damage and neurodegenerative conditions.</p>
+                <div class="flex items-center space-x-3 text-sm">
+                    <i class="fas fa-circle text-red-400 text-[6px]"></i>
+                    <span class="text-dark-grey/80">Person is injured during seizure</span>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Achievements — Image Carousel Style -->
-<section class="py-14 lg:py-20 bg-white overflow-hidden">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-
-            <!-- Main Award Image -->
-            <div class="lg:col-span-5 order-2 lg:order-1">
-                <div class="relative max-w-md mx-auto">
-                    <!-- Main large image -->
-                    <div class="aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-silver-grey/50">
-                        <img src="assets/full-image/dpg-award.webp" alt="Dr. Praveen Gupta - Award Recognition" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                    </div>
-                    <!-- Floating accent: small image top-right -->
-                    <div class="absolute -top-6 -right-4 w-28 h-28 rounded-2xl overflow-hidden shadow-xl border-4 border-white hidden md:block">
-                        <img src="assets/awards/1.jpg" alt="Award" class="w-full h-full object-cover">
-                    </div>
-                    <!-- Floating accent: small image bottom-left -->
-                    <div class="absolute -bottom-6 -left-6 w-24 h-24 rounded-2xl overflow-hidden shadow-xl border-4 border-white hidden md:block">
-                        <img src="assets/awards/3.jpg" alt="Award" class="w-full h-full object-cover">
-                    </div>
-                    <!-- Decorative gradient blob -->
-                    <div class="absolute -top-4 -left-4 w-24 h-24 rounded-full bg-gradient-to-br from-electric-blue/20 to-cyan-accent/20 blur-xl -z-10"></div>
-                    <div class="absolute -bottom-4 -right-4 w-32 h-32 rounded-full bg-gradient-to-br from-cyan-accent/20 to-electric-blue/20 blur-xl -z-10"></div>
+<!-- Symptoms Section -->
+<section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <!-- Image -->
+            <div class="relative order-2 lg:order-1">
+                <div class="rounded-[32px] overflow-hidden shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&h=600&q=80" alt="Epilepsy Symptoms Recognition and Diagnosis" class="w-full h-auto">
                 </div>
+                <!-- Decorative element -->
+                <div class="absolute -top-6 -left-6 w-32 h-32 bg-electric-blue/10 rounded-2xl -z-10"></div>
+                <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-cyan-accent/10 rounded-2xl -z-10"></div>
             </div>
 
             <!-- Content -->
-            <div class="lg:col-span-7 order-1 lg:order-2">
-                <div class="inline-flex items-center space-x-2 mb-6">
-                    <span class="w-8 h-px bg-electric-blue"></span>
-                    <span class="text-electric-blue text-xs font-semibold tracking-[0.2em] uppercase">Achievements</span>
-                </div>
-
-                <h2 class="text-4xl md:text-5xl font-serif font-bold text-deep-indigo mb-5 leading-tight">
-                    A Career of <span class="gradient-text">Firsts</span>
-                </h2>
-
-                <p class="text-base text-dark-grey/70 mb-6 leading-relaxed">
-                    A career decorated with honors, awards, and milestones that reflect a relentless pursuit of medical excellence and innovation in Indian neurology.
+            <div class="order-1 lg:order-2">
+                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Recognition</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Symptoms & Warning Signs</h2>
+                <p class="text-dark-grey/70 leading-relaxed mb-8">
+                    Recognizing seizure symptoms is the first step toward proper diagnosis and treatment. Symptoms vary widely depending on the type of seizure and the area of the brain affected.
                 </p>
 
-                <!-- Minimal list -->
-                <ul class="space-y-5">
-                    <li class="flex items-start space-x-4 group">
-                        <span class="w-6 h-6 rounded-full bg-electric-blue/10 group-hover:bg-electric-blue flex items-center justify-center flex-shrink-0 mt-0.5 transition-colors">
-                            <i class="fas fa-check text-electric-blue group-hover:text-white text-[10px] transition-colors"></i>
-                        </span>
-                        <div>
-                            <p class="font-semibold text-deep-indigo text-sm">First Dedicated Stroke Centre in Gurgaon</p>
-                            <p class="text-dark-grey/60 text-xs mt-0.5">Established pioneering stroke protocols for the region</p>
+                <!-- Symptoms Grid -->
+                <div class="grid grid-cols-2 gap-4 mb-8">
+                    <!-- Motor Symptoms -->
+                    <div class="bg-[#edf5f9] rounded-xl p-4">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <i class="fas fa-hand-fist text-electric-blue"></i>
+                            <span class="font-semibold text-dark-grey text-sm">Motor Symptoms</span>
                         </div>
+                        <ul class="space-y-2 text-sm text-dark-grey/70">
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-check text-electric-blue/60 text-[10px]"></i>
+                                <span>Jerking movements</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-check text-electric-blue/60 text-[10px]"></i>
+                                <span>Muscle weakness</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-check text-electric-blue/60 text-[10px]"></i>
+                                <span>Twitching or spasms</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-check text-electric-blue/60 text-[10px]"></i>
+                                <span>Rigid muscles</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Non-Motor Symptoms -->
+                    <div class="bg-[#edf5f9] rounded-xl p-4">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <i class="fas fa-brain text-cyan-accent"></i>
+                            <span class="font-semibold text-dark-grey text-sm">Non-Motor Symptoms</span>
+                        </div>
+                        <ul class="space-y-2 text-sm text-dark-grey/70">
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-check text-cyan-accent/60 text-[10px]"></i>
+                                <span>Staring spells</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-check text-cyan-accent/60 text-[10px]"></i>
+                                <span>Confusion</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-check text-cyan-accent/60 text-[10px]"></i>
+                                <span>Fear or anxiety</span>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                                <i class="fas fa-check text-cyan-accent/60 text-[10px]"></i>
+                                <span>Strange smells/tastes</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Aura Signs -->
+                <div class="bg-electric-blue/5 border border-electric-blue/20 rounded-xl p-4">
+                    <div class="flex items-center space-x-3 mb-3">
+                        <i class="fas fa-eye text-electric-blue"></i>
+                        <span class="font-semibold text-dark-grey text-sm">Aura Signs (Early Warning)</span>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs bg-white border border-electric-blue/20 px-3 py-1.5 rounded-full text-dark-grey/70">Visual disturbances</span>
+                        <span class="text-xs bg-white border border-electric-blue/20 px-3 py-1.5 rounded-full text-dark-grey/70">Nausea</span>
+                        <span class="text-xs bg-white border border-electric-blue/20 px-3 py-1.5 rounded-full text-dark-grey/70">D déjà vu</span>
+                        <span class="text-xs bg-white border border-electric-blue/20 px-3 py-1.5 rounded-full text-dark-grey/70">Numbness</span>
+                        <span class="text-xs bg-white border border-electric-blue/20 px-3 py-1.5 rounded-full text-dark-grey/70">Speech difficulty</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Diagnosis Section -->
+<section class="py-12 bg-[#edf5f9]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Diagnosis</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">How We Diagnose Epilepsy</h2>
+            <p class="text-dark-grey/70 leading-relaxed">
+                Accurate diagnosis is the foundation of effective treatment. Our comprehensive diagnostic approach combines clinical evaluation with advanced technology to identify the type and cause of your seizures.
+            </p>
+        </div>
+
+        <!-- Diagnosis Steps -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            <!-- Step 1 -->
+            <div class="relative">
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 h-full">
+                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">1</div>
+                    <h3 class="text-lg font-bold text-dark-grey mb-3">Clinical Assessment</h3>
+                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
+                        Detailed review of your medical history, seizure description, family history, and physical examination to understand your symptoms.
+                    </p>
+                    <ul class="space-y-2 text-sm text-dark-grey/70">
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-clipboard-list text-electric-blue/60 text-xs"></i>
+                            <span>Medical history review</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-clipboard-list text-electric-blue/60 text-xs"></i>
+                            <span>Seizure description</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-clipboard-list text-electric-blue/60 text-xs"></i>
+                            <span>Physical examination</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Arrow -->
+                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
+                    <i class="fas fa-chevron-right text-xl"></i>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="relative">
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 h-full">
+                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">2</div>
+                    <h3 class="text-lg font-bold text-dark-grey mb-3">EEG Monitoring</h3>
+                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
+                        Electroencephalogram (EEG) records brain electrical activity to identify seizure patterns and determine the seizure focus.
+                    </p>
+                    <ul class="space-y-2 text-sm text-dark-grey/70">
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-clipboard-list text-electric-blue/60 text-xs"></i>
+                            <span>Standard EEG</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-clipboard-list text-electric-blue/60 text-xs"></i>
+                            <span>Video EEG monitoring</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-clipboard-list text-electric-blue/60 text-xs"></i>
+                            <span>Ambulatory EEG</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
+                    <i class="fas fa-chevron-right text-xl"></i>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="relative">
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 h-full">
+                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">3</div>
+                    <h3 class="text-lg font-bold text-dark-grey mb-3">Advanced Imaging</h3>
+                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
+                        MRI and CT scans to identify structural abnormalities, tumors, or brain lesions that may be causing seizures.
+                    </p>
+                    <ul class="space-y-2 text-sm text-dark-grey/70">
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-clipboard-list text-electric-blue/60 text-xs"></i>
+                            <span>High-resolution MRI</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-clipboard-list text-electric-blue/60 text-xs"></i>
+                            <span>Functional MRI</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-clipboard-list text-electric-blue/60 text-xs"></i>
+                            <span>PET scans</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
+                    <i class="fas fa-chevron-right text-xl"></i>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="relative">
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 h-full">
+                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">4</div>
+                    <h3 class="text-lg font-bold text-dark-grey mb-3">Lab Tests</h3>
+                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
+                        Blood tests and other laboratory investigations to rule out metabolic causes and identify any underlying conditions.
+                    </p>
+                    <ul class="space-y-2 text-sm text-dark-grey/70">
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-clipboard-list text-electric-blue/60 text-xs"></i>
+                            <span>Blood panel</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-clipboard-list text-electric-blue/60 text-xs"></i>
+                            <span>Metabolic screening</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-clipboard-list text-electric-blue/60 text-xs"></i>
+                            <span>Genetic testing</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center">
+            <p class="text-dark-grey/70 mb-6">Ready to get a proper diagnosis? Schedule a consultation today.</p>
+            <a href="contact.html" class="inline-flex items-center space-x-3 bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold px-8 py-4 rounded-full hover:shadow-xl hover:shadow-electric-blue/30 transition-all duration-300 transform hover:-translate-y-1">
+                <span>Schedule Diagnosis</span>
+                <i class="fas fa-arrow-right text-sm"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Treatment Section -->
+<section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Treatment</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Comprehensive Treatment Options</h2>
+            <p class="text-dark-grey/70 leading-relaxed">
+                Every patient's journey with epilepsy is unique. We offer a range of evidence-based treatments tailored to your specific condition, seizure type, and lifestyle needs.
+            </p>
+        </div>
+
+        <!-- Treatment Cards -->
+        <div class="grid lg:grid-cols-2 gap-8 mb-16">
+            <!-- Medication -->
+            <div class="bg-gradient-to-br from-electric-blue/5 to-cyan-accent/5 rounded-[24px] p-8 border border-electric-blue/10">
+                <div class="flex items-start space-x-5 mb-6">
+                    <div class="w-16 h-16 bg-electric-blue rounded-2xl flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-pills text-white text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-dark-grey mb-2">Anti-Seizure Medications (ASM)</h3>
+                        <p class="text-sm text-dark-grey/60">First-line treatment for most patients</p>
+                    </div>
+                </div>
+                <p class="text-dark-grey/70 leading-relaxed mb-6">
+                    Anti-seizure medications are the most common treatment for epilepsy. We carefully select and adjust medications based on your seizure type, age, other health conditions, and potential side effects.
+                </p>
+                <ul class="space-y-3">
+                    <li class="flex items-start space-x-3">
+                        <div class="w-6 h-6 bg-electric-blue/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-electric-blue text-[10px]"></i>
+                        </div>
+                        <span class="text-sm text-dark-grey/80">Over 20 FDA-approved medications available</span>
                     </li>
-                    <li class="flex items-start space-x-4 group">
-                        <span class="w-6 h-6 rounded-full bg-electric-blue/10 group-hover:bg-electric-blue flex items-center justify-center flex-shrink-0 mt-0.5 transition-colors">
-                            <i class="fas fa-check text-electric-blue group-hover:text-white text-[10px] transition-colors"></i>
-                        </span>
-                        <div>
-                            <p class="font-semibold text-deep-indigo text-sm">First Solo Mechanical Thrombolysis in the Region</p>
-                            <p class="text-dark-grey/60 text-xs mt-0.5">A breakthrough in advanced stroke intervention</p>
+                    <li class="flex items-start space-x-3">
+                        <div class="w-6 h-6 bg-electric-blue/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-electric-blue text-[10px]"></i>
                         </div>
+                        <span class="text-sm text-dark-grey/80">Personalized medication selection</span>
                     </li>
-                    <li class="flex items-start space-x-4 group">
-                        <span class="w-6 h-6 rounded-full bg-electric-blue/10 group-hover:bg-electric-blue flex items-center justify-center flex-shrink-0 mt-0.5 transition-colors">
-                            <i class="fas fa-check text-electric-blue group-hover:text-white text-[10px] transition-colors"></i>
-                        </span>
-                        <div>
-                            <p class="font-semibold text-deep-indigo text-sm">First Deep Brain Stimulation in Gurugram</p>
-                            <p class="text-dark-grey/60 text-xs mt-0.5">Transforming treatment for movement disorders</p>
+                    <li class="flex items-start space-x-3">
+                        <div class="w-6 h-6 bg-electric-blue/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-electric-blue text-[10px]"></i>
                         </div>
+                        <span class="text-sm text-dark-grey/80">Regular monitoring and dose adjustment</span>
                     </li>
-                    <li class="flex items-start space-x-4 group">
-                        <span class="w-6 h-6 rounded-full bg-electric-blue/10 group-hover:bg-electric-blue flex items-center justify-center flex-shrink-0 mt-0.5 transition-colors">
-                            <i class="fas fa-check text-electric-blue group-hover:text-white text-[10px] transition-colors"></i>
-                        </span>
-                        <div>
-                            <p class="font-semibold text-deep-indigo text-sm">First Epileptic DBS in Asia</p>
-                            <p class="text-dark-grey/60 text-xs mt-0.5">Setting a continental benchmark in epilepsy care</p>
+                    <li class="flex items-start space-x-3">
+                        <div class="w-6 h-6 bg-electric-blue/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-electric-blue text-[10px]"></i>
                         </div>
+                        <span class="text-sm text-dark-grey/80">Side effect management</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Dietary Therapy -->
+            <div class="bg-gradient-to-br from-cyan-accent/5 to-electric-blue/5 rounded-[24px] p-8 border border-cyan-accent/10">
+                <div class="flex items-start space-x-5 mb-6">
+                    <div class="w-16 h-16 bg-cyan-accent rounded-2xl flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-utensils text-white text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-dark-grey mb-2">Dietary Therapies</h3>
+                        <p class="text-sm text-dark-grey/60">Metabolic approaches to seizure control</p>
+                    </div>
+                </div>
+                <p class="text-dark-grey/70 leading-relaxed mb-6">
+                    Dietary modifications can be highly effective, especially for children and patients who don't respond well to medications. We offer guidance on specialized diets tailored to your needs.
+                </p>
+                <ul class="space-y-3">
+                    <li class="flex items-start space-x-3">
+                        <div class="w-6 h-6 bg-cyan-accent/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-cyan-accent text-[10px]"></i>
+                        </div>
+                        <span class="text-sm text-dark-grey/80">Ketogenic diet programs</span>
+                    </li>
+                    <li class="flex items-start space-x-3">
+                        <div class="w-6 h-6 bg-cyan-accent/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-cyan-accent text-[10px]"></i>
+                        </div>
+                        <span class="text-sm text-dark-grey/80">Modified Atkins diet</span>
+                    </li>
+                    <li class="flex items-start space-x-3">
+                        <div class="w-6 h-6 bg-cyan-accent/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-cyan-accent text-[10px]"></i>
+                        </div>
+                        <span class="text-sm text-dark-grey/80">Low glycemic index treatment</span>
+                    </li>
+                    <li class="flex items-start space-x-3">
+                        <div class="w-6 h-6 bg-cyan-accent/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-cyan-accent text-[10px]"></i>
+                        </div>
+                        <span class="text-sm text-dark-grey/80">Nutritional counseling</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Surgical Options -->
+            <div class="bg-gradient-to-br from-deep-indigo/5 to-electric-blue/5 rounded-[24px] p-8 border border-deep-indigo/10">
+                <div class="flex items-start space-x-5 mb-6">
+                    <div class="w-16 h-16 bg-deep-indigo rounded-2xl flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-microscope text-white text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-dark-grey mb-2">Surgical Interventions</h3>
+                        <p class="text-sm text-dark-grey/60">For drug-resistant epilepsy</p>
+                    </div>
+                </div>
+                <p class="text-dark-grey/70 leading-relaxed mb-6">
+                    When medications don't control seizures, surgical options may be considered. We evaluate candidates thoroughly to determine the most appropriate surgical approach.
+                </p>
+                <ul class="space-y-3">
+                    <li class="flex items-start space-x-3">
+                        <div class="w-6 h-6 bg-deep-indigo/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-deep-indigo text-[10px]"></i>
+                        </div>
+                        <span class="text-sm text-dark-grey/80">Resective surgery</span>
+                    </li>
+                    <li class="flex items-start space-x-3">
+                        <div class="w-6 h-6 bg-deep-indigo/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-deep-indigo text-[10px]"></i>
+                        </div>
+                        <span class="text-sm text-dark-grey/80">Laser ablation</span>
+                    </li>
+                    <li class="flex items-start space-x-3">
+                        <div class="w-6 h-6 bg-deep-indigo/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-deep-indigo text-[10px]"></i>
+                        </div>
+                        <span class="text-sm text-dark-grey/80">Vagus Nerve Stimulation (VNS)</span>
+                    </li>
+                    <li class="flex items-start space-x-3">
+                        <div class="w-6 h-6 bg-deep-indigo/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-deep-indigo text-[10px]"></i>
+                        </div>
+                        <span class="text-sm text-dark-grey/80">Responsive Neurostimulation (RNS)</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Lifestyle Management -->
+            <div class="bg-gradient-to-br from-silver-grey/30 to-white rounded-[24px] p-8 border border-silver-grey/40">
+                <div class="flex items-start space-x-5 mb-6">
+                    <div class="w-16 h-16 bg-dark-grey rounded-2xl flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-heart-pulse text-white text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-dark-grey mb-2">Lifestyle & Support</h3>
+                        <p class="text-sm text-dark-grey/60">Holistic approach to epilepsy management</p>
+                    </div>
+                </div>
+                <p class="text-dark-grey/70 leading-relaxed mb-6">
+                    Living well with epilepsy involves more than just medication. We provide comprehensive guidance on lifestyle modifications and support services.
+                </p>
+                <ul class="space-y-3">
+                    <li class="flex items-start space-x-3">
+                        <div class="w-6 h-6 bg-dark-grey/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-dark-grey text-[10px]"></i>
+                        </div>
+                        <span class="text-sm text-dark-grey/80">Sleep hygiene optimization</span>
+                    </li>
+                    <li class="flex items-start space-x-3">
+                        <div class="w-6 h-6 bg-dark-grey/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-dark-grey text-[10px]"></i>
+                        </div>
+                        <span class="text-sm text-dark-grey/80">Stress management techniques</span>
+                    </li>
+                    <li class="flex items-start space-x-3">
+                        <div class="w-6 h-6 bg-dark-grey/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-dark-grey text-[10px]"></i>
+                        </div>
+                        <span class="text-sm text-dark-grey/80">Seizure trigger identification</span>
+                    </li>
+                    <li class="flex items-start space-x-3">
+                        <div class="w-6 h-6 bg-dark-grey/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-dark-grey text-[10px]"></i>
+                        </div>
+                        <span class="text-sm text-dark-grey/80">Safety planning & first aid</span>
                     </li>
                 </ul>
             </div>
@@ -1004,378 +1210,451 @@
     </div>
 </section>
 
-<!-- Awards Gallery — Grid -->
-<section class="py-14 lg:py-20 bg-soft-cyan/30 overflow-hidden">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Section Header -->
-        <div class="text-center mb-10">
-            <div class="inline-flex items-center space-x-2 mb-4">
-                <span class="w-8 h-px bg-electric-blue"></span>
-                <span class="text-electric-blue text-xs font-semibold tracking-[0.2em] uppercase">Gallery</span>
-                <span class="w-8 h-px bg-electric-blue"></span>
-            </div>
-            <h2 class="text-4xl md:text-5xl font-serif font-bold text-deep-indigo mb-4">
-                Moments of <span class="gradient-text">Recognition</span>
-            </h2>
-            <p class="text-sm text-dark-grey/60 max-w-xl mx-auto">
-                A curated glimpse into the awards, honors, and milestones that have shaped a career dedicated to neurological excellence.
-            </p>
-        </div>
+<!-- Why Choose Us Section -->
+<section class="py-12 bg-slate-50/50 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            <!-- Content Side -->
+            <div class="lg:col-span-6 observe">
+                <span class="text-xs font-bold tracking-wider text-dark-grey/60 uppercase block mb-3 font-sans">
+                    Why Choose Dr. Praveen Gupta?
+                </span>
 
-        <!-- Uniform Image Grid using all 10 award images -->
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 lg:gap-4">
-                            <div class="aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer">
-                    <img src="assets/awards/9.jpg"
-                         alt="Honours &amp; Recognition - Image 9"
-                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                            <div class="aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer">
-                    <img src="assets/awards/8.jpg"
-                         alt="Honours &amp; Recognition - Image 8"
-                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                            <div class="aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer">
-                    <img src="assets/awards/7.jpg"
-                         alt="Honours &amp; Recognition - Image 7"
-                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                            <div class="aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer">
-                    <img src="assets/awards/6.jpg"
-                         alt="Honours &amp; Recognition - Image 6"
-                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                            <div class="aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer">
-                    <img src="assets/awards/5.jpg"
-                         alt="Honours &amp; Recognition - Image 5"
-                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                            <div class="aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer">
-                    <img src="assets/awards/4.jpg"
-                         alt="Honours &amp; Recognition - Image 4"
-                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                            <div class="aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer">
-                    <img src="assets/awards/3.jpg"
-                         alt="Honours &amp; Recognition - Image 3"
-                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                            <div class="aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer">
-                    <img src="assets/awards/2.jpg"
-                         alt="Honours &amp; Recognition - Image 2"
-                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                            <div class="aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer">
-                    <img src="assets/awards/1.jpg"
-                         alt="Honours &amp; Recognition - Image 1"
-                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                            <div class="aspect-[2/3] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer">
-                    <img src="assets/awards/15.jpg"
-                         alt="Honours &amp; Recognition - Image 15"
-                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-deep-indigo leading-tight mb-6">
+                    Providing Best Treatment
+                </h2>
+
+                <p class="text-base text-dark-grey/70 mb-10 leading-relaxed max-w-lg">
+                    With an unwavering commitment to clinical excellence, Dr. Praveen Gupta combines advanced technology
+                    and patient-centric therapies to deliver world-class neurological care.
+                </p>
+
+                <!-- Grid of 4 Items -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
+                    <!-- Feature 1 -->
+                    <div class="flex items-start space-x-4">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-white border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
+                            <i class="fa-solid fa-earth-americas text-xl text-electric-blue"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Global Standards of Care
+                            </h4>
+                            <p class="text-xs text-dark-grey/65 leading-relaxed">Treatments backed by advanced
+                                technology and international guidelines.</p>
+                        </div>
                     </div>
 
-        <!-- View More Link -->
-        <div class="text-center mt-10">
-            <a href="#" class="group inline-flex items-center space-x-2 text-sm font-medium text-deep-indigo hover:text-electric-blue transition-colors">
-                <span>View All Recognitions</span>
-                <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                    <!-- Feature 2 -->
+                    <div class="flex items-start space-x-4">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-white border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
+                            <i class="fa-solid fa-lightbulb text-xl text-electric-blue"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Innovative Procedures</h4>
+                            <p class="text-xs text-dark-grey/65 leading-relaxed">Pioneer in stroke care, DBS, and
+                                epilepsy surgery in India.</p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="flex items-start space-x-4">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-white border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
+                            <i class="fa-solid fa-circle-check text-xl text-electric-blue"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Proven Results</h4>
+                            <p class="text-xs text-dark-grey/65 leading-relaxed">Thousands of patients treated
+                                successfully with rapid recovery.</p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div class="flex items-start space-x-4">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-white border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
+                            <i class="fa-solid fa-hand-holding-heart text-xl text-electric-blue"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Compassionate Consultation
+                            </h4>
+                            <p class="text-xs text-dark-grey/65 leading-relaxed">Empowering patients with knowledge,
+                                compassion, and personalized care.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Button -->
+                <div>
+                    <a href="#appointment"
+                        class="inline-flex items-center px-8 py-3.5 bg-[#111827] text-white text-sm font-bold rounded-full hover:bg-electric-blue transition-colors duration-300 shadow-lg shadow-dark-grey/10">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+
+            <!-- Image Side -->
+            <div class="lg:col-span-6 relative flex justify-center lg:justify-end observe">
+                <div
+                    class="relative w-full max-w-md lg:max-w-none aspect-[3:4] rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-soft-cyan to-silver-grey">
+                    <!-- Background Portrait Photo -->
+                    <img src="assets\full-image\dpg-award.webp"
+                        alt="Compassionate Care Nurse" class="w-full h-full object-cover">
+
+                    <!-- Floating Overlaid Card -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Education / Knowledge Videos Section -->
+<section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Left-aligned header -->
+        <div class="mb-12 observe">
+            <div class="flex items-center space-x-2 mb-3">
+                <i class="fas fa-play-circle text-electric-blue text-sm"></i>
+                <span class="text-sm text-dark-grey/50 font-medium">Education</span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-serif font-bold text-dark-grey leading-tight">
+                Knowledge & Awareness
+            </h2>
+        </div>
+
+        <!-- Sliding viewport: shows 4 videos (2×2) per page -->
+        <div class="overflow-hidden">
+            <div id="edu-track" class="flex transition-transform duration-500 ease-in-out">
+                                    <div class="min-w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                                                    <div class="group bg-white rounded-2xl overflow-hidden border border-silver-grey/50 shadow-sm hover:shadow-xl transition-all duration-400 hover:-translate-y-1 observe">
+
+                                <!-- Embed -->
+                                <div class="relative w-full aspect-video bg-dark-grey">
+                                    <iframe
+                                        class="w-full h-full"
+                                        src="https://www.youtube.com/embed/sXl0eyou7EU?rel=0&modestbranding=1"
+                                        title="Vertigo: Relieved Without Pills!"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen
+                                        loading="lazy">
+                                    </iframe>
+                                </div>
+
+                                <!-- Card footer -->
+                                <div class="p-4">
+                                    <h3 class="font-bold text-deep-indigo text-sm md:text-base leading-snug mb-1 group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                                        Vertigo: Relieved Without Pills!                                    </h3>
+                                    <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2">
+                                        Learn how vertigo can be relieved effectively without medication from Dr. Praveen Gupta.                                    </p>
+                                </div>
+                            </div>
+                                                    <div class="group bg-white rounded-2xl overflow-hidden border border-silver-grey/50 shadow-sm hover:shadow-xl transition-all duration-400 hover:-translate-y-1 observe">
+
+                                <!-- Embed -->
+                                <div class="relative w-full aspect-video bg-dark-grey">
+                                    <iframe
+                                        class="w-full h-full"
+                                        src="https://www.youtube.com/embed/h50wGaV1y9Q?rel=0&modestbranding=1"
+                                        title="Say Goodbye to Headaches"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen
+                                        loading="lazy">
+                                    </iframe>
+                                </div>
+
+                                <!-- Card footer -->
+                                <div class="p-4">
+                                    <h3 class="font-bold text-deep-indigo text-sm md:text-base leading-snug mb-1 group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                                        Say Goodbye to Headaches                                    </h3>
+                                    <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2">
+                                        Expert tips and medical insights on headache relief and migraine prevention by Dr. Praveen Gupta.                                    </p>
+                                </div>
+                            </div>
+                                                    <div class="group bg-white rounded-2xl overflow-hidden border border-silver-grey/50 shadow-sm hover:shadow-xl transition-all duration-400 hover:-translate-y-1 observe">
+
+                                <!-- Embed -->
+                                <div class="relative w-full aspect-video bg-dark-grey">
+                                    <iframe
+                                        class="w-full h-full"
+                                        src="https://www.youtube.com/embed/OJRq0VNLYIA?rel=0&modestbranding=1"
+                                        title="Managing Multiple Sclerosis"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen
+                                        loading="lazy">
+                                    </iframe>
+                                </div>
+
+                                <!-- Card footer -->
+                                <div class="p-4">
+                                    <h3 class="font-bold text-deep-indigo text-sm md:text-base leading-snug mb-1 group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                                        Managing Multiple Sclerosis                                    </h3>
+                                    <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2">
+                                        Comprehensive guide to Multiple Sclerosis diagnosis, symptom management, and treatments.                                    </p>
+                                </div>
+                            </div>
+                                                    <div class="group bg-white rounded-2xl overflow-hidden border border-silver-grey/50 shadow-sm hover:shadow-xl transition-all duration-400 hover:-translate-y-1 observe">
+
+                                <!-- Embed -->
+                                <div class="relative w-full aspect-video bg-dark-grey">
+                                    <iframe
+                                        class="w-full h-full"
+                                        src="https://www.youtube.com/embed/OKUjltLpKAc?rel=0&modestbranding=1"
+                                        title="Managing Dementia: Expert Tips"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen
+                                        loading="lazy">
+                                    </iframe>
+                                </div>
+
+                                <!-- Card footer -->
+                                <div class="p-4">
+                                    <h3 class="font-bold text-deep-indigo text-sm md:text-base leading-snug mb-1 group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                                        Managing Dementia: Expert Tips                                    </h3>
+                                    <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2">
+                                        Practical strategies and expert tips from Dr. Praveen Gupta on managing dementia.                                    </p>
+                                </div>
+                            </div>
+                                            </div>
+                            </div>
+        </div>
+
+        <!-- Slider controls -->
+        <div class="flex items-center justify-between mt-8">
+
+            <!-- Dot indicators -->
+            <div class="flex items-center space-x-2" id="edu-dots">
+                                    <button class="edu-dot rounded-full transition-all duration-300 w-6 h-2.5 bg-electric-blue"
+                        data-page="0"></button>
+                            </div>
+
+            <!-- Prev / Next -->
+            <div class="flex items-center space-x-3">
+                <button id="edu-prev"
+                    class="w-11 h-11 rounded-full bg-white hover:bg-electric-blue hover:text-white text-deep-indigo border border-silver-grey shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center active:scale-95">
+                    <i class="fas fa-chevron-left text-sm"></i>
+                </button>
+                <button id="edu-next"
+                    class="w-11 h-11 rounded-full bg-electric-blue text-white hover:bg-deep-indigo border border-electric-blue shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center active:scale-95">
+                    <i class="fas fa-chevron-right text-sm"></i>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Education Slider JS -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const track     = document.getElementById('edu-track');
+        const dots      = document.querySelectorAll('.edu-dot');
+        const prevBtn   = document.getElementById('edu-prev');
+        const nextBtn   = document.getElementById('edu-next');
+        const total     = track.children.length;
+        let current     = 0;
+
+        function goTo(page) {
+            current = page;
+            track.style.transform = `translateX(-${page * 100}%)`;
+            dots.forEach((d, i) => {
+                if (i === page) {
+                    d.classList.add('bg-electric-blue', 'w-6');
+                    d.classList.remove('bg-silver-grey', 'w-2.5');
+                } else {
+                    d.classList.remove('bg-electric-blue', 'w-6');
+                    d.classList.add('bg-silver-grey', 'w-2.5');
+                }
+            });
+        }
+
+        dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.page)));
+        prevBtn.addEventListener('click', () => goTo((current - 1 + total) % total));
+        nextBtn.addEventListener('click', () => goTo((current + 1) % total));
+    });
+    </script>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <!-- Left Column: Header Information -->
+            <div class="lg:col-span-5 lg:sticky lg:top-24 self-start">
+                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">FAQ</span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-dark-grey mt-3 mb-6">Frequently Asked Questions</h2>
+                <p class="text-dark-grey/70 leading-relaxed max-w-md">
+                    We compiled a list of answers to address your most pressing questions regarding epilepsy diagnosis, treatment, and management.
+                </p>
+            </div>
+
+            <!-- Right Column: Accordions -->
+            <div class="lg:col-span-7">
+                <div class="space-y-4" id="faq-container">
+                    <!-- FAQ 1 -->
+                    <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
+                            <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">What is the difference between epilepsy and a single seizure?</span>
+                            <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
+                            </span>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-dark-grey/70 leading-relaxed">
+                                A single seizure doesn't necessarily mean you have epilepsy. Epilepsy is diagnosed when a person has two or more unprovoked seizures occurring at least 24 hours apart. Single seizures can be triggered by various factors like fever, head injury, or metabolic disturbances, and may not recur.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
+                            <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">Can epilepsy be cured completely?</span>
+                            <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
+                            </span>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-dark-grey/70 leading-relaxed">
+                                While there's no universal cure for epilepsy, many people achieve complete seizure control with proper treatment. About 70% of people with epilepsy can be seizure-free with medication. Some patients, particularly children, may outgrow epilepsy. In select cases of drug-resistant epilepsy, surgery can potentially provide a cure.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
+                            <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">What should I do if someone is having a seizure?</span>
+                            <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
+                            </span>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-dark-grey/70 leading-relaxed">
+                                Stay calm and move nearby objects out of the way. Gently guide the person to the ground if they're standing. Turn them on their side to keep airways clear. Don't put anything in their mouth. Time the seizure and call emergency services if it lasts more than 5 minutes, they don't wake up after, or they're injured.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
+                            <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">Can I live a normal life with epilepsy?</span>
+                            <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
+                            </span>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-dark-grey/70 leading-relaxed">
+                                Absolutely. With proper treatment and management, many people with epilepsy live full, active lives. Most people with well-controlled seizures can work, drive (when seizure-free per local regulations), exercise, and participate in all normal activities. We work with you to minimize limitations and maximize quality of life.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 5 -->
+                    <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
+                            <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">What are common epilepsy triggers?</span>
+                            <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
+                            </span>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-dark-grey/70 leading-relaxed">
+                                Common triggers vary by individual but may include lack of sleep, stress, alcohol or drug use, flashing lights (photosensitivity), certain medications, hormonal changes, and missed anti-seizure doses. We help you identify your personal triggers through detailed history and seizure diaries.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 6 -->
+                    <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
+                            <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">How often should I see my neurologist?</span>
+                            <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
+                            </span>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-dark-grey/70 leading-relaxed">
+                                Follow-up frequency depends on seizure control and medication side effects. Initially, visits may be every 1-3 months. Once stable, visits typically occur every 6-12 months. You'll need more frequent visits if adjustments are being made to medication or if breakthrough seizures occur.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Toggle Script -->
+<script>
+function toggleFaq(button) {
+    const item = button.closest('.faq-item');
+    const content = button.nextElementSibling;
+    const icon = button.querySelector('i');
+    const isOpen = !content.classList.contains('hidden');
+
+    // Close all other FAQs
+    document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
+    document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('bg-[#edf5f9]');
+        i.classList.add('bg-white');
+    });
+    document.querySelectorAll('.faq-toggle i').forEach(i => {
+        i.classList.remove('fa-minus');
+        i.classList.add('fa-plus');
+        i.style.transform = 'rotate(0deg)';
+    });
+
+    // Toggle current
+    if (!isOpen) {
+        content.classList.remove('hidden');
+        item.classList.remove('bg-white');
+        item.classList.add('bg-[#edf5f9]');
+        icon.classList.remove('fa-plus');
+        icon.classList.add('fa-minus');
+        icon.style.transform = 'rotate(180deg)';
+    }
+}
+</script>
+
+<!-- Related Services -->
+<section class="py-12 bg-[#edf5f9]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Explore More</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3">Related Neurological Services</h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <a href="headache.html" class="group bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300">
+                <h3 class="font-bold text-dark-grey mb-2 group-hover:text-electric-blue transition-colors">Headache</h3>
+                <p class="text-sm text-dark-grey/60">Comprehensive headache and migraine diagnosis and treatment.</p>
+            </a>
+
+            <a href="stroke.html" class="group bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300">
+                <h3 class="font-bold text-dark-grey mb-2 group-hover:text-electric-blue transition-colors">Stroke</h3>
+                <p class="text-sm text-dark-grey/60">Prevention, treatment, and rehabilitation for stroke patients.</p>
+            </a>
+
+            <a href="movement.html" class="group bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300">
+                <h3 class="font-bold text-dark-grey mb-2 group-hover:text-electric-blue transition-colors">Movement Disorders</h3>
+                <p class="text-sm text-dark-grey/60">Expert care for tremors, dystonia, and other movement issues.</p>
+            </a>
+
+            <a href="services.html" class="group bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300">
+                <h3 class="font-bold text-dark-grey mb-2 group-hover:text-electric-blue transition-colors">All Services</h3>
+                <p class="text-sm text-dark-grey/60">View our complete range of neurological treatments.</p>
             </a>
         </div>
     </div>
 </section>
-
-<!-- Vision — Minimal Quote Section -->
-<section class="py-14 lg:py-20 bg-white">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div class="inline-flex items-center space-x-2 mb-8">
-            <span class="w-8 h-px bg-electric-blue"></span>
-            <span class="text-electric-blue text-xs font-semibold tracking-[0.2em] uppercase">Vision</span>
-            <span class="w-8 h-px bg-electric-blue"></span>
-        </div>
-
-        <h2 class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo mb-10 leading-tight">
-            Technology with <span class="gradient-text">Empathy</span>
-        </h2>
-
-        <div class="relative">
-            <i class="fas fa-quote-left text-cyan-accent/20 text-5xl absolute -top-4 -left-4"></i>
-            <p class="text-xl md:text-2xl text-deep-indigo/90 font-serif italic leading-relaxed relative">
-                Integrating technology with empathy — ensuring every patient receives personalized, evidence-based treatment aimed at improving quality of life.
-            </p>
-        </div>
-
-        <p class="text-sm text-dark-grey/60 mt-10 max-w-xl mx-auto leading-relaxed">
-            As one of India's leading neurologists, Dr. Gupta's vision extends beyond treatment — focusing on awareness, prevention, and rehabilitation to make advanced neurological therapies more accessible and affordable.
-        </p>
-    </div>
-</section>
-
-<!-- Testimonials — Minimal Slider -->
-<section class="py-14 lg:py-20 bg-soft-cyan/30">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-10">
-            <div class="inline-flex items-center space-x-2 mb-4">
-                <span class="w-8 h-px bg-electric-blue"></span>
-                <span class="text-electric-blue text-xs font-semibold tracking-[0.2em] uppercase">Testimonials</span>
-                <span class="w-8 h-px bg-electric-blue"></span>
-            </div>
-            <h2 class="text-4xl md:text-5xl font-serif font-bold text-deep-indigo mb-3">
-                What Patients <span class="gradient-text">Say</span>
-            </h2>
-            <p class="text-sm text-dark-grey/60">
-                Showing <span id="testimonial-current">3</span> of 6 reviews
-            </p>
-        </div>
-
-        <!-- Slider — All 6 cards visible, scroll between pages -->
-        <div class="relative">
-            <div id="testimonial-viewport" class="overflow-hidden">
-                <div id="testimonial-track" class="flex transition-transform duration-500 ease-in-out">
-                                            <div class="testimonial-card flex-shrink-0 px-3" style="width: 33.333333%; min-width: 33.333333%; box-sizing: border-box;">
-                            <div class="h-full border-l-2 border-silver-grey hover:border-electric-blue pl-5 py-2 transition-colors duration-300">
-                                <div class="flex space-x-0.5 mb-3">
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                    </div>
-                                <p class="text-dark-grey/80 text-sm italic leading-relaxed mb-5">
-                                    "Dr. Praveen Gupta transformed my health journey. His expertise and compassion are unmatched."
-                                </p>
-                                <div>
-                                    <p class="font-semibold text-deep-indigo text-sm">Priya Sharma</p>
-                                    <p class="text-xs text-dark-grey/50 mt-0.5">Patient</p>
-                                </div>
-                            </div>
-                        </div>
-                                            <div class="testimonial-card flex-shrink-0 px-3" style="width: 33.333333%; min-width: 33.333333%; box-sizing: border-box;">
-                            <div class="h-full border-l-2 border-silver-grey hover:border-electric-blue pl-5 py-2 transition-colors duration-300">
-                                <div class="flex space-x-0.5 mb-3">
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                    </div>
-                                <p class="text-dark-grey/80 text-sm italic leading-relaxed mb-5">
-                                    "The level of care and attention I received was exceptional. Truly a world-class professional."
-                                </p>
-                                <div>
-                                    <p class="font-semibold text-deep-indigo text-sm">Rajesh Kumar</p>
-                                    <p class="text-xs text-dark-grey/50 mt-0.5">Patient</p>
-                                </div>
-                            </div>
-                        </div>
-                                            <div class="testimonial-card flex-shrink-0 px-3" style="width: 33.333333%; min-width: 33.333333%; box-sizing: border-box;">
-                            <div class="h-full border-l-2 border-silver-grey hover:border-electric-blue pl-5 py-2 transition-colors duration-300">
-                                <div class="flex space-x-0.5 mb-3">
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                    </div>
-                                <p class="text-dark-grey/80 text-sm italic leading-relaxed mb-5">
-                                    "Outstanding doctor with a wonderful bedside manner. Highly recommend to everyone."
-                                </p>
-                                <div>
-                                    <p class="font-semibold text-deep-indigo text-sm">Anita Desai</p>
-                                    <p class="text-xs text-dark-grey/50 mt-0.5">Patient</p>
-                                </div>
-                            </div>
-                        </div>
-                                            <div class="testimonial-card flex-shrink-0 px-3" style="width: 33.333333%; min-width: 33.333333%; box-sizing: border-box;">
-                            <div class="h-full border-l-2 border-silver-grey hover:border-electric-blue pl-5 py-2 transition-colors duration-300">
-                                <div class="flex space-x-0.5 mb-3">
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                    </div>
-                                <p class="text-dark-grey/80 text-sm italic leading-relaxed mb-5">
-                                    "After struggling with migraines for years, Dr. Gupta's treatment gave me my life back. Truly exceptional care."
-                                </p>
-                                <div>
-                                    <p class="font-semibold text-deep-indigo text-sm">Suresh Mehta</p>
-                                    <p class="text-xs text-dark-grey/50 mt-0.5">Patient</p>
-                                </div>
-                            </div>
-                        </div>
-                                            <div class="testimonial-card flex-shrink-0 px-3" style="width: 33.333333%; min-width: 33.333333%; box-sizing: border-box;">
-                            <div class="h-full border-l-2 border-silver-grey hover:border-electric-blue pl-5 py-2 transition-colors duration-300">
-                                <div class="flex space-x-0.5 mb-3">
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                    </div>
-                                <p class="text-dark-grey/80 text-sm italic leading-relaxed mb-5">
-                                    "I was diagnosed with Parkinson's and was devastated. Dr. Gupta's calm guidance and advanced treatment plan gave me renewed hope."
-                                </p>
-                                <div>
-                                    <p class="font-semibold text-deep-indigo text-sm">Kavita Singh</p>
-                                    <p class="text-xs text-dark-grey/50 mt-0.5">Patient</p>
-                                </div>
-                            </div>
-                        </div>
-                                            <div class="testimonial-card flex-shrink-0 px-3" style="width: 33.333333%; min-width: 33.333333%; box-sizing: border-box;">
-                            <div class="h-full border-l-2 border-silver-grey hover:border-electric-blue pl-5 py-2 transition-colors duration-300">
-                                <div class="flex space-x-0.5 mb-3">
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                    </div>
-                                <p class="text-dark-grey/80 text-sm italic leading-relaxed mb-5">
-                                    "Best neurologist I have ever consulted. Diagnosed my condition accurately in the first visit and the treatment worked remarkably well."
-                                </p>
-                                <div>
-                                    <p class="font-semibold text-deep-indigo text-sm">Deepak Nair</p>
-                                    <p class="text-xs text-dark-grey/50 mt-0.5">Patient</p>
-                                </div>
-                            </div>
-                        </div>
-                                    </div>
-            </div>
-
-            <!-- Slider Controls -->
-            <div class="flex items-center justify-center space-x-3 mt-8">
-                <button id="testimonial-prev" type="button"
-                        class="w-10 h-10 rounded-full bg-white border border-silver-grey hover:border-electric-blue hover:bg-electric-blue hover:text-white text-deep-indigo flex items-center justify-center transition-all duration-300 shadow-sm">
-                    <i class="fas fa-chevron-left text-xs"></i>
-                </button>
-
-                <div id="testimonial-dots" class="flex items-center space-x-2">
-                                            <button type="button"
-                                class="testimonial-dot rounded-full bg-silver-grey hover:bg-electric-blue transition-all duration-300"
-                                style="width: 8px; height: 8px;"
-                                data-index="0"
-                                aria-label="Go to page 1"></button>
-                                            <button type="button"
-                                class="testimonial-dot rounded-full bg-silver-grey hover:bg-electric-blue transition-all duration-300"
-                                style="width: 8px; height: 8px;"
-                                data-index="1"
-                                aria-label="Go to page 2"></button>
-                                    </div>
-
-                <button id="testimonial-next" type="button"
-                        class="w-10 h-10 rounded-full bg-white border border-silver-grey hover:border-electric-blue hover:bg-electric-blue hover:text-white text-deep-indigo flex items-center justify-center transition-all duration-300 shadow-sm">
-                    <i class="fas fa-chevron-right text-xs"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-</section>
-
-<style>
-    /* Testimonials slider: 3 cards visible on desktop, 2 on tablet, 1 on mobile */
-    @media (max-width: 767px) {
-        .testimonial-card {
-            width: 100% !important;
-            min-width: 100% !important;
-        }
-    }
-    @media (min-width: 768px) and (max-width: 1023px) {
-        .testimonial-card {
-            width: 50% !important;
-            min-width: 50% !important;
-        }
-    }
-    @media (min-width: 1024px) {
-        .testimonial-card {
-            width: 33.333333% !important;
-            min-width: 33.333333% !important;
-        }
-    }
-    .testimonial-dot.active {
-        background-color: #2563EB !important;
-        width: 24px !important;
-    }
-</style>
-
-<!-- Testimonials Slider Script -->
-<script>
-(function() {
-    const track = document.getElementById('testimonial-track');
-    const prevBtn = document.getElementById('testimonial-prev');
-    const nextBtn = document.getElementById('testimonial-next');
-    const dots = document.querySelectorAll('.testimonial-dot');
-    const currentLabel = document.getElementById('testimonial-current');
-    const viewport = document.getElementById('testimonial-viewport');
-    const totalCards = 6;
-    const totalPages = 2;
-    let currentPage = 0;
-
-    function getCardsPerPage() {
-        const w = window.innerWidth;
-        if (w >= 1024) return 3;
-        if (w >= 768) return 2;
-        return 1;
-    }
-
-    function update() {
-        const cardsPerPage = getCardsPerPage();
-        const maxPage = Math.max(0, Math.ceil(totalCards / cardsPerPage) - 1);
-        if (currentPage > maxPage) currentPage = maxPage;
-
-        // Translate by viewport width
-        const viewportWidth = viewport.offsetWidth;
-        const offset = currentPage * viewportWidth;
-        track.style.transform = 'translateX(-' + offset + 'px)';
-
-        // Update counter
-        if (currentLabel) currentLabel.textContent = Math.min(currentPage * cardsPerPage + cardsPerPage, totalCards);
-
-        // Update dots
-        dots.forEach(function(d, i) {
-            if (i === currentPage) {
-                d.classList.add('active');
-            } else {
-                d.classList.remove('active');
-            }
-        });
-    }
-
-    prevBtn.addEventListener('click', function() {
-        if (currentPage > 0) {
-            currentPage--;
-            update();
-        }
-    });
-
-    nextBtn.addEventListener('click', function() {
-        const cardsPerPage = getCardsPerPage();
-        const maxPage = Math.max(0, Math.ceil(totalCards / cardsPerPage) - 1);
-        if (currentPage < maxPage) {
-            currentPage++;
-            update();
-        }
-    });
-
-    for (let i = 0; i < dots.length; i++) {
-        dots[i].addEventListener('click', function() {
-            currentPage = parseInt(this.getAttribute('data-index'), 10);
-            update();
-        });
-    }
-
-    // Recalculate on resize
-    let resizeTimer;
-    window.addEventListener('resize', function() {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(update, 100);
-    });
-
-    // Initialize
-    update();
-})();
-</script>
 
 
     <!-- CTA Section -->

@@ -99,7 +99,7 @@ foreach (array_slice($services, 0, 6) as $svc) {
                 <div class="lg:col-span-4">
                     <div class="mb-6">
                         <a href="index.php" class="inline-block group">
-                            <img src="assets/logo/dr-praveen-logo.webp" alt="Dr. Praveen Gupta Logo" class="h-12 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300">
+                            <img src="assets/logo/NeuroDoc - logo_highquality.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" class="h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 invert brightness-0">
                         </a>
                     </div>
                     <p class="text-white/70 leading-relaxed mb-6 text-sm">
@@ -153,12 +153,23 @@ foreach (array_slice($services, 0, 6) as $svc) {
                     </h3>
                     <ul class="space-y-2.5">
                         <?php foreach ($navItems as $item): ?>
-                            <li>
-                                <a href="<?php echo $item['url']; ?>" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
-                                    <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
-                                    <span class="group-hover:translate-x-0.5 transition-transform"><?php echo $item['name']; ?></span>
-                                </a>
-                            </li>
+                            <?php if (isset($item['children'])): ?>
+                                <?php foreach ($item['children'] as $child): ?>
+                                    <li>
+                                        <a href="<?php echo $child['url']; ?>" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                                            <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
+                                            <span class="group-hover:translate-x-0.5 transition-transform"><?php echo $child['name']; ?></span>
+                                        </a>
+                                    </li>
+                                <?php endforeach; ?>
+                            <?php elseif ($item['url'] !== '#'): ?>
+                                <li>
+                                    <a href="<?php echo $item['url']; ?>" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                                        <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
+                                        <span class="group-hover:translate-x-0.5 transition-transform"><?php echo $item['name']; ?></span>
+                                    </a>
+                                </li>
+                            <?php endif; ?>
                         <?php endforeach; ?>
                     </ul>
                 </div>
