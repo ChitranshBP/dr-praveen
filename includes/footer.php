@@ -152,25 +152,48 @@ foreach (array_slice($services, 0, 6) as $svc) {
                         Quick Links
                     </h3>
                     <ul class="space-y-2.5">
-                        <?php foreach ($navItems as $item): ?>
-                            <?php if (isset($item['children'])): ?>
-                                <?php foreach ($item['children'] as $child): ?>
-                                    <li>
-                                        <a href="<?php echo $child['url']; ?>" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
-                                            <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
-                                            <span class="group-hover:translate-x-0.5 transition-transform"><?php echo $child['name']; ?></span>
-                                        </a>
-                                    </li>
-                                <?php endforeach; ?>
-                            <?php elseif ($item['url'] !== '#'): ?>
-                                <li>
-                                    <a href="<?php echo $item['url']; ?>" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
-                                        <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
-                                        <span class="group-hover:translate-x-0.5 transition-transform"><?php echo $item['name']; ?></span>
-                                    </a>
-                                </li>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
+                        <li>
+                            <a href="index.php" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                                <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
+                                <span class="group-hover:translate-x-0.5 transition-transform">Home</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="about.php" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                                <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
+                                <span class="group-hover:translate-x-0.5 transition-transform">About Dr. Praveen</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="services.php" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                                <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
+                                <span class="group-hover:translate-x-0.5 transition-transform">Our Services</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="patient-info.php" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                                <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
+                                <span class="group-hover:translate-x-0.5 transition-transform">Patient Information</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="videos.php" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                                <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
+                                <span class="group-hover:translate-x-0.5 transition-transform">Media & Videos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="gallery.php" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                                <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
+                                <span class="group-hover:translate-x-0.5 transition-transform">Photo Gallery</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dr-praveen-gupta-blog.php" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                                <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
+                                <span class="group-hover:translate-x-0.5 transition-transform">Blog & Articles</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
