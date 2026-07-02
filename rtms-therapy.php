@@ -1,6 +1,6 @@
 <?php
 /**
- * Rehabilitation Hub Page - Dr. Praveen Gupta
+ * rTMS Therapy Page - Dr. Praveen Gupta
  */
 $isDarkHero = true;
 require_once __DIR__ . '/includes/header.php';
@@ -8,8 +8,7 @@ require_once __DIR__ . '/includes/header.php';
 
 <!-- Page Hero -->
 <section class="relative overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20">
-    <div class="absolute inset-0 bg-black/10"></div>
-    <div class="absolute -right-24 -bottom-24 w-96 h-96 bg-cyan-accent/20 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute inset-0 bg-black/5"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl text-left animate-fade-in-up">
@@ -19,27 +18,28 @@ require_once __DIR__ . '/includes/header.php';
                 <i class="fas fa-chevron-right text-[8px]"></i>
                 <a href="services.php" class="hover:text-white transition-colors">Services</a>
                 <i class="fas fa-chevron-right text-[8px]"></i>
-                <span class="text-white font-medium">Rehabilitation Hub</span>
+                <span class="text-white font-medium">rTMS Therapy</span>
             </nav>
 
             <!-- Badge -->
-            <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4 border border-white/20">
-                <i class="fas fa-child text-cyan-accent text-[10px]"></i>
-                <span>Comprehensive Neuro-Rehabilitation</span>
+            <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4">
+                <i class="fas fa-wave-square text-[10px]"></i>
+                <span>Non-Invasive Neuromodulation</span>
             </div>
 
             <!-- Heading -->
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-3">
-                Neurological <span class="text-cyan-accent">Rehabilitation Hub</span>
+                Advanced <span class="text-white">rTMS Therapy</span>
             </h1>
 
-            <p class="text-sm md:text-base text-white/85 leading-relaxed mb-6 max-w-2xl">
-                Restoring function, independence, and confidence. Tailored physical, occupational, and speech rehabilitation programs for stroke, trauma, and progressive movement disorders.
+            <p class="text-sm md:text-base text-white/80 leading-relaxed mb-6 max-w-2xl">
+                Repetitive Transcranial Magnetic Stimulation (rTMS) – a non-invasive, drug-free outpatient therapy utilizing magnetic fields to stimulate nerve cells for depression, chronic pain, and stroke recovery.
             </p>
 
-            <div class="flex flex-wrap items-center gap-3">
-                <a href="contact-us-top-neurologist-delhi-ncr.php" class="group inline-flex items-center space-x-2.5 bg-white text-deep-indigo font-semibold px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-white/30 transition-all duration-300 transform hover:-translate-y-1 text-sm">
-                    <span>Schedule Evaluation</span>
+            <!-- CTA Buttons -->
+            <div class="flex flex-wrap gap-3">
+                <a href="contact-us-top-neurologist-delhi-ncr.php" class="inline-flex items-center space-x-2.5 bg-white text-deep-indigo font-semibold px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-white/30 transition-all duration-300 transform hover:-translate-y-1 text-sm">
+                    <span>Book Appointment</span>
                     <i class="fas fa-arrow-right text-xs"></i>
                 </a>
                 <a href="tel:<?php echo SITE_PHONE; ?>" class="inline-flex items-center space-x-2.5 bg-white/20 backdrop-blur-sm text-white font-semibold px-6 py-2.5 rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 text-sm">
@@ -51,18 +51,18 @@ require_once __DIR__ . '/includes/header.php';
     </div>
 </section>
 
-<!-- What is Rehabilitation Section -->
+<!-- What is rTMS Section -->
 <section class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-2 gap-16 items-center">
             <div class="animate-slide-in-left">
-                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Recovery Focus</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Rebuilding Independent Living</h2>
+                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Understanding</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">What is Transcranial Magnetic Stimulation?</h2>
                 <p class="text-dark-grey/70 leading-relaxed mb-6">
-                    Following a stroke, brain trauma, or spinal cord injury, the nervous system requires specialized retraining. Our approach focuses on neuroplasticity – the brain's innate ability to reorganize and form new neural connections in response to therapeutic exercise.
+                    rTMS is a state-of-the-art neurological neuromodulation therapy. Unlike systemic medications, which affect the entire body, rTMS targets specific areas of the brain to stimulate neurons and restore healthy communication pathways.
                 </p>
                 <p class="text-dark-grey/70 leading-relaxed mb-8">
-                    Dr. Praveen Gupta coordinates the clinical team to ensure physical therapists, speech-language pathologists, and occupational therapists deliver unified therapy protocols tailored to your recovery targets.
+                    An electromagnetic coil is placed gently against the patient's scalp. It delivers brief, highly focused magnetic pulses that stimulate nerve cells safely. The procedure is entirely painless, and patients remain awake and active throughout.
                 </p>
 
                 <!-- Key Facts -->
@@ -72,8 +72,8 @@ require_once __DIR__ . '/includes/header.php';
                             <i class="fas fa-check text-electric-blue text-xs"></i>
                         </div>
                         <div>
-                            <div class="font-semibold text-dark-grey text-sm">Physical Therapy</div>
-                            <div class="text-xs text-dark-grey/60">Gait and coordination</div>
+                            <div class="font-semibold text-dark-grey text-sm">Non-Invasive</div>
+                            <div class="text-xs text-dark-grey/60">No surgery or needles</div>
                         </div>
                     </div>
                     <div class="flex items-start space-x-3">
@@ -81,8 +81,8 @@ require_once __DIR__ . '/includes/header.php';
                             <i class="fas fa-check text-electric-blue text-xs"></i>
                         </div>
                         <div>
-                            <div class="font-semibold text-dark-grey text-sm">Occupational Care</div>
-                            <div class="text-xs text-dark-grey/60">Daily living adjustments</div>
+                            <div class="font-semibold text-dark-grey text-sm">No Anesthesia</div>
+                            <div class="text-xs text-dark-grey/60">No sedation or downtime</div>
                         </div>
                     </div>
                     <div class="flex items-start space-x-3">
@@ -90,8 +90,8 @@ require_once __DIR__ . '/includes/header.php';
                             <i class="fas fa-check text-electric-blue text-xs"></i>
                         </div>
                         <div>
-                            <div class="font-semibold text-dark-grey text-sm">Speech Therapy</div>
-                            <div class="text-xs text-dark-grey/60">Dysphagia and clarity</div>
+                            <div class="font-semibold text-dark-grey text-sm">FDA Cleared</div>
+                            <div class="text-xs text-dark-grey/60">Proven safety profile</div>
                         </div>
                     </div>
                     <div class="flex items-start space-x-3">
@@ -99,8 +99,8 @@ require_once __DIR__ . '/includes/header.php';
                             <i class="fas fa-check text-electric-blue text-xs"></i>
                         </div>
                         <div>
-                            <div class="font-semibold text-dark-grey text-sm">Tech Monitored</div>
-                            <div class="text-xs text-dark-grey/60">Real-time biofeedback</div>
+                            <div class="font-semibold text-dark-grey text-sm">Outpatient Care</div>
+                            <div class="text-xs text-dark-grey/60">Return home immediately</div>
                         </div>
                     </div>
                 </div>
@@ -109,93 +109,93 @@ require_once __DIR__ . '/includes/header.php';
             <!-- Image Side -->
             <div class="relative flex justify-center lg:justify-end animate-slide-in-right">
                 <div class="relative w-full max-w-md lg:max-w-none aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-soft-cyan to-silver-grey border border-silver-grey/20">
-                    <img src="assets/services/rehab.png" alt="Patient undergoing physical rehabilitation" class="w-full h-full object-cover">
+                    <img src="assets/services/rtms.png" alt="rTMS Therapy Device" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Core Rehabilitation Programs -->
+<!-- Indications / Treatable Conditions -->
 <section class="py-12 bg-[#edf5f9]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Our Services</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Core Rehabilitation Therapies</h2>
+            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Applications</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Key Indications Treated</h2>
             <p class="text-dark-grey/70 leading-relaxed">
-                We combine experienced clinical expertise with state-of-the-art diagnostic and recovery tracking tools to ensure precise treatments.
+                rTMS is clinical neuromodulation that targets a variety of chronic, drug-resistant neurological conditions.
             </p>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Program 1 -->
+            <!-- Indication 1 -->
             <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
                 <div class="w-14 h-14 bg-electric-blue/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-electric-blue group-hover:text-white transition-all duration-300">
-                    <i class="fas fa-walking text-electric-blue text-xl group-hover:text-white transition-colors"></i>
+                    <i class="fas fa-brain text-electric-blue text-xl group-hover:text-white transition-colors"></i>
                 </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Neuro-Physiotherapy</h3>
+                <h3 class="text-lg font-bold text-dark-grey mb-3">Refractory Depression (TRD)</h3>
                 <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Focuses on rebuilding muscle strength, improving balance, training gait cycles, and recovering motor control following a stroke, spine injury, or onset of neuropathy.
+                    Stimulates the left dorsolateral prefrontal cortex (DLPFC), modulating neural activity to alleviate treatment-resistant mood disorders.
                 </p>
                 <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Gait Training</span>
-                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Strength</span>
+                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Drug-Free</span>
+                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Mood Support</span>
                 </div>
             </div>
 
-            <!-- Program 2 -->
+            <!-- Indication 2 -->
             <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
                 <div class="w-14 h-14 bg-cyan-accent/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-cyan-accent transition-all duration-300">
-                    <i class="fas fa-hands-holding text-cyan-accent text-xl group-hover:text-white transition-colors"></i>
+                    <i class="fas fa-hand-holding-hand text-cyan-accent text-xl group-hover:text-white transition-colors"></i>
                 </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Occupational Therapy</h3>
+                <h3 class="text-lg font-bold text-dark-grey mb-3">Stroke Paralysis Recovery</h3>
                 <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Aids patients in relearning daily living activities (bathing, dressing, writing). We provide cognitive adaptation, motor skills coordination, and assistive technology advice.
+                    Encourages neuroplasticity in damaged motor pathways to help patients recover arm/leg movement and coordination post-stroke.
                 </p>
                 <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Life Skills</span>
-                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Fine Motor</span>
+                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Motor Skill</span>
+                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Neuroplasticity</span>
                 </div>
             </div>
 
-            <!-- Program 3 -->
+            <!-- Indication 3 -->
             <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
                 <div class="w-14 h-14 bg-deep-indigo/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-deep-indigo transition-all duration-300">
-                    <i class="fas fa-volume-up text-deep-indigo text-xl group-hover:text-white transition-colors"></i>
+                    <i class="fas fa-shield text-deep-indigo text-xl group-hover:text-white transition-colors"></i>
                 </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Speech & Swallowing</h3>
+                <h3 class="text-lg font-bold text-dark-grey mb-3">Chronic Pain & Migraine</h3>
                 <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Addresses dysphagia (swallowing difficulties) and speech clarity challenges (aphasia/dysarthria) caused by neurological damage, helping patients communicate safely.
+                    Desensitizes pain pathways in the brain to reduce the frequency and intensity of chronic pain conditions and migraine attacks.
                 </p>
                 <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Dysphagia</span>
-                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Speech Clarity</span>
+                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Pain Control</span>
+                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Migraine Relief</span>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Rehabilitation Steps -->
+<!-- Diagnosis & Experience Steps -->
 <section class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Pathway</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Your Recovery Journey</h2>
+            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Experience</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">What to Expect During rTMS Treatment</h2>
             <p class="text-dark-grey/70 leading-relaxed">
-                Our structured recovery protocol ensures patient progress is monitored continuously from admission to outpatient support.
+                Our protocol ensures patient comfort, clinical mapping accuracy, and tailored treatment parameters.
             </p>
         </div>
 
-        <!-- Progress Steps -->
+        <!-- Diagnosis Steps -->
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             <!-- Step 1 -->
             <div class="relative">
                 <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
                     <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">1</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Baseline Assessment</h3>
+                    <h3 class="text-lg font-bold text-dark-grey mb-3">Motor Thresholding</h3>
                     <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Comprehensive clinical evaluation of motor control, cognitive functions, and sensory status to set realistic recovery targets.
+                        Mapping the patient's motor cortex to identify the exact threshold of stimulation and determine customized dosage guidelines.
                     </p>
                 </div>
                 <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
@@ -207,9 +207,9 @@ require_once __DIR__ . '/includes/header.php';
             <div class="relative">
                 <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
                     <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">2</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Custom Treatment</h3>
+                    <h3 class="text-lg font-bold text-dark-grey mb-3">Coil Positioning</h3>
                     <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        A personalized rehabilitation schedule combining physical therapy, speech pathology, and occupational exercises.
+                        The treatment coil is positioned over the target brain region while the patient rests in a comfortable recliner chair.
                     </p>
                 </div>
                 <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
@@ -221,9 +221,9 @@ require_once __DIR__ . '/includes/header.php';
             <div class="relative">
                 <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
                     <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">3</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Active Monitoring</h3>
+                    <h3 class="text-lg font-bold text-dark-grey mb-3">Magnetic Pulses</h3>
                     <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        We utilize advanced biofeedback tools (like Phezee) to monitor joint mobility and electromyography muscle recovery trends in real-time.
+                        Magnetic pulses are delivered in patterns, producing a clicking sound. A tapping feeling on the scalp is felt.
                     </p>
                 </div>
                 <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
@@ -235,9 +235,9 @@ require_once __DIR__ . '/includes/header.php';
             <div class="relative">
                 <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
                     <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">4</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Home Care Care</h3>
+                    <h3 class="text-lg font-bold text-dark-grey mb-3">Immediate Discharge</h3>
                     <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Preparing patients for discharge with customized home care guides, training caregivers, and setting up periodic checkups.
+                        Sessions last 20-30 minutes. Once complete, you can drive, work, and resume all activities immediately.
                     </p>
                 </div>
             </div>
@@ -305,7 +305,7 @@ require_once __DIR__ . '/includes/header.php';
             <span class="text-electric-blue font-bold text-xs uppercase tracking-wider font-sans">Patient FAQ</span>
             <h2 class="text-3xl font-bold text-deep-indigo font-serif mt-2">Frequently Asked Questions</h2>
             <p class="text-sm text-dark-grey/65 mt-3 leading-relaxed">
-                Common questions regarding Neurological Rehabilitation.
+                Common questions regarding Transcranial Magnetic Stimulation (rTMS) therapies.
             </p>
         </div>
 
@@ -313,14 +313,14 @@ require_once __DIR__ . '/includes/header.php';
             <!-- FAQ 1 -->
             <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
                 <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
-                    <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">What does neuro-rehabilitation involve?</span>
+                    <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">What is rTMS therapy?</span>
                     <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
                         <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
                     </span>
                 </button>
                 <div class="faq-content hidden px-6 pb-6">
                     <p class="text-xs text-dark-grey/70 leading-relaxed">
-                        Neuro-rehabilitation is a multidisciplinary program designed to support patients recovering from injury, disease, or disorders of the nervous system. It combines neurological physical therapy, occupational therapy, and speech therapy to recover lost functions and rebuild motor skills.
+                        Repetitive Transcranial Magnetic Stimulation (rTMS) is a non-invasive, drug-free therapy that utilizes targeted magnetic pulses to stimulate nerve cells in specific regions of the brain. It is primarily used for treatment-resistant depression, neuropathic pain, and post-stroke motor deficits.
                     </p>
                 </div>
             </div>
@@ -328,14 +328,14 @@ require_once __DIR__ . '/includes/header.php';
             <!-- FAQ 2 -->
             <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
                 <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
-                    <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">How soon should rehabilitation start after a stroke?</span>
+                    <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">Is rTMS therapy safe?</span>
                     <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
                         <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
                     </span>
                 </button>
                 <div class="faq-content hidden px-6 pb-6">
                     <p class="text-xs text-dark-grey/70 leading-relaxed">
-                        Rehabilitation should begin as soon as the patient is medically stable—often within 24 to 48 hours of the event. Early mobilization stimulates neuroplasticity and prevents secondary complications like muscle stiffness and joint contractures.
+                        Yes, rTMS is FDA cleared and has a strong safety profile. Because it is completely non-invasive, it does not require anesthesia, sedation, or surgical incisions, and avoids the systemic side effects often associated with oral medications.
                     </p>
                 </div>
             </div>
@@ -343,14 +343,14 @@ require_once __DIR__ . '/includes/header.php';
             <!-- FAQ 3 -->
             <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
                 <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
-                    <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">Can rehabilitation help with progressive disorders like Parkinson's?</span>
+                    <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">Are there any side effects of rTMS?</span>
                     <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
                         <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
                     </span>
                 </button>
                 <div class="faq-content hidden px-6 pb-6">
                     <p class="text-xs text-dark-grey/70 leading-relaxed">
-                        Yes. While progressive disorders cannot be fully cured, ongoing physical, balance, and occupational therapies help patients manage motor symptoms, maintain optimal gait patterns, reduce the risk of falls, and sustain independence for much longer.
+                        Side effects are generally mild and temporary, most commonly including a slight tapping sensation on the scalp during treatment, minor scalp discomfort, or a mild headache immediately following a session. These symptoms usually resolve quickly.
                     </p>
                 </div>
             </div>
@@ -358,14 +358,14 @@ require_once __DIR__ . '/includes/header.php';
             <!-- FAQ 4 -->
             <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
                 <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
-                    <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">How long does a neuro-rehab program last?</span>
+                    <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">How many rTMS sessions will I need?</span>
                     <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
                         <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
                     </span>
                 </button>
                 <div class="faq-content hidden px-6 pb-6">
                     <p class="text-xs text-dark-grey/70 leading-relaxed">
-                        The duration is highly individualized, depending on the severity of the neurological deficit and the patient's recovery trajectory. A program might last from a few weeks to several months, with progress evaluations conducted periodically.
+                        A standard course typically consists of daily outpatient sessions (Monday through Friday) lasting 20-30 minutes, conducted over a period of 4 to 6 weeks, depending on your clinical response and treatment plan.
                     </p>
                 </div>
             </div>
@@ -373,14 +373,14 @@ require_once __DIR__ . '/includes/header.php';
             <!-- FAQ 5 -->
             <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
                 <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
-                    <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">What is the role of Phezee in physical therapy?</span>
+                    <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">Will I need to stop my current medications during rTMS?</span>
                     <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
                         <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
                     </span>
                 </button>
                 <div class="faq-content hidden px-6 pb-6">
                     <p class="text-xs text-dark-grey/70 leading-relaxed">
-                        Phezee is an advanced wearable biofeedback tool used to measure joint Range of Motion (ROM) and muscle electrical activity (EMG). It allows therapists to monitor recovery progress in real-time, customize exercise protocols, and provide patients with visual feedback on their improvement.
+                        Generally, no. rTMS can be safely administered alongside your current medications. Dr. Praveen Gupta will review your complete medical history and current prescriptions during your initial consultation to ensure safety.
                     </p>
                 </div>
             </div>

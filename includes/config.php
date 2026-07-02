@@ -30,12 +30,25 @@ $navItems = [
     ]],
     ['name' => 'Services', 'url' => '#', 'children' => [
         ['name' => 'Services Hub', 'url' => 'services.php'],
-        ['name' => 'Neurology Conditions', 'url' => 'neurological-conditions.php'],
         ['name' => 'Neurological Symptoms', 'url' => 'neurological-symptoms.php'],
         ['name' => 'Neurology Procedures', 'url' => 'neurology-procedures.php'],
         ['name' => 'Memory Clinic', 'url' => 'memory-clinic.php'],
         ['name' => 'Rehabilitation Hub', 'url' => 'neuro-rehabilitation-center.php'],
         ['name' => 'Brain Health Hub', 'url' => 'brain-health-center.php'],
+        ['name' => 'Neurocritical Care', 'url' => 'neurocritical-acute-stroke-care.php'],
+        ['name' => 'rTMS Therapy', 'url' => 'rtms-therapy.php'],
+    ]],
+    ['name' => 'Conditions', 'url' => '#', 'children' => [
+        ['name' => 'Conditions Hub', 'url' => 'neurological-conditions.php'],
+        ['name' => 'Epilepsy', 'url' => 'epilepsy.php'],
+        ['name' => 'Headache', 'url' => 'headache.php'],
+        ['name' => 'Migraine', 'url' => 'migraine.php'],
+        ['name' => 'Stroke', 'url' => 'stroke.php'],
+        ['name' => 'Vertigo', 'url' => 'vertigo.php'],
+        ['name' => 'Parkinson\'s Disease', 'url' => 'parkinsons.php'],
+        ['name' => 'Multiple Sclerosis', 'url' => 'ms.php'],
+        ['name' => 'Movement Disorders', 'url' => 'movement.php'],
+        ['name' => 'Peripheral Neuropathy', 'url' => 'neuropathy.php'],
     ]],
     ['name' => 'Patient Info', 'url' => '#', 'children' => [
         ['name' => 'Patient Info', 'url' => 'patient-info.php'],
@@ -56,10 +69,9 @@ $navItems = [
         ['name' => 'Video Testimonials', 'url' => 'video-testimonials.php'],
         ['name' => 'Media Coverage', 'url' => 'media-coverage.php'],
         ['name' => 'Media Updates', 'url' => 'media-updates.php'],
+        ['name' => 'Photo Gallery', 'url' => 'gallery.php'],
     ]],
-    ['name' => 'Gallery', 'url' => 'gallery.php'],
     ['name' => 'Blog', 'url' => 'dr-praveen-gupta-blog.php'],
-    ['name' => 'Contact', 'url' => 'contact-us-top-neurologist-delhi-ncr.php'],
 ];
 
 // Services
@@ -318,11 +330,11 @@ $educationVideos = [
 function getServicePageLink($title) {
     $titleLower = strtolower($title);
     if (strpos($titleLower, 'neurocritical') !== false || strpos($titleLower, 'acute stroke') !== false) {
-        return 'emergency-neurology-care.php';
+        return 'neurocritical-acute-stroke-care.php';
     } elseif (strpos($titleLower, 'rehabilitation') !== false) {
         return 'neuro-rehabilitation-center.php';
     } elseif (strpos($titleLower, 'rtms') !== false) {
-        return 'neurology-procedures.php';
+        return 'rtms-therapy.php';
     } elseif (strpos($titleLower, 'epilepsy') !== false) {
         return 'epilepsy.php';
     } elseif (strpos($titleLower, 'headache') !== false) {

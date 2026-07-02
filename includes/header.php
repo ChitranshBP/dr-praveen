@@ -334,13 +334,16 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
                                     <span><?php echo $item['name']; ?></span>
                                     <i class="fas fa-chevron-down text-[10px] transition-transform duration-300 group-hover:rotate-180"></i>
                                 </button>
-                                <div class="absolute left-0 mt-2 w-56 rounded-2xl bg-white shadow-xl border border-slate-200/50 p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform scale-95 group-hover:scale-100 z-50">
-                                    <?php foreach ($item['children'] as $child): ?>
-                                        <a href="<?php echo $child['url']; ?>"
-                                           class="block px-4 py-2.5 text-sm font-medium rounded-xl text-dark-grey/80 hover:bg-slate-50 hover:text-electric-blue transition-colors">
-                                            <?php echo $child['name']; ?>
-                                        </a>
-                                    <?php endforeach; ?>
+                                <div class="absolute left-0 mt-2 w-64 rounded-3xl bg-white/95 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.12)] border border-slate-200/40 p-2.5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform scale-95 origin-top-left group-hover:scale-100 z-50">
+                                    <div class="space-y-1">
+                                        <?php foreach ($item['children'] as $child): ?>
+                                            <a href="<?php echo $child['url']; ?>"
+                                               class="flex items-center justify-between px-4 py-2.5 text-xs font-semibold rounded-2xl text-dark-grey/75 hover:bg-gradient-to-r hover:from-electric-blue/5 hover:to-cyan-accent/5 hover:text-electric-blue transition-all duration-305 group/item transform hover:translate-x-1">
+                                                <span><?php echo $child['name']; ?></span>
+                                                <i class="fas fa-chevron-right text-[9px] opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300 text-cyan-accent"></i>
+                                            </a>
+                                        <?php endforeach; ?>
+                                    </div>
                                 </div>
                             </div>
                         <?php else: ?>
@@ -388,12 +391,12 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
                                 </span>
                                 <i class="fas fa-chevron-down text-xs transition-transform duration-300"></i>
                             </button>
-                            <div class="hidden pl-6 py-1 space-y-1 bg-slate-50/50 rounded-xl mt-1 border border-slate-100">
+                            <div class="hidden pl-6 py-1.5 space-y-1 bg-slate-50/40 rounded-2xl mt-1.5 border border-slate-100/50">
                                 <?php foreach ($item['children'] as $child): ?>
                                     <a href="<?php echo $child['url']; ?>"
-                                       class="flex items-center justify-between px-4 py-2.5 rounded-lg text-sm font-medium text-dark-grey/70 hover:text-electric-blue">
+                                       class="flex items-center justify-between px-4 py-3 rounded-xl text-xs font-semibold text-dark-grey/70 hover:bg-electric-blue/5 hover:text-electric-blue transition-colors">
                                         <span><?php echo $child['name']; ?></span>
-                                        <i class="fas fa-chevron-right text-[10px] text-cyan-accent"></i>
+                                        <i class="fas fa-arrow-right text-[9px] text-cyan-accent"></i>
                                     </a>
                                 <?php endforeach; ?>
                             </div>

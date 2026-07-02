@@ -1,6 +1,6 @@
 <?php
 /**
- * Rehabilitation Hub Page - Dr. Praveen Gupta
+ * Neurocritical & Acute Stroke Care - Dr. Praveen Gupta
  */
 $isDarkHero = true;
 require_once __DIR__ . '/includes/header.php';
@@ -8,8 +8,7 @@ require_once __DIR__ . '/includes/header.php';
 
 <!-- Page Hero -->
 <section class="relative overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20">
-    <div class="absolute inset-0 bg-black/10"></div>
-    <div class="absolute -right-24 -bottom-24 w-96 h-96 bg-cyan-accent/20 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute inset-0 bg-black/5"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl text-left animate-fade-in-up">
@@ -19,88 +18,88 @@ require_once __DIR__ . '/includes/header.php';
                 <i class="fas fa-chevron-right text-[8px]"></i>
                 <a href="services.php" class="hover:text-white transition-colors">Services</a>
                 <i class="fas fa-chevron-right text-[8px]"></i>
-                <span class="text-white font-medium">Rehabilitation Hub</span>
+                <span class="text-white font-medium">Neurocritical Care</span>
             </nav>
 
             <!-- Badge -->
-            <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4 border border-white/20">
-                <i class="fas fa-child text-cyan-accent text-[10px]"></i>
-                <span>Comprehensive Neuro-Rehabilitation</span>
+            <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4">
+                <i class="fas fa-clock text-[10px] animate-pulse text-red-400"></i>
+                <span>24/7 Stroke Rescue & ICU</span>
             </div>
 
             <!-- Heading -->
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-3">
-                Neurological <span class="text-cyan-accent">Rehabilitation Hub</span>
+                Neurocritical & <span class="text-cyan-accent">Acute Stroke Care</span>
             </h1>
 
-            <p class="text-sm md:text-base text-white/85 leading-relaxed mb-6 max-w-2xl">
-                Restoring function, independence, and confidence. Tailored physical, occupational, and speech rehabilitation programs for stroke, trauma, and progressive movement disorders.
+            <p class="text-sm md:text-base text-white/80 leading-relaxed mb-6 max-w-2xl">
+                Immediate, lifesaving interventions for brain stroke, severe trauma, status epilepticus, and neurological emergencies. Monitored continuously in our specialized Neuro-ICU.
             </p>
 
-            <div class="flex flex-wrap items-center gap-3">
-                <a href="contact-us-top-neurologist-delhi-ncr.php" class="group inline-flex items-center space-x-2.5 bg-white text-deep-indigo font-semibold px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-white/30 transition-all duration-300 transform hover:-translate-y-1 text-sm">
-                    <span>Schedule Evaluation</span>
-                    <i class="fas fa-arrow-right text-xs"></i>
+            <!-- CTA Buttons -->
+            <div class="flex flex-wrap gap-3">
+                <a href="tel:<?php echo SITE_PHONE; ?>" class="inline-flex items-center space-x-2.5 bg-white text-deep-indigo font-semibold px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-white/30 transition-all duration-300 transform hover:-translate-y-1 text-sm">
+                    <span>Emergency Helpline</span>
+                    <i class="fas fa-phone-alt text-xs text-red-500"></i>
                 </a>
-                <a href="tel:<?php echo SITE_PHONE; ?>" class="inline-flex items-center space-x-2.5 bg-white/20 backdrop-blur-sm text-white font-semibold px-6 py-2.5 rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 text-sm">
-                    <i class="fas fa-phone text-xs"></i>
-                    <span>Call Now</span>
+                <a href="contact-us-top-neurologist-delhi-ncr.php" class="inline-flex items-center space-x-2.5 bg-white/20 backdrop-blur-sm text-white font-semibold px-6 py-2.5 rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 text-sm">
+                    <span>Book Consultation</span>
                 </a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- What is Rehabilitation Section -->
+<!-- What is Neurocritical Care Section -->
 <section class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-2 gap-16 items-center">
             <div class="animate-slide-in-left">
-                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Recovery Focus</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Rebuilding Independent Living</h2>
+                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Emergency Response</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Expert Acute Stroke & Neuro ICU</h2>
                 <p class="text-dark-grey/70 leading-relaxed mb-6">
-                    Following a stroke, brain trauma, or spinal cord injury, the nervous system requires specialized retraining. Our approach focuses on neuroplasticity – the brain's innate ability to reorganize and form new neural connections in response to therapeutic exercise.
+                    A neurological emergency requires rapid diagnostics and immediate treatment. The "Golden Hour" represents the first few hours after stroke symptoms begin. Restoring blood flow to the brain via thrombolysis (clot-busting medication) or mechanical thrombectomy (catheter clot retrieval) can reverse paralysis and save lives.
                 </p>
                 <p class="text-dark-grey/70 leading-relaxed mb-8">
-                    Dr. Praveen Gupta coordinates the clinical team to ensure physical therapists, speech-language pathologists, and occupational therapists deliver unified therapy protocols tailored to your recovery targets.
+                    Following initial rescue, critically ill patients are monitored in our advanced Neuro-ICU. Here, we track intracranial pressure (ICP), brain oxygenation, and continuous electroencephalography (EEG) to detect non-convulsive seizures and protect tissue.
                 </p>
 
                 <!-- Key Facts -->
                 <div class="grid grid-cols-2 gap-4">
                     <div class="flex items-start space-x-3">
-                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-electric-blue text-xs"></i>
+                        <div class="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-red-650 text-xs"></i>
                         </div>
                         <div>
-                            <div class="font-semibold text-dark-grey text-sm">Physical Therapy</div>
-                            <div class="text-xs text-dark-grey/60">Gait and coordination</div>
+                            <div class="font-semibold text-dark-grey text-sm">Clot Retrieval</div>
+                            <div class="text-xs text-dark-grey/60">Mechanical thrombectomy</div>
                         </div>
                     </div>
                     <div class="flex items-start space-x-3">
-                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-electric-blue text-xs"></i>
+                        <div class="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-red-650 text-xs"></i>
                         </div>
                         <div>
-                            <div class="font-semibold text-dark-grey text-sm">Occupational Care</div>
-                            <div class="text-xs text-dark-grey/60">Daily living adjustments</div>
+                            <div class="font-semibold text-dark-grey text-sm">Golden Hour Care</div>
+                            <div class="text-xs text-dark-grey/60">Urgent clot-dissolving tPA</div>
                         </div>
                     </div>
                     <div class="flex items-start space-x-3">
-                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-electric-blue text-xs"></i>
+                        <div class="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-red-650 text-xs"></i>
                         </div>
                         <div>
-                            <div class="font-semibold text-dark-grey text-sm">Speech Therapy</div>
-                            <div class="text-xs text-dark-grey/60">Dysphagia and clarity</div>
+                            <div class="font-semibold text-dark-grey text-sm">Neuro ICU Monitoring</div>
+                            <div class="text-xs text-dark-grey/60">Continuous ICP & EEG tracking</div>
                         </div>
                     </div>
                     <div class="flex items-start space-x-3">
-                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-electric-blue text-xs"></i>
+                        <div class="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-red-650 text-xs"></i>
                         </div>
                         <div>
-                            <div class="font-semibold text-dark-grey text-sm">Tech Monitored</div>
-                            <div class="text-xs text-dark-grey/60">Real-time biofeedback</div>
+                            <div class="font-semibold text-dark-grey text-sm">ICU Nursing</div>
+                            <div class="text-xs text-dark-grey/60">1:1 neuro-certified care</div>
                         </div>
                     </div>
                 </div>
@@ -108,97 +107,97 @@ require_once __DIR__ . '/includes/header.php';
 
             <!-- Image Side -->
             <div class="relative flex justify-center lg:justify-end animate-slide-in-right">
-                <div class="relative w-full max-w-md lg:max-w-none aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-soft-cyan to-silver-grey border border-silver-grey/20">
-                    <img src="assets/services/rehab.png" alt="Patient undergoing physical rehabilitation" class="w-full h-full object-cover">
+                <div class="relative w-full max-w-md lg:max-w-none aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-red-50 to-white border border-red-200/50">
+                    <img src="assets/services/stroke-care.png" alt="Neurocritical ICU room" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Core Rehabilitation Programs -->
+<!-- BE FAST Stroke Warning Signs -->
 <section class="py-12 bg-[#edf5f9]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Our Services</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Core Rehabilitation Therapies</h2>
+            <span class="text-red-650 font-semibold text-sm uppercase tracking-wider">Recognition</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">BE FAST: Stroke Recognition</h2>
             <p class="text-dark-grey/70 leading-relaxed">
-                We combine experienced clinical expertise with state-of-the-art diagnostic and recovery tracking tools to ensure precise treatments.
+                Use the BE FAST method to immediately identify stroke symptoms in others and coordinate care.
             </p>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Program 1 -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-electric-blue/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-electric-blue group-hover:text-white transition-all duration-300">
-                    <i class="fas fa-walking text-electric-blue text-xl group-hover:text-white transition-colors"></i>
+            <!-- Sign 1 -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-red-200/30 transition-all duration-300 group">
+                <div class="w-14 h-14 bg-red-50 rounded-xl flex items-center justify-center mb-5 group-hover:bg-red-600 transition-all duration-300">
+                    <i class="fas fa-sync text-red-650 text-xl group-hover:text-white transition-colors"></i>
                 </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Neuro-Physiotherapy</h3>
+                <h3 class="text-lg font-bold text-dark-grey mb-3">Balance & Eyes</h3>
                 <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Focuses on rebuilding muscle strength, improving balance, training gait cycles, and recovering motor control following a stroke, spine injury, or onset of neuropathy.
+                    Sudden loss of balance, trouble walking, or coordination difficulty, paired with abrupt vision changes like blurred or double vision.
                 </p>
                 <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Gait Training</span>
-                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Strength</span>
+                    <span class="text-xs bg-red-50 text-red-650 px-3 py-1 rounded-full font-medium">Balance Loss</span>
+                    <span class="text-xs bg-red-50 text-red-650 px-3 py-1 rounded-full font-medium">Vision Blur</span>
                 </div>
             </div>
 
-            <!-- Program 2 -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-cyan-accent/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-cyan-accent transition-all duration-300">
-                    <i class="fas fa-hands-holding text-cyan-accent text-xl group-hover:text-white transition-colors"></i>
+            <!-- Sign 2 -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-red-200/30 transition-all duration-300 group">
+                <div class="w-14 h-14 bg-red-50 rounded-xl flex items-center justify-center mb-5 group-hover:bg-red-600 transition-all duration-300">
+                    <i class="fas fa-face-meh text-red-650 text-xl group-hover:text-white transition-colors"></i>
                 </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Occupational Therapy</h3>
+                <h3 class="text-lg font-bold text-dark-grey mb-3">Face & Arms</h3>
                 <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Aids patients in relearning daily living activities (bathing, dressing, writing). We provide cognitive adaptation, motor skills coordination, and assistive technology advice.
+                    One side of the face droops or is numb when attempting to smile. When raising both arms, one arm drifts downward or feels weak.
                 </p>
                 <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Life Skills</span>
-                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Fine Motor</span>
+                    <span class="text-xs bg-red-50 text-red-650 px-3 py-1 rounded-full font-medium">Facial Droop</span>
+                    <span class="text-xs bg-red-50 text-red-650 px-3 py-1 rounded-full font-medium">Arm Drift</span>
                 </div>
             </div>
 
-            <!-- Program 3 -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-deep-indigo/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-deep-indigo transition-all duration-300">
-                    <i class="fas fa-volume-up text-deep-indigo text-xl group-hover:text-white transition-colors"></i>
+            <!-- Sign 3 -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-red-200/30 transition-all duration-300 group">
+                <div class="w-14 h-14 bg-red-50 rounded-xl flex items-center justify-center mb-5 group-hover:bg-red-600 transition-all duration-300">
+                    <i class="fas fa-comments text-red-650 text-xl group-hover:text-white transition-colors"></i>
                 </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Speech & Swallowing</h3>
+                <h3 class="text-lg font-bold text-dark-grey mb-3">Speech & Time</h3>
                 <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Addresses dysphagia (swallowing difficulties) and speech clarity challenges (aphasia/dysarthria) caused by neurological damage, helping patients communicate safely.
+                    Speech is slurred, garbled, or difficult to understand, or the person cannot speak. Time is critical – call the emergency helpline immediately.
                 </p>
                 <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Dysphagia</span>
-                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Speech Clarity</span>
+                    <span class="text-xs bg-red-50 text-red-650 px-3 py-1 rounded-full font-medium">Slurred Speech</span>
+                    <span class="text-xs bg-red-50 text-red-650 px-3 py-1 rounded-full font-medium">Call Emergency</span>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Rehabilitation Steps -->
+<!-- Clinical ICU Steps -->
 <section class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Pathway</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Your Recovery Journey</h2>
+            <span class="text-red-650 font-semibold text-sm uppercase tracking-wider">Clinical Steps</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Our Emergency Response Protocol</h2>
             <p class="text-dark-grey/70 leading-relaxed">
-                Our structured recovery protocol ensures patient progress is monitored continuously from admission to outpatient support.
+                Our emergency neurology protocol coordinates fast-tracked diagnostics and treatments to save brain tissue.
             </p>
         </div>
 
-        <!-- Progress Steps -->
+        <!-- ICU Steps -->
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             <!-- Step 1 -->
             <div class="relative">
                 <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">1</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Baseline Assessment</h3>
+                    <div class="w-12 h-12 bg-red-650 text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">1</div>
+                    <h3 class="text-lg font-bold text-dark-grey mb-3">Rapid Brain Imaging</h3>
                     <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Comprehensive clinical evaluation of motor control, cognitive functions, and sensory status to set realistic recovery targets.
+                        Upon arrival at emergency, a non-contrast brain CT scan is performed within 25 minutes to verify the type of stroke.
                     </p>
                 </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
+                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-red-650/30">
                     <i class="fas fa-chevron-right text-xl"></i>
                 </div>
             </div>
@@ -206,13 +205,13 @@ require_once __DIR__ . '/includes/header.php';
             <!-- Step 2 -->
             <div class="relative">
                 <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">2</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Custom Treatment</h3>
+                    <div class="w-12 h-12 bg-red-650 text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">2</div>
+                    <h3 class="text-lg font-bold text-dark-grey mb-3">IV Thrombolysis</h3>
                     <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        A personalized rehabilitation schedule combining physical therapy, speech pathology, and occupational exercises.
+                        Clot-dissolving medication (tPA) is administered intravenously to break down blockages and restore blood circulation.
                     </p>
                 </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
+                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-red-650/30">
                     <i class="fas fa-chevron-right text-xl"></i>
                 </div>
             </div>
@@ -220,13 +219,13 @@ require_once __DIR__ . '/includes/header.php';
             <!-- Step 3 -->
             <div class="relative">
                 <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">3</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Active Monitoring</h3>
+                    <div class="w-12 h-12 bg-red-650 text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">3</div>
+                    <h3 class="text-lg font-bold text-dark-grey mb-3">Mechanical Retrieval</h3>
                     <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        We utilize advanced biofeedback tools (like Phezee) to monitor joint mobility and electromyography muscle recovery trends in real-time.
+                        Catheter-based thrombectomy is performed in our Cath Lab to physically extract the blockage from the cerebral artery.
                     </p>
                 </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
+                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-red-650/30">
                     <i class="fas fa-chevron-right text-xl"></i>
                 </div>
             </div>
@@ -234,10 +233,10 @@ require_once __DIR__ . '/includes/header.php';
             <!-- Step 4 -->
             <div class="relative">
                 <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">4</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Home Care Care</h3>
+                    <div class="w-12 h-12 bg-red-650 text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">4</div>
+                    <h3 class="text-lg font-bold text-dark-grey mb-3">ICU Care & Tracking</h3>
                     <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Preparing patients for discharge with customized home care guides, training caregivers, and setting up periodic checkups.
+                        Transfer to the specialized Neuro-ICU for continuous intracranial pressure, blood pressure, and EEG monitoring.
                     </p>
                 </div>
             </div>
@@ -305,7 +304,7 @@ require_once __DIR__ . '/includes/header.php';
             <span class="text-electric-blue font-bold text-xs uppercase tracking-wider font-sans">Patient FAQ</span>
             <h2 class="text-3xl font-bold text-deep-indigo font-serif mt-2">Frequently Asked Questions</h2>
             <p class="text-sm text-dark-grey/65 mt-3 leading-relaxed">
-                Common questions regarding Neurological Rehabilitation.
+                Common questions regarding Neurocritical Care and Acute Stroke therapies.
             </p>
         </div>
 
@@ -313,14 +312,14 @@ require_once __DIR__ . '/includes/header.php';
             <!-- FAQ 1 -->
             <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
                 <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
-                    <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">What does neuro-rehabilitation involve?</span>
+                    <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">What is the "Golden Hour" in stroke treatment?</span>
                     <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
                         <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
                     </span>
                 </button>
                 <div class="faq-content hidden px-6 pb-6">
                     <p class="text-xs text-dark-grey/70 leading-relaxed">
-                        Neuro-rehabilitation is a multidisciplinary program designed to support patients recovering from injury, disease, or disorders of the nervous system. It combines neurological physical therapy, occupational therapy, and speech therapy to recover lost functions and rebuild motor skills.
+                        The Golden Hour represents the first 4.5 hours after the onset of stroke symptoms. Administering clot-busting medications (IV tPA) or initiating mechanical thrombectomy within this window drastically increases the chances of reversing paralysis and achieving full recovery.
                     </p>
                 </div>
             </div>
@@ -328,14 +327,14 @@ require_once __DIR__ . '/includes/header.php';
             <!-- FAQ 2 -->
             <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
                 <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
-                    <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">How soon should rehabilitation start after a stroke?</span>
+                    <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">What is mechanical thrombectomy?</span>
                     <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
                         <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
                     </span>
                 </button>
                 <div class="faq-content hidden px-6 pb-6">
                     <p class="text-xs text-dark-grey/70 leading-relaxed">
-                        Rehabilitation should begin as soon as the patient is medically stable—often within 24 to 48 hours of the event. Early mobilization stimulates neuroplasticity and prevents secondary complications like muscle stiffness and joint contractures.
+                        Mechanical thrombectomy is an advanced, catheter-based endovascular surgery. A specialist feeds a micro-catheter from the groin up to the brain to physically grab and remove the clot blocking blood flow, instantly re-oxygenating brain tissues.
                     </p>
                 </div>
             </div>
@@ -343,14 +342,14 @@ require_once __DIR__ . '/includes/header.php';
             <!-- FAQ 3 -->
             <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
                 <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
-                    <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">Can rehabilitation help with progressive disorders like Parkinson's?</span>
+                    <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">How is a Neuro-ICU different from a regular ICU?</span>
                     <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
                         <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
                     </span>
                 </button>
                 <div class="faq-content hidden px-6 pb-6">
                     <p class="text-xs text-dark-grey/70 leading-relaxed">
-                        Yes. While progressive disorders cannot be fully cured, ongoing physical, balance, and occupational therapies help patients manage motor symptoms, maintain optimal gait patterns, reduce the risk of falls, and sustain independence for much longer.
+                        A Neuro-ICU is dedicated exclusively to life-threatening brain and spine issues. It features specialized equipment like intracranial pressure (ICP) monitors, continuous bedside video-EEG, and is staffed by neurologists, neurointensivists, and nurses certified in advanced neurological life support.
                     </p>
                 </div>
             </div>
@@ -358,14 +357,14 @@ require_once __DIR__ . '/includes/header.php';
             <!-- FAQ 4 -->
             <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
                 <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
-                    <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">How long does a neuro-rehab program last?</span>
+                    <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">Can stroke paralysis be reversed?</span>
                     <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
                         <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
                     </span>
                 </button>
                 <div class="faq-content hidden px-6 pb-6">
                     <p class="text-xs text-dark-grey/70 leading-relaxed">
-                        The duration is highly individualized, depending on the severity of the neurological deficit and the patient's recovery trajectory. A program might last from a few weeks to several months, with progress evaluations conducted periodically.
+                        Yes, if emergency treatment (thrombolysis or thrombectomy) is initiated immediately. Even if some deficits remain after the acute phase, structured neurological physical rehabilitation can help retrain the brain to restore mobility and function.
                     </p>
                 </div>
             </div>
@@ -373,14 +372,14 @@ require_once __DIR__ . '/includes/header.php';
             <!-- FAQ 5 -->
             <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
                 <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
-                    <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">What is the role of Phezee in physical therapy?</span>
+                    <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">What are the risk factors for stroke?</span>
                     <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
                         <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
                     </span>
                 </button>
                 <div class="faq-content hidden px-6 pb-6">
                     <p class="text-xs text-dark-grey/70 leading-relaxed">
-                        Phezee is an advanced wearable biofeedback tool used to measure joint Range of Motion (ROM) and muscle electrical activity (EMG). It allows therapists to monitor recovery progress in real-time, customize exercise protocols, and provide patients with visual feedback on their improvement.
+                        Common risk factors include chronic high blood pressure, diabetes, high cholesterol, smoking, physical inactivity, obesity, and heart conditions like atrial fibrillation. Managing these under neurological supervision drastically lowers stroke risk.
                     </p>
                 </div>
             </div>
