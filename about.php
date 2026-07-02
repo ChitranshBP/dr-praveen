@@ -2,126 +2,46 @@
 /**
  * About Page - Dr. Praveen Gupta
  */
+$isDarkHero = true;
 require_once __DIR__ . '/includes/header.php';
 ?>
 
-<!-- About Page Hero -->
-<section class="relative overflow-hidden bg-white">
-    <div class="absolute inset-0 -z-0">
-        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-accent/10 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-electric-blue/10 rounded-full blur-3xl"></div>
-    </div>
+<!-- Hero Section -->
+<section class="relative overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20">
+    <div class="absolute inset-0 bg-black/10"></div>
+    <div class="absolute -right-24 -bottom-24 w-96 h-96 bg-cyan-accent/20 rounded-full blur-[120px] pointer-events-none"></div>
 
-    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <!-- Breadcrumb -->
-        <div class="flex items-center space-x-2 text-xs text-dark-grey/50 mb-8 animate-fade-in tracking-wide uppercase">
-            <a href="index.php" class="hover:text-electric-blue transition-colors">Home</a>
-            <span class="text-cyan-accent">/</span>
-            <span class="text-electric-blue font-semibold">About</span>
-        </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-3xl text-left animate-fade-in-up">
+            <!-- Breadcrumb -->
+            <nav class="flex items-center space-x-2 text-white/80 text-sm mb-3">
+                <a href="index.php" class="hover:text-white transition-colors">Home</a>
+                <i class="fas fa-chevron-right text-[8px]"></i>
+                <span class="text-white font-medium">About</span>
+            </nav>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            <!-- Left Content -->
-            <div class="lg:col-span-7">
-                <div class="inline-flex items-center space-x-2 mb-6 animate-fade-in-up">
-                    <span class="w-8 h-px bg-electric-blue"></span>
-                    <span class="text-electric-blue text-xs font-semibold tracking-[0.2em] uppercase">Neurologist • Chairman MAIINS</span>
-                </div>
-
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-deep-indigo leading-[1.05] mb-6 animate-fade-in-up tracking-tight" style="animation-delay: 100ms;">
-                    Dr. Praveen
-                    <span class="block gradient-text">Gupta</span>
-                </h1>
-
-                <p class="text-lg md:text-xl text-dark-grey/70 mb-6 leading-relaxed max-w-xl font-light animate-fade-in-up" style="animation-delay: 200ms;">
-                    A leading neurologist with over <span class="text-deep-indigo font-medium">20 years</span> of experience pioneering advanced treatments in stroke, epilepsy, and movement disorders.
-                </p>
-
-                <!-- Minimal meta -->
-                <div class="flex flex-wrap items-center gap-x-8 gap-y-3 mb-7 text-sm text-dark-grey/60 animate-fade-in-up" style="animation-delay: 300ms;">
-                    <span class="flex items-center space-x-2">
-                        <i class="fas fa-graduation-cap text-cyan-accent"></i>
-                        <span>MBBS, MD</span>
-                    </span>
-                    <span class="flex items-center space-x-2">
-                        <i class="fas fa-hospital text-cyan-accent"></i>
-                        <span>Marengo Asia</span>
-                    </span>
-                    <span class="flex items-center space-x-2">
-                        <i class="fas fa-award text-cyan-accent"></i>
-                        <span>First DBS, Gurugram</span>
-                    </span>
-                </div>
-
-                <!-- CTAs -->
-                <div class="flex flex-wrap items-center gap-4 animate-fade-in-up" style="animation-delay: 400ms;">
-                    <a href="contact.php" class="group inline-flex items-center space-x-3 bg-deep-indigo text-white text-sm font-medium pl-6 pr-2 py-2.5 rounded-full hover:bg-electric-blue transition-colors duration-300">
-                        <span>Book Consultation</span>
-                        <span class="w-7 h-7 rounded-full bg-white/10 group-hover:bg-white/20 flex items-center justify-center transition-colors">
-                            <i class="fas fa-arrow-right text-[10px] group-hover:rotate-45 transition-transform duration-300"></i>
-                        </span>
-                    </a>
-                    <a href="#specializations" class="group text-sm font-medium text-deep-indigo hover:text-electric-blue transition-colors flex items-center space-x-2">
-                        <span>Specializations</span>
-                        <i class="fas fa-arrow-down text-xs group-hover:translate-y-1 transition-transform"></i>
-                    </a>
-                </div>
+            <!-- Badge -->
+            <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4 border border-white/20">
+                <i class="fas fa-award text-cyan-accent text-[10px]"></i>
+                <span>Chairman - Marengo Asia Neuro & Spine</span>
             </div>
 
-            <!-- Right - Doctor Portrait -->
-            <div class="lg:col-span-5 animate-fade-in" style="animation-delay: 200ms;">
-                <div class="relative max-w-sm mx-auto">
-                    <!-- Soft glow -->
-                    <div class="absolute -inset-4 bg-gradient-to-br from-electric-blue/20 to-cyan-accent/20 rounded-3xl blur-2xl"></div>
+            <!-- Heading -->
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-3">
+                About <span class="text-cyan-accent">Dr. Praveen Gupta</span>
+            </h1>
 
-                    <!-- Portrait image with gradient frame -->
-                    <div class="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-xl bg-gradient-to-br from-deep-indigo to-electric-blue p-1">
-                        <div class="relative w-full h-full rounded-[1.4rem] overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent">
-                            <img src="assets/dpg-1.webp" alt="Dr. Praveen Gupta" class="absolute inset-0 w-full h-full object-cover">
-                            <!-- Subtle gradient overlay for legibility -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-deep-indigo/60 via-transparent to-transparent"></div>
-
-                            <!-- Bottom info -->
-                            <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
-                                <p class="text-cyan-200 text-xs tracking-widest uppercase">Chairman</p>
-                                <p class="text-white font-serif text-lg font-semibold mt-1">Marengo Asia Neuro & Spine</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Small floating badge -->
-                    <div class="absolute -top-3 -right-3 w-14 h-14 rounded-full bg-white shadow-lg flex items-center justify-center border border-silver-grey/50">
-                        <i class="fas fa-award text-cyan-accent text-lg"></i>
-                    </div>
-                </div>
-            </div>
+            <p class="text-sm md:text-base text-white/85 leading-relaxed mb-6 max-w-2xl">
+                A leading neurologist pioneering advanced treatments in stroke, epilepsy, and movement disorders with over 20 years of experience.
+            </p>
         </div>
     </div>
 </section>
+
+<!-- Doctor Portrait & Summary Section -->
 
 <!-- Minimal Stats Strip -->
-<section class="py-12 border-y border-silver-grey/60 bg-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-silver-grey/60">
-            <div class="text-center px-4 py-4">
-                <div class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo">20+</div>
-                <div class="text-xs text-dark-grey/60 mt-1 tracking-wide uppercase">Years</div>
-            </div>
-            <div class="text-center px-4 py-4">
-                <div class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo">500K+</div>
-                <div class="text-xs text-dark-grey/60 mt-1 tracking-wide uppercase">Patients</div>
-            </div>
-            <div class="text-center px-4 py-4">
-                <div class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo">70+</div>
-                <div class="text-xs text-dark-grey/60 mt-1 tracking-wide uppercase">Publications</div>
-            </div>
-            <div class="text-center px-4 py-4">
-                <div class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo">4.9</div>
-                <div class="text-xs text-dark-grey/60 mt-1 tracking-wide uppercase">Rating</div>
-            </div>
-        </div>
-    </div>
-</section>
+
 
 <!-- About / Bio Section with Image -->
 <section class="py-14 lg:py-20 bg-white overflow-hidden">
@@ -199,6 +119,29 @@ require_once __DIR__ . '/includes/header.php';
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-12 border-y border-silver-grey/60 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-silver-grey/60">
+            <div class="text-center px-4 py-4">
+                <div class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo">20+</div>
+                <div class="text-xs text-dark-grey/60 mt-1 tracking-wide uppercase">Years</div>
+            </div>
+            <div class="text-center px-4 py-4">
+                <div class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo">500K+</div>
+                <div class="text-xs text-dark-grey/60 mt-1 tracking-wide uppercase">Patients</div>
+            </div>
+            <div class="text-center px-4 py-4">
+                <div class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo">70+</div>
+                <div class="text-xs text-dark-grey/60 mt-1 tracking-wide uppercase">Publications</div>
+            </div>
+            <div class="text-center px-4 py-4">
+                <div class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo">4.9</div>
+                <div class="text-xs text-dark-grey/60 mt-1 tracking-wide uppercase">Rating</div>
             </div>
         </div>
     </div>

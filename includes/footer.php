@@ -46,17 +46,17 @@ foreach (array_slice($services, 0, 6) as $svc) {
                 <!-- Content (Left Aligned) -->
                 <div class="relative z-10 max-w-2xl text-left">
                     <h2 class="text-4xl md:text-5xl lg:text-6xl font-sans font-extrabold text-white mb-4 leading-tight tracking-tight">
-                        Let's Get In Touch.
+                        Need Personalized Advice?
                     </h2>
 
                     <p class="text-white/85 text-sm md:text-base mb-10 max-w-lg leading-relaxed">
-                        Ready to prioritize your health? Schedule a consultation with Dr. Praveen Gupta today and take the first step towards a healthier tomorrow.
+                        Consult with Dr. Praveen Gupta to get an accurate diagnosis and custom treatment plan for your neurological health. We are here to support your journey back to wellness.
                     </p>
 
                     <!-- Buttons Row -->
                     <div class="flex flex-wrap gap-4 items-center">
                         <!-- Book Appointment Button -->
-                        <a href="contact.php"
+                        <a href="contact-us-top-neurologist-delhi-ncr.php"
                            class="inline-flex items-center space-x-6 bg-[#111827] text-white text-xs md:text-sm font-semibold pl-6 pr-2.5 py-2.5 rounded-full hover:bg-black transition-all duration-300 shadow-lg hover:-translate-y-0.5 active:translate-y-0 group">
                             <span>Book Appointment</span>
                             <!-- Glossy metallic dot indicator -->

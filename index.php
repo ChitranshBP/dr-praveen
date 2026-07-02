@@ -60,20 +60,21 @@ require_once __DIR__ . '/includes/header.php';
         <div class="text-center max-w-3xl mx-auto mb-16 observe">
             <div class="inline-flex items-center space-x-2 bg-electric-blue/10 px-4 py-2 rounded-full mb-4">
                 <i class="fas fa-stethoscope text-electric-blue text-sm"></i>
-                <span class="text-electric-blue text-sm font-semibold">Our Services</span>
+                <span class="text-electric-blue text-sm font-semibold">How We Can Help</span>
             </div>
             <h2 class="text-4xl md:text-5xl font-serif font-bold text-deep-indigo mb-4">
-                Comprehensive <span class="gradient-text">Healthcare</span> Solutions
+                Specialized Care for Your <span class="gradient-text">Brain & Spine</span> Health
             </h2>
             <p class="text-lg text-dark-grey/70">
-                From preventive care to specialized treatments, we offer a full spectrum of medical services tailored to
-                your unique needs.
+                We offer advanced treatments and caring support for a wide range of neurological conditions. Explore our areas of expertise below to see how we can guide your recovery.
             </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <?php foreach ($services as $index => $service): ?>
-                <div class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe"
+            <?php foreach ($services as $index => $service): 
+                $link = getServicePageLink($service['title']);
+            ?>
+                <a href="<?php echo $link; ?>" class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe"
                     style="animation-delay: <?php echo $index * 100; ?>ms;">
                     <div>
                         <!-- Image Container -->
@@ -100,7 +101,7 @@ require_once __DIR__ . '/includes/header.php';
                             <?php echo $service['description']; ?>
                         </p>
                     </div>
-                </div>
+                </a>
             <?php endforeach; ?>
         </div>
     </div>
@@ -299,6 +300,10 @@ require_once __DIR__ . '/includes/header.php';
                         <span class="w-1.5 h-1.5 bg-electric-blue rounded-full mt-2 flex-shrink-0"></span>
                         <span>Conducted the first epileptic DBS surgery in Asia</span>
                     </li>
+                    <li class="flex items-start space-x-2">
+                        <span class="w-1.5 h-1.5 bg-electric-blue rounded-full mt-2 flex-shrink-0"></span>
+                        <span>Pioneered Bone Marrow Transplant (BMT) for autoimmune neurological disorders</span>
+                    </li>
                 </ul>
 
                 <p class="text-base text-dark-grey/85 mb-8 leading-relaxed">
@@ -331,16 +336,15 @@ require_once __DIR__ . '/includes/header.php';
             <!-- Content Side -->
             <div class="lg:col-span-6 observe">
                 <span class="text-xs font-bold tracking-wider text-dark-grey/60 uppercase block mb-3 font-sans">
-                    Why Choose Dr. Praveen Gupta?
+                    Why Patients Trust Us
                 </span>
 
                 <h2 class="text-4xl md:text-5xl font-serif font-bold text-deep-indigo leading-tight mb-6">
-                    Providing Best Treatment
+                    Compassionate Care That Puts You First
                 </h2>
 
                 <p class="text-base text-dark-grey/70 mb-10 leading-relaxed max-w-lg">
-                    With an unwavering commitment to clinical excellence, Dr. Praveen Gupta combines advanced technology
-                    and patient-centric therapies to deliver world-class neurological care.
+                    Dealing with neurological concerns can feel overwhelming. We are here to support you at every step with clear answers, advanced treatments, and a caring team focused on your comfort and recovery.
                 </p>
 
                 <!-- Grid of 4 Items -->
@@ -349,13 +353,11 @@ require_once __DIR__ . '/includes/header.php';
                     <div class="flex items-start space-x-4">
                         <div
                             class="w-12 h-12 rounded-xl bg-white border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
-                            <i class="fa-solid fa-earth-americas text-xl text-electric-blue"></i>
+                            <i class="fa-solid fa-hand-holding-heart text-xl text-electric-blue"></i>
                         </div>
                         <div>
-                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Global Standards of Care
-                            </h4>
-                            <p class="text-xs text-dark-grey/65 leading-relaxed">Treatments backed by advanced
-                                technology and international guidelines.</p>
+                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Patient-First Care</h4>
+                            <p class="text-xs text-dark-grey/65 leading-relaxed">We listen closely to your concerns, explain things simply, and tailor treatments to your life.</p>
                         </div>
                     </div>
 
@@ -366,9 +368,8 @@ require_once __DIR__ . '/includes/header.php';
                             <i class="fa-solid fa-lightbulb text-xl text-electric-blue"></i>
                         </div>
                         <div>
-                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Innovative Procedures</h4>
-                            <p class="text-xs text-dark-grey/65 leading-relaxed">Pioneer in stroke care, DBS, and
-                                epilepsy surgery in India.</p>
+                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Pioneering Treatment</h4>
+                            <p class="text-xs text-dark-grey/65 leading-relaxed">Access to India's latest advancements in stroke recovery, brain therapies, and care.</p>
                         </div>
                     </div>
 
@@ -379,9 +380,8 @@ require_once __DIR__ . '/includes/header.php';
                             <i class="fa-solid fa-circle-check text-xl text-electric-blue"></i>
                         </div>
                         <div>
-                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Proven Results</h4>
-                            <p class="text-xs text-dark-grey/65 leading-relaxed">Thousands of patients treated
-                                successfully with rapid recovery.</p>
+                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Proven Recovery</h4>
+                            <p class="text-xs text-dark-grey/65 leading-relaxed">Over 20 years of experience helping thousands of families return to active, healthy lives.</p>
                         </div>
                     </div>
 
@@ -389,20 +389,18 @@ require_once __DIR__ . '/includes/header.php';
                     <div class="flex items-start space-x-4">
                         <div
                             class="w-12 h-12 rounded-xl bg-white border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
-                            <i class="fa-solid fa-hand-holding-heart text-xl text-electric-blue"></i>
+                            <i class="fa-solid fa-shield-halved text-xl text-electric-blue"></i>
                         </div>
                         <div>
-                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Compassionate Consultation
-                            </h4>
-                            <p class="text-xs text-dark-grey/65 leading-relaxed">Empowering patients with knowledge,
-                                compassion, and personalized care.</p>
+                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Complete Support</h4>
+                            <p class="text-xs text-dark-grey/65 leading-relaxed">From consultations to home care guidelines, we stand by your family through healing.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Action Button -->
                 <div>
-                    <a href="#appointment"
+                    <a href="contact-us-top-neurologist-delhi-ncr.php"
                         class="inline-flex items-center px-8 py-3.5 bg-[#111827] text-white text-sm font-bold rounded-full hover:bg-electric-blue transition-colors duration-300 shadow-lg shadow-dark-grey/10">
                         Get Started
                     </a>
@@ -421,6 +419,105 @@ require_once __DIR__ . '/includes/header.php';
 
                 </div>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tech Section -->
+<section class="py-12 bg-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12 observe">
+            <span class="text-electric-blue font-bold text-xs uppercase tracking-wider">Advanced Technology</span>
+            <h2 class="text-4xl md:text-5xl font-serif font-bold text-deep-indigo mt-2">Smart Tech for Faster Recovery</h2>
+            <p class="text-sm text-dark-grey/65 mt-3 leading-relaxed">
+                We combine clinical expertise with state-of-the-art diagnostic and recovery tracking tools to ensure precise treatments.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <!-- Tech 1: Phezee -->
+            <div class="bg-slate-50 border border-slate-200/50 p-8 rounded-[32px] space-y-4 hover:shadow-md transition-shadow observe">
+                <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-silver-grey mb-4">
+                    <img src="https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?auto=format&fit=crop&q=80&w=600" alt="Phezee Biofeedback" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-xl font-bold text-deep-indigo font-serif">PHEZEE - Smart Biofeedback</h3>
+                <p class="text-xs text-dark-grey/65 leading-relaxed">
+                    A smart wearable device used during physiotherapy sessions to monitor muscle health, track joint Range of Motion (ROM), and log precise electromyography (EMG) recovery trends in real-time.
+                </p>
+            </div>
+
+            <!-- Tech 2: Fall Risk Assessment -->
+            <div class="bg-slate-50 border border-slate-200/50 p-8 rounded-[32px] space-y-4 hover:shadow-md transition-shadow observe">
+                <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-silver-grey mb-4">
+                    <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?auto=format&fit=crop&q=80&w=600" alt="Fall Risk Assessment" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-xl font-bold text-deep-indigo font-serif">OPD Fall Risk Assessment</h3>
+                <p class="text-xs text-dark-grey/65 leading-relaxed">
+                    A comprehensive screening protocol conducted on an Outpatient (OPD) basis. We assess gait patterns, coordination, and muscular stability to prevent sudden falls and fractures, especially in senior patients.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="py-12 bg-slate-50 border-t border-b border-silver-grey/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12 observe">
+            <span class="text-electric-blue font-bold text-xs uppercase tracking-wider">Our Team</span>
+            <h2 class="text-4xl md:text-5xl font-serif font-bold text-deep-indigo mt-2">Specialists & Support Staff</h2>
+            <p class="text-sm text-dark-grey/65 mt-3 leading-relaxed">
+                Working together under the clinical leadership of Dr. Praveen Gupta to guide you back to wellness.
+            </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+            <!-- Member 1 -->
+            <div class="bg-white border border-silver-grey/30 p-6 rounded-[32px] shadow-sm hover:shadow-md transition-all duration-300 observe flex flex-col items-center text-center">
+                <div class="w-24 h-24 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
+                    <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=400&h=400" alt="Dr. Rahul Verma" class="w-full h-full object-cover rounded-full">
+                </div>
+                <h3 class="font-bold text-deep-indigo text-base">Dr. Rahul Verma</h3>
+                <p class="text-xs text-cyan-accent font-medium mt-0.5">Associate Consultant - Neurology</p>
+                <p class="text-xs text-dark-grey/65 mt-2 leading-relaxed">Specializes in managing epilepsy, headache, and electro-diagnostics (EEG/EMG).</p>
+            </div>
+
+            <!-- Member 2 -->
+            <div class="bg-white border border-silver-grey/30 p-6 rounded-[32px] shadow-sm hover:shadow-md transition-all duration-300 observe flex flex-col items-center text-center">
+                <div class="w-24 h-24 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
+                    <img src="https://images.unsplash.com/photo-1594824813573-246434de83fb?auto=format&fit=crop&q=80&w=400&h=400" alt="Dr. Sneha Sharma" class="w-full h-full object-cover rounded-full">
+                </div>
+                <h3 class="font-bold text-deep-indigo text-base">Dr. Sneha Sharma</h3>
+                <p class="text-xs text-cyan-accent font-medium mt-0.5">Consultant - Neuro-Rehabilitation</p>
+                <p class="text-xs text-dark-grey/65 mt-2 leading-relaxed">Focuses on stroke rehabilitation, motor training, and post-TBI recovery therapies.</p>
+            </div>
+
+            <!-- Member 3 -->
+            <div class="bg-white border border-silver-grey/30 p-6 rounded-[32px] shadow-sm hover:shadow-md transition-all duration-300 observe flex flex-col items-center text-center">
+                <div class="w-24 h-24 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
+                    <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=400&h=400" alt="Mr. Amit Kumar" class="w-full h-full object-cover rounded-full">
+                </div>
+                <h3 class="font-bold text-deep-indigo text-base">Mr. Amit Kumar</h3>
+                <p class="text-xs text-cyan-accent font-medium mt-0.5">Senior Neuro-Physiotherapist</p>
+                <p class="text-xs text-dark-grey/65 mt-2 leading-relaxed">Delivers active vestibular rehabilitation, balance training, and gait coordination.</p>
+            </div>
+
+            <!-- Member 4 -->
+            <div class="bg-white border border-silver-grey/30 p-6 rounded-[32px] shadow-sm hover:shadow-md transition-all duration-300 observe flex flex-col items-center text-center">
+                <div class="w-24 h-24 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=400&h=400" alt="Ms. Preeti Singh" class="w-full h-full object-cover rounded-full">
+                </div>
+                <h3 class="font-bold text-deep-indigo text-base">Ms. Preeti Singh</h3>
+                <p class="text-xs text-cyan-accent font-medium mt-0.5">Senior Speech Therapist</p>
+                <p class="text-xs text-dark-grey/65 mt-2 leading-relaxed">Aids in speech recovery, language pathology, and cognitive therapy after strokes.</p>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a href="team.php" class="inline-flex items-center space-x-2.5 bg-deep-indigo hover:bg-electric-blue text-white text-xs font-bold px-6 py-2.5 rounded-full transition-colors">
+                <span>View Full Team Details</span>
+                <i class="fas fa-arrow-right text-[10px] ml-1"></i>
+            </a>
         </div>
     </div>
 </section>

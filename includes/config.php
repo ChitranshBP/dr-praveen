@@ -22,16 +22,38 @@ define('SOCIAL_LINKEDIN', 'https://linkedin.com/in/drpraveengupta');
 // Navigation
 $navItems = [
     ['name' => 'Home', 'url' => 'index.php'],
-    ['name' => 'About', 'url' => 'about.php'],
-    ['name' => 'Services', 'url' => 'services.php'],
+    ['name' => 'About', 'url' => '#', 'children' => [
+        ['name' => 'About Dr Praveen', 'url' => 'about.php'],
+        ['name' => 'Why Choose Us', 'url' => 'why-choose-dr-praveen-gupta.php'],
+        ['name' => 'Our Team', 'url' => 'team.php'],
+        ['name' => 'Awards & Honors', 'url' => 'awards-and-recognition.php'],
+    ]],
+    ['name' => 'Services', 'url' => '#', 'children' => [
+        ['name' => 'Services Hub', 'url' => 'services.php'],
+        ['name' => 'Neurology Conditions', 'url' => 'neurological-conditions.php'],
+        ['name' => 'Neurological Symptoms', 'url' => 'neurological-symptoms.php'],
+        ['name' => 'Neurology Procedures', 'url' => 'neurology-procedures.php'],
+        ['name' => 'Memory Clinic', 'url' => 'memory-clinic.php'],
+        ['name' => 'Rehabilitation Hub', 'url' => 'neuro-rehabilitation-center.php'],
+        ['name' => 'Brain Health Hub', 'url' => 'brain-health-center.php'],
+    ]],
     ['name' => 'Patient Info', 'url' => '#', 'children' => [
         ['name' => 'Patient Info', 'url' => 'patient-info.php'],
-        ['name' => 'Testimonials', 'url' => 'neurology-patient-testimonials.php'],
-        ['name' => 'FAQs', 'url' => 'faqs-neurologist-near-me.php'],
+        ['name' => 'Consultation Guide', 'url' => 'neurology-consultation.php'],
+        ['name' => 'Online Consultation', 'url' => 'online-neurologist-consultation.php'],
+        ['name' => 'Second Opinion', 'url' => 'neurology-second-opinion.php'],
+        ['name' => 'Emergency Care', 'url' => 'emergency-neurology-care.php'],
         ['name' => 'Stroke Helpline', 'url' => 'brain-stroke-helpline.php'],
+        ['name' => 'Patient Testimonials', 'url' => 'neurology-patient-testimonials.php'],
+        ['name' => 'Success Stories', 'url' => 'patient-success-stories.php'],
+        ['name' => 'Case Studies', 'url' => 'case-studies.php'],
+        ['name' => 'Google Reviews', 'url' => 'patient-reviews.php'],
+        ['name' => 'FAQs', 'url' => 'neurology-faqs.php'],
     ]],
     ['name' => 'Media', 'url' => '#', 'children' => [
         ['name' => 'Videos Hub', 'url' => 'videos.php'],
+        ['name' => 'Education Videos', 'url' => 'neurology-video-library.php'],
+        ['name' => 'Video Testimonials', 'url' => 'video-testimonials.php'],
         ['name' => 'Media Coverage', 'url' => 'media-coverage.php'],
         ['name' => 'Media Updates', 'url' => 'media-updates.php'],
     ]],
@@ -86,6 +108,21 @@ $services = [
         'title' => 'Peripheral Neuropathy',
         'description' => 'Diagnosis and targeted treatments to manage nerve damage, relieve chronic neuropathic pain, and restore sensation.',
         'image' => 'assets/services/neuropathy.png'
+    ],
+    [
+        'title' => 'Neurological Rehabilitation',
+        'description' => 'Comprehensive physical, occupational, and speech-language therapy programs designed to restore independence and motor function.',
+        'image' => 'assets/services/rehab.png'
+    ],
+    [
+        'title' => 'rTMS Therapy',
+        'description' => 'Repetitive Transcranial Magnetic Stimulation, a non-invasive neuromodulation therapy for depression, chronic pain, and stroke recovery.',
+        'image' => 'assets/services/rtms.png'
+    ],
+    [
+        'title' => 'Neurocritical & Acute Stroke Care',
+        'description' => 'Offering 24/7 hyper-acute stroke rescue, mechanical thrombectomy, and advanced neuro-intensive care for life-threatening emergencies.',
+        'image' => 'assets/services/stroke-care.png'
     ],
 ];
 
@@ -276,3 +313,35 @@ $educationVideos = [
         'desc'  => 'Practical strategies and expert tips from Dr. Praveen Gupta on managing dementia.',
     ],
 ];
+
+// Link mapping helper for service details pages
+function getServicePageLink($title) {
+    $titleLower = strtolower($title);
+    if (strpos($titleLower, 'neurocritical') !== false || strpos($titleLower, 'acute stroke') !== false) {
+        return 'emergency-neurology-care.php';
+    } elseif (strpos($titleLower, 'rehabilitation') !== false) {
+        return 'neuro-rehabilitation-center.php';
+    } elseif (strpos($titleLower, 'rtms') !== false) {
+        return 'neurology-procedures.php';
+    } elseif (strpos($titleLower, 'epilepsy') !== false) {
+        return 'epilepsy.php';
+    } elseif (strpos($titleLower, 'headache') !== false) {
+        return 'headache.php';
+    } elseif (strpos($titleLower, 'migraine') !== false) {
+        return 'migraine.php';
+    } elseif (strpos($titleLower, 'stroke') !== false) {
+        return 'stroke.php';
+    } elseif (strpos($titleLower, 'vertigo') !== false) {
+        return 'vertigo.php';
+    } elseif (strpos($titleLower, 'parkinson') !== false) {
+        return 'parkinsons.php';
+    } elseif (strpos($titleLower, 'multiple sclerosis') !== false || $titleLower === 'ms') {
+        return 'ms.php';
+    } elseif (strpos($titleLower, 'movement') !== false) {
+        return 'movement.php';
+    } elseif (strpos($titleLower, 'neuropathy') !== false) {
+        return 'neuropathy.php';
+    }
+    return 'services.php';
+}
+

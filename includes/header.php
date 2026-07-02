@@ -355,9 +355,9 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
                 <!-- Right Actions -->
                 <div class="hidden lg:flex items-center space-x-3">
                     <!-- Search Icon -->
-                    <button class="nav-icon-btn w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-all duration-300 text-dark-grey border border-white/10 nav-glass-el">
+                    <!-- <button class="nav-icon-btn w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-all duration-300 text-dark-grey border border-white/10 nav-glass-el">
                         <i class="fas fa-search text-sm"></i>
-                    </button>
+                    </button> -->
 
                     <!-- CTA Button - Premium Style -->
                     <a href="contact-us-top-neurologist-delhi-ncr.php" class="btn-shimmer group relative inline-flex items-center space-x-2 bg-gradient-to-r from-electric-blue to-cyan-accent text-white text-sm font-semibold pl-5 pr-2 py-2 rounded-full hover:shadow-xl hover:shadow-electric-blue/40 transition-all duration-300 transform hover:-translate-y-0.5">

@@ -5,30 +5,7 @@
 $isDarkHero = true;
 require_once __DIR__ . '/includes/header.php';
 
-// Link mapping helper for service details pages
-function getServicePageLink($title) {
-    $titleLower = strtolower($title);
-    if (strpos($titleLower, 'epilepsy') !== false) {
-        return 'epilepsy.php';
-    } elseif (strpos($titleLower, 'headache') !== false) {
-        return 'headache.php';
-    } elseif (strpos($titleLower, 'migraine') !== false) {
-        return 'migraine.php';
-    } elseif (strpos($titleLower, 'stroke') !== false) {
-        return 'stroke.php';
-    } elseif (strpos($titleLower, 'vertigo') !== false) {
-        return 'vertigo.php';
-    } elseif (strpos($titleLower, 'parkinson') !== false) {
-        return 'parkinsons.php';
-    } elseif (strpos($titleLower, 'multiple sclerosis') !== false || $titleLower === 'ms') {
-        return 'ms.php';
-    } elseif (strpos($titleLower, 'movement') !== false) {
-        return 'movement.php';
-    } elseif (strpos($titleLower, 'neuropathy') !== false) {
-        return 'neuropathy.php';
-    }
-    return 'services.php';
-}
+// Link mapping helper for service details pages is now defined in config.php
 ?>
 
 <!-- Page Hero -->
@@ -112,43 +89,6 @@ function getServicePageLink($title) {
 </section>
 
 <!-- Call to Action (CTA) Section -->
-<section class="relative py-12 bg-white overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="relative bg-gradient-to-r from-electric-blue to-cyan-accent rounded-[36px] overflow-hidden shadow-2xl p-8 md:p-14 lg:p-16">
-            
-            <!-- Concentric Circles Pattern -->
-            <div class="absolute -right-64 top-1/2 -translate-y-1/2 w-[850px] h-[850px] flex items-center justify-center pointer-events-none z-0">
-                <div class="absolute w-[850px] h-[850px] bg-white/[0.03] rounded-full"></div>
-                <div class="absolute w-[720px] h-[720px] bg-white/[0.05] rounded-full"></div>
-                <div class="absolute w-[590px] h-[590px] bg-white/[0.07] rounded-full"></div>
-                <div class="absolute w-[460px] h-[460px] bg-white/[0.09] rounded-full"></div>
-            </div>
-
-            <!-- Content -->
-            <div class="relative z-10 max-w-2xl text-left">
-                <h2 class="text-4xl md:text-5xl lg:text-6xl font-sans font-extrabold text-white mb-4 leading-tight tracking-tight">
-                    Need Personalized Advice?
-                </h2>
-                <p class="text-white/85 text-sm md:text-base mb-10 max-w-lg leading-relaxed">
-                    Consult with Dr. Praveen Gupta to get an accurate diagnosis and custom treatment plan for your neurological health.
-                </p>
-                <div class="flex flex-wrap gap-4 items-center">
-                    <a href="contact.php" class="inline-flex items-center space-x-6 bg-[#111827] text-white text-xs md:text-sm font-semibold pl-6 pr-2.5 py-2.5 rounded-full hover:bg-black transition-all duration-300 shadow-lg hover:-translate-y-0.5 active:translate-y-0 group">
-                        <span>Book Appointment</span>
-                        <div class="w-7 h-7 rounded-full bg-gradient-to-b from-white via-slate-100 to-slate-400 shadow-[inset_0_1px_2px_rgba(255,255,255,0.8),0_2px_4px_rgba(0,0,0,0.3)] flex items-center justify-center text-[#111827] text-xs font-bold transition-transform duration-300 group-hover:scale-110 flex-shrink-0">
-                            <i class="fas fa-chevron-right text-[9px]"></i>
-                        </div>
-                    </a>
-                    <a href="tel:<?php echo SITE_PHONE; ?>" class="inline-flex items-center space-x-6 bg-[#111827] text-white text-xs md:text-sm font-semibold pl-6 pr-2.5 py-2.5 rounded-full hover:bg-black transition-all duration-300 shadow-lg hover:-translate-y-0.5 active:translate-y-0 group">
-                        <span>Call Now</span>
-                        <div class="w-7 h-7 rounded-full bg-gradient-to-b from-white via-slate-100 to-slate-400 shadow-[inset_0_1px_2px_rgba(255,255,255,0.8),0_2px_4px_rgba(0,0,0,0.3)] flex items-center justify-center text-[#111827] text-xs font-bold transition-transform duration-300 group-hover:scale-110 flex-shrink-0">
-                            <i class="fas fa-phone text-[9px]"></i>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<!--  -->
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
