@@ -126,11 +126,22 @@ require_once __DIR__ . '/includes/header.php';
                     </li>
                 </ul>
 
-                <div class="pt-4 border-t border-cyan-accent/20">
-                    <a href="contact-us-top-neurologist-delhi-ncr.php" class="block w-full text-center bg-deep-indigo hover:bg-electric-blue text-white font-bold py-3 rounded-2xl transition-colors text-sm">
-                        Request Appointment
-                    </a>
-                </div>
+                <form class="pt-4 border-t border-cyan-accent/20 space-y-3" onsubmit="event.preventDefault(); alert('Request submitted successfully! Our coordinator will contact you shortly.');">
+                    <span class="block text-xs font-bold text-deep-indigo uppercase tracking-wider">Quick Request</span>
+                    <div>
+                        <label for="consult-name" class="sr-only">Full Name</label>
+                        <input type="text" id="consult-name" required placeholder="Your Name" class="w-full px-4 py-2.5 bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-electric-blue text-xs text-dark-grey placeholder-dark-grey/50">
+                    </div>
+                    <div>
+                        <label for="consult-phone" class="sr-only">Phone Number</label>
+                        <input type="tel" id="consult-phone" required placeholder="Phone Number" class="w-full px-4 py-2.5 bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-electric-blue text-xs text-dark-grey placeholder-dark-grey/50">
+                    </div>
+                    <div>
+                        <button type="submit" class="block w-full text-center bg-deep-indigo hover:bg-electric-blue text-white font-bold py-2.5 rounded-xl transition-colors text-xs shadow-md">
+                            Submit Request
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -178,5 +189,103 @@ require_once __DIR__ . '/includes/header.php';
         </div>
     </div>
 </section>
+
+<!-- FAQ Section -->
+<section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <!-- Left Column: Header Information -->
+            <div class="lg:col-span-5 lg:sticky lg:top-24 self-start">
+                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">FAQ</span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-dark-grey mt-3 mb-6">Frequently Asked Questions</h2>
+                <p class="text-dark-grey/70 leading-relaxed max-w-md">
+                    Answers to common queries about booking a consultation, what to bring, and diagnostic procedures.
+                </p>
+            </div>
+
+            <!-- Right Column: Accordions -->
+            <div class="lg:col-span-7">
+                <div class="space-y-4" id="faq-container">
+                    <!-- FAQ 1 -->
+                    <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
+                            <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">Do I need a referral to book a neurology consultation?</span>
+                            <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
+                            </span>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-dark-grey/70 leading-relaxed text-sm">
+                                No, you do not need a formal referral to schedule an appointment with Dr. Praveen Gupta. However, if your insurance provider requires a referral for coverage, please obtain it before your visit.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
+                            <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">How long does a typical first consultation take?</span>
+                            <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
+                            </span>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-dark-grey/70 leading-relaxed text-sm">
+                                A comprehensive initial consultation usually takes between 30 to 45 minutes. This allows sufficient time to take a detailed medical history, perform a physical examination, and discuss the diagnostic plan.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
+                            <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">Should I stop taking my current medications before the appointment?</span>
+                            <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
+                            </span>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-dark-grey/70 leading-relaxed text-sm">
+                                No, please continue to take your medications as prescribed unless specifically instructed otherwise. Simply bring a list or the original boxes of all medications you are currently taking.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Toggle Script -->
+<script>
+function toggleFaq(button) {
+    const item = button.closest('.faq-item');
+    const content = button.nextElementSibling;
+    const icon = button.querySelector('i');
+    const isOpen = !content.classList.contains('hidden');
+
+    // Close all other FAQs
+    document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
+    document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('bg-[#edf5f9]');
+        i.classList.add('bg-white');
+    });
+    document.querySelectorAll('.faq-toggle i').forEach(i => {
+        i.classList.remove('fa-minus');
+        i.classList.add('fa-plus');
+        i.style.transform = 'rotate(0deg)';
+    });
+
+    // Toggle current
+    if (!isOpen) {
+        content.classList.remove('hidden');
+        item.classList.remove('bg-white');
+        item.classList.add('bg-[#edf5f9]');
+        icon.classList.remove('fa-plus');
+        icon.classList.add('fa-minus');
+        icon.style.transform = 'rotate(180deg)';
+    }
+}
+</script>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

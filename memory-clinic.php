@@ -133,7 +133,7 @@ require_once __DIR__ . '/includes/header.php';
 
             <!-- Right -->
             <div class="lg:col-span-5 bg-gradient-to-br from-deep-indigo to-indigo-950 text-white p-8 rounded-3xl space-y-4">
-                <h3 class="text-xl font-bold font-serif font-serif">Memory Assessment</h3>
+                <h3 class="text-xl font-bold font-serif">Memory Assessment</h3>
                 <p class="text-xs text-white/80 leading-relaxed">
                     If you are concerned about persistent memory gaps or cognitive changes, schedule an evaluation today.
                 </p>
@@ -146,5 +146,208 @@ require_once __DIR__ . '/includes/header.php';
         </div>
     </div>
 </section>
+
+<!-- Why Choose Us Section -->
+<section class="py-12 bg-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            <!-- Content Side -->
+            <div class="lg:col-span-6 observe">
+                <span class="text-xs font-bold tracking-wider text-dark-grey/60 uppercase block mb-3 font-sans">
+                    Why Choose Dr. Praveen Gupta?
+                </span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-deep-indigo leading-tight mb-6">
+                    Providing Best Treatment
+                </h2>
+                <p class="text-base text-dark-grey/70 mb-10 leading-relaxed max-w-lg">
+                    With an unwavering commitment to clinical excellence, Dr. Praveen Gupta combines advanced technology and patient-centric therapies to deliver world-class neurological care.
+                </p>
+
+                <!-- Grid of 4 Items -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 rounded-xl bg-slate-50 border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
+                            <i class="fa-solid fa-earth-americas text-xl text-electric-blue"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Global Standards of Care</h4>
+                            <p class="text-xs text-dark-grey/65 leading-relaxed">Treatments backed by advanced technology and international guidelines.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 rounded-xl bg-slate-50 border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
+                            <i class="fa-solid fa-lightbulb text-xl text-electric-blue"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Innovative Procedures</h4>
+                            <p class="text-xs text-dark-grey/65 leading-relaxed">Pioneer in stroke care, DBS, and complex surgeries in India.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 rounded-xl bg-slate-50 border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
+                            <i class="fa-solid fa-circle-check text-xl text-electric-blue"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Proven Results</h4>
+                            <p class="text-xs text-dark-grey/65 leading-relaxed">Thousands of patients treated successfully with rapid recovery.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 rounded-xl bg-slate-50 border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
+                            <i class="fa-solid fa-hand-holding-heart text-xl text-electric-blue"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Compassionate Consultation</h4>
+                            <p class="text-xs text-dark-grey/65 leading-relaxed">Empowering patients with knowledge, compassion, and personalized care.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <a href="contact-us-top-neurologist-delhi-ncr.php" class="inline-flex items-center px-8 py-3.5 bg-[#111827] text-white text-sm font-bold rounded-full hover:bg-electric-blue transition-colors duration-300 shadow-lg shadow-dark-grey/10">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+
+            <!-- Image Side -->
+            <div class="lg:col-span-6 relative flex justify-center lg:justify-end observe">
+                <div class="relative w-full max-w-md lg:max-w-none aspect-[3:4] rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-soft-cyan to-silver-grey">
+                    <img src="assets/full-image/dpg-award.webp" alt="Compassionate Care" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Doctor Section -->
+<section class="py-16 bg-[#edf5f9] border-t border-b border-silver-grey/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <span class="text-electric-blue font-bold text-xs uppercase tracking-wider">Expert Leadership</span>
+            <h2 class="text-3xl font-bold text-deep-indigo font-serif mt-2">Meet the Specialist</h2>
+        </div>
+
+        <div class="max-w-4xl mx-auto bg-white border border-slate-200/50 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div class="grid md:grid-cols-12 gap-8 items-center p-8">
+                <div class="md:col-span-4 aspect-[4/5] rounded-2xl overflow-hidden relative shadow-md bg-gradient-to-br from-deep-indigo to-electric-blue p-0.5">
+                    <div class="relative w-full h-full rounded-[0.9rem] overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent">
+                        <img src="assets/dpg-1.webp" alt="Dr. Praveen Gupta" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="md:col-span-8 space-y-4">
+                    <span class="text-cyan-accent font-bold text-xs uppercase tracking-widest">Chairman - Marengo Asia Neuro & Spine</span>
+                    <h3 class="text-2xl font-bold text-deep-indigo font-serif">Dr. Praveen Gupta</h3>
+                    <p class="text-sm text-dark-grey/70 leading-relaxed font-light">
+                        Dr. Praveen Gupta is a pioneering neurologist with 20+ years of clinical excellence. Renowned for introducing the first stroke mechanical thrombectomy services in Gurgaon and executing the region's first Deep Brain Stimulation (DBS) surgery, he leads Marengo Asia Neuro & Spine Institute with a commitment to state-of-the-art diagnostics and compassionate patient recovery.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <a href="about.php" class="text-xs font-semibold text-electric-blue hover:underline">Full Biography <i class="fas fa-arrow-right text-[10px] ml-1"></i></a>
+                        <span class="text-slate-300">|</span>
+                        <a href="why-choose-dr-praveen-gupta.php" class="text-xs font-semibold text-electric-blue hover:underline">Why Choose Dr. Praveen <i class="fas fa-arrow-right text-[10px] ml-1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <!-- Left Column: Header Information -->
+            <div class="lg:col-span-5 lg:sticky lg:top-24 self-start">
+                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">FAQ</span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-dark-grey mt-3 mb-6">Frequently Asked Questions</h2>
+                <p class="text-dark-grey/70 leading-relaxed max-w-md">
+                    Answers to common questions regarding memory loss, dementia evaluations, and caregiver safety strategies.
+                </p>
+            </div>
+
+            <!-- Right Column: Accordions -->
+            <div class="lg:col-span-7">
+                <div class="space-y-4" id="faq-container">
+                    <!-- FAQ 1 -->
+                    <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
+                            <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">What is the difference between normal forgetfulness and dementia?</span>
+                            <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
+                            </span>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-dark-grey/70 leading-relaxed">
+                                Normal forgetfulness includes occasionally misplacing keys or forgetting names but remembering them later. Dementia is a progressive cognitive decline that interferes with daily tasks, such as getting lost in familiar places, experiencing severe confusion, or struggling with language.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
+                            <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">What diagnostic tests are performed at the Memory Clinic?</span>
+                            <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
+                            </span>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-dark-grey/70 leading-relaxed">
+                                We perform comprehensive cognitive screenings (such as MoCA and MMSE tests), high-resolution brain MRIs to identify patterns of brain atrophy or structural issues, and blood panels to rule out metabolic or vitamin deficiencies.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
+                            <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">How can families and caregivers support patients with Alzheimer's?</span>
+                            <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
+                            </span>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-dark-grey/70 leading-relaxed">
+                                Families can help by establishing structured daily routines, ensuring a safe home environment to prevent falls or wandering, utilizing clear communication, and actively participating in caregiver training to manage behavioral changes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Toggle Script -->
+<script>
+function toggleFaq(button) {
+    const item = button.closest('.faq-item');
+    const content = button.nextElementSibling;
+    const icon = button.querySelector('i');
+    const isOpen = !content.classList.contains('hidden');
+
+    // Close all other FAQs
+    document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
+    document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('bg-[#edf5f9]');
+        i.classList.add('bg-white');
+    });
+    document.querySelectorAll('.faq-toggle i').forEach(i => {
+        i.classList.remove('fa-minus');
+        i.classList.add('fa-plus');
+        i.style.transform = 'rotate(0deg)';
+    });
+
+    // Toggle current
+    if (!isOpen) {
+        content.classList.remove('hidden');
+        item.classList.remove('bg-white');
+        item.classList.add('bg-[#edf5f9]');
+        icon.classList.remove('fa-plus');
+        icon.classList.add('fa-minus');
+        icon.style.transform = 'rotate(180deg)';
+    }
+}
+</script>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

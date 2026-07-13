@@ -32,15 +32,15 @@ require_once __DIR__ . '/includes/header.php';
                 24/7 Brain Stroke <span class="text-red-400">Helpline</span>
             </h1>
 
-            <p class="text-sm md:text-base text-white/80 leading-relaxed mb-6 max-w-2xl">
+            <p class="text-sm md:text-base text-white/85 leading-relaxed mb-6 max-w-2xl">
                 A stroke is a medical emergency. Every minute counts. Under the leadership of Dr. Praveen Gupta, Marengo Asia Hospital offers round-the-clock emergency thrombolysis and mechanical thrombectomy.
             </p>
 
             <!-- Emergency Direct Action Button -->
             <div class="flex flex-wrap items-center gap-4">
-                <a href="tel:<?php echo SITE_PHONE; ?>" class="inline-flex items-center space-x-3 bg-red-600 hover:bg-red-700 text-white font-extrabold text-lg px-8 py-4 rounded-2xl shadow-lg shadow-red-600/20 hover:shadow-red-600/40 transition-all duration-300 transform hover:-translate-y-0.5">
+                <a href="tel:<?php echo STROKE_HELPLINE; ?>" class="inline-flex items-center space-x-3 bg-red-600 hover:bg-red-700 text-white font-extrabold text-lg px-8 py-4 rounded-2xl shadow-lg shadow-red-600/20 hover:shadow-red-600/40 transition-all duration-300 transform hover:-translate-y-0.5">
                     <i class="fas fa-phone-alt animate-bounce"></i>
-                    <span>Call Emergency: <?php echo SITE_PHONE; ?></span>
+                    <span>Call Emergency: <?php echo STROKE_HELPLINE; ?></span>
                 </a>
             </div>
         </div>
@@ -160,5 +160,103 @@ require_once __DIR__ . '/includes/header.php';
         </div>
     </div>
 </section>
+
+<!-- FAQ Section -->
+<section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <!-- Left Column: Header Information -->
+            <div class="lg:col-span-5 lg:sticky lg:top-24 self-start">
+                <span class="text-red-650 text-red-600 font-semibold text-sm uppercase tracking-wider">FAQ</span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-dark-grey mt-3 mb-6">Frequently Asked Questions</h2>
+                <p class="text-dark-grey/70 leading-relaxed max-w-md">
+                    Answers to crucial questions regarding stroke timelines, emergency responses, and hotline actions.
+                </p>
+            </div>
+
+            <!-- Right Column: Accordions -->
+            <div class="lg:col-span-7">
+                <div class="space-y-4" id="faq-container">
+                    <!-- FAQ 1 -->
+                    <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
+                            <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">Is the stroke helpline active 24/7?</span>
+                            <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
+                            </span>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-dark-grey/70 leading-relaxed text-sm">
+                                Yes, the dedicated helpline **1800-309-0247** is fully operational 24 hours a day, 7 days a week, connecting you directly to our stroke response team.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
+                            <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">Why is the first hour after a stroke called the 'Golden Hour'?</span>
+                            <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
+                            </span>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-dark-grey/70 leading-relaxed text-sm">
+                                The "Golden Hour" is the critical period immediately following a stroke. Administering clot-busting medication (thrombolysis) or performing clot removal (thrombectomy) within this window can drastically reduce brain damage and prevent permanent disability.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
+                            <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">Can I call the helpline for general neurological issues?</span>
+                            <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
+                            </span>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-dark-grey/70 leading-relaxed text-sm">
+                                The stroke helpline is reserved exclusively for acute emergency situations like suspected brain strokes, sudden paralysis, or loss of speech. For general appointments or routine queries, please use our standard contact number: +91-9876543210.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Toggle Script -->
+<script>
+function toggleFaq(button) {
+    const item = button.closest('.faq-item');
+    const content = button.nextElementSibling;
+    const icon = button.querySelector('i');
+    const isOpen = !content.classList.contains('hidden');
+
+    // Close all other FAQs
+    document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
+    document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('bg-[#edf5f9]');
+        i.classList.add('bg-white');
+    });
+    document.querySelectorAll('.faq-toggle i').forEach(i => {
+        i.classList.remove('fa-minus');
+        i.classList.add('fa-plus');
+        i.style.transform = 'rotate(0deg)';
+    });
+
+    // Toggle current
+    if (!isOpen) {
+        content.classList.remove('hidden');
+        item.classList.remove('bg-white');
+        item.classList.add('bg-[#edf5f9]');
+        icon.classList.remove('fa-plus');
+        icon.classList.add('fa-minus');
+        icon.style.transform = 'rotate(180deg)';
+    }
+}
+</script>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

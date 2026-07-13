@@ -78,9 +78,17 @@ require_once __DIR__ . '/includes/header.php';
                         </div>
 
                         <!-- Description -->
-                        <p class="text-dark-grey/70 leading-relaxed text-sm">
+                        <p class="text-dark-grey/70 leading-relaxed text-sm mb-4">
                             <?php echo $service['description']; ?>
                         </p>
+
+                        <!-- Bullet Feature / Helpline Badge -->
+                        <?php if (!empty($service['bullet'])): ?>
+                            <div class="mt-auto pt-4 border-t border-silver-grey/60 flex items-center space-x-2.5 text-xs font-bold">
+                                <i class="fas <?php echo strpos($service['bullet'], '1800') !== false ? 'fa-phone-alt animate-pulse text-red-500' : 'fa-chevron-right text-cyan-accent'; ?> text-xs flex-shrink-0"></i>
+                                <span class="<?php echo strpos($service['bullet'], '1800') !== false ? 'text-red-650 text-red-600' : 'text-dark-grey/75'; ?>"><?php echo $service['bullet']; ?></span>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </a>
             <?php endforeach; ?>

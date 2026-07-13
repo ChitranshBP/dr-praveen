@@ -84,7 +84,7 @@ require_once __DIR__ . '/includes/header.php';
             <!-- Right: Documents Required Checklist -->
             <div class="lg:col-span-5 bg-gradient-to-br from-soft-cyan to-white p-8 rounded-3xl border border-cyan-accent/20 space-y-6">
                 <h3 class="text-xl font-bold text-deep-indigo font-serif">What We Need</h3>
-                <p class="text-xs text-dark-grey/60 leading-relaxed">
+                <p class="text-xs text-dark-grey/65 leading-relaxed font-sans">
                     To conduct a detailed medical and diagnostic review, please prepare the following records:
                 </p>
 
@@ -151,5 +151,145 @@ require_once __DIR__ . '/includes/header.php';
         </div>
     </div>
 </section>
+
+<!-- Second Opinion Form Section -->
+<section class="py-16 bg-white border-t border-b border-silver-grey/40">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-gradient-to-br from-deep-indigo to-indigo-950 text-white rounded-[32px] p-8 md:p-12 shadow-xl relative overflow-hidden">
+            <!-- Glow Accent -->
+            <div class="absolute -right-24 -bottom-24 w-96 h-96 bg-cyan-accent/15 rounded-full blur-[100px] pointer-events-none"></div>
+
+            <div class="relative z-10 space-y-6">
+                <div class="text-center max-w-2xl mx-auto">
+                    <span class="text-cyan-accent font-bold text-xs uppercase tracking-widest">Submit Case Details</span>
+                    <h2 class="text-2xl md:text-3xl font-bold font-serif mt-2">Request Your Second Opinion</h2>
+                    <p class="text-white/80 text-xs mt-2 leading-relaxed">
+                        Fill in the quick details below. Our medical team will guide you on uploading records.
+                    </p>
+                </div>
+
+                <form class="space-y-4 pt-4 max-w-2xl mx-auto" onsubmit="event.preventDefault(); alert('Second opinion request submitted successfully! Our coordinator will contact you shortly.');">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="so-name" class="block text-xs font-semibold text-white/95 mb-2">FULL NAME</label>
+                            <input type="text" id="so-name" required placeholder="John Doe" class="w-full px-4 py-2.5 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-cyan-accent text-xs text-white placeholder-white/50">
+                        </div>
+                        <div>
+                            <label for="so-phone" class="block text-xs font-semibold text-white/95 mb-2">PHONE NUMBER</label>
+                            <input type="tel" id="so-phone" required placeholder="Phone Number" class="w-full px-4 py-2.5 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-cyan-accent text-xs text-white placeholder-white/50">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="so-diagnosis" class="block text-xs font-semibold text-white/95 mb-2">CURRENT DIAGNOSIS / ISSUES</label>
+                        <textarea id="so-diagnosis" rows="3" required placeholder="Briefly describe your current neurological condition..." class="w-full px-4 py-2.5 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-cyan-accent text-xs text-white placeholder-white/50"></textarea>
+                    </div>
+                    <div class="pt-2">
+                        <button type="submit" class="block w-full text-center bg-cyan-accent hover:bg-cyan-500 text-deep-indigo font-bold py-3 rounded-xl transition-all duration-300 transform active:scale-95 text-xs shadow-lg shadow-cyan-accent/20">
+                            Submit Case Review Request
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <!-- Left Column: Header Information -->
+            <div class="lg:col-span-5 lg:sticky lg:top-24 self-start">
+                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">FAQ</span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-dark-grey mt-3 mb-6">Frequently Asked Questions</h2>
+                <p class="text-dark-grey/70 leading-relaxed max-w-md">
+                    Answers to common queries regarding second opinions, records sharing, and consultation formats.
+                </p>
+            </div>
+
+            <!-- Right Column: Accordions -->
+            <div class="lg:col-span-7">
+                <div class="space-y-4" id="faq-container">
+                    <!-- FAQ 1 -->
+                    <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
+                            <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">Why should I seek a second opinion for a neurological condition?</span>
+                            <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
+                            </span>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-dark-grey/70 leading-relaxed text-sm">
+                                Neurological conditions are complex and often have multiple treatment pathways (such as choosing between surgery or medical management for tumors or spinal issues). A second opinion helps verify the diagnosis, explores alternative therapies, and provides peace of mind before starting major treatments.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
+                            <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">What records should I provide for a second opinion?</span>
+                            <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
+                            </span>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-dark-grey/70 leading-relaxed text-sm">
+                                Please share all relevant medical documentation, including clinical notes, history profiles, recent laboratory tests, and complete high-resolution radiology scans (MRI/CT scans on a CD or digital folder).
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
+                            <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">Can I get a second opinion online?</span>
+                            <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
+                            </span>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-dark-grey/70 leading-relaxed text-sm">
+                                Yes. You can upload your medical reports securely through our online consultation portal and schedule a video consultation to discuss your case and receive a comprehensive second opinion report.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Toggle Script -->
+<script>
+function toggleFaq(button) {
+    const item = button.closest('.faq-item');
+    const content = button.nextElementSibling;
+    const icon = button.querySelector('i');
+    const isOpen = !content.classList.contains('hidden');
+
+    // Close all other FAQs
+    document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
+    document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('bg-[#edf5f9]');
+        i.classList.add('bg-white');
+    });
+    document.querySelectorAll('.faq-toggle i').forEach(i => {
+        i.classList.remove('fa-minus');
+        i.classList.add('fa-plus');
+        i.style.transform = 'rotate(0deg)';
+    });
+
+    // Toggle current
+    if (!isOpen) {
+        content.classList.remove('hidden');
+        item.classList.remove('bg-white');
+        item.classList.add('bg-[#edf5f9]');
+        icon.classList.remove('fa-plus');
+        icon.classList.add('fa-minus');
+        icon.style.transform = 'rotate(180deg)';
+    }
+}
+</script>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

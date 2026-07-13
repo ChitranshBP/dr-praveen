@@ -9,6 +9,7 @@ define('SITE_NAME', 'Dr. Praveen Gupta');
 define('SITE_TAGLINE', 'Excellence in Healthcare');
 define('SITE_URL', 'https://drpraveengupta.com');
 define('SITE_PHONE', '+91-9876543210');
+define('STROKE_HELPLINE', '1800-309-0247');
 define('SITE_EMAIL', 'contact@drpraveengupta.com');
 define('SITE_ADDRESS', 'New Delhi, India');
 
@@ -30,8 +31,10 @@ $navItems = [
     ]],
     ['name' => 'Services', 'url' => '#', 'children' => [
         ['name' => 'Services Hub', 'url' => 'services.php'],
-        ['name' => 'Neurological Symptoms', 'url' => 'neurological-symptoms.php'],
-        ['name' => 'Neurology Procedures', 'url' => 'neurology-procedures.php'],
+        ['name' => 'Brain Tumor Surgery', 'url' => 'brain-tumor-surgery.php'],
+        ['name' => 'Spine Surgery', 'url' => 'spine-surgery.php'],
+        ['name' => 'Functional Neurosurgery', 'url' => 'functional-neurosurgery.php'],
+        ['name' => 'Neurovascular Surgery', 'url' => 'neurovascular-surgery.php'],
         ['name' => 'Memory Clinic', 'url' => 'memory-clinic.php'],
         ['name' => 'Rehabilitation Hub', 'url' => 'neuro-rehabilitation-center.php'],
         ['name' => 'Brain Health Hub', 'url' => 'brain-health-center.php'],
@@ -77,65 +80,61 @@ $navItems = [
 // Services
 $services = [
     [
-        'title' => 'Epilepsy',
-        'description' => 'Advanced diagnosis and comprehensive management of seizures, using state-of-the-art EEG and personalized care plans.',
-        'image' => 'assets/services/epilepsy.png'
+        'title' => 'Stroke & Neurocritical Care Unit',
+        'description' => 'Advanced Stroke Care in Gurgaon',
+        'bullet' => 'Gurgaon\'s First 24×7 Brain Stroke Helpline – 1800-309-0247',
+        'image' => 'assets/services/stroke-care.png',
+        'link' => 'brain-stroke-helpline.php'
     ],
     [
-        'title' => 'Headache',
-        'description' => 'Accurate diagnosis and targeted therapy for chronic, acute, and complex headache disorders to restore daily function.',
-        'image' => 'assets/services/headache.png'
+        'title' => 'Epilepsy & Seizure Clinic',
+        'description' => 'Comprehensive seizure diagnosis and treatment',
+        'bullet' => 'Video EEG monitoring',
+        'image' => 'assets/services/epilepsy.png',
+        'link' => 'epilepsy.php'
     ],
     [
-        'title' => 'Migraine',
-        'description' => 'Specialized migraine care plans including lifestyle advice, preventive medications, and advanced rescue therapies.',
-        'image' => 'assets/services/migraine.png'
+        'title' => 'Brain Tumor Surgery',
+        'description' => 'Precision neurosurgery using advanced imaging',
+        'bullet' => 'Minimally invasive tumor removal',
+        'image' => 'assets/services/brain-tumor.png',
+        'link' => 'brain-tumor-surgery.php'
     ],
     [
-        'title' => 'Stroke',
-        'description' => 'Rapid evaluation, stroke prevention strategies, and long-term neurological rehabilitation support.',
-        'image' => 'assets/services/stroke.png'
+        'title' => 'Spine Surgery',
+        'description' => 'Comprehensive care for spinal conditions',
+        'bullet' => 'Minimally invasive spine surgery',
+        'image' => 'assets/services/spine-surgery.png',
+        'link' => 'spine-surgery.php'
     ],
     [
-        'title' => 'Vertigo',
-        'description' => 'Detailed balance assessment and effective vestibular rehabilitation to address dizziness and inner-ear balance disorders.',
-        'image' => 'assets/services/vertigo.png'
+        'title' => 'Headache & Pain Clinic',
+        'description' => 'Targeted care for migraines and chronic headaches',
+        'bullet' => 'Preventive therapies',
+        'image' => 'assets/services/headache.png',
+        'link' => 'headache.php'
     ],
     [
-        'title' => 'Parkinson\'s Disease',
-        'description' => 'Comprehensive care plans combining modern pharmacology, motor therapy, and support for movement coordination.',
-        'image' => 'assets/services/parkinsons.png'
+        'title' => 'Functional Neurosurgery',
+        'description' => 'Advanced surgical treatment for movement disorders',
+        'bullet' => 'Deep Brain Stimulation (DBS) for Parkinson\'s',
+        'image' => 'assets/services/functional-neuro.png',
+        'link' => 'functional-neurosurgery.php'
     ],
     [
-        'title' => 'Multiple Sclerosis',
-        'description' => 'Advanced immunomodulatory therapies and tailored symptom management to improve mobility and slow progression.',
-        'image' => 'assets/services/ms.png'
+        'title' => 'Neurovascular Surgery',
+        'description' => 'Treatment of complex vascular conditions',
+        'bullet' => 'Aneurysm clipping',
+        'image' => 'assets/services/neurovascular.png',
+        'link' => 'neurovascular-surgery.php'
     ],
     [
-        'title' => 'Movement Disorders',
-        'description' => 'Expert management of tremors, dystonia, and other involuntary movements through clinical precision.',
-        'image' => 'assets/services/movement.png'
-    ],
-    [
-        'title' => 'Peripheral Neuropathy',
-        'description' => 'Diagnosis and targeted treatments to manage nerve damage, relieve chronic neuropathic pain, and restore sensation.',
-        'image' => 'assets/services/neuropathy.png'
-    ],
-    [
-        'title' => 'Neurological Rehabilitation',
-        'description' => 'Comprehensive physical, occupational, and speech-language therapy programs designed to restore independence and motor function.',
-        'image' => 'assets/services/rehab.png'
-    ],
-    [
-        'title' => 'rTMS Therapy',
-        'description' => 'Repetitive Transcranial Magnetic Stimulation, a non-invasive neuromodulation therapy for depression, chronic pain, and stroke recovery.',
-        'image' => 'assets/services/rtms.png'
-    ],
-    [
-        'title' => 'Neurocritical & Acute Stroke Care',
-        'description' => 'Offering 24/7 hyper-acute stroke rescue, mechanical thrombectomy, and advanced neuro-intensive care for life-threatening emergencies.',
-        'image' => 'assets/services/stroke-care.png'
-    ],
+        'title' => 'Geriatric & Dementia Clinic',
+        'description' => 'Care for dementia, Alzheimer\'s, and memory disorders',
+        'bullet' => 'Neuropsychological testing',
+        'image' => 'assets/services/memory-clinic.png',
+        'link' => 'memory-clinic.php'
+    ]
 ];
 
 // Stats
@@ -329,20 +328,28 @@ $educationVideos = [
 // Link mapping helper for service details pages
 function getServicePageLink($title) {
     $titleLower = strtolower($title);
-    if (strpos($titleLower, 'neurocritical') !== false || strpos($titleLower, 'acute stroke') !== false) {
-        return 'neurocritical-acute-stroke-care.php';
-    } elseif (strpos($titleLower, 'rehabilitation') !== false) {
-        return 'neuro-rehabilitation-center.php';
-    } elseif (strpos($titleLower, 'rtms') !== false) {
-        return 'rtms-therapy.php';
+    if (strpos($titleLower, 'tumor') !== false) {
+        return 'brain-tumor-surgery.php';
+    } elseif (strpos($titleLower, 'spine') !== false) {
+        return 'spine-surgery.php';
+    } elseif (strpos($titleLower, 'functional') !== false) {
+        return 'functional-neurosurgery.php';
+    } elseif (strpos($titleLower, 'neurovascular') !== false) {
+        return 'neurovascular-surgery.php';
+    } elseif (strpos($titleLower, 'geriatric') !== false || strpos($titleLower, 'dementia') !== false || strpos($titleLower, 'memory') !== false) {
+        return 'memory-clinic.php';
     } elseif (strpos($titleLower, 'epilepsy') !== false) {
         return 'epilepsy.php';
     } elseif (strpos($titleLower, 'headache') !== false) {
         return 'headache.php';
     } elseif (strpos($titleLower, 'migraine') !== false) {
         return 'migraine.php';
-    } elseif (strpos($titleLower, 'stroke') !== false) {
-        return 'stroke.php';
+    } elseif (strpos($titleLower, 'stroke') !== false || strpos($titleLower, 'neurocritical') !== false) {
+        return 'brain-stroke-helpline.php';
+    } elseif (strpos($titleLower, 'rehabilitation') !== false) {
+        return 'neuro-rehabilitation-center.php';
+    } elseif (strpos($titleLower, 'rtms') !== false) {
+        return 'rtms-therapy.php';
     } elseif (strpos($titleLower, 'vertigo') !== false) {
         return 'vertigo.php';
     } elseif (strpos($titleLower, 'parkinson') !== false) {

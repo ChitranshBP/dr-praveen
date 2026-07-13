@@ -36,7 +36,7 @@ require_once __DIR__ . '/includes/header.php';
             </p>
 
             <div class="flex flex-wrap items-center gap-4">
-                <a href="tel:<?php echo SITE_PHONE; ?>" class="inline-flex items-center space-x-3 bg-red-650 hover:bg-red-750 bg-red-600 hover:bg-red-700 text-white font-extrabold text-base px-8 py-3.5 rounded-2xl shadow-lg shadow-red-600/20 hover:shadow-red-600/40 transition-all duration-300 transform hover:-translate-y-0.5">
+                <a href="tel:<?php echo SITE_PHONE; ?>" class="inline-flex items-center space-x-3 bg-red-600 hover:bg-red-700 text-white font-extrabold text-base px-8 py-3.5 rounded-2xl shadow-lg shadow-red-600/20 hover:shadow-red-600/40 transition-all duration-300 transform hover:-translate-y-0.5">
                     <i class="fas fa-phone-alt animate-bounce"></i>
                     <span>Call Helpline: <?php echo SITE_PHONE; ?></span>
                 </a>
@@ -193,5 +193,145 @@ require_once __DIR__ . '/includes/header.php';
         </div>
     </div>
 </section>
+
+<!-- Emergency Contact / Query Form Section -->
+<section class="py-16 bg-white border-t border-b border-silver-grey/40">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-gradient-to-br from-red-800 to-slate-950 text-white rounded-[32px] p-8 md:p-12 shadow-xl relative overflow-hidden">
+            <!-- Glow Accent -->
+            <div class="absolute -right-24 -bottom-24 w-96 h-96 bg-red-650/15 rounded-full blur-[100px] pointer-events-none"></div>
+
+            <div class="relative z-10 space-y-6">
+                <div class="text-center max-w-2xl mx-auto">
+                    <span class="text-red-400 font-bold text-xs uppercase tracking-widest">General Query or Callback</span>
+                    <h2 class="text-2xl md:text-3xl font-bold font-serif mt-2">Request a Call-Back</h2>
+                    <p class="text-white/80 text-xs mt-2 leading-relaxed">
+                        For non-life-threatening clinical inquiries, leave your details below and our triage coordinator will call you.
+                    </p>
+                </div>
+
+                <form class="space-y-4 pt-4 max-w-2xl mx-auto" onsubmit="event.preventDefault(); alert('Callback request submitted successfully! Our coordinator will contact you shortly.');">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="ec-name" class="block text-xs font-semibold text-white/95 mb-2">FULL NAME</label>
+                            <input type="text" id="ec-name" required placeholder="John Doe" class="w-full px-4 py-2.5 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-red-400 text-xs text-white placeholder-white/50">
+                        </div>
+                        <div>
+                            <label for="ec-phone" class="block text-xs font-semibold text-white/95 mb-2">PHONE NUMBER</label>
+                            <input type="tel" id="ec-phone" required placeholder="Phone Number" class="w-full px-4 py-2.5 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-red-400 text-xs text-white placeholder-white/50">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="ec-desc" class="block text-xs font-semibold text-white/95 mb-2">NATURE OF INQUIRY</label>
+                        <textarea id="ec-desc" rows="3" required placeholder="Describe your query or symptom concerns..." class="w-full px-4 py-2.5 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-red-400 text-xs text-white placeholder-white/50"></textarea>
+                    </div>
+                    <div class="pt-2">
+                        <button type="submit" class="block w-full text-center bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl transition-all duration-300 transform active:scale-95 text-xs shadow-lg shadow-red-600/20">
+                            Request Call-Back
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <!-- Left Column: Header Information -->
+            <div class="lg:col-span-5 lg:sticky lg:top-24 self-start">
+                <span class="text-red-600 font-semibold text-sm uppercase tracking-wider">FAQ</span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-dark-grey mt-3 mb-6">Frequently Asked Questions</h2>
+                <p class="text-dark-grey/70 leading-relaxed max-w-md">
+                    Answers to critical questions regarding emergency admissions, stroke response, and first-aid measures.
+                </p>
+            </div>
+
+            <!-- Right Column: Accordions -->
+            <div class="lg:col-span-7">
+                <div class="space-y-4" id="faq-container">
+                    <!-- FAQ 1 -->
+                    <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
+                            <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">What constitutes a neurological emergency?</span>
+                            <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
+                            </span>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-dark-grey/70 leading-relaxed text-sm">
+                                Neurological emergencies include sudden onset of facial drooping, arm or leg weakness, difficulty speaking, severe sudden headache (thunderclap headache), sudden vision loss, loss of consciousness, or prolonged seizures.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
+                            <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">Does the hospital have a dedicated stroke unit?</span>
+                            <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
+                            </span>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-dark-grey/70 leading-relaxed text-sm">
+                                Yes, Marengo Asia Hospital features a dedicated, round-the-clock Stroke and Neurocritical Care Unit with rapid access to CT/MRI imaging, catheterization labs for mechanical thrombectomy, and highly specialized intensive care.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
+                            <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">What should I do while waiting for emergency transport?</span>
+                            <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
+                            </span>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6">
+                            <p class="text-dark-grey/70 leading-relaxed text-sm">
+                                Keep the patient calm, lying down on their side to keep the airway clear. Note the exact time when the first symptom started. Do not give the patient anything to eat or drink (including water or aspirin) as they may have swallowing difficulties.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Toggle Script -->
+<script>
+function toggleFaq(button) {
+    const item = button.closest('.faq-item');
+    const content = button.nextElementSibling;
+    const icon = button.querySelector('i');
+    const isOpen = !content.classList.contains('hidden');
+
+    // Close all other FAQs
+    document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
+    document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('bg-[#edf5f9]');
+        i.classList.add('bg-white');
+    });
+    document.querySelectorAll('.faq-toggle i').forEach(i => {
+        i.classList.remove('fa-minus');
+        i.classList.add('fa-plus');
+        i.style.transform = 'rotate(0deg)';
+    });
+
+    // Toggle current
+    if (!isOpen) {
+        content.classList.remove('hidden');
+        item.classList.remove('bg-white');
+        item.classList.add('bg-[#edf5f9]');
+        icon.classList.remove('fa-plus');
+        icon.classList.add('fa-minus');
+        icon.style.transform = 'rotate(180deg)';
+    }
+}
+</script>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
