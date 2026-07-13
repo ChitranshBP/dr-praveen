@@ -3,6 +3,24 @@
  * Homepage - Dr. Praveen Gupta
  */
 require_once __DIR__ . '/includes/header.php';
+
+// Load doctor data from JSON for the homepage team section
+$doctorsJsonPath = __DIR__ . '/assets/doctors_full.json';
+$specialtyTeam = [];
+$homepageTeam = [];
+
+if (file_exists($doctorsJsonPath)) {
+    $doctorsJson = file_get_contents($doctorsJsonPath);
+    $doctors = json_decode($doctorsJson, true);
+    if (is_array($doctors)) {
+        foreach ($doctors as $doc) {
+            if (isset($doc['name']) && $doc['name'] !== 'Dr. Praveen Gupta') {
+                $specialtyTeam[] = $doc;
+            }
+        }
+        $homepageTeam = array_slice($specialtyTeam, 0, 4);
+    }
+}
 ?>
 
 <!-- Hero Section -->
@@ -480,45 +498,21 @@ require_once __DIR__ . '/includes/header.php';
         </div>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
-            <!-- Member 1 -->
-            <div class="bg-white border border-silver-grey/30 p-6 rounded-[32px] shadow-sm hover:shadow-md transition-all duration-300 observe flex flex-col items-center text-center">
-                <div class="w-24 h-24 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
-                    <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=400&h=400" alt="Dr. Rahul Verma" class="w-full h-full object-cover rounded-full">
+            <?php foreach ($homepageTeam as $doc): ?>
+            <!-- Dynamic Team Card -->
+            <a href="team.php" class="group bg-white border border-silver-grey/30 p-6 rounded-[32px] shadow-sm hover:shadow-lg hover:border-electric-blue/30 transition-all duration-300 observe flex flex-col items-center text-center hover:-translate-y-1">
+                <div class="w-32 h-32 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
+                    <img src="<?php echo htmlspecialchars($doc['image']); ?>" alt="<?php echo htmlspecialchars($doc['alt']); ?>" class="w-full h-full object-cover object-top rounded-full transition-transform duration-500 group-hover:scale-105">
                 </div>
-                <h3 class="font-bold text-deep-indigo text-base">Dr. Rahul Verma</h3>
-                <p class="text-xs text-cyan-accent font-medium mt-0.5">Associate Consultant - Neurology</p>
-                <p class="text-xs text-dark-grey/65 mt-2 leading-relaxed">Specializes in managing epilepsy, headache, and electro-diagnostics (EEG/EMG).</p>
-            </div>
-
-            <!-- Member 2 -->
-            <div class="bg-white border border-silver-grey/30 p-6 rounded-[32px] shadow-sm hover:shadow-md transition-all duration-300 observe flex flex-col items-center text-center">
-                <div class="w-24 h-24 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
-                    <img src="https://images.unsplash.com/photo-1594824813573-246434de83fb?auto=format&fit=crop&q=80&w=400&h=400" alt="Dr. Sneha Sharma" class="w-full h-full object-cover rounded-full">
+                <h3 class="font-bold text-deep-indigo text-base leading-tight"><?php echo htmlspecialchars($doc['name']); ?></h3>
+                <p class="text-[11px] text-cyan-accent font-semibold mt-1.5 leading-relaxed"><?php echo htmlspecialchars($doc['specialty']); ?></p>
+                <p class="text-xs text-dark-grey/65 mt-2 leading-relaxed line-clamp-3 font-light"><?php echo htmlspecialchars($doc['designation']); ?></p>
+                <div class="text-xs text-electric-blue font-semibold mt-auto pt-4 group-hover:underline flex items-center">
+                    <span>View Profile</span>
+                    <i class="fas fa-arrow-right text-[9px] ml-1.5 transition-transform duration-300 group-hover:translate-x-0.5"></i>
                 </div>
-                <h3 class="font-bold text-deep-indigo text-base">Dr. Sneha Sharma</h3>
-                <p class="text-xs text-cyan-accent font-medium mt-0.5">Consultant - Neuro-Rehabilitation</p>
-                <p class="text-xs text-dark-grey/65 mt-2 leading-relaxed">Focuses on stroke rehabilitation, motor training, and post-TBI recovery therapies.</p>
-            </div>
-
-            <!-- Member 3 -->
-            <div class="bg-white border border-silver-grey/30 p-6 rounded-[32px] shadow-sm hover:shadow-md transition-all duration-300 observe flex flex-col items-center text-center">
-                <div class="w-24 h-24 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
-                    <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=400&h=400" alt="Mr. Amit Kumar" class="w-full h-full object-cover rounded-full">
-                </div>
-                <h3 class="font-bold text-deep-indigo text-base">Mr. Amit Kumar</h3>
-                <p class="text-xs text-cyan-accent font-medium mt-0.5">Senior Neuro-Physiotherapist</p>
-                <p class="text-xs text-dark-grey/65 mt-2 leading-relaxed">Delivers active vestibular rehabilitation, balance training, and gait coordination.</p>
-            </div>
-
-            <!-- Member 4 -->
-            <div class="bg-white border border-silver-grey/30 p-6 rounded-[32px] shadow-sm hover:shadow-md transition-all duration-300 observe flex flex-col items-center text-center">
-                <div class="w-24 h-24 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
-                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=400&h=400" alt="Ms. Preeti Singh" class="w-full h-full object-cover rounded-full">
-                </div>
-                <h3 class="font-bold text-deep-indigo text-base">Ms. Preeti Singh</h3>
-                <p class="text-xs text-cyan-accent font-medium mt-0.5">Senior Speech Therapist</p>
-                <p class="text-xs text-dark-grey/65 mt-2 leading-relaxed">Aids in speech recovery, language pathology, and cognitive therapy after strokes.</p>
-            </div>
+            </a>
+            <?php endforeach; ?>
         </div>
 
         <div class="text-center">

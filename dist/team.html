@@ -1002,28 +1002,27 @@
         </div>
 
         <!-- Dr Praveen Gupta profile -->
-        <div class="max-w-4xl mx-auto bg-slate-50 border border-slate-200/50 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <div onclick="openPraveenModal()" class="max-w-4xl mx-auto bg-slate-50 border border-slate-200/50 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer hover:border-electric-blue/40">
             <div class="grid md:grid-cols-12 gap-8 items-center p-8">
                 <div class="md:col-span-4 aspect-[4/5] rounded-2xl overflow-hidden relative shadow-md bg-gradient-to-br from-deep-indigo to-electric-blue p-0.5">
                     <div class="relative w-full h-full rounded-[0.9rem] overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent">
-                        <img src="assets/dpg-1.webp" alt="Dr. Praveen Gupta" class="w-full h-full object-cover">
+                        <img src="assets/ggn-nuro-images/dr-praveen-gupta.webp" alt="Dr. Praveen Gupta" class="w-full h-full object-cover object-top">
                     </div>
                 </div>
                 <div class="md:col-span-8 space-y-4">
-                    <span class="text-cyan-accent font-bold text-xs uppercase tracking-widest">Chairman - Marengo Asia Neuro & Spine</span>
+                    <span class="text-cyan-accent font-bold text-xs uppercase tracking-widest">Chairman – MAIINS &amp; Marengo Asia Hospitals, Gurugram</span>
                     <h3 class="text-2xl font-bold text-deep-indigo font-serif">Dr. Praveen Gupta</h3>
                     <p class="text-xs text-dark-grey/70 leading-relaxed font-light">
-                        Pioneering neurologist with 20+ years of experience. Renowned for starting the first stroke mechanical thrombectomy services in Gurgaon and executing the first Deep Brain Stimulation (DBS) in the region.
-                    </p>
+                        Dr. Praveen Gupta is a distinguished neurologist with over 20 years of experience in neurology and internal medicine. A DM from AIIMS, New Delhi, and MD from Maulana Azad Medical College, he has pioneered multiple neurological interventions in India — such as the First Brain Pacemaker for Epilepsy in Asia, DBS for Parkinson&#039;s, Bone Marrow Transplants for CIDP/MS in Gurugram, and Solitaire Shaunt Mechanical Thrombectomy for Stroke in North India. He established top-tier neurology departments at Fortis, Artemis, and Paras Hospitals, and has been featured in Forbes India as one of the most influential healthcare leaders.                    </p>
                     <div class="flex flex-wrap gap-4 pt-2">
-                        <a href="about.html" class="text-xs font-semibold text-electric-blue hover:underline">Full Biography <i class="fas fa-arrow-right text-[10px] ml-1"></i></a>
+                        <button onclick="event.stopPropagation(); openPraveenModal();" class="text-xs font-semibold text-electric-blue hover:underline">Full Biography <i class="fas fa-arrow-right text-[10px] ml-1"></i></button>
                         <span class="text-slate-300">|</span>
-                        <a href="why-choose-dr-praveen-gupta.html" class="text-xs font-semibold text-electric-blue hover:underline">Why Choose Dr. Praveen <i class="fas fa-arrow-right text-[10px] ml-1"></i></a>
+                        <a href="why-choose-dr-praveen-gupta.html" onclick="event.stopPropagation();" class="text-xs font-semibold text-electric-blue hover:underline">Why Choose Dr. Praveen <i class="fas fa-arrow-right text-[10px] ml-1"></i></a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+            </div>
 </section>
 
 <!-- Specialty Team Grid -->
@@ -1038,46 +1037,111 @@
         </div>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <!-- Team Member 1 -->
-            <div class="bg-white border border-silver-grey/30 p-6 rounded-3xl hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center">
-                <div class="w-24 h-24 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
-                    <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=400&h=400" alt="Dr. Rahul Verma" class="w-full h-full object-cover rounded-full">
+                        <!-- Team Member Card -->
+            <div onclick="openDoctorModal(0)" class="bg-white border border-silver-grey/30 p-6 rounded-3xl hover:shadow-lg hover:border-electric-blue/30 transition-all duration-300 flex flex-col items-center text-center cursor-pointer group hover:-translate-y-1">
+                <div class="w-32 h-32 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
+                    <img src="assets/ggn-nuro-images/dr-piyush-ojha.webp" alt="Dr. Piyush Ojha" class="w-full h-full object-cover object-top rounded-full group-hover:scale-105 transition-transform duration-500">
                 </div>
-                <h3 class="font-bold text-deep-indigo text-base">Dr. Rahul Verma</h3>
-                <p class="text-xs text-cyan-accent font-medium mt-1">Associate Consultant - Neurology</p>
-                <p class="text-xs text-dark-grey/65 mt-2 leading-relaxed">Specializes in managing epilepsy, headache, and electro-diagnostics (EEG/EMG).</p>
-            </div>
-
-            <!-- Team Member 2 -->
-            <div class="bg-white border border-silver-grey/30 p-6 rounded-3xl hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center">
-                <div class="w-24 h-24 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
-                    <img src="https://images.unsplash.com/photo-1594824813573-246434de83fb?auto=format&fit=crop&q=80&w=400&h=400" alt="Dr. Sneha Sharma" class="w-full h-full object-cover rounded-full">
+                <h3 class="font-bold text-deep-indigo text-base leading-tight">Dr. Piyush Ojha</h3>
+                <p class="text-[11px] text-cyan-accent font-semibold mt-1.5 leading-relaxed">Interventional Neurology, Neurology, Neurosciences</p>
+                <p class="text-xs text-dark-grey/65 mt-2 leading-relaxed line-clamp-3 font-light">Clinical Director – Neurology &amp; Head, Neurointervention, MAIINS, Gurugram</p>
+                <div class="text-xs text-electric-blue font-semibold mt-auto pt-4 group-hover:underline flex items-center">
+                    <span>View Profile</span>
+                    <i class="fas fa-arrow-right text-[9px] ml-1.5 transition-transform duration-300 group-hover:translate-x-0.5"></i>
                 </div>
-                <h3 class="font-bold text-deep-indigo text-base">Dr. Sneha Sharma</h3>
-                <p class="text-xs text-cyan-accent font-medium mt-1">Consultant - Neuro-Rehabilitation</p>
-                <p class="text-xs text-dark-grey/65 mt-2 leading-relaxed">Focuses on stroke rehabilitation, motor training, and post-TBI recovery therapies.</p>
             </div>
-
-            <!-- Team Member 3 -->
-            <div class="bg-white border border-silver-grey/30 p-6 rounded-3xl hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center">
-                <div class="w-24 h-24 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
-                    <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=400&h=400" alt="Mr. Amit Kumar" class="w-full h-full object-cover rounded-full">
+                        <!-- Team Member Card -->
+            <div onclick="openDoctorModal(1)" class="bg-white border border-silver-grey/30 p-6 rounded-3xl hover:shadow-lg hover:border-electric-blue/30 transition-all duration-300 flex flex-col items-center text-center cursor-pointer group hover:-translate-y-1">
+                <div class="w-32 h-32 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
+                    <img src="assets/ggn-nuro-images/dr-shilpa-jaiswal.webp" alt="Dr. Shilpa Jaiswal" class="w-full h-full object-cover object-top rounded-full group-hover:scale-105 transition-transform duration-500">
                 </div>
-                <h3 class="font-bold text-deep-indigo text-base">Mr. Amit Kumar</h3>
-                <p class="text-xs text-cyan-accent font-medium mt-1">Senior Neuro-Physiotherapist</p>
-                <p class="text-xs text-dark-grey/65 mt-2 leading-relaxed">Delivers active vestibular rehabilitation, balance training, and gait coordination.</p>
-            </div>
-
-            <!-- Team Member 4 -->
-            <div class="bg-white border border-silver-grey/30 p-6 rounded-3xl hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center">
-                <div class="w-24 h-24 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
-                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=400&h=400" alt="Ms. Preeti Singh" class="w-full h-full object-cover rounded-full">
+                <h3 class="font-bold text-deep-indigo text-base leading-tight">Dr. Shilpa Jaiswal</h3>
+                <p class="text-[11px] text-cyan-accent font-semibold mt-1.5 leading-relaxed">Neurology, Neurosciences</p>
+                <p class="text-xs text-dark-grey/65 mt-2 leading-relaxed line-clamp-3 font-light">Neurologist – Neurology &amp; Neurosciences, MAIINS, Gurugram</p>
+                <div class="text-xs text-electric-blue font-semibold mt-auto pt-4 group-hover:underline flex items-center">
+                    <span>View Profile</span>
+                    <i class="fas fa-arrow-right text-[9px] ml-1.5 transition-transform duration-300 group-hover:translate-x-0.5"></i>
                 </div>
-                <h3 class="font-bold text-deep-indigo text-base">Ms. Preeti Singh</h3>
-                <p class="text-xs text-cyan-accent font-medium mt-1">Senior Speech Therapist</p>
-                <p class="text-xs text-dark-grey/65 mt-2 leading-relaxed">Aids in speech recovery, language pathology, and cognitive therapy after strokes.</p>
             </div>
-        </div>
+                        <!-- Team Member Card -->
+            <div onclick="openDoctorModal(2)" class="bg-white border border-silver-grey/30 p-6 rounded-3xl hover:shadow-lg hover:border-electric-blue/30 transition-all duration-300 flex flex-col items-center text-center cursor-pointer group hover:-translate-y-1">
+                <div class="w-32 h-32 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
+                    <img src="assets/ggn-nuro-images/dr-vikas-sharma.webp" alt="Dr. Vikas Sharma" class="w-full h-full object-cover object-top rounded-full group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <h3 class="font-bold text-deep-indigo text-base leading-tight">Dr. Vikas Sharma</h3>
+                <p class="text-[11px] text-cyan-accent font-semibold mt-1.5 leading-relaxed">Neurology, Neurosciences</p>
+                <p class="text-xs text-dark-grey/65 mt-2 leading-relaxed line-clamp-3 font-light">Clinical Director – Neurology, MAIINS &amp; Marengo Asia Hospitals, Gurugram</p>
+                <div class="text-xs text-electric-blue font-semibold mt-auto pt-4 group-hover:underline flex items-center">
+                    <span>View Profile</span>
+                    <i class="fas fa-arrow-right text-[9px] ml-1.5 transition-transform duration-300 group-hover:translate-x-0.5"></i>
+                </div>
+            </div>
+                        <!-- Team Member Card -->
+            <div onclick="openDoctorModal(3)" class="bg-white border border-silver-grey/30 p-6 rounded-3xl hover:shadow-lg hover:border-electric-blue/30 transition-all duration-300 flex flex-col items-center text-center cursor-pointer group hover:-translate-y-1">
+                <div class="w-32 h-32 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
+                    <img src="assets/ggn-nuro-images/rafat-trivedi.webp" alt="Dr. Rafat Trivedi" class="w-full h-full object-cover object-top rounded-full group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <h3 class="font-bold text-deep-indigo text-base leading-tight">Dr. Rafat Trivedi</h3>
+                <p class="text-[11px] text-cyan-accent font-semibold mt-1.5 leading-relaxed">Pediatric Neurology &amp; Epilepsy</p>
+                <p class="text-xs text-dark-grey/65 mt-2 leading-relaxed line-clamp-3 font-light">Senior Consultant – Pediatric Neurology &amp; Epilepsy, Gurugram</p>
+                <div class="text-xs text-electric-blue font-semibold mt-auto pt-4 group-hover:underline flex items-center">
+                    <span>View Profile</span>
+                    <i class="fas fa-arrow-right text-[9px] ml-1.5 transition-transform duration-300 group-hover:translate-x-0.5"></i>
+                </div>
+            </div>
+                        <!-- Team Member Card -->
+            <div onclick="openDoctorModal(4)" class="bg-white border border-silver-grey/30 p-6 rounded-3xl hover:shadow-lg hover:border-electric-blue/30 transition-all duration-300 flex flex-col items-center text-center cursor-pointer group hover:-translate-y-1">
+                <div class="w-32 h-32 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
+                    <img src="assets/ggn-nuro-images/seema-shahi.webp" alt="Dr. Seema Shahi" class="w-full h-full object-cover object-top rounded-full group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <h3 class="font-bold text-deep-indigo text-base leading-tight">Dr. Seema Shahi</h3>
+                <p class="text-[11px] text-cyan-accent font-semibold mt-1.5 leading-relaxed">Neurology &amp; Epilepsy</p>
+                <p class="text-xs text-dark-grey/65 mt-2 leading-relaxed line-clamp-3 font-light">Senior Consultant – Neurology &amp; Epilepsy, Gurugram</p>
+                <div class="text-xs text-electric-blue font-semibold mt-auto pt-4 group-hover:underline flex items-center">
+                    <span>View Profile</span>
+                    <i class="fas fa-arrow-right text-[9px] ml-1.5 transition-transform duration-300 group-hover:translate-x-0.5"></i>
+                </div>
+            </div>
+                        <!-- Team Member Card -->
+            <div onclick="openDoctorModal(5)" class="bg-white border border-silver-grey/30 p-6 rounded-3xl hover:shadow-lg hover:border-electric-blue/30 transition-all duration-300 flex flex-col items-center text-center cursor-pointer group hover:-translate-y-1">
+                <div class="w-32 h-32 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
+                    <img src="assets/ggn-nuro-images/krisan-kumar-yadav.webp" alt="Dr. Krishan Kumar Yadav" class="w-full h-full object-cover object-top rounded-full group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <h3 class="font-bold text-deep-indigo text-base leading-tight">Dr. Krishan Kumar Yadav</h3>
+                <p class="text-[11px] text-cyan-accent font-semibold mt-1.5 leading-relaxed">Neurosurgery &amp; Neurospine Surgery</p>
+                <p class="text-xs text-dark-grey/65 mt-2 leading-relaxed line-clamp-3 font-light">Clinical Director, Prof &amp; HOD – Neurosurgery &amp; Neurospine Surgery</p>
+                <div class="text-xs text-electric-blue font-semibold mt-auto pt-4 group-hover:underline flex items-center">
+                    <span>View Profile</span>
+                    <i class="fas fa-arrow-right text-[9px] ml-1.5 transition-transform duration-300 group-hover:translate-x-0.5"></i>
+                </div>
+            </div>
+                        <!-- Team Member Card -->
+            <div onclick="openDoctorModal(6)" class="bg-white border border-silver-grey/30 p-6 rounded-3xl hover:shadow-lg hover:border-electric-blue/30 transition-all duration-300 flex flex-col items-center text-center cursor-pointer group hover:-translate-y-1">
+                <div class="w-32 h-32 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
+                    <img src="assets/ggn-nuro-images/dr-ravi-kumar-shah.webp" alt="Dr. Ravi Kumar Shah" class="w-full h-full object-cover object-top rounded-full group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <h3 class="font-bold text-deep-indigo text-base leading-tight">Dr. Ravi Kumar Shah</h3>
+                <p class="text-[11px] text-cyan-accent font-semibold mt-1.5 leading-relaxed">Geriatric Medicine &amp; Internal Medicine</p>
+                <p class="text-xs text-dark-grey/65 mt-2 leading-relaxed line-clamp-3 font-light">Senior Consultant – Geriatric Medicine &amp; Internal Medicine, Gurugram</p>
+                <div class="text-xs text-electric-blue font-semibold mt-auto pt-4 group-hover:underline flex items-center">
+                    <span>View Profile</span>
+                    <i class="fas fa-arrow-right text-[9px] ml-1.5 transition-transform duration-300 group-hover:translate-x-0.5"></i>
+                </div>
+            </div>
+                        <!-- Team Member Card -->
+            <div onclick="openDoctorModal(7)" class="bg-white border border-silver-grey/30 p-6 rounded-3xl hover:shadow-lg hover:border-electric-blue/30 transition-all duration-300 flex flex-col items-center text-center cursor-pointer group hover:-translate-y-1">
+                <div class="w-32 h-32 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
+                    <img src="assets/ggn-nuro-images/dr-saurabh-verma.webp" alt="Dr. Saurabh Verma" class="w-full h-full object-cover object-top rounded-full group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <h3 class="font-bold text-deep-indigo text-base leading-tight">Dr. Saurabh Verma</h3>
+                <p class="text-[11px] text-cyan-accent font-semibold mt-1.5 leading-relaxed">Orthopaedics &amp; Spine Surgery</p>
+                <p class="text-xs text-dark-grey/65 mt-2 leading-relaxed line-clamp-3 font-light">Clinical Director – Ortho Spine Surgery, Marengo Asia Hospitals, Gurugram</p>
+                <div class="text-xs text-electric-blue font-semibold mt-auto pt-4 group-hover:underline flex items-center">
+                    <span>View Profile</span>
+                    <i class="fas fa-arrow-right text-[9px] ml-1.5 transition-transform duration-300 group-hover:translate-x-0.5"></i>
+                </div>
+            </div>
+                    </div>
     </div>
 </section>
 
@@ -1131,6 +1195,239 @@
         </div>
     </div>
 </section>
+
+<!-- Doctor Bio Modal Overlay -->
+<div id="doctor-modal" class="fixed inset-0 z-[9999] hidden flex items-center justify-center p-4 sm:p-6 lg:p-8">
+    <!-- Backdrop with premium blur -->
+    <div id="doctor-modal-backdrop" class="absolute inset-0 bg-slate-950/60 backdrop-blur-sm transition-opacity duration-300 opacity-0"></div>
+    
+    <!-- Modal Container -->
+    <div id="doctor-modal-container" class="relative bg-white rounded-[32px] shadow-2xl max-w-4xl w-full max-h-[85vh] overflow-hidden flex flex-col md:flex-row transform scale-95 opacity-0 transition-all duration-300 z-10">
+        <!-- Close Button -->
+        <button onclick="closeDoctorModal()" class="absolute top-6 right-6 z-20 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-all duration-200 shadow-sm focus:outline-none">
+            <i class="fas fa-times text-base"></i>
+        </button>
+
+        <!-- Left Column: Summary Info -->
+        <div class="w-full md:w-80 bg-gradient-to-b from-slate-50 to-slate-100/50 p-8 flex flex-col items-center border-b md:border-b-0 md:border-r border-slate-200/60 shrink-0">
+            <div class="w-40 h-40 rounded-3xl overflow-hidden shadow-md bg-gradient-to-br from-deep-indigo to-electric-blue p-0.5 mb-6">
+                <div class="relative w-full h-full rounded-[1.4rem] overflow-hidden bg-white">
+                    <img id="modal-doc-image" src="" alt="" class="w-full h-full object-cover object-top">
+                </div>
+            </div>
+            <h3 id="modal-doc-name" class="text-xl font-bold text-deep-indigo text-center font-serif leading-tight"></h3>
+            <p id="modal-doc-specialty" class="text-xs text-electric-blue font-semibold uppercase tracking-wider text-center mt-2.5 px-2"></p>
+            
+            <div class="w-full border-t border-slate-200/80 my-6"></div>
+            
+            <!-- Dynamic Badges -->
+            <div class="space-y-4 w-full">
+                <div class="flex items-center space-x-3 bg-white p-3 rounded-2xl border border-slate-200/50 shadow-sm">
+                    <div class="w-8 h-8 rounded-xl bg-electric-blue/10 flex items-center justify-center text-electric-blue shrink-0">
+                        <i class="fas fa-briefcase text-xs"></i>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-dark-grey/50 uppercase font-semibold">Experience</p>
+                        <p id="modal-doc-experience" class="text-xs font-bold text-deep-indigo"></p>
+                    </div>
+                </div>
+                
+                <div id="modal-doc-role-container" class="flex items-center space-x-3 bg-white p-3 rounded-2xl border border-slate-200/50 shadow-sm">
+                    <div class="w-8 h-8 rounded-xl bg-cyan-accent/10 flex items-center justify-center text-cyan-accent shrink-0">
+                        <i class="fas fa-user-md text-xs"></i>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-dark-grey/50 uppercase font-semibold">Role</p>
+                        <p id="modal-doc-role" class="text-xs font-bold text-deep-indigo"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Scrollable Bio and Details -->
+        <div class="flex-grow p-8 overflow-y-auto max-h-[50vh] md:max-h-[85vh]">
+            <div class="space-y-6 pr-2" id="modal-doc-details">
+                <!-- Javascript will inject sections dynamically -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Embed doctor data arrays
+    const praveenGuptaData = {"name":"Dr. Praveen Gupta","image":"assets\/ggn-nuro-images\/dr-praveen-gupta.webp","alt":"Dr. Praveen Gupta","specialty":"Neurology, Neurosciences","designation":"Chairman \u2013 MAIINS & Marengo Asia Hospitals, Gurugram","experience":"20+ Years Experience","modal":{"title":"Dr. Praveen Gupta","subtitle":"Neurology & Neurosciences | Chairman \u2013 MAIINS","role":"Chairman","sections":{"Designation":["Chairman \u2013 Marengo Asia International Institute of Neuro & Spine (MAIINS) & Marengo Asia Hospitals, Gurugram Chief Clinical Strategy, Growth & Innovation, North India Chief Mentor for Start-ups and Clinical Innovations"],"About":["Dr. Praveen Gupta is a distinguished neurologist with over 20 years of experience in neurology and internal medicine. A DM from AIIMS, New Delhi, and MD from Maulana Azad Medical College, he has pioneered multiple neurological interventions in India \u2014 such as the First Brain Pacemaker for Epilepsy in Asia, DBS for Parkinson's, Bone Marrow Transplants for CIDP\/MS in Gurugram, and Solitaire Shaunt Mechanical Thrombectomy for Stroke in North India. He established top-tier neurology departments at Fortis, Artemis, and Paras Hospitals, and has been featured in Forbes India as one of the most influential healthcare leaders."],"Qualifications":["DM Neurology \u2013 AIIMS, New Delhi (Gold Medallist)","MD Internal Medicine \u2013 Maulana Azad Medical College, Delhi (2002) (Distinction)","MBBS \u2013 Maulana Azad Medical College, Delhi (1998)"],"Areas of Expertise":["Stroke & Thrombectomy (IV, IA, Mechanical)","Epilepsy Surgery & Brain Pacemaker","Deep Brain Stimulation (DBS)","Multiple Sclerosis (MS) Treatment","Headache Management (Botox, Erenumab)","Neuro Pain Interventions","Movement Disorders","Somatoform Disorders","Chronic Pain, Neck & Back Pain"],"Experience":["Chief of Neurology and Principal Director \u2013 Fortis Memorial Research Institute, Gurugram & Manesar","Director, Neurology \u2013 Artemis Hospital, Gurugram","Head of Neurology \u2013 Paras Hospital, Gurugram","Senior Resident \u2013 AIIMS, G.B. Pant, LNJP Hospitals"],"Key Achievements":["First DBS for Parkinson's and Brain Pacemaker for Epilepsy in Asia","India's largest series of Stem Cell Transplants for MS","Published India's first Double-blind Migraine Trial (Topiramate)","Honored with 'Global Indian Brand Leader' by Forbes (2019)","Recipient of 20+ National & International Awards including: Best Neurologist (Times Research Media), Rashtriya Chikitsa Shiromani Award, Indian Medical Tourist Summit Award, Times Power Icons 2025 \u2013 Award for Excellence in Neurology, 'Neurologist of the Year' by The Economic Times, and the Prestigious Health Icon Award"],"Research & Publications":["20+ published papers in international journals","Trials in Migraine, MS, Vascular Dementia, Epilepsy","Faculty at multinational and international conferences"],"Philanthropy & Innovation":["Founded Intellichild program for child development","Conducts OPDs & awareness camps pan-India","Mentored health-tech startups like Health Mitra & Affinity","Advisory Board, Vision Unlimited"]}}};
+    const specialtyTeamData = [{"name":"Dr. Piyush Ojha","image":"assets\/ggn-nuro-images\/dr-piyush-ojha.webp","alt":"Dr. Piyush Ojha","specialty":"Interventional Neurology, Neurology, Neurosciences","designation":"Clinical Director \u2013 Neurology & Head, Neurointervention, MAIINS, Gurugram","experience":"18+ Years Experience","modal":{"title":"Dr. Piyush Ojha","subtitle":"Interventional Neurology | Clinical Director & Head \u2013 Neurointervention","role":"Clinical Director","sections":{"Designation":["Clinical Director \u2013 Neurology & Head \u2013 Neurointervention, Marengo Asia International Institute of Neuro & Spine (MAIINS), Gurugram & Marengo Asia Hospitals, Gurugram"],"Qualifications":["Fellowship in Intervention Neuroradiology \u2013 Medanta, The Medicity, Gurugram","Stroke Fellowship \u2013 University of Calgary, Canada","DM Neurology \u2013 Govt. Medical College, Kota","MD Medicine \u2013 MGM Medical College, Indore (Gold Medalist)","MBBS \u2013 RNT Medical College, Udaipur"],"Areas of Expertise":["Stroke Management \u2013 Medical & Endovascular Mechanical Thrombectomy","Neurointerventional management \u2013 Aneurysms, AVM, AV Fistula","Carotid & Vertebro-basilar Stenoses","Intracerebral Haemorrhage & Subarachnoid Haemorrhage","Endovascular Aneurysm Management","Clinical Research & Neurological Imaging","Medical Education & Stroke Awareness"]}}},{"name":"Dr. Shilpa Jaiswal","image":"assets\/ggn-nuro-images\/dr-shilpa-jaiswal.webp","alt":"Dr. Shilpa Jaiswal","specialty":"Neurology, Neurosciences","designation":"Neurologist \u2013 Neurology & Neurosciences, MAIINS, Gurugram","experience":"15+ Years Experience","modal":{"title":"Dr. Shilpa Jaiswal","subtitle":"Neurology & Neurosciences","role":"Neurologist","sections":{"About":["Dr. Shilpa Jaiswal is a renowned neurologist known for delivering high-quality medical care with compassion and empathy. She has extensive expertise in the evaluation, diagnosis, and management of a wide range of neurological disorders. She has multiple academic publications in reputed medical journals. She has also undergone specialised training at NIMHANS, Bengaluru, gaining in-depth experience in general neurology, neuropathology, neuro-electrophysiology, epilepsy, movement disorders, and stroke management."],"Qualifications":["DM Neurology \u2013 KLE University, Belgaum","MD Internal Medicine \u2013 King George's Medical University (KGMU), Lucknow","MBBS \u2013 King George's Medical University, Lucknow","Specialised Training \u2013 NIMHANS, Bengaluru"],"Clinical Focus":["General Neurology & Neuropathology","Neuro-electrophysiology","Epilepsy & Seizure Management","Movement Disorders","Stroke Management"]}}},{"name":"Dr. Vikas Sharma","image":"assets\/ggn-nuro-images\/dr-vikas-sharma.webp","alt":"Dr. Vikas Sharma","specialty":"Neurology, Neurosciences","designation":"Clinical Director \u2013 Neurology, MAIINS & Marengo Asia Hospitals, Gurugram","experience":"25+ Years Experience","modal":{"title":"Dr. Vikas Sharma","subtitle":"Neurology & Neurosciences | Clinical Director","role":"Clinical Director","sections":{"Designation":["Clinical Director \u2013 Neurology, Marengo Asia International Institute of Neuro & Spine (MAIINS) & Marengo Asia Hospitals, Gurugram"],"Qualifications":["DM Neurology \u2013 PGIMER, Chandigarh (2011)","MD Medicine \u2013 Maulana Azad Medical College, Delhi (2008)","MBBS \u2013 Maulana Azad Medical College, Delhi (2003)"],"Areas of Expertise":["Stroke & Neurocritical Care","Epilepsy & Movement Disorders","Neuroimaging & Transcranial Doppler","Neuromuscular Disorders","Clinical Research & Medical Education"]}}},{"name":"Dr. Rafat Trivedi","image":"assets\/ggn-nuro-images\/rafat-trivedi.webp","alt":"Dr. Rafat Trivedi","specialty":"Pediatric Neurology & Epilepsy","designation":"Senior Consultant \u2013 Pediatric Neurology & Epilepsy, Gurugram","experience":"12+ Years Experience","modal":{"title":"Dr. Rafat Trivedi","subtitle":"Pediatric Neurology & Epilepsy | Senior Consultant","role":"Senior Consultant","sections":{"About":["Dr. Rafat Trivedi is a dedicated pediatric neurologist with extensive experience in diagnosing and treating disorders of the central and peripheral nervous system in children. Her sensitive, accurate, and research-driven approach toward patient care & rehabilitation stands out in the field. She brings a strong inclination toward academic contribution & clinical excellence, with a proven commitment to interdisciplinary collaboration, teaching, and public health."],"Qualifications":["MBBS \u2013 Maharashtra University of Health Sciences (2000\u20132005)","Diploma in Child Health (DCH), Mumbai (2007\u20132009)","DNB (Pediatrics) \u2013 Dr. R. N. Cooper Hospital, Mumbai (2009\u20132011)","Fellowship in Pediatric Neurology & Epilepsy \u2013 Jaslok Hospital & B.J. Wadia Hospital, Mumbai (2011\u20132013)","Comprehensive Course in Neurophysiology \u2013 Case Western Reserve University Hospital, Ohio, USA (Feb\u2013May 2013)"],"Areas of Expertise":["Developmental Disorders \u2013 Developmental Delay, Cerebral Palsy","Neonatal and Developmental Neurology","Epilepsy, Syndromic Epilepsy, Neonatal Seizures","Headache and Migraine","Behavioural Problems \u2013 ADHD, Autism, Speech and Language Disorders","Learning Disabilities","Movement and Gait Disorders","Neuromuscular Disorders \u2013 Muscle, Spinal Cord Disorders","Neuro Infections and Auto-immune Diseases of Brain and Spinal Cord","Neuro Metabolic and Genetic Disorders"],"Awards & Recognition":["1st Prize, Grand Round Award \u2013 Indian Journal of Pediatrics (2016)","Travel Award \u2013 14th International Child Neurology Congress, Amsterdam (2016)","1st Prize \u2013 Poster Presentation, Neuropedicon (2014)","2nd Prize \u2013 Platform Presentation on Corpus Callosotomy, Neuropedicon (2014)","Recipient of Award Scholarship \u2013 Jamshedji Tata and Birla Trust","Award Scholarship \u2013 Hargobind Foundation"]}}},{"name":"Dr. Seema Shahi","image":"assets\/ggn-nuro-images\/seema-shahi.webp","alt":"Dr. Seema Shahi","specialty":"Neurology & Epilepsy","designation":"Senior Consultant \u2013 Neurology & Epilepsy, Gurugram","experience":"10+ Years Experience","modal":{"title":"Dr. Seema Shahi","subtitle":"Neurology & Epilepsy | Senior Consultant","role":"Senior Consultant","sections":{"About":["Dr. Seema Shahi is a dedicated neurologist with broad clinical and academic experience in general neurology and epilepsy, specializing in complex seizure disorders, EEG interpretation, EMU monitoring, presurgical epilepsy evaluation, and neurophysiology, with academic foundation and global exposure across India and the United States."],"Qualifications":["Clinical EEG\/Epilepsy Fellow \u2013 University of Louisville, USA (2024\u20132025)","DNB Neurology \u2013 Medanta, The Medicity Hospital, Gurugram","M.D. Internal Medicine (2011\u20132015)","Lady Hardinge Medical College & G.B. Pant Hospital, New Delhi"],"Areas of Expertise":["Epilepsy & Syndromic Epilepsy","Video EEG & EMU Monitoring","StereoEEG, ECOG","Presurgical Epilepsy Workup","Neuromuscular & Neurophysiology Testing (EMG\/NCV)","Headache & Movement Disorders","Stroke & General Neurology","Pediatric and Adult Epilepsy Management","Neuroimaging & Functional Brain Mapping","Cognitive and Behavioural Neurology"],"Awards & Achievements":["1st Prize \u2013 International EEG Workshop, RMI Hospital, New Delhi","3rd Rank \u2013 All India EEG Quiz, EEG Academy","Gold Medalist \u2013 M.D. Internal Medicine, M.L.N. Medical College (2011)","Top 1.5% Rank \u2013 National Postgraduate Medical Entrance Exam, India","Poster Presenter \u2013 American Academy of Neurology"],"Memberships":["American Academy of Neurology (AAN)","American Epilepsy Society (AES)","Indian Academy of Neurology (IAN)","Association of Physicians of India (API)"]}}},{"name":"Dr. Krishan Kumar Yadav","image":"assets\/ggn-nuro-images\/krisan-kumar-yadav.webp","alt":"Dr. Krishan Kumar Yadav","specialty":"Neurosurgery & Neurospine Surgery","designation":"Clinical Director, Prof & HOD \u2013 Neurosurgery & Neurospine Surgery","experience":"30+ Years Experience","modal":{"title":"Dr. (Air Cmde) Krishan Kumar Yadav","subtitle":"Neurosurgery & Neurospine Surgery | Clinical Director & HOD","role":"Clinical Director & HOD","sections":{"About":["Dr. Professor (Air Cmde) Krishan Kumar Yadav is a distinguished senior neurosurgeon with over three decades of service in the Armed Forces Medical Services and vast experience in Spine & Brain surgeries. Having managed more than 80,000 neurosurgical cases and performed over 5,000 surgeries, he specializes in neurotrauma, neuro-oncology, CVS, pediatric, stroke & functional neurosurgeries, and currently heads the Department of Neurosurgery & Neurospine Surgery at Marengo Asia Hospitals, Gurugram."],"Qualifications":["MBBS \u2013 AFMC, Pune University, Pune (1990)","MS (General Surgery) \u2013 AFMC, Pune University, Pune (1999)","M.Ch (Neurosurgery) \u2013 AFMC, Pune University, Pune (2006)","Service Courses: MOBC, MOSCC, SMOCC, Aviation Medicine","Others: MET, BCBR, SHAW, Ethics, Telemedicine, Communication Skills"],"Areas of Expertise":["Brain & Spine Tumours including Skull Base Tumours","Spine Instrumentation \u2013 Fusion Devices, Cages, Artificial Discs","Minimally Invasive Spine Surgery (MISS), Kyphoplasty","Spine PIVDs, Degeneration & Deformities Management","Stroke \/ Cerebrovascular & Functional Neurosurgery","Endoscopy, Pituitary & Pediatric Neurosurgery","TB & Infections of Brain & Spine","Emergency & Trauma Neurosurgery","Military Neurosurgery & Air Evacuation","Low Backaches & Cervical Spondylosis"],"Awards & Recognition":["Chief of Air Staff Commendation (2010)","Fellowship of the Association of Surgeons of India (2018)","Representative \u2013 International Military Medical Conference, Basel (2018)","UPSC Empanelled Advisor \/ Subject Expert (2021)","Invited speaker & chairing roles at 64 national & international conferences","Examiner, Convenor, PG Guide & Paper Setter for M.Ch. & DNB Neurosurgery"],"Professional Affiliations":["NSI, Neuro Spinal Surgeons Association (NSSA)","NTSI, Skull Base Society of India (SBSSI)","Indian Society of Stereotactic & Functional Neurosurgery","American Association of Neurological Surgeons","Global Neuro (AO), Switzerland; Armed Forces Surgeons of India","ASI, Indian Medical Association (IMA)"]}}},{"name":"Dr. Ravi Kumar Shah","image":"assets\/ggn-nuro-images\/dr-ravi-kumar-shah.webp","alt":"Dr. Ravi Kumar Shah","specialty":"Geriatric Medicine & Internal Medicine","designation":"Senior Consultant \u2013 Geriatric Medicine & Internal Medicine, Gurugram","experience":"5+ Years Experience","modal":{"title":"Dr. Ravi Kumar Shah","subtitle":"Geriatric Medicine & Internal Medicine | Senior Consultant","role":"Senior Consultant","sections":{"Designation":["Senior Consultant \u2013 Geriatric Medicine & Internal Medicine, Gurugram"],"About":["Dr. Ravi Kumar Shah is a compassionate and dedicated physician with a specialization in geriatric medicine. With comprehensive experience in managing elderly patients and complex internal medicine cases, he has served across reputed institutions including ESIC Medical College, Medanta DCHC, and different multispeciality hospitals in Gurugram and Delhi.","He brings a patient-centered approach in treating age-related illnesses, promoting preventive health, and managing chronic conditions. Dr. Shah is also well-versed in emergency care, industrial health, and medicolegal aspects of healthcare, with a focus on holistic well-being and functional independence of older adults."],"Qualifications":["MBBS \u2013 Tribhuvan University","MD Geriatric Medicine \u2013 AIIMS, New Delhi","Diploma in Medicolegal System \u2013 Symbiosis University","Associate Fellow of Industrial Health (AFIH) \u2013 RLI, Faridabad"],"Areas of Expertise":["Cognitive & Mental Health in Elderly (e.g. Dementia)","Chronic Disease Management in Elderly","Emergency & Critical Care","Complex Disease Management","Age-related Disease (unexplained weight loss, lack of appetite)","Functional & Preventive Geriatrics","Falls, Balance & Mobility Problems","Industrial Health & Occupational Wellness","Medicolegal System in Healthcare","Health Education & Counselling for Elderly Patients"],"Experience":["Consultant Physician \u2013 Aarvy Healthcare, Sector 90, Gurugram","Consultant Physician \u2013 Shivam Hospital, Sector 31, Gurugram","Consultant Physician \u2013 Silver Streak Multispeciality Hospital, Sector 87, Gurugram","Consultant Physician \u2013 GMR-MEDANTA DCHC Hospital, Delhi International Airport Ltd (2021\u20132023)","Senior Resident \u2013 Dept. of Medicine, ESIC Medical College, Faridabad"],"Memberships":["Associate Fellow of Industrial Health (AFIH)","Haryana Medical Council"]}}},{"name":"Dr. Saurabh Verma","image":"assets\/ggn-nuro-images\/dr-saurabh-verma.webp","alt":"Dr. Saurabh Verma","specialty":"Orthopaedics & Spine Surgery","designation":"Clinical Director \u2013 Ortho Spine Surgery, Marengo Asia Hospitals, Gurugram","experience":"10+ Years Experience","modal":{"title":"Dr. Saurabh Verma","subtitle":"Orthopaedics & Spine Surgery | Clinical Director","role":"Clinical Director","sections":{"Designation":["Clinical Director \u2013 Ortho Spine Surgery, Marengo Asia Hospitals, Gurugram"],"About":["Dr. Saurabh Verma is a highly experienced spine surgeon with extensive training in orthopaedics and spinal surgery. With over a decade of clinical experience, he specializes in the management of complex spine disorders including trauma, degenerative spine conditions, and spinal deformities.","He has completed advanced fellowships in spine surgery from the Indian Spinal Injuries Centre, New Delhi, under the mentorship of renowned spine surgeon Dr. H. S. Chhabra, as well as an international fellowship at National University Hospital (NUH), Singapore."],"Qualifications":["Fellowship in Spine Surgery \u2013 National University Hospital (NUH), Singapore","FNB (Spine Surgery) \u2013 Indian Spinal Injuries Centre, New Delhi","DNB (Orthopaedic Surgery) \u2013 National Board of Examinations, New Delhi","MS (Orthopaedics) \u2013 Maulana Azad Medical College, University of Delhi","Diploma in Anaesthesia \u2013 Maulana Azad Medical College, University of Delhi","MBBS \u2013 Maulana Azad Medical College, University of Delhi"],"Areas of Expertise":["Minimally Invasive Spine Surgery","Spine Trauma Management","Degenerative Spine Disorders (Slip Disc, Sciatica, Spinal Stenosis)","Cervical Spine Surgery (ACDF, Corpectomy)","Lumbar Spine Surgery (Microdiscectomy, TLIF, PLF)","Kyphoplasty & Vertebroplasty","Posterior Stabilization for Traumatic Spine Injuries","Pain Management Procedures (Facet Blocks, Transforaminal Nerve Root Blocks, SI Joint Injections)","Management of Spinal Deformities including Kyphosis & Scoliosis"],"Experience":["Clinical Director \u2013 Ortho Spine Surgery (April 2024 \u2013 Present)","Head of Department \u2013 Spine Care, Manipal Hospital, Dwarka (2019\u20132024)","Head & Consultant \u2013 Spine Surgery, Aakash Healthcare, Dwarka (2017\u20132019)","Consultant \u2013 Ortho Spine Surgery, Park Hospital, Gurugram (2017)","Clinical Long-Term Spine Fellow \u2013 Indian Spinal Injuries Centre, New Delhi (2015\u20132017)"],"Key Achievements":["Assisted in 800+ trauma surgeries during orthopaedic training","Performed 100+ orthopaedic surgical procedures independently during residency","Assisted in 150+ Total Knee Replacement and 100+ Total Hip Replacement surgeries","Extensive experience in spine decompression & stabilization procedures","1000 plus spine surgeries till date"],"Memberships":["Association of Spine Surgeons of India (ASSI) \u2013 Life Member","Asia Pacific Orthopaedic Association","Indian Orthopaedic Association","Delhi Orthopaedic Association","International Society of Orthopaedic Surgery and Traumatology (ISCoS)","Indian Society for Knee Surgery and Arthroscopy (ISKSSA)"]}}}];
+
+    function openDoctorModalFromData(data) {
+        if (!data) return;
+        
+        // Fill base fields
+        document.getElementById('modal-doc-image').src = data.image || '';
+        document.getElementById('modal-doc-image').alt = data.alt || data.name || '';
+        document.getElementById('modal-doc-name').innerText = data.name || '';
+        document.getElementById('modal-doc-specialty').innerText = data.specialty || '';
+        document.getElementById('modal-doc-experience').innerText = data.experience || 'N/A';
+        
+        const roleContainer = document.getElementById('modal-doc-role-container');
+        if (data.modal && data.modal.role) {
+            document.getElementById('modal-doc-role').innerText = data.modal.role;
+            roleContainer.classList.remove('hidden');
+        } else {
+            roleContainer.classList.add('hidden');
+        }
+        
+        // Populate scrollable sections
+        const detailsContainer = document.getElementById('modal-doc-details');
+        detailsContainer.innerHTML = '';
+        
+        if (data.modal && data.modal.sections) {
+            const sections = data.modal.sections;
+            
+            for (const [sectionTitle, items] of Object.entries(sections)) {
+                if (!Array.isArray(items) || items.length === 0) continue;
+                
+                // Skip Designation header redundant with left panel or subtitle
+                if (sectionTitle === 'Designation') continue;
+                
+                const sectionDiv = document.createElement('div');
+                sectionDiv.className = 'space-y-3';
+                
+                let iconClass = 'fas fa-chevron-right';
+                let listStyle = 'bullet'; // bullet, paragraphs, pills, achievements
+                
+                const titleLower = sectionTitle.toLowerCase();
+                if (titleLower.includes('about')) {
+                    iconClass = 'fas fa-user';
+                    listStyle = 'paragraphs';
+                } else if (titleLower.includes('qualification')) {
+                    iconClass = 'fas fa-graduation-cap';
+                    listStyle = 'bullet';
+                } else if (titleLower.includes('expertise') || titleLower.includes('focus')) {
+                    iconClass = 'fas fa-check-circle';
+                    listStyle = 'pills';
+                } else if (titleLower.includes('achievement') || titleLower.includes('award') || titleLower.includes('recognition')) {
+                    iconClass = 'fas fa-trophy text-amber-500';
+                    listStyle = 'achievements';
+                } else if (titleLower.includes('research') || titleLower.includes('publication')) {
+                    iconClass = 'fas fa-book-open';
+                    listStyle = 'bullet';
+                } else if (titleLower.includes('philanthropy') || titleLower.includes('innovation')) {
+                    iconClass = 'fas fa-lightbulb';
+                    listStyle = 'bullet';
+                } else if (titleLower.includes('membership') || titleLower.includes('affiliation')) {
+                    iconClass = 'fas fa-id-card';
+                    listStyle = 'pills';
+                } else if (titleLower.includes('experience')) {
+                    iconClass = 'fas fa-history';
+                    listStyle = 'bullet';
+                }
+                
+                // Header
+                const header = document.createElement('h4');
+                header.className = 'text-sm font-bold text-deep-indigo uppercase tracking-wider flex items-center space-x-2 border-b border-slate-100 pb-2 mt-4';
+                header.innerHTML = `<i class="${iconClass} text-electric-blue shrink-0"></i> <span>${sectionTitle}</span>`;
+                sectionDiv.appendChild(header);
+                
+                // Render List
+                if (listStyle === 'paragraphs') {
+                    items.forEach(text => {
+                        const p = document.createElement('p');
+                        p.className = 'text-xs text-dark-grey/85 leading-relaxed font-light text-justify';
+                        p.innerText = text;
+                        sectionDiv.appendChild(p);
+                    });
+                } else if (listStyle === 'pills') {
+                    const flexDiv = document.createElement('div');
+                    flexDiv.className = 'flex flex-wrap gap-2 pt-1';
+                    items.forEach(text => {
+                        const pill = document.createElement('span');
+                        pill.className = 'px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200/60 text-[11px] text-deep-indigo font-semibold';
+                        pill.innerText = text;
+                        flexDiv.appendChild(pill);
+                    });
+                    sectionDiv.appendChild(flexDiv);
+                } else if (listStyle === 'achievements') {
+                    const ul = document.createElement('ul');
+                    ul.className = 'space-y-2';
+                    items.forEach(text => {
+                        const li = document.createElement('li');
+                        li.className = 'flex items-start space-x-3 text-xs text-dark-grey/85 leading-relaxed bg-amber-50/20 p-3 rounded-2xl border border-amber-100/30';
+                        li.innerHTML = `<i class="fas fa-star text-[10px] text-amber-500 shrink-0 mt-1"></i> <span class="font-light">${text}</span>`;
+                        ul.appendChild(li);
+                    });
+                    sectionDiv.appendChild(ul);
+                } else {
+                    const ul = document.createElement('ul');
+                    ul.className = 'space-y-2';
+                    items.forEach(text => {
+                        const li = document.createElement('li');
+                        li.className = 'flex items-start space-x-3 text-xs text-dark-grey/85 leading-relaxed';
+                        li.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-electric-blue shrink-0 mt-1.5"></span> <span class="font-light">${text}</span>`;
+                        ul.appendChild(li);
+                    });
+                    sectionDiv.appendChild(ul);
+                }
+                
+                detailsContainer.appendChild(sectionDiv);
+            }
+        }
+        
+        // Open
+        const modal = document.getElementById('doctor-modal');
+        const backdrop = document.getElementById('doctor-modal-backdrop');
+        const container = document.getElementById('doctor-modal-container');
+        
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        
+        setTimeout(() => {
+            backdrop.classList.remove('opacity-0');
+            backdrop.classList.add('opacity-100');
+            container.classList.remove('scale-95', 'opacity-0');
+            container.classList.add('scale-100', 'opacity-100');
+        }, 10);
+    }
+
+    function openPraveenModal() {
+        openDoctorModalFromData(praveenGuptaData);
+    }
+
+    function openDoctorModal(index) {
+        if (specialtyTeamData && specialtyTeamData[index]) {
+            openDoctorModalFromData(specialtyTeamData[index]);
+        }
+    }
+
+    function closeDoctorModal() {
+        const modal = document.getElementById('doctor-modal');
+        const backdrop = document.getElementById('doctor-modal-backdrop');
+        const container = document.getElementById('doctor-modal-container');
+        
+        backdrop.classList.remove('opacity-100');
+        backdrop.classList.add('opacity-0');
+        container.classList.remove('scale-100', 'opacity-100');
+        container.classList.add('scale-95', 'opacity-0');
+        
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }, 300);
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const backdrop = document.getElementById('doctor-modal-backdrop');
+        if (backdrop) backdrop.addEventListener('click', closeDoctorModal);
+        
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('doctor-modal');
+                if (modal && !modal.classList.contains('hidden')) {
+                    closeDoctorModal();
+                }
+            }
+        });
+    });
+</script>
 
 
     <!-- CTA Section -->

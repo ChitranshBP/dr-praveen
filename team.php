@@ -4,6 +4,26 @@
  */
 $isDarkHero = true;
 require_once __DIR__ . '/includes/header.php';
+
+// Load doctor data from JSON
+$doctorsJsonPath = __DIR__ . '/assets/doctors_full.json';
+$doctors = [];
+$praveenGupta = null;
+$specialtyTeam = [];
+
+if (file_exists($doctorsJsonPath)) {
+    $doctorsJson = file_get_contents($doctorsJsonPath);
+    $doctors = json_decode($doctorsJson, true);
+    if (is_array($doctors)) {
+        foreach ($doctors as $doc) {
+            if (isset($doc['name']) && $doc['name'] === 'Dr. Praveen Gupta') {
+                $praveenGupta = $doc;
+            } else {
+                $specialtyTeam[] = $doc;
+            }
+        }
+    }
+}
 ?>
 
 <!-- Hero Section -->
@@ -47,27 +67,29 @@ require_once __DIR__ . '/includes/header.php';
         </div>
 
         <!-- Dr Praveen Gupta profile -->
-        <div class="max-w-4xl mx-auto bg-slate-50 border border-slate-200/50 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+        <?php if ($praveenGupta): ?>
+        <div onclick="openPraveenModal()" class="max-w-4xl mx-auto bg-slate-50 border border-slate-200/50 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer hover:border-electric-blue/40">
             <div class="grid md:grid-cols-12 gap-8 items-center p-8">
                 <div class="md:col-span-4 aspect-[4/5] rounded-2xl overflow-hidden relative shadow-md bg-gradient-to-br from-deep-indigo to-electric-blue p-0.5">
                     <div class="relative w-full h-full rounded-[0.9rem] overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent">
-                        <img src="assets/dpg-1.webp" alt="Dr. Praveen Gupta" class="w-full h-full object-cover">
+                        <img src="<?php echo htmlspecialchars($praveenGupta['image']); ?>" alt="Dr. Praveen Gupta" class="w-full h-full object-cover object-top">
                     </div>
                 </div>
                 <div class="md:col-span-8 space-y-4">
-                    <span class="text-cyan-accent font-bold text-xs uppercase tracking-widest">Chairman - Marengo Asia Neuro & Spine</span>
-                    <h3 class="text-2xl font-bold text-deep-indigo font-serif">Dr. Praveen Gupta</h3>
+                    <span class="text-cyan-accent font-bold text-xs uppercase tracking-widest"><?php echo htmlspecialchars($praveenGupta['designation']); ?></span>
+                    <h3 class="text-2xl font-bold text-deep-indigo font-serif"><?php echo htmlspecialchars($praveenGupta['name']); ?></h3>
                     <p class="text-xs text-dark-grey/70 leading-relaxed font-light">
-                        Pioneering neurologist with 20+ years of experience. Renowned for starting the first stroke mechanical thrombectomy services in Gurgaon and executing the first Deep Brain Stimulation (DBS) in the region.
+                        <?php echo htmlspecialchars($praveenGupta['modal']['sections']['About'][0] ?? ''); ?>
                     </p>
                     <div class="flex flex-wrap gap-4 pt-2">
-                        <a href="about.php" class="text-xs font-semibold text-electric-blue hover:underline">Full Biography <i class="fas fa-arrow-right text-[10px] ml-1"></i></a>
+                        <button onclick="event.stopPropagation(); openPraveenModal();" class="text-xs font-semibold text-electric-blue hover:underline">Full Biography <i class="fas fa-arrow-right text-[10px] ml-1"></i></button>
                         <span class="text-slate-300">|</span>
-                        <a href="why-choose-dr-praveen-gupta.php" class="text-xs font-semibold text-electric-blue hover:underline">Why Choose Dr. Praveen <i class="fas fa-arrow-right text-[10px] ml-1"></i></a>
+                        <a href="why-choose-dr-praveen-gupta.php" onclick="event.stopPropagation();" class="text-xs font-semibold text-electric-blue hover:underline">Why Choose Dr. Praveen <i class="fas fa-arrow-right text-[10px] ml-1"></i></a>
                     </div>
                 </div>
             </div>
         </div>
+        <?php endif; ?>
     </div>
 </section>
 
@@ -83,45 +105,21 @@ require_once __DIR__ . '/includes/header.php';
         </div>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <!-- Team Member 1 -->
-            <div class="bg-white border border-silver-grey/30 p-6 rounded-3xl hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center">
-                <div class="w-24 h-24 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
-                    <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=400&h=400" alt="Dr. Rahul Verma" class="w-full h-full object-cover rounded-full">
+            <?php foreach ($specialtyTeam as $index => $doc): ?>
+            <!-- Team Member Card -->
+            <div onclick="openDoctorModal(<?php echo $index; ?>)" class="bg-white border border-silver-grey/30 p-6 rounded-3xl hover:shadow-lg hover:border-electric-blue/30 transition-all duration-300 flex flex-col items-center text-center cursor-pointer group hover:-translate-y-1">
+                <div class="w-32 h-32 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
+                    <img src="<?php echo htmlspecialchars($doc['image']); ?>" alt="<?php echo htmlspecialchars($doc['alt']); ?>" class="w-full h-full object-cover object-top rounded-full group-hover:scale-105 transition-transform duration-500">
                 </div>
-                <h3 class="font-bold text-deep-indigo text-base">Dr. Rahul Verma</h3>
-                <p class="text-xs text-cyan-accent font-medium mt-1">Associate Consultant - Neurology</p>
-                <p class="text-xs text-dark-grey/65 mt-2 leading-relaxed">Specializes in managing epilepsy, headache, and electro-diagnostics (EEG/EMG).</p>
-            </div>
-
-            <!-- Team Member 2 -->
-            <div class="bg-white border border-silver-grey/30 p-6 rounded-3xl hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center">
-                <div class="w-24 h-24 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
-                    <img src="https://images.unsplash.com/photo-1594824813573-246434de83fb?auto=format&fit=crop&q=80&w=400&h=400" alt="Dr. Sneha Sharma" class="w-full h-full object-cover rounded-full">
+                <h3 class="font-bold text-deep-indigo text-base leading-tight"><?php echo htmlspecialchars($doc['name']); ?></h3>
+                <p class="text-[11px] text-cyan-accent font-semibold mt-1.5 leading-relaxed"><?php echo htmlspecialchars($doc['specialty']); ?></p>
+                <p class="text-xs text-dark-grey/65 mt-2 leading-relaxed line-clamp-3 font-light"><?php echo htmlspecialchars($doc['designation']); ?></p>
+                <div class="text-xs text-electric-blue font-semibold mt-auto pt-4 group-hover:underline flex items-center">
+                    <span>View Profile</span>
+                    <i class="fas fa-arrow-right text-[9px] ml-1.5 transition-transform duration-300 group-hover:translate-x-0.5"></i>
                 </div>
-                <h3 class="font-bold text-deep-indigo text-base">Dr. Sneha Sharma</h3>
-                <p class="text-xs text-cyan-accent font-medium mt-1">Consultant - Neuro-Rehabilitation</p>
-                <p class="text-xs text-dark-grey/65 mt-2 leading-relaxed">Focuses on stroke rehabilitation, motor training, and post-TBI recovery therapies.</p>
             </div>
-
-            <!-- Team Member 3 -->
-            <div class="bg-white border border-silver-grey/30 p-6 rounded-3xl hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center">
-                <div class="w-24 h-24 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
-                    <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=400&h=400" alt="Mr. Amit Kumar" class="w-full h-full object-cover rounded-full">
-                </div>
-                <h3 class="font-bold text-deep-indigo text-base">Mr. Amit Kumar</h3>
-                <p class="text-xs text-cyan-accent font-medium mt-1">Senior Neuro-Physiotherapist</p>
-                <p class="text-xs text-dark-grey/65 mt-2 leading-relaxed">Delivers active vestibular rehabilitation, balance training, and gait coordination.</p>
-            </div>
-
-            <!-- Team Member 4 -->
-            <div class="bg-white border border-silver-grey/30 p-6 rounded-3xl hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center">
-                <div class="w-24 h-24 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
-                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=400&h=400" alt="Ms. Preeti Singh" class="w-full h-full object-cover rounded-full">
-                </div>
-                <h3 class="font-bold text-deep-indigo text-base">Ms. Preeti Singh</h3>
-                <p class="text-xs text-cyan-accent font-medium mt-1">Senior Speech Therapist</p>
-                <p class="text-xs text-dark-grey/65 mt-2 leading-relaxed">Aids in speech recovery, language pathology, and cognitive therapy after strokes.</p>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
@@ -176,5 +174,238 @@ require_once __DIR__ . '/includes/header.php';
         </div>
     </div>
 </section>
+
+<!-- Doctor Bio Modal Overlay -->
+<div id="doctor-modal" class="fixed inset-0 z-[9999] hidden flex items-center justify-center p-4 sm:p-6 lg:p-8">
+    <!-- Backdrop with premium blur -->
+    <div id="doctor-modal-backdrop" class="absolute inset-0 bg-slate-950/60 backdrop-blur-sm transition-opacity duration-300 opacity-0"></div>
+    
+    <!-- Modal Container -->
+    <div id="doctor-modal-container" class="relative bg-white rounded-[32px] shadow-2xl max-w-4xl w-full max-h-[85vh] overflow-hidden flex flex-col md:flex-row transform scale-95 opacity-0 transition-all duration-300 z-10">
+        <!-- Close Button -->
+        <button onclick="closeDoctorModal()" class="absolute top-6 right-6 z-20 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-all duration-200 shadow-sm focus:outline-none">
+            <i class="fas fa-times text-base"></i>
+        </button>
+
+        <!-- Left Column: Summary Info -->
+        <div class="w-full md:w-80 bg-gradient-to-b from-slate-50 to-slate-100/50 p-8 flex flex-col items-center border-b md:border-b-0 md:border-r border-slate-200/60 shrink-0">
+            <div class="w-40 h-40 rounded-3xl overflow-hidden shadow-md bg-gradient-to-br from-deep-indigo to-electric-blue p-0.5 mb-6">
+                <div class="relative w-full h-full rounded-[1.4rem] overflow-hidden bg-white">
+                    <img id="modal-doc-image" src="" alt="" class="w-full h-full object-cover object-top">
+                </div>
+            </div>
+            <h3 id="modal-doc-name" class="text-xl font-bold text-deep-indigo text-center font-serif leading-tight"></h3>
+            <p id="modal-doc-specialty" class="text-xs text-electric-blue font-semibold uppercase tracking-wider text-center mt-2.5 px-2"></p>
+            
+            <div class="w-full border-t border-slate-200/80 my-6"></div>
+            
+            <!-- Dynamic Badges -->
+            <div class="space-y-4 w-full">
+                <div class="flex items-center space-x-3 bg-white p-3 rounded-2xl border border-slate-200/50 shadow-sm">
+                    <div class="w-8 h-8 rounded-xl bg-electric-blue/10 flex items-center justify-center text-electric-blue shrink-0">
+                        <i class="fas fa-briefcase text-xs"></i>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-dark-grey/50 uppercase font-semibold">Experience</p>
+                        <p id="modal-doc-experience" class="text-xs font-bold text-deep-indigo"></p>
+                    </div>
+                </div>
+                
+                <div id="modal-doc-role-container" class="flex items-center space-x-3 bg-white p-3 rounded-2xl border border-slate-200/50 shadow-sm">
+                    <div class="w-8 h-8 rounded-xl bg-cyan-accent/10 flex items-center justify-center text-cyan-accent shrink-0">
+                        <i class="fas fa-user-md text-xs"></i>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-dark-grey/50 uppercase font-semibold">Role</p>
+                        <p id="modal-doc-role" class="text-xs font-bold text-deep-indigo"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Scrollable Bio and Details -->
+        <div class="flex-grow p-8 overflow-y-auto max-h-[50vh] md:max-h-[85vh]">
+            <div class="space-y-6 pr-2" id="modal-doc-details">
+                <!-- Javascript will inject sections dynamically -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Embed doctor data arrays
+    const praveenGuptaData = <?php echo json_encode($praveenGupta); ?>;
+    const specialtyTeamData = <?php echo json_encode($specialtyTeam); ?>;
+
+    function openDoctorModalFromData(data) {
+        if (!data) return;
+        
+        // Fill base fields
+        document.getElementById('modal-doc-image').src = data.image || '';
+        document.getElementById('modal-doc-image').alt = data.alt || data.name || '';
+        document.getElementById('modal-doc-name').innerText = data.name || '';
+        document.getElementById('modal-doc-specialty').innerText = data.specialty || '';
+        document.getElementById('modal-doc-experience').innerText = data.experience || 'N/A';
+        
+        const roleContainer = document.getElementById('modal-doc-role-container');
+        if (data.modal && data.modal.role) {
+            document.getElementById('modal-doc-role').innerText = data.modal.role;
+            roleContainer.classList.remove('hidden');
+        } else {
+            roleContainer.classList.add('hidden');
+        }
+        
+        // Populate scrollable sections
+        const detailsContainer = document.getElementById('modal-doc-details');
+        detailsContainer.innerHTML = '';
+        
+        if (data.modal && data.modal.sections) {
+            const sections = data.modal.sections;
+            
+            for (const [sectionTitle, items] of Object.entries(sections)) {
+                if (!Array.isArray(items) || items.length === 0) continue;
+                
+                // Skip Designation header redundant with left panel or subtitle
+                if (sectionTitle === 'Designation') continue;
+                
+                const sectionDiv = document.createElement('div');
+                sectionDiv.className = 'space-y-3';
+                
+                let iconClass = 'fas fa-chevron-right';
+                let listStyle = 'bullet'; // bullet, paragraphs, pills, achievements
+                
+                const titleLower = sectionTitle.toLowerCase();
+                if (titleLower.includes('about')) {
+                    iconClass = 'fas fa-user';
+                    listStyle = 'paragraphs';
+                } else if (titleLower.includes('qualification')) {
+                    iconClass = 'fas fa-graduation-cap';
+                    listStyle = 'bullet';
+                } else if (titleLower.includes('expertise') || titleLower.includes('focus')) {
+                    iconClass = 'fas fa-check-circle';
+                    listStyle = 'pills';
+                } else if (titleLower.includes('achievement') || titleLower.includes('award') || titleLower.includes('recognition')) {
+                    iconClass = 'fas fa-trophy text-amber-500';
+                    listStyle = 'achievements';
+                } else if (titleLower.includes('research') || titleLower.includes('publication')) {
+                    iconClass = 'fas fa-book-open';
+                    listStyle = 'bullet';
+                } else if (titleLower.includes('philanthropy') || titleLower.includes('innovation')) {
+                    iconClass = 'fas fa-lightbulb';
+                    listStyle = 'bullet';
+                } else if (titleLower.includes('membership') || titleLower.includes('affiliation')) {
+                    iconClass = 'fas fa-id-card';
+                    listStyle = 'pills';
+                } else if (titleLower.includes('experience')) {
+                    iconClass = 'fas fa-history';
+                    listStyle = 'bullet';
+                }
+                
+                // Header
+                const header = document.createElement('h4');
+                header.className = 'text-sm font-bold text-deep-indigo uppercase tracking-wider flex items-center space-x-2 border-b border-slate-100 pb-2 mt-4';
+                header.innerHTML = `<i class="${iconClass} text-electric-blue shrink-0"></i> <span>${sectionTitle}</span>`;
+                sectionDiv.appendChild(header);
+                
+                // Render List
+                if (listStyle === 'paragraphs') {
+                    items.forEach(text => {
+                        const p = document.createElement('p');
+                        p.className = 'text-xs text-dark-grey/85 leading-relaxed font-light text-justify';
+                        p.innerText = text;
+                        sectionDiv.appendChild(p);
+                    });
+                } else if (listStyle === 'pills') {
+                    const flexDiv = document.createElement('div');
+                    flexDiv.className = 'flex flex-wrap gap-2 pt-1';
+                    items.forEach(text => {
+                        const pill = document.createElement('span');
+                        pill.className = 'px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200/60 text-[11px] text-deep-indigo font-semibold';
+                        pill.innerText = text;
+                        flexDiv.appendChild(pill);
+                    });
+                    sectionDiv.appendChild(flexDiv);
+                } else if (listStyle === 'achievements') {
+                    const ul = document.createElement('ul');
+                    ul.className = 'space-y-2';
+                    items.forEach(text => {
+                        const li = document.createElement('li');
+                        li.className = 'flex items-start space-x-3 text-xs text-dark-grey/85 leading-relaxed bg-amber-50/20 p-3 rounded-2xl border border-amber-100/30';
+                        li.innerHTML = `<i class="fas fa-star text-[10px] text-amber-500 shrink-0 mt-1"></i> <span class="font-light">${text}</span>`;
+                        ul.appendChild(li);
+                    });
+                    sectionDiv.appendChild(ul);
+                } else {
+                    const ul = document.createElement('ul');
+                    ul.className = 'space-y-2';
+                    items.forEach(text => {
+                        const li = document.createElement('li');
+                        li.className = 'flex items-start space-x-3 text-xs text-dark-grey/85 leading-relaxed';
+                        li.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-electric-blue shrink-0 mt-1.5"></span> <span class="font-light">${text}</span>`;
+                        ul.appendChild(li);
+                    });
+                    sectionDiv.appendChild(ul);
+                }
+                
+                detailsContainer.appendChild(sectionDiv);
+            }
+        }
+        
+        // Open
+        const modal = document.getElementById('doctor-modal');
+        const backdrop = document.getElementById('doctor-modal-backdrop');
+        const container = document.getElementById('doctor-modal-container');
+        
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        
+        setTimeout(() => {
+            backdrop.classList.remove('opacity-0');
+            backdrop.classList.add('opacity-100');
+            container.classList.remove('scale-95', 'opacity-0');
+            container.classList.add('scale-100', 'opacity-100');
+        }, 10);
+    }
+
+    function openPraveenModal() {
+        openDoctorModalFromData(praveenGuptaData);
+    }
+
+    function openDoctorModal(index) {
+        if (specialtyTeamData && specialtyTeamData[index]) {
+            openDoctorModalFromData(specialtyTeamData[index]);
+        }
+    }
+
+    function closeDoctorModal() {
+        const modal = document.getElementById('doctor-modal');
+        const backdrop = document.getElementById('doctor-modal-backdrop');
+        const container = document.getElementById('doctor-modal-container');
+        
+        backdrop.classList.remove('opacity-100');
+        backdrop.classList.add('opacity-0');
+        container.classList.remove('scale-100', 'opacity-100');
+        container.classList.add('scale-95', 'opacity-0');
+        
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }, 300);
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const backdrop = document.getElementById('doctor-modal-backdrop');
+        if (backdrop) backdrop.addEventListener('click', closeDoctorModal);
+        
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('doctor-modal');
+                if (modal && !modal.classList.contains('hidden')) {
+                    closeDoctorModal();
+                }
+            }
+        });
+    });
+</script>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
