@@ -71,7 +71,6 @@ $navItems = [
         ['name' => 'Education Videos', 'url' => 'neurology-video-library.php'],
         ['name' => 'Video Testimonials', 'url' => 'video-testimonials.php'],
         ['name' => 'Media Coverage', 'url' => 'media-coverage.php'],
-        ['name' => 'Media Updates', 'url' => 'media-updates.php'],
         ['name' => 'Photo Gallery', 'url' => 'gallery.php'],
     ]],
     ['name' => 'Blog', 'url' => 'dr-praveen-gupta-blog.php'],
@@ -304,24 +303,289 @@ $awards = [
 // Education / Knowledge Videos (YouTube Video IDs)
 $educationVideos = [
     [
+        'id'    => 'HCBSttaqm08',
+        'title' => 'Understanding Epilepsy and Seizures',
+        'desc'  => 'An in-depth explanation of seizure disorders, diagnostic procedures, and advanced clinical care plans.',
+    ],
+    [
+        'id'    => '19eYLaT95jo',
+        'title' => 'Stroke Warning Signs & FAST Protocol',
+        'desc'  => 'Dr. Praveen Gupta highlights how to spot early signs of a brain stroke and act FAST to save lives.',
+    ],
+    [
+        'id'    => 'jdDJjHKXOuE',
+        'title' => 'Preventative Tips for Migraine Patients',
+        'desc'  => 'Useful guidelines and preventative lifestyle measures to reduce the frequency and severity of migraines.',
+    ],
+    [
+        'id'    => 'bffAUpfcr1E',
+        'title' => 'How to Manage Chronic Headaches',
+        'desc'  => 'Dr. Praveen Gupta details medical management and triggers for tension headaches and chronic migraines.',
+    ],
+    [
+        'id'    => 'wzoHirIE8og',
+        'title' => 'Demystifying Parkinson\'s Disease & DBS',
+        'desc'  => 'A complete guide on Parkinson\'s treatment progression, medical therapies, and Deep Brain Stimulation.',
+    ],
+    [
+        'id'    => 'gJuWUl08Urk',
+        'title' => 'Managing Dementia & Alzheimer\'s Care',
+        'desc'  => 'Expert advice on early diagnosis of dementia and caring for patients with progressive memory loss.',
+    ],
+    [
+        'id'    => 'LcBJlz040YY',
+        'title' => 'Recognizing Early Stroke Symptoms',
+        'desc'  => 'A quick guide on emergency signs of an acute stroke that require immediate hospitalization.',
+    ],
+    [
+        'id'    => 'gngiRwzLH20',
+        'title' => 'Nerve Pain and Neuropathy Treatment Options',
+        'desc'  => 'Clinical options for managing neuropathic pain, diabetic nerve damage, and burning feet syndrome.',
+    ],
+    [
+        'id'    => 'HHV_qGv5wCM',
+        'title' => 'Vertigo and Balance Disorders: Cure Without Pills',
+        'desc'  => 'How vestibular rehabilitation and balance exercises help resolve vertigo without daily medication.',
+    ],
+    [
+        'id'    => 'NFqg7wsC-sg',
+        'title' => 'Preventative Neurology & Healthy Brain Habits',
+        'desc'  => 'Lifestyle modifications, exercises, and dietary habits that promote lifelong cognitive strength.',
+    ],
+    [
+        'id'    => 'Yby46JYGC_0',
+        'title' => 'Management of Sleep Disorders',
+        'desc'  => 'A clinical overview of insomnia, sleep apnea, and sleep hygiene practices to protect brain health.',
+    ],
+    [
+        'id'    => 'SfDdMcUCsBM',
+        'title' => 'Treating Cervical Spondylosis & Neck Pain',
+        'desc'  => 'Dr. Praveen Gupta explains non-surgical treatments and physical therapy for neck and spine compression.',
+    ],
+    [
+        'id'    => 'zqOCl_r92kA',
+        'title' => 'Quick Tips for Back Pain Relief',
+        'desc'  => 'Easy habits and posture corrections to prevent chronic lower back pain and spinal issues.',
+    ],
+    [
+        'id'    => 'iBvkymzjMWE',
+        'title' => 'How Stress Affects Your Brain',
+        'desc'  => 'A quick review of how chronic stress alters brain chemistry and leads to chronic headaches.',
+    ],
+    [
+        'id'    => 'VizML8pOj3g',
+        'title' => 'Protecting Memory as You Age',
+        'desc'  => 'Practical exercises and cognitive training recommendations to keep your mind sharp as you grow older.',
+    ],
+    [
+        'id'    => 'dbJjk1_Y9Dw',
+        'title' => 'Managing Multiple Sclerosis Symptoms',
+        'desc'  => 'Latest clinical advancements and immunotherapies to control Multiple Sclerosis flare-ups and relapses.',
+    ],
+    [
+        'id'    => 'e-totg4fbAQ',
+        'title' => 'Epilepsy First Aid: What to Do',
+        'desc'  => 'Crucial steps to follow when someone nearby is experiencing an active epileptic fit.',
+    ],
+    [
+        'id'    => 'wiaiEgD_dtw',
+        'title' => 'Understanding Brain Tumors: Types & Stages',
+        'desc'  => 'Dr. Praveen Gupta details benign and malignant brain tumors, diagnostic scans, and care paths.',
+    ],
+    [
+        'id'    => 'e2jhqLMxrg8',
+        'title' => 'Advanced Neuro-Rehabilitation Therapy',
+        'desc'  => 'How occupational and physical therapy modules speed up stroke recovery and motor restoration.',
+    ],
+    [
+        'id'    => 'JO9eGHAPOp4',
+        'title' => 'Pediatric Epilepsy and Seizure Control',
+        'desc'  => 'A guide for parents on childhood epilepsy, medication management, and specialized diagnostic EEG.',
+    ],
+    [
+        'id'    => 'vU-KYEswDZ0',
+        'title' => 'Treatment for Tremors & Parkinson\'s',
+        'desc'  => 'Evaluating therapeutic approaches and lifestyle adjustments for managing daily tremors.',
+    ],
+    [
+        'id'    => 'nVAhwpuwuFY',
+        'title' => 'Stroke Recovery: The Critical First Month',
+        'desc'  => 'Rehabilitation timelines, physical exercises, and medical follow-up guidelines for stroke survivors.',
+    ],
+    [
+        'id'    => 'bqibQJelNmU',
+        'title' => 'Dealing with Chronic Neurological Pain',
+        'desc'  => 'Clinical strategies for chronic headache, neuralgia, and peripheral neuropathic pain relief.',
+    ],
+    [
+        'id'    => 'K8Ct06if4Bc',
+        'title' => 'Migraine Triggers and Food Habits',
+        'desc'  => 'Identifying common dietary and environmental triggers that spark severe migraine attacks.',
+    ],
+    [
+        'id'    => 'gns03zl4k7o',
+        'title' => 'Aneurysms and Neurovascular Care',
+        'desc'  => 'How vascular abnormalities are diagnosed, monitored, and treated using micro-neurosurgery.',
+    ],
+    [
+        'id'    => 'nlZjfIk9Jws',
+        'title' => 'Prevention of Memory Loss & Dementia',
+        'desc'  => 'Dr. Praveen Gupta discusses active mental exercises and diet charts that promote cognitive reserve.',
+    ],
+    [
+        'id'    => 'RPrRp9h20kA',
+        'title' => 'Geriatric Neurology Care Guides',
+        'desc'  => 'Addressing common neurological conditions in elderly patients, from tremors to cognitive decline.',
+    ],
+    [
+        'id'    => 'DIdecCaF2Js',
+        'title' => 'Myasthenia Gravis: Diagnostic and Care Paths',
+        'desc'  => 'Clinical breakdown of neuromuscular transmission issues, diagnosis, and medical protocols.',
+    ],
+    [
+        'id'    => 'p8q2ORXW5ts',
+        'title' => 'Preventing Brain Stroke Risks In Summers',
+        'desc'  => 'Essential summer advice to stay hydrated and prevent blood pressure fluctuations that lead to stroke.',
+    ],
+    [
+        'id'    => 'AomViYJ5yms',
+        'title' => 'Therapy Advancements in Neurocritical Care',
+        'desc'  => 'How specialized intensive care units improve clinical outcomes in comatose or head trauma patients.',
+    ],
+    [
+        'id'    => 'og9VMNrE7yk',
+        'title' => 'Management of Sciatica & Lower Back Pain',
+        'desc'  => 'Dr. Praveen Gupta explains physical therapy, posture management, and non-surgical nerve decompression.',
+    ],
+    [
+        'id'    => 'linE3GzsOYk',
+        'title' => 'Understanding Spinal Cord Injuries',
+        'desc'  => 'Clinical diagnostic paths, stabilization procedures, and long-term motor rehabilitation protocols.',
+    ],
+    [
+        'id'    => '1lMG9FIfyR8',
+        'title' => 'rTMS Therapy for Brain Rehabilitation',
+        'desc'  => 'Clinical applications of Repetitive Transcranial Magnetic Stimulation in neurology patients.',
+    ],
+    [
+        'id'    => 'BdBsAkCpQtg',
+        'title' => 'Spasticity Treatment After Stroke',
+        'desc'  => 'Medical management and rehabilitation tips to resolve muscle stiffness and spasticity post-stroke.',
+    ],
+    [
+        'id'    => 'CLfWvubTAO0',
+        'title' => 'Restless Legs Syndrome Diagnosis',
+        'desc'  => 'Addressing sleep disturbances and sensory issues associated with Restless Legs Syndrome (RLS).',
+    ],
+    [
+        'id'    => 'ohTGrS92kiE',
+        'title' => 'Management of Brain Infections',
+        'desc'  => 'Diagnostic procedures and emergency clinical guidelines for Encephalitis and Meningitis.',
+    ],
+    [
+        'id'    => 'QSVHJtC_Guc',
+        'title' => 'Brain Stroke Helpline & Emergency Response',
+        'desc'  => 'Understanding stroke protocols and our 24/7 helpline structure for rapid hospital transfers.',
+    ],
+    [
+        'id'    => '9vE_Cofbayk',
+        'title' => 'Epilepsy Management During Pregnancy',
+        'desc'  => 'Specialized medical guidance for female epilepsy patients planning pregnancy and family care.',
+    ],
+    [
+        'id'    => '7OdQGLg_NIQ',
+        'title' => 'Tackling Anxiety-Induced Headaches',
+        'desc'  => 'Clinical tips on separating neurological chronic headaches from stress-induced tension pain.',
+    ],
+    [
+        'id'    => 't8KS0TEkgl0',
+        'title' => 'Understanding Nerve Conduction Studies',
+        'desc'  => 'What to expect during EEG, EMG, and nerve conduction recording sessions in our neuro-lab.',
+    ],
+    [
+        'id'    => '3TvNGdpDchU',
+        'title' => 'Cognitive Assessments in Elderly Patients',
+        'desc'  => 'Standard clinical questionnaires and memory exercises used to diagnose cognitive decline.',
+    ],
+    [
+        'id'    => '9AuZuZyI-Io',
+        'title' => 'Preventing Traumatic Brain Injury Complications',
+        'desc'  => 'Protocols for treating concussions, head trauma, and preventing chronic neurological issues.',
+    ],
+    [
+        'id'    => 'jp68Y0bYfuo',
+        'title' => 'DBS Surgery Candidate Selection',
+        'desc'  => 'Detailed criteria used to identify if a Parkinson\'s patient is suitable for Deep Brain Stimulation.',
+    ],
+    [
+        'id'    => 'pSLVKT1W93Q',
+        'title' => 'Understanding Neuromuscular Disorders',
+        'desc'  => 'Clinical symptoms, nerve-muscle biopsy diagnostics, and therapy guidelines.',
+    ],
+    [
+        'id'    => '3yhvFSFuPW4',
+        'title' => 'Alzheimer\'s Disease: Early Diagnostic Clues',
+        'desc'  => 'Dr. Praveen Gupta shares crucial early behavioral markers that point to Alzheimer\'s onset.',
+    ],
+    [
+        'id'    => '97iJMOfzbQ0',
+        'title' => 'Motor Neuron Disease (MND) Care Protocols',
+        'desc'  => 'Symptom relief plans, supportive physical exercises, and clinical care paths for MND patients.',
+    ],
+    [
+        'id'    => '479zCN2vdBQ',
+        'title' => 'Guillain-Barré Syndrome (GBS) Recovery',
+        'desc'  => 'Clinical diagnostics, immunoglobulin therapy, and neurological ICU pathways for GBS.',
+    ],
+    [
+        'id'    => 'x0PfxhAcnQ4',
+        'title' => 'Dizziness vs. Vertigo: Understanding Differences',
+        'desc'  => 'Dr. Praveen Gupta explains balance systems to help patients distinguish vertigo from general dizziness.',
+    ],
+    [
+        'id'    => 'VA0iTziT-yU',
+        'title' => 'Living Safely with Epilepsy',
+        'desc'  => 'Lifestyle modifications, safety proofing your home, and driving rules for epilepsy patients.',
+    ],
+    [
+        'id'    => '-3tAktnWlq8',
+        'title' => 'Post-Stroke Depression & Recovery Support',
+        'desc'  => 'Addressing mood shifts and psychological support systems vital during stroke recovery.',
+    ],
+    [
+        'id'    => 'r_FCRgtGl9Q',
+        'title' => 'Physical Therapy for Spinal Stenosis',
+        'desc'  => 'Exercises and clinical decompression therapies that relieve pressure on the spinal cord.',
+    ],
+    [
+        'id'    => 'WAbz6l4zm7c',
+        'title' => 'Healthy Diet Tips for Stroke Prevention',
+        'desc'  => 'Cardiovascular nutrition advice to lower cholesterol and prevent artery blockages.',
+    ],
+    [
+        'id'    => 'yWkceIAx0I4',
+        'title' => 'Understanding TIA (Transient Ischemic Attack)',
+        'desc'  => 'Why "mini-strokes" are serious warnings that require immediate medical attention.',
+    ],
+    [
+        'id'    => 'NZraszbqrt4',
+        'title' => 'Dementia Caregiver Survival Guide',
+        'desc'  => 'Helpful tips for caregivers managing behavioral changes and emotional fatigue.',
+    ],
+    [
         'id'    => 'sXl0eyou7EU',
         'title' => 'Vertigo: Relieved Without Pills!',
         'desc'  => 'Learn how vertigo can be relieved effectively without medication from Dr. Praveen Gupta.',
     ],
     [
-        'id'    => 'h50wGaV1y9Q',
-        'title' => 'Say Goodbye to Headaches',
-        'desc'  => 'Expert tips and medical insights on headache relief and migraine prevention by Dr. Praveen Gupta.',
+        'id'    => 'KijjPIG3mtA',
+        'title' => 'Managing Trigeminal Neuralgia Pain',
+        'desc'  => 'Clinical medication paths and surgical nerve decompression options for facial pain.',
     ],
     [
-        'id'    => 'OJRq0VNLYIA',
-        'title' => 'Managing Multiple Sclerosis',
-        'desc'  => 'Comprehensive guide to Multiple Sclerosis diagnosis, symptom management, and treatments.',
-    ],
-    [
-        'id'    => 'OKUjltLpKAc',
-        'title' => 'Managing Dementia: Expert Tips',
-        'desc'  => 'Practical strategies and expert tips from Dr. Praveen Gupta on managing dementia.',
+        'id'    => 'ox84BTy70gE',
+        'title' => 'Preventing Chronic Brain Fatigue',
+        'desc'  => 'Tips to improve sleep cycles, reduce screen strain, and support cognitive performance.',
     ],
 ];
 

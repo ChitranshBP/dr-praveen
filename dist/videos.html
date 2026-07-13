@@ -563,11 +563,6 @@
                                                 <span>Media Coverage</span>
                                                 <i class="fas fa-chevron-right text-[9px] opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300 text-cyan-accent"></i>
                                             </a>
-                                                                                    <a href="media-updates.html"
-                                               class="flex items-center justify-between px-4 py-2.5 text-xs font-semibold rounded-2xl text-dark-grey/75 hover:bg-gradient-to-r hover:from-electric-blue/5 hover:to-cyan-accent/5 hover:text-electric-blue transition-all duration-305 group/item transform hover:translate-x-1">
-                                                <span>Media Updates</span>
-                                                <i class="fas fa-chevron-right text-[9px] opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300 text-cyan-accent"></i>
-                                            </a>
                                                                                     <a href="gallery.html"
                                                class="flex items-center justify-between px-4 py-2.5 text-xs font-semibold rounded-2xl text-dark-grey/75 hover:bg-gradient-to-r hover:from-electric-blue/5 hover:to-cyan-accent/5 hover:text-electric-blue transition-all duration-305 group/item transform hover:translate-x-1">
                                                 <span>Photo Gallery</span>
@@ -863,11 +858,6 @@
                                         <span>Media Coverage</span>
                                         <i class="fas fa-arrow-right text-[9px] text-cyan-accent"></i>
                                     </a>
-                                                                    <a href="media-updates.html"
-                                       class="flex items-center justify-between px-4 py-3 rounded-xl text-xs font-semibold text-dark-grey/70 hover:bg-electric-blue/5 hover:text-electric-blue transition-colors">
-                                        <span>Media Updates</span>
-                                        <i class="fas fa-arrow-right text-[9px] text-cyan-accent"></i>
-                                    </a>
                                                                     <a href="gallery.html"
                                        class="flex items-center justify-between px-4 py-3 rounded-xl text-xs font-semibold text-dark-grey/70 hover:bg-electric-blue/5 hover:text-electric-blue transition-colors">
                                         <span>Photo Gallery</span>
@@ -1008,8 +998,8 @@
             <!-- Left Side: Interactive Video Player (7 columns) -->
             <div class="lg:col-span-8 bg-black rounded-[32px] overflow-hidden shadow-2xl border border-slate-200/40 aspect-video relative group">
                 <iframe id="main-video-player" class="w-full h-full border-0" 
-                        src="https://www.youtube.com/embed/sXl0eyou7EU?rel=0&modestbranding=1" 
-                        title="Vertigo: Relieved Without Pills!" 
+                        src="https://www.youtube.com/embed/HCBSttaqm08?rel=0&modestbranding=1" 
+                        title="Understanding Epilepsy and Seizures" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen 
                         loading="lazy">
@@ -1021,9 +1011,9 @@
                 <div>
                     <span class="text-electric-blue font-bold text-xs uppercase tracking-wider">Now Playing</span>
                     <h2 id="main-video-title" class="text-2xl md:text-3xl font-bold text-dark-grey mt-2 mb-3">
-                        Vertigo: Relieved Without Pills!                    </h2>
+                        Understanding Epilepsy and Seizures                    </h2>
                     <p id="main-video-desc" class="text-sm text-dark-grey/65 leading-relaxed">
-                        Learn how vertigo can be relieved effectively without medication from Dr. Praveen Gupta.                    </p>
+                        An in-depth explanation of seizure disorders, diagnostic procedures, and advanced clinical care plans.                    </p>
                 </div>
 
                 <div class="pt-4 border-t border-slate-200/60">
@@ -1040,13 +1030,1548 @@
 <!-- Video Playlist Grid -->
 <section class="py-12 bg-[#edf5f9] border-t border-slate-200/60">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-10">
+        <div class="text-center max-w-3xl mx-auto mb-8">
             <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Video Library</span>
             <h2 class="text-3xl font-bold text-dark-grey mt-2">All Patient Awareness Videos</h2>
         </div>
 
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                            <div class="group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+        <!-- Search and Filters Bar -->
+        <div class="max-w-7xl mx-auto mb-8 space-y-4">
+            <div class="grid md:grid-cols-12 gap-4 items-center">
+                <!-- Search Input (5 columns) -->
+                <div class="md:col-span-5 relative">
+                    <label for="video-search" class="sr-only">Search Videos</label>
+                    <input type="text" id="video-search" placeholder="Search videos by title or topic..." class="w-full pl-10 pr-4 py-3 bg-white border border-slate-200 rounded-2xl focus:outline-none focus:border-electric-blue text-sm text-dark-grey" oninput="filterVideos()">
+                    <span class="absolute left-4 top-3.5 text-dark-grey/40"><i class="fas fa-search text-xs"></i></span>
+                </div>
+                <!-- Filter Buttons (7 columns) -->
+                <div class="md:col-span-7 flex flex-wrap gap-2 justify-start md:justify-end" id="category-filters">
+                    <button class="filter-btn active px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-electric-blue text-white border-electric-blue" onclick="setCategory('all', this)">All</button>
+                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-white text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('stroke', this)">Stroke</button>
+                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-white text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('epilepsy', this)">Epilepsy</button>
+                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-white text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('headache', this)">Headache</button>
+                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-white text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('dementia', this)">Dementia</button>
+                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-white text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('spine', this)">Spine/Nerve</button>
+                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-white text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('wellness', this)">Wellness</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" id="video-grid">
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="epilepsy" data-title="understanding epilepsy and seizures"
+                     onclick="playVideo('HCBSttaqm08', 'Understanding Epilepsy and Seizures', 'An in-depth explanation of seizure disorders, diagnostic procedures, and advanced clinical care plans.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/HCBSttaqm08/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Understanding Epilepsy and Seizures" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Epilepsy                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Understanding Epilepsy and Seizures                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            An in-depth explanation of seizure disorders, diagnostic procedures, and advanced clinical care plans.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="stroke" data-title="stroke warning signs &amp; fast protocol"
+                     onclick="playVideo('19eYLaT95jo', 'Stroke Warning Signs & FAST Protocol', 'Dr. Praveen Gupta highlights how to spot early signs of a brain stroke and act FAST to save lives.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/19eYLaT95jo/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Stroke Warning Signs &amp; FAST Protocol" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Stroke                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Stroke Warning Signs & FAST Protocol                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Dr. Praveen Gupta highlights how to spot early signs of a brain stroke and act FAST to save lives.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="headache" data-title="preventative tips for migraine patients"
+                     onclick="playVideo('jdDJjHKXOuE', 'Preventative Tips for Migraine Patients', 'Useful guidelines and preventative lifestyle measures to reduce the frequency and severity of migraines.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/jdDJjHKXOuE/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Preventative Tips for Migraine Patients" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Headache                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Preventative Tips for Migraine Patients                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Useful guidelines and preventative lifestyle measures to reduce the frequency and severity of migraines.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="headache" data-title="how to manage chronic headaches"
+                     onclick="playVideo('bffAUpfcr1E', 'How to Manage Chronic Headaches', 'Dr. Praveen Gupta details medical management and triggers for tension headaches and chronic migraines.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/bffAUpfcr1E/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="How to Manage Chronic Headaches" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Headache                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            How to Manage Chronic Headaches                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Dr. Praveen Gupta details medical management and triggers for tension headaches and chronic migraines.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="wellness" data-title="demystifying parkinson&#039;s disease &amp; dbs"
+                     onclick="playVideo('wzoHirIE8og', 'Demystifying Parkinson\'s Disease & DBS', 'A complete guide on Parkinson\'s treatment progression, medical therapies, and Deep Brain Stimulation.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/wzoHirIE8og/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Demystifying Parkinson&#039;s Disease &amp; DBS" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Wellness                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Demystifying Parkinson's Disease & DBS                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            A complete guide on Parkinson's treatment progression, medical therapies, and Deep Brain Stimulation.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="stroke" data-title="managing dementia &amp; alzheimer&#039;s care"
+                     onclick="playVideo('gJuWUl08Urk', 'Managing Dementia & Alzheimer\'s Care', 'Expert advice on early diagnosis of dementia and caring for patients with progressive memory loss.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/gJuWUl08Urk/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Managing Dementia &amp; Alzheimer&#039;s Care" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Stroke                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Managing Dementia & Alzheimer's Care                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Expert advice on early diagnosis of dementia and caring for patients with progressive memory loss.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="stroke" data-title="recognizing early stroke symptoms"
+                     onclick="playVideo('LcBJlz040YY', 'Recognizing Early Stroke Symptoms', 'A quick guide on emergency signs of an acute stroke that require immediate hospitalization.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/LcBJlz040YY/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Recognizing Early Stroke Symptoms" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Stroke                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Recognizing Early Stroke Symptoms                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            A quick guide on emergency signs of an acute stroke that require immediate hospitalization.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="spine" data-title="nerve pain and neuropathy treatment options"
+                     onclick="playVideo('gngiRwzLH20', 'Nerve Pain and Neuropathy Treatment Options', 'Clinical options for managing neuropathic pain, diabetic nerve damage, and burning feet syndrome.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/gngiRwzLH20/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Nerve Pain and Neuropathy Treatment Options" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Spine                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Nerve Pain and Neuropathy Treatment Options                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Clinical options for managing neuropathic pain, diabetic nerve damage, and burning feet syndrome.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="wellness" data-title="vertigo and balance disorders: cure without pills"
+                     onclick="playVideo('HHV_qGv5wCM', 'Vertigo and Balance Disorders: Cure Without Pills', 'How vestibular rehabilitation and balance exercises help resolve vertigo without daily medication.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/HHV_qGv5wCM/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Vertigo and Balance Disorders: Cure Without Pills" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Wellness                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Vertigo and Balance Disorders: Cure Without Pills                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            How vestibular rehabilitation and balance exercises help resolve vertigo without daily medication.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="wellness" data-title="preventative neurology &amp; healthy brain habits"
+                     onclick="playVideo('NFqg7wsC-sg', 'Preventative Neurology & Healthy Brain Habits', 'Lifestyle modifications, exercises, and dietary habits that promote lifelong cognitive strength.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/NFqg7wsC-sg/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Preventative Neurology &amp; Healthy Brain Habits" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Wellness                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Preventative Neurology & Healthy Brain Habits                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Lifestyle modifications, exercises, and dietary habits that promote lifelong cognitive strength.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="wellness" data-title="management of sleep disorders"
+                     onclick="playVideo('Yby46JYGC_0', 'Management of Sleep Disorders', 'A clinical overview of insomnia, sleep apnea, and sleep hygiene practices to protect brain health.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/Yby46JYGC_0/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Management of Sleep Disorders" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Wellness                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Management of Sleep Disorders                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            A clinical overview of insomnia, sleep apnea, and sleep hygiene practices to protect brain health.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="spine" data-title="treating cervical spondylosis &amp; neck pain"
+                     onclick="playVideo('SfDdMcUCsBM', 'Treating Cervical Spondylosis & Neck Pain', 'Dr. Praveen Gupta explains non-surgical treatments and physical therapy for neck and spine compression.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/SfDdMcUCsBM/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Treating Cervical Spondylosis &amp; Neck Pain" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Spine                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Treating Cervical Spondylosis & Neck Pain                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Dr. Praveen Gupta explains non-surgical treatments and physical therapy for neck and spine compression.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="spine" data-title="quick tips for back pain relief"
+                     onclick="playVideo('zqOCl_r92kA', 'Quick Tips for Back Pain Relief', 'Easy habits and posture corrections to prevent chronic lower back pain and spinal issues.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/zqOCl_r92kA/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Quick Tips for Back Pain Relief" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Spine                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Quick Tips for Back Pain Relief                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Easy habits and posture corrections to prevent chronic lower back pain and spinal issues.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="wellness" data-title="how stress affects your brain"
+                     onclick="playVideo('iBvkymzjMWE', 'How Stress Affects Your Brain', 'A quick review of how chronic stress alters brain chemistry and leads to chronic headaches.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/iBvkymzjMWE/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="How Stress Affects Your Brain" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Wellness                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            How Stress Affects Your Brain                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            A quick review of how chronic stress alters brain chemistry and leads to chronic headaches.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="dementia" data-title="protecting memory as you age"
+                     onclick="playVideo('VizML8pOj3g', 'Protecting Memory as You Age', 'Practical exercises and cognitive training recommendations to keep your mind sharp as you grow older.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/VizML8pOj3g/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Protecting Memory as You Age" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Dementia                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Protecting Memory as You Age                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Practical exercises and cognitive training recommendations to keep your mind sharp as you grow older.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="wellness" data-title="managing multiple sclerosis symptoms"
+                     onclick="playVideo('dbJjk1_Y9Dw', 'Managing Multiple Sclerosis Symptoms', 'Latest clinical advancements and immunotherapies to control Multiple Sclerosis flare-ups and relapses.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/dbJjk1_Y9Dw/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Managing Multiple Sclerosis Symptoms" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Wellness                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Managing Multiple Sclerosis Symptoms                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Latest clinical advancements and immunotherapies to control Multiple Sclerosis flare-ups and relapses.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="epilepsy" data-title="epilepsy first aid: what to do"
+                     onclick="playVideo('e-totg4fbAQ', 'Epilepsy First Aid: What to Do', 'Crucial steps to follow when someone nearby is experiencing an active epileptic fit.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/e-totg4fbAQ/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Epilepsy First Aid: What to Do" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Epilepsy                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Epilepsy First Aid: What to Do                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Crucial steps to follow when someone nearby is experiencing an active epileptic fit.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="wellness" data-title="understanding brain tumors: types &amp; stages"
+                     onclick="playVideo('wiaiEgD_dtw', 'Understanding Brain Tumors: Types & Stages', 'Dr. Praveen Gupta details benign and malignant brain tumors, diagnostic scans, and care paths.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/wiaiEgD_dtw/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Understanding Brain Tumors: Types &amp; Stages" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Wellness                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Understanding Brain Tumors: Types & Stages                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Dr. Praveen Gupta details benign and malignant brain tumors, diagnostic scans, and care paths.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="wellness" data-title="advanced neuro-rehabilitation therapy"
+                     onclick="playVideo('e2jhqLMxrg8', 'Advanced Neuro-Rehabilitation Therapy', 'How occupational and physical therapy modules speed up stroke recovery and motor restoration.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/e2jhqLMxrg8/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Advanced Neuro-Rehabilitation Therapy" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Wellness                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Advanced Neuro-Rehabilitation Therapy                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            How occupational and physical therapy modules speed up stroke recovery and motor restoration.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="epilepsy" data-title="pediatric epilepsy and seizure control"
+                     onclick="playVideo('JO9eGHAPOp4', 'Pediatric Epilepsy and Seizure Control', 'A guide for parents on childhood epilepsy, medication management, and specialized diagnostic EEG.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/JO9eGHAPOp4/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Pediatric Epilepsy and Seizure Control" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Epilepsy                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Pediatric Epilepsy and Seizure Control                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            A guide for parents on childhood epilepsy, medication management, and specialized diagnostic EEG.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="wellness" data-title="treatment for tremors &amp; parkinson&#039;s"
+                     onclick="playVideo('vU-KYEswDZ0', 'Treatment for Tremors & Parkinson\'s', 'Evaluating therapeutic approaches and lifestyle adjustments for managing daily tremors.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/vU-KYEswDZ0/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Treatment for Tremors &amp; Parkinson&#039;s" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Wellness                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Treatment for Tremors & Parkinson's                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Evaluating therapeutic approaches and lifestyle adjustments for managing daily tremors.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="stroke" data-title="stroke recovery: the critical first month"
+                     onclick="playVideo('nVAhwpuwuFY', 'Stroke Recovery: The Critical First Month', 'Rehabilitation timelines, physical exercises, and medical follow-up guidelines for stroke survivors.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/nVAhwpuwuFY/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Stroke Recovery: The Critical First Month" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Stroke                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Stroke Recovery: The Critical First Month                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Rehabilitation timelines, physical exercises, and medical follow-up guidelines for stroke survivors.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="wellness" data-title="dealing with chronic neurological pain"
+                     onclick="playVideo('bqibQJelNmU', 'Dealing with Chronic Neurological Pain', 'Clinical strategies for chronic headache, neuralgia, and peripheral neuropathic pain relief.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/bqibQJelNmU/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Dealing with Chronic Neurological Pain" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Wellness                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Dealing with Chronic Neurological Pain                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Clinical strategies for chronic headache, neuralgia, and peripheral neuropathic pain relief.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="headache" data-title="migraine triggers and food habits"
+                     onclick="playVideo('K8Ct06if4Bc', 'Migraine Triggers and Food Habits', 'Identifying common dietary and environmental triggers that spark severe migraine attacks.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/K8Ct06if4Bc/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Migraine Triggers and Food Habits" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Headache                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Migraine Triggers and Food Habits                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Identifying common dietary and environmental triggers that spark severe migraine attacks.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="wellness" data-title="aneurysms and neurovascular care"
+                     onclick="playVideo('gns03zl4k7o', 'Aneurysms and Neurovascular Care', 'How vascular abnormalities are diagnosed, monitored, and treated using micro-neurosurgery.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/gns03zl4k7o/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Aneurysms and Neurovascular Care" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Wellness                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Aneurysms and Neurovascular Care                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            How vascular abnormalities are diagnosed, monitored, and treated using micro-neurosurgery.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="stroke" data-title="prevention of memory loss &amp; dementia"
+                     onclick="playVideo('nlZjfIk9Jws', 'Prevention of Memory Loss & Dementia', 'Dr. Praveen Gupta discusses active mental exercises and diet charts that promote cognitive reserve.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/nlZjfIk9Jws/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Prevention of Memory Loss &amp; Dementia" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Stroke                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Prevention of Memory Loss & Dementia                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Dr. Praveen Gupta discusses active mental exercises and diet charts that promote cognitive reserve.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="wellness" data-title="geriatric neurology care guides"
+                     onclick="playVideo('RPrRp9h20kA', 'Geriatric Neurology Care Guides', 'Addressing common neurological conditions in elderly patients, from tremors to cognitive decline.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/RPrRp9h20kA/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Geriatric Neurology Care Guides" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Wellness                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Geriatric Neurology Care Guides                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Addressing common neurological conditions in elderly patients, from tremors to cognitive decline.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="wellness" data-title="myasthenia gravis: diagnostic and care paths"
+                     onclick="playVideo('DIdecCaF2Js', 'Myasthenia Gravis: Diagnostic and Care Paths', 'Clinical breakdown of neuromuscular transmission issues, diagnosis, and medical protocols.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/DIdecCaF2Js/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Myasthenia Gravis: Diagnostic and Care Paths" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Wellness                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Myasthenia Gravis: Diagnostic and Care Paths                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Clinical breakdown of neuromuscular transmission issues, diagnosis, and medical protocols.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="stroke" data-title="preventing brain stroke risks in summers"
+                     onclick="playVideo('p8q2ORXW5ts', 'Preventing Brain Stroke Risks In Summers', 'Essential summer advice to stay hydrated and prevent blood pressure fluctuations that lead to stroke.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/p8q2ORXW5ts/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Preventing Brain Stroke Risks In Summers" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Stroke                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Preventing Brain Stroke Risks In Summers                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Essential summer advice to stay hydrated and prevent blood pressure fluctuations that lead to stroke.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="wellness" data-title="therapy advancements in neurocritical care"
+                     onclick="playVideo('AomViYJ5yms', 'Therapy Advancements in Neurocritical Care', 'How specialized intensive care units improve clinical outcomes in comatose or head trauma patients.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/AomViYJ5yms/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Therapy Advancements in Neurocritical Care" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Wellness                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Therapy Advancements in Neurocritical Care                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            How specialized intensive care units improve clinical outcomes in comatose or head trauma patients.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="spine" data-title="management of sciatica &amp; lower back pain"
+                     onclick="playVideo('og9VMNrE7yk', 'Management of Sciatica & Lower Back Pain', 'Dr. Praveen Gupta explains physical therapy, posture management, and non-surgical nerve decompression.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/og9VMNrE7yk/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Management of Sciatica &amp; Lower Back Pain" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Spine                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Management of Sciatica & Lower Back Pain                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Dr. Praveen Gupta explains physical therapy, posture management, and non-surgical nerve decompression.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="wellness" data-title="understanding spinal cord injuries"
+                     onclick="playVideo('linE3GzsOYk', 'Understanding Spinal Cord Injuries', 'Clinical diagnostic paths, stabilization procedures, and long-term motor rehabilitation protocols.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/linE3GzsOYk/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Understanding Spinal Cord Injuries" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Wellness                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Understanding Spinal Cord Injuries                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Clinical diagnostic paths, stabilization procedures, and long-term motor rehabilitation protocols.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="wellness" data-title="rtms therapy for brain rehabilitation"
+                     onclick="playVideo('1lMG9FIfyR8', 'rTMS Therapy for Brain Rehabilitation', 'Clinical applications of Repetitive Transcranial Magnetic Stimulation in neurology patients.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/1lMG9FIfyR8/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="rTMS Therapy for Brain Rehabilitation" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Wellness                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            rTMS Therapy for Brain Rehabilitation                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Clinical applications of Repetitive Transcranial Magnetic Stimulation in neurology patients.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="stroke" data-title="spasticity treatment after stroke"
+                     onclick="playVideo('BdBsAkCpQtg', 'Spasticity Treatment After Stroke', 'Medical management and rehabilitation tips to resolve muscle stiffness and spasticity post-stroke.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/BdBsAkCpQtg/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Spasticity Treatment After Stroke" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Stroke                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Spasticity Treatment After Stroke                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Medical management and rehabilitation tips to resolve muscle stiffness and spasticity post-stroke.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="wellness" data-title="restless legs syndrome diagnosis"
+                     onclick="playVideo('CLfWvubTAO0', 'Restless Legs Syndrome Diagnosis', 'Addressing sleep disturbances and sensory issues associated with Restless Legs Syndrome (RLS).')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/CLfWvubTAO0/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Restless Legs Syndrome Diagnosis" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Wellness                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Restless Legs Syndrome Diagnosis                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Addressing sleep disturbances and sensory issues associated with Restless Legs Syndrome (RLS).                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="wellness" data-title="management of brain infections"
+                     onclick="playVideo('ohTGrS92kiE', 'Management of Brain Infections', 'Diagnostic procedures and emergency clinical guidelines for Encephalitis and Meningitis.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/ohTGrS92kiE/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Management of Brain Infections" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Wellness                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Management of Brain Infections                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Diagnostic procedures and emergency clinical guidelines for Encephalitis and Meningitis.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="stroke" data-title="brain stroke helpline &amp; emergency response"
+                     onclick="playVideo('QSVHJtC_Guc', 'Brain Stroke Helpline & Emergency Response', 'Understanding stroke protocols and our 24/7 helpline structure for rapid hospital transfers.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/QSVHJtC_Guc/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Brain Stroke Helpline &amp; Emergency Response" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Stroke                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Brain Stroke Helpline & Emergency Response                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Understanding stroke protocols and our 24/7 helpline structure for rapid hospital transfers.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="epilepsy" data-title="epilepsy management during pregnancy"
+                     onclick="playVideo('9vE_Cofbayk', 'Epilepsy Management During Pregnancy', 'Specialized medical guidance for female epilepsy patients planning pregnancy and family care.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/9vE_Cofbayk/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Epilepsy Management During Pregnancy" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Epilepsy                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Epilepsy Management During Pregnancy                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Specialized medical guidance for female epilepsy patients planning pregnancy and family care.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="headache" data-title="tackling anxiety-induced headaches"
+                     onclick="playVideo('7OdQGLg_NIQ', 'Tackling Anxiety-Induced Headaches', 'Clinical tips on separating neurological chronic headaches from stress-induced tension pain.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/7OdQGLg_NIQ/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Tackling Anxiety-Induced Headaches" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Headache                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Tackling Anxiety-Induced Headaches                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Clinical tips on separating neurological chronic headaches from stress-induced tension pain.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="spine" data-title="understanding nerve conduction studies"
+                     onclick="playVideo('t8KS0TEkgl0', 'Understanding Nerve Conduction Studies', 'What to expect during EEG, EMG, and nerve conduction recording sessions in our neuro-lab.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/t8KS0TEkgl0/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Understanding Nerve Conduction Studies" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Spine                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Understanding Nerve Conduction Studies                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            What to expect during EEG, EMG, and nerve conduction recording sessions in our neuro-lab.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="wellness" data-title="cognitive assessments in elderly patients"
+                     onclick="playVideo('3TvNGdpDchU', 'Cognitive Assessments in Elderly Patients', 'Standard clinical questionnaires and memory exercises used to diagnose cognitive decline.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/3TvNGdpDchU/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Cognitive Assessments in Elderly Patients" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Wellness                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Cognitive Assessments in Elderly Patients                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Standard clinical questionnaires and memory exercises used to diagnose cognitive decline.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="wellness" data-title="preventing traumatic brain injury complications"
+                     onclick="playVideo('9AuZuZyI-Io', 'Preventing Traumatic Brain Injury Complications', 'Protocols for treating concussions, head trauma, and preventing chronic neurological issues.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/9AuZuZyI-Io/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Preventing Traumatic Brain Injury Complications" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Wellness                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Preventing Traumatic Brain Injury Complications                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Protocols for treating concussions, head trauma, and preventing chronic neurological issues.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="wellness" data-title="dbs surgery candidate selection"
+                     onclick="playVideo('jp68Y0bYfuo', 'DBS Surgery Candidate Selection', 'Detailed criteria used to identify if a Parkinson\'s patient is suitable for Deep Brain Stimulation.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/jp68Y0bYfuo/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="DBS Surgery Candidate Selection" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Wellness                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            DBS Surgery Candidate Selection                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Detailed criteria used to identify if a Parkinson's patient is suitable for Deep Brain Stimulation.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="wellness" data-title="understanding neuromuscular disorders"
+                     onclick="playVideo('pSLVKT1W93Q', 'Understanding Neuromuscular Disorders', 'Clinical symptoms, nerve-muscle biopsy diagnostics, and therapy guidelines.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/pSLVKT1W93Q/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Understanding Neuromuscular Disorders" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Wellness                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Understanding Neuromuscular Disorders                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Clinical symptoms, nerve-muscle biopsy diagnostics, and therapy guidelines.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="dementia" data-title="alzheimer&#039;s disease: early diagnostic clues"
+                     onclick="playVideo('3yhvFSFuPW4', 'Alzheimer\'s Disease: Early Diagnostic Clues', 'Dr. Praveen Gupta shares crucial early behavioral markers that point to Alzheimer\'s onset.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/3yhvFSFuPW4/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Alzheimer&#039;s Disease: Early Diagnostic Clues" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Dementia                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Alzheimer's Disease: Early Diagnostic Clues                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Dr. Praveen Gupta shares crucial early behavioral markers that point to Alzheimer's onset.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="wellness" data-title="motor neuron disease (mnd) care protocols"
+                     onclick="playVideo('97iJMOfzbQ0', 'Motor Neuron Disease (MND) Care Protocols', 'Symptom relief plans, supportive physical exercises, and clinical care paths for MND patients.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/97iJMOfzbQ0/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Motor Neuron Disease (MND) Care Protocols" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Wellness                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Motor Neuron Disease (MND) Care Protocols                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Symptom relief plans, supportive physical exercises, and clinical care paths for MND patients.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="wellness" data-title="guillain-barré syndrome (gbs) recovery"
+                     onclick="playVideo('479zCN2vdBQ', 'Guillain-Barré Syndrome (GBS) Recovery', 'Clinical diagnostics, immunoglobulin therapy, and neurological ICU pathways for GBS.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/479zCN2vdBQ/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Guillain-Barré Syndrome (GBS) Recovery" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Wellness                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Guillain-Barré Syndrome (GBS) Recovery                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Clinical diagnostics, immunoglobulin therapy, and neurological ICU pathways for GBS.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="wellness" data-title="dizziness vs. vertigo: understanding differences"
+                     onclick="playVideo('x0PfxhAcnQ4', 'Dizziness vs. Vertigo: Understanding Differences', 'Dr. Praveen Gupta explains balance systems to help patients distinguish vertigo from general dizziness.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/x0PfxhAcnQ4/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Dizziness vs. Vertigo: Understanding Differences" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Wellness                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Dizziness vs. Vertigo: Understanding Differences                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Dr. Praveen Gupta explains balance systems to help patients distinguish vertigo from general dizziness.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="epilepsy" data-title="living safely with epilepsy"
+                     onclick="playVideo('VA0iTziT-yU', 'Living Safely with Epilepsy', 'Lifestyle modifications, safety proofing your home, and driving rules for epilepsy patients.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/VA0iTziT-yU/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Living Safely with Epilepsy" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Epilepsy                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Living Safely with Epilepsy                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Lifestyle modifications, safety proofing your home, and driving rules for epilepsy patients.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="stroke" data-title="post-stroke depression &amp; recovery support"
+                     onclick="playVideo('-3tAktnWlq8', 'Post-Stroke Depression & Recovery Support', 'Addressing mood shifts and psychological support systems vital during stroke recovery.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/-3tAktnWlq8/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Post-Stroke Depression &amp; Recovery Support" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Stroke                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Post-Stroke Depression & Recovery Support                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Addressing mood shifts and psychological support systems vital during stroke recovery.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="wellness" data-title="physical therapy for spinal stenosis"
+                     onclick="playVideo('r_FCRgtGl9Q', 'Physical Therapy for Spinal Stenosis', 'Exercises and clinical decompression therapies that relieve pressure on the spinal cord.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/r_FCRgtGl9Q/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Physical Therapy for Spinal Stenosis" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Wellness                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Physical Therapy for Spinal Stenosis                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Exercises and clinical decompression therapies that relieve pressure on the spinal cord.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="stroke" data-title="healthy diet tips for stroke prevention"
+                     onclick="playVideo('WAbz6l4zm7c', 'Healthy Diet Tips for Stroke Prevention', 'Cardiovascular nutrition advice to lower cholesterol and prevent artery blockages.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/WAbz6l4zm7c/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Healthy Diet Tips for Stroke Prevention" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Stroke                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Healthy Diet Tips for Stroke Prevention                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Cardiovascular nutrition advice to lower cholesterol and prevent artery blockages.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="stroke" data-title="understanding tia (transient ischemic attack)"
+                     onclick="playVideo('yWkceIAx0I4', 'Understanding TIA (Transient Ischemic Attack)', 'Why \"mini-strokes\" are serious warnings that require immediate medical attention.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/yWkceIAx0I4/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Understanding TIA (Transient Ischemic Attack)" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Stroke                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Understanding TIA (Transient Ischemic Attack)                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Why "mini-strokes" are serious warnings that require immediate medical attention.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="stroke" data-title="dementia caregiver survival guide"
+                     onclick="playVideo('NZraszbqrt4', 'Dementia Caregiver Survival Guide', 'Helpful tips for caregivers managing behavioral changes and emotional fatigue.')">
+                    
+                    <!-- Video Thumbnail Cover -->
+                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
+                        <img src="https://img.youtube.com/vi/NZraszbqrt4/hqdefault.jpg" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                             alt="Dementia Caregiver Survival Guide" 
+                             loading="lazy">
+                        <!-- Play Overlay Button -->
+                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
+                                <i class="fas fa-play text-sm ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Stroke                        </span>
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
+                            Dementia Caregiver Survival Guide                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
+                            Helpful tips for caregivers managing behavioral changes and emotional fatigue.                        </p>
+                    </div>
+                </div>
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="wellness" data-title="vertigo: relieved without pills!"
                      onclick="playVideo('sXl0eyou7EU', 'Vertigo: Relieved Without Pills!', 'Learn how vertigo can be relieved effectively without medication from Dr. Praveen Gupta.')">
                     
                     <!-- Video Thumbnail Cover -->
@@ -1065,20 +2590,23 @@
 
                     <!-- Footer Content -->
                     <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Wellness                        </span>
                         <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
                             Vertigo: Relieved Without Pills!                        </h3>
                         <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
                             Learn how vertigo can be relieved effectively without medication from Dr. Praveen Gupta.                        </p>
                     </div>
                 </div>
-                            <div class="group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
-                     onclick="playVideo('h50wGaV1y9Q', 'Say Goodbye to Headaches', 'Expert tips and medical insights on headache relief and migraine prevention by Dr. Praveen Gupta.')">
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="wellness" data-title="managing trigeminal neuralgia pain"
+                     onclick="playVideo('KijjPIG3mtA', 'Managing Trigeminal Neuralgia Pain', 'Clinical medication paths and surgical nerve decompression options for facial pain.')">
                     
                     <!-- Video Thumbnail Cover -->
                     <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
-                        <img src="https://img.youtube.com/vi/h50wGaV1y9Q/hqdefault.jpg" 
+                        <img src="https://img.youtube.com/vi/KijjPIG3mtA/hqdefault.jpg" 
                              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                             alt="Say Goodbye to Headaches" 
+                             alt="Managing Trigeminal Neuralgia Pain" 
                              loading="lazy">
                         <!-- Play Overlay Button -->
                         <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
@@ -1090,20 +2618,23 @@
 
                     <!-- Footer Content -->
                     <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Wellness                        </span>
                         <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
-                            Say Goodbye to Headaches                        </h3>
+                            Managing Trigeminal Neuralgia Pain                        </h3>
                         <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
-                            Expert tips and medical insights on headache relief and migraine prevention by Dr. Praveen Gupta.                        </p>
+                            Clinical medication paths and surgical nerve decompression options for facial pain.                        </p>
                     </div>
                 </div>
-                            <div class="group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
-                     onclick="playVideo('OJRq0VNLYIA', 'Managing Multiple Sclerosis', 'Comprehensive guide to Multiple Sclerosis diagnosis, symptom management, and treatments.')">
+                            <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
+                     data-category="wellness" data-title="preventing chronic brain fatigue"
+                     onclick="playVideo('ox84BTy70gE', 'Preventing Chronic Brain Fatigue', 'Tips to improve sleep cycles, reduce screen strain, and support cognitive performance.')">
                     
                     <!-- Video Thumbnail Cover -->
                     <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
-                        <img src="https://img.youtube.com/vi/OJRq0VNLYIA/hqdefault.jpg" 
+                        <img src="https://img.youtube.com/vi/ox84BTy70gE/hqdefault.jpg" 
                              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                             alt="Managing Multiple Sclerosis" 
+                             alt="Preventing Chronic Brain Fatigue" 
                              loading="lazy">
                         <!-- Play Overlay Button -->
                         <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
@@ -1115,45 +2646,36 @@
 
                     <!-- Footer Content -->
                     <div class="p-4">
+                        <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
+                            Wellness                        </span>
                         <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
-                            Managing Multiple Sclerosis                        </h3>
+                            Preventing Chronic Brain Fatigue                        </h3>
                         <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
-                            Comprehensive guide to Multiple Sclerosis diagnosis, symptom management, and treatments.                        </p>
+                            Tips to improve sleep cycles, reduce screen strain, and support cognitive performance.                        </p>
                     </div>
                 </div>
-                            <div class="group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
-                     onclick="playVideo('OKUjltLpKAc', 'Managing Dementia: Expert Tips', 'Practical strategies and expert tips from Dr. Praveen Gupta on managing dementia.')">
-                    
-                    <!-- Video Thumbnail Cover -->
-                    <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
-                        <img src="https://img.youtube.com/vi/OKUjltLpKAc/hqdefault.jpg" 
-                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                             alt="Managing Dementia: Expert Tips" 
-                             loading="lazy">
-                        <!-- Play Overlay Button -->
-                        <div class="absolute inset-0 bg-black/35 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
-                            <div class="w-12 h-12 bg-white/90 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-lg transition-all duration-300 scale-95 group-hover:scale-100">
-                                <i class="fas fa-play text-sm ml-0.5"></i>
-                            </div>
-                        </div>
                     </div>
 
-                    <!-- Footer Content -->
-                    <div class="p-4">
-                        <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
-                            Managing Dementia: Expert Tips                        </h3>
-                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
-                            Practical strategies and expert tips from Dr. Praveen Gupta on managing dementia.                        </p>
-                    </div>
-                </div>
-                    </div>
+        <!-- Pagination Controls -->
+        <div id="pagination-controls" class="flex justify-center items-center space-x-2 mt-12"></div>
+
+        <!-- Empty Results Alert -->
+        <div id="no-results" class="hidden text-center py-12 max-w-md mx-auto space-y-3">
+            <i class="fas fa-video-slash text-4xl text-dark-grey/30"></i>
+            <h4 class="font-bold text-dark-grey">No matching videos found</h4>
+            <p class="text-xs text-dark-grey/55">Try adjusting your search keywords or choosing a different category filter above.</p>
+        </div>
     </div>
 </section>
 
-<!-- Playlist Play Script -->
+<!-- Playlist Play and Filter Script with Pagination -->
 <script>
+let currentCategory = 'all';
+const itemsPerPage = 12;
+let currentPage = 1;
+let filteredCards = [];
+
 function playVideo(id, title, desc) {
-    // Scroll smoothly to player
     const player = document.getElementById('main-video-player');
     player.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
     
@@ -1166,6 +2688,151 @@ function playVideo(id, title, desc) {
         behavior: 'smooth'
     });
 }
+
+function setCategory(cat, btn) {
+    currentCategory = cat;
+    
+    // Toggle active classes on filter buttons
+    document.querySelectorAll('#category-filters .filter-btn').forEach(b => {
+        b.classList.remove('bg-electric-blue', 'text-white', 'border-electric-blue');
+        b.classList.add('bg-white', 'text-dark-grey/70', 'border-slate-200');
+    });
+    btn.classList.add('bg-electric-blue', 'text-white', 'border-electric-blue');
+    btn.classList.remove('bg-white', 'text-dark-grey/70', 'border-slate-200');
+    
+    currentPage = 1;
+    filterVideos();
+}
+
+function filterVideos() {
+    const searchVal = document.getElementById('video-search').value.toLowerCase().trim();
+    const cards = document.querySelectorAll('#video-grid .video-card');
+    filteredCards = [];
+    
+    cards.forEach(card => {
+        const title = card.getAttribute('data-title');
+        const cat = card.getAttribute('data-category');
+        
+        const matchesCategory = (currentCategory === 'all' || cat === currentCategory);
+        const matchesSearch = (searchVal === '' || title.includes(searchVal));
+        
+        if (matchesCategory && matchesSearch) {
+            filteredCards.push(card);
+        } else {
+            card.classList.add('hidden');
+        }
+    });
+    
+    // Show/hide no results alert
+    const alert = document.getElementById('no-results');
+    if (filteredCards.length === 0) {
+        alert.classList.remove('hidden');
+        document.getElementById('pagination-controls').classList.add('hidden');
+    } else {
+        alert.classList.add('hidden');
+        document.getElementById('pagination-controls').classList.remove('hidden');
+        renderPagination();
+    }
+}
+
+function renderPagination() {
+    const totalPages = Math.ceil(filteredCards.length / itemsPerPage);
+    const container = document.getElementById('pagination-controls');
+    container.innerHTML = '';
+    
+    if (totalPages <= 1) {
+        filteredCards.forEach(card => card.classList.remove('hidden'));
+        container.classList.add('hidden');
+        return;
+    }
+    
+    container.classList.remove('hidden');
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    
+    filteredCards.forEach((card, idx) => {
+        if (idx >= startIndex && idx < endIndex) {
+            card.classList.remove('hidden');
+        } else {
+            card.classList.add('hidden');
+        }
+    });
+    
+    // Prev button
+    const prevBtn = document.createElement('button');
+    prevBtn.className = `px-3 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 ${currentPage === 1 ? 'bg-slate-100 text-dark-grey/30 border-slate-200 cursor-not-allowed' : 'bg-white text-dark-grey/70 border-slate-200 hover:border-electric-blue'}`;
+    prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+    if (currentPage > 1) {
+        prevBtn.onclick = () => { currentPage--; renderPagination(); scrollToGrid(); };
+    }
+    container.appendChild(prevBtn);
+    
+    // Page Numbers (sliding window if many pages)
+    let startPage = Math.max(1, currentPage - 2);
+    let endPage = Math.min(totalPages, startPage + 4);
+    if (endPage - startPage < 4) {
+        startPage = Math.max(1, endPage - 4);
+    }
+    
+    if (startPage > 1) {
+        const firstBtn = document.createElement('button');
+        firstBtn.className = `w-9 h-9 rounded-xl text-xs font-semibold border transition-all duration-300 bg-white text-dark-grey/70 border-slate-200 hover:border-electric-blue`;
+        firstBtn.innerText = '1';
+        firstBtn.onclick = () => { currentPage = 1; renderPagination(); scrollToGrid(); };
+        container.appendChild(firstBtn);
+        
+        if (startPage > 2) {
+            const dots = document.createElement('span');
+            dots.className = 'text-dark-grey/40 text-xs px-1';
+            dots.innerText = '...';
+            container.appendChild(dots);
+        }
+    }
+    
+    for (let i = startPage; i <= endPage; i++) {
+        const pageBtn = document.createElement('button');
+        pageBtn.className = `w-9 h-9 rounded-xl text-xs font-semibold border transition-all duration-300 ${i === currentPage ? 'bg-electric-blue text-white border-electric-blue' : 'bg-white text-dark-grey/70 border-slate-200 hover:border-electric-blue'}`;
+        pageBtn.innerText = i;
+        pageBtn.onclick = () => { currentPage = i; renderPagination(); scrollToGrid(); };
+        container.appendChild(pageBtn);
+    }
+    
+    if (endPage < totalPages) {
+        if (endPage < totalPages - 1) {
+            const dots = document.createElement('span');
+            dots.className = 'text-dark-grey/40 text-xs px-1';
+            dots.innerText = '...';
+            container.appendChild(dots);
+        }
+        const lastBtn = document.createElement('button');
+        lastBtn.className = `w-9 h-9 rounded-xl text-xs font-semibold border transition-all duration-300 bg-white text-dark-grey/70 border-slate-200 hover:border-electric-blue`;
+        lastBtn.innerText = totalPages;
+        lastBtn.onclick = () => { currentPage = totalPages; renderPagination(); scrollToGrid(); };
+        container.appendChild(lastBtn);
+    }
+    
+    // Next button
+    const nextBtn = document.createElement('button');
+    nextBtn.className = `px-3 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 ${currentPage === totalPages ? 'bg-slate-100 text-dark-grey/30 border-slate-200 cursor-not-allowed' : 'bg-white text-dark-grey/70 border-slate-200 hover:border-electric-blue'}`;
+    nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+    if (currentPage < totalPages) {
+        nextBtn.onclick = () => { currentPage++; renderPagination(); scrollToGrid(); };
+    }
+    container.appendChild(nextBtn);
+}
+
+function scrollToGrid() {
+    const grid = document.getElementById('video-grid');
+    window.scrollTo({
+        top: grid.offsetTop - 120,
+        behavior: 'smooth'
+    });
+}
+
+// Initial Run
+window.addEventListener('DOMContentLoaded', () => {
+    filterVideos();
+});
 </script>
 
 

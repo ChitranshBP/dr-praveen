@@ -107,6 +107,60 @@ require_once __DIR__ . '/includes/header.php';
                     <h4 class="text-white font-bold text-base mt-1">Gurgaon Neurology Seminar</h4>
                 </div>
             </div>
+
+            <!-- Clinical 3: New Gallery 1 -->
+            <div class="gallery-item clinical relative group overflow-hidden rounded-[24px] bg-slate-50 border border-slate-200/50 aspect-square shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openLightbox('assets/awards/gallery_1.jpg', 'Clinical consultations and patient assessments.')">
+                <img src="assets/awards/gallery_1.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Clinical consultation" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                    <span class="text-xs text-cyan-accent font-bold uppercase tracking-wider">Clinical Event</span>
+                    <h4 class="text-white font-bold text-base mt-1">Clinical Consultations</h4>
+                </div>
+            </div>
+
+            <!-- Clinical 4: New Gallery 2 -->
+            <div class="gallery-item clinical relative group overflow-hidden rounded-[24px] bg-slate-50 border border-slate-200/50 aspect-square shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openLightbox('assets/awards/gallery_2.jpg', 'Scientific talk on neurological advancements.')">
+                <img src="assets/awards/gallery_2.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Neurology seminar" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                    <span class="text-xs text-cyan-accent font-bold uppercase tracking-wider">Clinical Event</span>
+                    <h4 class="text-white font-bold text-base mt-1">Advanced Neurology Seminar</h4>
+                </div>
+            </div>
+
+            <!-- Clinical 5: New Gallery 3 -->
+            <div class="gallery-item clinical relative group overflow-hidden rounded-[24px] bg-slate-50 border border-slate-200/50 aspect-square shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openLightbox('assets/awards/gallery_3.jpg', 'Medical conference address on brain wellness.')">
+                <img src="assets/awards/gallery_3.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Medical address" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                    <span class="text-xs text-cyan-accent font-bold uppercase tracking-wider">Clinical Event</span>
+                    <h4 class="text-white font-bold text-base mt-1">Brain Wellness Address</h4>
+                </div>
+            </div>
+
+            <!-- Clinical 6: New Gallery 4 -->
+            <div class="gallery-item clinical relative group overflow-hidden rounded-[24px] bg-slate-50 border border-slate-200/50 aspect-square shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openLightbox('assets/awards/gallery_4.jpg', 'Community outreach for stroke awareness.')">
+                <img src="assets/awards/gallery_4.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Community outreach" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                    <span class="text-xs text-cyan-accent font-bold uppercase tracking-wider">Clinical Event</span>
+                    <h4 class="text-white font-bold text-base mt-1">Community Stroke Program</h4>
+                </div>
+            </div>
+
+            <!-- Award 5: New Gallery 5 -->
+            <div class="gallery-item awards relative group overflow-hidden rounded-[24px] bg-slate-50 border border-slate-200/50 aspect-square shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openLightbox('assets/awards/gallery_5.jpg', 'Recognition for excellent healthcare services.')">
+                <img src="assets/awards/gallery_5.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Healthcare award" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                    <span class="text-xs text-cyan-accent font-bold uppercase tracking-wider">Award & Recognition</span>
+                    <h4 class="text-white font-bold text-base mt-1">Healthcare Excellence Honor</h4>
+                </div>
+            </div>
+
+            <!-- Award 6: New Gallery 6 -->
+            <div class="gallery-item awards relative group overflow-hidden rounded-[24px] bg-slate-50 border border-slate-200/50 aspect-square shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openLightbox('assets/awards/gallery_6.jpg', 'Dr. Praveen Gupta receiving specialized research award.')">
+                <img src="assets/awards/gallery_6.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Research award ceremony" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                    <span class="text-xs text-cyan-accent font-bold uppercase tracking-wider">Award & Recognition</span>
+                    <h4 class="text-white font-bold text-base mt-1">Advanced Neuro-Research Award</h4>
+                </div>
+            </div>
         </div>
     </div>
 </section>
