@@ -961,50 +961,120 @@
         updateNavbar();
     </script>
 
-<!-- Hero Section -->
-<section class="relative overflow-hidden bg-[#edf5f9] -mt-20">
-    <div class="w-full max-w-[1920px] mx-auto relative">
-        <img src="assets\banner\web-banner-hero.webp" alt="Dr. Praveen Gupta – Best Neurologist in India"
-            class="w-full h-auto block min-h-[480px] sm:min-h-[550px] md:min-h-0 object-cover object-[75%_center]">
-        
-        <!-- Content Overlay -->
-        <div class="absolute inset-0 flex items-center bg-gradient-to-r from-deep-indigo/70 via-deep-indigo/35 to-transparent">
-            <div class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="max-w-lg md:max-w-xl lg:max-w-2xl text-white">
-                    <!-- Pill Tagline -->
-                    <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20 mb-6 animate-fade-in-up">
-                        <span class="w-2 h-2 rounded-full bg-cyan-accent animate-pulse"></span>
-                        <span class="text-white text-xs font-semibold uppercase tracking-wider">A New Era in Brain & Spine Care</span>
-                    </div>
+<!-- Hero Section - Banner Slider -->
+<section class="relative overflow-hidden bg-deep-indigo -mt-20 select-none">
+    <!-- SEO H1 (visually hidden - headline is baked into the banner artwork) -->
+    <h1 class="sr-only">Dr. Praveen Gupta – Best Neurologist in India | Transforming Brain &amp; Spine Care with Precision</h1>
 
-                    <!-- SEO Optimized H1 Title -->
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white leading-tight mb-5 animate-fade-in-up drop-shadow-[0_4px_12px_rgba(0,0,0,0.55)]" style="animation-delay: 100ms;">
-                        Led by <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-cyan-100 font-extrabold">Dr. Praveen Gupta</span>
-                        <span class="block text-xl sm:text-2xl md:text-3xl font-sans font-bold text-cyan-200 mt-2">Best Neurologist in India</span>
-                    </h1>
-
-                    <!-- Description / Subtitle -->
-                    <p class="text-sm sm:text-base md:text-lg text-white/90 leading-relaxed mb-8 max-w-xl animate-fade-in-up font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)]" style="animation-delay: 200ms;">
-                        Chairman at Marengo Asia International Institute of Neuro & Spine. Providing world-class, advanced neurological treatments for Stroke, Epilepsy, Parkinson's, Migraine, and movement disorders.
-                    </p>
-
-                    <!-- CTA Buttons -->
-                    <div class="flex flex-wrap gap-4 items-center animate-fade-in-up" style="animation-delay: 300ms;">
-                        <a href="contact.html"
-                           class="inline-flex items-center space-x-2.5 bg-gradient-to-r from-cyan-accent to-blue-500 hover:from-cyan-400 hover:to-blue-600 text-white font-bold px-6 py-3 rounded-full shadow-lg shadow-cyan-accent/20 hover:shadow-cyan-accent/40 hover:-translate-y-0.5 transition-all duration-300">
-                            <span>Book Consultation</span>
-                            <i class="fas fa-calendar-check text-xs"></i>
-                        </a>
-                        <a href="#about"
-                           class="inline-flex items-center space-x-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-white/40 text-white font-bold px-6 py-3 rounded-full hover:-translate-y-0.5 transition-all duration-300">
-                            <span>Learn More</span>
-                            <i class="fas fa-arrow-down text-xs"></i>
-                        </a>
-                    </div>
-                </div>
+    <div id="hero-slider" class="w-full max-w-[1920px] mx-auto relative">
+        <div id="hero-track" class="flex transition-transform duration-700 ease-in-out">
+            <div class="min-w-full relative">
+                <img src="assets/banner/dr-parveen-gupta-banner.png"
+                     alt="Transforming Brain &amp; Spine Care with Precision – Led by Dr. Praveen Gupta, Chairman, Marengo Asia International Institute of Neuro &amp; Spine"
+                     fetchpriority="high"
+                     class="w-full h-[320px] sm:h-[400px] md:h-auto object-cover object-[32%_center] md:object-center block">
+            </div>
+            <div class="min-w-full relative">
+                <img src="assets/banner/dr-parveen-gupta-banner-2.png"
+                     alt="Your Brain Deserves Expert Care – Empowering every thought for a life beyond neurological limits"
+                     loading="lazy"
+                     class="w-full h-[320px] sm:h-[400px] md:h-auto object-cover object-[32%_center] md:object-center block">
             </div>
         </div>
+
+        <!-- Navigation Buttons -->
+        <button id="hero-prev" type="button" aria-label="Previous slide"
+                class="absolute left-3 md:left-8 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/20 hover:bg-black/45 text-white backdrop-blur-sm border border-white/20 flex items-center justify-center transition-all duration-300 active:scale-95 focus:outline-none z-20 shadow-md">
+            <i class="fas fa-chevron-left text-sm md:text-base"></i>
+        </button>
+        <button id="hero-next" type="button" aria-label="Next slide"
+                class="absolute right-3 md:right-8 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-black/20 hover:bg-black/45 text-white backdrop-blur-sm border border-white/20 flex items-center justify-center transition-all duration-300 active:scale-95 focus:outline-none z-20 shadow-md">
+            <i class="fas fa-chevron-right text-sm md:text-base"></i>
+        </button>
+
+        <!-- Pagination Dots -->
+        <div class="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex items-center space-x-2.5 z-20">
+            <button type="button" class="hero-dot w-2 h-2 rounded-full bg-white/45 transition-all duration-300 hover:bg-white" data-slide="0" aria-label="Go to slide 1"></button>
+            <button type="button" class="hero-dot w-2 h-2 rounded-full bg-white/45 transition-all duration-300 hover:bg-white" data-slide="1" aria-label="Go to slide 2"></button>
+        </div>
     </div>
+
+    <!-- JS for Hero Slider -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const slider = document.getElementById('hero-slider');
+        const track = document.getElementById('hero-track');
+        if (!slider || !track) return;
+
+        const dots = slider.querySelectorAll('.hero-dot');
+        const prevBtn = document.getElementById('hero-prev');
+        const nextBtn = document.getElementById('hero-next');
+        const totalSlides = track.children.length;
+        let currentIndex = 0;
+        let autoplayTimer;
+
+        function updateSlider(index) {
+            currentIndex = (index + totalSlides) % totalSlides;
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+            dots.forEach((dot, idx) => {
+                if (idx === currentIndex) {
+                    dot.classList.add('bg-white', 'w-6');
+                    dot.classList.remove('bg-white/45');
+                } else {
+                    dot.classList.remove('bg-white', 'w-6');
+                    dot.classList.add('bg-white/45');
+                }
+            });
+        }
+
+        function startAutoplay() {
+            stopAutoplay();
+            autoplayTimer = setInterval(() => updateSlider(currentIndex + 1), 5000);
+        }
+
+        function stopAutoplay() {
+            if (autoplayTimer) clearInterval(autoplayTimer);
+        }
+
+        function goTo(index) {
+            updateSlider(index);
+            startAutoplay();
+        }
+
+        nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
+        prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => goTo(parseInt(dot.dataset.slide, 10)));
+        });
+
+        slider.addEventListener('mouseenter', stopAutoplay);
+        slider.addEventListener('mouseleave', startAutoplay);
+
+        // Touch / swipe support
+        let touchStartX = 0;
+        slider.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            stopAutoplay();
+        }, { passive: true });
+        slider.addEventListener('touchend', (e) => {
+            const delta = e.changedTouches[0].screenX - touchStartX;
+            if (Math.abs(delta) > 50) {
+                goTo(delta < 0 ? currentIndex + 1 : currentIndex - 1);
+            } else {
+                startAutoplay();
+            }
+        }, { passive: true });
+
+        // Pause when the tab is hidden
+        document.addEventListener('visibilitychange', () => {
+            document.hidden ? stopAutoplay() : startAutoplay();
+        });
+
+        updateSlider(0);
+        startAutoplay();
+    });
+    </script>
 </section>
 
 <!-- Services Section -->
@@ -1740,17 +1810,17 @@
     </div>
 </section>
 
-<!-- Testimonials Section -->
-<section class="py-12 bg-soft-cyan/30 relative overflow-hidden">
+<!-- ════════ Written Testimonials Section ════════ -->
+<section id="written-testimonials" class="py-12 bg-soft-cyan/30 relative overflow-hidden">
     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-electric-blue via-cyan-accent to-electric-blue"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- Section Header -->
-        <div class="text-center max-w-3xl mx-auto mb-16 observe">
+        <div class="text-center max-w-3xl mx-auto mb-14 observe">
             <div class="inline-flex items-center space-x-2 bg-electric-blue/10 px-4 py-2 rounded-full mb-4">
-                <i class="fas fa-comments text-electric-blue text-sm"></i>
-                <span class="text-electric-blue text-sm font-semibold">Testimonials</span>
+                <i class="fas fa-quote-right text-electric-blue text-sm"></i>
+                <span class="text-electric-blue text-sm font-semibold">Written Testimonials</span>
             </div>
             <h2 class="text-4xl md:text-5xl font-serif font-bold text-deep-indigo mb-4">
                 What Our <span class="gradient-text">Patients</span> Say
@@ -1760,288 +1830,559 @@
             </p>
         </div>
 
-        <!-- Two-column grid: phone left | reviews right -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+        <!-- Review Carousel -->
+        <div class="carousel observe" data-carousel>
+            <div class="overflow-hidden">
+                <div class="flex -mx-3 transition-transform duration-500 ease-out" data-track>
+                                            <div class="w-full sm:w-1/2 lg:w-1/3 px-3 flex-shrink-0" data-slide>
+                            <div class="group h-full bg-white rounded-3xl p-7 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col">
 
-            <!-- ── LEFT: Phone Mockup + Video Slider ── -->
-            <div class="flex flex-col items-center observe">
+                                <!-- Rating -->
+                                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                                                            <i class="fas fa-star"></i>
+                                                                            <i class="fas fa-star"></i>
+                                                                            <i class="fas fa-star"></i>
+                                                                            <i class="fas fa-star"></i>
+                                                                            <i class="fas fa-star"></i>
+                                                                    </div>
 
-                <!-- Phone shell -->
-                <div class="relative w-[272px] h-[510px] bg-deep-indigo rounded-[44px] p-[10px] shadow-2xl border-4 border-deep-indigo/80 ring-8 ring-deep-indigo/10">
-                    <!-- Notch -->
-                    <div class="absolute top-3 left-1/2 -translate-x-1/2 w-24 h-[22px] bg-deep-indigo rounded-full z-20 flex items-center justify-center gap-2">
-                        <div class="w-8 h-[5px] bg-white/10 rounded-full"></div>
-                        <div class="w-[7px] h-[7px] bg-cyan-accent/30 rounded-full border border-cyan-accent/40"></div>
-                    </div>
-                    <!-- Screen -->
-                    <div class="relative w-full h-full rounded-[36px] overflow-hidden bg-dark-grey z-10">
-                                                                                <iframe id="youtube-shorts-player" class="w-full h-full"
-                                src="https://www.youtube.com/embed/QhoPKOgHrwY?autoplay=0&mute=1&loop=1&playlist=QhoPKOgHrwY&controls=1"
-                                title="YouTube Shorts" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen></iframe>
-                                            </div>
-                    <!-- Home bar -->
-                    <div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-20 h-[4px] bg-silver-grey/40 rounded-full z-20"></div>
-                </div>
+                                <!-- Quote icon -->
+                                <i class="fas fa-quote-left text-electric-blue/20 text-2xl mb-3"></i>
 
-                <!-- Video slider controls -->
-                <div class="flex items-center justify-center space-x-4 mt-7">
-                    <button id="prev-short"
+                                <!-- Review text -->
+                                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                                    Dr. Praveen Gupta transformed my health journey. His expertise and compassion are unmatched.                                </p>
+
+                                <!-- Divider -->
+                                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                                <!-- Author -->
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                                        P                                    </div>
+                                    <div>
+                                        <p class="font-bold text-deep-indigo text-sm leading-tight">Priya Sharma</p>
+                                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                                            <div class="w-full sm:w-1/2 lg:w-1/3 px-3 flex-shrink-0" data-slide>
+                            <div class="group h-full bg-white rounded-3xl p-7 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col">
+
+                                <!-- Rating -->
+                                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                                                            <i class="fas fa-star"></i>
+                                                                            <i class="fas fa-star"></i>
+                                                                            <i class="fas fa-star"></i>
+                                                                            <i class="fas fa-star"></i>
+                                                                            <i class="fas fa-star"></i>
+                                                                    </div>
+
+                                <!-- Quote icon -->
+                                <i class="fas fa-quote-left text-electric-blue/20 text-2xl mb-3"></i>
+
+                                <!-- Review text -->
+                                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                                    The level of care and attention I received was exceptional. Truly a world-class professional.                                </p>
+
+                                <!-- Divider -->
+                                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                                <!-- Author -->
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-accent to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                                        R                                    </div>
+                                    <div>
+                                        <p class="font-bold text-deep-indigo text-sm leading-tight">Rajesh Kumar</p>
+                                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                                            <div class="w-full sm:w-1/2 lg:w-1/3 px-3 flex-shrink-0" data-slide>
+                            <div class="group h-full bg-white rounded-3xl p-7 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col">
+
+                                <!-- Rating -->
+                                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                                                            <i class="fas fa-star"></i>
+                                                                            <i class="fas fa-star"></i>
+                                                                            <i class="fas fa-star"></i>
+                                                                            <i class="fas fa-star"></i>
+                                                                            <i class="fas fa-star"></i>
+                                                                    </div>
+
+                                <!-- Quote icon -->
+                                <i class="fas fa-quote-left text-electric-blue/20 text-2xl mb-3"></i>
+
+                                <!-- Review text -->
+                                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                                    Outstanding doctor with a wonderful bedside manner. Highly recommend to everyone.                                </p>
+
+                                <!-- Divider -->
+                                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                                <!-- Author -->
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-deep-indigo to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                                        A                                    </div>
+                                    <div>
+                                        <p class="font-bold text-deep-indigo text-sm leading-tight">Anita Desai</p>
+                                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                                            <div class="w-full sm:w-1/2 lg:w-1/3 px-3 flex-shrink-0" data-slide>
+                            <div class="group h-full bg-white rounded-3xl p-7 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col">
+
+                                <!-- Rating -->
+                                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                                                            <i class="fas fa-star"></i>
+                                                                            <i class="fas fa-star"></i>
+                                                                            <i class="fas fa-star"></i>
+                                                                            <i class="fas fa-star"></i>
+                                                                            <i class="fas fa-star"></i>
+                                                                    </div>
+
+                                <!-- Quote icon -->
+                                <i class="fas fa-quote-left text-electric-blue/20 text-2xl mb-3"></i>
+
+                                <!-- Review text -->
+                                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                                    After struggling with migraines for years, Dr. Gupta's treatment gave me my life back. Truly exceptional care.                                </p>
+
+                                <!-- Divider -->
+                                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                                <!-- Author -->
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-deep-indigo flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                                        S                                    </div>
+                                    <div>
+                                        <p class="font-bold text-deep-indigo text-sm leading-tight">Suresh Mehta</p>
+                                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                                            <div class="w-full sm:w-1/2 lg:w-1/3 px-3 flex-shrink-0" data-slide>
+                            <div class="group h-full bg-white rounded-3xl p-7 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col">
+
+                                <!-- Rating -->
+                                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                                                            <i class="fas fa-star"></i>
+                                                                            <i class="fas fa-star"></i>
+                                                                            <i class="fas fa-star"></i>
+                                                                            <i class="fas fa-star"></i>
+                                                                            <i class="fas fa-star"></i>
+                                                                    </div>
+
+                                <!-- Quote icon -->
+                                <i class="fas fa-quote-left text-electric-blue/20 text-2xl mb-3"></i>
+
+                                <!-- Review text -->
+                                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                                    I was diagnosed with Parkinson's and was devastated. Dr. Gupta's calm guidance and advanced treatment plan gave me renewed hope.                                </p>
+
+                                <!-- Divider -->
+                                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                                <!-- Author -->
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                                        K                                    </div>
+                                    <div>
+                                        <p class="font-bold text-deep-indigo text-sm leading-tight">Kavita Singh</p>
+                                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                                            <div class="w-full sm:w-1/2 lg:w-1/3 px-3 flex-shrink-0" data-slide>
+                            <div class="group h-full bg-white rounded-3xl p-7 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col">
+
+                                <!-- Rating -->
+                                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                                                            <i class="fas fa-star"></i>
+                                                                            <i class="fas fa-star"></i>
+                                                                            <i class="fas fa-star"></i>
+                                                                            <i class="fas fa-star"></i>
+                                                                            <i class="fas fa-star"></i>
+                                                                    </div>
+
+                                <!-- Quote icon -->
+                                <i class="fas fa-quote-left text-electric-blue/20 text-2xl mb-3"></i>
+
+                                <!-- Review text -->
+                                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                                    Best neurologist I have ever consulted. Diagnosed my condition accurately in the first visit and the treatment worked remarkably well.                                </p>
+
+                                <!-- Divider -->
+                                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                                <!-- Author -->
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-accent to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                                        D                                    </div>
+                                    <div>
+                                        <p class="font-bold text-deep-indigo text-sm leading-tight">Deepak Nair</p>
+                                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                                    </div>
+            </div>
+
+            <!-- Carousel controls -->
+            <div class="flex items-center justify-between mt-8">
+                <div class="flex items-center space-x-2" data-dots></div>
+                <div class="flex items-center space-x-3">
+                    <button type="button" data-prev aria-label="Previous reviews"
                         class="w-11 h-11 rounded-full bg-white hover:bg-electric-blue hover:text-white text-deep-indigo border border-silver-grey shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center active:scale-95">
                         <i class="fas fa-chevron-left text-sm"></i>
                     </button>
-                    <span class="text-xs font-semibold text-deep-indigo bg-white px-5 py-2.5 rounded-full border border-silver-grey shadow-sm">
-                        Video <span id="current-short-num">1</span> of <span id="total-shorts-num">6</span>
-                    </span>
-                    <button id="next-short"
-                        class="w-11 h-11 rounded-full bg-white hover:bg-electric-blue hover:text-white text-deep-indigo border border-silver-grey shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center active:scale-95">
+                    <button type="button" data-next aria-label="Next reviews"
+                        class="w-11 h-11 rounded-full bg-electric-blue text-white hover:bg-deep-indigo border border-electric-blue shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center active:scale-95">
                         <i class="fas fa-chevron-right text-sm"></i>
                     </button>
                 </div>
             </div>
-
-            <!-- ── RIGHT: 2×2 Review Grid with Slider ── -->
-            <div class="flex flex-col observe">
-
-                <!-- Sliding viewport — clipping wrapper -->
-                <div class="overflow-hidden">
-                    <div id="reviews-track" class="flex transition-transform duration-500 ease-in-out">
-
-                                                    <!-- Page 1 -->
-                            <div class="min-w-full grid grid-cols-2 gap-5">
-                                                                    <div class="group bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col">
-
-
-                                        <!-- Quote icon -->
-                                        <i class="fas fa-quote-left text-electric-blue/20 text-2xl mb-2"></i>
-
-                                        <!-- Review text -->
-                                        <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                                            Dr. Praveen Gupta transformed my health journey. His expertise and compassion are unmatched.                                        </p>
-
-                                        <!-- Divider -->
-                                        <div class="w-full h-px bg-silver-grey mb-4"></div>
-
-                                        <!-- Author -->
-                                        <div class="flex items-center space-x-3">
-                                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                                                P                                            </div>
-                                            <div>
-                                                <p class="font-bold text-deep-indigo text-sm leading-tight">Priya Sharma</p>
-                                                <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                                                    <div class="group bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col">
-
-
-                                        <!-- Quote icon -->
-                                        <i class="fas fa-quote-left text-electric-blue/20 text-2xl mb-2"></i>
-
-                                        <!-- Review text -->
-                                        <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                                            The level of care and attention I received was exceptional. Truly a world-class professional.                                        </p>
-
-                                        <!-- Divider -->
-                                        <div class="w-full h-px bg-silver-grey mb-4"></div>
-
-                                        <!-- Author -->
-                                        <div class="flex items-center space-x-3">
-                                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-accent to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                                                R                                            </div>
-                                            <div>
-                                                <p class="font-bold text-deep-indigo text-sm leading-tight">Rajesh Kumar</p>
-                                                <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                                                    <div class="group bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col">
-
-
-                                        <!-- Quote icon -->
-                                        <i class="fas fa-quote-left text-electric-blue/20 text-2xl mb-2"></i>
-
-                                        <!-- Review text -->
-                                        <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                                            Outstanding doctor with a wonderful bedside manner. Highly recommend to everyone.                                        </p>
-
-                                        <!-- Divider -->
-                                        <div class="w-full h-px bg-silver-grey mb-4"></div>
-
-                                        <!-- Author -->
-                                        <div class="flex items-center space-x-3">
-                                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-deep-indigo to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                                                A                                            </div>
-                                            <div>
-                                                <p class="font-bold text-deep-indigo text-sm leading-tight">Anita Desai</p>
-                                                <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                                                    <div class="group bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col">
-
-
-                                        <!-- Quote icon -->
-                                        <i class="fas fa-quote-left text-electric-blue/20 text-2xl mb-2"></i>
-
-                                        <!-- Review text -->
-                                        <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                                            After struggling with migraines for years, Dr. Gupta's treatment gave me my life back. Truly exceptional care.                                        </p>
-
-                                        <!-- Divider -->
-                                        <div class="w-full h-px bg-silver-grey mb-4"></div>
-
-                                        <!-- Author -->
-                                        <div class="flex items-center space-x-3">
-                                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-deep-indigo flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                                                S                                            </div>
-                                            <div>
-                                                <p class="font-bold text-deep-indigo text-sm leading-tight">Suresh Mehta</p>
-                                                <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                                            </div>
-                                                    <!-- Page 2 -->
-                            <div class="min-w-full grid grid-cols-2 gap-5">
-                                                                    <div class="group bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col">
-
-
-                                        <!-- Quote icon -->
-                                        <i class="fas fa-quote-left text-electric-blue/20 text-2xl mb-2"></i>
-
-                                        <!-- Review text -->
-                                        <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                                            I was diagnosed with Parkinson's and was devastated. Dr. Gupta's calm guidance and advanced treatment plan gave me renewed hope.                                        </p>
-
-                                        <!-- Divider -->
-                                        <div class="w-full h-px bg-silver-grey mb-4"></div>
-
-                                        <!-- Author -->
-                                        <div class="flex items-center space-x-3">
-                                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                                                K                                            </div>
-                                            <div>
-                                                <p class="font-bold text-deep-indigo text-sm leading-tight">Kavita Singh</p>
-                                                <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                                                    <div class="group bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col">
-
-
-                                        <!-- Quote icon -->
-                                        <i class="fas fa-quote-left text-electric-blue/20 text-2xl mb-2"></i>
-
-                                        <!-- Review text -->
-                                        <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                                            Best neurologist I have ever consulted. Diagnosed my condition accurately in the first visit and the treatment worked remarkably well.                                        </p>
-
-                                        <!-- Divider -->
-                                        <div class="w-full h-px bg-silver-grey mb-4"></div>
-
-                                        <!-- Author -->
-                                        <div class="flex items-center space-x-3">
-                                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-accent to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                                                D                                            </div>
-                                            <div>
-                                                <p class="font-bold text-deep-indigo text-sm leading-tight">Deepak Nair</p>
-                                                <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                                            </div>
-                        
-                    </div>
-                </div>
-
-                <!-- Review slider controls -->
-                <div class="flex items-center justify-between mt-8">
-
-                    <!-- Dot indicators -->
-                    <div class="flex items-center space-x-2" id="review-dots">
-                                                    <button class="review-dot w-2.5 h-2.5 rounded-full transition-all duration-300 bg-electric-blue w-6"
-                                data-page="0"></button>
-                                                    <button class="review-dot w-2.5 h-2.5 rounded-full transition-all duration-300 bg-silver-grey"
-                                data-page="1"></button>
-                                            </div>
-
-                    <!-- Prev / Next -->
-                    <div class="flex items-center space-x-3">
-                        <button id="prev-review"
-                            class="w-11 h-11 rounded-full bg-white hover:bg-electric-blue hover:text-white text-deep-indigo border border-silver-grey shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center active:scale-95">
-                            <i class="fas fa-chevron-left text-sm"></i>
-                        </button>
-                        <button id="next-review"
-                            class="w-11 h-11 rounded-full bg-electric-blue text-white hover:bg-deep-indigo border border-electric-blue shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center active:scale-95">
-                            <i class="fas fa-chevron-right text-sm"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
         </div>
 
-        <!-- JS: Video Slider + Review Slider -->
-        <script>
-        document.addEventListener('DOMContentLoaded', function () {
-
-            // ── Video Slider ──
-            const videoShorts = [{"id":"QhoPKOgHrwY","title":"Patient Recovery Story 1"},{"id":"kEwXD0aT_rQ","title":"Patient Recovery Story 2"},{"id":"jg4e8bjYl-A","title":"Patient Recovery Story 3"},{"id":"LNxm9G-IYZE","title":"Patient Recovery Story 4"},{"id":"6UCSDoYncK8","title":"Patient Recovery Story 5"},{"id":"qj3Z1NhVxqU","title":"Patient Recovery Story 6"}];
-            let currentShortIndex = 0;
-            const player      = document.getElementById('youtube-shorts-player');
-            const currentNum  = document.getElementById('current-short-num');
-            const prevShort   = document.getElementById('prev-short');
-            const nextShort   = document.getElementById('next-short');
-
-            function loadShort(index) {
-                currentShortIndex = index;
-                const v = videoShorts[index];
-                player.src = `https://www.youtube.com/embed/${v.id}?autoplay=0&mute=1&loop=1&playlist=${v.id}&controls=1`;
-                currentNum.textContent = index + 1;
-            }
-
-            prevShort.addEventListener('click', () => loadShort((currentShortIndex - 1 + videoShorts.length) % videoShorts.length));
-            nextShort.addEventListener('click', () => loadShort((currentShortIndex + 1) % videoShorts.length));
-
-            // ── Review Slider ──
-            const track      = document.getElementById('reviews-track');
-            const dots       = document.querySelectorAll('.review-dot');
-            const prevReview = document.getElementById('prev-review');
-            const nextReview = document.getElementById('next-review');
-            const totalPages = track.children.length;
-            let currentPage  = 0;
-
-            function goToPage(page) {
-                currentPage = page;
-                track.style.transform = `translateX(-${page * 100}%)`;
-
-                dots.forEach((dot, i) => {
-                    if (i === page) {
-                        dot.classList.add('bg-electric-blue', 'w-6');
-                        dot.classList.remove('bg-silver-grey');
-                    } else {
-                        dot.classList.remove('bg-electric-blue', 'w-6');
-                        dot.classList.add('bg-silver-grey');
-                    }
-                });
-            }
-
-            dots.forEach(dot => dot.addEventListener('click', () => goToPage(+dot.dataset.page)));
-            prevReview.addEventListener('click', () => goToPage((currentPage - 1 + totalPages) % totalPages));
-            nextReview.addEventListener('click', () => goToPage((currentPage + 1) % totalPages));
-        });
-        </script>
+        <!-- CTA -->
+        <div class="text-center mt-12 observe">
+            <a href="patient-reviews.html"
+               class="inline-flex items-center space-x-2 bg-white hover:bg-electric-blue text-deep-indigo hover:text-white font-bold px-7 py-3.5 rounded-full border border-silver-grey shadow-sm hover:shadow-lg transition-all duration-300">
+                <span>Read All Patient Reviews</span>
+                <i class="fas fa-arrow-right text-xs"></i>
+            </a>
+        </div>
 
     </div>
 </section>
+
+<!-- ════════ Video Testimonials Section ════════ -->
+<section id="video-testimonials" class="py-14 bg-deep-indigo relative overflow-hidden">
+    <!-- Ambient glow -->
+    <div class="absolute -top-24 -left-24 w-96 h-96 bg-electric-blue/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-cyan-accent/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-14 observe">
+            <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 mb-4">
+                <i class="fas fa-play-circle text-cyan-accent text-sm"></i>
+                <span class="text-white text-sm font-semibold">Video Testimonials</span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-4">
+                Hear It From Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 to-cyan-accent">Patients</span>
+            </h2>
+            <p class="text-lg text-white/70">
+                Watch patients share their recovery journeys with Dr. Praveen Gupta in their own words.
+            </p>
+        </div>
+
+        <!-- Video Carousel -->
+        <div class="carousel observe" data-carousel>
+            <div class="overflow-hidden">
+                <div class="flex -mx-3 transition-transform duration-500 ease-out" data-track>
+                                            <div class="w-[72%] sm:w-1/2 md:w-1/3 lg:w-1/4 px-3 flex-shrink-0" data-slide>
+                            <div class="group relative w-full aspect-[9/16] rounded-3xl overflow-hidden bg-black/40 border border-white/10 shadow-xl hover:shadow-cyan-accent/20 hover:-translate-y-1.5 transition-all duration-500"
+                                 data-video-card data-video-id="QhoPKOgHrwY">
+
+                                <img src="https://img.youtube.com/vi/QhoPKOgHrwY/hqdefault.jpg"
+                                     alt="Patient Recovery Story 1"
+                                     loading="lazy"
+                                     class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+
+                                <!-- Gradient overlay -->
+                                <div class="absolute inset-0 bg-gradient-to-t from-deep-indigo/90 via-deep-indigo/10 to-transparent"></div>
+
+                                <!-- Play button -->
+                                <button type="button" aria-label="Play Patient Recovery Story 1"
+                                    class="absolute inset-0 flex items-center justify-center focus:outline-none">
+                                    <span class="w-16 h-16 rounded-full bg-white/15 backdrop-blur-md border border-white/40 flex items-center justify-center text-white text-xl shadow-lg group-hover:bg-cyan-accent group-hover:scale-110 transition-all duration-300">
+                                        <i class="fas fa-play ml-1"></i>
+                                    </span>
+                                </button>
+
+                                <!-- Caption -->
+                                <div class="absolute bottom-0 left-0 right-0 p-5 pointer-events-none">
+                                    <p class="text-white font-bold text-sm leading-snug">Patient Recovery Story 1</p>
+                                    <p class="text-cyan-200 text-xs font-medium mt-1">Patient Testimonial</p>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="w-[72%] sm:w-1/2 md:w-1/3 lg:w-1/4 px-3 flex-shrink-0" data-slide>
+                            <div class="group relative w-full aspect-[9/16] rounded-3xl overflow-hidden bg-black/40 border border-white/10 shadow-xl hover:shadow-cyan-accent/20 hover:-translate-y-1.5 transition-all duration-500"
+                                 data-video-card data-video-id="kEwXD0aT_rQ">
+
+                                <img src="https://img.youtube.com/vi/kEwXD0aT_rQ/hqdefault.jpg"
+                                     alt="Patient Recovery Story 2"
+                                     loading="lazy"
+                                     class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+
+                                <!-- Gradient overlay -->
+                                <div class="absolute inset-0 bg-gradient-to-t from-deep-indigo/90 via-deep-indigo/10 to-transparent"></div>
+
+                                <!-- Play button -->
+                                <button type="button" aria-label="Play Patient Recovery Story 2"
+                                    class="absolute inset-0 flex items-center justify-center focus:outline-none">
+                                    <span class="w-16 h-16 rounded-full bg-white/15 backdrop-blur-md border border-white/40 flex items-center justify-center text-white text-xl shadow-lg group-hover:bg-cyan-accent group-hover:scale-110 transition-all duration-300">
+                                        <i class="fas fa-play ml-1"></i>
+                                    </span>
+                                </button>
+
+                                <!-- Caption -->
+                                <div class="absolute bottom-0 left-0 right-0 p-5 pointer-events-none">
+                                    <p class="text-white font-bold text-sm leading-snug">Patient Recovery Story 2</p>
+                                    <p class="text-cyan-200 text-xs font-medium mt-1">Patient Testimonial</p>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="w-[72%] sm:w-1/2 md:w-1/3 lg:w-1/4 px-3 flex-shrink-0" data-slide>
+                            <div class="group relative w-full aspect-[9/16] rounded-3xl overflow-hidden bg-black/40 border border-white/10 shadow-xl hover:shadow-cyan-accent/20 hover:-translate-y-1.5 transition-all duration-500"
+                                 data-video-card data-video-id="jg4e8bjYl-A">
+
+                                <img src="https://img.youtube.com/vi/jg4e8bjYl-A/hqdefault.jpg"
+                                     alt="Patient Recovery Story 3"
+                                     loading="lazy"
+                                     class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+
+                                <!-- Gradient overlay -->
+                                <div class="absolute inset-0 bg-gradient-to-t from-deep-indigo/90 via-deep-indigo/10 to-transparent"></div>
+
+                                <!-- Play button -->
+                                <button type="button" aria-label="Play Patient Recovery Story 3"
+                                    class="absolute inset-0 flex items-center justify-center focus:outline-none">
+                                    <span class="w-16 h-16 rounded-full bg-white/15 backdrop-blur-md border border-white/40 flex items-center justify-center text-white text-xl shadow-lg group-hover:bg-cyan-accent group-hover:scale-110 transition-all duration-300">
+                                        <i class="fas fa-play ml-1"></i>
+                                    </span>
+                                </button>
+
+                                <!-- Caption -->
+                                <div class="absolute bottom-0 left-0 right-0 p-5 pointer-events-none">
+                                    <p class="text-white font-bold text-sm leading-snug">Patient Recovery Story 3</p>
+                                    <p class="text-cyan-200 text-xs font-medium mt-1">Patient Testimonial</p>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="w-[72%] sm:w-1/2 md:w-1/3 lg:w-1/4 px-3 flex-shrink-0" data-slide>
+                            <div class="group relative w-full aspect-[9/16] rounded-3xl overflow-hidden bg-black/40 border border-white/10 shadow-xl hover:shadow-cyan-accent/20 hover:-translate-y-1.5 transition-all duration-500"
+                                 data-video-card data-video-id="LNxm9G-IYZE">
+
+                                <img src="https://img.youtube.com/vi/LNxm9G-IYZE/hqdefault.jpg"
+                                     alt="Patient Recovery Story 4"
+                                     loading="lazy"
+                                     class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+
+                                <!-- Gradient overlay -->
+                                <div class="absolute inset-0 bg-gradient-to-t from-deep-indigo/90 via-deep-indigo/10 to-transparent"></div>
+
+                                <!-- Play button -->
+                                <button type="button" aria-label="Play Patient Recovery Story 4"
+                                    class="absolute inset-0 flex items-center justify-center focus:outline-none">
+                                    <span class="w-16 h-16 rounded-full bg-white/15 backdrop-blur-md border border-white/40 flex items-center justify-center text-white text-xl shadow-lg group-hover:bg-cyan-accent group-hover:scale-110 transition-all duration-300">
+                                        <i class="fas fa-play ml-1"></i>
+                                    </span>
+                                </button>
+
+                                <!-- Caption -->
+                                <div class="absolute bottom-0 left-0 right-0 p-5 pointer-events-none">
+                                    <p class="text-white font-bold text-sm leading-snug">Patient Recovery Story 4</p>
+                                    <p class="text-cyan-200 text-xs font-medium mt-1">Patient Testimonial</p>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="w-[72%] sm:w-1/2 md:w-1/3 lg:w-1/4 px-3 flex-shrink-0" data-slide>
+                            <div class="group relative w-full aspect-[9/16] rounded-3xl overflow-hidden bg-black/40 border border-white/10 shadow-xl hover:shadow-cyan-accent/20 hover:-translate-y-1.5 transition-all duration-500"
+                                 data-video-card data-video-id="6UCSDoYncK8">
+
+                                <img src="https://img.youtube.com/vi/6UCSDoYncK8/hqdefault.jpg"
+                                     alt="Patient Recovery Story 5"
+                                     loading="lazy"
+                                     class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+
+                                <!-- Gradient overlay -->
+                                <div class="absolute inset-0 bg-gradient-to-t from-deep-indigo/90 via-deep-indigo/10 to-transparent"></div>
+
+                                <!-- Play button -->
+                                <button type="button" aria-label="Play Patient Recovery Story 5"
+                                    class="absolute inset-0 flex items-center justify-center focus:outline-none">
+                                    <span class="w-16 h-16 rounded-full bg-white/15 backdrop-blur-md border border-white/40 flex items-center justify-center text-white text-xl shadow-lg group-hover:bg-cyan-accent group-hover:scale-110 transition-all duration-300">
+                                        <i class="fas fa-play ml-1"></i>
+                                    </span>
+                                </button>
+
+                                <!-- Caption -->
+                                <div class="absolute bottom-0 left-0 right-0 p-5 pointer-events-none">
+                                    <p class="text-white font-bold text-sm leading-snug">Patient Recovery Story 5</p>
+                                    <p class="text-cyan-200 text-xs font-medium mt-1">Patient Testimonial</p>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="w-[72%] sm:w-1/2 md:w-1/3 lg:w-1/4 px-3 flex-shrink-0" data-slide>
+                            <div class="group relative w-full aspect-[9/16] rounded-3xl overflow-hidden bg-black/40 border border-white/10 shadow-xl hover:shadow-cyan-accent/20 hover:-translate-y-1.5 transition-all duration-500"
+                                 data-video-card data-video-id="qj3Z1NhVxqU">
+
+                                <img src="https://img.youtube.com/vi/qj3Z1NhVxqU/hqdefault.jpg"
+                                     alt="Patient Recovery Story 6"
+                                     loading="lazy"
+                                     class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+
+                                <!-- Gradient overlay -->
+                                <div class="absolute inset-0 bg-gradient-to-t from-deep-indigo/90 via-deep-indigo/10 to-transparent"></div>
+
+                                <!-- Play button -->
+                                <button type="button" aria-label="Play Patient Recovery Story 6"
+                                    class="absolute inset-0 flex items-center justify-center focus:outline-none">
+                                    <span class="w-16 h-16 rounded-full bg-white/15 backdrop-blur-md border border-white/40 flex items-center justify-center text-white text-xl shadow-lg group-hover:bg-cyan-accent group-hover:scale-110 transition-all duration-300">
+                                        <i class="fas fa-play ml-1"></i>
+                                    </span>
+                                </button>
+
+                                <!-- Caption -->
+                                <div class="absolute bottom-0 left-0 right-0 p-5 pointer-events-none">
+                                    <p class="text-white font-bold text-sm leading-snug">Patient Recovery Story 6</p>
+                                    <p class="text-cyan-200 text-xs font-medium mt-1">Patient Testimonial</p>
+                                </div>
+                            </div>
+                        </div>
+                                    </div>
+            </div>
+
+            <!-- Carousel controls -->
+            <div class="flex items-center justify-between mt-8">
+                <div class="flex items-center space-x-2" data-dots data-dot-active="bg-cyan-accent" data-dot-idle="bg-white/30"></div>
+                <div class="flex items-center space-x-3">
+                    <button type="button" data-prev aria-label="Previous videos"
+                        class="w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-sm transition-all duration-300 flex items-center justify-center active:scale-95">
+                        <i class="fas fa-chevron-left text-sm"></i>
+                    </button>
+                    <button type="button" data-next aria-label="Next videos"
+                        class="w-11 h-11 rounded-full bg-cyan-accent hover:bg-electric-blue text-white border border-cyan-accent hover:border-electric-blue transition-all duration-300 flex items-center justify-center active:scale-95">
+                        <i class="fas fa-chevron-right text-sm"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center mt-12 observe">
+            <a href="video-testimonials.html"
+               class="inline-flex items-center space-x-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/25 hover:border-white/50 text-white font-bold px-7 py-3.5 rounded-full transition-all duration-300">
+                <span>Watch All Video Testimonials</span>
+                <i class="fas fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<!-- JS: Testimonial carousels (written + video) -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    // ── Generic card carousel (responsive: steps by one card, clamps at the end) ──
+    document.querySelectorAll('[data-carousel]').forEach(function (root) {
+        const track   = root.querySelector('[data-track]');
+        const slides  = Array.from(root.querySelectorAll('[data-slide]'));
+        const dotsBox = root.querySelector('[data-dots]');
+        const prevBtn = root.querySelector('[data-prev]');
+        const nextBtn = root.querySelector('[data-next]');
+        if (!track || !slides.length) return;
+
+        const activeCls = (dotsBox && dotsBox.dataset.dotActive) || 'bg-electric-blue';
+        const idleCls   = (dotsBox && dotsBox.dataset.dotIdle)   || 'bg-silver-grey';
+
+        let index = 0;
+        let maxIndex = 0;
+
+        function visibleCount() {
+            const viewport = track.parentElement.clientWidth;
+            const step = slides[0].offsetWidth + (parseFloat(getComputedStyle(track).columnGap) || 0);
+            if (!step) return 1;
+            return Math.max(1, Math.round(viewport / step));
+        }
+
+        function buildDots() {
+            if (!dotsBox) return;
+            dotsBox.innerHTML = '';
+            for (let i = 0; i <= maxIndex; i++) {
+                const dot = document.createElement('button');
+                dot.type = 'button';
+                dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+                dot.className = 'w-2.5 h-2.5 rounded-full transition-all duration-300 ' + idleCls;
+                dot.addEventListener('click', () => goTo(i));
+                dotsBox.appendChild(dot);
+            }
+        }
+
+        function paintDots() {
+            if (!dotsBox) return;
+            Array.from(dotsBox.children).forEach((dot, i) => {
+                dot.classList.toggle(activeCls, i === index);
+                dot.classList.toggle('w-6', i === index);
+                dot.classList.toggle(idleCls, i !== index);
+            });
+        }
+
+        function goTo(i) {
+            index = Math.min(Math.max(i, 0), maxIndex);
+            track.style.transform = `translateX(-${slides[index].offsetLeft - slides[0].offsetLeft}px)`;
+            paintDots();
+        }
+
+        function layout() {
+            maxIndex = Math.max(0, slides.length - visibleCount());
+            buildDots();
+            goTo(Math.min(index, maxIndex));
+        }
+
+        prevBtn && prevBtn.addEventListener('click', () => goTo(index === 0 ? maxIndex : index - 1));
+        nextBtn && nextBtn.addEventListener('click', () => goTo(index >= maxIndex ? 0 : index + 1));
+
+        // Touch / swipe
+        let startX = 0;
+        root.addEventListener('touchstart', (e) => { startX = e.changedTouches[0].screenX; }, { passive: true });
+        root.addEventListener('touchend', (e) => {
+            const delta = e.changedTouches[0].screenX - startX;
+            if (Math.abs(delta) > 50) goTo(delta < 0 ? index + 1 : index - 1);
+        }, { passive: true });
+
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(layout, 150);
+        });
+
+        layout();
+    });
+
+    // ── Click-to-play video testimonial cards (thumbnail → iframe) ──
+    document.querySelectorAll('[data-video-card]').forEach(function (card) {
+        card.addEventListener('click', function () {
+            if (card.dataset.playing === 'true') return;
+            card.dataset.playing = 'true';
+            const id = card.dataset.videoId;
+            card.innerHTML = '<iframe class="absolute inset-0 w-full h-full" '
+                + 'src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&playsinline=1" '
+                + 'title="Patient video testimonial" frameborder="0" '
+                + 'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" '
+                + 'allowfullscreen></iframe>';
+        });
+    });
+});
+</script>
 
 <!-- Blog Section -->
 <section class="py-12 bg-white">
