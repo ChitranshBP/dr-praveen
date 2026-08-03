@@ -315,8 +315,23 @@ foreach (array_slice($services, 0, 6) as $svc) {
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-gradient-to-r from-electric-blue to-cyan-accent text-white shadow-lg hover:shadow-xl hover:shadow-electric-blue/40 transition-all duration-300 transform translate-y-20 opacity-0 z-50 flex items-center justify-center group">
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/<?php echo SITE_WHATSAPP; ?>?text=<?php echo rawurlencode(WHATSAPP_MESSAGE); ?>"
+       target="_blank" rel="noopener noreferrer"
+       aria-label="Chat with us on WhatsApp"
+       class="group fixed bottom-8 right-8 w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#1DA851] text-white shadow-lg hover:shadow-xl hover:shadow-[#25D366]/50 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center z-50">
+        <!-- Pulsing halo -->
+        <span class="absolute inset-0 rounded-full bg-[#25D366]/40 animate-ping pointer-events-none"></span>
+        <i class="fab fa-whatsapp text-2xl relative"></i>
+
+        <!-- Hover label (desktop) -->
+        <span class="hidden lg:block absolute right-full mr-3 whitespace-nowrap bg-deep-indigo text-white text-xs font-semibold px-3 py-2 rounded-full shadow-lg opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none">
+            Chat on WhatsApp
+        </span>
+    </a>
+
+    <!-- Back to Top Button (stacked above the WhatsApp button) -->
+    <button id="back-to-top" class="fixed bottom-28 right-9 w-12 h-12 rounded-full bg-white text-deep-indigo border border-silver-grey shadow-lg hover:bg-electric-blue hover:text-white hover:shadow-xl hover:shadow-electric-blue/40 transition-all duration-300 transform translate-y-20 opacity-0 z-50 flex items-center justify-center group">
         <i class="fas fa-arrow-up group-hover:-translate-y-0.5 transition-transform"></i>
     </button>
 

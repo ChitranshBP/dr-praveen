@@ -13,6 +13,10 @@ define('STROKE_HELPLINE', '1800-309-0247');
 define('SITE_EMAIL', 'contact@drpraveengupta.com');
 define('SITE_ADDRESS', 'New Delhi, India');
 
+// WhatsApp — digits only, country code first, no '+', spaces or dashes (wa.me format)
+define('SITE_WHATSAPP', '919876543210');
+define('WHATSAPP_MESSAGE', 'Hello, I would like to book an appointment with Dr. Praveen Gupta.');
+
 // Social Media
 define('SOCIAL_FACEBOOK', 'https://facebook.com/drpraveengupta');
 define('SOCIAL_INSTAGRAM', 'https://instagram.com/drpraveengupta');
@@ -254,6 +258,16 @@ $videoTestimonials = [
         'id' => 'qj3Z1NhVxqU',
         'title' => 'Patient Recovery Story 6'
     ]
+];
+
+// Instagram Reels — shortcodes from the reel URL: instagram.com/reel/<shortcode>/
+// Add or reorder entries here; the homepage section renders them automatically.
+$instagramHandle  = 'neuro_doc1';
+$instagramProfile = 'https://www.instagram.com/neuro_doc1/';
+$instagramReels = [
+    ['id' => 'DbYcwZOBfSK'],
+    ['id' => 'DbPwCw0O5J8'],
+    ['id' => 'DbBREsghH7A'],
 ];
 
 // Awards & Recognition
