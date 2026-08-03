@@ -63,7 +63,7 @@ if (file_exists($doctorsJsonPath)) {
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-12">
             <span class="text-electric-blue font-bold text-xs uppercase tracking-wider">Leadership</span>
-            <h2 class="text-3xl font-bold text-deep-indigo font-serif mt-2">Clinical Director</h2>
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo mt-2">Clinical Director</h2>
         </div>
 
         <!-- Dr Praveen Gupta profile -->
@@ -78,7 +78,7 @@ if (file_exists($doctorsJsonPath)) {
                 <div class="md:col-span-8 space-y-4">
                     <span class="text-cyan-accent font-bold text-xs uppercase tracking-widest"><?php echo htmlspecialchars($praveenGupta['designation']); ?></span>
                     <h3 class="text-2xl font-bold text-deep-indigo font-serif"><?php echo htmlspecialchars($praveenGupta['name']); ?></h3>
-                    <p class="text-xs text-dark-grey/70 leading-relaxed font-light">
+                    <p class="text-sm text-dark-grey/70 leading-relaxed">
                         <?php echo htmlspecialchars($praveenGupta['modal']['sections']['About'][0] ?? ''); ?>
                     </p>
                     <div class="flex flex-wrap gap-4 pt-2">
@@ -98,7 +98,7 @@ if (file_exists($doctorsJsonPath)) {
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-12">
             <span class="text-electric-blue font-bold text-xs uppercase tracking-wider">Associate Specialists</span>
-            <h2 class="text-3xl font-bold text-deep-indigo font-serif mt-2">Specialty & Rehabilitation Team</h2>
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo mt-2">Specialty & Rehabilitation Team</h2>
             <p class="text-sm text-dark-grey/65 mt-3 leading-relaxed">
                 Our specialists provide dedicated diagnostics, care, and recovery assistance.
             </p>
@@ -113,7 +113,7 @@ if (file_exists($doctorsJsonPath)) {
                 </div>
                 <h3 class="font-bold text-deep-indigo text-base leading-tight"><?php echo htmlspecialchars($doc['name']); ?></h3>
                 <p class="text-[11px] text-cyan-accent font-semibold mt-1.5 leading-relaxed"><?php echo htmlspecialchars($doc['specialty']); ?></p>
-                <p class="text-xs text-dark-grey/65 mt-2 leading-relaxed line-clamp-3 font-light"><?php echo htmlspecialchars($doc['designation']); ?></p>
+                <p class="text-xs text-dark-grey/65 mt-2 leading-relaxed line-clamp-3"><?php echo htmlspecialchars($doc['designation']); ?></p>
                 <div class="text-xs text-electric-blue font-semibold mt-auto pt-4 group-hover:underline flex items-center">
                     <span>View Profile</span>
                     <i class="fas fa-arrow-right text-[9px] ml-1.5 transition-transform duration-300 group-hover:translate-x-0.5"></i>
@@ -131,7 +131,7 @@ if (file_exists($doctorsJsonPath)) {
             <!-- Left -->
             <div class="lg:col-span-7 space-y-6">
                 <span class="text-electric-blue font-bold text-xs uppercase tracking-widest font-sans">Patient Coordination</span>
-                <h2 class="text-3xl font-bold text-deep-indigo font-serif">Seamless Patient Experience Support</h2>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo">Seamless Patient Experience Support</h2>
                 <p class="text-sm text-dark-grey/70 leading-relaxed">
                     Our patient coordinators are dedicated to easing your journey, managing schedules, coordinating diagnostic tests, handling outstation or international cases, and providing emergency helpline coordination.
                 </p>
@@ -141,14 +141,14 @@ if (file_exists($doctorsJsonPath)) {
                             <span class="w-2 h-2 bg-cyan-accent rounded-full"></span>
                             <span>Appointment Scheduling</span>
                         </h4>
-                        <p class="text-xs text-dark-grey/65 leading-relaxed">Assists with booking slots for in-person, online, and emergency evaluations.</p>
+                        <p class="text-sm text-dark-grey/65 leading-relaxed">Assists with booking slots for in-person, online, and emergency evaluations.</p>
                     </div>
                     <div class="space-y-2">
                         <h4 class="font-bold text-deep-indigo text-sm flex items-center space-x-2">
                             <span class="w-2 h-2 bg-cyan-accent rounded-full"></span>
                             <span>Emergency Coordination</span>
                         </h4>
-                        <p class="text-xs text-dark-grey/65 leading-relaxed">Helps dispatch stroke ambulance codes and coordinates with emergency ICU teams.</p>
+                        <p class="text-sm text-dark-grey/65 leading-relaxed">Helps dispatch stroke ambulance codes and coordinates with emergency ICU teams.</p>
                     </div>
                 </div>
             </div>
@@ -156,7 +156,7 @@ if (file_exists($doctorsJsonPath)) {
             <!-- Right -->
             <div class="lg:col-span-5 bg-gradient-to-br from-deep-indigo to-indigo-950 text-white p-8 rounded-3xl space-y-6">
                 <h3 class="text-xl font-bold font-serif">Contact Coordination</h3>
-                <p class="text-xs text-white/80 leading-relaxed">
+                <p class="text-sm text-white/80 leading-relaxed">
                     Have questions about consultation slots, documentation, or outstation visits? Get in touch with our team.
                 </p>
                 <div class="space-y-4 pt-2">
@@ -311,7 +311,7 @@ if (file_exists($doctorsJsonPath)) {
                 if (listStyle === 'paragraphs') {
                     items.forEach(text => {
                         const p = document.createElement('p');
-                        p.className = 'text-xs text-dark-grey/85 leading-relaxed font-light text-justify';
+                        p.className = 'text-sm text-dark-grey/85 leading-relaxed';
                         p.innerText = text;
                         sectionDiv.appendChild(p);
                     });
@@ -330,8 +330,8 @@ if (file_exists($doctorsJsonPath)) {
                     ul.className = 'space-y-2';
                     items.forEach(text => {
                         const li = document.createElement('li');
-                        li.className = 'flex items-start space-x-3 text-xs text-dark-grey/85 leading-relaxed bg-amber-50/20 p-3 rounded-2xl border border-amber-100/30';
-                        li.innerHTML = `<i class="fas fa-star text-[10px] text-amber-500 shrink-0 mt-1"></i> <span class="font-light">${text}</span>`;
+                        li.className = 'flex items-start space-x-3 text-sm text-dark-grey/85 leading-relaxed bg-amber-50/20 p-3 rounded-2xl border border-amber-100/30';
+                        li.innerHTML = `<i class="fas fa-star text-[10px] text-amber-500 shrink-0 mt-1"></i> <span>${text}</span>`;
                         ul.appendChild(li);
                     });
                     sectionDiv.appendChild(ul);
@@ -340,8 +340,8 @@ if (file_exists($doctorsJsonPath)) {
                     ul.className = 'space-y-2';
                     items.forEach(text => {
                         const li = document.createElement('li');
-                        li.className = 'flex items-start space-x-3 text-xs text-dark-grey/85 leading-relaxed';
-                        li.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-electric-blue shrink-0 mt-1.5"></span> <span class="font-light">${text}</span>`;
+                        li.className = 'flex items-start space-x-3 text-sm text-dark-grey/85 leading-relaxed';
+                        li.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-electric-blue shrink-0 mt-1.5"></span> <span>${text}</span>`;
                         ul.appendChild(li);
                     });
                     sectionDiv.appendChild(ul);

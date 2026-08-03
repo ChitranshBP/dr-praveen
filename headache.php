@@ -8,7 +8,13 @@ require_once __DIR__ . '/includes/header.php';
 
 <!-- Page Hero -->
 <section class="relative overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20">
-    <div class="absolute inset-0 bg-black/5"></div>
+    <!-- Background image (gradient above stays as the fallback if it fails to load) -->
+    <img src="assets/breadcrumbs/dr-parveen-headache.png" alt=""
+         fetchpriority="high"
+         class="absolute inset-0 w-full h-full object-cover object-[72%_center] md:object-right pointer-events-none select-none">
+
+    <!-- Legibility overlay: solid behind the copy, clearing towards the photo on the right -->
+    <div class="absolute inset-0 bg-gradient-to-r from-deep-indigo/95 via-deep-indigo/75 to-deep-indigo/35 md:to-transparent"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl text-left animate-fade-in-up">
@@ -811,48 +817,6 @@ function toggleFaq(button) {
 </section>
 
 <!-- CTA Section -->
-<section class="relative py-12 bg-white overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <!-- Main CTA Card -->
-        <div class="relative bg-gradient-to-r from-electric-blue to-cyan-accent rounded-[36px] overflow-hidden shadow-2xl p-8 md:p-14 lg:p-16">
-            <!-- Concentric Circles Pattern (Right Side) -->
-            <div class="absolute -right-64 top-1/2 -translate-y-1/2 w-[850px] h-[850px] flex items-center justify-center pointer-events-none z-0">
-                <div class="absolute w-[850px] h-[850px] bg-white/[0.03] rounded-full"></div>
-                <div class="absolute w-[720px] h-[720px] bg-white/[0.05] rounded-full"></div>
-                <div class="absolute w-[590px] h-[590px] bg-white/[0.07] rounded-full"></div>
-                <div class="absolute w-[460px] h-[460px] bg-white/[0.09] rounded-full"></div>
-                <div class="absolute w-[330px] h-[330px] bg-white/[0.11] rounded-full"></div>
-                <div class="absolute w-[200px] h-[200px] bg-white/[0.13] rounded-full"></div>
-                <div class="absolute w-[70px]  h-[70px]  bg-white/[0.15] rounded-full"></div>
-            </div>
 
-            <!-- Content (Left Aligned) -->
-            <div class="relative z-10 max-w-2xl text-left">
-                <h2 class="text-4xl md:text-5xl lg:text-6xl font-sans font-extrabold text-white mb-4 leading-tight tracking-tight">
-                    Let's Get In Touch.
-                </h2>
-                <p class="text-white/85 text-sm md:text-base mb-10 max-w-lg leading-relaxed">
-                    Ready to prioritize your health? Schedule a consultation with Dr. Praveen Gupta today and take the first step towards a healthier tomorrow.
-                </p>
-
-                <!-- Buttons Row -->
-                <div class="flex flex-wrap gap-4 items-center">
-                    <a href="contact.php" class="inline-flex items-center space-x-6 bg-[#111827] text-white text-xs md:text-sm font-semibold pl-6 pr-2.5 py-2.5 rounded-full hover:bg-black transition-all duration-300 shadow-lg hover:-translate-y-0.5 active:translate-y-0 group">
-                        <span>Book Appointment</span>
-                        <div class="w-7 h-7 rounded-full bg-gradient-to-b from-white via-slate-100 to-slate-400 shadow-[inset_0_1px_2px_rgba(255,255,255,0.8),0_2px_4px_rgba(0,0,0,0.3)] flex items-center justify-center text-[#111827] text-xs font-bold transition-transform duration-300 group-hover:scale-110 flex-shrink-0">
-                            <i class="fas fa-chevron-right text-[9px]"></i>
-                        </div>
-                    </a>
-                    <a href="tel:<?php echo SITE_PHONE; ?>" class="inline-flex items-center space-x-6 bg-[#111827] text-white text-xs md:text-sm font-semibold pl-6 pr-2.5 py-2.5 rounded-full hover:bg-black transition-all duration-300 shadow-lg hover:-translate-y-0.5 active:translate-y-0 group">
-                        <span>Call Now</span>
-                        <div class="w-7 h-7 rounded-full bg-gradient-to-b from-white via-slate-100 to-slate-400 shadow-[inset_0_1px_2px_rgba(255,255,255,0.8),0_2px_4px_rgba(0,0,0,0.3)] flex items-center justify-center text-[#111827] text-xs font-bold transition-transform duration-300 group-hover:scale-110 flex-shrink-0">
-                            <i class="fas fa-phone text-[9px]"></i>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

@@ -145,21 +145,25 @@ $stats = [
     [
         'number' => '500K',
         'label' => 'Happy Patients',
+        'icon' => 'fas fa-user-group',
         'description' => 'We take pride in the trust of over 500,000 patients whose health and happiness remain our top priorities.'
     ],
     [
         'number' => '100%',
         'label' => 'Satisfaction',
+        'icon' => 'fas fa-face-smile',
         'description' => 'Committed to delivering outstanding clinical outcomes and patient-first specialized care.'
     ],
     [
         'number' => '20+',
         'label' => 'Experience',
+        'icon' => 'fas fa-user-doctor',
         'description' => 'Providing over two decades of expert medical diagnosis, treatment, and neurological care.'
     ],
     [
         'number' => '70+',
         'label' => 'Publications',
+        'icon' => 'fas fa-book-medical',
         'description' => 'Contributing to global medical research with over 70 scientific publications and journals.'
     ],
 ];

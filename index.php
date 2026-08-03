@@ -311,11 +311,15 @@ if (file_exists($doctorsJsonPath)) {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <?php foreach ($stats as $stat): ?>
                 <div
-                    class="bg-white rounded-3xl p-6 md:p-8 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 flex flex-col justify-between h-full text-left observe">
+                    class="group bg-white rounded-3xl p-6 md:p-8 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 flex flex-col justify-between h-full text-left observe">
                     <div>
+                        <!-- Icon -->
+                        <div class="w-12 h-12 rounded-2xl bg-electric-blue/10 text-electric-blue flex items-center justify-center text-xl mb-5 group-hover:bg-gradient-to-br group-hover:from-electric-blue group-hover:to-cyan-accent group-hover:text-white transition-all duration-300">
+                            <i class="<?php echo $stat['icon'] ?? 'fas fa-chart-line'; ?>"></i>
+                        </div>
                         <div class="text-4xl font-extrabold text-deep-indigo mb-1"><?php echo $stat['number']; ?></div>
                         <div class="text-base font-bold text-deep-indigo mb-4"><?php echo $stat['label']; ?></div>
-                        <div class="w-full h-px bg-gray-100 my-4"></div>
+                        <div class="w-full h-px bg-silver-grey my-4"></div>
                         <p class="text-sm text-dark-grey/70 leading-relaxed mt-4"><?php echo $stat['description']; ?></p>
                     </div>
                 </div>
@@ -509,6 +513,53 @@ if (file_exists($doctorsJsonPath)) {
                     <!-- Floating Overlaid Card -->
 
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════ Virtual Consultation Strip ════════ -->
+<section id="virtual-consultation" class="py-8 md:py-10 bg-gradient-to-r from-deep-indigo via-electric-blue to-cyan-accent relative overflow-hidden">
+    <!-- Ambient glow -->
+    <div class="absolute -top-20 -left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-24 right-1/4 w-72 h-72 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
+    <!-- Oversized watermark icon -->
+    <i class="fas fa-laptop-medical absolute -right-6 top-1/2 -translate-y-1/2 text-white/10 text-[10rem] pointer-events-none hidden lg:block"></i>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 observe">
+
+            <!-- Message -->
+            <div class="flex items-start sm:items-center gap-5">
+                <div class="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur-md border border-white/25 text-white flex items-center justify-center text-2xl flex-shrink-0">
+                    <i class="fas fa-video"></i>
+                </div>
+                <div>
+                    <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 mb-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-200 animate-pulse"></span>
+                        <span class="text-white text-[11px] font-semibold uppercase tracking-wider">Virtual Consultation</span>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-serif font-bold text-white leading-tight mb-1.5">
+                        Consult Dr. Praveen Gupta from Anywhere
+                    </h2>
+                    <p class="text-sm md:text-base text-white/80 leading-relaxed max-w-xl">
+                        Secure online video consultations for new diagnoses, treatment reviews and second opinions — no travel required.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex flex-wrap items-center gap-4 flex-shrink-0">
+                <a href="online-neurologist-consultation.php"
+                   class="inline-flex items-center space-x-2.5 bg-white hover:bg-deep-indigo text-deep-indigo hover:text-white font-bold px-7 py-3.5 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
+                    <span>Book Video Consultation</span>
+                    <i class="fas fa-arrow-right text-xs"></i>
+                </a>
+                <a href="tel:<?php echo SITE_PHONE; ?>"
+                   class="inline-flex items-center space-x-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/25 hover:border-white/50 text-white font-bold px-7 py-3.5 rounded-full transition-all duration-300">
+                    <i class="fas fa-phone-alt text-xs"></i>
+                    <span><?php echo SITE_PHONE; ?></span>
+                </a>
             </div>
         </div>
     </div>
@@ -1012,14 +1063,14 @@ document.addEventListener('DOMContentLoaded', function () {
             </p>
         </div>
 
-        <!-- Sliding viewport: shows 4 videos (2×2) per page -->
+        <!-- Sliding viewport: 3 videos per page, so each player renders taller -->
         <div class="overflow-hidden">
             <div id="edu-track" class="flex transition-transform duration-500 ease-in-out">
                 <?php
-                $eduPages = array_chunk($educationVideos, 4);
+                $eduPages = array_chunk($educationVideos, 3);
                 foreach ($eduPages as $epIdx => $epPage):
                 ?>
-                    <div class="min-w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="min-w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                         <?php foreach ($epPage as $video): ?>
                             <div class="group bg-white rounded-3xl overflow-hidden border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 observe">
 
@@ -1053,12 +1104,13 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
 
         <!-- Slider controls -->
-        <div class="flex items-center justify-between mt-8">
+        <div class="flex items-center justify-between gap-6 mt-8">
 
-            <!-- Dot indicators -->
-            <div class="flex items-center space-x-2" id="edu-dots">
+            <!-- Dot indicators (wrap so 19 pages never collide with the arrows) -->
+            <div class="flex items-center flex-wrap gap-2 flex-1 min-w-0" id="edu-dots">
                 <?php foreach ($eduPages as $epIdx => $epPage): ?>
                     <button class="edu-dot rounded-full transition-all duration-300 <?php echo $epIdx === 0 ? 'w-6 h-2.5 bg-electric-blue' : 'w-2.5 h-2.5 bg-silver-grey'; ?>"
+                        aria-label="Go to video page <?php echo $epIdx + 1; ?>"
                         data-page="<?php echo $epIdx; ?>"></button>
                 <?php endforeach; ?>
             </div>

@@ -61,6 +61,25 @@ require_once __DIR__ . '/includes/header.php';
                     Spinal health affects every facet of daily movement. Our clinic covers a wide range of spine pathology, prioritizing conservative management and advanced Minimally Invasive Spine Surgery (MISS). Our goal is to achieve maximal decompression and stability with minimal disruption to surrounding muscles.
                 </p>
 
+                <!-- Conditions We Treat -->
+                <div class="p-6 bg-gradient-to-br from-soft-cyan to-white rounded-3xl border border-cyan-accent/20 space-y-4">
+                    <h3 class="font-bold text-deep-indigo text-base font-serif">Conditions We Treat</h3>
+                    <ul class="grid sm:grid-cols-2 gap-4 text-xs text-dark-grey/70">
+                        <li class="flex items-start space-x-2.5">
+                            <span class="w-5 h-5 bg-cyan-accent/20 text-cyan-700 font-bold rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-check text-[10px]"></i></span>
+                            <div><strong class="text-deep-indigo">Herniated & Slip Discs:</strong> Relieving compressed sciatic nerves in the lumbar or cervical spine.</div>
+                        </li>
+                        <li class="flex items-start space-x-2.5">
+                            <span class="w-5 h-5 bg-cyan-accent/20 text-cyan-700 font-bold rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-check text-[10px]"></i></span>
+                            <div><strong class="text-deep-indigo">Spinal Canal Stenosis:</strong> Widening narrowed passages to restore walking capacity.</div>
+                        </li>
+                        <li class="flex items-start space-x-2.5 sm:col-span-2">
+                            <span class="w-5 h-5 bg-cyan-accent/20 text-cyan-700 font-bold rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-check text-[10px]"></i></span>
+                            <div><strong class="text-deep-indigo">Spondylolisthesis:</strong> Stabilizing slipped vertebrae using micro-fixation and fusion strategies.</div>
+                        </li>
+                    </ul>
+                </div>
+
                 <div class="space-y-4">
                     <div class="p-6 bg-slate-50 border border-slate-200/50 rounded-3xl space-y-2">
                         <h3 class="font-bold text-deep-indigo text-base flex items-center space-x-2">
@@ -84,27 +103,11 @@ require_once __DIR__ . '/includes/header.php';
                 </div>
             </div>
 
-            <!-- Right: Diagnostics & Tech -->
-            <div class="lg:col-span-5 bg-gradient-to-br from-soft-cyan to-white p-8 rounded-3xl border border-cyan-accent/20 space-y-6">
-                <h3 class="text-xl font-bold text-deep-indigo font-serif">Conditions We Treat</h3>
-                <p class="text-xs text-dark-grey/60 leading-relaxed">
-                    Our team provides clinical diagnostic workups and surgical solutions for:
-                </p>
-
-                <ul class="space-y-4 text-xs text-dark-grey/70">
-                    <li class="flex items-start space-x-3">
-                        <span class="w-5 h-5 bg-cyan-accent/20 text-cyan-700 font-bold rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-check text-[10px]"></i></span>
-                        <div><strong class="text-deep-indigo">Herniated & Slip Discs:</strong> Relieving compressed sciatic nerves in the lumbar or cervical spine.</div>
-                    </li>
-                    <li class="flex items-start space-x-3">
-                        <span class="w-5 h-5 bg-cyan-accent/20 text-cyan-700 font-bold rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-check text-[10px]"></i></span>
-                        <div><strong class="text-deep-indigo">Spinal Canal Stenosis:</strong> Widening narrowed spinal passages to restore walking capacity and reduce leg pain.</div>
-                    </li>
-                    <li class="flex items-start space-x-3">
-                        <span class="w-5 h-5 bg-cyan-accent/20 text-cyan-700 font-bold rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-check text-[10px]"></i></span>
-                        <div><strong class="text-deep-indigo">Spondylolisthesis:</strong> Stabilizing slipped vertebrae using micro-fixation and fusion strategies.</div>
-                    </li>
-                </ul>
+            <!-- Right: Image -->
+            <div class="lg:col-span-5 relative flex justify-center lg:justify-end">
+                <div class="relative w-full max-w-md lg:max-w-none aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-soft-cyan to-silver-grey border border-silver-grey/20">
+                    <img src="assets/services/spine-surgery.png" alt="Spine Surgery" class="w-full h-full object-cover">
+                </div>
             </div>
         </div>
     </div>

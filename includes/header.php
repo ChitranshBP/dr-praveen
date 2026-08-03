@@ -322,7 +322,7 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <a href="index.php" class="flex items-center group">
-                    <img id="header-logo" src="assets/logo/NeuroDoc - logo_highquality.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" class="h-14 sm:h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 invert brightness-0">
+                    <img id="header-logo" src="assets/logo/NeuroDoc - logo-update-final.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" class="h-14 sm:h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 invert brightness-0">
                 </a>
 
                 <!-- Desktop Navigation -->

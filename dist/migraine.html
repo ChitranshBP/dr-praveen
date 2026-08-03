@@ -313,7 +313,7 @@
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <a href="index.html" class="flex items-center group">
-                    <img id="header-logo" src="assets/logo/NeuroDoc - logo_highquality.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" class="h-14 sm:h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 invert brightness-0">
+                    <img id="header-logo" src="assets/logo/NeuroDoc - logo-update-final.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" class="h-14 sm:h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 invert brightness-0">
                 </a>
 
                 <!-- Desktop Navigation -->
@@ -963,7 +963,13 @@
 
 <!-- Page Hero -->
 <section class="relative overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20">
-    <div class="absolute inset-0 bg-black/5"></div>
+    <!-- Background image (gradient above stays as the fallback if it fails to load) -->
+    <img src="assets/breadcrumbs/dr-parveen-migraine.png" alt=""
+         fetchpriority="high"
+         class="absolute inset-0 w-full h-full object-cover object-[68%_center] md:object-right pointer-events-none select-none">
+
+    <!-- Legibility overlay: solid behind the copy, clearing towards the photo on the right -->
+    <div class="absolute inset-0 bg-gradient-to-r from-deep-indigo/95 via-deep-indigo/75 to-deep-indigo/35 md:to-transparent"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl text-left animate-fade-in-up">
@@ -2643,7 +2649,7 @@ function toggleFaq(button) {
                 <div class="lg:col-span-4">
                     <div class="mb-6">
                         <a href="index.html" class="inline-block group">
-                            <img src="assets/logo/NeuroDoc - logo_highquality.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" class="h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 invert brightness-0">
+                            <img src="assets/logo/NeuroDoc - logo-update-final.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" class="h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 invert brightness-0">
                         </a>
                     </div>
                     <p class="text-white/70 leading-relaxed mb-6 text-sm">
