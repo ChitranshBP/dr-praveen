@@ -102,21 +102,16 @@ $featuredVideo = $educationVideos[0];
                     <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-white text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('headache', this)">Headache</button>
                     <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-white text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('dementia', this)">Dementia</button>
                     <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-white text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('spine', this)">Spine/Nerve</button>
+                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-white text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('rehab', this)">Rehab</button>
                     <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-white text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('wellness', this)">Wellness</button>
                 </div>
             </div>
         </div>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" id="video-grid">
-            <?php foreach ($educationVideos as $video): 
-                // Dynamically tag categories
-                $t = strtolower($video['title']);
-                $cat = 'wellness';
-                if (strpos($t, 'stroke') !== false || strpos($t, 'tia') !== false) $cat = 'stroke';
-                elseif (strpos($t, 'epilepsy') !== false || strpos($t, 'seizure') !== false) $cat = 'epilepsy';
-                elseif (strpos($t, 'headache') !== false || strpos($t, 'migraine') !== false) $cat = 'headache';
-                elseif (strpos($t, 'dementia') !== false || strpos($t, 'alzheimer') !== false || strpos($t, 'memory') !== false) $cat = 'dementia';
-                elseif (strpos($t, 'spine') !== false || strpos($t, 'back pain') !== false || strpos($t, 'neck pain') !== false || strpos($t, 'spondylosis') !== false || strpos($t, 'nerve') !== false || strpos($t, 'neuropathy') !== false || strpos($t, 'sciatica') !== false) $cat = 'spine';
+            <?php foreach ($educationVideos as $video):
+                // Categories come from getVideoCategory() in includes/config.php
+                $cat = getVideoCategory($video['title']);
             ?>
                 <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
                      data-category="<?php echo $cat; ?>" data-title="<?php echo htmlspecialchars(strtolower($video['title'])); ?>"

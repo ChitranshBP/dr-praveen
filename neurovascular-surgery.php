@@ -49,62 +49,63 @@ require_once __DIR__ . '/includes/header.php';
     </div>
 </section>
 
-<!-- Clinical Overview -->
-<section class="py-16 bg-white">
+<!-- Treating Complex Vascular Conditions Section -->
+<section class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-12 gap-12 items-center">
-            <!-- Left: Info -->
-            <div class="lg:col-span-7 space-y-6">
-                <span class="text-electric-blue font-bold text-xs uppercase tracking-widest font-sans">Vascular Neurology</span>
-                <h2 class="text-3xl font-bold text-deep-indigo font-serif">Treating Complex Vascular Conditions</h2>
-                <p class="text-sm text-dark-grey/70 leading-relaxed">
-                    Neurovascular disorders affect the delicate blood vessels supplying the brain and spinal cord. Our clinic integrates advanced neuro-interventional radiology and microsurgery, allowing us to perform life-saving interventions for strokes, hemorrhages, and vascular abnormalities.
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="animate-slide-in-left">
+                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Vascular Neurology</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Treating Complex Vascular Conditions</h2>
+                <p class="text-dark-grey/70 leading-relaxed mb-6">
+                    Neurovascular disorders affect the delicate blood vessels supplying the brain and spinal cord. Our clinic integrates advanced neuro-interventional radiology with open microsurgery, so the right technique can be chosen for the vessel rather than the other way round.
+                </p>
+                <p class="text-dark-grey/70 leading-relaxed mb-8">
+                    That combination lets us perform life-saving interventions for strokes, haemorrhages and vascular abnormalities — including emergency cases arriving through our 24/7 stroke helpline and neuro-ICU.
                 </p>
 
-                <!-- Vascular Conditions Managed -->
-                <div class="p-6 bg-gradient-to-br from-soft-cyan to-white rounded-3xl border border-cyan-accent/20 space-y-4">
-                    <h3 class="font-bold text-deep-indigo text-base font-serif">Vascular Conditions Managed</h3>
-                    <ul class="grid sm:grid-cols-2 gap-4 text-xs text-dark-grey/70">
-                        <li class="flex items-start space-x-2.5">
-                            <span class="w-5 h-5 bg-cyan-accent/20 text-cyan-700 font-bold rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-check text-[10px]"></i></span>
-                            <div><strong class="text-deep-indigo">Cerebral Aneurysms:</strong> Preventing subarachnoid hemorrhage (brain bleeding) through clipping/coiling.</div>
-                        </li>
-                        <li class="flex items-start space-x-2.5">
-                            <span class="w-5 h-5 bg-cyan-accent/20 text-cyan-700 font-bold rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-check text-[10px]"></i></span>
-                            <div><strong class="text-deep-indigo">AVMs:</strong> Resecting or embolizing complex tangles of arteries and veins.</div>
-                        </li>
-                        <li class="flex items-start space-x-2.5 sm:col-span-2">
-                            <span class="w-5 h-5 bg-cyan-accent/20 text-cyan-700 font-bold rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-check text-[10px]"></i></span>
-                            <div><strong class="text-deep-indigo">Carotid Stenosis:</strong> Performing carotid endarterectomy or stenting to prevent acute strokes.</div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="space-y-4">
-                    <div class="p-6 bg-slate-50 border border-slate-200/50 rounded-3xl space-y-2">
-                        <h3 class="font-bold text-deep-indigo text-base flex items-center space-x-2">
-                            <span class="w-6 h-6 bg-electric-blue/10 rounded-full flex items-center justify-center text-electric-blue text-xs"><i class="fas fa-compress-alt"></i></span>
-                            <span>Surgical Aneurysm Clipping</span>
-                        </h3>
-                        <p class="text-xs text-dark-grey/65 leading-relaxed">
-                            Securing weak vascular points (aneurysms) using microscopic surgery and metal clips to stop bleeding or prevent life-threatening rupture.
-                        </p>
+                <!-- Key Facts -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-electric-blue text-xs"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-dark-grey text-sm">Microsurgery</div>
+                            <div class="text-xs text-dark-grey/60">Open surgical clipping</div>
+                        </div>
                     </div>
-
-                    <div class="p-6 bg-slate-50 border border-slate-200/50 rounded-3xl space-y-2">
-                        <h3 class="font-bold text-deep-indigo text-base flex items-center space-x-2">
-                            <span class="w-6 h-6 bg-electric-blue/10 rounded-full flex items-center justify-center text-electric-blue text-xs"><i class="fas fa-route"></i></span>
-                            <span>Endovascular Interventions</span>
-                        </h3>
-                        <p class="text-xs text-dark-grey/65 leading-relaxed">
-                            Using micro-catheters fed from the groin to perform coiling, stent-assisted reconstruction, or flow diversion inside weak arteries, minimizing head trauma.
-                        </p>
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-electric-blue text-xs"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-dark-grey text-sm">Endovascular</div>
+                            <div class="text-xs text-dark-grey/60">Catheter-based coiling</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-electric-blue text-xs"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-dark-grey text-sm">24/7 Stroke Response</div>
+                            <div class="text-xs text-dark-grey/60">Emergency thrombectomy</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-electric-blue text-xs"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-dark-grey text-sm">Neuro-ICU</div>
+                            <div class="text-xs text-dark-grey/60">Post-op vascular monitoring</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Right: Image -->
-            <div class="lg:col-span-5 relative flex justify-center lg:justify-end">
+            <!-- Image Side -->
+            <div class="relative flex justify-center lg:justify-end animate-slide-in-right">
                 <div class="relative w-full max-w-md lg:max-w-none aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-soft-cyan to-silver-grey border border-silver-grey/20">
                     <img src="assets/services/neurovascular.png" alt="Neurovascular Surgery" class="w-full h-full object-cover">
                 </div>
@@ -113,73 +114,123 @@ require_once __DIR__ . '/includes/header.php';
     </div>
 </section>
 
-<!-- Why Choose Us Section -->
-<section class="py-12 bg-slate-50/50 relative overflow-hidden">
+<!-- Vascular Conditions Managed -->
+<section class="py-12 bg-[#edf5f9]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            <!-- Content Side -->
-            <div class="lg:col-span-6 observe">
-                <span class="text-xs font-bold tracking-wider text-dark-grey/60 uppercase block mb-3 font-sans">
-                    Why Choose Dr. Praveen Gupta?
-                </span>
-                <h2 class="text-4xl md:text-5xl font-serif font-bold text-deep-indigo leading-tight mb-6">
-                    Providing Best Treatment
-                </h2>
-                <p class="text-base text-dark-grey/70 mb-10 leading-relaxed max-w-lg">
-                    With an unwavering commitment to clinical excellence, Dr. Praveen Gupta combines advanced technology and patient-centric therapies to deliver world-class neurological care.
-                </p>
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Applications</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Vascular Conditions Managed</h2>
+            <p class="text-dark-grey/70 leading-relaxed">
+                Each of these conditions carries a risk of sudden, catastrophic bleeding — which is why they are treated as time-critical.
+            </p>
+        </div>
 
-                <!-- Grid of 4 Items -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
-                    <div class="flex items-start space-x-4">
-                        <div class="w-12 h-12 rounded-xl bg-white border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
-                            <i class="fa-solid fa-earth-americas text-xl text-electric-blue"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Global Standards of Care</h4>
-                            <p class="text-xs text-dark-grey/65 leading-relaxed">Treatments backed by advanced technology and international guidelines.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="w-12 h-12 rounded-xl bg-white border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
-                            <i class="fa-solid fa-lightbulb text-xl text-electric-blue"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Innovative Procedures</h4>
-                            <p class="text-xs text-dark-grey/65 leading-relaxed">Pioneer in stroke care, DBS, and complex surgeries in India.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="w-12 h-12 rounded-xl bg-white border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
-                            <i class="fa-solid fa-circle-check text-xl text-electric-blue"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Proven Results</h4>
-                            <p class="text-xs text-dark-grey/65 leading-relaxed">Thousands of patients treated successfully with rapid recovery.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="w-12 h-12 rounded-xl bg-white border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
-                            <i class="fa-solid fa-hand-holding-heart text-xl text-electric-blue"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Compassionate Consultation</h4>
-                            <p class="text-xs text-dark-grey/65 leading-relaxed">Empowering patients with knowledge, compassion, and personalized care.</p>
-                        </div>
-                    </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
+                <div class="w-14 h-14 bg-electric-blue/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-electric-blue transition-all duration-300">
+                    <i class="fas fa-circle-dot text-electric-blue text-xl group-hover:text-white transition-colors"></i>
                 </div>
-
-                <div>
-                    <a href="contact-us-top-neurologist-delhi-ncr.php" class="inline-flex items-center px-8 py-3.5 bg-[#111827] text-white text-sm font-bold rounded-full hover:bg-electric-blue transition-colors duration-300 shadow-lg shadow-dark-grey/10">
-                        Get Started
-                    </a>
+                <h3 class="text-lg font-bold text-dark-grey mb-3">Cerebral Aneurysms</h3>
+                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
+                    Preventing subarachnoid haemorrhage — bleeding around the brain — by securing the weak point through clipping or coiling.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Clipping</span>
+                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Coiling</span>
                 </div>
             </div>
+            <!-- Card 2 -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
+                <div class="w-14 h-14 bg-cyan-accent/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-cyan-accent transition-all duration-300">
+                    <i class="fas fa-diagram-project text-cyan-accent text-xl group-hover:text-white transition-colors"></i>
+                </div>
+                <h3 class="text-lg font-bold text-dark-grey mb-3">Arteriovenous Malformations</h3>
+                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
+                    Resecting or embolising complex tangles of arteries and veins before they rupture and bleed into brain tissue.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Resection</span>
+                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Embolisation</span>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
+                <div class="w-14 h-14 bg-deep-indigo/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-deep-indigo transition-all duration-300">
+                    <i class="fas fa-heart-pulse text-deep-indigo text-xl group-hover:text-white transition-colors"></i>
+                </div>
+                <h3 class="text-lg font-bold text-dark-grey mb-3">Carotid Stenosis</h3>
+                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
+                    Carotid endarterectomy or stenting to reopen the narrowed neck arteries that supply the brain, preventing acute stroke.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Endarterectomy</span>
+                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Stenting</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-            <!-- Image Side -->
-            <div class="lg:col-span-6 relative flex justify-center lg:justify-end observe">
-                <div class="relative w-full max-w-md lg:max-w-none aspect-[3:4] rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-soft-cyan to-silver-grey">
-                    <img src="assets/full-image/dpg-award.webp" alt="Compassionate Care" class="w-full h-full object-cover">
+<!-- Treatment Journey -->
+<section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Experience</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">What to Expect, Start to Finish</h2>
+            <p class="text-dark-grey/70 leading-relaxed">
+                Vascular conditions demand hyper-acute responses. This is how a case moves from presentation to recovery.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            <!-- Step 1 -->
+            <div class="relative">
+                <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
+                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">1</div>
+                    <h3 class="text-lg font-bold text-dark-grey mb-3">Urgent Imaging</h3>
+                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
+                        CT, MRI and angiography establish where the vessel is weak or blocked, and how urgently it needs securing.
+                    </p>
+                </div>
+                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
+                    <i class="fas fa-chevron-right text-xl"></i>
+                </div>
+            </div>
+            <!-- Step 2 -->
+            <div class="relative">
+                <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
+                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">2</div>
+                    <h3 class="text-lg font-bold text-dark-grey mb-3">Treatment Planning</h3>
+                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
+                        The team decides between open microsurgery and an endovascular approach based on the location, size and shape of the lesion.
+                    </p>
+                </div>
+                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
+                    <i class="fas fa-chevron-right text-xl"></i>
+                </div>
+            </div>
+            <!-- Step 3 -->
+            <div class="relative">
+                <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
+                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">3</div>
+                    <h3 class="text-lg font-bold text-dark-grey mb-3">Intervention</h3>
+                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
+                        Surgical clipping under the microscope, or micro-catheters fed from the groin for coiling, stent-assisted reconstruction or flow diversion.
+                    </p>
+                </div>
+                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
+                    <i class="fas fa-chevron-right text-xl"></i>
+                </div>
+            </div>
+            <!-- Step 4 -->
+            <div class="relative">
+                <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
+                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">4</div>
+                    <h3 class="text-lg font-bold text-dark-grey mb-3">Neuro-ICU &amp; Follow-Up</h3>
+                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
+                        Post-operative monitoring in the neuro-ICU to manage vascular spasm and intracranial pressure, then structured outpatient review.
+                    </p>
                 </div>
             </div>
         </div>
@@ -217,6 +268,12 @@ require_once __DIR__ . '/includes/header.php';
         </div>
     </div>
 </section>
+
+<!-- Video Testimonials (component: includes/video-testimonials.php) -->
+<?php require __DIR__ . "/includes/video-testimonials.php"; ?>
+
+<!-- Related Videos (topic-matched, see $pageVideos in includes/config.php) -->
+<?php require __DIR__ . "/includes/related-videos.php"; ?>
 
 <!-- FAQ Section -->
 <section class="py-12 bg-slate-50/50">
@@ -315,44 +372,5 @@ function toggleFaq(button) {
     }
 }
 </script>
-
-<!-- Recovery & Patient Support -->
-<section class="py-16 bg-white border-t border-silver-grey/40">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-12 gap-12 items-center">
-            <!-- Left: Text -->
-            <div class="lg:col-span-7 space-y-6">
-                <span class="text-electric-blue font-bold text-xs uppercase tracking-widest font-sans">Emergency Connection</span>
-                <h2 class="text-3xl font-bold text-deep-indigo font-serif">Integration with Stroke Team</h2>
-                <p class="text-sm text-dark-grey/70 leading-relaxed">
-                    Vascular conditions require immediate, hyper-acute responses. Our neurovascular surgical team is closely connected with our stroke helpline and neurocritical intensive care unit to ensure 24/7 coverage for ruptured aneurysms or mechanical thrombectomy.
-                </p>
-                <div class="grid sm:grid-cols-2 gap-6 text-xs text-dark-grey/70">
-                    <div class="flex items-start space-x-2">
-                        <i class="fas fa-check text-cyan-accent mt-0.5 flex-shrink-0"></i>
-                        <p><strong class="text-deep-indigo">24/7 Stroke Response:</strong> Emergency catheter clot removal (thrombectomy) to rescue brain tissue.</p>
-                    </div>
-                    <div class="flex items-start space-x-2">
-                        <i class="fas fa-check text-cyan-accent mt-0.5 flex-shrink-0"></i>
-                        <p><strong class="text-deep-indigo">Advanced ICU:</strong> Post-op monitoring in our neuro-ICU to manage vascular spasms and intracranial pressure.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right: Booking -->
-            <div class="lg:col-span-5 bg-gradient-to-br from-deep-indigo to-indigo-950 text-white p-8 rounded-3xl space-y-4">
-                <h3 class="text-xl font-bold font-serif">Consultation Booking</h3>
-                <p class="text-xs text-white/80 leading-relaxed">
-                    Schedule a diagnostic vascular review or obtain a second opinion on aneurysm management options.
-                </p>
-                <div class="pt-2">
-                    <a href="contact-us-top-neurologist-delhi-ncr.php" class="block w-full text-center bg-cyan-accent hover:bg-cyan-500 text-deep-indigo font-bold py-3 rounded-2xl transition-colors text-xs">
-                        Book Appointment
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

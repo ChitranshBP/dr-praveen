@@ -79,6 +79,14 @@ require_once __DIR__ . '/includes/header.php';
     </div>
 </section>
 
+<!-- Video Testimonials (component: includes/video-testimonials.php) -->
+<?php
+$vtEyebrow = 'Video Stories';
+$vtHeading = 'Recovery Stories on <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 to-cyan-accent">Video</span>';
+$vtIntro   = 'Hear these journeys first hand — patients describing their diagnosis, treatment and recovery in their own words.';
+require __DIR__ . '/includes/video-testimonials.php';
+?>
+
 <!-- Call to Action -->
 <section class="py-16 bg-slate-50 border-t border-b border-silver-grey/40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">

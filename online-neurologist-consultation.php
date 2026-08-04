@@ -268,4 +268,7 @@ function toggleFaq(button) {
 }
 </script>
 
+<!-- Video Testimonials (component: includes/video-testimonials.php) -->
+<?php require __DIR__ . "/includes/video-testimonials.php"; ?>
+
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

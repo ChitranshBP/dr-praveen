@@ -33,8 +33,9 @@ $navItems = [
         ['name' => 'Our Team', 'url' => 'team.php'],
         ['name' => 'Awards & Honors', 'url' => 'awards-and-recognition.php'],
     ]],
+    // 'viewAll' => true renders the item as a highlighted link pinned to the
+    // bottom of the dropdown, separated from the list above it.
     ['name' => 'Services', 'url' => '#', 'children' => [
-        ['name' => 'Services Hub', 'url' => 'services.php'],
         ['name' => 'Brain Tumor Surgery', 'url' => 'brain-tumor-surgery.php'],
         ['name' => 'Spine Surgery', 'url' => 'spine-surgery.php'],
         ['name' => 'Functional Neurosurgery', 'url' => 'functional-neurosurgery.php'],
@@ -44,9 +45,9 @@ $navItems = [
         ['name' => 'Brain Health Hub', 'url' => 'brain-health-center.php'],
         ['name' => 'Neurocritical Care', 'url' => 'neurocritical-acute-stroke-care.php'],
         ['name' => 'rTMS Therapy', 'url' => 'rtms-therapy.php'],
+        ['name' => 'View All Services', 'url' => 'services.php', 'viewAll' => true],
     ]],
     ['name' => 'Conditions', 'url' => '#', 'children' => [
-        ['name' => 'Conditions Hub', 'url' => 'neurological-conditions.php'],
         ['name' => 'Epilepsy', 'url' => 'epilepsy.php'],
         ['name' => 'Headache', 'url' => 'headache.php'],
         ['name' => 'Migraine', 'url' => 'migraine.php'],
@@ -56,6 +57,7 @@ $navItems = [
         ['name' => 'Multiple Sclerosis', 'url' => 'ms.php'],
         ['name' => 'Movement Disorders', 'url' => 'movement.php'],
         ['name' => 'Peripheral Neuropathy', 'url' => 'neuropathy.php'],
+        ['name' => 'View All Conditions', 'url' => 'neurological-conditions.php', 'viewAll' => true],
     ]],
     ['name' => 'Patient Info', 'url' => '#', 'children' => [
         ['name' => 'Patient Info', 'url' => 'patient-info.php'],
@@ -137,6 +139,13 @@ $services = [
         'bullet' => 'Neuropsychological testing',
         'image' => 'assets/services/memory-clinic.png',
         'link' => 'memory-clinic.php'
+    ],
+    [
+        'title' => 'Neuro-Rehabilitation Centre',
+        'description' => 'Structured recovery programs after stroke, injury and surgery',
+        'bullet' => 'Physiotherapy, speech and cognitive therapy',
+        'image' => 'assets/services/rehab.png',
+        'link' => 'neuro-rehabilitation-center.php'
     ]
 ];
 
@@ -272,6 +281,155 @@ $instagramReels = [
     ['id' => 'DbYcwZOBfSK'],
     ['id' => 'DbPwCw0O5J8'],
     ['id' => 'DbBREsghH7A'],
+];
+
+/**
+ * Topic map: which education videos belong on which condition / service page.
+ *
+ * Keys are page filenames, values are video IDs drawn from $educationVideos above.
+ * Order matters — the most directly relevant video should come first.
+ * A page with no entry here simply renders no related-videos section.
+ * Rendered by includes/related-videos.php.
+ */
+$pageVideos = [
+
+    // ── Condition pages ──────────────────────────────────────────────
+    'epilepsy.php' => [
+        'HCBSttaqm08', // Understanding Epilepsy and Seizures
+        'e-totg4fbAQ', // Epilepsy First Aid: What to Do
+        'VA0iTziT-yU', // Living Safely with Epilepsy
+        'JO9eGHAPOp4', // Pediatric Epilepsy and Seizure Control
+        '9vE_Cofbayk', // Epilepsy Management During Pregnancy
+    ],
+    'migraine.php' => [
+        'jdDJjHKXOuE', // Preventative Tips for Migraine Patients
+        'K8Ct06if4Bc', // Migraine Triggers and Food Habits
+        'bffAUpfcr1E', // How to Manage Chronic Headaches
+        '7OdQGLg_NIQ', // Tackling Anxiety-Induced Headaches
+        'iBvkymzjMWE', // How Stress Affects Your Brain
+    ],
+    'headache.php' => [
+        'bffAUpfcr1E', // How to Manage Chronic Headaches
+        '7OdQGLg_NIQ', // Tackling Anxiety-Induced Headaches
+        'KijjPIG3mtA', // Managing Trigeminal Neuralgia Pain
+        'jdDJjHKXOuE', // Preventative Tips for Migraine Patients
+        'ox84BTy70gE', // Preventing Chronic Brain Fatigue
+    ],
+    'stroke.php' => [
+        '19eYLaT95jo', // Stroke Warning Signs & FAST Protocol
+        'LcBJlz040YY', // Recognizing Early Stroke Symptoms
+        'yWkceIAx0I4', // Understanding TIA (Transient Ischemic Attack)
+        'nVAhwpuwuFY', // Stroke Recovery: The Critical First Month
+        'BdBsAkCpQtg', // Spasticity Treatment After Stroke
+        '-3tAktnWlq8', // Post-Stroke Depression & Recovery Support
+        'WAbz6l4zm7c', // Healthy Diet Tips for Stroke Prevention
+        'p8q2ORXW5ts', // Preventing Brain Stroke Risks In Summers
+    ],
+    'parkinsons.php' => [
+        'wzoHirIE8og', // Demystifying Parkinson's Disease & DBS
+        'vU-KYEswDZ0', // Treatment for Tremors & Parkinson's
+        'jp68Y0bYfuo', // DBS Surgery Candidate Selection
+        'e2jhqLMxrg8', // Advanced Neuro-Rehabilitation Therapy
+    ],
+    'movement.php' => [
+        'vU-KYEswDZ0', // Treatment for Tremors & Parkinson's
+        'wzoHirIE8og', // Demystifying Parkinson's Disease & DBS
+        'CLfWvubTAO0', // Restless Legs Syndrome Diagnosis
+        'jp68Y0bYfuo', // DBS Surgery Candidate Selection
+        '97iJMOfzbQ0', // Motor Neuron Disease (MND) Care Protocols
+    ],
+    'vertigo.php' => [
+        'HHV_qGv5wCM', // Vertigo and Balance Disorders: Cure Without Pills
+        'sXl0eyou7EU', // Vertigo: Relieved Without Pills!
+        'x0PfxhAcnQ4', // Dizziness vs. Vertigo: Understanding Differences
+    ],
+    'ms.php' => [
+        'dbJjk1_Y9Dw', // Managing Multiple Sclerosis Symptoms
+        'DIdecCaF2Js', // Myasthenia Gravis: Diagnostic and Care Paths
+        '479zCN2vdBQ', // Guillain-Barré Syndrome (GBS) Recovery
+        'e2jhqLMxrg8', // Advanced Neuro-Rehabilitation Therapy
+    ],
+    'neuropathy.php' => [
+        'gngiRwzLH20', // Nerve Pain and Neuropathy Treatment Options
+        't8KS0TEkgl0', // Understanding Nerve Conduction Studies
+        'pSLVKT1W93Q', // Understanding Neuromuscular Disorders
+        '479zCN2vdBQ', // Guillain-Barré Syndrome (GBS) Recovery
+        'bqibQJelNmU', // Dealing with Chronic Neurological Pain
+        'KijjPIG3mtA', // Managing Trigeminal Neuralgia Pain
+    ],
+
+    // ── Service pages ────────────────────────────────────────────────
+    'brain-tumor-surgery.php' => [
+        'wiaiEgD_dtw', // Understanding Brain Tumors: Types & Stages
+        'ohTGrS92kiE', // Management of Brain Infections
+        '9AuZuZyI-Io', // Preventing Traumatic Brain Injury Complications
+        'e2jhqLMxrg8', // Advanced Neuro-Rehabilitation Therapy
+    ],
+    'spine-surgery.php' => [
+        'SfDdMcUCsBM', // Treating Cervical Spondylosis & Neck Pain
+        'og9VMNrE7yk', // Management of Sciatica & Lower Back Pain
+        'linE3GzsOYk', // Understanding Spinal Cord Injuries
+        'r_FCRgtGl9Q', // Physical Therapy for Spinal Stenosis
+        'zqOCl_r92kA', // Quick Tips for Back Pain Relief
+    ],
+    'functional-neurosurgery.php' => [
+        'jp68Y0bYfuo', // DBS Surgery Candidate Selection
+        'wzoHirIE8og', // Demystifying Parkinson's Disease & DBS
+        'vU-KYEswDZ0', // Treatment for Tremors & Parkinson's
+        '1lMG9FIfyR8', // rTMS Therapy for Brain Rehabilitation
+    ],
+    'neurovascular-surgery.php' => [
+        'gns03zl4k7o', // Aneurysms and Neurovascular Care
+        'yWkceIAx0I4', // Understanding TIA (Transient Ischemic Attack)
+        '19eYLaT95jo', // Stroke Warning Signs & FAST Protocol
+        'AomViYJ5yms', // Therapy Advancements in Neurocritical Care
+    ],
+    'memory-clinic.php' => [
+        'gJuWUl08Urk', // Managing Dementia & Alzheimer's Care
+        '3yhvFSFuPW4', // Alzheimer's Disease: Early Diagnostic Clues
+        'nlZjfIk9Jws', // Prevention of Memory Loss & Dementia
+        'VizML8pOj3g', // Protecting Memory as You Age
+        '3TvNGdpDchU', // Cognitive Assessments in Elderly Patients
+        'NZraszbqrt4', // Dementia Caregiver Survival Guide
+        'RPrRp9h20kA', // Geriatric Neurology Care Guides
+    ],
+    'brain-health-center.php' => [
+        'NFqg7wsC-sg', // Preventative Neurology & Healthy Brain Habits
+        'iBvkymzjMWE', // How Stress Affects Your Brain
+        'Yby46JYGC_0', // Management of Sleep Disorders
+        'ox84BTy70gE', // Preventing Chronic Brain Fatigue
+        'VizML8pOj3g', // Protecting Memory as You Age
+    ],
+    'neuro-rehabilitation-center.php' => [
+        'e2jhqLMxrg8', // Advanced Neuro-Rehabilitation Therapy
+        'BdBsAkCpQtg', // Spasticity Treatment After Stroke
+        'nVAhwpuwuFY', // Stroke Recovery: The Critical First Month
+        '1lMG9FIfyR8', // rTMS Therapy for Brain Rehabilitation
+        'r_FCRgtGl9Q', // Physical Therapy for Spinal Stenosis
+    ],
+    'neurocritical-acute-stroke-care.php' => [
+        'AomViYJ5yms', // Therapy Advancements in Neurocritical Care
+        '19eYLaT95jo', // Stroke Warning Signs & FAST Protocol
+        'QSVHJtC_Guc', // Brain Stroke Helpline & Emergency Response
+        'nVAhwpuwuFY', // Stroke Recovery: The Critical First Month
+    ],
+    'brain-stroke-helpline.php' => [
+        'QSVHJtC_Guc', // Brain Stroke Helpline & Emergency Response
+        '19eYLaT95jo', // Stroke Warning Signs & FAST Protocol
+        'LcBJlz040YY', // Recognizing Early Stroke Symptoms
+        'yWkceIAx0I4', // Understanding TIA (Transient Ischemic Attack)
+    ],
+    'emergency-neurology-care.php' => [
+        'QSVHJtC_Guc', // Brain Stroke Helpline & Emergency Response
+        'e-totg4fbAQ', // Epilepsy First Aid: What to Do
+        'AomViYJ5yms', // Therapy Advancements in Neurocritical Care
+        '9AuZuZyI-Io', // Preventing Traumatic Brain Injury Complications
+    ],
+    'rtms-therapy.php' => [
+        '1lMG9FIfyR8', // rTMS Therapy for Brain Rehabilitation
+        'e2jhqLMxrg8', // Advanced Neuro-Rehabilitation Therapy
+        '-3tAktnWlq8', // Post-Stroke Depression & Recovery Support
+    ],
 ];
 
 // Awards & Recognition
@@ -608,6 +766,23 @@ $educationVideos = [
 ];
 
 // Link mapping helper for service details pages
+/**
+ * Tags an education video into a filter category from its title.
+ * Shared by videos.php and neurology-video-library.php so both pages
+ * bucket the library identically — keep the filter buttons on those
+ * pages in sync with the categories returned here.
+ */
+function getVideoCategory($title) {
+    $t = strtolower($title);
+    if (strpos($t, 'stroke') !== false || strpos($t, 'tia') !== false) return 'stroke';
+    if (strpos($t, 'epilepsy') !== false || strpos($t, 'seizure') !== false) return 'epilepsy';
+    if (strpos($t, 'headache') !== false || strpos($t, 'migraine') !== false) return 'headache';
+    if (strpos($t, 'dementia') !== false || strpos($t, 'alzheimer') !== false || strpos($t, 'memory') !== false) return 'dementia';
+    if (strpos($t, 'spine') !== false || strpos($t, 'spinal') !== false || strpos($t, 'back pain') !== false || strpos($t, 'neck pain') !== false || strpos($t, 'spondylosis') !== false || strpos($t, 'nerve') !== false || strpos($t, 'neuropathy') !== false || strpos($t, 'sciatica') !== false) return 'spine';
+    if (strpos($t, 'rehab') !== false || strpos($t, 'physiotherapy') !== false || strpos($t, 'physical therapy') !== false || strpos($t, 'spasticity') !== false || strpos($t, 'rtms') !== false || strpos($t, 'recovery') !== false) return 'rehab';
+    return 'wellness';
+}
+
 function getServicePageLink($title) {
     $titleLower = strtolower($title);
     if (strpos($titleLower, 'tumor') !== false) {

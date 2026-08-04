@@ -49,62 +49,63 @@ require_once __DIR__ . '/includes/header.php';
     </div>
 </section>
 
-<!-- Clinical Overview -->
-<section class="py-16 bg-white">
+<!-- Comprehensive Spinal Care Section -->
+<section class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-12 gap-12 items-center">
-            <!-- Left: Info -->
-            <div class="lg:col-span-7 space-y-6">
-                <span class="text-electric-blue font-bold text-xs uppercase tracking-widest font-sans">Spine Clinic</span>
-                <h2 class="text-3xl font-bold text-deep-indigo font-serif">Comprehensive Spinal Care</h2>
-                <p class="text-sm text-dark-grey/70 leading-relaxed">
-                    Spinal health affects every facet of daily movement. Our clinic covers a wide range of spine pathology, prioritizing conservative management and advanced Minimally Invasive Spine Surgery (MISS). Our goal is to achieve maximal decompression and stability with minimal disruption to surrounding muscles.
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="animate-slide-in-left">
+                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Spine Clinic</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Comprehensive Spinal Care</h2>
+                <p class="text-dark-grey/70 leading-relaxed mb-6">
+                    Spinal health affects every facet of daily movement. Our clinic covers the full range of spine pathology, prioritising conservative management first and turning to advanced Minimally Invasive Spine Surgery (MISS) only where it is genuinely warranted.
+                </p>
+                <p class="text-dark-grey/70 leading-relaxed mb-8">
+                    When surgery is the right answer, the goal is maximal decompression and stability with minimal disruption to the surrounding muscle — smaller incisions, less postoperative pain, and a shorter stay in hospital.
                 </p>
 
-                <!-- Conditions We Treat -->
-                <div class="p-6 bg-gradient-to-br from-soft-cyan to-white rounded-3xl border border-cyan-accent/20 space-y-4">
-                    <h3 class="font-bold text-deep-indigo text-base font-serif">Conditions We Treat</h3>
-                    <ul class="grid sm:grid-cols-2 gap-4 text-xs text-dark-grey/70">
-                        <li class="flex items-start space-x-2.5">
-                            <span class="w-5 h-5 bg-cyan-accent/20 text-cyan-700 font-bold rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-check text-[10px]"></i></span>
-                            <div><strong class="text-deep-indigo">Herniated & Slip Discs:</strong> Relieving compressed sciatic nerves in the lumbar or cervical spine.</div>
-                        </li>
-                        <li class="flex items-start space-x-2.5">
-                            <span class="w-5 h-5 bg-cyan-accent/20 text-cyan-700 font-bold rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-check text-[10px]"></i></span>
-                            <div><strong class="text-deep-indigo">Spinal Canal Stenosis:</strong> Widening narrowed passages to restore walking capacity.</div>
-                        </li>
-                        <li class="flex items-start space-x-2.5 sm:col-span-2">
-                            <span class="w-5 h-5 bg-cyan-accent/20 text-cyan-700 font-bold rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-check text-[10px]"></i></span>
-                            <div><strong class="text-deep-indigo">Spondylolisthesis:</strong> Stabilizing slipped vertebrae using micro-fixation and fusion strategies.</div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="space-y-4">
-                    <div class="p-6 bg-slate-50 border border-slate-200/50 rounded-3xl space-y-2">
-                        <h3 class="font-bold text-deep-indigo text-base flex items-center space-x-2">
-                            <span class="w-6 h-6 bg-electric-blue/10 rounded-full flex items-center justify-center text-electric-blue text-xs"><i class="fas fa-compress-arrows-alt"></i></span>
-                            <span>Minimally Invasive Spine Surgery (MISS)</span>
-                        </h3>
-                        <p class="text-xs text-dark-grey/65 leading-relaxed">
-                            Treating herniated discs, spinal stenosis, and bone spurs using tiny tubular dilators, leading to smaller incisions, less postoperative pain, and minimized hospital stays.
-                        </p>
+                <!-- Key Facts -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-electric-blue text-xs"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-dark-grey text-sm">Conservative First</div>
+                            <div class="text-xs text-dark-grey/60">Surgery only where warranted</div>
+                        </div>
                     </div>
-
-                    <div class="p-6 bg-slate-50 border border-slate-200/50 rounded-3xl space-y-2">
-                        <h3 class="font-bold text-deep-indigo text-base flex items-center space-x-2">
-                            <span class="w-6 h-6 bg-electric-blue/10 rounded-full flex items-center justify-center text-electric-blue text-xs"><i class="fas fa-project-diagram"></i></span>
-                            <span>Decompression & Fusion Protocols</span>
-                        </h3>
-                        <p class="text-xs text-dark-grey/65 leading-relaxed">
-                            Expertly executing lumbar laminectomy, microdiscectomy, and keyhole spinal fusions with real-time neural mapping to relieve compressed nerves safely.
-                        </p>
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-electric-blue text-xs"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-dark-grey text-sm">Tubular Dilators</div>
+                            <div class="text-xs text-dark-grey/60">Smaller incisions, less pain</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-electric-blue text-xs"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-dark-grey text-sm">Real-Time Mapping</div>
+                            <div class="text-xs text-dark-grey/60">Neural monitoring during fusion</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-check text-electric-blue text-xs"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-dark-grey text-sm">Shorter Stays</div>
+                            <div class="text-xs text-dark-grey/60">Minimised hospital time</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Right: Image -->
-            <div class="lg:col-span-5 relative flex justify-center lg:justify-end">
+            <!-- Image Side -->
+            <div class="relative flex justify-center lg:justify-end animate-slide-in-right">
                 <div class="relative w-full max-w-md lg:max-w-none aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-soft-cyan to-silver-grey border border-silver-grey/20">
                     <img src="assets/services/spine-surgery.png" alt="Spine Surgery" class="w-full h-full object-cover">
                 </div>
@@ -113,73 +114,123 @@ require_once __DIR__ . '/includes/header.php';
     </div>
 </section>
 
-<!-- Why Choose Us Section -->
-<section class="py-12 bg-slate-50/50 relative overflow-hidden">
+<!-- Conditions We Treat -->
+<section class="py-12 bg-[#edf5f9]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            <!-- Content Side -->
-            <div class="lg:col-span-6 observe">
-                <span class="text-xs font-bold tracking-wider text-dark-grey/60 uppercase block mb-3 font-sans">
-                    Why Choose Dr. Praveen Gupta?
-                </span>
-                <h2 class="text-4xl md:text-5xl font-serif font-bold text-deep-indigo leading-tight mb-6">
-                    Providing Best Treatment
-                </h2>
-                <p class="text-base text-dark-grey/70 mb-10 leading-relaxed max-w-lg">
-                    With an unwavering commitment to clinical excellence, Dr. Praveen Gupta combines advanced technology and patient-centric therapies to deliver world-class neurological care.
-                </p>
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Applications</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Conditions We Treat</h2>
+            <p class="text-dark-grey/70 leading-relaxed">
+                From nerve compression to structural instability, these are the spinal problems we see and correct most often.
+            </p>
+        </div>
 
-                <!-- Grid of 4 Items -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
-                    <div class="flex items-start space-x-4">
-                        <div class="w-12 h-12 rounded-xl bg-white border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
-                            <i class="fa-solid fa-earth-americas text-xl text-electric-blue"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Global Standards of Care</h4>
-                            <p class="text-xs text-dark-grey/65 leading-relaxed">Treatments backed by advanced technology and international guidelines.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="w-12 h-12 rounded-xl bg-white border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
-                            <i class="fa-solid fa-lightbulb text-xl text-electric-blue"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Innovative Procedures</h4>
-                            <p class="text-xs text-dark-grey/65 leading-relaxed">Pioneer in stroke care, DBS, and complex surgeries in India.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="w-12 h-12 rounded-xl bg-white border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
-                            <i class="fa-solid fa-circle-check text-xl text-electric-blue"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Proven Results</h4>
-                            <p class="text-xs text-dark-grey/65 leading-relaxed">Thousands of patients treated successfully with rapid recovery.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="w-12 h-12 rounded-xl bg-white border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
-                            <i class="fa-solid fa-hand-holding-heart text-xl text-electric-blue"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Compassionate Consultation</h4>
-                            <p class="text-xs text-dark-grey/65 leading-relaxed">Empowering patients with knowledge, compassion, and personalized care.</p>
-                        </div>
-                    </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
+                <div class="w-14 h-14 bg-electric-blue/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-electric-blue transition-all duration-300">
+                    <i class="fas fa-bone text-electric-blue text-xl group-hover:text-white transition-colors"></i>
                 </div>
-
-                <div>
-                    <a href="contact-us-top-neurologist-delhi-ncr.php" class="inline-flex items-center px-8 py-3.5 bg-[#111827] text-white text-sm font-bold rounded-full hover:bg-electric-blue transition-colors duration-300 shadow-lg shadow-dark-grey/10">
-                        Get Started
-                    </a>
+                <h3 class="text-lg font-bold text-dark-grey mb-3">Herniated &amp; Slip Discs</h3>
+                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
+                    Relieving compressed sciatic nerves in the lumbar or cervical spine, restoring pain-free movement and sensation.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Sciatica</span>
+                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Nerve Relief</span>
                 </div>
             </div>
+            <!-- Card 2 -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
+                <div class="w-14 h-14 bg-cyan-accent/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-cyan-accent transition-all duration-300">
+                    <i class="fas fa-arrows-left-right text-cyan-accent text-xl group-hover:text-white transition-colors"></i>
+                </div>
+                <h3 class="text-lg font-bold text-dark-grey mb-3">Spinal Canal Stenosis</h3>
+                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
+                    Widening narrowed passages in the spinal canal to take pressure off the cord and restore walking capacity.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Decompression</span>
+                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Mobility</span>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
+                <div class="w-14 h-14 bg-deep-indigo/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-deep-indigo transition-all duration-300">
+                    <i class="fas fa-layer-group text-deep-indigo text-xl group-hover:text-white transition-colors"></i>
+                </div>
+                <h3 class="text-lg font-bold text-dark-grey mb-3">Spondylolisthesis</h3>
+                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
+                    Stabilising slipped vertebrae using micro-fixation and fusion strategies that preserve as much natural motion as possible.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Micro-Fixation</span>
+                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Stability</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-            <!-- Image Side -->
-            <div class="lg:col-span-6 relative flex justify-center lg:justify-end observe">
-                <div class="relative w-full max-w-md lg:max-w-none aspect-[3:4] rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-soft-cyan to-silver-grey">
-                    <img src="assets/full-image/dpg-award.webp" alt="Compassionate Care" class="w-full h-full object-cover">
+<!-- Treatment Journey -->
+<section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Experience</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">What to Expect, Start to Finish</h2>
+            <p class="text-dark-grey/70 leading-relaxed">
+                Most spinal problems never reach an operating theatre. Here is the full pathway, from first assessment through rehabilitation.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            <!-- Step 1 -->
+            <div class="relative">
+                <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
+                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">1</div>
+                    <h3 class="text-lg font-bold text-dark-grey mb-3">Assessment &amp; Imaging</h3>
+                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
+                        Clinical examination alongside MRI or CT to identify exactly which structure is compressing which nerve, and how much.
+                    </p>
+                </div>
+                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
+                    <i class="fas fa-chevron-right text-xl"></i>
+                </div>
+            </div>
+            <!-- Step 2 -->
+            <div class="relative">
+                <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
+                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">2</div>
+                    <h3 class="text-lg font-bold text-dark-grey mb-3">Conservative Management</h3>
+                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
+                        Physiotherapy, targeted injections and medical management are tried first — many patients recover fully without surgery.
+                    </p>
+                </div>
+                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
+                    <i class="fas fa-chevron-right text-xl"></i>
+                </div>
+            </div>
+            <!-- Step 3 -->
+            <div class="relative">
+                <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
+                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">3</div>
+                    <h3 class="text-lg font-bold text-dark-grey mb-3">Minimally Invasive Surgery</h3>
+                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
+                        Where surgery is needed: laminectomy, microdiscectomy or keyhole fusion through tubular dilators with real-time neural mapping.
+                    </p>
+                </div>
+                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
+                    <i class="fas fa-chevron-right text-xl"></i>
+                </div>
+            </div>
+            <!-- Step 4 -->
+            <div class="relative">
+                <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
+                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">4</div>
+                    <h3 class="text-lg font-bold text-dark-grey mb-3">Rehabilitation</h3>
+                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
+                        Core mobilisation to safely rebuild lumbar stabilisers, plus posture and ergonomic training to prevent recurring micro-stress on the joints.
+                    </p>
                 </div>
             </div>
         </div>
@@ -217,6 +268,12 @@ require_once __DIR__ . '/includes/header.php';
         </div>
     </div>
 </section>
+
+<!-- Video Testimonials (component: includes/video-testimonials.php) -->
+<?php require __DIR__ . "/includes/video-testimonials.php"; ?>
+
+<!-- Related Videos (topic-matched, see $pageVideos in includes/config.php) -->
+<?php require __DIR__ . "/includes/related-videos.php"; ?>
 
 <!-- FAQ Section -->
 <section class="py-12 bg-slate-50/50">
@@ -315,44 +372,5 @@ function toggleFaq(button) {
     }
 }
 </script>
-
-<!-- Recovery & Rehabilitation -->
-<section class="py-16 bg-white border-t border-silver-grey/40">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-12 gap-12 items-center">
-            <!-- Left: Text -->
-            <div class="lg:col-span-7 space-y-6">
-                <span class="text-electric-blue font-bold text-xs uppercase tracking-widest font-sans">Spine Rehabilitation</span>
-                <h2 class="text-3xl font-bold text-deep-indigo font-serif">Comprehensive Rehabilitation</h2>
-                <p class="text-sm text-dark-grey/70 leading-relaxed">
-                    Successful spine recovery relies heavily on structured physical rehabilitation. In cooperation with our rehabilitation center, we offer targeted programs to restore core strength, posture, and flexible movement patterns.
-                </p>
-                <div class="grid sm:grid-cols-2 gap-6 text-xs text-dark-grey/70">
-                    <div class="flex items-start space-x-2">
-                        <i class="fas fa-check text-cyan-accent mt-0.5 flex-shrink-0"></i>
-                        <p><strong class="text-deep-indigo">Core Mobilization:</strong> Safely rebuild lumbar core stabilizers to protect the spine.</p>
-                    </div>
-                    <div class="flex items-start space-x-2">
-                        <i class="fas fa-check text-cyan-accent mt-0.5 flex-shrink-0"></i>
-                        <p><strong class="text-deep-indigo">Posture Training:</strong> Ergonometric and alignment mapping to prevent recurring micro-stress on joints.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right: Booking -->
-            <div class="lg:col-span-5 bg-gradient-to-br from-deep-indigo to-indigo-950 text-white p-8 rounded-3xl space-y-4">
-                <h3 class="text-xl font-bold font-serif">Consultation Booking</h3>
-                <p class="text-xs text-white/80 leading-relaxed">
-                    Schedule a diagnostic workup or surgical opinion with our clinical experts.
-                </p>
-                <div class="pt-2">
-                    <a href="contact-us-top-neurologist-delhi-ncr.php" class="block w-full text-center bg-cyan-accent hover:bg-cyan-500 text-deep-indigo font-bold py-3 rounded-2xl transition-colors text-xs">
-                        Book Appointment
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

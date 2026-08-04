@@ -583,101 +583,11 @@ require_once __DIR__ . '/includes/header.php';
     </div>
 </section>
 
-<!-- Education / Knowledge Videos Section -->
-<section class="py-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Left-aligned header -->
-        <div class="mb-12 observe">
-            <div class="flex items-center space-x-2 mb-3">
-                <i class="fas fa-play-circle text-electric-blue text-sm"></i>
-                <span class="text-sm text-dark-grey/50 font-medium">Education</span>
-            </div>
-            <h2 class="text-4xl md:text-5xl font-serif font-bold text-dark-grey leading-tight">
-                Knowledge & Awareness
-            </h2>
-        </div>
+<!-- Video Testimonials (component: includes/video-testimonials.php) -->
+<?php require __DIR__ . "/includes/video-testimonials.php"; ?>
 
-        <!-- Sliding viewport: shows 4 videos (2×2) per page -->
-        <div class="overflow-hidden">
-            <div id="edu-track" class="flex transition-transform duration-500 ease-in-out">
-                <?php
-                $eduPages = array_chunk($educationVideos, 4);
-                foreach ($eduPages as $epIdx => $epPage):
-                ?>
-                    <div class="min-w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <?php foreach ($epPage as $video): ?>
-                            <div class="group bg-white rounded-2xl overflow-hidden border border-silver-grey/50 shadow-sm hover:shadow-xl transition-all duration-400 hover:-translate-y-1 observe">
-                                <!-- Embed -->
-                                <div class="relative w-full aspect-video bg-dark-grey">
-                                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/<?php echo $video['id']; ?>?rel=0&modestbranding=1" title="<?php echo htmlspecialchars($video['title']); ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                                </div>
-                                <!-- Card footer -->
-                                <div class="p-4">
-                                    <h3 class="font-bold text-deep-indigo text-sm md:text-base leading-snug mb-1 group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
-                                        <?php echo $video['title']; ?>
-                                    </h3>
-                                    <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2">
-                                        <?php echo $video['desc']; ?>
-                                    </p>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-
-        <!-- Slider controls -->
-        <div class="flex items-center justify-between mt-8">
-            <!-- Dot indicators -->
-            <div class="flex items-center space-x-2" id="edu-dots">
-                <?php foreach ($eduPages as $epIdx => $epPage): ?>
-                    <button class="edu-dot rounded-full transition-all duration-300 <?php echo $epIdx === 0 ? 'w-6 h-2.5 bg-electric-blue' : 'w-2.5 h-2.5 bg-silver-grey'; ?>" data-page="<?php echo $epIdx; ?>"></button>
-                <?php endforeach; ?>
-            </div>
-
-            <!-- Prev / Next -->
-            <div class="flex items-center space-x-3">
-                <button id="edu-prev" class="w-11 h-11 rounded-full bg-white hover:bg-electric-blue hover:text-white text-deep-indigo border border-silver-grey shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center active:scale-95">
-                    <i class="fas fa-chevron-left text-sm"></i>
-                </button>
-                <button id="edu-next" class="w-11 h-11 rounded-full bg-electric-blue text-white hover:bg-deep-indigo border border-electric-blue shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center active:scale-95">
-                    <i class="fas fa-chevron-right text-sm"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Education Slider JS -->
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const track     = document.getElementById('edu-track');
-        const dots      = document.querySelectorAll('.edu-dot');
-        const prevBtn   = document.getElementById('edu-prev');
-        const nextBtn   = document.getElementById('edu-next');
-        const total     = track.children.length;
-        let current     = 0;
-
-        function goTo(page) {
-            current = page;
-            track.style.transform = `translateX(-${page * 100}%)`;
-            dots.forEach((d, i) => {
-                if (i === page) {
-                    d.classList.add('bg-electric-blue', 'w-6');
-                    d.classList.remove('bg-silver-grey', 'w-2.5');
-                } else {
-                    d.classList.remove('bg-electric-blue', 'w-6');
-                    d.classList.add('bg-silver-grey', 'w-2.5');
-                }
-            });
-        }
-
-        dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.page)));
-        prevBtn.addEventListener('click', () => goTo((current - 1 + total) % total));
-        nextBtn.addEventListener('click', () => goTo((current + 1) % total));
-    });
-    </script>
-</section>
+<!-- Related Videos (topic-matched, see $pageVideos in includes/config.php) -->
+<?php require __DIR__ . "/includes/related-videos.php"; ?>
 
 <!-- FAQ Section -->
 <section class="py-12 bg-white">

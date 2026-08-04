@@ -236,6 +236,12 @@ require_once __DIR__ . '/includes/header.php';
     </div>
 </section>
 
+<!-- Video Testimonials (component: includes/video-testimonials.php) -->
+<?php require __DIR__ . "/includes/video-testimonials.php"; ?>
+
+<!-- Related Videos (topic-matched, see $pageVideos in includes/config.php) -->
+<?php require __DIR__ . "/includes/related-videos.php"; ?>
+
 <!-- FAQ Section -->
 <section class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

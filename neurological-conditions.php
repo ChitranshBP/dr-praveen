@@ -56,143 +56,101 @@ require_once __DIR__ . '/includes/header.php';
             </p>
         </div>
 
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Condition 1 -->
-            <a href="stroke.php" class="group bg-slate-50 border border-slate-200/50 p-8 rounded-3xl space-y-4 hover:bg-white hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                <div class="w-12 h-12 bg-electric-blue/10 rounded-2xl flex items-center justify-center text-electric-blue group-hover:bg-electric-blue group-hover:text-white transition-colors duration-300">
-                    <i class="fas fa-clock text-xl"></i>
-                </div>
-                <h3 class="text-lg font-bold text-deep-indigo group-hover:text-electric-blue transition-colors">Brain Stroke</h3>
-                <p class="text-xs text-dark-grey/65 leading-relaxed">
-                    Acute care, mechanical thrombectomy, and comprehensive neuro-rehabilitation protocols to treat and recover from strokes.
-                </p>
-                <div class="flex items-center space-x-1.5 text-xs font-semibold text-electric-blue pt-2">
-                    <span>Read Details</span>
-                    <i class="fas fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
-                </div>
-            </a>
+        <?php
+        // Condition directory — image, title, blurb and destination for each card
+        $conditionCards = [
+            [
+                'url'   => 'stroke.php',
+                'image' => 'assets/services/stroke.png',
+                'title' => 'Brain Stroke',
+                'desc'  => 'Acute care, mechanical thrombectomy, and comprehensive neuro-rehabilitation protocols to treat and recover from strokes.',
+            ],
+            [
+                'url'   => 'epilepsy.php',
+                'image' => 'assets/services/epilepsy.png',
+                'title' => 'Epilepsy & Seizures',
+                'desc'  => 'Personalized pharmacotherapy, long-term monitoring, and surgical evaluations for complex seizure disorders.',
+            ],
+            [
+                'url'   => 'migraine.php',
+                'image' => 'assets/services/migraine.png',
+                'title' => 'Migraine',
+                'desc'  => 'Advanced prevention therapies, lifestyle modification, and specialized neuro-modulators to manage chronic migraine.',
+            ],
+            [
+                'url'   => 'headache.php',
+                'image' => 'assets/services/headache.png',
+                'title' => 'Headache Disorders',
+                'desc'  => 'Comprehensive workups for tension headaches, cluster headaches, and secondary headache symptoms.',
+            ],
+            [
+                'url'   => 'parkinsons.php',
+                'image' => 'assets/services/parkinsons.png',
+                'title' => "Parkinson's Disease",
+                'desc'  => "Symptom control, advanced pharmacology, and Deep Brain Stimulation (DBS) therapies for Parkinson's disease.",
+            ],
+            [
+                'url'   => 'ms.php',
+                'image' => 'assets/services/ms.png',
+                'title' => 'Multiple Sclerosis',
+                'desc'  => 'Immunomodulatory therapies and tailored symptom management to improve mobility and reduce relapse frequency.',
+            ],
+            [
+                'url'   => 'movement.php',
+                'image' => 'assets/services/movement.png',
+                'title' => 'Movement Disorders',
+                'desc'  => 'Specialized management of tremor, dystonia, chorea, and other complex involuntary movement issues.',
+            ],
+            [
+                'url'   => 'neuropathy.php',
+                'image' => 'assets/services/neuropathy.png',
+                'title' => 'Peripheral Neuropathy',
+                'desc'  => 'Nerve testing, neuropathic pain management, and root-cause therapies for nerve damage and sensory loss.',
+            ],
+            [
+                'url'   => 'vertigo.php',
+                'image' => 'assets/services/vertigo.png',
+                'title' => 'Vertigo & Balance',
+                'desc'  => 'Diagnostic balance assessments, vestibular testing, and physical rehabilitation programs to stop dizziness.',
+            ],
+        ];
+        ?>
 
-            <!-- Condition 2 -->
-            <a href="epilepsy.php" class="group bg-slate-50 border border-slate-200/50 p-8 rounded-3xl space-y-4 hover:bg-white hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                <div class="w-12 h-12 bg-cyan-accent/10 rounded-2xl flex items-center justify-center text-cyan-accent group-hover:bg-cyan-accent group-hover:text-white transition-colors duration-300">
-                    <i class="fas fa-wave-square text-xl"></i>
-                </div>
-                <h3 class="text-lg font-bold text-deep-indigo group-hover:text-cyan-accent transition-colors">Epilepsy & Seizures</h3>
-                <p class="text-xs text-dark-grey/65 leading-relaxed">
-                    Personalized pharmacotherapy, long-term monitoring, and surgical evaluations for complex seizure disorders.
-                </p>
-                <div class="flex items-center space-x-1.5 text-xs font-semibold text-cyan-accent pt-2">
-                    <span>Read Details</span>
-                    <i class="fas fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
-                </div>
-            </a>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <?php foreach ($conditionCards as $index => $card): ?>
+                <a href="<?php echo $card['url']; ?>"
+                   class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col"
+                   style="animation-delay: <?php echo $index * 100; ?>ms;">
 
-            <!-- Condition 3 -->
-            <a href="migraine.php" class="group bg-slate-50 border border-slate-200/50 p-8 rounded-3xl space-y-4 hover:bg-white hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                <div class="w-12 h-12 bg-deep-indigo/10 rounded-2xl flex items-center justify-center text-deep-indigo group-hover:bg-deep-indigo group-hover:text-white transition-colors duration-300">
-                    <i class="fas fa-head-side-virus text-xl"></i>
-                </div>
-                <h3 class="text-lg font-bold text-deep-indigo group-hover:text-electric-blue transition-colors">Migraine</h3>
-                <p class="text-xs text-dark-grey/65 leading-relaxed">
-                    Advanced prevention therapies, lifestyle modification, and specialized neuro-modulators to manage chronic migraine.
-                </p>
-                <div class="flex items-center space-x-1.5 text-xs font-semibold text-deep-indigo pt-2">
-                    <span>Read Details</span>
-                    <i class="fas fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
-                </div>
-            </a>
+                    <!-- Image -->
+                    <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-6 bg-gradient-to-br from-soft-cyan to-silver-grey">
+                        <img src="<?php echo $card['image']; ?>"
+                             alt="<?php echo htmlspecialchars($card['title']); ?> treatment"
+                             loading="lazy"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
 
-            <!-- Condition 4 -->
-            <a href="headache.php" class="group bg-slate-50 border border-slate-200/50 p-8 rounded-3xl space-y-4 hover:bg-white hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                <div class="w-12 h-12 bg-electric-blue/10 rounded-2xl flex items-center justify-center text-electric-blue group-hover:bg-electric-blue group-hover:text-white transition-colors duration-300">
-                    <i class="fas fa-head-side-slash text-xl"></i>
-                </div>
-                <h3 class="text-lg font-bold text-deep-indigo group-hover:text-electric-blue transition-colors">Headache Disorders</h3>
-                <p class="text-xs text-dark-grey/65 leading-relaxed">
-                    Comprehensive workups for tension headaches, cluster headaches, and secondary headache symptoms.
-                </p>
-                <div class="flex items-center space-x-1.5 text-xs font-semibold text-electric-blue pt-2">
-                    <span>Read Details</span>
-                    <i class="fas fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
-                </div>
-            </a>
+                    <!-- Title & Arrow -->
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="text-xl font-bold text-deep-indigo group-hover:text-electric-blue transition-colors leading-tight">
+                            <?php echo $card['title']; ?>
+                        </h3>
+                        <div class="w-10 h-10 rounded-full border border-silver-grey flex items-center justify-center text-dark-grey group-hover:text-white group-hover:bg-gradient-to-r group-hover:from-electric-blue group-hover:to-cyan-accent group-hover:border-transparent transition-all duration-300 flex-shrink-0 ml-4">
+                            <i class="fas fa-arrow-right group-hover:-rotate-45 transition-transform duration-300"></i>
+                        </div>
+                    </div>
 
-            <!-- Condition 5 -->
-            <a href="parkinsons.php" class="group bg-slate-50 border border-slate-200/50 p-8 rounded-3xl space-y-4 hover:bg-white hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                <div class="w-12 h-12 bg-cyan-accent/10 rounded-2xl flex items-center justify-center text-cyan-accent group-hover:bg-cyan-accent group-hover:text-white transition-colors duration-300">
-                    <i class="fas fa-running text-xl"></i>
-                </div>
-                <h3 class="text-lg font-bold text-deep-indigo group-hover:text-cyan-accent transition-colors">Parkinson's Disease</h3>
-                <p class="text-xs text-dark-grey/65 leading-relaxed">
-                    Symptom control, advanced pharmacology, and Deep Brain Stimulation (DBS) therapies for Parkinson's disease.
-                </p>
-                <div class="flex items-center space-x-1.5 text-xs font-semibold text-cyan-accent pt-2">
-                    <span>Read Details</span>
-                    <i class="fas fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
-                </div>
-            </a>
-
-            <!-- Condition 6 -->
-            <a href="ms.php" class="group bg-slate-50 border border-slate-200/50 p-8 rounded-3xl space-y-4 hover:bg-white hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                <div class="w-12 h-12 bg-deep-indigo/10 rounded-2xl flex items-center justify-center text-deep-indigo group-hover:bg-deep-indigo group-hover:text-white transition-colors duration-300">
-                    <i class="fas fa-shield-alt text-xl"></i>
-                </div>
-                <h3 class="text-lg font-bold text-deep-indigo group-hover:text-electric-blue transition-colors">Multiple Sclerosis</h3>
-                <p class="text-xs text-dark-grey/65 leading-relaxed">
-                    Immunomodulatory therapies and tailored symptom management to improve mobility and reduce relapse frequency.
-                </p>
-                <div class="flex items-center space-x-1.5 text-xs font-semibold text-deep-indigo pt-2">
-                    <span>Read Details</span>
-                    <i class="fas fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
-                </div>
-            </a>
-
-            <!-- Condition 7 -->
-            <a href="movement.php" class="group bg-slate-50 border border-slate-200/50 p-8 rounded-3xl space-y-4 hover:bg-white hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                <div class="w-12 h-12 bg-electric-blue/10 rounded-2xl flex items-center justify-center text-electric-blue group-hover:bg-electric-blue group-hover:text-white transition-colors duration-300">
-                    <i class="fas fa-child text-xl"></i>
-                </div>
-                <h3 class="text-lg font-bold text-deep-indigo group-hover:text-electric-blue transition-colors">Movement Disorders</h3>
-                <p class="text-xs text-dark-grey/65 leading-relaxed">
-                    Specialized management of tremor, dystonia, chorea, and other complex involuntary movement issues.
-                </p>
-                <div class="flex items-center space-x-1.5 text-xs font-semibold text-electric-blue pt-2">
-                    <span>Read Details</span>
-                    <i class="fas fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
-                </div>
-            </a>
-
-            <!-- Condition 8 -->
-            <a href="neuropathy.php" class="group bg-slate-50 border border-slate-200/50 p-8 rounded-3xl space-y-4 hover:bg-white hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                <div class="w-12 h-12 bg-cyan-accent/10 rounded-2xl flex items-center justify-center text-cyan-accent group-hover:bg-cyan-accent group-hover:text-white transition-colors duration-300">
-                    <i class="fas fa-compress-alt text-xl"></i>
-                </div>
-                <h3 class="text-lg font-bold text-deep-indigo group-hover:text-cyan-accent transition-colors">Peripheral Neuropathy</h3>
-                <p class="text-xs text-dark-grey/65 leading-relaxed">
-                    Nerve testing, neuropathic pain management, and root-cause therapies for nerve damage and sensory loss.
-                </p>
-                <div class="flex items-center space-x-1.5 text-xs font-semibold text-cyan-accent pt-2">
-                    <span>Read Details</span>
-                    <i class="fas fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
-                </div>
-            </a>
-
-            <!-- Condition 9 -->
-            <a href="vertigo.php" class="group bg-slate-50 border border-slate-200/50 p-8 rounded-3xl space-y-4 hover:bg-white hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                <div class="w-12 h-12 bg-deep-indigo/10 rounded-2xl flex items-center justify-center text-deep-indigo group-hover:bg-deep-indigo group-hover:text-white transition-colors duration-300">
-                    <i class="fas fa-sync-alt text-xl"></i>
-                </div>
-                <h3 class="text-lg font-bold text-deep-indigo group-hover:text-electric-blue transition-colors">Vertigo & Balance</h3>
-                <p class="text-xs text-dark-grey/65 leading-relaxed">
-                    Diagnostic balance assessments, vestibular testing, and physical rehabilitation programs to stop dizziness.
-                </p>
-                <div class="flex items-center space-x-1.5 text-xs font-semibold text-deep-indigo pt-2">
-                    <span>Read Details</span>
-                    <i class="fas fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
-                </div>
-            </a>
+                    <!-- Description -->
+                    <p class="text-dark-grey/70 leading-relaxed text-sm">
+                        <?php echo $card['desc']; ?>
+                    </p>
+                </a>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
+
+<!-- Video Testimonials (component: includes/video-testimonials.php) -->
+<?php require __DIR__ . "/includes/video-testimonials.php"; ?>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

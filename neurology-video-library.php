@@ -5,16 +5,7 @@
 $isDarkHero = true;
 require_once __DIR__ . '/includes/header.php';
 
-// Helper function to tag categories dynamically
-function getVideoCategory($title) {
-    $t = strtolower($title);
-    if (strpos($t, 'stroke') !== false || strpos($t, 'tia') !== false) return 'stroke';
-    if (strpos($t, 'epilepsy') !== false || strpos($t, 'seizure') !== false) return 'epilepsy';
-    if (strpos($t, 'headache') !== false || strpos($t, 'migraine') !== false) return 'headache';
-    if (strpos($t, 'dementia') !== false || strpos($t, 'alzheimer') !== false || strpos($t, 'memory') !== false) return 'dementia';
-    if (strpos($t, 'spine') !== false || strpos($t, 'back pain') !== false || strpos($t, 'neck pain') !== false || strpos($t, 'spondylosis') !== false || strpos($t, 'nerve') !== false || strpos($t, 'neuropathy') !== false || strpos($t, 'sciatica') !== false) return 'spine';
-    return 'wellness';
-}
+// Categories come from getVideoCategory() in includes/config.php
 ?>
 
 <!-- Hero Section -->
@@ -69,6 +60,7 @@ function getVideoCategory($title) {
                     <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-slate-50 text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('headache', this)">Headache</button>
                     <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-slate-50 text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('dementia', this)">Dementia</button>
                     <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-slate-50 text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('spine', this)">Spine/Nerve</button>
+                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-slate-50 text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('rehab', this)">Rehab</button>
                     <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-slate-50 text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('wellness', this)">Wellness</button>
                 </div>
             </div>
