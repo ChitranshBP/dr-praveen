@@ -8,13 +8,13 @@
 define('SITE_NAME', 'Dr. Praveen Gupta');
 define('SITE_TAGLINE', 'Excellence in Healthcare');
 define('SITE_URL', 'https://drpraveengupta.com');
-define('SITE_PHONE', '+91-9876543210');
+define('SITE_PHONE', '+91-87969-77903');
 define('STROKE_HELPLINE', '1800-309-0247');
 define('SITE_EMAIL', 'contact@drpraveengupta.com');
 define('SITE_ADDRESS', 'New Delhi, India');
 
 // WhatsApp — digits only, country code first, no '+', spaces or dashes (wa.me format)
-define('SITE_WHATSAPP', '919876543210');
+define('SITE_WHATSAPP', '918796977903');
 define('WHATSAPP_MESSAGE', 'Hello, I would like to book an appointment with Dr. Praveen Gupta.');
 
 // Social Media
@@ -86,63 +86,193 @@ $navItems = [
 $services = [
     [
         'title' => 'Stroke & Neurocritical Care Unit',
-        'description' => 'Advanced Stroke Care in Gurgaon',
-        'bullet' => 'Gurgaon\'s First 24×7 Brain Stroke Helpline – 1800-309-0247',
+        'description' => 'Advanced Stroke Care in Gurgaon.
+<details class="group mt-3" onclick="event.stopPropagation();">
+    <summary class="text-xs text-electric-blue font-bold cursor-pointer focus:outline-none select-none flex items-center space-x-1 hover:underline list-none [&::-webkit-details-marker]:hidden" onclick="event.stopPropagation();">
+        <span>Read More</span>
+        <i class="fas fa-chevron-down text-[9px] transition-transform duration-300 group-open:rotate-180"></i>
+    </summary>
+    <div class="mt-3 grid grid-cols-1 gap-y-1 text-xs text-dark-grey/70 border-t border-silver-grey/40 pt-3">
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Thrombolytic therapy</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Mechanical thrombectomy</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>24/7 stroke protocol</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Neurorehabilitation services</span></div>
+    </div>
+</details>',
+        'bullet' => '',
         'image' => 'assets/services/stroke-care.png',
         'link' => 'brain-stroke-helpline.php'
     ],
     [
         'title' => 'Epilepsy & Seizure Clinic',
-        'description' => 'Comprehensive seizure diagnosis and treatment',
+        'description' => 'Comprehensive seizure diagnosis and treatment.
+<details class="group mt-3" onclick="event.stopPropagation();">
+    <summary class="text-xs text-electric-blue font-bold cursor-pointer focus:outline-none select-none flex items-center space-x-1 hover:underline list-none [&::-webkit-details-marker]:hidden" onclick="event.stopPropagation();">
+        <span>Read More</span>
+        <i class="fas fa-chevron-down text-[9px] transition-transform duration-300 group-open:rotate-180"></i>
+    </summary>
+    <div class="mt-3 grid grid-cols-1 gap-y-1 text-xs text-dark-grey/70 border-t border-silver-grey/40 pt-3">
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Video EEG monitoring</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>24-hour ambulatory EEG</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Interictal and ictal SPECT</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Neuropsychological testing</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Epilepsy surgery evaluation</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Anti-seizure medication management</span></div>
+    </div>
+</details>',
         'bullet' => 'Video EEG monitoring',
         'image' => 'assets/services/epilepsy.png',
         'link' => 'epilepsy.php'
     ],
     [
         'title' => 'Brain Tumor Surgery',
-        'description' => 'Precision neurosurgery using advanced imaging',
+        'description' => 'Precision neurosurgery using advanced imaging.
+<details class="group mt-3" onclick="event.stopPropagation();">
+    <summary class="text-xs text-electric-blue font-bold cursor-pointer focus:outline-none select-none flex items-center space-x-1 hover:underline list-none [&::-webkit-details-marker]:hidden" onclick="event.stopPropagation();">
+        <span>Read More</span>
+        <i class="fas fa-chevron-down text-[9px] transition-transform duration-300 group-open:rotate-180"></i>
+    </summary>
+    <div class="mt-3 grid grid-cols-1 gap-y-1 text-xs text-dark-grey/70 border-t border-silver-grey/40 pt-3">
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Minimally invasive tumor removal</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Intraoperative neuromonitoring</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Awake craniotomy</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Brain mapping technology</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Gamma Knife radiosurgery</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Oncology collaboration</span></div>
+    </div>
+</details>',
         'bullet' => 'Minimally invasive tumor removal',
         'image' => 'assets/services/brain-tumor.png',
         'link' => 'brain-tumor-surgery.php'
     ],
     [
         'title' => 'Spine Surgery',
-        'description' => 'Comprehensive care for spinal conditions',
+        'description' => 'Comprehensive care for spinal conditions.
+<details class="group mt-3" onclick="event.stopPropagation();">
+    <summary class="text-xs text-electric-blue font-bold cursor-pointer focus:outline-none select-none flex items-center space-x-1 hover:underline list-none [&::-webkit-details-marker]:hidden" onclick="event.stopPropagation();">
+        <span>Read More</span>
+        <i class="fas fa-chevron-down text-[9px] transition-transform duration-300 group-open:rotate-180"></i>
+    </summary>
+    <div class="mt-3 grid grid-cols-1 gap-y-1 text-xs text-dark-grey/70 border-t border-silver-grey/40 pt-3">
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Minimally invasive spine surgery</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Disc herniation treatment</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Spinal fusion procedures</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Vertebroplasty</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Endoscopic spine surgery</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Decompression surgery</span></div>
+    </div>
+</details>',
         'bullet' => 'Minimally invasive spine surgery',
         'image' => 'assets/services/spine-surgery.png',
         'link' => 'spine-surgery.php'
     ],
     [
         'title' => 'Headache & Pain Clinic',
-        'description' => 'Targeted care for migraines and chronic headaches',
+        'description' => 'Targeted care for migraines and chronic headaches.
+<details class="group mt-3" onclick="event.stopPropagation();">
+    <summary class="text-xs text-electric-blue font-bold cursor-pointer focus:outline-none select-none flex items-center space-x-1 hover:underline list-none [&::-webkit-details-marker]:hidden" onclick="event.stopPropagation();">
+        <span>Read More</span>
+        <i class="fas fa-chevron-down text-[9px] transition-transform duration-300 group-open:rotate-180"></i>
+    </summary>
+    <div class="mt-3 grid grid-cols-1 gap-y-1 text-xs text-dark-grey/70 border-t border-silver-grey/40 pt-3">
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Preventive therapies</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Botulinum toxin therapy</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Monoclonal antibody therapy</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Occipital nerve blocks</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>CGRP receptor antagonists</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Trigger point injections</span></div>
+    </div>
+</details>',
         'bullet' => 'Preventive therapies',
         'image' => 'assets/services/headache.png',
         'link' => 'headache.php'
     ],
     [
         'title' => 'Functional Neurosurgery',
-        'description' => 'Advanced surgical treatment for movement disorders',
+        'description' => 'Advanced surgical treatment for movement disorders.
+<details class="group mt-3" onclick="event.stopPropagation();">
+    <summary class="text-xs text-electric-blue font-bold cursor-pointer focus:outline-none select-none flex items-center space-x-1 hover:underline list-none [&::-webkit-details-marker]:hidden" onclick="event.stopPropagation();">
+        <span>Read More</span>
+        <i class="fas fa-chevron-down text-[9px] transition-transform duration-300 group-open:rotate-180"></i>
+    </summary>
+    <div class="mt-3 grid grid-cols-1 gap-y-1 text-xs text-dark-grey/70 border-t border-silver-grey/40 pt-3">
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Deep Brain Stimulation (DBS) for Parkinson\'s</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Tremor management</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Rigidity and bradykinesia treatment</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>DBS programming and adjustment</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Essential tremor surgery</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Dystonia treatment</span></div>
+    </div>
+</details>',
         'bullet' => 'Deep Brain Stimulation (DBS) for Parkinson\'s',
         'image' => 'assets/services/functional-neuro.png',
         'link' => 'functional-neurosurgery.php'
     ],
     [
         'title' => 'Neurovascular Surgery',
-        'description' => 'Treatment of complex vascular conditions',
+        'description' => 'Treatment of complex vascular conditions.
+<details class="group mt-3" onclick="event.stopPropagation();">
+    <summary class="text-xs text-electric-blue font-bold cursor-pointer focus:outline-none select-none flex items-center space-x-1 hover:underline list-none [&::-webkit-details-marker]:hidden" onclick="event.stopPropagation();">
+        <span>Read More</span>
+        <i class="fas fa-chevron-down text-[9px] transition-transform duration-300 group-open:rotate-180"></i>
+    </summary>
+    <div class="mt-3 grid grid-cols-1 gap-y-1 text-xs text-dark-grey/70 border-t border-silver-grey/40 pt-3">
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Aneurysm clipping</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Aneurysm coiling</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>AVM (arteriovenous malformation) treatment</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Cavernous angioma surgery</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Intracranial stenting</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Endovascular procedures</span></div>
+    </div>
+</details>',
         'bullet' => 'Aneurysm clipping',
         'image' => 'assets/services/neurovascular.png',
         'link' => 'neurovascular-surgery.php'
     ],
     [
         'title' => 'Geriatric & Dementia Clinic',
-        'description' => 'Care for dementia, Alzheimer\'s, and memory disorders',
+        'description' => 'Care for dementia, Alzheimer\'s, and memory disorders.
+<details class="group mt-3" onclick="event.stopPropagation();">
+    <summary class="text-xs text-electric-blue font-bold cursor-pointer focus:outline-none select-none flex items-center space-x-1 hover:underline list-none [&::-webkit-details-marker]:hidden" onclick="event.stopPropagation();">
+        <span>Read More</span>
+        <i class="fas fa-chevron-down text-[9px] transition-transform duration-300 group-open:rotate-180"></i>
+    </summary>
+    <div class="mt-3 grid grid-cols-1 gap-y-1 text-xs text-dark-grey/70 border-t border-silver-grey/40 pt-3">
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Neuropsychological testing</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Cognitive screening and assessment</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Alzheimer\'s disease management</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Vascular dementia treatment</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Parkinson\'s dementia care</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Caregiver support programs</span></div>
+    </div>
+</details>',
         'bullet' => 'Neuropsychological testing',
         'image' => 'assets/services/memory-clinic.png',
         'link' => 'memory-clinic.php'
     ],
     [
         'title' => 'Neuro-Rehabilitation Centre',
-        'description' => 'Structured recovery programs after stroke, injury and surgery',
+        'description' => 'Structured recovery programs after stroke, injury and surgery.
+<details class="group mt-3" onclick="event.stopPropagation();">
+    <summary class="text-xs text-electric-blue font-bold cursor-pointer focus:outline-none select-none flex items-center space-x-1 hover:underline list-none [&::-webkit-details-marker]:hidden" onclick="event.stopPropagation();">
+        <span>Read More</span>
+        <i class="fas fa-chevron-down text-[9px] transition-transform duration-300 group-open:rotate-180"></i>
+    </summary>
+    <div class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-1 text-xs text-dark-grey/70 border-t border-silver-grey/40 pt-3">
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Neurological Physiotherapy</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Occupational Therapy</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Speech & Swallow Therapy</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Cognitive Rehabilitation</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>Psychological Support</span></div>
+        <div class="col-span-1 sm:col-span-2 font-bold text-deep-indigo mt-2 text-[10px] uppercase tracking-wider">Advanced Technologies:</div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-circle text-[5px] text-cyan-accent"></i> <span>Robotic Rehabilitation</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-circle text-[5px] text-cyan-accent"></i> <span>rTMS Therapy</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-circle text-[5px] text-cyan-accent"></i> <span>VR Rehabilitation</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-circle text-[5px] text-cyan-accent"></i> <span>FES & EMG Biofeedback</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-circle text-[5px] text-cyan-accent"></i> <span>Mirror Therapy</span></div>
+        <div class="flex items-center space-x-1.5"><i class="fas fa-circle text-[5px] text-cyan-accent"></i> <span>CIMT</span></div>
+    </div>
+</details>',
         'bullet' => 'Physiotherapy, speech and cognitive therapy',
         'image' => 'assets/services/rehab.png',
         'link' => 'neuro-rehabilitation-center.php'
@@ -152,28 +282,28 @@ $services = [
 // Stats
 $stats = [
     [
-        'number' => '500K',
-        'label' => 'Happy Patients',
+        'number' => '3,00,000+',
+        'label' => 'Patients Treated',
         'icon' => 'fas fa-user-group',
-        'description' => 'We take pride in the trust of over 500,000 patients whose health and happiness remain our top priorities.'
+        'description' => 'We take pride in the trust of over 300,000 patients whose health and recovery remain our top priorities.'
     ],
     [
-        'number' => '100%',
-        'label' => 'Satisfaction',
+        'number' => '1,00,000+',
+        'label' => 'Success Stories',
         'icon' => 'fas fa-face-smile',
-        'description' => 'Committed to delivering outstanding clinical outcomes and patient-first specialized care.'
+        'description' => 'Documenting over 100,000 patient success stories driven by advanced neuro-clinical treatments.'
+    ],
+    [
+        'number' => '50+',
+        'label' => 'Global Awards',
+        'icon' => 'fas fa-award',
+        'description' => 'Recognized globally with prestigious awards for pioneering achievements in neurosciences.'
     ],
     [
         'number' => '20+',
-        'label' => 'Experience',
+        'label' => 'Years of Experience',
         'icon' => 'fas fa-user-doctor',
-        'description' => 'Providing over two decades of expert medical diagnosis, treatment, and neurological care.'
-    ],
-    [
-        'number' => '70+',
-        'label' => 'Publications',
-        'icon' => 'fas fa-book-medical',
-        'description' => 'Contributing to global medical research with over 70 scientific publications and journals.'
+        'description' => 'Providing over two decades of expert clinical diagnosis, treatment, and neurological care.'
     ],
 ];
 

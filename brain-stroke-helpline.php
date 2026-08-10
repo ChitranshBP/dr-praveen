@@ -6,11 +6,15 @@ $isDarkHero = true;
 require_once __DIR__ . '/includes/header.php';
 ?>
 
-<!-- Page Hero (High Urgency Theme) -->
-<section class="relative overflow-hidden bg-gradient-to-br from-red-700 via-red-950 to-slate-950 text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20">
-    <div class="absolute inset-0 bg-black/10"></div>
-    <!-- Red Alert Glow -->
-    <div class="absolute -right-24 -bottom-24 w-96 h-96 bg-red-600/30 rounded-full blur-[120px] pointer-events-none"></div>
+<!-- Page Hero -->
+<section class="relative overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20">
+    <!-- Background image -->
+    <img src="assets/breadcrumbs/patient.png" alt=""
+         fetchpriority="high"
+         class="absolute inset-0 w-full h-full object-cover object-[78%_center] md:object-right pointer-events-none select-none">
+
+    <!-- Legibility overlay -->
+    <div class="absolute inset-0 bg-gradient-to-r from-deep-indigo/95 via-deep-indigo/75 to-deep-indigo/35 md:to-transparent"></div>
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl text-left animate-fade-in-up">
@@ -223,7 +227,7 @@ require_once __DIR__ . '/includes/header.php';
                         </button>
                         <div class="faq-content hidden px-6 pb-6">
                             <p class="text-dark-grey/70 leading-relaxed text-sm">
-                                The stroke helpline is reserved exclusively for acute emergency situations like suspected brain strokes, sudden paralysis, or loss of speech. For general appointments or routine queries, please use our standard contact number: +91-9876543210.
+                                The stroke helpline is reserved exclusively for acute emergency situations like suspected brain strokes, sudden paralysis, or loss of speech. For general appointments or routine queries, please use our standard contact number: <?php echo SITE_PHONE; ?>.
                             </p>
                         </div>
                     </div>

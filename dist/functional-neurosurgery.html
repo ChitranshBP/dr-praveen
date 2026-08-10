@@ -262,11 +262,11 @@
         </div>
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
             <div class="flex items-center space-x-6">
-                <a href="tel:+91-9876543210" class="flex items-center space-x-2 hover:text-cyan-accent transition-all duration-300 group">
+                <a href="tel:+91-87969-77903" class="flex items-center space-x-2 hover:text-cyan-accent transition-all duration-300 group">
                     <span class="w-7 h-7 rounded-full bg-cyan-accent/10 flex items-center justify-center group-hover:bg-cyan-accent/20 transition-colors">
                         <i class="fas fa-phone text-cyan-accent text-[10px]"></i>
                     </span>
-                    <span class="font-medium">+91-9876543210</span>
+                    <span class="font-medium">+91-87969-77903</span>
                 </a>
                 <span class="w-px h-4 bg-white/20"></span>
                 <a href="mailto:contact@drpraveengupta.com" class="flex items-center space-x-2 hover:text-cyan-accent transition-all duration-300 group">
@@ -965,8 +965,13 @@
 
 <!-- Page Hero -->
 <section class="relative overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20">
-    <div class="absolute inset-0 bg-black/5"></div>
-    <div class="absolute -right-24 -bottom-24 w-96 h-96 bg-cyan-accent/20 rounded-full blur-[120px] pointer-events-none"></div>
+    <!-- Background image -->
+    <img src="assets/breadcrumbs/dr-parveen-services-breadcrumb/Functional%20Neurosurgery.png" alt=""
+         fetchpriority="high"
+         class="absolute inset-0 w-full h-full object-cover object-[78%_center] md:object-right pointer-events-none select-none">
+
+    <!-- Legibility overlay -->
+    <div class="absolute inset-0 bg-gradient-to-r from-deep-indigo/95 via-deep-indigo/75 to-deep-indigo/35 md:to-transparent"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl text-left animate-fade-in-up">
@@ -1917,7 +1922,7 @@ function toggleFaq(button) {
                         </a>
 
                         <!-- Call Now Button -->
-                        <a href="tel:+91-9876543210"
+                        <a href="tel:+91-87969-77903"
                            class="inline-flex items-center space-x-6 bg-[#111827] text-white text-xs md:text-sm font-semibold pl-6 pr-2.5 py-2.5 rounded-full hover:bg-black transition-all duration-300 shadow-lg hover:-translate-y-0.5 active:translate-y-0 group">
                             <span>Call Now</span>
                             <!-- Glossy metallic dot indicator -->
@@ -2128,8 +2133,8 @@ function toggleFaq(button) {
                             </div>
                             <div class="pt-1">
                                 <p class="text-white/70 text-xs font-medium">Call Us</p>
-                                <a href="tel:+91-9876543210" class="text-white/90 text-sm font-semibold hover:text-cyan-accent transition-colors">
-                                    +91-9876543210                                </a>
+                                <a href="tel:+91-87969-77903" class="text-white/90 text-sm font-semibold hover:text-cyan-accent transition-colors">
+                                    +91-87969-77903                                </a>
                             </div>
                         </li>
                         <li class="flex items-start space-x-3 group">
@@ -2203,7 +2208,7 @@ function toggleFaq(button) {
     </footer>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/919876543210?text=Hello%2C%20I%20would%20like%20to%20book%20an%20appointment%20with%20Dr.%20Praveen%20Gupta."
+    <a href="https://wa.me/918796977903?text=Hello%2C%20I%20would%20like%20to%20book%20an%20appointment%20with%20Dr.%20Praveen%20Gupta."
        target="_blank" rel="noopener noreferrer"
        aria-label="Chat with us on WhatsApp"
        class="group fixed bottom-8 right-8 w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#1DA851] text-white shadow-lg hover:shadow-xl hover:shadow-[#25D366]/50 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center z-50">
@@ -2221,6 +2226,19 @@ function toggleFaq(button) {
     <button id="back-to-top" class="fixed bottom-28 right-9 w-12 h-12 rounded-full bg-white text-deep-indigo border border-silver-grey shadow-lg hover:bg-electric-blue hover:text-white hover:shadow-xl hover:shadow-electric-blue/40 transition-all duration-300 transform translate-y-20 opacity-0 z-50 flex items-center justify-center group">
         <i class="fas fa-arrow-up group-hover:-translate-y-0.5 transition-transform"></i>
     </button>
+
+    <!-- Floating Emergency Stroke Helpline Button -->
+    <a href="tel:1800-309-0247"
+       aria-label="Call 24x7 Emergency Stroke Helpline"
+       class="group fixed bottom-48 right-8 w-14 h-14 rounded-full bg-red-650 bg-red-600 hover:bg-red-750 hover:bg-red-700 text-white shadow-lg hover:shadow-xl hover:shadow-red-600/50 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center z-50">
+        <!-- Pulsing halo -->
+        <span class="absolute inset-0 rounded-full bg-red-600/40 animate-ping pointer-events-none"></span>
+        <i class="fas fa-phone-alt text-lg relative animate-pulse"></i>
+
+        <!-- Hover label (desktop) -->
+        <span class="hidden lg:block absolute right-full mr-3 whitespace-nowrap bg-red-600 text-white text-xs font-bold px-3 py-2 rounded-full shadow-lg opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none">
+            24x7 Stroke Helpline: 1800-309-0247        </span>
+    </a>
 
     <!-- Floating Appointment Button (Mobile) -->
     <a href="contact.html" class="lg:hidden fixed bottom-6 left-6 w-14 h-14 rounded-full bg-gradient-to-r from-electric-blue to-cyan-accent text-white shadow-lg flex items-center justify-center z-50 animate-pulse-slow">

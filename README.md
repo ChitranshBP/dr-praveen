@@ -55,7 +55,7 @@ Visit: http://localhost/dr-praveen/
 
 ## 📞 Contact Information
 
-- **Phone**: +91-9876543210
+- **Phone**: +91-87969-77903
 - **Email**: contact@drpraveengupta.com
 - **Website**: https://drpraveengupta.com
 

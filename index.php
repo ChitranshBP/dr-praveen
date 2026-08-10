@@ -148,10 +148,10 @@ if (file_exists($doctorsJsonPath)) {
                 <span class="text-electric-blue text-sm font-semibold">How We Can Help</span>
             </div>
             <h2 class="text-4xl md:text-5xl font-serif font-bold text-deep-indigo mb-4">
-                Specialized Care for Your <span class="gradient-text">Brain & Spine</span> Health
+                Comprehensive Care for Every <span class="gradient-text">Brain & Spine</span> Condition
             </h2>
             <p class="text-lg text-dark-grey/70">
-                We offer advanced treatments and caring support for a wide range of neurological conditions. Explore our areas of expertise below to see how we can guide your recovery.
+                Expert diagnosis, advanced treatment, and personalized recovery—all under one roof.
             </p>
         </div>
 
@@ -438,7 +438,7 @@ if (file_exists($doctorsJsonPath)) {
                 </h2>
 
                 <p class="text-lg text-dark-grey/70 mb-10 leading-relaxed max-w-xl">
-                    Dealing with neurological concerns can feel overwhelming. We are here to support you at every step with clear answers, advanced treatments, and a caring team focused on your comfort and recovery.
+                    When it comes to your brain and spine health, expert care makes all the difference. At NeuroDoc, we combine expert clinical care, advanced neuroscience, and compassionate support to guide you from diagnosis to recovery—with confidence at every step.
                 </p>
 
                 <!-- Grid of 4 Items -->
@@ -616,10 +616,10 @@ if (file_exists($doctorsJsonPath)) {
                 <span class="text-electric-blue text-sm font-semibold">Our Team</span>
             </div>
             <h2 class="text-4xl md:text-5xl font-serif font-bold text-deep-indigo mb-4">
-                Specialists & <span class="gradient-text">Support Staff</span>
+                Our Care <span class="gradient-text">Team</span>
             </h2>
             <p class="text-lg text-dark-grey/70">
-                Working together under the clinical leadership of Dr. Praveen Gupta to guide you back to wellness.
+                The approach is simple: understand what’s causing the problem, explain it clearly, and guide you toward the right treatment and recovery plan.
             </p>
         </div>
 
