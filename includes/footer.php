@@ -99,7 +99,7 @@ foreach (array_slice($services, 0, 6) as $svc) {
                 <div class="lg:col-span-4">
                     <div class="mb-6">
                         <a href="index.php" class="inline-block group">
-                            <img src="assets/logo/NeuroDoc - logo-update-final.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" class="h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 invert brightness-0">
+                            <img src="assets/logo/NeuroDoc-final-logo.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" class="h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 invert brightness-0">
                         </a>
                     </div>
                     <p class="text-white/70 leading-relaxed mb-6 text-sm">
@@ -350,7 +350,7 @@ foreach (array_slice($services, 0, 6) as $svc) {
     </a>
 
     <!-- Floating Appointment Button (Mobile) -->
-    <a href="contact.php" class="lg:hidden fixed bottom-6 left-6 w-14 h-14 rounded-full bg-gradient-to-r from-electric-blue to-cyan-accent text-white shadow-lg flex items-center justify-center z-50 animate-pulse-slow">
+    <a href="contact-us-top-neurologist-delhi-ncr.php" class="lg:hidden fixed bottom-6 left-6 w-14 h-14 rounded-full bg-gradient-to-r from-electric-blue to-cyan-accent text-white shadow-lg flex items-center justify-center z-50 animate-pulse-slow">
         <i class="fas fa-calendar-plus text-lg"></i>
     </a>
 

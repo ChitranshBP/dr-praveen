@@ -7,8 +7,8 @@ require_once __DIR__ . '/includes/header.php';
 ?>
 
 <!-- Page Hero -->
-<section class="relative overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20">
-    <div class="absolute inset-0 bg-black/5"></div>
+<section class="relative overflow-hidden text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20 bg-cover bg-center" style="background-image: url('assets/breadcrumbs/media.png');">
+    <div class="absolute inset-0 bg-gradient-to-r from-deep-indigo/95 via-deep-indigo/85 to-electric-blue/30"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl text-left animate-fade-in-up">
             <!-- Breadcrumb -->

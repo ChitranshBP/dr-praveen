@@ -31,13 +31,13 @@ if (file_exists($doctorsJsonPath)) {
     <div id="hero-slider" class="w-full max-w-[1920px] mx-auto relative">
         <div id="hero-track" class="flex transition-transform duration-700 ease-in-out">
             <div class="min-w-full relative">
-                <img src="assets/banner/dr-parveen-gupta-banner.png"
+                <img src="assets/banner/1.png"
                      alt="Transforming Brain &amp; Spine Care with Precision – Led by Dr. Praveen Gupta, Chairman, Marengo Asia International Institute of Neuro &amp; Spine"
                      fetchpriority="high"
                      class="w-full h-[320px] sm:h-[400px] md:h-auto object-cover object-[32%_center] md:object-center block">
             </div>
             <div class="min-w-full relative">
-                <img src="assets/banner/dr-parveen-gupta-banner-2.png"
+                <img src="assets/banner/2.png"
                      alt="Your Brain Deserves Expert Care – Empowering every thought for a life beyond neurological limits"
                      loading="lazy"
                      class="w-full h-[320px] sm:h-[400px] md:h-auto object-cover object-[32%_center] md:object-center block">

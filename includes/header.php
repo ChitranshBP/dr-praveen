@@ -173,10 +173,11 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
             text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
         }
         .navbar-glass .nav-link:hover {
-            color: #06B6D4 !important;
+            color: #ffffff !important;
         }
         .navbar-glass .nav-link.active {
-            color: #06B6D4 !important;
+            background-color: #ffffff !important;
+            color: #2563EB !important;
         }
         .navbar-glass .nav-icon-btn {
             color: #ffffff !important;
@@ -322,7 +323,7 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <a href="index.php" class="flex items-center group">
-                    <img id="header-logo" src="assets/logo/NeuroDoc - logo-update-final.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" class="h-14 sm:h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 invert brightness-0">
+                    <img id="header-logo" src="assets/logo/NeuroDoc-final-logo.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" class="h-14 sm:h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 invert brightness-0">
                 </a>
 
                 <!-- Desktop Navigation -->
