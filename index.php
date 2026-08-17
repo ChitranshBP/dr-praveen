@@ -32,7 +32,7 @@ if (file_exists($doctorsJsonPath)) {
         <div id="hero-track" class="flex transition-transform duration-700 ease-in-out">
             <div class="min-w-full relative">
                 <picture>
-                    <source media="(max-width: 767px)" srcset="assets/mobile-banner/mobile-1%20(1).png">
+                    <source media="(max-width: 767px)" srcset="assets/mobile-banner/1.png">
                     <img src="assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500).png"
                          alt="Transforming Brain &amp; Spine Care with Precision – Led by Dr. Praveen Gupta, Chairman, Marengo Asia International Institute of Neuro &amp; Spine"
                          fetchpriority="high"
@@ -41,7 +41,7 @@ if (file_exists($doctorsJsonPath)) {
             </div>
             <div class="min-w-full relative">
                 <picture>
-                    <source media="(max-width: 767px)" srcset="assets/mobile-banner/mobile-1%20(2).png">
+                    <source media="(max-width: 767px)" srcset="assets/mobile-banner/2.png">
                     <img src="assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500)%20(1).png"
                          alt="Your Brain Deserves Expert Care – Empowering every thought for a life beyond neurological limits"
                          loading="lazy"
