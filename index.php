@@ -31,16 +31,22 @@ if (file_exists($doctorsJsonPath)) {
     <div id="hero-slider" class="w-full max-w-[1920px] mx-auto relative">
         <div id="hero-track" class="flex transition-transform duration-700 ease-in-out">
             <div class="min-w-full relative">
-                <img src="assets/banner/1.png"
-                     alt="Transforming Brain &amp; Spine Care with Precision – Led by Dr. Praveen Gupta, Chairman, Marengo Asia International Institute of Neuro &amp; Spine"
-                     fetchpriority="high"
-                     class="w-full h-[320px] sm:h-[400px] md:h-auto object-cover object-[32%_center] md:object-center block">
+                <picture>
+                    <source media="(max-width: 767px)" srcset="assets/mobile-banner/mobile-1%20(1).png">
+                    <img src="assets/banner/1.png"
+                         alt="Transforming Brain &amp; Spine Care with Precision – Led by Dr. Praveen Gupta, Chairman, Marengo Asia International Institute of Neuro &amp; Spine"
+                         fetchpriority="high"
+                         class="w-full h-auto object-cover object-[32%_center] md:object-center block">
+                </picture>
             </div>
             <div class="min-w-full relative">
-                <img src="assets/banner/2.png"
-                     alt="Your Brain Deserves Expert Care – Empowering every thought for a life beyond neurological limits"
-                     loading="lazy"
-                     class="w-full h-[320px] sm:h-[400px] md:h-auto object-cover object-[32%_center] md:object-center block">
+                <picture>
+                    <source media="(max-width: 767px)" srcset="assets/mobile-banner/mobile-1%20(2).png">
+                    <img src="assets/banner/2.png"
+                         alt="Your Brain Deserves Expert Care – Empowering every thought for a life beyond neurological limits"
+                         loading="lazy"
+                         class="w-full h-auto object-cover object-[32%_center] md:object-center block">
+                </picture>
             </div>
         </div>
 
@@ -155,11 +161,11 @@ if (file_exists($doctorsJsonPath)) {
             </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-none gap-6 pb-6 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:pb-0">
             <?php foreach ($services as $index => $service): 
                 $link = getServicePageLink($service['title']);
             ?>
-                <a href="<?php echo $link; ?>" class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe"
+                <a href="<?php echo $link; ?>" class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe w-[80vw] md:w-auto flex-shrink-0 snap-start"
                     style="animation-delay: <?php echo $index * 100; ?>ms;">
                     <div>
                         <!-- Image Container -->
@@ -623,10 +629,10 @@ if (file_exists($doctorsJsonPath)) {
             </p>
         </div>
 
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+        <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-none gap-6 pb-6 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-8 sm:pb-0 mb-10">
             <?php foreach ($homepageTeam as $doc): ?>
             <!-- Dynamic Team Card -->
-            <a href="team.php" class="group bg-white border border-silver-grey/50 p-6 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 observe flex flex-col items-center text-center hover:-translate-y-2">
+            <a href="team.php" class="group bg-white border border-silver-grey/50 p-6 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 observe flex flex-col items-center text-center hover:-translate-y-2 w-[70vw] sm:w-auto flex-shrink-0 snap-start">
                 <div class="w-32 h-32 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
                     <img src="<?php echo htmlspecialchars($doc['image']); ?>" alt="<?php echo htmlspecialchars($doc['alt']); ?>" class="w-full h-full object-cover object-top rounded-full transition-transform duration-500 group-hover:scale-105">
                 </div>
@@ -796,10 +802,10 @@ if (file_exists($doctorsJsonPath)) {
         </div>
 
         <!-- 3-column card grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-none gap-6 pb-6 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-3 md:gap-8 md:pb-0">
             <?php foreach ($blogs as $blogIdx => $blog): ?>
                 <a href="<?php echo $blog['url']; ?>"
-                   class="group bg-white rounded-3xl p-5 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 flex flex-col observe"
+                   class="group bg-white rounded-3xl p-5 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 flex flex-col observe w-[80vw] md:w-auto flex-shrink-0 snap-start"
                    style="animation-delay: <?php echo $blogIdx * 100; ?>ms;">
 
                     <!-- Image -->

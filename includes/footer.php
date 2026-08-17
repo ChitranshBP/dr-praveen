@@ -82,7 +82,7 @@ foreach (array_slice($services, 0, 6) as $svc) {
     </section>
 
     <!-- Footer -->
-    <footer class="bg-deep-indigo text-white relative overflow-hidden">
+    <footer class="bg-deep-indigo text-white relative overflow-hidden pb-20 lg:pb-0">
         <!-- Decorative background -->
         <div class="absolute inset-0 opacity-30 pointer-events-none">
             <div class="absolute -top-20 -left-20 w-96 h-96 bg-electric-blue/20 rounded-full blur-3xl"></div>
@@ -270,33 +270,6 @@ foreach (array_slice($services, 0, 6) as $svc) {
             </div>
         </div>
 
-        <!-- Newsletter -->
-        <div class="relative border-t border-white/10 bg-black/20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                    <div class="flex items-start space-x-4">
-                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center shadow-lg flex-shrink-0">
-                            <i class="fas fa-paper-plane text-white text-lg"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-xl font-bold mb-1">Subscribe to Our Newsletter</h4>
-                            <p class="text-white/70 text-sm">Get health tips, latest updates and medical insights directly in your inbox.</p>
-                        </div>
-                    </div>
-                    <form class="flex w-full" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
-                        <div class="relative flex-1">
-                            <i class="fas fa-envelope absolute left-5 top-1/2 -translate-y-1/2 text-white/40 text-sm"></i>
-                            <input type="email" placeholder="Enter your email address" required
-                                   class="w-full pl-12 pr-5 py-4 bg-white/10 border border-white/20 rounded-l-full text-white placeholder-white/50 focus:outline-none focus:border-cyan-accent focus:bg-white/15 transition-all">
-                        </div>
-                        <button type="submit" class="px-7 py-4 bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold rounded-r-full hover:shadow-lg hover:shadow-electric-blue/50 transition-all duration-300 flex items-center space-x-2 group">
-                            <span class="hidden sm:inline">Subscribe</span>
-                            <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
 
         <!-- Bottom Bar -->
         <div class="relative border-t border-white/10">
@@ -319,7 +292,7 @@ foreach (array_slice($services, 0, 6) as $svc) {
     <a href="https://wa.me/<?php echo SITE_WHATSAPP; ?>?text=<?php echo rawurlencode(WHATSAPP_MESSAGE); ?>"
        target="_blank" rel="noopener noreferrer"
        aria-label="Chat with us on WhatsApp"
-       class="group fixed bottom-8 right-8 w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#1DA851] text-white shadow-lg hover:shadow-xl hover:shadow-[#25D366]/50 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center z-50">
+       class="hidden lg:flex group fixed bottom-8 right-8 w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#1DA851] text-white shadow-lg hover:shadow-xl hover:shadow-[#25D366]/50 hover:-translate-y-0.5 transition-all duration-300 items-center justify-center z-50">
         <!-- Pulsing halo -->
         <span class="absolute inset-0 rounded-full bg-[#25D366]/40 animate-ping pointer-events-none"></span>
         <i class="fab fa-whatsapp text-2xl relative"></i>
@@ -331,14 +304,14 @@ foreach (array_slice($services, 0, 6) as $svc) {
     </a>
 
     <!-- Back to Top Button (stacked above the WhatsApp button) -->
-    <button id="back-to-top" class="fixed bottom-28 right-9 w-12 h-12 rounded-full bg-white text-deep-indigo border border-silver-grey shadow-lg hover:bg-electric-blue hover:text-white hover:shadow-xl hover:shadow-electric-blue/40 transition-all duration-300 transform translate-y-20 opacity-0 z-50 flex items-center justify-center group">
+    <button id="back-to-top" class="hidden lg:flex fixed bottom-28 right-9 w-12 h-12 rounded-full bg-white text-deep-indigo border border-silver-grey shadow-lg hover:bg-electric-blue hover:text-white hover:shadow-xl hover:shadow-electric-blue/40 transition-all duration-300 transform translate-y-20 opacity-0 z-50 items-center justify-center group">
         <i class="fas fa-arrow-up group-hover:-translate-y-0.5 transition-transform"></i>
     </button>
 
     <!-- Floating Emergency Stroke Helpline Button -->
     <a href="tel:<?php echo STROKE_HELPLINE; ?>"
        aria-label="Call 24x7 Emergency Stroke Helpline"
-       class="group fixed bottom-48 right-8 w-14 h-14 rounded-full bg-red-650 bg-red-600 hover:bg-red-750 hover:bg-red-700 text-white shadow-lg hover:shadow-xl hover:shadow-red-600/50 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center z-50">
+       class="hidden lg:flex group fixed bottom-48 right-8 w-14 h-14 rounded-full bg-red-650 bg-red-600 hover:bg-red-750 hover:bg-red-700 text-white shadow-lg hover:shadow-xl hover:shadow-red-600/50 hover:-translate-y-0.5 transition-all duration-300 items-center justify-center z-50">
         <!-- Pulsing halo -->
         <span class="absolute inset-0 rounded-full bg-red-600/40 animate-ping pointer-events-none"></span>
         <i class="fas fa-phone-alt text-lg relative animate-pulse"></i>
@@ -349,10 +322,34 @@ foreach (array_slice($services, 0, 6) as $svc) {
         </span>
     </a>
 
-    <!-- Floating Appointment Button (Mobile) -->
-    <a href="contact-us-top-neurologist-delhi-ncr.php" class="lg:hidden fixed bottom-6 left-6 w-14 h-14 rounded-full bg-gradient-to-r from-electric-blue to-cyan-accent text-white shadow-lg flex items-center justify-center z-50 animate-pulse-slow">
-        <i class="fas fa-calendar-plus text-lg"></i>
-    </a>
+    <!-- Sticky Bottom Bar (Mobile Only) -->
+    <div class="lg:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-silver-grey/50 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] z-50 px-4 py-2 flex items-center justify-between gap-4 pb-safe">
+        <!-- WhatsApp Link -->
+        <a href="https://wa.me/<?php echo SITE_WHATSAPP; ?>?text=<?php echo rawurlencode(WHATSAPP_MESSAGE); ?>" 
+           target="_blank" rel="noopener noreferrer"
+           class="flex flex-col items-center justify-center text-center text-[10px] font-bold text-dark-grey/70">
+            <span class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-0.5 active:scale-95 transition-transform">
+                <i class="fab fa-whatsapp text-xl"></i>
+            </span>
+            <span>WhatsApp</span>
+        </a>
+
+        <!-- Book Appointment Central Button -->
+        <a href="contact-us-top-neurologist-delhi-ncr.php" 
+           class="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-bold text-sm h-11 px-4 rounded-xl shadow-md shadow-electric-blue/15 active:scale-[0.98] transition-transform">
+            <i class="fas fa-calendar-check text-base"></i>
+            <span>Book Appointment</span>
+        </a>
+
+        <!-- Emergency Helpline Link -->
+        <a href="tel:<?php echo STROKE_HELPLINE; ?>" 
+           class="flex flex-col items-center justify-center text-center text-[10px] font-bold text-red-650 text-red-600">
+            <span class="w-10 h-10 rounded-xl bg-red-50 text-red-650 text-red-600 flex items-center justify-center mb-0.5 active:scale-95 transition-transform">
+                <i class="fas fa-phone-alt text-base animate-pulse"></i>
+            </span>
+            <span>Emergency</span>
+        </a>
+    </div>
 
     <script>
         // Back to top button

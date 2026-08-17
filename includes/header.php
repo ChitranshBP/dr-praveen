@@ -98,6 +98,19 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
         .font-serif {
             font-family: 'Playfair Display', serif;
         }
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .scrollbar-none::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .scrollbar-none {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        /* Safe area bottom padding for sticky bar */
+        .pb-safe {
+            padding-bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
+        }
         .gradient-text {
             background: linear-gradient(135deg, #2563EB 0%, #06B6D4 100%);
             -webkit-background-clip: text;
