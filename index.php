@@ -890,14 +890,44 @@ if (file_exists($doctorsJsonPath)) {
             </p>
         </div>
 
-        <!-- Sliding viewport: 3 videos per page, so each player renders taller -->
-        <div class="overflow-hidden">
+        <!-- Mobile Swipe View (Visible on Mobile only: hidden sm:flex) -->
+        <div class="sm:hidden flex overflow-x-auto snap-x snap-mandatory scrollbar-none gap-6 -mx-4 px-4 pb-4">
+            <?php foreach ($educationVideos as $video): ?>
+                <div class="flex-shrink-0 w-[80vw] snap-start bg-white rounded-3xl overflow-hidden border border-silver-grey/50 shadow-lg">
+                    <!-- Embed -->
+                    <div class="relative w-full aspect-video bg-dark-grey">
+                        <iframe
+                            class="w-full h-full"
+                            src="https://www.youtube.com/embed/<?php echo $video['id']; ?>?rel=0&modestbranding=1"
+                            title="<?php echo htmlspecialchars($video['title']); ?>"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
+                    </div>
+
+                    <!-- Card footer -->
+                    <div class="p-4">
+                        <h3 class="font-bold text-deep-indigo text-sm leading-snug mb-1 line-clamp-1">
+                            <?php echo $video['title']; ?>
+                        </h3>
+                        <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2">
+                            <?php echo $video['desc']; ?>
+                        </p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+
+        <!-- Desktop Slider View (Hidden on Mobile: hidden sm:block) -->
+        <div class="hidden sm:block overflow-hidden">
             <div id="edu-track" class="flex transition-transform duration-500 ease-in-out">
                 <?php
                 $eduPages = array_chunk($educationVideos, 3);
                 foreach ($eduPages as $epIdx => $epPage):
                 ?>
-                    <div class="min-w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="min-w-full grid grid-cols-2 lg:grid-cols-3 gap-8">
                         <?php foreach ($epPage as $video): ?>
                             <div class="group bg-white rounded-3xl overflow-hidden border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 observe">
 
@@ -931,7 +961,7 @@ if (file_exists($doctorsJsonPath)) {
         </div>
 
         <!-- Slider controls -->
-        <div class="flex items-center justify-between gap-6 mt-8">
+        <div class="hidden sm:flex items-center justify-between gap-6 mt-8">
 
             <!-- Dot indicators (wrap so 19 pages never collide with the arrows) -->
             <div class="flex items-center flex-wrap gap-2 flex-1 min-w-0" id="edu-dots">
@@ -1017,12 +1047,12 @@ if (file_exists($doctorsJsonPath)) {
             </a>
         </div>
 
-        <!-- Reels grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Reels layout: Swipe Carousel on Mobile, Grid on Desktop -->
+        <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-none gap-6 -mx-4 px-4 pb-4 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:px-0 md:mx-0">
             <?php foreach ($instagramReels as $reelIdx => $reel):
                 $reelUrl = 'https://www.instagram.com/reel/' . $reel['id'] . '/';
             ?>
-                <div class="observe" style="animation-delay: <?php echo $reelIdx * 120; ?>ms;">
+                <div class="flex-shrink-0 w-[80vw] snap-start md:w-auto observe" style="animation-delay: <?php echo $reelIdx * 120; ?>ms;">
                     <!-- Gradient border shell -->
                     <div class="group h-full p-[2px] rounded-3xl bg-gradient-to-br from-cyan-accent via-electric-blue to-deep-indigo shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
                         <div class="h-full bg-white rounded-[22px] overflow-hidden">

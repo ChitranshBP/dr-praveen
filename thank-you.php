@@ -7,7 +7,7 @@ require_once __DIR__ . '/includes/header.php';
 ?>
 
 <!-- Thank You Hero / Content Section -->
-<section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent text-white pt-28 pb-16">
+<section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent text-white pt-28 pb-16 -mt-20">
     <!-- Background overlay elements -->
     <div class="absolute inset-0 opacity-10 pointer-events-none">
         <div class="absolute -left-20 top-20 w-96 h-96 bg-white rounded-full blur-[100px]"></div>

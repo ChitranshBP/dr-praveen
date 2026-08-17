@@ -11,7 +11,7 @@ define('SITE_URL', 'https://drpraveengupta.com');
 define('SITE_PHONE', '+91-87969-77903');
 define('STROKE_HELPLINE', '1800-309-0247');
 define('SITE_EMAIL', 'contact@drpraveengupta.com');
-define('SITE_ADDRESS', 'New Delhi, India');
+define('SITE_ADDRESS', 'Marengo Asia Hospitals, Shushant Lok 2, Sector 56, Gurugram, Ghata, Haryana 122011');
 
 // WhatsApp — digits only, country code first, no '+', spaces or dashes (wa.me format)
 define('SITE_WHATSAPP', '918796977903');
@@ -378,7 +378,7 @@ $blogs = [
         'excerpt'  => 'Migraines are more than headaches. Learn the neurological triggers and the latest preventive therapies available today.',
         'category' => 'Migraine',
         'date'     => 'Jun 10, 2025',
-        'image'    => 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&h=520&q=80',
+        'image'    => 'assets/services/migraine.png',
         'url'      => 'blog.php'
     ],
     [
@@ -386,7 +386,7 @@ $blogs = [
         'excerpt'  => 'Recognising stroke symptoms early can prevent permanent damage. Know the FAST signs and when to call for emergency help.',
         'category' => 'Stroke',
         'date'     => 'May 28, 2025',
-        'image'    => 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=800&h=520&q=80',
+        'image'    => 'assets/services/stroke.png',
         'url'      => 'blog.php'
     ],
     [
@@ -394,7 +394,7 @@ $blogs = [
         'excerpt'  => 'From Deep Brain Stimulation to lifestyle strategies — explore how patients manage Parkinson\'s disease with quality of life.',
         'category' => 'Parkinson\'s',
         'date'     => 'May 14, 2025',
-        'image'    => 'https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?auto=format&fit=crop&w=800&h=520&q=80',
+        'image'    => 'assets/services/parkinsons.png',
         'url'      => 'blog.php'
     ],
 ];

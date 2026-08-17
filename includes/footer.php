@@ -103,13 +103,13 @@ foreach (array_slice($services, 0, 6) as $svc) {
                         </a>
                     </div>
                     <p class="text-white/70 leading-relaxed mb-6 text-sm">
-                        Providing exceptional medical care with compassion and expertise for over 25 years. Your trusted partner in health and wellness journey.
+                        Providing exceptional medical care with compassion and expertise for over 20 years. Your trusted partner in health and wellness journey.
                     </p>
 
                     <!-- Stats badges -->
                     <div class="flex items-center space-x-4 mb-6">
                         <div class="px-3 py-2 rounded-lg bg-white/5 border border-white/10">
-                            <div class="text-lg font-bold text-white">25+</div>
+                            <div class="text-lg font-bold text-white">20+</div>
                             <div class="text-[10px] text-white/60 uppercase tracking-wide">Years</div>
                         </div>
                         <div class="px-3 py-2 rounded-lg bg-white/5 border border-white/10">
@@ -137,9 +137,6 @@ foreach (array_slice($services, 0, 6) as $svc) {
                             </a>
                             <a href="<?php echo SOCIAL_YOUTUBE; ?>" class="group relative w-10 h-10 rounded-xl bg-white/5 hover:bg-red-500 border border-white/10 hover:border-red-500 flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
                                 <i class="fab fa-youtube text-sm"></i>
-                            </a>
-                            <a href="<?php echo SOCIAL_LINKEDIN; ?>" class="group relative w-10 h-10 rounded-xl bg-white/5 hover:bg-blue-600 border border-white/10 hover:border-blue-600 flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
-                                <i class="fab fa-linkedin-in text-sm"></i>
                             </a>
                         </div>
                     </div>
@@ -277,11 +274,9 @@ foreach (array_slice($services, 0, 6) as $svc) {
                 <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/60">
                     <p>&copy; <?php echo $currentYear; ?> <span class="text-white font-semibold">Dr. Praveen Gupta</span>. All rights reserved.</p>
                     <div class="flex items-center space-x-1">
-                        <a href="#" class="px-3 py-1.5 rounded-full hover:bg-white/5 hover:text-cyan-accent transition-all">Privacy Policy</a>
+                        <a href="privacy-policy.php" class="px-3 py-1.5 rounded-full hover:bg-white/5 hover:text-cyan-accent transition-all">Privacy Policy</a>
                         <span class="text-white/20">•</span>
-                        <a href="#" class="px-3 py-1.5 rounded-full hover:bg-white/5 hover:text-cyan-accent transition-all">Terms of Service</a>
-                        <span class="text-white/20">•</span>
-                        <a href="#" class="px-3 py-1.5 rounded-full hover:bg-white/5 hover:text-cyan-accent transition-all">Sitemap</a>
+                        <a href="terms-of-service.php" class="px-3 py-1.5 rounded-full hover:bg-white/5 hover:text-cyan-accent transition-all">Terms of Service</a>
                     </div>
                 </div>
             </div>
