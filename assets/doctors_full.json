@@ -154,52 +154,7 @@
         ]
       }
     }
-  },
-  {
-    "name": "Dr. Rafat Trivedi",
-    "image": "assets/ggn-nuro-images/rafat-trivedi.webp",
-    "alt": "Dr. Rafat Trivedi",
-    "specialty": "Pediatric Neurology & Epilepsy",
-    "designation": "Senior Consultant – Pediatric Neurology & Epilepsy, Gurugram",
-    "experience": "12+ Years Experience",
-    "modal": {
-      "title": "Dr. Rafat Trivedi",
-      "subtitle": "Pediatric Neurology & Epilepsy | Senior Consultant",
-      "role": "Senior Consultant",
-      "sections": {
-        "About": [
-          "Dr. Rafat Trivedi is a dedicated pediatric neurologist with extensive experience in diagnosing and treating disorders of the central and peripheral nervous system in children. Her sensitive, accurate, and research-driven approach toward patient care & rehabilitation stands out in the field. She brings a strong inclination toward academic contribution & clinical excellence, with a proven commitment to interdisciplinary collaboration, teaching, and public health."
-        ],
-        "Qualifications": [
-          "MBBS – Maharashtra University of Health Sciences (2000–2005)",
-          "Diploma in Child Health (DCH), Mumbai (2007–2009)",
-          "DNB (Pediatrics) – Dr. R. N. Cooper Hospital, Mumbai (2009–2011)",
-          "Fellowship in Pediatric Neurology & Epilepsy – Jaslok Hospital & B.J. Wadia Hospital, Mumbai (2011–2013)",
-          "Comprehensive Course in Neurophysiology – Case Western Reserve University Hospital, Ohio, USA (Feb–May 2013)"
-        ],
-        "Areas of Expertise": [
-          "Developmental Disorders – Developmental Delay, Cerebral Palsy",
-          "Neonatal and Developmental Neurology",
-          "Epilepsy, Syndromic Epilepsy, Neonatal Seizures",
-          "Headache and Migraine",
-          "Behavioural Problems – ADHD, Autism, Speech and Language Disorders",
-          "Learning Disabilities",
-          "Movement and Gait Disorders",
-          "Neuromuscular Disorders – Muscle, Spinal Cord Disorders",
-          "Neuro Infections and Auto-immune Diseases of Brain and Spinal Cord",
-          "Neuro Metabolic and Genetic Disorders"
-        ],
-        "Awards & Recognition": [
-          "1st Prize, Grand Round Award – Indian Journal of Pediatrics (2016)",
-          "Travel Award – 14th International Child Neurology Congress, Amsterdam (2016)",
-          "1st Prize – Poster Presentation, Neuropedicon (2014)",
-          "2nd Prize – Platform Presentation on Corpus Callosotomy, Neuropedicon (2014)",
-          "Recipient of Award Scholarship – Jamshedji Tata and Birla Trust",
-          "Award Scholarship – Hargobind Foundation"
-        ]
-      }
-    }
-  },
+
   {
     "name": "Dr. Seema Shahi",
     "image": "assets/ggn-nuro-images/seema-shahi.webp",
