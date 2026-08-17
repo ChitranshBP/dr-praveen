@@ -20,20 +20,32 @@ require_once __DIR__ . '/includes/header.php';
                 <span class="text-white font-medium">About</span>
             </nav>
 
-            <!-- Badge -->
-            <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4 border border-white/20">
-                <i class="fas fa-award text-cyan-accent text-[10px]"></i>
-                <span>Chairman - Marengo Asia Neuro & Spine</span>
-            </div>
-
             <!-- Heading -->
-            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-3">
-                About <span class="text-cyan-accent">Dr. Praveen Gupta</span>
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4">
+                <span class="text-cyan-accent">Dr. Praveen Gupta</span>
             </h1>
 
-            <p class="text-sm md:text-base text-white/85 leading-relaxed mb-6 max-w-2xl">
-                A leading neurologist pioneering advanced treatments in stroke, epilepsy, and movement disorders with over 20 years of experience.
-            </p>
+            <!-- Designations Stack -->
+            <div class="space-y-3 mb-6 max-w-3xl">
+                <div class="flex items-start space-x-2.5">
+                    <span class="w-5 h-5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center mt-0.5 text-cyan-accent flex-shrink-0">
+                        <i class="fas fa-award text-[10px]"></i>
+                    </span>
+                    <span class="text-sm md:text-base text-white/90 font-semibold leading-relaxed">Chairman MAIINS (Marengo Asia International Institute of Neuro & Spine), MAH Gurgaon</span>
+                </div>
+                <div class="flex items-start space-x-2.5">
+                    <span class="w-5 h-5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center mt-0.5 text-cyan-accent flex-shrink-0">
+                        <i class="fas fa-user-md text-[10px]"></i>
+                    </span>
+                    <span class="text-sm md:text-base text-white/90 font-semibold leading-relaxed">Chief Clinical Strategy, Growth and Innovation, North India</span>
+                </div>
+                <div class="flex items-start space-x-2.5">
+                    <span class="w-5 h-5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center mt-0.5 text-cyan-accent flex-shrink-0">
+                        <i class="fas fa-lightbulb text-[10px]"></i>
+                    </span>
+                    <span class="text-sm md:text-base text-white/90 font-semibold leading-relaxed">Chief Mentor for Start-up and Clinical Innovation for Neurosciences, Mental Health and Neuro Rehab Programs</span>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -423,7 +435,7 @@ require_once __DIR__ . '/includes/header.php';
     </div>
 </section>
 
-<!-- Testimonials — Minimal Slider -->
+<!-- Testimonials — Modern Elevated Slider -->
 <section class="py-14 lg:py-20 bg-soft-cyan/30">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-10">
@@ -440,24 +452,42 @@ require_once __DIR__ . '/includes/header.php';
             </p>
         </div>
 
-        <!-- Slider — All 6 cards visible, scroll between pages -->
+        <!-- Slider -->
         <div class="relative">
             <div id="testimonial-viewport" class="overflow-hidden">
                 <div id="testimonial-track" class="flex transition-transform duration-500 ease-in-out">
                     <?php foreach ($testimonials as $testimonial): ?>
-                        <div class="testimonial-card flex-shrink-0 px-3" style="width: 33.333333%; min-width: 33.333333%; box-sizing: border-box;">
-                            <div class="h-full border-l-2 border-silver-grey hover:border-electric-blue pl-5 py-2 transition-colors duration-300">
-                                <div class="flex space-x-0.5 mb-3">
-                                    <?php for ($i = 0; $i < $testimonial['rating']; $i++): ?>
-                                        <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                    <?php endfor; ?>
-                                </div>
-                                <p class="text-dark-grey/80 text-sm italic leading-relaxed mb-5">
-                                    "<?php echo $testimonial['message']; ?>"
-                                </p>
+                        <div class="testimonial-card flex-shrink-0 px-4 py-2" style="width: 33.333333%; min-width: 33.333333%; box-sizing: border-box;">
+                            <div class="group h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 flex flex-col justify-between relative overflow-hidden">
+                                <!-- Background Decorative Quote -->
+                                <i class="fas fa-quote-right absolute right-6 top-6 text-slate-100 text-4xl pointer-events-none group-hover:text-electric-blue/5 transition-colors duration-300"></i>
+
                                 <div>
-                                    <p class="font-semibold text-deep-indigo text-sm"><?php echo $testimonial['name']; ?></p>
-                                    <p class="text-xs text-dark-grey/50 mt-0.5"><?php echo $testimonial['role']; ?></p>
+                                    <!-- Stars -->
+                                    <div class="flex space-x-0.5 mb-4 text-amber-400">
+                                        <?php for ($i = 0; $i < $testimonial['rating']; $i++): ?>
+                                            <i class="fas fa-star text-xs"></i>
+                                        <?php endfor; ?>
+                                    </div>
+                                    
+                                    <!-- Message -->
+                                    <p class="text-dark-grey/75 text-sm leading-relaxed mb-6 italic relative z-10">
+                                        "<?php echo $testimonial['message']; ?>"
+                                    </p>
+                                </div>
+
+                                <!-- Divider -->
+                                <div class="w-full h-px bg-silver-grey/60 mb-4"></div>
+
+                                <!-- Author Row -->
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue/15 to-cyan-accent/15 text-electric-blue font-bold text-sm flex items-center justify-center shadow-sm">
+                                        <?php echo strtoupper(substr($testimonial['name'], 0, 1)); ?>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold text-deep-indigo text-sm leading-tight"><?php echo $testimonial['name']; ?></p>
+                                        <p class="text-[10px] text-cyan-accent font-semibold mt-0.5 uppercase tracking-wider"><?php echo $testimonial['role']; ?></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -468,25 +498,16 @@ require_once __DIR__ . '/includes/header.php';
             <!-- Slider Controls -->
             <div class="flex items-center justify-center space-x-3 mt-8">
                 <button id="testimonial-prev" type="button"
-                        class="w-10 h-10 rounded-full bg-white border border-silver-grey hover:border-electric-blue hover:bg-electric-blue hover:text-white text-deep-indigo flex items-center justify-center transition-all duration-300 shadow-sm">
+                        class="w-10 h-10 rounded-full bg-white border border-silver-grey hover:border-electric-blue hover:bg-electric-blue hover:text-white text-deep-indigo flex items-center justify-center transition-all duration-300 shadow-sm active:scale-95">
                     <i class="fas fa-chevron-left text-xs"></i>
                 </button>
 
                 <div id="testimonial-dots" class="flex items-center space-x-2">
-                    <?php
-                    // One dot per page. With 6 cards, 3 per page = 2 pages
-                    $totalPages = 2;
-                    for ($i = 0; $i < $totalPages; $i++): ?>
-                        <button type="button"
-                                class="testimonial-dot rounded-full bg-silver-grey hover:bg-electric-blue transition-all duration-300"
-                                style="width: 8px; height: 8px;"
-                                data-index="<?php echo $i; ?>"
-                                aria-label="Go to page <?php echo $i + 1; ?>"></button>
-                    <?php endfor; ?>
+                    <!-- Dots generated dynamically in JS -->
                 </div>
 
                 <button id="testimonial-next" type="button"
-                        class="w-10 h-10 rounded-full bg-white border border-silver-grey hover:border-electric-blue hover:bg-electric-blue hover:text-white text-deep-indigo flex items-center justify-center transition-all duration-300 shadow-sm">
+                        class="w-10 h-10 rounded-full bg-white border border-silver-grey hover:border-electric-blue hover:bg-electric-blue hover:text-white text-deep-indigo flex items-center justify-center transition-all duration-300 shadow-sm active:scale-95">
                     <i class="fas fa-chevron-right text-xs"></i>
                 </button>
             </div>
@@ -495,7 +516,7 @@ require_once __DIR__ . '/includes/header.php';
 </section>
 
 <style>
-    /* Testimonials slider: 3 cards visible on desktop, 2 on tablet, 1 on mobile */
+    /* Responsive slide widths */
     @media (max-width: 767px) {
         .testimonial-card {
             width: 100% !important;
@@ -526,11 +547,10 @@ require_once __DIR__ . '/includes/header.php';
     const track = document.getElementById('testimonial-track');
     const prevBtn = document.getElementById('testimonial-prev');
     const nextBtn = document.getElementById('testimonial-next');
-    const dots = document.querySelectorAll('.testimonial-dot');
+    const dotsBox = document.getElementById('testimonial-dots');
     const currentLabel = document.getElementById('testimonial-current');
     const viewport = document.getElementById('testimonial-viewport');
     const totalCards = <?php echo count($testimonials); ?>;
-    const totalPages = <?php echo $totalPages; ?>;
     let currentPage = 0;
 
     function getCardsPerPage() {
@@ -540,21 +560,48 @@ require_once __DIR__ . '/includes/header.php';
         return 1;
     }
 
+    function buildDots() {
+        const cardsPerPage = getCardsPerPage();
+        const maxPage = Math.max(0, Math.ceil(totalCards / cardsPerPage) - 1);
+        dotsBox.innerHTML = '';
+        for (let i = 0; i <= maxPage; i++) {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'testimonial-dot rounded-full bg-silver-grey hover:bg-electric-blue transition-all duration-300';
+            btn.style.width = '8px';
+            btn.style.height = '8px';
+            btn.setAttribute('data-index', i);
+            btn.setAttribute('aria-label', 'Go to page ' + (i + 1));
+            btn.addEventListener('click', function() {
+                currentPage = i;
+                update();
+            });
+            dotsBox.appendChild(btn);
+        }
+    }
+
     function update() {
         const cardsPerPage = getCardsPerPage();
         const maxPage = Math.max(0, Math.ceil(totalCards / cardsPerPage) - 1);
         if (currentPage > maxPage) currentPage = maxPage;
 
-        // Translate by viewport width
+        // Rebuild dots if mismatch
+        if (dotsBox.children.length !== maxPage + 1) {
+            buildDots();
+        }
+
+        // Translate
         const viewportWidth = viewport.offsetWidth;
         const offset = currentPage * viewportWidth;
         track.style.transform = 'translateX(-' + offset + 'px)';
 
-        // Update counter
-        if (currentLabel) currentLabel.textContent = Math.min(currentPage * cardsPerPage + cardsPerPage, totalCards);
+        // Counter
+        if (currentLabel) {
+            currentLabel.textContent = Math.min(currentPage * cardsPerPage + cardsPerPage, totalCards);
+        }
 
-        // Update dots
-        dots.forEach(function(d, i) {
+        // Paint dots
+        Array.from(dotsBox.children).forEach(function(d, i) {
             if (i === currentPage) {
                 d.classList.add('active');
             } else {
@@ -579,14 +626,23 @@ require_once __DIR__ . '/includes/header.php';
         }
     });
 
-    for (let i = 0; i < dots.length; i++) {
-        dots[i].addEventListener('click', function() {
-            currentPage = parseInt(this.getAttribute('data-index'), 10);
-            update();
-        });
-    }
+    // Touch / Swipe
+    let touchStartX = 0;
+    viewport.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    viewport.addEventListener('touchend', function(e) {
+        const delta = e.changedTouches[0].screenX - touchStartX;
+        if (Math.abs(delta) > 50) {
+            if (delta < 0) {
+                nextBtn.click();
+            } else {
+                prevBtn.click();
+            }
+        }
+    }, { passive: true });
 
-    // Recalculate on resize
+    // Recalculate
     let resizeTimer;
     window.addEventListener('resize', function() {
         clearTimeout(resizeTimer);

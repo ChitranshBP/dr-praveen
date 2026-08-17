@@ -132,8 +132,9 @@ require_once __DIR__ . '/includes/header.php';
                     <p class="text-xs text-white/70 leading-relaxed mb-6">
                         Stay updated with healthy brain guidelines and latest clinical updates.
                     </p>
-                    <form class="space-y-3">
-                        <input type="email" required placeholder="Your email address" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-cyan-accent text-sm text-white placeholder-white/40">
+                    <form class="space-y-3" accept-charset="UTF-8" action="https://app.formester.com/forms/MUVNkRKYA/submissions" method="POST">
+                        <input type="hidden" name="form_type" value="Blog Newsletter Subscription">
+                        <input type="email" name="email" required placeholder="Your email address" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-cyan-accent text-sm text-white placeholder-white/40">
                         <button type="submit" class="w-full bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold py-3 rounded-xl hover:shadow-lg transition-all duration-300">
                             Subscribe
                         </button>

@@ -131,15 +131,16 @@ require_once __DIR__ . '/includes/header.php';
                     </li>
                 </ul>
 
-                <form class="pt-4 border-t border-cyan-accent/20 space-y-3" onsubmit="event.preventDefault(); alert('Request submitted successfully! Our coordinator will contact you shortly.');">
+                <form class="pt-4 border-t border-cyan-accent/20 space-y-3" accept-charset="UTF-8" action="https://app.formester.com/forms/MUVNkRKYA/submissions" method="POST">
+                    <input type="hidden" name="form_type" value="Neurology Consultation Request">
                     <span class="block text-xs font-bold text-deep-indigo uppercase tracking-wider">Quick Request</span>
                     <div>
                         <label for="consult-name" class="sr-only">Full Name</label>
-                        <input type="text" id="consult-name" required placeholder="Your Name" class="w-full px-4 py-2.5 bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-electric-blue text-xs text-dark-grey placeholder-dark-grey/50">
+                        <input type="text" id="consult-name" name="name" required placeholder="Your Name" class="w-full px-4 py-2.5 bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-electric-blue text-xs text-dark-grey placeholder-dark-grey/50">
                     </div>
                     <div>
                         <label for="consult-phone" class="sr-only">Phone Number</label>
-                        <input type="tel" id="consult-phone" required placeholder="Phone Number" class="w-full px-4 py-2.5 bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-electric-blue text-xs text-dark-grey placeholder-dark-grey/50">
+                        <input type="tel" id="consult-phone" name="phone" required placeholder="Phone Number" class="w-full px-4 py-2.5 bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-electric-blue text-xs text-dark-grey placeholder-dark-grey/50">
                     </div>
                     <div>
                         <button type="submit" class="block w-full text-center bg-deep-indigo hover:bg-electric-blue text-white font-bold py-2.5 rounded-xl transition-colors text-xs shadow-md">

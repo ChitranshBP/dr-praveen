@@ -89,6 +89,19 @@
         .font-serif {
             font-family: 'Playfair Display', serif;
         }
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .scrollbar-none::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .scrollbar-none {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        /* Safe area bottom padding for sticky bar */
+        .pb-safe {
+            padding-bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
+        }
         .gradient-text {
             background: linear-gradient(135deg, #2563EB 0%, #06B6D4 100%);
             -webkit-background-clip: text;
@@ -218,10 +231,10 @@
         .mobile-menu-anim {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease;
+            transition: max-height 0.4s ease-in-out;
         }
         .mobile-menu-anim.open {
-            max-height: 500px;
+            max-height: 1000px;
         }
 
         /* Scroll progress bar */
@@ -903,13 +916,15 @@
         mobileMenuBtn.addEventListener('click', function() {
             menuOpen = !menuOpen;
             mobileMenu.classList.toggle('open');
-            mobileMenu.classList.toggle('hidden');
 
             if (menuOpen) {
                 menuIcon.classList.remove('fa-bars');
                 menuIcon.classList.add('fa-xmark');
                 navbar.classList.remove('navbar-glass');
                 navbar.classList.add('navbar-solid');
+                if (headerLogo) {
+                    headerLogo.classList.remove('invert', 'brightness-0');
+                }
             } else {
                 menuIcon.classList.remove('fa-xmark');
                 menuIcon.classList.add('fa-bars');
@@ -954,7 +969,7 @@
                 } else {
                     navbar.classList.remove('shadow-lg');
                     if (headerLogo) {
-                        headerLogo.classList.add('invert', 'brightness-0');
+                        headerLogo.classList.remove('invert', 'brightness-0');
                     }
                 }
             }
@@ -972,16 +987,22 @@
     <div id="hero-slider" class="w-full max-w-[1920px] mx-auto relative">
         <div id="hero-track" class="flex transition-transform duration-700 ease-in-out">
             <div class="min-w-full relative">
-                <img src="assets/banner/1.png"
-                     alt="Transforming Brain &amp; Spine Care with Precision – Led by Dr. Praveen Gupta, Chairman, Marengo Asia International Institute of Neuro &amp; Spine"
-                     fetchpriority="high"
-                     class="w-full h-[320px] sm:h-[400px] md:h-auto object-cover object-[32%_center] md:object-center block">
+                <picture>
+                    <source media="(max-width: 767px)" srcset="assets/mobile-banner/mobile-1%20(1).png">
+                    <img src="assets/banner/1.png"
+                         alt="Transforming Brain &amp; Spine Care with Precision – Led by Dr. Praveen Gupta, Chairman, Marengo Asia International Institute of Neuro &amp; Spine"
+                         fetchpriority="high"
+                         class="w-full h-auto object-cover object-[32%_center] md:object-center block">
+                </picture>
             </div>
             <div class="min-w-full relative">
-                <img src="assets/banner/2.png"
-                     alt="Your Brain Deserves Expert Care – Empowering every thought for a life beyond neurological limits"
-                     loading="lazy"
-                     class="w-full h-[320px] sm:h-[400px] md:h-auto object-cover object-[32%_center] md:object-center block">
+                <picture>
+                    <source media="(max-width: 767px)" srcset="assets/mobile-banner/mobile-1%20(2).png">
+                    <img src="assets/banner/2.png"
+                         alt="Your Brain Deserves Expert Care – Empowering every thought for a life beyond neurological limits"
+                         loading="lazy"
+                         class="w-full h-auto object-cover object-[32%_center] md:object-center block">
+                </picture>
             </div>
         </div>
 
@@ -1096,8 +1117,8 @@
             </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            <a href="brain-stroke-helpline.html" class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe"
+        <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-none gap-6 pb-6 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:pb-0">
+                            <a href="brain-stroke-helpline.html" class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe w-[80vw] md:w-auto flex-shrink-0 snap-start"
                     style="animation-delay: 0ms;">
                     <div>
                         <!-- Image Container -->
@@ -1137,7 +1158,7 @@
                         <!-- Bullet Feature / Helpline Badge -->
                                             </div>
                 </a>
-                            <a href="epilepsy.html" class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe"
+                            <a href="epilepsy.html" class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe w-[80vw] md:w-auto flex-shrink-0 snap-start"
                     style="animation-delay: 100ms;">
                     <div>
                         <!-- Image Container -->
@@ -1183,7 +1204,7 @@
                             </div>
                                             </div>
                 </a>
-                            <a href="brain-tumor-surgery.html" class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe"
+                            <a href="brain-tumor-surgery.html" class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe w-[80vw] md:w-auto flex-shrink-0 snap-start"
                     style="animation-delay: 200ms;">
                     <div>
                         <!-- Image Container -->
@@ -1229,7 +1250,7 @@
                             </div>
                                             </div>
                 </a>
-                            <a href="spine-surgery.html" class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe"
+                            <a href="spine-surgery.html" class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe w-[80vw] md:w-auto flex-shrink-0 snap-start"
                     style="animation-delay: 300ms;">
                     <div>
                         <!-- Image Container -->
@@ -1275,7 +1296,7 @@
                             </div>
                                             </div>
                 </a>
-                            <a href="headache.html" class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe"
+                            <a href="headache.html" class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe w-[80vw] md:w-auto flex-shrink-0 snap-start"
                     style="animation-delay: 400ms;">
                     <div>
                         <!-- Image Container -->
@@ -1321,7 +1342,7 @@
                             </div>
                                             </div>
                 </a>
-                            <a href="functional-neurosurgery.html" class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe"
+                            <a href="functional-neurosurgery.html" class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe w-[80vw] md:w-auto flex-shrink-0 snap-start"
                     style="animation-delay: 500ms;">
                     <div>
                         <!-- Image Container -->
@@ -1367,7 +1388,7 @@
                             </div>
                                             </div>
                 </a>
-                            <a href="neurovascular-surgery.html" class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe"
+                            <a href="neurovascular-surgery.html" class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe w-[80vw] md:w-auto flex-shrink-0 snap-start"
                     style="animation-delay: 600ms;">
                     <div>
                         <!-- Image Container -->
@@ -1413,7 +1434,7 @@
                             </div>
                                             </div>
                 </a>
-                            <a href="memory-clinic.html" class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe"
+                            <a href="memory-clinic.html" class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe w-[80vw] md:w-auto flex-shrink-0 snap-start"
                     style="animation-delay: 700ms;">
                     <div>
                         <!-- Image Container -->
@@ -1459,7 +1480,7 @@
                             </div>
                                             </div>
                 </a>
-                            <a href="neuro-rehabilitation-center.html" class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe"
+                            <a href="neuro-rehabilitation-center.html" class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe w-[80vw] md:w-auto flex-shrink-0 snap-start"
                     style="animation-delay: 800ms;">
                     <div>
                         <!-- Image Container -->
@@ -1975,9 +1996,9 @@
             </p>
         </div>
 
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+        <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-none gap-6 pb-6 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-8 sm:pb-0 mb-10">
                         <!-- Dynamic Team Card -->
-            <a href="team.html" class="group bg-white border border-silver-grey/50 p-6 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 observe flex flex-col items-center text-center hover:-translate-y-2">
+            <a href="team.html" class="group bg-white border border-silver-grey/50 p-6 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 observe flex flex-col items-center text-center hover:-translate-y-2 w-[70vw] sm:w-auto flex-shrink-0 snap-start">
                 <div class="w-32 h-32 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
                     <img src="assets/ggn-nuro-images/dr-piyush-ojha.webp" alt="Dr. Piyush Ojha" class="w-full h-full object-cover object-top rounded-full transition-transform duration-500 group-hover:scale-105">
                 </div>
@@ -1990,7 +2011,7 @@
                 </div>
             </a>
                         <!-- Dynamic Team Card -->
-            <a href="team.html" class="group bg-white border border-silver-grey/50 p-6 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 observe flex flex-col items-center text-center hover:-translate-y-2">
+            <a href="team.html" class="group bg-white border border-silver-grey/50 p-6 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 observe flex flex-col items-center text-center hover:-translate-y-2 w-[70vw] sm:w-auto flex-shrink-0 snap-start">
                 <div class="w-32 h-32 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
                     <img src="assets/ggn-nuro-images/dr-shilpa-jaiswal.webp" alt="Dr. Shilpa Jaiswal" class="w-full h-full object-cover object-top rounded-full transition-transform duration-500 group-hover:scale-105">
                 </div>
@@ -2003,7 +2024,7 @@
                 </div>
             </a>
                         <!-- Dynamic Team Card -->
-            <a href="team.html" class="group bg-white border border-silver-grey/50 p-6 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 observe flex flex-col items-center text-center hover:-translate-y-2">
+            <a href="team.html" class="group bg-white border border-silver-grey/50 p-6 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 observe flex flex-col items-center text-center hover:-translate-y-2 w-[70vw] sm:w-auto flex-shrink-0 snap-start">
                 <div class="w-32 h-32 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
                     <img src="assets/ggn-nuro-images/dr-vikas-sharma.webp" alt="Dr. Vikas Sharma" class="w-full h-full object-cover object-top rounded-full transition-transform duration-500 group-hover:scale-105">
                 </div>
@@ -2016,7 +2037,7 @@
                 </div>
             </a>
                         <!-- Dynamic Team Card -->
-            <a href="team.html" class="group bg-white border border-silver-grey/50 p-6 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 observe flex flex-col items-center text-center hover:-translate-y-2">
+            <a href="team.html" class="group bg-white border border-silver-grey/50 p-6 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 observe flex flex-col items-center text-center hover:-translate-y-2 w-[70vw] sm:w-auto flex-shrink-0 snap-start">
                 <div class="w-32 h-32 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
                     <img src="assets/ggn-nuro-images/rafat-trivedi.webp" alt="Dr. Rafat Trivedi" class="w-full h-full object-cover object-top rounded-full transition-transform duration-500 group-hover:scale-105">
                 </div>
@@ -2077,7 +2098,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    Dr. Praveen Gupta transformed my health journey. His expertise and compassion are unmatched.                </p>
+                    I would like to express my heartfelt gratitude to Dr. Praveen Gupta and his outstanding team for the exceptional care during my mother's treatment for acute neuropathy. Dr. Gupta's clinical expertise, calm approach, and ability to explain every aspect of the treatment gave our family immense confidence. I would also like to make a special mention of Dr. Piyush Ojha, whose prompt assessment and accurate initial diagnosis played a crucial role.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2085,10 +2106,10 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        P                    </div>
+                        A                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Priya Sharma</p>
-                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Atul Saxena</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient's Son</p>
                     </div>
                 </div>
 
@@ -2108,7 +2129,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    The level of care and attention I received was exceptional. Truly a world-class professional.                </p>
+                    We are extremely grateful to Dr. Praveen Gupta for the exceptional care and treatment provided to my father during his brain stroke surgery. From the very beginning, Dr. Gupta guided us with confidence, clarity, and compassion during a very difficult time for our family. It has now been 6 months, and we have seen continuous improvement and a smooth recovery.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2116,9 +2137,40 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-accent to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        R                    </div>
+                        Y                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Rajesh Kumar</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Yashu Jindal</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient's Son</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+                                                                    <div class="quote-card w-[300px] sm:w-[360px] flex-shrink-0 mr-6">
+            <div class="h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col">
+
+                <!-- Rating -->
+                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                    </div>
+
+                <!-- Review text -->
+                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                    Really good experience at Dr. Praveen Gupta's clinic. My vertigo and dizziness improved a lot. My condition was explained in a way I could easily understand. I felt much better after following the treatment. A very neat and well-maintained clinic. Highly recommended.                </p>
+
+                <!-- Divider -->
+                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                <!-- Author -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-deep-indigo to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                        D                    </div>
+                    <div>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Dheeraj Tiwari</p>
                         <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
                     </div>
                 </div>
@@ -2139,7 +2191,100 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    Outstanding doctor with a wonderful bedside manner. Highly recommend to everyone.                </p>
+                    My family member was admitted under Dr. Praveen Gupta and we are very thankful for the excellent treatment and attention provided throughout the stay. The doctor regularly monitored the patient's condition, explained progress clearly, and addressed all our concerns with patience and professionalism. Outstanding IPD care.                </p>
+
+                <!-- Divider -->
+                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                <!-- Author -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-deep-indigo flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                        J                    </div>
+                    <div>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Jyoti Singh</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient's Family</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+                                                                    <div class="quote-card w-[300px] sm:w-[360px] flex-shrink-0 mr-6">
+            <div class="h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col">
+
+                <!-- Rating -->
+                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                    </div>
+
+                <!-- Review text -->
+                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                    Dr. Praveen Gupta is a brilliant, empathetic, and very supportive physician. I struggled with a neurological disorder for a decade, but under his care, I was completely cured in 10 days. He is genuinely an embodiment of compassion and healing.                </p>
+
+                <!-- Divider -->
+                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                <!-- Author -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                        S                    </div>
+                    <div>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Syed Mazhar Kandhlavi</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+                                                                    <div class="quote-card w-[300px] sm:w-[360px] flex-shrink-0 mr-6">
+            <div class="h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col">
+
+                <!-- Rating -->
+                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                    </div>
+
+                <!-- Review text -->
+                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                    I am extremely grateful to Dr. Praveen Gupta for the exceptional care and attention throughout my treatment. The diagnosis was made after thorough and well-planned investigations, and treatment was started at the right time, making a significant difference. The empathy, responsiveness, and genuine effort were deeply reassuring.                </p>
+
+                <!-- Divider -->
+                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                <!-- Author -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-accent to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                        V                    </div>
+                    <div>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Vandana Gera</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+                                                                    <div class="quote-card w-[300px] sm:w-[360px] flex-shrink-0 mr-6">
+            <div class="h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col">
+
+                <!-- Rating -->
+                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                    </div>
+
+                <!-- Review text -->
+                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                    My heartfelt thanks to Dr. Praveen Gupta and his entire team for the exceptional care and treatment I received after my blackout episode. Every test and evaluation was conducted promptly and thoroughly to identify the root cause, and I was guided through each step with patience, reassurance, and compassion.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2149,7 +2294,7 @@
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-deep-indigo to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
                         A                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Anita Desai</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Anjali Tanwar</p>
                         <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
                     </div>
                 </div>
@@ -2170,7 +2315,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    After struggling with migraines for years, Dr. Gupta's treatment gave me my life back. Truly exceptional care.                </p>
+                    I had been battling a severe fever, and the toll was becoming overwhelming. From my very first consultation, Dr. Gupta demonstrated a remarkable blend of medical expertise and genuine compassion. He listened carefully, answered concerns, and explained the rationale behind the prescription. I highly recommend him.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2178,9 +2323,9 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-deep-indigo flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        S                    </div>
+                        P                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Suresh Mehta</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Pragya Chaudhary</p>
                         <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
                     </div>
                 </div>
@@ -2201,7 +2346,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    I was diagnosed with Parkinson's and was devastated. Dr. Gupta's calm guidance and advanced treatment plan gave me renewed hope.                </p>
+                    I would like to express my heartfelt gratitude to Dr. Praveen Gupta for his exceptional care and dedication. His vast knowledge, calm nature, and ability to patiently listen give immense confidence. One of the most remarkable things is that he is always reachable and responds on time when needed.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2209,9 +2354,9 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        K                    </div>
+                        M                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Kavita Singh</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Manjit Singh</p>
                         <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
                     </div>
                 </div>
@@ -2232,7 +2377,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    Best neurologist I have ever consulted. Diagnosed my condition accurately in the first visit and the treatment worked remarkably well.                </p>
+                    My husband had been suffering from epilepsy for the last 3 years. Dr. Praveen Gupta told me in our very first meeting that my husband would get well, and the results are better now. My husband is doing well. Thank you, Sir.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2240,10 +2385,10 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-accent to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        D                    </div>
+                        S                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Deepak Nair</p>
-                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Seema Saini</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient's Wife</p>
                     </div>
                 </div>
 
@@ -2263,7 +2408,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    Dr. Praveen Gupta transformed my health journey. His expertise and compassion are unmatched.                </p>
+                    I would like to express my heartfelt gratitude to Dr. Praveen Gupta and his outstanding team for the exceptional care during my mother's treatment for acute neuropathy. Dr. Gupta's clinical expertise, calm approach, and ability to explain every aspect of the treatment gave our family immense confidence. I would also like to make a special mention of Dr. Piyush Ojha, whose prompt assessment and accurate initial diagnosis played a crucial role.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2271,10 +2416,10 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        P                    </div>
+                        A                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Priya Sharma</p>
-                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Atul Saxena</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient's Son</p>
                     </div>
                 </div>
 
@@ -2294,7 +2439,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    The level of care and attention I received was exceptional. Truly a world-class professional.                </p>
+                    We are extremely grateful to Dr. Praveen Gupta for the exceptional care and treatment provided to my father during his brain stroke surgery. From the very beginning, Dr. Gupta guided us with confidence, clarity, and compassion during a very difficult time for our family. It has now been 6 months, and we have seen continuous improvement and a smooth recovery.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2302,9 +2447,40 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-accent to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        R                    </div>
+                        Y                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Rajesh Kumar</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Yashu Jindal</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient's Son</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+                                                                    <div class="quote-card w-[300px] sm:w-[360px] flex-shrink-0 mr-6" aria-hidden="true">
+            <div class="h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col">
+
+                <!-- Rating -->
+                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                    </div>
+
+                <!-- Review text -->
+                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                    Really good experience at Dr. Praveen Gupta's clinic. My vertigo and dizziness improved a lot. My condition was explained in a way I could easily understand. I felt much better after following the treatment. A very neat and well-maintained clinic. Highly recommended.                </p>
+
+                <!-- Divider -->
+                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                <!-- Author -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-deep-indigo to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                        D                    </div>
+                    <div>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Dheeraj Tiwari</p>
                         <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
                     </div>
                 </div>
@@ -2325,7 +2501,100 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    Outstanding doctor with a wonderful bedside manner. Highly recommend to everyone.                </p>
+                    My family member was admitted under Dr. Praveen Gupta and we are very thankful for the excellent treatment and attention provided throughout the stay. The doctor regularly monitored the patient's condition, explained progress clearly, and addressed all our concerns with patience and professionalism. Outstanding IPD care.                </p>
+
+                <!-- Divider -->
+                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                <!-- Author -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-deep-indigo flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                        J                    </div>
+                    <div>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Jyoti Singh</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient's Family</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+                                                                    <div class="quote-card w-[300px] sm:w-[360px] flex-shrink-0 mr-6" aria-hidden="true">
+            <div class="h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col">
+
+                <!-- Rating -->
+                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                    </div>
+
+                <!-- Review text -->
+                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                    Dr. Praveen Gupta is a brilliant, empathetic, and very supportive physician. I struggled with a neurological disorder for a decade, but under his care, I was completely cured in 10 days. He is genuinely an embodiment of compassion and healing.                </p>
+
+                <!-- Divider -->
+                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                <!-- Author -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                        S                    </div>
+                    <div>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Syed Mazhar Kandhlavi</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+                                                                    <div class="quote-card w-[300px] sm:w-[360px] flex-shrink-0 mr-6" aria-hidden="true">
+            <div class="h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col">
+
+                <!-- Rating -->
+                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                    </div>
+
+                <!-- Review text -->
+                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                    I am extremely grateful to Dr. Praveen Gupta for the exceptional care and attention throughout my treatment. The diagnosis was made after thorough and well-planned investigations, and treatment was started at the right time, making a significant difference. The empathy, responsiveness, and genuine effort were deeply reassuring.                </p>
+
+                <!-- Divider -->
+                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                <!-- Author -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-accent to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                        V                    </div>
+                    <div>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Vandana Gera</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+                                                                    <div class="quote-card w-[300px] sm:w-[360px] flex-shrink-0 mr-6" aria-hidden="true">
+            <div class="h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col">
+
+                <!-- Rating -->
+                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                    </div>
+
+                <!-- Review text -->
+                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                    My heartfelt thanks to Dr. Praveen Gupta and his entire team for the exceptional care and treatment I received after my blackout episode. Every test and evaluation was conducted promptly and thoroughly to identify the root cause, and I was guided through each step with patience, reassurance, and compassion.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2335,7 +2604,7 @@
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-deep-indigo to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
                         A                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Anita Desai</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Anjali Tanwar</p>
                         <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
                     </div>
                 </div>
@@ -2356,7 +2625,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    After struggling with migraines for years, Dr. Gupta's treatment gave me my life back. Truly exceptional care.                </p>
+                    I had been battling a severe fever, and the toll was becoming overwhelming. From my very first consultation, Dr. Gupta demonstrated a remarkable blend of medical expertise and genuine compassion. He listened carefully, answered concerns, and explained the rationale behind the prescription. I highly recommend him.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2364,9 +2633,9 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-deep-indigo flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        S                    </div>
+                        P                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Suresh Mehta</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Pragya Chaudhary</p>
                         <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
                     </div>
                 </div>
@@ -2387,7 +2656,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    I was diagnosed with Parkinson's and was devastated. Dr. Gupta's calm guidance and advanced treatment plan gave me renewed hope.                </p>
+                    I would like to express my heartfelt gratitude to Dr. Praveen Gupta for his exceptional care and dedication. His vast knowledge, calm nature, and ability to patiently listen give immense confidence. One of the most remarkable things is that he is always reachable and responds on time when needed.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2395,9 +2664,9 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        K                    </div>
+                        M                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Kavita Singh</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Manjit Singh</p>
                         <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
                     </div>
                 </div>
@@ -2418,7 +2687,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    Best neurologist I have ever consulted. Diagnosed my condition accurately in the first visit and the treatment worked remarkably well.                </p>
+                    My husband had been suffering from epilepsy for the last 3 years. Dr. Praveen Gupta told me in our very first meeting that my husband would get well, and the results are better now. My husband is doing well. Thank you, Sir.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2426,10 +2695,10 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-accent to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        D                    </div>
+                        S                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Deepak Nair</p>
-                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Seema Saini</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient's Wife</p>
                     </div>
                 </div>
 
@@ -2449,7 +2718,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    Dr. Praveen Gupta transformed my health journey. His expertise and compassion are unmatched.                </p>
+                    I would like to express my heartfelt gratitude to Dr. Praveen Gupta and his outstanding team for the exceptional care during my mother's treatment for acute neuropathy. Dr. Gupta's clinical expertise, calm approach, and ability to explain every aspect of the treatment gave our family immense confidence. I would also like to make a special mention of Dr. Piyush Ojha, whose prompt assessment and accurate initial diagnosis played a crucial role.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2457,10 +2726,10 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        P                    </div>
+                        A                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Priya Sharma</p>
-                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Atul Saxena</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient's Son</p>
                     </div>
                 </div>
 
@@ -2480,7 +2749,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    The level of care and attention I received was exceptional. Truly a world-class professional.                </p>
+                    We are extremely grateful to Dr. Praveen Gupta for the exceptional care and treatment provided to my father during his brain stroke surgery. From the very beginning, Dr. Gupta guided us with confidence, clarity, and compassion during a very difficult time for our family. It has now been 6 months, and we have seen continuous improvement and a smooth recovery.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2488,9 +2757,40 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-accent to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        R                    </div>
+                        Y                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Rajesh Kumar</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Yashu Jindal</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient's Son</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+                                                                    <div class="quote-card w-[300px] sm:w-[360px] flex-shrink-0 mr-6" aria-hidden="true">
+            <div class="h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col">
+
+                <!-- Rating -->
+                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                    </div>
+
+                <!-- Review text -->
+                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                    Really good experience at Dr. Praveen Gupta's clinic. My vertigo and dizziness improved a lot. My condition was explained in a way I could easily understand. I felt much better after following the treatment. A very neat and well-maintained clinic. Highly recommended.                </p>
+
+                <!-- Divider -->
+                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                <!-- Author -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-deep-indigo to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                        D                    </div>
+                    <div>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Dheeraj Tiwari</p>
                         <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
                     </div>
                 </div>
@@ -2511,7 +2811,100 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    Outstanding doctor with a wonderful bedside manner. Highly recommend to everyone.                </p>
+                    My family member was admitted under Dr. Praveen Gupta and we are very thankful for the excellent treatment and attention provided throughout the stay. The doctor regularly monitored the patient's condition, explained progress clearly, and addressed all our concerns with patience and professionalism. Outstanding IPD care.                </p>
+
+                <!-- Divider -->
+                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                <!-- Author -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-deep-indigo flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                        J                    </div>
+                    <div>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Jyoti Singh</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient's Family</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+                                                                    <div class="quote-card w-[300px] sm:w-[360px] flex-shrink-0 mr-6" aria-hidden="true">
+            <div class="h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col">
+
+                <!-- Rating -->
+                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                    </div>
+
+                <!-- Review text -->
+                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                    Dr. Praveen Gupta is a brilliant, empathetic, and very supportive physician. I struggled with a neurological disorder for a decade, but under his care, I was completely cured in 10 days. He is genuinely an embodiment of compassion and healing.                </p>
+
+                <!-- Divider -->
+                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                <!-- Author -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                        S                    </div>
+                    <div>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Syed Mazhar Kandhlavi</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+                                                                    <div class="quote-card w-[300px] sm:w-[360px] flex-shrink-0 mr-6" aria-hidden="true">
+            <div class="h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col">
+
+                <!-- Rating -->
+                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                    </div>
+
+                <!-- Review text -->
+                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                    I am extremely grateful to Dr. Praveen Gupta for the exceptional care and attention throughout my treatment. The diagnosis was made after thorough and well-planned investigations, and treatment was started at the right time, making a significant difference. The empathy, responsiveness, and genuine effort were deeply reassuring.                </p>
+
+                <!-- Divider -->
+                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                <!-- Author -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-accent to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                        V                    </div>
+                    <div>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Vandana Gera</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+                                                                    <div class="quote-card w-[300px] sm:w-[360px] flex-shrink-0 mr-6" aria-hidden="true">
+            <div class="h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col">
+
+                <!-- Rating -->
+                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                    </div>
+
+                <!-- Review text -->
+                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                    My heartfelt thanks to Dr. Praveen Gupta and his entire team for the exceptional care and treatment I received after my blackout episode. Every test and evaluation was conducted promptly and thoroughly to identify the root cause, and I was guided through each step with patience, reassurance, and compassion.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2521,7 +2914,7 @@
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-deep-indigo to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
                         A                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Anita Desai</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Anjali Tanwar</p>
                         <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
                     </div>
                 </div>
@@ -2542,7 +2935,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    After struggling with migraines for years, Dr. Gupta's treatment gave me my life back. Truly exceptional care.                </p>
+                    I had been battling a severe fever, and the toll was becoming overwhelming. From my very first consultation, Dr. Gupta demonstrated a remarkable blend of medical expertise and genuine compassion. He listened carefully, answered concerns, and explained the rationale behind the prescription. I highly recommend him.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2550,9 +2943,9 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-deep-indigo flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        S                    </div>
+                        P                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Suresh Mehta</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Pragya Chaudhary</p>
                         <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
                     </div>
                 </div>
@@ -2573,7 +2966,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    I was diagnosed with Parkinson's and was devastated. Dr. Gupta's calm guidance and advanced treatment plan gave me renewed hope.                </p>
+                    I would like to express my heartfelt gratitude to Dr. Praveen Gupta for his exceptional care and dedication. His vast knowledge, calm nature, and ability to patiently listen give immense confidence. One of the most remarkable things is that he is always reachable and responds on time when needed.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2581,9 +2974,9 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        K                    </div>
+                        M                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Kavita Singh</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Manjit Singh</p>
                         <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
                     </div>
                 </div>
@@ -2604,7 +2997,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    Best neurologist I have ever consulted. Diagnosed my condition accurately in the first visit and the treatment worked remarkably well.                </p>
+                    My husband had been suffering from epilepsy for the last 3 years. Dr. Praveen Gupta told me in our very first meeting that my husband would get well, and the results are better now. My husband is doing well. Thank you, Sir.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2612,10 +3005,10 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-accent to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        D                    </div>
+                        S                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Deepak Nair</p>
-                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Seema Saini</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient's Wife</p>
                     </div>
                 </div>
 
@@ -2639,7 +3032,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    Best neurologist I have ever consulted. Diagnosed my condition accurately in the first visit and the treatment worked remarkably well.                </p>
+                    My husband had been suffering from epilepsy for the last 3 years. Dr. Praveen Gupta told me in our very first meeting that my husband would get well, and the results are better now. My husband is doing well. Thank you, Sir.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2647,10 +3040,10 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-accent to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        D                    </div>
+                        S                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Deepak Nair</p>
-                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Seema Saini</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient's Wife</p>
                     </div>
                 </div>
 
@@ -2670,7 +3063,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    I was diagnosed with Parkinson's and was devastated. Dr. Gupta's calm guidance and advanced treatment plan gave me renewed hope.                </p>
+                    I would like to express my heartfelt gratitude to Dr. Praveen Gupta for his exceptional care and dedication. His vast knowledge, calm nature, and ability to patiently listen give immense confidence. One of the most remarkable things is that he is always reachable and responds on time when needed.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2678,9 +3071,9 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-deep-indigo to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        K                    </div>
+                        M                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Kavita Singh</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Manjit Singh</p>
                         <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
                     </div>
                 </div>
@@ -2701,7 +3094,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    After struggling with migraines for years, Dr. Gupta's treatment gave me my life back. Truly exceptional care.                </p>
+                    I had been battling a severe fever, and the toll was becoming overwhelming. From my very first consultation, Dr. Gupta demonstrated a remarkable blend of medical expertise and genuine compassion. He listened carefully, answered concerns, and explained the rationale behind the prescription. I highly recommend him.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2709,9 +3102,9 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-deep-indigo flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        S                    </div>
+                        P                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Suresh Mehta</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Pragya Chaudhary</p>
                         <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
                     </div>
                 </div>
@@ -2732,7 +3125,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    Outstanding doctor with a wonderful bedside manner. Highly recommend to everyone.                </p>
+                    My heartfelt thanks to Dr. Praveen Gupta and his entire team for the exceptional care and treatment I received after my blackout episode. Every test and evaluation was conducted promptly and thoroughly to identify the root cause, and I was guided through each step with patience, reassurance, and compassion.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2742,7 +3135,7 @@
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
                         A                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Anita Desai</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Anjali Tanwar</p>
                         <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
                     </div>
                 </div>
@@ -2763,7 +3156,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    The level of care and attention I received was exceptional. Truly a world-class professional.                </p>
+                    I am extremely grateful to Dr. Praveen Gupta for the exceptional care and attention throughout my treatment. The diagnosis was made after thorough and well-planned investigations, and treatment was started at the right time, making a significant difference. The empathy, responsiveness, and genuine effort were deeply reassuring.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2771,9 +3164,9 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-accent to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        R                    </div>
+                        V                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Rajesh Kumar</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Vandana Gera</p>
                         <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
                     </div>
                 </div>
@@ -2794,7 +3187,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    Dr. Praveen Gupta transformed my health journey. His expertise and compassion are unmatched.                </p>
+                    Dr. Praveen Gupta is a brilliant, empathetic, and very supportive physician. I struggled with a neurological disorder for a decade, but under his care, I was completely cured in 10 days. He is genuinely an embodiment of compassion and healing.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2802,10 +3195,134 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-deep-indigo to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        P                    </div>
+                        S                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Priya Sharma</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Syed Mazhar Kandhlavi</p>
                         <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+                                                                    <div class="quote-card w-[300px] sm:w-[360px] flex-shrink-0 mr-6">
+            <div class="h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col">
+
+                <!-- Rating -->
+                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                    </div>
+
+                <!-- Review text -->
+                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                    My family member was admitted under Dr. Praveen Gupta and we are very thankful for the excellent treatment and attention provided throughout the stay. The doctor regularly monitored the patient's condition, explained progress clearly, and addressed all our concerns with patience and professionalism. Outstanding IPD care.                </p>
+
+                <!-- Divider -->
+                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                <!-- Author -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-deep-indigo flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                        J                    </div>
+                    <div>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Jyoti Singh</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient's Family</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+                                                                    <div class="quote-card w-[300px] sm:w-[360px] flex-shrink-0 mr-6">
+            <div class="h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col">
+
+                <!-- Rating -->
+                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                    </div>
+
+                <!-- Review text -->
+                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                    Really good experience at Dr. Praveen Gupta's clinic. My vertigo and dizziness improved a lot. My condition was explained in a way I could easily understand. I felt much better after following the treatment. A very neat and well-maintained clinic. Highly recommended.                </p>
+
+                <!-- Divider -->
+                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                <!-- Author -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                        D                    </div>
+                    <div>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Dheeraj Tiwari</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+                                                                    <div class="quote-card w-[300px] sm:w-[360px] flex-shrink-0 mr-6">
+            <div class="h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col">
+
+                <!-- Rating -->
+                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                    </div>
+
+                <!-- Review text -->
+                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                    We are extremely grateful to Dr. Praveen Gupta for the exceptional care and treatment provided to my father during his brain stroke surgery. From the very beginning, Dr. Gupta guided us with confidence, clarity, and compassion during a very difficult time for our family. It has now been 6 months, and we have seen continuous improvement and a smooth recovery.                </p>
+
+                <!-- Divider -->
+                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                <!-- Author -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-accent to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                        Y                    </div>
+                    <div>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Yashu Jindal</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient's Son</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+                                                                    <div class="quote-card w-[300px] sm:w-[360px] flex-shrink-0 mr-6">
+            <div class="h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col">
+
+                <!-- Rating -->
+                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                    </div>
+
+                <!-- Review text -->
+                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                    I would like to express my heartfelt gratitude to Dr. Praveen Gupta and his outstanding team for the exceptional care during my mother's treatment for acute neuropathy. Dr. Gupta's clinical expertise, calm approach, and ability to explain every aspect of the treatment gave our family immense confidence. I would also like to make a special mention of Dr. Piyush Ojha, whose prompt assessment and accurate initial diagnosis played a crucial role.                </p>
+
+                <!-- Divider -->
+                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                <!-- Author -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-deep-indigo to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                        A                    </div>
+                    <div>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Atul Saxena</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient's Son</p>
                     </div>
                 </div>
 
@@ -2825,7 +3342,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    Best neurologist I have ever consulted. Diagnosed my condition accurately in the first visit and the treatment worked remarkably well.                </p>
+                    My husband had been suffering from epilepsy for the last 3 years. Dr. Praveen Gupta told me in our very first meeting that my husband would get well, and the results are better now. My husband is doing well. Thank you, Sir.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2833,10 +3350,10 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-accent to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        D                    </div>
+                        S                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Deepak Nair</p>
-                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Seema Saini</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient's Wife</p>
                     </div>
                 </div>
 
@@ -2856,7 +3373,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    I was diagnosed with Parkinson's and was devastated. Dr. Gupta's calm guidance and advanced treatment plan gave me renewed hope.                </p>
+                    I would like to express my heartfelt gratitude to Dr. Praveen Gupta for his exceptional care and dedication. His vast knowledge, calm nature, and ability to patiently listen give immense confidence. One of the most remarkable things is that he is always reachable and responds on time when needed.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2864,9 +3381,9 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-deep-indigo to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        K                    </div>
+                        M                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Kavita Singh</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Manjit Singh</p>
                         <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
                     </div>
                 </div>
@@ -2887,7 +3404,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    After struggling with migraines for years, Dr. Gupta's treatment gave me my life back. Truly exceptional care.                </p>
+                    I had been battling a severe fever, and the toll was becoming overwhelming. From my very first consultation, Dr. Gupta demonstrated a remarkable blend of medical expertise and genuine compassion. He listened carefully, answered concerns, and explained the rationale behind the prescription. I highly recommend him.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2895,9 +3412,9 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-deep-indigo flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        S                    </div>
+                        P                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Suresh Mehta</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Pragya Chaudhary</p>
                         <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
                     </div>
                 </div>
@@ -2918,7 +3435,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    Outstanding doctor with a wonderful bedside manner. Highly recommend to everyone.                </p>
+                    My heartfelt thanks to Dr. Praveen Gupta and his entire team for the exceptional care and treatment I received after my blackout episode. Every test and evaluation was conducted promptly and thoroughly to identify the root cause, and I was guided through each step with patience, reassurance, and compassion.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2928,7 +3445,7 @@
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
                         A                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Anita Desai</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Anjali Tanwar</p>
                         <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
                     </div>
                 </div>
@@ -2949,7 +3466,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    The level of care and attention I received was exceptional. Truly a world-class professional.                </p>
+                    I am extremely grateful to Dr. Praveen Gupta for the exceptional care and attention throughout my treatment. The diagnosis was made after thorough and well-planned investigations, and treatment was started at the right time, making a significant difference. The empathy, responsiveness, and genuine effort were deeply reassuring.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2957,9 +3474,9 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-accent to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        R                    </div>
+                        V                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Rajesh Kumar</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Vandana Gera</p>
                         <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
                     </div>
                 </div>
@@ -2980,7 +3497,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    Dr. Praveen Gupta transformed my health journey. His expertise and compassion are unmatched.                </p>
+                    Dr. Praveen Gupta is a brilliant, empathetic, and very supportive physician. I struggled with a neurological disorder for a decade, but under his care, I was completely cured in 10 days. He is genuinely an embodiment of compassion and healing.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -2988,10 +3505,134 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-deep-indigo to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        P                    </div>
+                        S                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Priya Sharma</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Syed Mazhar Kandhlavi</p>
                         <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+                                                                    <div class="quote-card w-[300px] sm:w-[360px] flex-shrink-0 mr-6" aria-hidden="true">
+            <div class="h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col">
+
+                <!-- Rating -->
+                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                    </div>
+
+                <!-- Review text -->
+                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                    My family member was admitted under Dr. Praveen Gupta and we are very thankful for the excellent treatment and attention provided throughout the stay. The doctor regularly monitored the patient's condition, explained progress clearly, and addressed all our concerns with patience and professionalism. Outstanding IPD care.                </p>
+
+                <!-- Divider -->
+                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                <!-- Author -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-deep-indigo flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                        J                    </div>
+                    <div>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Jyoti Singh</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient's Family</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+                                                                    <div class="quote-card w-[300px] sm:w-[360px] flex-shrink-0 mr-6" aria-hidden="true">
+            <div class="h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col">
+
+                <!-- Rating -->
+                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                    </div>
+
+                <!-- Review text -->
+                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                    Really good experience at Dr. Praveen Gupta's clinic. My vertigo and dizziness improved a lot. My condition was explained in a way I could easily understand. I felt much better after following the treatment. A very neat and well-maintained clinic. Highly recommended.                </p>
+
+                <!-- Divider -->
+                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                <!-- Author -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                        D                    </div>
+                    <div>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Dheeraj Tiwari</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+                                                                    <div class="quote-card w-[300px] sm:w-[360px] flex-shrink-0 mr-6" aria-hidden="true">
+            <div class="h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col">
+
+                <!-- Rating -->
+                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                    </div>
+
+                <!-- Review text -->
+                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                    We are extremely grateful to Dr. Praveen Gupta for the exceptional care and treatment provided to my father during his brain stroke surgery. From the very beginning, Dr. Gupta guided us with confidence, clarity, and compassion during a very difficult time for our family. It has now been 6 months, and we have seen continuous improvement and a smooth recovery.                </p>
+
+                <!-- Divider -->
+                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                <!-- Author -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-accent to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                        Y                    </div>
+                    <div>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Yashu Jindal</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient's Son</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+                                                                    <div class="quote-card w-[300px] sm:w-[360px] flex-shrink-0 mr-6" aria-hidden="true">
+            <div class="h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col">
+
+                <!-- Rating -->
+                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                    </div>
+
+                <!-- Review text -->
+                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                    I would like to express my heartfelt gratitude to Dr. Praveen Gupta and his outstanding team for the exceptional care during my mother's treatment for acute neuropathy. Dr. Gupta's clinical expertise, calm approach, and ability to explain every aspect of the treatment gave our family immense confidence. I would also like to make a special mention of Dr. Piyush Ojha, whose prompt assessment and accurate initial diagnosis played a crucial role.                </p>
+
+                <!-- Divider -->
+                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                <!-- Author -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-deep-indigo to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                        A                    </div>
+                    <div>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Atul Saxena</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient's Son</p>
                     </div>
                 </div>
 
@@ -3011,7 +3652,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    Best neurologist I have ever consulted. Diagnosed my condition accurately in the first visit and the treatment worked remarkably well.                </p>
+                    My husband had been suffering from epilepsy for the last 3 years. Dr. Praveen Gupta told me in our very first meeting that my husband would get well, and the results are better now. My husband is doing well. Thank you, Sir.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -3019,10 +3660,10 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-accent to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        D                    </div>
+                        S                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Deepak Nair</p>
-                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Seema Saini</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient's Wife</p>
                     </div>
                 </div>
 
@@ -3042,7 +3683,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    I was diagnosed with Parkinson's and was devastated. Dr. Gupta's calm guidance and advanced treatment plan gave me renewed hope.                </p>
+                    I would like to express my heartfelt gratitude to Dr. Praveen Gupta for his exceptional care and dedication. His vast knowledge, calm nature, and ability to patiently listen give immense confidence. One of the most remarkable things is that he is always reachable and responds on time when needed.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -3050,9 +3691,9 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-deep-indigo to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        K                    </div>
+                        M                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Kavita Singh</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Manjit Singh</p>
                         <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
                     </div>
                 </div>
@@ -3073,7 +3714,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    After struggling with migraines for years, Dr. Gupta's treatment gave me my life back. Truly exceptional care.                </p>
+                    I had been battling a severe fever, and the toll was becoming overwhelming. From my very first consultation, Dr. Gupta demonstrated a remarkable blend of medical expertise and genuine compassion. He listened carefully, answered concerns, and explained the rationale behind the prescription. I highly recommend him.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -3081,9 +3722,9 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-deep-indigo flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        S                    </div>
+                        P                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Suresh Mehta</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Pragya Chaudhary</p>
                         <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
                     </div>
                 </div>
@@ -3104,7 +3745,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    Outstanding doctor with a wonderful bedside manner. Highly recommend to everyone.                </p>
+                    My heartfelt thanks to Dr. Praveen Gupta and his entire team for the exceptional care and treatment I received after my blackout episode. Every test and evaluation was conducted promptly and thoroughly to identify the root cause, and I was guided through each step with patience, reassurance, and compassion.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -3114,7 +3755,7 @@
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
                         A                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Anita Desai</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Anjali Tanwar</p>
                         <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
                     </div>
                 </div>
@@ -3135,7 +3776,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    The level of care and attention I received was exceptional. Truly a world-class professional.                </p>
+                    I am extremely grateful to Dr. Praveen Gupta for the exceptional care and attention throughout my treatment. The diagnosis was made after thorough and well-planned investigations, and treatment was started at the right time, making a significant difference. The empathy, responsiveness, and genuine effort were deeply reassuring.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -3143,9 +3784,9 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-accent to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        R                    </div>
+                        V                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Rajesh Kumar</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Vandana Gera</p>
                         <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
                     </div>
                 </div>
@@ -3166,7 +3807,7 @@
 
                 <!-- Review text -->
                 <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
-                    Dr. Praveen Gupta transformed my health journey. His expertise and compassion are unmatched.                </p>
+                    Dr. Praveen Gupta is a brilliant, empathetic, and very supportive physician. I struggled with a neurological disorder for a decade, but under his care, I was completely cured in 10 days. He is genuinely an embodiment of compassion and healing.                </p>
 
                 <!-- Divider -->
                 <div class="w-full h-px bg-silver-grey mb-4"></div>
@@ -3174,10 +3815,134 @@
                 <!-- Author -->
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-gradient-to-br from-deep-indigo to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                        P                    </div>
+                        S                    </div>
                     <div>
-                        <p class="font-bold text-deep-indigo text-sm leading-tight">Priya Sharma</p>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Syed Mazhar Kandhlavi</p>
                         <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+                                                                    <div class="quote-card w-[300px] sm:w-[360px] flex-shrink-0 mr-6" aria-hidden="true">
+            <div class="h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col">
+
+                <!-- Rating -->
+                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                    </div>
+
+                <!-- Review text -->
+                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                    My family member was admitted under Dr. Praveen Gupta and we are very thankful for the excellent treatment and attention provided throughout the stay. The doctor regularly monitored the patient's condition, explained progress clearly, and addressed all our concerns with patience and professionalism. Outstanding IPD care.                </p>
+
+                <!-- Divider -->
+                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                <!-- Author -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-deep-indigo flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                        J                    </div>
+                    <div>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Jyoti Singh</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient's Family</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+                                                                    <div class="quote-card w-[300px] sm:w-[360px] flex-shrink-0 mr-6" aria-hidden="true">
+            <div class="h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col">
+
+                <!-- Rating -->
+                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                    </div>
+
+                <!-- Review text -->
+                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                    Really good experience at Dr. Praveen Gupta's clinic. My vertigo and dizziness improved a lot. My condition was explained in a way I could easily understand. I felt much better after following the treatment. A very neat and well-maintained clinic. Highly recommended.                </p>
+
+                <!-- Divider -->
+                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                <!-- Author -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                        D                    </div>
+                    <div>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Dheeraj Tiwari</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+                                                                    <div class="quote-card w-[300px] sm:w-[360px] flex-shrink-0 mr-6" aria-hidden="true">
+            <div class="h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col">
+
+                <!-- Rating -->
+                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                    </div>
+
+                <!-- Review text -->
+                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                    We are extremely grateful to Dr. Praveen Gupta for the exceptional care and treatment provided to my father during his brain stroke surgery. From the very beginning, Dr. Gupta guided us with confidence, clarity, and compassion during a very difficult time for our family. It has now been 6 months, and we have seen continuous improvement and a smooth recovery.                </p>
+
+                <!-- Divider -->
+                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                <!-- Author -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-accent to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                        Y                    </div>
+                    <div>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Yashu Jindal</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient's Son</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+                                                                    <div class="quote-card w-[300px] sm:w-[360px] flex-shrink-0 mr-6" aria-hidden="true">
+            <div class="h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col">
+
+                <!-- Rating -->
+                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                    </div>
+
+                <!-- Review text -->
+                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5">
+                    I would like to express my heartfelt gratitude to Dr. Praveen Gupta and his outstanding team for the exceptional care during my mother's treatment for acute neuropathy. Dr. Gupta's clinical expertise, calm approach, and ability to explain every aspect of the treatment gave our family immense confidence. I would also like to make a special mention of Dr. Piyush Ojha, whose prompt assessment and accurate initial diagnosis played a crucial role.                </p>
+
+                <!-- Divider -->
+                <div class="w-full h-px bg-silver-grey mb-4"></div>
+
+                <!-- Author -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-deep-indigo to-electric-blue flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                        A                    </div>
+                    <div>
+                        <p class="font-bold text-deep-indigo text-sm leading-tight">Atul Saxena</p>
+                        <p class="text-xs text-cyan-accent font-medium mt-0.5">Patient's Son</p>
                     </div>
                 </div>
 
@@ -3566,9 +4331,9 @@
         </div>
 
         <!-- 3-column card grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-none gap-6 pb-6 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-3 md:gap-8 md:pb-0">
                             <a href="blog.html"
-                   class="group bg-white rounded-3xl p-5 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 flex flex-col observe"
+                   class="group bg-white rounded-3xl p-5 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 flex flex-col observe w-[80vw] md:w-auto flex-shrink-0 snap-start"
                    style="animation-delay: 0ms;">
 
                     <!-- Image -->
@@ -3595,7 +4360,7 @@
                     </div>
                 </a>
                             <a href="blog.html"
-                   class="group bg-white rounded-3xl p-5 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 flex flex-col observe"
+                   class="group bg-white rounded-3xl p-5 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 flex flex-col observe w-[80vw] md:w-auto flex-shrink-0 snap-start"
                    style="animation-delay: 100ms;">
 
                     <!-- Image -->
@@ -3622,7 +4387,7 @@
                     </div>
                 </a>
                             <a href="blog.html"
-                   class="group bg-white rounded-3xl p-5 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 flex flex-col observe"
+                   class="group bg-white rounded-3xl p-5 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 flex flex-col observe w-[80vw] md:w-auto flex-shrink-0 snap-start"
                    style="animation-delay: 200ms;">
 
                     <!-- Image -->
@@ -5398,7 +6163,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-deep-indigo text-white relative overflow-hidden">
+    <footer class="bg-deep-indigo text-white relative overflow-hidden pb-20 lg:pb-0">
         <!-- Decorative background -->
         <div class="absolute inset-0 opacity-30 pointer-events-none">
             <div class="absolute -top-20 -left-20 w-96 h-96 bg-electric-blue/20 rounded-full blur-3xl"></div>
@@ -5622,33 +6387,6 @@
             </div>
         </div>
 
-        <!-- Newsletter -->
-        <div class="relative border-t border-white/10 bg-black/20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                    <div class="flex items-start space-x-4">
-                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center shadow-lg flex-shrink-0">
-                            <i class="fas fa-paper-plane text-white text-lg"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-xl font-bold mb-1">Subscribe to Our Newsletter</h4>
-                            <p class="text-white/70 text-sm">Get health tips, latest updates and medical insights directly in your inbox.</p>
-                        </div>
-                    </div>
-                    <form class="flex w-full" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
-                        <div class="relative flex-1">
-                            <i class="fas fa-envelope absolute left-5 top-1/2 -translate-y-1/2 text-white/40 text-sm"></i>
-                            <input type="email" placeholder="Enter your email address" required
-                                   class="w-full pl-12 pr-5 py-4 bg-white/10 border border-white/20 rounded-l-full text-white placeholder-white/50 focus:outline-none focus:border-cyan-accent focus:bg-white/15 transition-all">
-                        </div>
-                        <button type="submit" class="px-7 py-4 bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold rounded-r-full hover:shadow-lg hover:shadow-electric-blue/50 transition-all duration-300 flex items-center space-x-2 group">
-                            <span class="hidden sm:inline">Subscribe</span>
-                            <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
 
         <!-- Bottom Bar -->
         <div class="relative border-t border-white/10">
@@ -5671,7 +6409,7 @@
     <a href="https://wa.me/918796977903?text=Hello%2C%20I%20would%20like%20to%20book%20an%20appointment%20with%20Dr.%20Praveen%20Gupta."
        target="_blank" rel="noopener noreferrer"
        aria-label="Chat with us on WhatsApp"
-       class="group fixed bottom-8 right-8 w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#1DA851] text-white shadow-lg hover:shadow-xl hover:shadow-[#25D366]/50 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center z-50">
+       class="hidden lg:flex group fixed bottom-8 right-8 w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#1DA851] text-white shadow-lg hover:shadow-xl hover:shadow-[#25D366]/50 hover:-translate-y-0.5 transition-all duration-300 items-center justify-center z-50">
         <!-- Pulsing halo -->
         <span class="absolute inset-0 rounded-full bg-[#25D366]/40 animate-ping pointer-events-none"></span>
         <i class="fab fa-whatsapp text-2xl relative"></i>
@@ -5683,14 +6421,14 @@
     </a>
 
     <!-- Back to Top Button (stacked above the WhatsApp button) -->
-    <button id="back-to-top" class="fixed bottom-28 right-9 w-12 h-12 rounded-full bg-white text-deep-indigo border border-silver-grey shadow-lg hover:bg-electric-blue hover:text-white hover:shadow-xl hover:shadow-electric-blue/40 transition-all duration-300 transform translate-y-20 opacity-0 z-50 flex items-center justify-center group">
+    <button id="back-to-top" class="hidden lg:flex fixed bottom-28 right-9 w-12 h-12 rounded-full bg-white text-deep-indigo border border-silver-grey shadow-lg hover:bg-electric-blue hover:text-white hover:shadow-xl hover:shadow-electric-blue/40 transition-all duration-300 transform translate-y-20 opacity-0 z-50 items-center justify-center group">
         <i class="fas fa-arrow-up group-hover:-translate-y-0.5 transition-transform"></i>
     </button>
 
     <!-- Floating Emergency Stroke Helpline Button -->
     <a href="tel:1800-309-0247"
        aria-label="Call 24x7 Emergency Stroke Helpline"
-       class="group fixed bottom-48 right-8 w-14 h-14 rounded-full bg-red-650 bg-red-600 hover:bg-red-750 hover:bg-red-700 text-white shadow-lg hover:shadow-xl hover:shadow-red-600/50 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center z-50">
+       class="hidden lg:flex group fixed bottom-48 right-8 w-14 h-14 rounded-full bg-red-650 bg-red-600 hover:bg-red-750 hover:bg-red-700 text-white shadow-lg hover:shadow-xl hover:shadow-red-600/50 hover:-translate-y-0.5 transition-all duration-300 items-center justify-center z-50">
         <!-- Pulsing halo -->
         <span class="absolute inset-0 rounded-full bg-red-600/40 animate-ping pointer-events-none"></span>
         <i class="fas fa-phone-alt text-lg relative animate-pulse"></i>
@@ -5700,10 +6438,43 @@
             24x7 Stroke Helpline: 1800-309-0247        </span>
     </a>
 
-    <!-- Floating Appointment Button (Mobile) -->
-    <a href="contact-us-top-neurologist-delhi-ncr.html" class="lg:hidden fixed bottom-6 left-6 w-14 h-14 rounded-full bg-gradient-to-r from-electric-blue to-cyan-accent text-white shadow-lg flex items-center justify-center z-50 animate-pulse-slow">
-        <i class="fas fa-calendar-plus text-lg"></i>
-    </a>
+    <!-- Sticky Bottom Bar (Mobile Only - Premium Floating Capsule) -->
+    <div class="lg:hidden fixed bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md border border-slate-200/80 shadow-[0_8px_30px_rgba(0,0,0,0.12)] rounded-[24px] z-50 px-4 py-2.5 flex items-center justify-between gap-3">
+        <!-- WhatsApp Link -->
+        <a href="https://wa.me/918796977903?text=Hello%2C%20I%20would%20like%20to%20book%20an%20appointment%20with%20Dr.%20Praveen%20Gupta." 
+           target="_blank" rel="noopener noreferrer"
+           class="flex flex-col items-center justify-center text-center group">
+            <span class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shadow-sm active:scale-90 transition-all duration-300">
+                <i class="fab fa-whatsapp text-lg"></i>
+            </span>
+            <span class="text-[8px] font-bold text-slate-500 uppercase tracking-wider mt-1">WhatsApp</span>
+        </a>
+
+        <!-- Online Consult -->
+        <a href="online-neurologist-consultation.html" 
+           class="flex flex-col items-center justify-center text-center group">
+            <span class="w-10 h-10 rounded-full bg-electric-blue/10 text-electric-blue flex items-center justify-center shadow-sm active:scale-90 transition-all duration-300">
+                <i class="fas fa-video text-base"></i>
+            </span>
+            <span class="text-[8px] font-bold text-slate-500 uppercase tracking-wider mt-1">Online</span>
+        </a>
+
+        <!-- Book Appointment Central Button -->
+        <a href="contact-us-top-neurologist-delhi-ncr.html" 
+           class="flex-1 flex items-center justify-center gap-1.5 bg-gradient-to-r from-deep-indigo via-electric-blue to-cyan-accent text-white font-extrabold text-xs h-10 px-3 rounded-full shadow-[0_4px_15px_rgba(37,99,235,0.25)] active:scale-[0.97] transition-all duration-300">
+            <i class="fas fa-calendar-check text-sm animate-pulse"></i>
+            <span class="uppercase tracking-wider">Book Clinic</span>
+        </a>
+
+        <!-- Emergency Helpline Link -->
+        <a href="tel:1800-309-0247" 
+           class="flex flex-col items-center justify-center text-center group">
+            <span class="w-10 h-10 rounded-full bg-red-50 text-red-650 text-red-600 flex items-center justify-center shadow-sm active:scale-90 transition-all duration-300">
+                <i class="fas fa-phone-alt text-sm animate-pulse"></i>
+            </span>
+            <span class="text-[8px] font-bold text-slate-500 uppercase tracking-wider mt-1">Emergency</span>
+        </a>
+    </div>
 
     <script>
         // Back to top button

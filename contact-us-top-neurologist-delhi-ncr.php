@@ -103,7 +103,8 @@ require_once __DIR__ . '/includes/header.php';
                 <h3 class="text-2xl font-bold text-dark-grey mb-2">Send Us a Message</h3>
                 <p class="text-sm text-dark-grey/60 mb-8">Fill out the form below, and our coordinator will connect with you shortly.</p>
 
-                <form id="contact-form" class="space-y-6">
+                <form id="contact-form" class="space-y-6" accept-charset="UTF-8" action="https://app.formester.com/forms/MUVNkRKYA/submissions" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="form_type" value="Main Contact Form">
                     <div class="grid md:grid-cols-2 gap-6">
                         <div>
                             <label for="name" class="block text-xs font-semibold text-dark-grey mb-2">FULL NAME</label>
@@ -136,11 +137,71 @@ require_once __DIR__ . '/includes/header.php';
                         <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-electric-blue text-sm text-dark-grey" placeholder="Tell us how we can help you..."></textarea>
                     </div>
 
+                    <div>
+                        <label class="block text-xs font-semibold text-dark-grey mb-2">UPLOAD MEDICAL REPORTS (OPTIONAL)</label>
+                        <div class="relative flex items-center justify-center border-2 border-dashed border-slate-200 rounded-xl p-6 bg-white hover:bg-slate-50 transition-colors cursor-pointer group">
+                            <input type="file" id="report" name="report" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10">
+                            <div class="text-center">
+                                <i class="fas fa-cloud-upload-alt text-2xl text-slate-400 group-hover:text-electric-blue transition-colors mb-2"></i>
+                                <p class="text-xs text-dark-grey/70"><span class="text-electric-blue font-semibold">Click to upload</span> or drag and drop</p>
+                                <p class="text-[10px] text-dark-grey/40 mt-1">PDF, DOC, DOCX, JPG, PNG (Max 5MB)</p>
+                            </div>
+                        </div>
+                        <!-- File name preview placeholder -->
+                        <div id="file-name-preview" class="hidden mt-2 p-2.5 bg-electric-blue/5 rounded-xl border border-electric-blue/10 flex items-center justify-between text-xs text-electric-blue font-medium animate-fade-in">
+                            <div class="flex items-center space-x-2 truncate">
+                                <i class="far fa-file text-base"></i>
+                                <span class="truncate" id="file-name-text">filename.pdf</span>
+                            </div>
+                            <button type="button" id="remove-file-btn" class="text-red-500 hover:text-red-700 transition-colors pl-2">
+                                <i class="fas fa-times-circle text-base"></i>
+                            </button>
+                        </div>
+                    </div>
+
                     <button type="submit" class="w-full inline-flex items-center justify-center space-x-2.5 bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold py-3.5 rounded-xl hover:shadow-xl hover:shadow-electric-blue/30 transition-all duration-300">
                         <span>Send Message</span>
                         <i class="fas fa-paper-plane text-xs"></i>
                     </button>
                 </form>
+
+                <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const fileInput = document.getElementById('report');
+                    const previewContainer = document.getElementById('file-name-preview');
+                    const fileNameText = document.getElementById('file-name-text');
+                    const removeFileBtn = document.getElementById('remove-file-btn');
+                    const fileIcon = previewContainer.querySelector('i');
+
+                    fileInput.addEventListener('change', function () {
+                        if (fileInput.files.length > 0) {
+                            const file = fileInput.files[0];
+                            fileNameText.textContent = file.name + ' (' + (file.size / 1024 / 1024).toFixed(2) + ' MB)';
+                            
+                            // Set appropriate file icon
+                            const ext = file.name.split('.').pop().toLowerCase();
+                            if (ext === 'pdf') {
+                                fileIcon.className = 'far fa-file-pdf text-base text-red-500';
+                            } else if (['jpg', 'jpeg', 'png'].includes(ext)) {
+                                fileIcon.className = 'far fa-file-image text-base text-emerald-500';
+                            } else if (['doc', 'docx'].includes(ext)) {
+                                fileIcon.className = 'far fa-file-word text-base text-blue-500';
+                            } else {
+                                fileIcon.className = 'far fa-file text-base text-slate-500';
+                            }
+
+                            previewContainer.classList.remove('hidden');
+                        } else {
+                            previewContainer.classList.add('hidden');
+                        }
+                    });
+
+                    removeFileBtn.addEventListener('click', function () {
+                        fileInput.value = ''; // Reset file input
+                        previewContainer.classList.add('hidden');
+                    });
+                });
+                </script>
             </div>
         </div>
     </div>

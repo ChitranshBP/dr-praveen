@@ -173,20 +173,21 @@ require_once __DIR__ . '/includes/header.php';
                     </p>
                 </div>
 
-                <form class="space-y-4 pt-4 max-w-2xl mx-auto" onsubmit="event.preventDefault(); alert('Second opinion request submitted successfully! Our coordinator will contact you shortly.');">
+                <form class="space-y-4 pt-4 max-w-2xl mx-auto" accept-charset="UTF-8" action="https://app.formester.com/forms/MUVNkRKYA/submissions" method="POST">
+                    <input type="hidden" name="form_type" value="Second Opinion Request">
                     <div class="grid md:grid-cols-2 gap-4">
                         <div>
                             <label for="so-name" class="block text-xs font-semibold text-white/95 mb-2">FULL NAME</label>
-                            <input type="text" id="so-name" required placeholder="John Doe" class="w-full px-4 py-2.5 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-cyan-accent text-xs text-white placeholder-white/50">
+                            <input type="text" id="so-name" name="name" required placeholder="John Doe" class="w-full px-4 py-2.5 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-cyan-accent text-xs text-white placeholder-white/50">
                         </div>
                         <div>
                             <label for="so-phone" class="block text-xs font-semibold text-white/95 mb-2">PHONE NUMBER</label>
-                            <input type="tel" id="so-phone" required placeholder="Phone Number" class="w-full px-4 py-2.5 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-cyan-accent text-xs text-white placeholder-white/50">
+                            <input type="tel" id="so-phone" name="phone" required placeholder="Phone Number" class="w-full px-4 py-2.5 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-cyan-accent text-xs text-white placeholder-white/50">
                         </div>
                     </div>
                     <div>
                         <label for="so-diagnosis" class="block text-xs font-semibold text-white/95 mb-2">CURRENT DIAGNOSIS / ISSUES</label>
-                        <textarea id="so-diagnosis" rows="3" required placeholder="Briefly describe your current neurological condition..." class="w-full px-4 py-2.5 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-cyan-accent text-xs text-white placeholder-white/50"></textarea>
+                        <textarea id="so-diagnosis" name="diagnosis" rows="3" required placeholder="Briefly describe your current neurological condition..." class="w-full px-4 py-2.5 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-cyan-accent text-xs text-white placeholder-white/50"></textarea>
                     </div>
                     <div class="pt-2">
                         <button type="submit" class="block w-full text-center bg-cyan-accent hover:bg-cyan-500 text-deep-indigo font-bold py-3 rounded-xl transition-all duration-300 transform active:scale-95 text-xs shadow-lg shadow-cyan-accent/20">

@@ -52,7 +52,7 @@ if (file_exists($doctorsJsonPath)) {
             </h1>
 
             <p class="text-sm md:text-base text-white/85 leading-relaxed mb-6 max-w-2xl">
-                Our multidisciplinary team of associate neurologists, rehabilitation therapists, and coordinators work together under the direction of Dr. Praveen Gupta to deliver outstanding neurological care.
+                Our integrated team of neurologists, neurosurgeons, spine surgeons, and rehabilitation experts collaborates under the leadership of Dr. Praveen Gupta to provide world-class brain, spine, and nerve care.
             </p>
         </div>
     </div>

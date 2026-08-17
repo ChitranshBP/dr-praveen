@@ -89,6 +89,19 @@
         .font-serif {
             font-family: 'Playfair Display', serif;
         }
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .scrollbar-none::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .scrollbar-none {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        /* Safe area bottom padding for sticky bar */
+        .pb-safe {
+            padding-bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
+        }
         .gradient-text {
             background: linear-gradient(135deg, #2563EB 0%, #06B6D4 100%);
             -webkit-background-clip: text;
@@ -218,10 +231,10 @@
         .mobile-menu-anim {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease;
+            transition: max-height 0.4s ease-in-out;
         }
         .mobile-menu-anim.open {
-            max-height: 500px;
+            max-height: 1000px;
         }
 
         /* Scroll progress bar */
@@ -903,13 +916,15 @@
         mobileMenuBtn.addEventListener('click', function() {
             menuOpen = !menuOpen;
             mobileMenu.classList.toggle('open');
-            mobileMenu.classList.toggle('hidden');
 
             if (menuOpen) {
                 menuIcon.classList.remove('fa-bars');
                 menuIcon.classList.add('fa-xmark');
                 navbar.classList.remove('navbar-glass');
                 navbar.classList.add('navbar-solid');
+                if (headerLogo) {
+                    headerLogo.classList.remove('invert', 'brightness-0');
+                }
             } else {
                 menuIcon.classList.remove('fa-xmark');
                 menuIcon.classList.add('fa-bars');
@@ -954,7 +969,7 @@
                 } else {
                     navbar.classList.remove('shadow-lg');
                     if (headerLogo) {
-                        headerLogo.classList.add('invert', 'brightness-0');
+                        headerLogo.classList.remove('invert', 'brightness-0');
                     }
                 }
             }
@@ -978,20 +993,32 @@
                 <span class="text-white font-medium">About</span>
             </nav>
 
-            <!-- Badge -->
-            <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4 border border-white/20">
-                <i class="fas fa-award text-cyan-accent text-[10px]"></i>
-                <span>Chairman - Marengo Asia Neuro & Spine</span>
-            </div>
-
             <!-- Heading -->
-            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-3">
-                About <span class="text-cyan-accent">Dr. Praveen Gupta</span>
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4">
+                <span class="text-cyan-accent">Dr. Praveen Gupta</span>
             </h1>
 
-            <p class="text-sm md:text-base text-white/85 leading-relaxed mb-6 max-w-2xl">
-                A leading neurologist pioneering advanced treatments in stroke, epilepsy, and movement disorders with over 20 years of experience.
-            </p>
+            <!-- Designations Stack -->
+            <div class="space-y-3 mb-6 max-w-3xl">
+                <div class="flex items-start space-x-2.5">
+                    <span class="w-5 h-5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center mt-0.5 text-cyan-accent flex-shrink-0">
+                        <i class="fas fa-award text-[10px]"></i>
+                    </span>
+                    <span class="text-sm md:text-base text-white/90 font-semibold leading-relaxed">Chairman MAIINS (Marengo Asia International Institute of Neuro & Spine), MAH Gurgaon</span>
+                </div>
+                <div class="flex items-start space-x-2.5">
+                    <span class="w-5 h-5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center mt-0.5 text-cyan-accent flex-shrink-0">
+                        <i class="fas fa-user-md text-[10px]"></i>
+                    </span>
+                    <span class="text-sm md:text-base text-white/90 font-semibold leading-relaxed">Chief Clinical Strategy, Growth and Innovation, North India</span>
+                </div>
+                <div class="flex items-start space-x-2.5">
+                    <span class="w-5 h-5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center mt-0.5 text-cyan-accent flex-shrink-0">
+                        <i class="fas fa-lightbulb text-[10px]"></i>
+                    </span>
+                    <span class="text-sm md:text-base text-white/90 font-semibold leading-relaxed">Chief Mentor for Start-up and Clinical Innovation for Neurosciences, Mental Health and Neuro Rehab Programs</span>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -1424,7 +1451,7 @@
     </div>
 </section>
 
-<!-- Testimonials — Minimal Slider -->
+<!-- Testimonials — Modern Elevated Slider -->
 <section class="py-14 lg:py-20 bg-soft-cyan/30">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-10">
@@ -1437,119 +1464,361 @@
                 What Patients <span class="gradient-text">Say</span>
             </h2>
             <p class="text-sm text-dark-grey/60">
-                Showing <span id="testimonial-current">3</span> of 6 reviews
+                Showing <span id="testimonial-current">3</span> of 10 reviews
             </p>
         </div>
 
-        <!-- Slider — All 6 cards visible, scroll between pages -->
+        <!-- Slider -->
         <div class="relative">
             <div id="testimonial-viewport" class="overflow-hidden">
                 <div id="testimonial-track" class="flex transition-transform duration-500 ease-in-out">
-                                            <div class="testimonial-card flex-shrink-0 px-3" style="width: 33.333333%; min-width: 33.333333%; box-sizing: border-box;">
-                            <div class="h-full border-l-2 border-silver-grey hover:border-electric-blue pl-5 py-2 transition-colors duration-300">
-                                <div class="flex space-x-0.5 mb-3">
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                    </div>
-                                <p class="text-dark-grey/80 text-sm italic leading-relaxed mb-5">
-                                    "Dr. Praveen Gupta transformed my health journey. His expertise and compassion are unmatched."
-                                </p>
+                                            <div class="testimonial-card flex-shrink-0 px-4 py-2" style="width: 33.333333%; min-width: 33.333333%; box-sizing: border-box;">
+                            <div class="group h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 flex flex-col justify-between relative overflow-hidden">
+                                <!-- Background Decorative Quote -->
+                                <i class="fas fa-quote-right absolute right-6 top-6 text-slate-100 text-4xl pointer-events-none group-hover:text-electric-blue/5 transition-colors duration-300"></i>
+
                                 <div>
-                                    <p class="font-semibold text-deep-indigo text-sm">Priya Sharma</p>
-                                    <p class="text-xs text-dark-grey/50 mt-0.5">Patient</p>
+                                    <!-- Stars -->
+                                    <div class="flex space-x-0.5 mb-4 text-amber-400">
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                            </div>
+                                    
+                                    <!-- Message -->
+                                    <p class="text-dark-grey/75 text-sm leading-relaxed mb-6 italic relative z-10">
+                                        "I would like to express my heartfelt gratitude to Dr. Praveen Gupta and his outstanding team for the exceptional care during my mother's treatment for acute neuropathy. Dr. Gupta's clinical expertise, calm approach, and ability to explain every aspect of the treatment gave our family immense confidence. I would also like to make a special mention of Dr. Piyush Ojha, whose prompt assessment and accurate initial diagnosis played a crucial role."
+                                    </p>
+                                </div>
+
+                                <!-- Divider -->
+                                <div class="w-full h-px bg-silver-grey/60 mb-4"></div>
+
+                                <!-- Author Row -->
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue/15 to-cyan-accent/15 text-electric-blue font-bold text-sm flex items-center justify-center shadow-sm">
+                                        A                                    </div>
+                                    <div>
+                                        <p class="font-bold text-deep-indigo text-sm leading-tight">Atul Saxena</p>
+                                        <p class="text-[10px] text-cyan-accent font-semibold mt-0.5 uppercase tracking-wider">Patient's Son</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                                            <div class="testimonial-card flex-shrink-0 px-3" style="width: 33.333333%; min-width: 33.333333%; box-sizing: border-box;">
-                            <div class="h-full border-l-2 border-silver-grey hover:border-electric-blue pl-5 py-2 transition-colors duration-300">
-                                <div class="flex space-x-0.5 mb-3">
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                    </div>
-                                <p class="text-dark-grey/80 text-sm italic leading-relaxed mb-5">
-                                    "The level of care and attention I received was exceptional. Truly a world-class professional."
-                                </p>
+                                            <div class="testimonial-card flex-shrink-0 px-4 py-2" style="width: 33.333333%; min-width: 33.333333%; box-sizing: border-box;">
+                            <div class="group h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 flex flex-col justify-between relative overflow-hidden">
+                                <!-- Background Decorative Quote -->
+                                <i class="fas fa-quote-right absolute right-6 top-6 text-slate-100 text-4xl pointer-events-none group-hover:text-electric-blue/5 transition-colors duration-300"></i>
+
                                 <div>
-                                    <p class="font-semibold text-deep-indigo text-sm">Rajesh Kumar</p>
-                                    <p class="text-xs text-dark-grey/50 mt-0.5">Patient</p>
+                                    <!-- Stars -->
+                                    <div class="flex space-x-0.5 mb-4 text-amber-400">
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                            </div>
+                                    
+                                    <!-- Message -->
+                                    <p class="text-dark-grey/75 text-sm leading-relaxed mb-6 italic relative z-10">
+                                        "We are extremely grateful to Dr. Praveen Gupta for the exceptional care and treatment provided to my father during his brain stroke surgery. From the very beginning, Dr. Gupta guided us with confidence, clarity, and compassion during a very difficult time for our family. It has now been 6 months, and we have seen continuous improvement and a smooth recovery."
+                                    </p>
+                                </div>
+
+                                <!-- Divider -->
+                                <div class="w-full h-px bg-silver-grey/60 mb-4"></div>
+
+                                <!-- Author Row -->
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue/15 to-cyan-accent/15 text-electric-blue font-bold text-sm flex items-center justify-center shadow-sm">
+                                        Y                                    </div>
+                                    <div>
+                                        <p class="font-bold text-deep-indigo text-sm leading-tight">Yashu Jindal</p>
+                                        <p class="text-[10px] text-cyan-accent font-semibold mt-0.5 uppercase tracking-wider">Patient's Son</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                                            <div class="testimonial-card flex-shrink-0 px-3" style="width: 33.333333%; min-width: 33.333333%; box-sizing: border-box;">
-                            <div class="h-full border-l-2 border-silver-grey hover:border-electric-blue pl-5 py-2 transition-colors duration-300">
-                                <div class="flex space-x-0.5 mb-3">
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                    </div>
-                                <p class="text-dark-grey/80 text-sm italic leading-relaxed mb-5">
-                                    "Outstanding doctor with a wonderful bedside manner. Highly recommend to everyone."
-                                </p>
+                                            <div class="testimonial-card flex-shrink-0 px-4 py-2" style="width: 33.333333%; min-width: 33.333333%; box-sizing: border-box;">
+                            <div class="group h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 flex flex-col justify-between relative overflow-hidden">
+                                <!-- Background Decorative Quote -->
+                                <i class="fas fa-quote-right absolute right-6 top-6 text-slate-100 text-4xl pointer-events-none group-hover:text-electric-blue/5 transition-colors duration-300"></i>
+
                                 <div>
-                                    <p class="font-semibold text-deep-indigo text-sm">Anita Desai</p>
-                                    <p class="text-xs text-dark-grey/50 mt-0.5">Patient</p>
+                                    <!-- Stars -->
+                                    <div class="flex space-x-0.5 mb-4 text-amber-400">
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                            </div>
+                                    
+                                    <!-- Message -->
+                                    <p class="text-dark-grey/75 text-sm leading-relaxed mb-6 italic relative z-10">
+                                        "Really good experience at Dr. Praveen Gupta's clinic. My vertigo and dizziness improved a lot. My condition was explained in a way I could easily understand. I felt much better after following the treatment. A very neat and well-maintained clinic. Highly recommended."
+                                    </p>
+                                </div>
+
+                                <!-- Divider -->
+                                <div class="w-full h-px bg-silver-grey/60 mb-4"></div>
+
+                                <!-- Author Row -->
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue/15 to-cyan-accent/15 text-electric-blue font-bold text-sm flex items-center justify-center shadow-sm">
+                                        D                                    </div>
+                                    <div>
+                                        <p class="font-bold text-deep-indigo text-sm leading-tight">Dheeraj Tiwari</p>
+                                        <p class="text-[10px] text-cyan-accent font-semibold mt-0.5 uppercase tracking-wider">Patient</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                                            <div class="testimonial-card flex-shrink-0 px-3" style="width: 33.333333%; min-width: 33.333333%; box-sizing: border-box;">
-                            <div class="h-full border-l-2 border-silver-grey hover:border-electric-blue pl-5 py-2 transition-colors duration-300">
-                                <div class="flex space-x-0.5 mb-3">
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                    </div>
-                                <p class="text-dark-grey/80 text-sm italic leading-relaxed mb-5">
-                                    "After struggling with migraines for years, Dr. Gupta's treatment gave me my life back. Truly exceptional care."
-                                </p>
+                                            <div class="testimonial-card flex-shrink-0 px-4 py-2" style="width: 33.333333%; min-width: 33.333333%; box-sizing: border-box;">
+                            <div class="group h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 flex flex-col justify-between relative overflow-hidden">
+                                <!-- Background Decorative Quote -->
+                                <i class="fas fa-quote-right absolute right-6 top-6 text-slate-100 text-4xl pointer-events-none group-hover:text-electric-blue/5 transition-colors duration-300"></i>
+
                                 <div>
-                                    <p class="font-semibold text-deep-indigo text-sm">Suresh Mehta</p>
-                                    <p class="text-xs text-dark-grey/50 mt-0.5">Patient</p>
+                                    <!-- Stars -->
+                                    <div class="flex space-x-0.5 mb-4 text-amber-400">
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                            </div>
+                                    
+                                    <!-- Message -->
+                                    <p class="text-dark-grey/75 text-sm leading-relaxed mb-6 italic relative z-10">
+                                        "My family member was admitted under Dr. Praveen Gupta and we are very thankful for the excellent treatment and attention provided throughout the stay. The doctor regularly monitored the patient's condition, explained progress clearly, and addressed all our concerns with patience and professionalism. Outstanding IPD care."
+                                    </p>
+                                </div>
+
+                                <!-- Divider -->
+                                <div class="w-full h-px bg-silver-grey/60 mb-4"></div>
+
+                                <!-- Author Row -->
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue/15 to-cyan-accent/15 text-electric-blue font-bold text-sm flex items-center justify-center shadow-sm">
+                                        J                                    </div>
+                                    <div>
+                                        <p class="font-bold text-deep-indigo text-sm leading-tight">Jyoti Singh</p>
+                                        <p class="text-[10px] text-cyan-accent font-semibold mt-0.5 uppercase tracking-wider">Patient's Family</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                                            <div class="testimonial-card flex-shrink-0 px-3" style="width: 33.333333%; min-width: 33.333333%; box-sizing: border-box;">
-                            <div class="h-full border-l-2 border-silver-grey hover:border-electric-blue pl-5 py-2 transition-colors duration-300">
-                                <div class="flex space-x-0.5 mb-3">
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                    </div>
-                                <p class="text-dark-grey/80 text-sm italic leading-relaxed mb-5">
-                                    "I was diagnosed with Parkinson's and was devastated. Dr. Gupta's calm guidance and advanced treatment plan gave me renewed hope."
-                                </p>
+                                            <div class="testimonial-card flex-shrink-0 px-4 py-2" style="width: 33.333333%; min-width: 33.333333%; box-sizing: border-box;">
+                            <div class="group h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 flex flex-col justify-between relative overflow-hidden">
+                                <!-- Background Decorative Quote -->
+                                <i class="fas fa-quote-right absolute right-6 top-6 text-slate-100 text-4xl pointer-events-none group-hover:text-electric-blue/5 transition-colors duration-300"></i>
+
                                 <div>
-                                    <p class="font-semibold text-deep-indigo text-sm">Kavita Singh</p>
-                                    <p class="text-xs text-dark-grey/50 mt-0.5">Patient</p>
+                                    <!-- Stars -->
+                                    <div class="flex space-x-0.5 mb-4 text-amber-400">
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                            </div>
+                                    
+                                    <!-- Message -->
+                                    <p class="text-dark-grey/75 text-sm leading-relaxed mb-6 italic relative z-10">
+                                        "Dr. Praveen Gupta is a brilliant, empathetic, and very supportive physician. I struggled with a neurological disorder for a decade, but under his care, I was completely cured in 10 days. He is genuinely an embodiment of compassion and healing."
+                                    </p>
+                                </div>
+
+                                <!-- Divider -->
+                                <div class="w-full h-px bg-silver-grey/60 mb-4"></div>
+
+                                <!-- Author Row -->
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue/15 to-cyan-accent/15 text-electric-blue font-bold text-sm flex items-center justify-center shadow-sm">
+                                        S                                    </div>
+                                    <div>
+                                        <p class="font-bold text-deep-indigo text-sm leading-tight">Syed Mazhar Kandhlavi</p>
+                                        <p class="text-[10px] text-cyan-accent font-semibold mt-0.5 uppercase tracking-wider">Patient</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                                            <div class="testimonial-card flex-shrink-0 px-3" style="width: 33.333333%; min-width: 33.333333%; box-sizing: border-box;">
-                            <div class="h-full border-l-2 border-silver-grey hover:border-electric-blue pl-5 py-2 transition-colors duration-300">
-                                <div class="flex space-x-0.5 mb-3">
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                            <i class="fas fa-star text-yellow-400 text-xs"></i>
-                                                                    </div>
-                                <p class="text-dark-grey/80 text-sm italic leading-relaxed mb-5">
-                                    "Best neurologist I have ever consulted. Diagnosed my condition accurately in the first visit and the treatment worked remarkably well."
-                                </p>
+                                            <div class="testimonial-card flex-shrink-0 px-4 py-2" style="width: 33.333333%; min-width: 33.333333%; box-sizing: border-box;">
+                            <div class="group h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 flex flex-col justify-between relative overflow-hidden">
+                                <!-- Background Decorative Quote -->
+                                <i class="fas fa-quote-right absolute right-6 top-6 text-slate-100 text-4xl pointer-events-none group-hover:text-electric-blue/5 transition-colors duration-300"></i>
+
                                 <div>
-                                    <p class="font-semibold text-deep-indigo text-sm">Deepak Nair</p>
-                                    <p class="text-xs text-dark-grey/50 mt-0.5">Patient</p>
+                                    <!-- Stars -->
+                                    <div class="flex space-x-0.5 mb-4 text-amber-400">
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                            </div>
+                                    
+                                    <!-- Message -->
+                                    <p class="text-dark-grey/75 text-sm leading-relaxed mb-6 italic relative z-10">
+                                        "I am extremely grateful to Dr. Praveen Gupta for the exceptional care and attention throughout my treatment. The diagnosis was made after thorough and well-planned investigations, and treatment was started at the right time, making a significant difference. The empathy, responsiveness, and genuine effort were deeply reassuring."
+                                    </p>
+                                </div>
+
+                                <!-- Divider -->
+                                <div class="w-full h-px bg-silver-grey/60 mb-4"></div>
+
+                                <!-- Author Row -->
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue/15 to-cyan-accent/15 text-electric-blue font-bold text-sm flex items-center justify-center shadow-sm">
+                                        V                                    </div>
+                                    <div>
+                                        <p class="font-bold text-deep-indigo text-sm leading-tight">Vandana Gera</p>
+                                        <p class="text-[10px] text-cyan-accent font-semibold mt-0.5 uppercase tracking-wider">Patient</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="testimonial-card flex-shrink-0 px-4 py-2" style="width: 33.333333%; min-width: 33.333333%; box-sizing: border-box;">
+                            <div class="group h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 flex flex-col justify-between relative overflow-hidden">
+                                <!-- Background Decorative Quote -->
+                                <i class="fas fa-quote-right absolute right-6 top-6 text-slate-100 text-4xl pointer-events-none group-hover:text-electric-blue/5 transition-colors duration-300"></i>
+
+                                <div>
+                                    <!-- Stars -->
+                                    <div class="flex space-x-0.5 mb-4 text-amber-400">
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                            </div>
+                                    
+                                    <!-- Message -->
+                                    <p class="text-dark-grey/75 text-sm leading-relaxed mb-6 italic relative z-10">
+                                        "My heartfelt thanks to Dr. Praveen Gupta and his entire team for the exceptional care and treatment I received after my blackout episode. Every test and evaluation was conducted promptly and thoroughly to identify the root cause, and I was guided through each step with patience, reassurance, and compassion."
+                                    </p>
+                                </div>
+
+                                <!-- Divider -->
+                                <div class="w-full h-px bg-silver-grey/60 mb-4"></div>
+
+                                <!-- Author Row -->
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue/15 to-cyan-accent/15 text-electric-blue font-bold text-sm flex items-center justify-center shadow-sm">
+                                        A                                    </div>
+                                    <div>
+                                        <p class="font-bold text-deep-indigo text-sm leading-tight">Anjali Tanwar</p>
+                                        <p class="text-[10px] text-cyan-accent font-semibold mt-0.5 uppercase tracking-wider">Patient</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="testimonial-card flex-shrink-0 px-4 py-2" style="width: 33.333333%; min-width: 33.333333%; box-sizing: border-box;">
+                            <div class="group h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 flex flex-col justify-between relative overflow-hidden">
+                                <!-- Background Decorative Quote -->
+                                <i class="fas fa-quote-right absolute right-6 top-6 text-slate-100 text-4xl pointer-events-none group-hover:text-electric-blue/5 transition-colors duration-300"></i>
+
+                                <div>
+                                    <!-- Stars -->
+                                    <div class="flex space-x-0.5 mb-4 text-amber-400">
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                            </div>
+                                    
+                                    <!-- Message -->
+                                    <p class="text-dark-grey/75 text-sm leading-relaxed mb-6 italic relative z-10">
+                                        "I had been battling a severe fever, and the toll was becoming overwhelming. From my very first consultation, Dr. Gupta demonstrated a remarkable blend of medical expertise and genuine compassion. He listened carefully, answered concerns, and explained the rationale behind the prescription. I highly recommend him."
+                                    </p>
+                                </div>
+
+                                <!-- Divider -->
+                                <div class="w-full h-px bg-silver-grey/60 mb-4"></div>
+
+                                <!-- Author Row -->
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue/15 to-cyan-accent/15 text-electric-blue font-bold text-sm flex items-center justify-center shadow-sm">
+                                        P                                    </div>
+                                    <div>
+                                        <p class="font-bold text-deep-indigo text-sm leading-tight">Pragya Chaudhary</p>
+                                        <p class="text-[10px] text-cyan-accent font-semibold mt-0.5 uppercase tracking-wider">Patient</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="testimonial-card flex-shrink-0 px-4 py-2" style="width: 33.333333%; min-width: 33.333333%; box-sizing: border-box;">
+                            <div class="group h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 flex flex-col justify-between relative overflow-hidden">
+                                <!-- Background Decorative Quote -->
+                                <i class="fas fa-quote-right absolute right-6 top-6 text-slate-100 text-4xl pointer-events-none group-hover:text-electric-blue/5 transition-colors duration-300"></i>
+
+                                <div>
+                                    <!-- Stars -->
+                                    <div class="flex space-x-0.5 mb-4 text-amber-400">
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                            </div>
+                                    
+                                    <!-- Message -->
+                                    <p class="text-dark-grey/75 text-sm leading-relaxed mb-6 italic relative z-10">
+                                        "I would like to express my heartfelt gratitude to Dr. Praveen Gupta for his exceptional care and dedication. His vast knowledge, calm nature, and ability to patiently listen give immense confidence. One of the most remarkable things is that he is always reachable and responds on time when needed."
+                                    </p>
+                                </div>
+
+                                <!-- Divider -->
+                                <div class="w-full h-px bg-silver-grey/60 mb-4"></div>
+
+                                <!-- Author Row -->
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue/15 to-cyan-accent/15 text-electric-blue font-bold text-sm flex items-center justify-center shadow-sm">
+                                        M                                    </div>
+                                    <div>
+                                        <p class="font-bold text-deep-indigo text-sm leading-tight">Manjit Singh</p>
+                                        <p class="text-[10px] text-cyan-accent font-semibold mt-0.5 uppercase tracking-wider">Patient</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="testimonial-card flex-shrink-0 px-4 py-2" style="width: 33.333333%; min-width: 33.333333%; box-sizing: border-box;">
+                            <div class="group h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 flex flex-col justify-between relative overflow-hidden">
+                                <!-- Background Decorative Quote -->
+                                <i class="fas fa-quote-right absolute right-6 top-6 text-slate-100 text-4xl pointer-events-none group-hover:text-electric-blue/5 transition-colors duration-300"></i>
+
+                                <div>
+                                    <!-- Stars -->
+                                    <div class="flex space-x-0.5 mb-4 text-amber-400">
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                                    <i class="fas fa-star text-xs"></i>
+                                                                            </div>
+                                    
+                                    <!-- Message -->
+                                    <p class="text-dark-grey/75 text-sm leading-relaxed mb-6 italic relative z-10">
+                                        "My husband had been suffering from epilepsy for the last 3 years. Dr. Praveen Gupta told me in our very first meeting that my husband would get well, and the results are better now. My husband is doing well. Thank you, Sir."
+                                    </p>
+                                </div>
+
+                                <!-- Divider -->
+                                <div class="w-full h-px bg-silver-grey/60 mb-4"></div>
+
+                                <!-- Author Row -->
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue/15 to-cyan-accent/15 text-electric-blue font-bold text-sm flex items-center justify-center shadow-sm">
+                                        S                                    </div>
+                                    <div>
+                                        <p class="font-bold text-deep-indigo text-sm leading-tight">Seema Saini</p>
+                                        <p class="text-[10px] text-cyan-accent font-semibold mt-0.5 uppercase tracking-wider">Patient's Wife</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1559,25 +1828,16 @@
             <!-- Slider Controls -->
             <div class="flex items-center justify-center space-x-3 mt-8">
                 <button id="testimonial-prev" type="button"
-                        class="w-10 h-10 rounded-full bg-white border border-silver-grey hover:border-electric-blue hover:bg-electric-blue hover:text-white text-deep-indigo flex items-center justify-center transition-all duration-300 shadow-sm">
+                        class="w-10 h-10 rounded-full bg-white border border-silver-grey hover:border-electric-blue hover:bg-electric-blue hover:text-white text-deep-indigo flex items-center justify-center transition-all duration-300 shadow-sm active:scale-95">
                     <i class="fas fa-chevron-left text-xs"></i>
                 </button>
 
                 <div id="testimonial-dots" class="flex items-center space-x-2">
-                                            <button type="button"
-                                class="testimonial-dot rounded-full bg-silver-grey hover:bg-electric-blue transition-all duration-300"
-                                style="width: 8px; height: 8px;"
-                                data-index="0"
-                                aria-label="Go to page 1"></button>
-                                            <button type="button"
-                                class="testimonial-dot rounded-full bg-silver-grey hover:bg-electric-blue transition-all duration-300"
-                                style="width: 8px; height: 8px;"
-                                data-index="1"
-                                aria-label="Go to page 2"></button>
-                                    </div>
+                    <!-- Dots generated dynamically in JS -->
+                </div>
 
                 <button id="testimonial-next" type="button"
-                        class="w-10 h-10 rounded-full bg-white border border-silver-grey hover:border-electric-blue hover:bg-electric-blue hover:text-white text-deep-indigo flex items-center justify-center transition-all duration-300 shadow-sm">
+                        class="w-10 h-10 rounded-full bg-white border border-silver-grey hover:border-electric-blue hover:bg-electric-blue hover:text-white text-deep-indigo flex items-center justify-center transition-all duration-300 shadow-sm active:scale-95">
                     <i class="fas fa-chevron-right text-xs"></i>
                 </button>
             </div>
@@ -1586,7 +1846,7 @@
 </section>
 
 <style>
-    /* Testimonials slider: 3 cards visible on desktop, 2 on tablet, 1 on mobile */
+    /* Responsive slide widths */
     @media (max-width: 767px) {
         .testimonial-card {
             width: 100% !important;
@@ -1617,11 +1877,10 @@
     const track = document.getElementById('testimonial-track');
     const prevBtn = document.getElementById('testimonial-prev');
     const nextBtn = document.getElementById('testimonial-next');
-    const dots = document.querySelectorAll('.testimonial-dot');
+    const dotsBox = document.getElementById('testimonial-dots');
     const currentLabel = document.getElementById('testimonial-current');
     const viewport = document.getElementById('testimonial-viewport');
-    const totalCards = 6;
-    const totalPages = 2;
+    const totalCards = 10;
     let currentPage = 0;
 
     function getCardsPerPage() {
@@ -1631,21 +1890,48 @@
         return 1;
     }
 
+    function buildDots() {
+        const cardsPerPage = getCardsPerPage();
+        const maxPage = Math.max(0, Math.ceil(totalCards / cardsPerPage) - 1);
+        dotsBox.innerHTML = '';
+        for (let i = 0; i <= maxPage; i++) {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'testimonial-dot rounded-full bg-silver-grey hover:bg-electric-blue transition-all duration-300';
+            btn.style.width = '8px';
+            btn.style.height = '8px';
+            btn.setAttribute('data-index', i);
+            btn.setAttribute('aria-label', 'Go to page ' + (i + 1));
+            btn.addEventListener('click', function() {
+                currentPage = i;
+                update();
+            });
+            dotsBox.appendChild(btn);
+        }
+    }
+
     function update() {
         const cardsPerPage = getCardsPerPage();
         const maxPage = Math.max(0, Math.ceil(totalCards / cardsPerPage) - 1);
         if (currentPage > maxPage) currentPage = maxPage;
 
-        // Translate by viewport width
+        // Rebuild dots if mismatch
+        if (dotsBox.children.length !== maxPage + 1) {
+            buildDots();
+        }
+
+        // Translate
         const viewportWidth = viewport.offsetWidth;
         const offset = currentPage * viewportWidth;
         track.style.transform = 'translateX(-' + offset + 'px)';
 
-        // Update counter
-        if (currentLabel) currentLabel.textContent = Math.min(currentPage * cardsPerPage + cardsPerPage, totalCards);
+        // Counter
+        if (currentLabel) {
+            currentLabel.textContent = Math.min(currentPage * cardsPerPage + cardsPerPage, totalCards);
+        }
 
-        // Update dots
-        dots.forEach(function(d, i) {
+        // Paint dots
+        Array.from(dotsBox.children).forEach(function(d, i) {
             if (i === currentPage) {
                 d.classList.add('active');
             } else {
@@ -1670,14 +1956,23 @@
         }
     });
 
-    for (let i = 0; i < dots.length; i++) {
-        dots[i].addEventListener('click', function() {
-            currentPage = parseInt(this.getAttribute('data-index'), 10);
-            update();
-        });
-    }
+    // Touch / Swipe
+    let touchStartX = 0;
+    viewport.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    viewport.addEventListener('touchend', function(e) {
+        const delta = e.changedTouches[0].screenX - touchStartX;
+        if (Math.abs(delta) > 50) {
+            if (delta < 0) {
+                nextBtn.click();
+            } else {
+                prevBtn.click();
+            }
+        }
+    }, { passive: true });
 
-    // Recalculate on resize
+    // Recalculate
     let resizeTimer;
     window.addEventListener('resize', function() {
         clearTimeout(resizeTimer);
@@ -1746,7 +2041,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-deep-indigo text-white relative overflow-hidden">
+    <footer class="bg-deep-indigo text-white relative overflow-hidden pb-20 lg:pb-0">
         <!-- Decorative background -->
         <div class="absolute inset-0 opacity-30 pointer-events-none">
             <div class="absolute -top-20 -left-20 w-96 h-96 bg-electric-blue/20 rounded-full blur-3xl"></div>
@@ -1970,33 +2265,6 @@
             </div>
         </div>
 
-        <!-- Newsletter -->
-        <div class="relative border-t border-white/10 bg-black/20">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                    <div class="flex items-start space-x-4">
-                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center shadow-lg flex-shrink-0">
-                            <i class="fas fa-paper-plane text-white text-lg"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-xl font-bold mb-1">Subscribe to Our Newsletter</h4>
-                            <p class="text-white/70 text-sm">Get health tips, latest updates and medical insights directly in your inbox.</p>
-                        </div>
-                    </div>
-                    <form class="flex w-full" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
-                        <div class="relative flex-1">
-                            <i class="fas fa-envelope absolute left-5 top-1/2 -translate-y-1/2 text-white/40 text-sm"></i>
-                            <input type="email" placeholder="Enter your email address" required
-                                   class="w-full pl-12 pr-5 py-4 bg-white/10 border border-white/20 rounded-l-full text-white placeholder-white/50 focus:outline-none focus:border-cyan-accent focus:bg-white/15 transition-all">
-                        </div>
-                        <button type="submit" class="px-7 py-4 bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold rounded-r-full hover:shadow-lg hover:shadow-electric-blue/50 transition-all duration-300 flex items-center space-x-2 group">
-                            <span class="hidden sm:inline">Subscribe</span>
-                            <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
 
         <!-- Bottom Bar -->
         <div class="relative border-t border-white/10">
@@ -2019,7 +2287,7 @@
     <a href="https://wa.me/918796977903?text=Hello%2C%20I%20would%20like%20to%20book%20an%20appointment%20with%20Dr.%20Praveen%20Gupta."
        target="_blank" rel="noopener noreferrer"
        aria-label="Chat with us on WhatsApp"
-       class="group fixed bottom-8 right-8 w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#1DA851] text-white shadow-lg hover:shadow-xl hover:shadow-[#25D366]/50 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center z-50">
+       class="hidden lg:flex group fixed bottom-8 right-8 w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#1DA851] text-white shadow-lg hover:shadow-xl hover:shadow-[#25D366]/50 hover:-translate-y-0.5 transition-all duration-300 items-center justify-center z-50">
         <!-- Pulsing halo -->
         <span class="absolute inset-0 rounded-full bg-[#25D366]/40 animate-ping pointer-events-none"></span>
         <i class="fab fa-whatsapp text-2xl relative"></i>
@@ -2031,14 +2299,14 @@
     </a>
 
     <!-- Back to Top Button (stacked above the WhatsApp button) -->
-    <button id="back-to-top" class="fixed bottom-28 right-9 w-12 h-12 rounded-full bg-white text-deep-indigo border border-silver-grey shadow-lg hover:bg-electric-blue hover:text-white hover:shadow-xl hover:shadow-electric-blue/40 transition-all duration-300 transform translate-y-20 opacity-0 z-50 flex items-center justify-center group">
+    <button id="back-to-top" class="hidden lg:flex fixed bottom-28 right-9 w-12 h-12 rounded-full bg-white text-deep-indigo border border-silver-grey shadow-lg hover:bg-electric-blue hover:text-white hover:shadow-xl hover:shadow-electric-blue/40 transition-all duration-300 transform translate-y-20 opacity-0 z-50 items-center justify-center group">
         <i class="fas fa-arrow-up group-hover:-translate-y-0.5 transition-transform"></i>
     </button>
 
     <!-- Floating Emergency Stroke Helpline Button -->
     <a href="tel:1800-309-0247"
        aria-label="Call 24x7 Emergency Stroke Helpline"
-       class="group fixed bottom-48 right-8 w-14 h-14 rounded-full bg-red-650 bg-red-600 hover:bg-red-750 hover:bg-red-700 text-white shadow-lg hover:shadow-xl hover:shadow-red-600/50 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center z-50">
+       class="hidden lg:flex group fixed bottom-48 right-8 w-14 h-14 rounded-full bg-red-650 bg-red-600 hover:bg-red-750 hover:bg-red-700 text-white shadow-lg hover:shadow-xl hover:shadow-red-600/50 hover:-translate-y-0.5 transition-all duration-300 items-center justify-center z-50">
         <!-- Pulsing halo -->
         <span class="absolute inset-0 rounded-full bg-red-600/40 animate-ping pointer-events-none"></span>
         <i class="fas fa-phone-alt text-lg relative animate-pulse"></i>
@@ -2048,10 +2316,43 @@
             24x7 Stroke Helpline: 1800-309-0247        </span>
     </a>
 
-    <!-- Floating Appointment Button (Mobile) -->
-    <a href="contact-us-top-neurologist-delhi-ncr.html" class="lg:hidden fixed bottom-6 left-6 w-14 h-14 rounded-full bg-gradient-to-r from-electric-blue to-cyan-accent text-white shadow-lg flex items-center justify-center z-50 animate-pulse-slow">
-        <i class="fas fa-calendar-plus text-lg"></i>
-    </a>
+    <!-- Sticky Bottom Bar (Mobile Only - Premium Floating Capsule) -->
+    <div class="lg:hidden fixed bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md border border-slate-200/80 shadow-[0_8px_30px_rgba(0,0,0,0.12)] rounded-[24px] z-50 px-4 py-2.5 flex items-center justify-between gap-3">
+        <!-- WhatsApp Link -->
+        <a href="https://wa.me/918796977903?text=Hello%2C%20I%20would%20like%20to%20book%20an%20appointment%20with%20Dr.%20Praveen%20Gupta." 
+           target="_blank" rel="noopener noreferrer"
+           class="flex flex-col items-center justify-center text-center group">
+            <span class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shadow-sm active:scale-90 transition-all duration-300">
+                <i class="fab fa-whatsapp text-lg"></i>
+            </span>
+            <span class="text-[8px] font-bold text-slate-500 uppercase tracking-wider mt-1">WhatsApp</span>
+        </a>
+
+        <!-- Online Consult -->
+        <a href="online-neurologist-consultation.html" 
+           class="flex flex-col items-center justify-center text-center group">
+            <span class="w-10 h-10 rounded-full bg-electric-blue/10 text-electric-blue flex items-center justify-center shadow-sm active:scale-90 transition-all duration-300">
+                <i class="fas fa-video text-base"></i>
+            </span>
+            <span class="text-[8px] font-bold text-slate-500 uppercase tracking-wider mt-1">Online</span>
+        </a>
+
+        <!-- Book Appointment Central Button -->
+        <a href="contact-us-top-neurologist-delhi-ncr.html" 
+           class="flex-1 flex items-center justify-center gap-1.5 bg-gradient-to-r from-deep-indigo via-electric-blue to-cyan-accent text-white font-extrabold text-xs h-10 px-3 rounded-full shadow-[0_4px_15px_rgba(37,99,235,0.25)] active:scale-[0.97] transition-all duration-300">
+            <i class="fas fa-calendar-check text-sm animate-pulse"></i>
+            <span class="uppercase tracking-wider">Book Clinic</span>
+        </a>
+
+        <!-- Emergency Helpline Link -->
+        <a href="tel:1800-309-0247" 
+           class="flex flex-col items-center justify-center text-center group">
+            <span class="w-10 h-10 rounded-full bg-red-50 text-red-650 text-red-600 flex items-center justify-center shadow-sm active:scale-90 transition-all duration-300">
+                <i class="fas fa-phone-alt text-sm animate-pulse"></i>
+            </span>
+            <span class="text-[8px] font-bold text-slate-500 uppercase tracking-wider mt-1">Emergency</span>
+        </a>
+    </div>
 
     <script>
         // Back to top button

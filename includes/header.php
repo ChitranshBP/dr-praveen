@@ -240,10 +240,10 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
         .mobile-menu-anim {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease;
+            transition: max-height 0.4s ease-in-out;
         }
         .mobile-menu-anim.open {
-            max-height: 500px;
+            max-height: 1000px;
         }
 
         /* Scroll progress bar */
@@ -336,7 +336,7 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <a href="index.php" class="flex items-center group">
-                    <img id="header-logo" src="assets/logo/NeuroDoc-final-logo.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" class="h-14 sm:h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 invert brightness-0">
+                    <img id="header-logo" src="assets/logo/NeuroDoc-final-logo.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" class="h-14 sm:h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 <?php echo $isHomepage || $isDarkHero ? 'invert brightness-0' : ''; ?>">
                 </a>
 
                 <!-- Desktop Navigation -->
@@ -464,13 +464,15 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
         mobileMenuBtn.addEventListener('click', function() {
             menuOpen = !menuOpen;
             mobileMenu.classList.toggle('open');
-            mobileMenu.classList.toggle('hidden');
 
             if (menuOpen) {
                 menuIcon.classList.remove('fa-bars');
                 menuIcon.classList.add('fa-xmark');
                 navbar.classList.remove('navbar-glass');
                 navbar.classList.add('navbar-solid');
+                if (headerLogo) {
+                    headerLogo.classList.remove('invert', 'brightness-0');
+                }
             } else {
                 menuIcon.classList.remove('fa-xmark');
                 menuIcon.classList.add('fa-bars');
@@ -515,7 +517,7 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
                 } else {
                     navbar.classList.remove('shadow-lg');
                     if (headerLogo) {
-                        headerLogo.classList.add('invert', 'brightness-0');
+                        headerLogo.classList.remove('invert', 'brightness-0');
                     }
                 }
             }

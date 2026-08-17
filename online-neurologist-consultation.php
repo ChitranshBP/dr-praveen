@@ -155,14 +155,15 @@ require_once __DIR__ . '/includes/header.php';
                 <p class="text-xs text-white/80 leading-relaxed">
                     Have your medical history and imaging scans ready before scheduling a slot. For urgent cases, please call the emergency desk directly.
                 </p>
-                <form class="pt-2 border-t border-white/10 space-y-3" onsubmit="event.preventDefault(); alert('Online slot request submitted successfully! Our coordinator will contact you shortly.');">
+                <form class="pt-2 border-t border-white/10 space-y-3" accept-charset="UTF-8" action="https://app.formester.com/forms/MUVNkRKYA/submissions" method="POST">
+                    <input type="hidden" name="form_type" value="Online Consultation Request">
                     <div>
                         <label for="tele-name" class="sr-only">Full Name</label>
-                        <input type="text" id="tele-name" required placeholder="Your Name" class="w-full px-4 py-2.5 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-cyan-accent text-xs text-white placeholder-white/60">
+                        <input type="text" id="tele-name" name="name" required placeholder="Your Name" class="w-full px-4 py-2.5 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-cyan-accent text-xs text-white placeholder-white/60">
                     </div>
                     <div>
                         <label for="tele-phone" class="sr-only">Phone Number</label>
-                        <input type="tel" id="tele-phone" required placeholder="Phone Number" class="w-full px-4 py-2.5 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-cyan-accent text-xs text-white placeholder-white/60">
+                        <input type="tel" id="tele-phone" name="phone" required placeholder="Phone Number" class="w-full px-4 py-2.5 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-cyan-accent text-xs text-white placeholder-white/60">
                     </div>
                     <div>
                         <button type="submit" class="block w-full text-center bg-cyan-accent hover:bg-cyan-500 text-deep-indigo font-bold py-2.5 rounded-xl transition-all duration-300 transform active:scale-95 text-xs shadow-lg shadow-cyan-accent/20">

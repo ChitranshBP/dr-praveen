@@ -310,39 +310,63 @@ $stats = [
 // Testimonials
 $testimonials = [
     [
-        'name' => 'Priya Sharma',
-        'role' => 'Patient',
-        'message' => 'Dr. Praveen Gupta transformed my health journey. His expertise and compassion are unmatched.',
+        'name' => 'Atul Saxena',
+        'role' => 'Patient\'s Son',
+        'message' => 'I would like to express my heartfelt gratitude to Dr. Praveen Gupta and his outstanding team for the exceptional care during my mother\'s treatment for acute neuropathy. Dr. Gupta\'s clinical expertise, calm approach, and ability to explain every aspect of the treatment gave our family immense confidence. I would also like to make a special mention of Dr. Piyush Ojha, whose prompt assessment and accurate initial diagnosis played a crucial role.',
         'rating' => 5
     ],
     [
-        'name' => 'Rajesh Kumar',
-        'role' => 'Patient',
-        'message' => 'The level of care and attention I received was exceptional. Truly a world-class professional.',
+        'name' => 'Yashu Jindal',
+        'role' => 'Patient\'s Son',
+        'message' => 'We are extremely grateful to Dr. Praveen Gupta for the exceptional care and treatment provided to my father during his brain stroke surgery. From the very beginning, Dr. Gupta guided us with confidence, clarity, and compassion during a very difficult time for our family. It has now been 6 months, and we have seen continuous improvement and a smooth recovery.',
         'rating' => 5
     ],
     [
-        'name' => 'Anita Desai',
+        'name' => 'Dheeraj Tiwari',
         'role' => 'Patient',
-        'message' => 'Outstanding doctor with a wonderful bedside manner. Highly recommend to everyone.',
+        'message' => 'Really good experience at Dr. Praveen Gupta\'s clinic. My vertigo and dizziness improved a lot. My condition was explained in a way I could easily understand. I felt much better after following the treatment. A very neat and well-maintained clinic. Highly recommended.',
         'rating' => 5
     ],
     [
-        'name' => 'Suresh Mehta',
-        'role' => 'Patient',
-        'message' => 'After struggling with migraines for years, Dr. Gupta\'s treatment gave me my life back. Truly exceptional care.',
+        'name' => 'Jyoti Singh',
+        'role' => 'Patient\'s Family',
+        'message' => 'My family member was admitted under Dr. Praveen Gupta and we are very thankful for the excellent treatment and attention provided throughout the stay. The doctor regularly monitored the patient\'s condition, explained progress clearly, and addressed all our concerns with patience and professionalism. Outstanding IPD care.',
         'rating' => 5
     ],
     [
-        'name' => 'Kavita Singh',
+        'name' => 'Syed Mazhar Kandhlavi',
         'role' => 'Patient',
-        'message' => 'I was diagnosed with Parkinson\'s and was devastated. Dr. Gupta\'s calm guidance and advanced treatment plan gave me renewed hope.',
+        'message' => 'Dr. Praveen Gupta is a brilliant, empathetic, and very supportive physician. I struggled with a neurological disorder for a decade, but under his care, I was completely cured in 10 days. He is genuinely an embodiment of compassion and healing.',
         'rating' => 5
     ],
     [
-        'name' => 'Deepak Nair',
+        'name' => 'Vandana Gera',
         'role' => 'Patient',
-        'message' => 'Best neurologist I have ever consulted. Diagnosed my condition accurately in the first visit and the treatment worked remarkably well.',
+        'message' => 'I am extremely grateful to Dr. Praveen Gupta for the exceptional care and attention throughout my treatment. The diagnosis was made after thorough and well-planned investigations, and treatment was started at the right time, making a significant difference. The empathy, responsiveness, and genuine effort were deeply reassuring.',
+        'rating' => 5
+    ],
+    [
+        'name' => 'Anjali Tanwar',
+        'role' => 'Patient',
+        'message' => 'My heartfelt thanks to Dr. Praveen Gupta and his entire team for the exceptional care and treatment I received after my blackout episode. Every test and evaluation was conducted promptly and thoroughly to identify the root cause, and I was guided through each step with patience, reassurance, and compassion.',
+        'rating' => 5
+    ],
+    [
+        'name' => 'Pragya Chaudhary',
+        'role' => 'Patient',
+        'message' => 'I had been battling a severe fever, and the toll was becoming overwhelming. From my very first consultation, Dr. Gupta demonstrated a remarkable blend of medical expertise and genuine compassion. He listened carefully, answered concerns, and explained the rationale behind the prescription. I highly recommend him.',
+        'rating' => 5
+    ],
+    [
+        'name' => 'Manjit Singh',
+        'role' => 'Patient',
+        'message' => 'I would like to express my heartfelt gratitude to Dr. Praveen Gupta for his exceptional care and dedication. His vast knowledge, calm nature, and ability to patiently listen give immense confidence. One of the most remarkable things is that he is always reachable and responds on time when needed.',
+        'rating' => 5
+    ],
+    [
+        'name' => 'Seema Saini',
+        'role' => 'Patient\'s Wife',
+        'message' => 'My husband had been suffering from epilepsy for the last 3 years. Dr. Praveen Gupta told me in our very first meeting that my husband would get well, and the results are better now. My husband is doing well. Thank you, Sir.',
         'rating' => 5
     ],
 ];

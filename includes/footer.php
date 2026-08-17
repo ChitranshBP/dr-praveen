@@ -322,32 +322,41 @@ foreach (array_slice($services, 0, 6) as $svc) {
         </span>
     </a>
 
-    <!-- Sticky Bottom Bar (Mobile Only) -->
-    <div class="lg:hidden fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-silver-grey/50 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] z-50 px-4 py-2 flex items-center justify-between gap-4 pb-safe">
+    <!-- Sticky Bottom Bar (Mobile Only - Premium Floating Capsule) -->
+    <div class="lg:hidden fixed bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md border border-slate-200/80 shadow-[0_8px_30px_rgba(0,0,0,0.12)] rounded-[24px] z-50 px-4 py-2.5 flex items-center justify-between gap-3">
         <!-- WhatsApp Link -->
         <a href="https://wa.me/<?php echo SITE_WHATSAPP; ?>?text=<?php echo rawurlencode(WHATSAPP_MESSAGE); ?>" 
            target="_blank" rel="noopener noreferrer"
-           class="flex flex-col items-center justify-center text-center text-[10px] font-bold text-dark-grey/70">
-            <span class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-0.5 active:scale-95 transition-transform">
-                <i class="fab fa-whatsapp text-xl"></i>
+           class="flex flex-col items-center justify-center text-center group">
+            <span class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shadow-sm active:scale-90 transition-all duration-300">
+                <i class="fab fa-whatsapp text-lg"></i>
             </span>
-            <span>WhatsApp</span>
+            <span class="text-[8px] font-bold text-slate-500 uppercase tracking-wider mt-1">WhatsApp</span>
+        </a>
+
+        <!-- Online Consult -->
+        <a href="online-neurologist-consultation.php" 
+           class="flex flex-col items-center justify-center text-center group">
+            <span class="w-10 h-10 rounded-full bg-electric-blue/10 text-electric-blue flex items-center justify-center shadow-sm active:scale-90 transition-all duration-300">
+                <i class="fas fa-video text-base"></i>
+            </span>
+            <span class="text-[8px] font-bold text-slate-500 uppercase tracking-wider mt-1">Online</span>
         </a>
 
         <!-- Book Appointment Central Button -->
         <a href="contact-us-top-neurologist-delhi-ncr.php" 
-           class="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-bold text-sm h-11 px-4 rounded-xl shadow-md shadow-electric-blue/15 active:scale-[0.98] transition-transform">
-            <i class="fas fa-calendar-check text-base"></i>
-            <span>Book Appointment</span>
+           class="flex-1 flex items-center justify-center gap-1.5 bg-gradient-to-r from-deep-indigo via-electric-blue to-cyan-accent text-white font-extrabold text-xs h-10 px-3 rounded-full shadow-[0_4px_15px_rgba(37,99,235,0.25)] active:scale-[0.97] transition-all duration-300">
+            <i class="fas fa-calendar-check text-sm animate-pulse"></i>
+            <span class="uppercase tracking-wider">Book Clinic</span>
         </a>
 
         <!-- Emergency Helpline Link -->
         <a href="tel:<?php echo STROKE_HELPLINE; ?>" 
-           class="flex flex-col items-center justify-center text-center text-[10px] font-bold text-red-650 text-red-600">
-            <span class="w-10 h-10 rounded-xl bg-red-50 text-red-650 text-red-600 flex items-center justify-center mb-0.5 active:scale-95 transition-transform">
-                <i class="fas fa-phone-alt text-base animate-pulse"></i>
+           class="flex flex-col items-center justify-center text-center group">
+            <span class="w-10 h-10 rounded-full bg-red-50 text-red-650 text-red-600 flex items-center justify-center shadow-sm active:scale-90 transition-all duration-300">
+                <i class="fas fa-phone-alt text-sm animate-pulse"></i>
             </span>
-            <span>Emergency</span>
+            <span class="text-[8px] font-bold text-slate-500 uppercase tracking-wider mt-1">Emergency</span>
         </a>
     </div>
 

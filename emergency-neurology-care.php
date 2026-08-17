@@ -215,20 +215,21 @@ require_once __DIR__ . '/includes/header.php';
                     </p>
                 </div>
 
-                <form class="space-y-4 pt-4 max-w-2xl mx-auto" onsubmit="event.preventDefault(); alert('Callback request submitted successfully! Our coordinator will contact you shortly.');">
+                <form class="space-y-4 pt-4 max-w-2xl mx-auto" accept-charset="UTF-8" action="https://app.formester.com/forms/MUVNkRKYA/submissions" method="POST">
+                    <input type="hidden" name="form_type" value="Emergency Callback Request">
                     <div class="grid md:grid-cols-2 gap-4">
                         <div>
                             <label for="ec-name" class="block text-xs font-semibold text-white/95 mb-2">FULL NAME</label>
-                            <input type="text" id="ec-name" required placeholder="John Doe" class="w-full px-4 py-2.5 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-red-400 text-xs text-white placeholder-white/50">
+                            <input type="text" id="ec-name" name="name" required placeholder="John Doe" class="w-full px-4 py-2.5 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-red-400 text-xs text-white placeholder-white/50">
                         </div>
                         <div>
                             <label for="ec-phone" class="block text-xs font-semibold text-white/95 mb-2">PHONE NUMBER</label>
-                            <input type="tel" id="ec-phone" required placeholder="Phone Number" class="w-full px-4 py-2.5 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-red-400 text-xs text-white placeholder-white/50">
+                            <input type="tel" id="ec-phone" name="phone" required placeholder="Phone Number" class="w-full px-4 py-2.5 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-red-400 text-xs text-white placeholder-white/50">
                         </div>
                     </div>
                     <div>
                         <label for="ec-desc" class="block text-xs font-semibold text-white/95 mb-2">NATURE OF INQUIRY</label>
-                        <textarea id="ec-desc" rows="3" required placeholder="Describe your query or symptom concerns..." class="w-full px-4 py-2.5 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-red-400 text-xs text-white placeholder-white/50"></textarea>
+                        <textarea id="ec-desc" name="inquiry" rows="3" required placeholder="Describe your query or symptom concerns..." class="w-full px-4 py-2.5 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-red-400 text-xs text-white placeholder-white/50"></textarea>
                     </div>
                     <div class="pt-2">
                         <button type="submit" class="block w-full text-center bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl transition-all duration-300 transform active:scale-95 text-xs shadow-lg shadow-red-600/20">
