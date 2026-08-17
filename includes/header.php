@@ -89,7 +89,7 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="assets/favicon/favicon.jpg">
+    <link rel="icon" type="image/png" href="assets/favicon/favicon.png">
 
     <style>
         body {
