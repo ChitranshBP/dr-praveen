@@ -94,6 +94,7 @@ $pageDescription = $blog['excerpt'];
             <div class="w-full rounded-3xl overflow-hidden mb-8">
                 <img src="<?php echo $blog['image']; ?>"
                      alt="<?php echo htmlspecialchars($blog['title']); ?>"
+                     width="800" height="600"
                      class="w-full h-auto object-cover">
             </div>
 

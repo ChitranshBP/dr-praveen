@@ -45,7 +45,7 @@ require_once __DIR__ . '/includes/header.php';
                 <!-- Blog Post 1 -->
                 <article class="bg-slate-50 border border-slate-200/50 rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 grid md:grid-cols-12 gap-6 p-6">
                     <div class="md:col-span-5 aspect-video md:aspect-square bg-slate-200 rounded-2xl overflow-hidden">
-                        <img src="assets/services/stroke.png" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" alt="Brain Stroke" loading="lazy">
+                        <img src="assets/services/stroke.png" width="640" height="480" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" alt="Brain Stroke" loading="lazy">
                     </div>
                     <div class="md:col-span-7 flex flex-col justify-between py-2">
                         <div class="space-y-3">
@@ -70,7 +70,7 @@ require_once __DIR__ . '/includes/header.php';
                 <!-- Blog Post 2 -->
                 <article class="bg-slate-50 border border-slate-200/50 rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 grid md:grid-cols-12 gap-6 p-6">
                     <div class="md:col-span-5 aspect-video md:aspect-square bg-slate-200 rounded-2xl overflow-hidden">
-                        <img src="assets/services/migraine.png" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" alt="Migraine Relief" loading="lazy">
+                        <img src="assets/services/migraine.png" width="640" height="480" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" alt="Migraine Relief" loading="lazy">
                     </div>
                     <div class="md:col-span-7 flex flex-col justify-between py-2">
                         <div class="space-y-3">

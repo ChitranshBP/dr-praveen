@@ -811,6 +811,7 @@ if (file_exists($doctorsJsonPath)) {
                         <img src="<?php echo $blog['image']; ?>"
                              alt="<?php echo htmlspecialchars($blog['title']); ?>"
                              loading="lazy"
+                             width="640" height="480"
                              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
 
@@ -862,7 +863,8 @@ if (file_exists($doctorsJsonPath)) {
                 <div class="group overflow-hidden rounded-3xl bg-white border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 aspect-[2/3] observe">
                     <img src="<?php echo $award['image']; ?>" 
                          alt="<?php echo htmlspecialchars($award['title']); ?>" 
-                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                         class="w-full h-full object-cover transition-transform duration-500"
+                         width="640" height="480">
                 </div>
             <?php endforeach; ?>
         </div>

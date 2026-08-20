@@ -99,7 +99,7 @@ foreach (array_slice($services, 0, 6) as $svc) {
                 <div class="lg:col-span-4">
                     <div class="mb-6">
                         <a href="index.php" class="inline-block group">
-                            <img src="assets/logo/NeuroDoc-final-logo.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" class="h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 invert brightness-0">
+                            <img src="assets/logo/NeuroDoc-final-logo.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" width="200" height="56" class="h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 invert brightness-0">
                         </a>
                     </div>
                     <p class="text-white/70 leading-relaxed mb-6 text-sm">
