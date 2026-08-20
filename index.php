@@ -33,10 +33,10 @@ if (file_exists($doctorsJsonPath)) {
             <div class="min-w-full relative">
                 <picture>
                     <source media="(max-width: 767px)" srcset="assets/mobile-banner/1.png">
-                    <img src="assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500).png"
+                    <img src="assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500).png" class="w-full h-auto object-cover object-[32%_center] md:object-center block" alt="Transforming Brain & Spine Care with Precision – Led by Dr. Praveen Gupta, Chairman, Marengo Asia International Institute of Neuro & Spine" fetchpriority="high" loading="lazy"
                          alt="Transforming Brain &amp; Spine Care with Precision – Led by Dr. Praveen Gupta, Chairman, Marengo Asia International Institute of Neuro &amp; Spine"
                          fetchpriority="high"
-                         class="w-full h-auto object-cover object-[32%_center] md:object-center block">
+                         >
                 </picture>
             </div>
             <div class="min-w-full relative">
@@ -45,7 +45,7 @@ if (file_exists($doctorsJsonPath)) {
                     <img src="assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500)%20(1).png"
                          alt="Your Brain Deserves Expert Care – Empowering every thought for a life beyond neurological limits"
                          loading="lazy"
-                         class="w-full h-auto object-cover object-[32%_center] md:object-center block">
+                         class="w-full h-auto object-cover object-[32%_center] md:object-center block" loading="lazy">
                 </picture>
             </div>
         </div>
@@ -731,11 +731,9 @@ if (file_exists($doctorsJsonPath)) {
         <?php foreach ($marqueeRows as $rowIdx => $row): ?>
             <div class="overflow-hidden <?php echo $rowIdx > 0 ? 'mt-6' : ''; ?>">
                 <div class="marquee-track flex w-max <?php echo $rowIdx > 0 ? 'marquee-reverse' : ''; ?>">
-                    <?php for ($copy = 0; $copy < 3; $copy++): ?>
-                        <?php foreach ($row as $idx => $testimonial): ?>
-                            <?php echo $renderQuoteCard($testimonial, $idx + $rowIdx, $copy > 0); ?>
-                        <?php endforeach; ?>
-                    <?php endfor; ?>
+                    <?php foreach ($row as $idx => $testimonial): ?>
+                        <?php echo $renderQuoteCard($testimonial, $idx, $rowIdx > 0); ?>
+                    <?php endforeach; ?>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -757,13 +755,13 @@ if (file_exists($doctorsJsonPath)) {
     </div>
 
     <style>
-        /* 3 copies of each row are rendered, so -33.3333% lands exactly on a repeat */
+        /* Self-referencing marquee - one copy per row */
         @keyframes marquee-scroll {
             from { transform: translateX(0); }
-            to   { transform: translateX(-33.3333%); }
+            to   { transform: translateX(-50%); }
         }
         .marquee-track {
-            animation: marquee-scroll 45s linear infinite;
+            animation: marquee-scroll 50s linear infinite;
             will-change: transform;
         }
         .marquee-track.marquee-reverse {

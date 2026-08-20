@@ -109,12 +109,12 @@ foreach (array_slice($services, 0, 6) as $svc) {
                     <!-- Stats badges -->
                     <div class="flex items-center space-x-4 mb-6">
                         <div class="px-3 py-2 rounded-lg bg-white/5 border border-white/10">
-                            <div class="text-lg font-bold text-white">20+</div>
-                            <div class="text-[10px] text-white/60 uppercase tracking-wide">Years</div>
+                            <div class="text-lg font-bold text-white">300K+</div>
+                            <div class="text-[10px] text-white/60 uppercase tracking-wide">Patients</div>
                         </div>
                         <div class="px-3 py-2 rounded-lg bg-white/5 border border-white/10">
-                            <div class="text-lg font-bold text-white">500K+</div>
-                            <div class="text-[10px] text-white/60 uppercase tracking-wide">Patients</div>
+                            <div class="text-lg font-bold text-white">50+</div>
+                            <div class="text-[10px] text-white/60 uppercase tracking-wide">Awards</div>
                         </div>
                         <div class="px-3 py-2 rounded-lg bg-white/5 border border-white/10">
                             <div class="text-lg font-bold text-white">4.9★</div>
@@ -228,6 +228,10 @@ foreach (array_slice($services, 0, 6) as $svc) {
                             <div class="pt-1">
                                 <p class="text-white/70 text-xs font-medium">Our Location</p>
                                 <p class="text-white/90 text-sm font-semibold"><?php echo SITE_ADDRESS; ?></p>
+                                <a href="https://www.google.com/maps/search/?api=1&query=<?php echo urlencode('Marengo Asia Hospitals, Shushant Lok 2, Sector 56, Gurugram, Haryana 122011'); ?>"
+                                   class="text-white/70 text-xs font-medium mt-1 block hover:text-cyan-accent transition-colors">
+                                    View on Google Maps
+                                </a>
                             </div>
                         </li>
                         <li class="flex items-start space-x-3 group">

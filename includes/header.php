@@ -17,6 +17,9 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
     <meta name="author" content="Dr. Praveen Gupta">
     <title><?php echo SITE_NAME; ?> - <?php echo SITE_TAGLINE; ?></title>
 
+    <!-- Canonical URL (self-referencing on all pages) -->
+    <link rel="canonical" href="https://dr-praveen.com/<?php echo $currentPage; ?>">
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>

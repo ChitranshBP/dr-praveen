@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://dr-praveen.com/sitemap.xml
+
+# Allow key pages
+Allow: /index.php
+Allow: /about.php
+Allow: /services.php
+Allow: /blog.php
+Allow: /blog-post.php
+Allow: /contact-us-top-neurologist-delhi-ncr.php
+Allow: /awards.php
+
+# Disallow administration and temporary pages
+Disallow: /wp-admin/
+Disallow: /admin/
+
+# Rate limiting
+Crawl-delay: 1

@@ -19,9 +19,9 @@ define('WHATSAPP_MESSAGE', 'Hello, I would like to book an appointment with Dr. 
 
 // Social Media
 define('SOCIAL_FACEBOOK', 'https://facebook.com/drpraveengupta');
-define('SOCIAL_INSTAGRAM', 'https://instagram.com/drpraveengupta');
+define('SOCIAL_INSTAGRAM', 'https://instagram.com/neuro_doc1');
 define('SOCIAL_TWITTER', 'https://twitter.com/drpraveengupta');
-define('SOCIAL_YOUTUBE', 'https://youtube.com/drpraveengupta');
+define('SOCIAL_YOUTUBE', 'https://youtube.com/c/DrPraveenGupta');
 define('SOCIAL_LINKEDIN', 'https://linkedin.com/in/drpraveengupta');
 
 // Navigation
@@ -101,6 +101,9 @@ $services = [
 </details>',
         'bullet' => '',
         'image' => 'assets/services/stroke-care.png',
+        'webp' => 'assets/webp/services/stroke-care.webp',
+        'webp' => 'assets/webp/services/stroke-care.webp',
+        'webp' => 'assets/webp/services/stroke-care.webp',
         'link' => 'brain-stroke-helpline.php'
     ],
     [
@@ -122,6 +125,7 @@ $services = [
 </details>',
         'bullet' => 'Video EEG monitoring',
         'image' => 'assets/services/epilepsy.png',
+        'webp' => 'assets/webp/services/epilepsy.webp',
         'link' => 'epilepsy.php'
     ],
     [
@@ -143,6 +147,7 @@ $services = [
 </details>',
         'bullet' => 'Minimally invasive tumor removal',
         'image' => 'assets/services/brain-tumor.png',
+        'webp' => 'assets/webp/services/brain-tumor.webp',
         'link' => 'brain-tumor-surgery.php'
     ],
     [
@@ -164,6 +169,7 @@ $services = [
 </details>',
         'bullet' => 'Minimally invasive spine surgery',
         'image' => 'assets/services/spine-surgery.png',
+        'webp' => 'assets/webp/services/spine-surgery.webp',
         'link' => 'spine-surgery.php'
     ],
     [
@@ -185,6 +191,7 @@ $services = [
 </details>',
         'bullet' => 'Preventive therapies',
         'image' => 'assets/services/headache.png',
+        'webp' => 'assets/webp/services/headache.webp',
         'link' => 'headache.php'
     ],
     [
@@ -206,6 +213,7 @@ $services = [
 </details>',
         'bullet' => 'Deep Brain Stimulation (DBS) for Parkinson\'s',
         'image' => 'assets/services/functional-neuro.png',
+        'webp' => 'assets/webp/services/functional-neuro.webp',
         'link' => 'functional-neurosurgery.php'
     ],
     [
@@ -227,6 +235,7 @@ $services = [
 </details>',
         'bullet' => 'Aneurysm clipping',
         'image' => 'assets/services/neurovascular.png',
+        'webp' => 'assets/webp/services/neurovascular.webp',
         'link' => 'neurovascular-surgery.php'
     ],
     [
@@ -248,6 +257,7 @@ $services = [
 </details>',
         'bullet' => 'Neuropsychological testing',
         'image' => 'assets/services/memory-clinic.png',
+        'webp' => 'assets/webp/services/memory-clinic.webp',
         'link' => 'memory-clinic.php'
     ],
     [
@@ -275,6 +285,7 @@ $services = [
 </details>',
         'bullet' => 'Physiotherapy, speech and cognitive therapy',
         'image' => 'assets/services/rehab.png',
+        'webp' => 'assets/webp/services/rehab.webp',
         'link' => 'neuro-rehabilitation-center.php'
     ]
 ];
@@ -591,42 +602,52 @@ $awards = [
     [
         'title' => 'Honours & Recognition - Image 9',
         'image' => 'assets/awards/9.jpg',
+        'webp' => 'assets/webp/awards/9.webp',
     ],
     [
         'title' => 'Honours & Recognition - Image 8',
         'image' => 'assets/awards/8.jpg',
+        'webp' => 'assets/webp/awards/8.webp',
     ],
     [
         'title' => 'Honours & Recognition - Image 7',
         'image' => 'assets/awards/7.jpg',
+        'webp' => 'assets/webp/awards/7.webp',
     ],
     [
         'title' => 'Honours & Recognition - Image 6',
         'image' => 'assets/awards/6.jpg',
+        'webp' => 'assets/webp/awards/6.webp',
     ],
     [
         'title' => 'Honours & Recognition - Image 5',
         'image' => 'assets/awards/5.jpg',
+        'webp' => 'assets/webp/awards/5.webp',
     ],
     [
         'title' => 'Honours & Recognition - Image 4',
         'image' => 'assets/awards/4.jpg',
+        'webp' => 'assets/webp/awards/4.webp',
     ],
     [
         'title' => 'Honours & Recognition - Image 3',
         'image' => 'assets/awards/3.jpg',
+        'webp' => 'assets/webp/awards/3.webp',
     ],
     [
         'title' => 'Honours & Recognition - Image 2',
         'image' => 'assets/awards/2.jpg',
+        'webp' => 'assets/webp/awards/2.webp',
     ],
     [
         'title' => 'Honours & Recognition - Image 1',
         'image' => 'assets/awards/1.jpg',
+        'webp' => 'assets/webp/awards/1.webp',
     ],
     [
         'title' => 'Honours & Recognition - Image 15',
         'image' => 'assets/awards/15.jpg',
+        'webp' => 'assets/webp/awards/15.webp',
     ],
 ];
 

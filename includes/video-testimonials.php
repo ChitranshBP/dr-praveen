@@ -54,7 +54,7 @@ if (!empty($videoTestimonials)) {
             ? 'bg-cyan-accent hover:bg-electric-blue text-white border-cyan-accent hover:border-electric-blue'
             : 'bg-electric-blue hover:bg-deep-indigo text-white border-electric-blue shadow-sm hover:shadow-lg';
         $ctaBtn     = $dark
-            ? 'bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/25 hover:border-white/50 text-white'
+            ? 'bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/50 text-white'
             : 'bg-gradient-to-r from-electric-blue to-cyan-accent hover:from-deep-indigo hover:to-electric-blue text-white shadow-lg shadow-electric-blue/25 hover:shadow-xl hover:shadow-electric-blue/40 hover:-translate-y-0.5';
 ?>
 
@@ -132,9 +132,7 @@ if (!empty($videoTestimonials)) {
                     </button>
                 </div>
             </div>
-        </div>
 
-        <?php if ($vtShowCta): ?>
             <!-- CTA -->
             <div class="text-center mt-10 observe">
                 <a href="video-testimonials.php"
@@ -143,8 +141,7 @@ if (!empty($videoTestimonials)) {
                     <i class="fas fa-arrow-right text-xs"></i>
                 </a>
             </div>
-        <?php endif; ?>
-
+        </div>
     </div>
 </section>
 
@@ -225,8 +222,19 @@ if (!empty($videoTestimonials)) {
         });
 
         // Click-to-play: swap the thumbnail for the real player
+        // Only one video plays at a time - pause all others first
         root.querySelectorAll('[data-video-card]').forEach(function (card) {
             card.addEventListener('click', function () {
+                // Pause any currently playing video first
+                document.querySelectorAll('[data-video-card]').forEach(function (c) {
+                    c.dataset.playing = 'false';
+                    // If the card has an iframe, remove it to pause the video
+                    const existingIframe = c.querySelector('iframe');
+                    if (existingIframe) {
+                        existingIframe.remove();
+                    }
+                    c.classList.remove('playing');
+                });
                 if (card.dataset.playing === 'true') return;
                 card.dataset.playing = 'true';
                 card.innerHTML = '<iframe class="absolute inset-0 w-full h-full" '
@@ -235,6 +243,7 @@ if (!empty($videoTestimonials)) {
                     + 'title="Patient video testimonial" frameborder="0" '
                     + 'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" '
                     + 'allowfullscreen></iframe>';
+                card.classList.add('playing');
             });
         });
 
@@ -248,7 +257,6 @@ if (!empty($videoTestimonials)) {
     }
 })();
 </script>
-
 <?php
     endif;
 }

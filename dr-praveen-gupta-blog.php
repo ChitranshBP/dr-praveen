@@ -45,7 +45,7 @@ require_once __DIR__ . '/includes/header.php';
                 <!-- Blog Post 1 -->
                 <article class="bg-slate-50 border border-slate-200/50 rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 grid md:grid-cols-12 gap-6 p-6">
                     <div class="md:col-span-5 aspect-video md:aspect-square bg-slate-200 rounded-2xl overflow-hidden">
-                        <img src="assets/services/stroke.webp" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" alt="Brain Stroke" loading="lazy">
+                        <img src="assets/services/stroke.png" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" alt="Brain Stroke" loading="lazy">
                     </div>
                     <div class="md:col-span-7 flex flex-col justify-between py-2">
                         <div class="space-y-3">
@@ -54,7 +54,7 @@ require_once __DIR__ . '/includes/header.php';
                                 <span class="text-dark-grey/40">June 28, 2026</span>
                             </div>
                             <h3 class="text-xl font-bold text-dark-grey leading-snug hover:text-electric-blue transition-colors duration-300">
-                                <a href="#">Understanding the 24-Hour Recovery Window in Stroke Patients</a>
+                                <a href="blog-post.php?title=stroke-awareness">Understanding the 24-Hour Recovery Window in Stroke Patients</a>
                             </h3>
                             <p class="text-sm text-dark-grey/65 leading-relaxed line-clamp-3">
                                 Why time is of the absolute essence when a stroke hits. A deep dive into modern mechanical thrombectomy procedures and recovery outcomes.
@@ -62,7 +62,7 @@ require_once __DIR__ . '/includes/header.php';
                         </div>
                         <div class="pt-4 flex items-center justify-between text-xs text-dark-grey/50">
                             <span>By Dr. Praveen Gupta</span>
-                            <a href="#" class="font-semibold text-electric-blue hover:text-deep-indigo transition-colors">Read Article <i class="fas fa-chevron-right text-[8px] ml-1"></i></a>
+                            <a href="blog-post.php?title=stroke-awareness" class="font-semibold text-electric-blue hover:text-deep-indigo transition-colors">Read Article <i class="fas fa-chevron-right text-[8px] ml-1"></i></a>
                         </div>
                     </div>
                 </article>
@@ -70,7 +70,7 @@ require_once __DIR__ . '/includes/header.php';
                 <!-- Blog Post 2 -->
                 <article class="bg-slate-50 border border-slate-200/50 rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 grid md:grid-cols-12 gap-6 p-6">
                     <div class="md:col-span-5 aspect-video md:aspect-square bg-slate-200 rounded-2xl overflow-hidden">
-                        <img src="assets/services/migraine.webp" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" alt="Migraine Relief" loading="lazy">
+                        <img src="assets/services/migraine.png" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" alt="Migraine Relief" loading="lazy">
                     </div>
                     <div class="md:col-span-7 flex flex-col justify-between py-2">
                         <div class="space-y-3">
@@ -79,7 +79,7 @@ require_once __DIR__ . '/includes/header.php';
                                 <span class="text-dark-grey/40">June 15, 2026</span>
                             </div>
                             <h3 class="text-xl font-bold text-dark-grey leading-snug hover:text-electric-blue transition-colors duration-300">
-                                <a href="#">Can Lifestyle Adjustments Cure Chronic Migraine?</a>
+                                <a href="blog-post.php?title=understanding-migraine">Can Lifestyle Adjustments Cure Chronic Migraine?</a>
                             </h3>
                             <p class="text-sm text-dark-grey/65 leading-relaxed line-clamp-3">
                                 Discover triggers like dietary choices, sleeping schedules, and computer screen exposure, and explore non-invasive clinical remedies.
@@ -87,7 +87,7 @@ require_once __DIR__ . '/includes/header.php';
                         </div>
                         <div class="pt-4 flex items-center justify-between text-xs text-dark-grey/50">
                             <span>By Dr. Praveen Gupta</span>
-                            <a href="#" class="font-semibold text-electric-blue hover:text-deep-indigo transition-colors">Read Article <i class="fas fa-chevron-right text-[8px] ml-1"></i></a>
+                            <a href="blog-post.php?title=understanding-migraine" class="font-semibold text-electric-blue hover:text-deep-indigo transition-colors">Read Article <i class="fas fa-chevron-right text-[8px] ml-1"></i></a>
                         </div>
                     </div>
                 </article>
