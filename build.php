@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Dynamic Build Script for Netlify Deployment
  * Automatically detects and generates static HTML files from all root PHP templates
@@ -36,26 +36,23 @@ foreach ($pages as $srcFile) {
         unlink($destPath);
     }
 
-    // Write a temporary build script that includes the PHP file
-    $tmpScript = $distFolder . '/_build_tmp.php';
-    $scriptContent = '<?php' . "\n"
-        . '$_SERVER["PHP_SELF"] = "/' . $srcFile . '";' . "\n"
-        . 'ob_start();' . "\n"
-        . 'try { include "' . $srcFile . '"; }' . "\n"
-        . 'catch (Exception $e) { ob_end_clean(); echo "Error: " . $e->getMessage(); exit(1); }' . "\n"
-        . '$html = ob_get_clean();' . "\n"
-        . '$html = str_replace([\'php"\', "php\'", \'php#\', \'php/\'], [\'html"\', "html\'", \'html#\', \'html/\'], $html);' . "\n"
-        . 'file_put_contents("' . $destPath . '", $html);' . "\n"
-        . 'echo "[Compiled] ' . $srcFile . ' => ' . $outFile . ' (length: " . strlen($html) . " bytes)\\n";' . "\n";
+    // Execute the PHP file in a subprocess and redirect output directly to a temp file
+    $tmpOutput = $distFolder . '/_tmp_' . $outFile;
+    shell_exec('php ' . escapeshellarg($srcFile) . ' > ' . escapeshellarg($tmpOutput));
+    
+    if (file_exists($tmpOutput)) {
+        $html = file_get_contents($tmpOutput);
+        // Replace .php extensions with .html for static linking
+        $html = str_replace(['php"', "php'", 'php#', 'php/'], ['html"', "html'", 'html#', 'html/'], $html);
+        // Write to dist folder
+        file_put_contents($destPath, $html);
+        unlink($tmpOutput);
+    } else {
+        $html = '';
+    }
+    
+    echo "  [Compiled] $srcFile => $outFile (length: " . strlen($html) . " bytes)\n";
 
-    file_put_contents($tmpScript, $scriptContent);
-
-    // Execute the temp script in a subprocess
-    $output = shell_exec('php ' . $tmpScript . ' 2>&1');
-    echo '  ' . trim($output) . "\n";
-
-    // Clean up temp script
-    @unlink($tmpScript);
 }
 
 // Copy assets directory to dist
