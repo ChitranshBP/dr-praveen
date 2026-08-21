@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Landing Page - Dr. Praveen Gupta (Standalone)
  * Lives inside /LP and does not modify the main codebase.
@@ -515,79 +515,81 @@ $videos = [
     });
 </script>
 
-<!-- â•â•â•â•â•â•â•â• Hero : Content Left / Form Right â•â•â•â•â•â•â•â• -->
-<section id="book" class="relative overflow-hidden -mt-20 bg-cover bg-center" style="background-image: url('assets/banner/web-banner-hero.webp');">
-    <div class="absolute inset-0 bg-deep-indigo/85 mix-blend-multiply pointer-events-none"></div>
+<!-- ════════ Hero : Content Left / Form Right ════════ -->
+<section id="book" class="relative overflow-hidden -mt-20">
+    <!-- Flipped Background Image -->
+    <div class="absolute inset-0 w-full h-full bg-cover bg-center" style="background-image: url('assets/banner/web-banner-hero.webp'); transform: scaleX(-1);"></div>
+    <!-- Advanced Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-r from-deep-indigo/95 via-deep-indigo/70 to-deep-indigo/30 pointer-events-none z-0"></div>
+    <div class="absolute inset-0 bg-black/20 z-0"></div>
 
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-14 lg:pt-36 lg:pb-20">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-14 lg:pt-40 lg:pb-24 z-10">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
             <!-- Left : Content -->
             <div class="lg:col-span-7 text-white observe">
-                <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full mb-6 shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full mb-6 shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:bg-white/15 transition-all cursor-default">
                     <span class="w-2 h-2 rounded-full bg-cyan-accent animate-pulse shadow-[0_0_10px_#06B6D4]"></span>
                     <span class="text-xs font-bold uppercase tracking-wider text-cyan-50">Chairman - Marengo Asia International Institute of Neuro & Spine</span>
                 </div>
 
-                <h1 class="text-4xl md:text-5xl xl:text-6xl font-serif font-extrabold leading-tight mb-6 drop-shadow-xl">
-                    Consult <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-cyan-100 drop-shadow-md">Dr. Praveen Gupta</span><br>
+                <h1 class="text-4xl md:text-5xl xl:text-6xl font-serif font-extrabold leading-tight mb-6 drop-shadow-2xl">
+                    Consult <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-white to-cyan-100 drop-shadow-md">Dr. Praveen Gupta</span><br>
                     Best Neurologist in Gurgaon
                 </h1>
 
-                <p class="text-lg md:text-xl text-white/90 leading-relaxed max-w-xl mb-8 font-medium drop-shadow-sm">
-                    20+ years of pioneering brain & spine care. DM (AIIMS, New Delhi) - trusted by
-                    <strong class="text-white">3,00,000+ patients</strong> for stroke, epilepsy, Parkinson's, migraine and complex neurological disorders.
-                </p>
+                <div class="bg-white/5 backdrop-blur-sm border-l-4 border-cyan-accent p-4 mb-8 rounded-r-xl">
+                    <p class="text-lg md:text-xl text-white/95 leading-relaxed font-medium">
+                        20+ years of pioneering brain & spine care. DM (AIIMS, New Delhi) - trusted by
+                        <strong class="text-white text-xl">3,00,000+ patients</strong> for stroke, epilepsy, Parkinson's, migraine and complex neurological disorders.
+                    </p>
+                </div>
 
-                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10 max-w-xl">
-                    <li class="flex items-start space-x-3">
-                        <i class="fas fa-circle-check text-cyan-accent mt-1"></i>
-                        <span class="text-sm text-white/85">First stroke centre in Gurugram</span>
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 mb-10">
+                    <li class="flex items-start space-x-3 group">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-cyan-accent/20 flex items-center justify-center group-hover:bg-cyan-accent/40 transition-colors mt-0.5">
+                            <i class="fas fa-check text-cyan-accent text-xs"></i>
+                        </div>
+                        <span class="text-sm text-white/90 font-medium">First stroke centre in Gurugram</span>
                     </li>
-                    <li class="flex items-start space-x-3">
-                        <i class="fas fa-circle-check text-cyan-accent mt-1"></i>
-                        <span class="text-sm text-white/85">First epileptic DBS surgery in Asia</span>
+                    <li class="flex items-start space-x-3 group">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-cyan-accent/20 flex items-center justify-center group-hover:bg-cyan-accent/40 transition-colors mt-0.5">
+                            <i class="fas fa-check text-cyan-accent text-xs"></i>
+                        </div>
+                        <span class="text-sm text-white/90 font-medium">First epileptic DBS surgery in Asia</span>
                     </li>
-                    <li class="flex items-start space-x-3">
-                        <i class="fas fa-circle-check text-cyan-accent mt-1"></i>
-                        <span class="text-sm text-white/85">First DBS for Parkinson's in Gurugram</span>
+                    <li class="flex items-start space-x-3 group">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-cyan-accent/20 flex items-center justify-center group-hover:bg-cyan-accent/40 transition-colors mt-0.5">
+                            <i class="fas fa-check text-cyan-accent text-xs"></i>
+                        </div>
+                        <span class="text-sm text-white/90 font-medium">First DBS for Parkinson's in Gurugram</span>
                     </li>
-                    <li class="flex items-start space-x-3">
-                        <i class="fas fa-circle-check text-cyan-accent mt-1"></i>
-                        <span class="text-sm text-white/85">Pioneered BMT for autoimmune neuro disorders</span>
+                    <li class="flex items-start space-x-3 group">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-cyan-accent/20 flex items-center justify-center group-hover:bg-cyan-accent/40 transition-colors mt-0.5">
+                            <i class="fas fa-check text-cyan-accent text-xs"></i>
+                        </div>
+                        <span class="text-sm text-white/90 font-medium">Pioneered BMT for autoimmune neuro disorders</span>
                     </li>
                 </ul>
 
                 <div class="flex flex-wrap items-center gap-4">
-                    <a href="tel:<?php echo $phoneRaw; ?>" class="inline-flex items-center space-x-2.5 bg-white text-deep-indigo font-bold px-7 py-3.5 rounded-full shadow-lg hover:bg-cyan-50 hover:-translate-y-0.5 transition-all duration-300">
-                        <i class="fas fa-phone-alt text-xs"></i>
-                        <span><?php echo $phone; ?></span>
+                    <a href="tel:<?php echo $phoneRaw; ?>" class="inline-flex items-center space-x-2.5 bg-white text-deep-indigo font-bold px-8 py-4 rounded-full shadow-[0_10px_25px_rgba(255,255,255,0.2)] hover:bg-cyan-50 hover:shadow-[0_15px_30px_rgba(255,255,255,0.3)] hover:-translate-y-1 transition-all duration-300">
+                        <div class="w-8 h-8 rounded-full bg-deep-indigo/10 flex items-center justify-center">
+                            <i class="fas fa-phone-alt text-sm"></i>
+                        </div>
+                        <span class="text-lg"><?php echo $phone; ?></span>
                     </a>
                     <a href="https://wa.me/<?php echo $whatsapp; ?>?text=<?php echo rawurlencode('Hello, I would like to book an appointment with Dr. Praveen Gupta.'); ?>"
                        target="_blank" rel="noopener noreferrer"
-                       class="inline-flex items-center space-x-2.5 bg-white/10 hover:bg-white/20 border border-white/25 text-white font-bold px-7 py-3.5 rounded-full transition-all duration-300">
-                        <i class="fab fa-whatsapp text-lg"></i>
-                        <span>Chat on WhatsApp</span>
+                       class="inline-flex items-center space-x-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white font-bold px-8 py-4 rounded-full hover:shadow-[0_10px_25px_rgba(0,0,0,0.2)] hover:-translate-y-1 transition-all duration-300">
+                        <i class="fab fa-whatsapp text-xl text-[#25D366]"></i>
+                        <span>WhatsApp</span>
                     </a>
-                </div>
-
-                <div class="flex items-center space-x-6 mt-10">
-                    <div class="flex items-center space-x-2">
-                        <div class="flex text-amber-400 text-sm">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <span class="text-white/70 text-xs font-medium">4.9/5 Patient Rating</span>
-                    </div>
-                    <span class="w-px h-6 bg-white/20 hidden sm:block"></span>
-                    <div class="flex items-center space-x-2">
-                        <i class="fas fa-user-group text-cyan-accent text-sm"></i>
-                        <span class="text-white/70 text-xs font-medium">3,00,000+ Patients Treated</span>
-                    </div>
                 </div>
             </div>
 
             <!-- Right : Appointment Form -->
-            <div class="lg:col-span-5 relative">
+            <div class="lg:col-span-5 relative mt-8 lg:mt-0">
                 <!-- Glowing backdrop blob -->
                 <div class="absolute -inset-2 bg-gradient-to-br from-electric-blue/40 to-cyan-accent/40 rounded-[3rem] blur-2xl opacity-60 pointer-events-none"></div>
                 <div class="bg-white/95 backdrop-blur-3xl rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] p-7 md:p-9 border border-white/50 relative z-10 observe">
@@ -652,42 +654,51 @@ $videos = [
     </div>
 </section>
 
-<!-- â•â•â•â•â•â•â•â• Stats â•â•â•â•â•â•â•â• -->
-<section class="py-12 md:py-16 bg-soft-cyan/30 relative overflow-hidden">
-    <div class="scroll-progress" id="scroll-progress" style="width: 0%"></div><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-10 md:mb-12 observe">
-            <div class="inline-flex items-center space-x-2 bg-electric-blue/10 px-4 py-2 rounded-full mb-4">
-                <i class="fas fa-chart-line text-electric-blue text-sm"></i>
-                <span class="text-electric-blue text-sm font-semibold">Proven Excellence</span>
-            </div>
-            <h2 class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo mb-3">
-                Numbers That <span class="gradient-text">Speak for Themselves</span>
+<!-- ════════ Stats : Modern Premium Design ════════ -->
+<section class="py-16 md:py-24 bg-dark-grey relative overflow-hidden">
+    <!-- Background Accents -->
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-electric-blue/20 rounded-full blur-[100px] pointer-events-none"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-accent/20 rounded-full blur-[100px] pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center max-w-3xl mx-auto mb-16 observe">
+            <h2 class="text-3xl md:text-5xl font-serif font-bold text-white mb-4">
+                A Legacy of <span class="text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent">Healing & Hope</span>
             </h2>
+            <p class="text-lg text-silver-grey/80 font-medium">
+                Pioneering treatments and compassionate care that have transformed countless lives globally.
+            </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <?php foreach ($stats as $stat): ?>
-                <div class="group bg-white rounded-3xl p-6 border border-silver-grey/50 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 flex flex-col justify-between h-full text-left observe">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-electric-blue/10 text-electric-blue flex items-center justify-center text-xl mb-5 group-hover:bg-gradient-to-br group-hover:from-electric-blue group-hover:to-cyan-accent group-hover:text-white transition-all duration-300">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            <?php foreach ($stats as $index => $stat): ?>
+                <div class="relative group observe" style="transition-delay: <?php echo $index * 100; ?>ms;">
+                    <!-- Card Background Glow on Hover -->
+                    <div class="absolute -inset-0.5 bg-gradient-to-r from-electric-blue to-cyan-accent rounded-3xl blur opacity-0 group-hover:opacity-30 transition duration-500"></div>
+                    
+                    <div class="relative bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-3xl h-full flex flex-col items-start hover:-translate-y-2 transition-transform duration-500">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-electric-blue/20 to-cyan-accent/20 border border-white/5 flex items-center justify-center text-2xl text-cyan-300 mb-6 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_15px_rgba(6,182,212,0.2)]">
                             <i class="<?php echo $stat['icon']; ?>"></i>
                         </div>
-                        <div class="text-4xl font-extrabold text-deep-indigo mb-1"><?php echo $stat['number']; ?></div>
-                        <div class="text-base font-bold text-deep-indigo"><?php echo $stat['label']; ?></div>
+                        <div class="text-4xl md:text-5xl font-extrabold text-white mb-2 tracking-tight">
+                            <?php echo $stat['number']; ?>
+                        </div>
+                        
+                        <div class="text-lg font-bold text-cyan-100 mb-3 uppercase tracking-wide">
+                            <?php echo $stat['label']; ?>
+                        </div>
+                        
+                        <p class="text-sm text-silver-grey/70 leading-relaxed mt-auto">
+                            <?php echo $stat['description']; ?>
+                        </p>
                     </div>
                 </div>
             <?php endforeach; ?>
         </div>
-        <div class="mt-10 text-center observe">
-            <a href="#book" class="btn-shimmer group relative inline-flex items-center space-x-2.5 bg-gradient-to-r from-electric-blue to-cyan-accent hover:from-deep-indigo hover:to-electric-blue text-white font-bold px-7 py-3.5 rounded-full shadow-lg shadow-electric-blue/25 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
-                <span>Book Appointment</span>
-                <i class="fas fa-arrow-right text-xs transition-transform duration-300 group-hover:translate-x-1"></i>
-            </a>
-        </div>
     </div>
 </section>
 
-<!-- â•â•â•â•â•â•â•â• Conditions We Treat â•â•â•â•â•â•â•â• -->
+<!-- ════════ Conditions We Treat ════════ -->
 <section id="conditions" class="py-12 md:py-16 bg-white relative overflow-hidden">
     <div class="scroll-progress" id="scroll-progress" style="width: 0%"></div><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-10 md:mb-12 observe">
