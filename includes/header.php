@@ -29,10 +29,11 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
     <!-- Compiled Tailwind CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts (reduced to 4 weights: Inter 400,600,700 + Playfair 700) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap"></noscript>
 
     <!-- Font Awesome (Deferred) -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -116,9 +117,7 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
             border-bottom: 1px solid transparent;
         }
         .navbar-solid {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            background: rgba(255, 255, 255, 0.97);
             border-bottom: 1px solid rgba(229, 231, 235, 0.6);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.06);
         }
@@ -286,7 +285,10 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <a href="index" class="flex items-center group">
-                    <img id="header-logo" src="assets/logo/NeuroDoc-final-logo.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" class="h-14 sm:h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 <?php echo $isHomepage || $isDarkHero ? 'invert brightness-0' : ''; ?>">
+                    <picture>
+                        <source srcset="assets/logo/NeuroDoc-final-logo.webp" type="image/webp">
+                        <img id="header-logo" src="assets/logo/NeuroDoc-final-logo.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" width="200" height="56" class="h-14 sm:h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 <?php echo $isHomepage || $isDarkHero ? 'invert brightness-0' : ''; ?>">
+                    </picture>
                 </a>
 
                 <!-- Desktop Navigation -->
@@ -473,6 +475,6 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
             }
         }
 
-        window.addEventListener('scroll', updateNavbar);
+        window.addEventListener('scroll', updateNavbar, { passive: true });
         updateNavbar();
     </script>

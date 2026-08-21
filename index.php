@@ -38,6 +38,7 @@ if (file_exists($doctorsJsonPath)) {
                     <img src="assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500).png" 
                          class="w-full h-auto object-cover object-[32%_center] md:object-center block" 
                          alt="Transforming Brain & Spine Care with Precision â€“ Led by Dr. Praveen Gupta, Chairman, Marengo Asia International Institute of Neuro & Spine" 
+                         width="1440" height="500"
                          fetchpriority="high">
                 </picture>
             </div>
@@ -49,6 +50,7 @@ if (file_exists($doctorsJsonPath)) {
                     <img src="assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500)%20(1).png"
                          alt="Your Brain Deserves Expert Care â€“ Empowering every thought for a life beyond neurological limits"
                          loading="lazy"
+                         width="1440" height="500"
                          class="w-full h-auto object-cover object-[32%_center] md:object-center block">
                 </picture>
             </div>
@@ -352,7 +354,7 @@ if (file_exists($doctorsJsonPath)) {
                 <div
                     class="aspect-[4/5] rounded-3xl overflow-hidden border border-silver-grey/50 shadow-lg bg-gradient-to-br from-soft-cyan to-silver-grey">
                     <img src="assets/dpg-1.webp"
-                        alt="Dr. Praveen Gupta, Neurologist" class="w-full h-full object-cover">
+                        alt="Dr. Praveen Gupta, Neurologist" class="w-full h-full object-cover" loading="lazy" width="500" height="625">
                 </div>
             </div>
 
@@ -523,7 +525,7 @@ if (file_exists($doctorsJsonPath)) {
                     class="relative w-full max-w-md lg:max-w-none aspect-[4/5] rounded-3xl overflow-hidden border border-silver-grey/50 shadow-lg bg-gradient-to-br from-soft-cyan to-silver-grey">
                     <!-- Background Portrait Photo -->
                     <img src="assets/full-image/dpg-award.webp"
-                        alt="Dr. Praveen Gupta receiving an award" class="w-full h-full object-cover">
+                        alt="Dr. Praveen Gupta receiving an award" class="w-full h-full object-cover" loading="lazy" width="500" height="625">
 
                     <!-- Floating Overlaid Card -->
 
@@ -600,7 +602,7 @@ if (file_exists($doctorsJsonPath)) {
             <!-- Tech 1: Phezee -->
             <div class="bg-white border border-silver-grey/50 p-8 rounded-3xl space-y-4 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 observe">
                 <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-silver-grey mb-4">
-                    <img src="https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?auto=format&fit=crop&q=80&w=600" alt="Phezee Biofeedback" class="w-full h-full object-cover">
+                    <img src="assets/webp/services/rehab.webp" alt="Phezee Biofeedback" class="w-full h-full object-cover" loading="lazy" width="640" height="480">
                 </div>
                 <h3 class="text-xl font-bold text-deep-indigo font-serif">PHEZEE - Smart Biofeedback</h3>
                 <p class="text-xs text-dark-grey/65 leading-relaxed">
@@ -611,7 +613,7 @@ if (file_exists($doctorsJsonPath)) {
             <!-- Tech 2: Fall Risk Assessment -->
             <div class="bg-white border border-silver-grey/50 p-8 rounded-3xl space-y-4 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 observe">
                 <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-silver-grey mb-4">
-                    <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?auto=format&fit=crop&q=80&w=600" alt="Fall Risk Assessment" class="w-full h-full object-cover">
+                    <img src="assets/webp/services/movement.webp" alt="Fall Risk Assessment" class="w-full h-full object-cover" loading="lazy" width="640" height="480">
                 </div>
                 <h3 class="text-xl font-bold text-deep-indigo font-serif">OPD Fall Risk Assessment</h3>
                 <p class="text-xs text-dark-grey/65 leading-relaxed">
@@ -643,7 +645,7 @@ if (file_exists($doctorsJsonPath)) {
             <!-- Dynamic Team Card -->
             <a href="team" class="group bg-white border border-silver-grey/50 p-6 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 observe flex flex-col items-center text-center hover:-translate-y-2 w-[70vw] sm:w-auto flex-shrink-0 snap-start">
                 <div class="w-32 h-32 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
-                    <img src="<?php echo htmlspecialchars($doc['image']); ?>" alt="<?php echo htmlspecialchars($doc['alt']); ?>" class="w-full h-full object-cover object-top rounded-full transition-transform duration-500 group-hover:scale-105">
+                    <img src="<?php echo htmlspecialchars($doc['image']); ?>" alt="<?php echo htmlspecialchars($doc['alt']); ?>" class="w-full h-full object-cover object-top rounded-full transition-transform duration-500 group-hover:scale-105" loading="lazy" width="128" height="128">
                 </div>
                 <h3 class="font-bold text-deep-indigo text-base leading-tight"><?php echo htmlspecialchars($doc['name']); ?></h3>
                 <p class="text-[11px] text-cyan-accent font-semibold mt-1.5 leading-relaxed"><?php echo htmlspecialchars($doc['specialty']); ?></p>
@@ -798,7 +800,7 @@ if (file_exists($doctorsJsonPath)) {
 </section>
 
 <!-- Video Testimonials (component: includes/video-testimonials.php) -->
-<?php require __DIR__ . "/includes/video-testimonials.php"; ?>
+<?php $vtLimit = 4; require __DIR__ . "/includes/video-testimonials.php"; ?>
 
 <!-- Blog Section -->
 <section class="py-10 md:py-14 bg-white relative overflow-hidden">
@@ -885,10 +887,18 @@ if (file_exists($doctorsJsonPath)) {
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
             <?php foreach ($awards as $award): ?>
                 <div class="group overflow-hidden rounded-3xl bg-white border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 aspect-[2/3] observe">
-                    <img src="<?php echo $award['image']; ?>" 
-                         alt="<?php echo htmlspecialchars($award['title']); ?>" 
-                         class="w-full h-full object-cover transition-transform duration-500"
-                         width="640" height="480">
+                    <picture>
+                        <?php 
+                        $awardWebp = 'assets/webp/awards/' . pathinfo(basename($award['image']), PATHINFO_FILENAME) . '.webp';
+                        if (file_exists(__DIR__ . '/../' . $awardWebp)): ?>
+                        <source srcset="<?php echo $awardWebp; ?>" type="image/webp">
+                        <?php endif; ?>
+                        <img src="<?php echo $award['image']; ?>" 
+                             alt="<?php echo htmlspecialchars($award['title']); ?>" 
+                             class="w-full h-full object-cover transition-transform duration-500"
+                             loading="lazy"
+                             width="400" height="600">
+                    </picture>
                 </div>
             <?php endforeach; ?>
         </div>
@@ -916,7 +926,7 @@ if (file_exists($doctorsJsonPath)) {
 
         <!-- Mobile Swipe View (Visible on Mobile only: hidden sm:flex) -->
         <div class="sm:hidden flex overflow-x-auto snap-x snap-mandatory scrollbar-none gap-6 -mx-4 px-4 pb-4">
-            <?php foreach ($educationVideos as $video): ?>
+            <?php foreach (array_slice($educationVideos, 0, 6) as $video): ?>
                 <div class="flex-shrink-0 w-[80vw] snap-start bg-white rounded-3xl overflow-hidden border border-silver-grey/50 shadow-lg">
                     <!-- Embed -->
                     <div class="relative w-full aspect-video bg-dark-grey video-facade cursor-pointer group" data-embed="https://www.youtube.com/embed/<?php echo $video['id']; ?>?rel=0&modestbranding=1&autoplay=1">
@@ -945,7 +955,7 @@ if (file_exists($doctorsJsonPath)) {
         <div class="hidden sm:block overflow-hidden">
             <div id="edu-track" class="flex transition-transform duration-500 ease-in-out">
                 <?php
-                $eduPages = array_chunk($educationVideos, 3);
+                $eduPages = array_chunk(array_slice($educationVideos, 0, 6), 3);
                 foreach ($eduPages as $epIdx => $epPage):
                 ?>
                     <div class="min-w-full grid grid-cols-2 lg:grid-cols-3 gap-8">

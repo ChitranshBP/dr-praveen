@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Footer Include
  */
@@ -99,7 +99,10 @@ foreach (array_slice($services, 0, 6) as $svc) {
                 <div class="lg:col-span-4">
                     <div class="mb-6">
                         <a href="index" class="inline-block group">
-                            <img src="assets/logo/NeuroDoc-final-logo.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" width="200" height="56" class="h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 invert brightness-0">
+                            <picture>
+                                <source srcset="assets/logo/NeuroDoc-final-logo.webp" type="image/webp">
+                                <img src="assets/logo/NeuroDoc-final-logo.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" width="200" height="56" class="h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 invert brightness-0">
+                            </picture>
                         </a>
                     </div>
                     <p class="text-white/70 leading-relaxed mb-6 text-sm">
@@ -370,7 +373,7 @@ foreach (array_slice($services, 0, 6) as $svc) {
                 backToTopBtn.classList.add('translate-y-20', 'opacity-0');
                 backToTopBtn.classList.remove('translate-y-0', 'opacity-100');
             }
-        });
+        }, { passive: true });
         backToTopBtn.addEventListener('click', function() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });

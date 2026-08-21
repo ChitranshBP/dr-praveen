@@ -1,7 +1,7 @@
 [
   {
     "name": "Dr. Praveen Gupta",
-    "image": "assets/ggn-nuro-images/dr-praveen-gupta.webp",
+    "image": "assets/ggn-nuro-images/optimized/dr-praveen-gupta.webp",
     "alt": "Dr. Praveen Gupta",
     "specialty": "Neurology, Neurosciences",
     "designation": "Chairman – MAIINS & Marengo Asia Hospitals, Gurugram",
@@ -62,7 +62,7 @@
   },
   {
     "name": "Dr. Piyush Ojha",
-    "image": "assets/ggn-nuro-images/dr-piyush-ojha.webp",
+    "image": "assets/ggn-nuro-images/optimized/dr-piyush-ojha.webp",
     "alt": "Dr. Piyush Ojha",
     "specialty": "Interventional Neurology, Neurology, Neurosciences",
     "designation": "Clinical Director – Neurology & Head, Neurointervention, MAIINS, Gurugram",
@@ -96,7 +96,7 @@
   },
   {
     "name": "Dr. Shilpa Jaiswal",
-    "image": "assets/ggn-nuro-images/dr-shilpa-jaiswal.webp",
+    "image": "assets/ggn-nuro-images/optimized/dr-shilpa-jaiswal.webp",
     "alt": "Dr. Shilpa Jaiswal",
     "specialty": "Neurology, Neurosciences",
     "designation": "Neurologist – Neurology & Neurosciences, MAIINS, Gurugram",
@@ -127,7 +127,7 @@
   },
   {
     "name": "Dr. Vikas Sharma",
-    "image": "assets/ggn-nuro-images/dr-vikas-sharma.webp",
+    "image": "assets/ggn-nuro-images/optimized/dr-vikas-sharma.webp",
     "alt": "Dr. Vikas Sharma",
     "specialty": "Neurology, Neurosciences",
     "designation": "Clinical Director – Neurology, MAIINS & Marengo Asia Hospitals, Gurugram",
@@ -157,7 +157,7 @@
   },
   {
     "name": "Dr. Seema Shahi",
-    "image": "assets/ggn-nuro-images/seema-shahi.webp",
+    "image": "assets/ggn-nuro-images/optimized/seema-shahi.webp",
     "alt": "Dr. Seema Shahi",
     "specialty": "Neurology & Epilepsy",
     "designation": "Senior Consultant – Neurology & Epilepsy, Gurugram",
@@ -206,7 +206,7 @@
   },
   {
     "name": "Dr. Krishan Kumar Yadav",
-    "image": "assets/ggn-nuro-images/krisan-kumar-yadav.webp",
+    "image": "assets/ggn-nuro-images/optimized/krisan-kumar-yadav.webp",
     "alt": "Dr. Krishan Kumar Yadav",
     "specialty": "Neurosurgery & Neurospine Surgery",
     "designation": "Clinical Director, Prof & HOD – Neurosurgery & Neurospine Surgery",
@@ -259,7 +259,7 @@
   },
   {
     "name": "Dr. Ravi Kumar Shah",
-    "image": "assets/ggn-nuro-images/dr-ravi-kumar-shah.webp",
+    "image": "assets/ggn-nuro-images/optimized/dr-ravi-kumar-shah.webp",
     "alt": "Dr. Ravi Kumar Shah",
     "specialty": "Geriatric Medicine & Internal Medicine",
     "designation": "Senior Consultant – Geriatric Medicine & Internal Medicine, Gurugram",
@@ -310,7 +310,7 @@
   },
   {
     "name": "Dr. Saurabh Verma",
-    "image": "assets/ggn-nuro-images/dr-saurabh-verma.webp",
+    "image": "assets/ggn-nuro-images/optimized/dr-saurabh-verma.webp",
     "alt": "Dr. Saurabh Verma",
     "specialty": "Orthopaedics & Spine Surgery",
     "designation": "Clinical Director – Ortho Spine Surgery, Marengo Asia Hospitals, Gurugram",
