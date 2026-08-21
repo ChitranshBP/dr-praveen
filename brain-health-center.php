@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Brain Health Hub Page - Dr. Praveen Gupta
  */
@@ -20,7 +20,7 @@ require_once __DIR__ . '/includes/header.php';
         <div class="max-w-3xl text-left animate-fade-in-up">
             <!-- Breadcrumb -->
             <nav class="flex items-center space-x-2 text-white/80 text-sm mb-3">
-                <a href="index.php" class="hover:text-white transition-colors">Home</a>
+                <a href="index" class="hover:text-white transition-colors">Home</a>
                 <i class="fas fa-chevron-right text-[8px]"></i>
                 <span class="text-white font-medium">Brain Health Hub</span>
             </nav>
@@ -51,7 +51,7 @@ require_once __DIR__ . '/includes/header.php';
                 <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Preventive Neurology</span>
                 <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Brain Health Starts Before Symptoms</h2>
                 <p class="text-dark-grey/70 leading-relaxed mb-6">
-                    Most neurological decline is decades in the making. The habits and vascular risks that lead to stroke and dementia are measurable — and modifiable — long before anything goes wrong.
+                    Most neurological decline is decades in the making. The habits and vascular risks that lead to stroke and dementia are measurable â€” and modifiable â€” long before anything goes wrong.
                 </p>
                 <p class="text-dark-grey/70 leading-relaxed mb-8">
                     Dr. Praveen Gupta recommends regular neurological wellness checks for adults over 50, and earlier for anyone with a family history of stroke, dementia or vascular disease.
@@ -211,7 +211,7 @@ require_once __DIR__ . '/includes/header.php';
                     <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">2</div>
                     <h3 class="text-lg font-bold text-dark-grey mb-3">Vascular Screening</h3>
                     <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Blood pressure, cholesterol and carotid arterial health are checked — the three factors that most directly govern stroke risk.
+                        Blood pressure, cholesterol and carotid arterial health are checked â€” the three factors that most directly govern stroke risk.
                     </p>
                 </div>
                 <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
@@ -267,9 +267,9 @@ require_once __DIR__ . '/includes/header.php';
                         Dr. Praveen Gupta is a pioneering neurologist with 20+ years of clinical excellence. Renowned for introducing the first stroke mechanical thrombectomy services in Gurgaon and executing the region's first Deep Brain Stimulation (DBS) surgery, he leads Marengo Asia Neuro & Spine Institute with a commitment to state-of-the-art diagnostics and compassionate patient recovery.
                     </p>
                     <div class="flex flex-wrap gap-4 pt-2">
-                        <a href="about.php" class="text-xs font-semibold text-electric-blue hover:underline">Full Biography <i class="fas fa-arrow-right text-[10px] ml-1"></i></a>
+                        <a href="about" class="text-xs font-semibold text-electric-blue hover:underline">Full Biography <i class="fas fa-arrow-right text-[10px] ml-1"></i></a>
                         <span class="text-slate-300">|</span>
-                        <a href="why-choose-dr-praveen-gupta.php" class="text-xs font-semibold text-electric-blue hover:underline">Why Choose Dr. Praveen <i class="fas fa-arrow-right text-[10px] ml-1"></i></a>
+                        <a href="why-choose-dr-praveen-gupta" class="text-xs font-semibold text-electric-blue hover:underline">Why Choose Dr. Praveen <i class="fas fa-arrow-right text-[10px] ml-1"></i></a>
                     </div>
                 </div>
             </div>

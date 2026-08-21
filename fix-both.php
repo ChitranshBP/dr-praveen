@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 $file = 'index.php';
 $content = file_get_contents($file);
 
@@ -8,7 +8,7 @@ $content = file_get_contents($file);
 
 $content = str_replace(
     '<img src="assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500).png"',
-    '<img src="assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500).png" class="w-full h-auto object-cover object-[32%_center] md:object-center block" alt="Transforming Brain & Spine Care with Precision – Led by Dr. Praveen Gupta, Chairman, Marengo Asia International Institute of Neuro & Spine" fetchpriority="high" loading="lazy"',
+    '<img src="assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500).png" class="w-full h-auto object-cover object-[32%_center] md:object-center block" alt="Transforming Brain & Spine Care with Precision â€“ Led by Dr. Praveen Gupta, Chairman, Marengo Asia International Institute of Neuro & Spine" fetchpriority="high" loading="lazy"',
     $content
 );
 

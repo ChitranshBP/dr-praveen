@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Landing Page - Dr. Praveen Gupta (Standalone)
  * Lives inside /LP and does not modify the main codebase.
@@ -56,8 +56,8 @@ $videos = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Praveen Gupta – Best Neurologist in Gurgaon | Book Appointment</title>
-    <meta name="description" content="Consult Dr. Praveen Gupta, Chairman – Marengo Asia International Institute of Neuro & Spine. 20+ years of experience, 3,00,000+ patients treated. Book your appointment today.">
+    <title>Dr. Praveen Gupta â€“ Best Neurologist in Gurgaon | Book Appointment</title>
+    <meta name="description" content="Consult Dr. Praveen Gupta, Chairman â€“ Marengo Asia International Institute of Neuro & Spine. 20+ years of experience, 3,00,000+ patients treated. Book your appointment today.">
     <link rel="icon" type="image/png" href="assets/favicon/favicon.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -108,7 +108,7 @@ $videos = [
         </a>
 
         <!-- Online Consult -->
-        <a href="online-neurologist-consultation.php" 
+        <a href="online-neurologist-consultation" 
            class="flex flex-col items-center justify-center text-center group">
             <span class="w-10 h-10 rounded-full bg-electric-blue/10 text-electric-blue flex items-center justify-center shadow-sm active:scale-90 transition-all duration-300">
                 <i class="fas fa-video text-base"></i>
@@ -117,7 +117,7 @@ $videos = [
         </a>
 
         <!-- Book Appointment Central Button -->
-        <a href="contact-us-top-neurologist-delhi-ncr.php" 
+        <a href="contact-us-top-neurologist-delhi-ncr" 
            class="flex-1 flex items-center justify-center gap-1.5 bg-gradient-to-r from-deep-indigo via-electric-blue to-cyan-accent text-white font-extrabold text-xs h-10 px-3 rounded-full shadow-[0_4px_15px_rgba(37,99,235,0.25)] active:scale-[0.97] transition-all duration-300">
             <i class="fas fa-calendar-check text-sm animate-pulse"></i>
             <span class="uppercase tracking-wider">Book Clinic</span>
@@ -391,7 +391,7 @@ $videos = [
 </head>
 <body class="bg-white text-dark-grey antialiased">
 
-<!-- ════════ Navbar ════════ -->
+<!-- â•â•â•â•â•â•â•â• Navbar â•â•â•â•â•â•â•â• -->
 <nav id="navbar" class="sticky top-0 z-50 transition-all duration-500 navbar-glass">
     <div class="scroll-progress" id="scroll-progress" style="width: 0%"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -515,7 +515,7 @@ $videos = [
     });
 </script>
 
-<!-- ════════ Hero : Content Left / Form Right ════════ -->
+<!-- â•â•â•â•â•â•â•â• Hero : Content Left / Form Right â•â•â•â•â•â•â•â• -->
 <section id="book" class="relative overflow-hidden -mt-20 bg-cover bg-center" style="background-image: url('assets/banner/web-banner-hero.webp');">
     <div class="absolute inset-0 bg-deep-indigo/85 mix-blend-multiply pointer-events-none"></div>
 
@@ -652,7 +652,7 @@ $videos = [
     </div>
 </section>
 
-<!-- ════════ Stats ════════ -->
+<!-- â•â•â•â•â•â•â•â• Stats â•â•â•â•â•â•â•â• -->
 <section class="py-12 md:py-16 bg-soft-cyan/30 relative overflow-hidden">
     <div class="scroll-progress" id="scroll-progress" style="width: 0%"></div><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-10 md:mb-12 observe">
@@ -687,7 +687,7 @@ $videos = [
     </div>
 </section>
 
-<!-- ════════ Conditions We Treat ════════ -->
+<!-- â•â•â•â•â•â•â•â• Conditions We Treat â•â•â•â•â•â•â•â• -->
 <section id="conditions" class="py-12 md:py-16 bg-white relative overflow-hidden">
     <div class="scroll-progress" id="scroll-progress" style="width: 0%"></div><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-10 md:mb-12 observe">
@@ -727,7 +727,7 @@ $videos = [
     </div>
 </section>
 
-<!-- ════════ About Doctor ════════ -->
+<!-- â•â•â•â•â•â•â•â• About Doctor â•â•â•â•â•â•â•â• -->
 <section id="about" class="py-12 md:py-16 bg-soft-cyan/30 relative overflow-hidden">
     <div class="scroll-progress" id="scroll-progress" style="width: 0%"></div><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -746,13 +746,13 @@ $videos = [
                     <span class="text-electric-blue text-sm font-semibold">About Dr. Praveen Gupta</span>
                 </div>
                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo leading-tight mb-4">
-                    Dr. Praveen Gupta – <span class="gradient-text">Best Neurologist</span> in India
+                    Dr. Praveen Gupta â€“ <span class="gradient-text">Best Neurologist</span> in India
                 </h2>
 
                 <div class="flex flex-col space-y-2.5 mb-6">
                     <div class="flex items-center space-x-2.5 text-electric-blue font-medium text-xs md:text-sm">
                         <i class="fa-solid fa-award text-cyan-accent flex-shrink-0 text-base"></i>
-                        <span>Chairman – Marengo Asia International Institute of Neuro and Spine</span>
+                        <span>Chairman â€“ Marengo Asia International Institute of Neuro and Spine</span>
                     </div>
                     <div class="flex items-center space-x-2.5 text-electric-blue font-medium text-xs md:text-sm">
                         <i class="fa-solid fa-chart-line text-cyan-accent flex-shrink-0 text-base"></i>
@@ -766,7 +766,7 @@ $videos = [
 
                 <p class="text-base text-dark-grey/85 mb-4 leading-relaxed">
                     With over 20 years of clinical experience and a DM from AIIMS, New Delhi, Dr. Praveen Gupta has emerged as a
-                    pioneering force in the diagnosis, treatment, and advancement of neurological sciences — a name synonymous
+                    pioneering force in the diagnosis, treatment, and advancement of neurological sciences â€” a name synonymous
                     with excellence and trust across India and beyond.
                 </p>
 
@@ -802,7 +802,7 @@ $videos = [
     </div>
 </section>
 
-<!-- ════════ Why Choose Us ════════ -->
+<!-- â•â•â•â•â•â•â•â• Why Choose Us â•â•â•â•â•â•â•â• -->
 <section class="py-12 md:py-16 bg-white relative overflow-hidden">
     <div class="scroll-progress" id="scroll-progress" style="width: 0%"></div><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -878,7 +878,7 @@ $videos = [
     </div>
 </section>
 
-<!-- ════════ Testimonials ════════ -->
+<!-- â•â•â•â•â•â•â•â• Testimonials â•â•â•â•â•â•â•â• -->
 <section id="testimonials" class="py-12 md:py-16 bg-soft-cyan/30 relative overflow-hidden">
     <div class="scroll-progress" id="scroll-progress" style="width: 0%"></div><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-10 md:mb-12 observe">
@@ -934,7 +934,7 @@ $videos = [
     </div>
 </section>
 
-<!-- ════════ Videos ════════ -->
+<!-- â•â•â•â•â•â•â•â• Videos â•â•â•â•â•â•â•â• -->
 <section id="videos" class="py-12 md:py-16 bg-deep-indigo relative overflow-hidden">
     <div class="absolute -top-24 -left-24 w-96 h-96 bg-electric-blue/20 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-cyan-accent/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -990,7 +990,7 @@ $videos = [
     </div>
 </section>
 
-<!-- ════════ Footer ════════ -->
+<!-- â•â•â•â•â•â•â•â• Footer â•â•â•â•â•â•â•â• -->
 <footer class="bg-deep-indigo text-white relative overflow-hidden border-t border-white/10">
     <div class="h-1 bg-gradient-to-r from-electric-blue via-cyan-accent to-electric-blue"></div>
 
@@ -1014,7 +1014,7 @@ $videos = [
                         <div class="text-[10px] text-white/60 uppercase tracking-wide">Awards</div>
                     </div>
                     <div class="px-3 py-2 rounded-lg bg-white/5 border border-white/10">
-                        <div class="text-lg font-bold text-white">4.9★</div>
+                        <div class="text-lg font-bold text-white">4.9â˜…</div>
                         <div class="text-[10px] text-white/60 uppercase tracking-wide">Rating</div>
                     </div>
                 </div>
@@ -1037,7 +1037,7 @@ $videos = [
                     <li><a href="#about" class="text-white/70 hover:text-cyan-accent transition-colors flex items-center space-x-2 group"><i class="fas fa-chevron-right text-[10px] text-cyan-accent/60"></i><span>About Dr. Praveen</span></a></li>
                     <li><a href="#testimonials" class="text-white/70 hover:text-cyan-accent transition-colors flex items-center space-x-2 group"><i class="fas fa-chevron-right text-[10px] text-cyan-accent/60"></i><span>Testimonials</span></a></li>
                     <li><a href="#videos" class="text-white/70 hover:text-cyan-accent transition-colors flex items-center space-x-2 group"><i class="fas fa-chevron-right text-[10px] text-cyan-accent/60"></i><span>Videos</span></a></li>
-                    <li><a href="../index.php" class="text-white/70 hover:text-cyan-accent transition-colors flex items-center space-x-2 group"><i class="fas fa-chevron-right text-[10px] text-cyan-accent/60"></i><span>Main Website</span></a></li>
+                    <li><a href="../index" class="text-white/70 hover:text-cyan-accent transition-colors flex items-center space-x-2 group"><i class="fas fa-chevron-right text-[10px] text-cyan-accent/60"></i><span>Main Website</span></a></li>
                 </ul>
             </div>
 
@@ -1118,9 +1118,9 @@ $videos = [
             <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/60">
                 <p>&copy; <?php echo date('Y'); ?> <span class="text-white font-semibold">Dr. Praveen Gupta</span>. All rights reserved.</p>
                 <div class="flex items-center space-x-1">
-                    <a href="../privacy-policy.php" class="px-3 py-1.5 rounded-full hover:bg-white/5 hover:text-cyan-accent transition-all">Privacy Policy</a>
-                    <span class="text-white/20">•</span>
-                    <a href="../terms-of-service.php" class="px-3 py-1.5 rounded-full hover:bg-white/5 hover:text-cyan-accent transition-all">Terms of Service</a>
+                    <a href="../privacy-policy" class="px-3 py-1.5 rounded-full hover:bg-white/5 hover:text-cyan-accent transition-all">Privacy Policy</a>
+                    <span class="text-white/20">â€¢</span>
+                    <a href="../terms-of-service" class="px-3 py-1.5 rounded-full hover:bg-white/5 hover:text-cyan-accent transition-all">Terms of Service</a>
                 </div>
             </div>
         </div>
@@ -1202,7 +1202,7 @@ $videos = [
         </a>
 
         <!-- Online Consult -->
-        <a href="online-neurologist-consultation.php" 
+        <a href="online-neurologist-consultation" 
            class="flex flex-col items-center justify-center text-center group">
             <span class="w-10 h-10 rounded-full bg-electric-blue/10 text-electric-blue flex items-center justify-center shadow-sm active:scale-90 transition-all duration-300">
                 <i class="fas fa-video text-base"></i>
@@ -1211,7 +1211,7 @@ $videos = [
         </a>
 
         <!-- Book Appointment Central Button -->
-        <a href="contact-us-top-neurologist-delhi-ncr.php" 
+        <a href="contact-us-top-neurologist-delhi-ncr" 
            class="flex-1 flex items-center justify-center gap-1.5 bg-gradient-to-r from-deep-indigo via-electric-blue to-cyan-accent text-white font-extrabold text-xs h-10 px-3 rounded-full shadow-[0_4px_15px_rgba(37,99,235,0.25)] active:scale-[0.97] transition-all duration-300">
             <i class="fas fa-calendar-check text-sm animate-pulse"></i>
             <span class="uppercase tracking-wider">Book Clinic</span>
@@ -1357,7 +1357,7 @@ document.addEventListener('DOMContentLoaded', function () {
         </a>
 
         <!-- Online Consult -->
-        <a href="online-neurologist-consultation.php" 
+        <a href="online-neurologist-consultation" 
            class="flex flex-col items-center justify-center text-center group">
             <span class="w-10 h-10 rounded-full bg-electric-blue/10 text-electric-blue flex items-center justify-center shadow-sm active:scale-90 transition-all duration-300">
                 <i class="fas fa-video text-base"></i>
@@ -1366,7 +1366,7 @@ document.addEventListener('DOMContentLoaded', function () {
         </a>
 
         <!-- Book Appointment Central Button -->
-        <a href="contact-us-top-neurologist-delhi-ncr.php" 
+        <a href="contact-us-top-neurologist-delhi-ncr" 
            class="flex-1 flex items-center justify-center gap-1.5 bg-gradient-to-r from-deep-indigo via-electric-blue to-cyan-accent text-white font-extrabold text-xs h-10 px-3 rounded-full shadow-[0_4px_15px_rgba(37,99,235,0.25)] active:scale-[0.97] transition-all duration-300">
             <i class="fas fa-calendar-check text-sm animate-pulse"></i>
             <span class="uppercase tracking-wider">Book Clinic</span>

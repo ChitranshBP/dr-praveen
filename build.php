@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Dynamic Build Script for Netlify Deployment
  * Automatically detects and generates static HTML files from all root PHP templates

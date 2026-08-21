@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Image Conversion Script for dr-praveen.com
  * Converts PNG/JPG to WebP format with compression

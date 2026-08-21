@@ -2,16 +2,16 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://dr-praveen.com/sitemap.xml
+Sitemap: https://drpraveengupta.com/sitemap.xml
 
 # Allow key pages
-Allow: /index.php
-Allow: /about.php
-Allow: /services.php
-Allow: /blog.php
-Allow: /blog-post.php
-Allow: /contact-us-top-neurologist-delhi-ncr.php
-Allow: /awards.php
+Allow: /index
+Allow: /about
+Allow: /services
+Allow: /blog
+Allow: /blog-post
+Allow: /contact-us-top-neurologist-delhi-ncr
+Allow: /awards
 
 # Disallow administration and temporary pages
 Disallow: /wp-admin/

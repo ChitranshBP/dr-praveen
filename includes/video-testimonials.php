@@ -1,23 +1,23 @@
-<?php
+﻿<?php
 /**
- * Video Testimonials Slider — reusable section component
+ * Video Testimonials Slider â€” reusable section component
  *
  * Renders $videoTestimonials (see includes/config.php) as a slider of vertical
  * 9:16 cards. Cards show a YouTube thumbnail and only swap in the player when
  * clicked, so a page carrying this section does not load N iframes up front.
  *
- * Usage — one line, anywhere between the header and footer includes:
+ * Usage â€” one line, anywhere between the header and footer includes:
  *     <?php require __DIR__ . '/includes/video-testimonials.php'; ?>
  *
  * Optional overrides, set before the require:
- *     $vtEyebrow   — badge label      (default "Video Testimonials")
- *     $vtHeading   — h2 HTML          (default "Hear It From Our Patients")
- *     $vtIntro     — subtitle copy
- *     $vtLimit     — max cards to show (default: all)
- *     $vtTheme     — 'dark' (default) or 'light'
- *     $vtShowCta   — false to hide the "Watch All" button
+ *     $vtEyebrow   â€” badge label      (default "Video Testimonials")
+ *     $vtHeading   â€” h2 HTML          (default "Hear It From Our Patients")
+ *     $vtIntro     â€” subtitle copy
+ *     $vtLimit     â€” max cards to show (default: all)
+ *     $vtTheme     â€” 'dark' (default) or 'light'
+ *     $vtShowCta   â€” false to hide the "Watch All" button
  *
- * Safe to include more than once per page — each instance gets its own id.
+ * Safe to include more than once per page â€” each instance gets its own id.
  */
 
 if (!empty($videoTestimonials)) {
@@ -58,7 +58,7 @@ if (!empty($videoTestimonials)) {
             : 'bg-gradient-to-r from-electric-blue to-cyan-accent hover:from-deep-indigo hover:to-electric-blue text-white shadow-lg shadow-electric-blue/25 hover:shadow-xl hover:shadow-electric-blue/40 hover:-translate-y-0.5';
 ?>
 
-<!-- ════════ Video Testimonials Slider ════════ -->
+<!-- â•â•â•â•â•â•â•â• Video Testimonials Slider â•â•â•â•â•â•â•â• -->
 <section <?php echo $vtNum === 1 ? 'id="video-testimonials" ' : ''; ?>class="py-10 md:py-14 <?php echo $secBg; ?> relative overflow-hidden">
     <?php if ($dark): ?>
         <!-- Ambient glow -->
@@ -135,7 +135,7 @@ if (!empty($videoTestimonials)) {
 
             <!-- CTA -->
             <div class="text-center mt-10 observe">
-                <a href="video-testimonials.php"
+                <a href="video-testimonials"
                    class="inline-flex items-center space-x-2.5 <?php echo $ctaBtn; ?> font-bold px-7 py-3.5 rounded-full transition-all duration-300">
                     <span>Watch All Video Testimonials</span>
                     <i class="fas fa-arrow-right text-xs"></i>

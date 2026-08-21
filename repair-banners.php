@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // Repair banner images - replace broken WebP picture tags with direct img tags
 
 $file = 'index.php';
@@ -29,7 +29,7 @@ foreach ($lines as $line) {
     if (strpos($line, 'srcset="assets/webp/mobile-banner/1.webp"') !== false) {
         // This is the first source line - replace entire picture with img
         $output .= '<img src="assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500).png"\
-alt="Transforming Brain & Spine Care with Precision – Led by Dr. Praveen Gupta, Chairman, Marengo Asia International Institute of Neuro & Spine"\
+alt="Transforming Brain & Spine Care with Precision â€“ Led by Dr. Praveen Gupta, Chairman, Marengo Asia International Institute of Neuro & Spine"\
 fetchpriority="high"\
 class="w-full h-auto object-cover object-\\[32%_center\\] md:object-center block" loading="lazy">\n';
         // Skip the rest of the picture block (about 7 more lines)

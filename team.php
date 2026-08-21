@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Team Listing Page - Dr. Praveen Gupta
  */
@@ -35,7 +35,7 @@ if (file_exists($doctorsJsonPath)) {
         <div class="max-w-3xl text-left animate-fade-in-up">
             <!-- Breadcrumb -->
             <nav class="flex items-center space-x-2 text-white/80 text-sm mb-3">
-                <a href="index.php" class="hover:text-white transition-colors">Home</a>
+                <a href="index" class="hover:text-white transition-colors">Home</a>
                 <i class="fas fa-chevron-right text-[8px]"></i>
                 <span class="text-white font-medium">Our Team</span>
             </nav>
@@ -84,7 +84,7 @@ if (file_exists($doctorsJsonPath)) {
                     <div class="flex flex-wrap gap-4 pt-2">
                         <button onclick="event.stopPropagation(); openPraveenModal();" class="text-xs font-semibold text-electric-blue hover:underline">Full Biography <i class="fas fa-arrow-right text-[10px] ml-1"></i></button>
                         <span class="text-slate-300">|</span>
-                        <a href="why-choose-dr-praveen-gupta.php" onclick="event.stopPropagation();" class="text-xs font-semibold text-electric-blue hover:underline">Why Choose Dr. Praveen <i class="fas fa-arrow-right text-[10px] ml-1"></i></a>
+                        <a href="why-choose-dr-praveen-gupta" onclick="event.stopPropagation();" class="text-xs font-semibold text-electric-blue hover:underline">Why Choose Dr. Praveen <i class="fas fa-arrow-right text-[10px] ml-1"></i></a>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Parkinson's Disease Service Page - Dr. Praveen Gupta
  */
@@ -14,9 +14,9 @@ require_once __DIR__ . '/includes/header.php';
         <div class="max-w-3xl text-left animate-fade-in-up">
             <!-- Breadcrumb -->
             <nav class="flex items-center space-x-2 text-white/80 text-sm mb-3">
-                <a href="index.php" class="hover:text-white transition-colors">Home</a>
+                <a href="index" class="hover:text-white transition-colors">Home</a>
                 <i class="fas fa-chevron-right text-[8px]"></i>
-                <a href="services.php" class="hover:text-white transition-colors">Services</a>
+                <a href="services" class="hover:text-white transition-colors">Services</a>
                 <i class="fas fa-chevron-right text-[8px]"></i>
                 <span class="text-white font-medium">Parkinson's Disease</span>
             </nav>
@@ -38,7 +38,7 @@ require_once __DIR__ . '/includes/header.php';
 
             <!-- CTA Buttons -->
             <div class="flex flex-wrap gap-3">
-                <a href="contact.php" class="inline-flex items-center space-x-2.5 bg-white text-deep-indigo font-semibold px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-white/30 transition-all duration-300 transform hover:-translate-y-1 text-sm">
+                <a href="contact" class="inline-flex items-center space-x-2.5 bg-white text-deep-indigo font-semibold px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-white/30 transition-all duration-300 transform hover:-translate-y-1 text-sm">
                     <span>Book Appointment</span>
                     <i class="fas fa-arrow-right text-xs"></i>
                 </a>
@@ -335,7 +335,7 @@ require_once __DIR__ . '/includes/header.php';
 
         <div class="text-center">
             <p class="text-dark-grey/70 mb-6">Ready to get a proper diagnosis? Schedule a consultation today.</p>
-            <a href="contact.php" class="inline-flex items-center space-x-3 bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold px-8 py-4 rounded-full hover:shadow-xl hover:shadow-electric-blue/30 transition-all duration-300 transform hover:-translate-y-1">
+            <a href="contact" class="inline-flex items-center space-x-3 bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold px-8 py-4 rounded-full hover:shadow-xl hover:shadow-electric-blue/30 transition-all duration-300 transform hover:-translate-y-1">
                 <span>Schedule Diagnosis</span>
                 <i class="fas fa-arrow-right text-sm"></i>
             </a>
@@ -536,7 +536,7 @@ require_once __DIR__ . '/includes/header.php';
                 </div>
 
                 <div>
-                    <a href="contact.php" class="inline-flex items-center px-8 py-3.5 bg-[#111827] text-white text-sm font-bold rounded-full hover:bg-electric-blue transition-colors duration-300 shadow-lg shadow-dark-grey/10">
+                    <a href="contact" class="inline-flex items-center px-8 py-3.5 bg-[#111827] text-white text-sm font-bold rounded-full hover:bg-electric-blue transition-colors duration-300 shadow-lg shadow-dark-grey/10">
                         Get Started
                     </a>
                 </div>
@@ -665,22 +665,22 @@ function toggleFaq(button) {
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <a href="movement.php" class="group bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300">
+            <a href="movement" class="group bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300">
                 <h3 class="font-bold text-dark-grey mb-2 group-hover:text-electric-blue transition-colors">Movement Disorders</h3>
                 <p class="text-sm text-dark-grey/60">Expert care for tremors, dystonia, and movement issues.</p>
             </a>
 
-            <a href="ms.php" class="group bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300">
+            <a href="ms" class="group bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300">
                 <h3 class="font-bold text-dark-grey mb-2 group-hover:text-electric-blue transition-colors">Multiple Sclerosis</h3>
                 <p class="text-sm text-dark-grey/60">Advanced immunomodulatory therapies and symptom management.</p>
             </a>
 
-            <a href="neuropathy.php" class="group bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300">
+            <a href="neuropathy" class="group bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300">
                 <h3 class="font-bold text-dark-grey mb-2 group-hover:text-electric-blue transition-colors">Peripheral Neuropathy</h3>
                 <p class="text-sm text-dark-grey/60">Diagnosis and targeted treatment for chronic nerve pain.</p>
             </a>
 
-            <a href="services.php" class="group bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300">
+            <a href="services" class="group bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300">
                 <h3 class="font-bold text-dark-grey mb-2 group-hover:text-electric-blue transition-colors">All Services</h3>
                 <p class="text-sm text-dark-grey/60">View our complete range of neurological treatments.</p>
             </a>
@@ -715,7 +715,7 @@ function toggleFaq(button) {
 
                 <!-- Buttons Row -->
                 <div class="flex flex-wrap gap-4 items-center">
-                    <a href="contact.php" class="inline-flex items-center space-x-6 bg-[#111827] text-white text-xs md:text-sm font-semibold pl-6 pr-2.5 py-2.5 rounded-full hover:bg-black transition-all duration-300 shadow-lg hover:-translate-y-0.5 active:translate-y-0 group">
+                    <a href="contact" class="inline-flex items-center space-x-6 bg-[#111827] text-white text-xs md:text-sm font-semibold pl-6 pr-2.5 py-2.5 rounded-full hover:bg-black transition-all duration-300 shadow-lg hover:-translate-y-0.5 active:translate-y-0 group">
                         <span>Book Appointment</span>
                         <div class="w-7 h-7 rounded-full bg-gradient-to-b from-white via-slate-100 to-slate-400 shadow-[inset_0_1px_2px_rgba(255,255,255,0.8),0_2px_4px_rgba(0,0,0,0.3)] flex items-center justify-center text-[#111827] text-xs font-bold transition-transform duration-300 group-hover:scale-110 flex-shrink-0">
                             <i class="fas fa-chevron-right text-[9px]"></i>

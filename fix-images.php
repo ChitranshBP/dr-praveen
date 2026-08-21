@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Fix image paths in index.php to use WebP with PNG fallback
  */

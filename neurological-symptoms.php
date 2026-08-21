@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Neurological Symptoms Hub - Dr. Praveen Gupta
  */
@@ -15,7 +15,7 @@ require_once __DIR__ . '/includes/header.php';
         <div class="max-w-3xl text-left animate-fade-in-up">
             <!-- Breadcrumb -->
             <nav class="flex items-center space-x-2 text-white/80 text-sm mb-3">
-                <a href="index.php" class="hover:text-white transition-colors">Home</a>
+                <a href="index" class="hover:text-white transition-colors">Home</a>
                 <i class="fas fa-chevron-right text-[8px]"></i>
                 <span class="text-white font-medium">Neurological Symptoms</span>
             </nav>
@@ -67,7 +67,7 @@ require_once __DIR__ . '/includes/header.php';
                     Recurrent throbbing, sharp headaches, or headaches accompanied by nausea, sensitivity to light/sound, or visual disturbances.
                 </p>
                 <div class="pt-2 border-t border-slate-200/40 text-[11px] text-dark-grey/60">
-                    <strong class="text-deep-indigo">Potential Causes:</strong> <a href="migraine.php" class="hover:text-electric-blue font-medium underline">Migraine</a>, <a href="headache.php" class="hover:text-electric-blue font-medium underline">Tension Headache</a>, Cluster Headache.
+                    <strong class="text-deep-indigo">Potential Causes:</strong> <a href="migraine" class="hover:text-electric-blue font-medium underline">Migraine</a>, <a href="headache" class="hover:text-electric-blue font-medium underline">Tension Headache</a>, Cluster Headache.
                 </div>
             </div>
 
@@ -81,7 +81,7 @@ require_once __DIR__ . '/includes/header.php';
                     Feeling lightheaded, unsteady, or experiencing a spinning sensation (vertigo) which affects coordination or walking.
                 </p>
                 <div class="pt-2 border-t border-slate-200/40 text-[11px] text-dark-grey/60">
-                    <strong class="text-deep-indigo">Potential Causes:</strong> <a href="vertigo.php" class="hover:text-cyan-accent font-medium underline">Vestibular Vertigo</a>, Balance disorders, Inner-ear infection.
+                    <strong class="text-deep-indigo">Potential Causes:</strong> <a href="vertigo" class="hover:text-cyan-accent font-medium underline">Vestibular Vertigo</a>, Balance disorders, Inner-ear infection.
                 </div>
             </div>
 
@@ -95,7 +95,7 @@ require_once __DIR__ . '/includes/header.php';
                     A "pins and needles" sensation, loss of feeling, or burning pain in the feet, legs, hands, or arms.
                 </p>
                 <div class="pt-2 border-t border-slate-200/40 text-[11px] text-dark-grey/60">
-                    <strong class="text-deep-indigo">Potential Causes:</strong> <a href="neuropathy.php" class="hover:text-electric-blue font-medium underline">Peripheral Neuropathy</a>, Radiculopathy, Nerve entrapment.
+                    <strong class="text-deep-indigo">Potential Causes:</strong> <a href="neuropathy" class="hover:text-electric-blue font-medium underline">Peripheral Neuropathy</a>, Radiculopathy, Nerve entrapment.
                 </div>
             </div>
 
@@ -109,7 +109,7 @@ require_once __DIR__ . '/includes/header.php';
                     Involuntary shaking of the hands or limbs, muscle stiffness, slowed movements, or difficulty with walking coordination.
                 </p>
                 <div class="pt-2 border-t border-slate-200/40 text-[11px] text-dark-grey/60">
-                    <strong class="text-deep-indigo">Potential Causes:</strong> <a href="parkinsons.php" class="hover:text-electric-blue font-medium underline">Parkinson's Disease</a>, <a href="movement.php" class="hover:text-electric-blue font-medium underline">Essential Tremor</a>, Movement disorders.
+                    <strong class="text-deep-indigo">Potential Causes:</strong> <a href="parkinsons" class="hover:text-electric-blue font-medium underline">Parkinson's Disease</a>, <a href="movement" class="hover:text-electric-blue font-medium underline">Essential Tremor</a>, Movement disorders.
                 </div>
             </div>
 
@@ -137,7 +137,7 @@ require_once __DIR__ . '/includes/header.php';
                     Loss of muscle power, difficulty raising arms or legs, foot drop, or general weakness that worsens with activity.
                 </p>
                 <div class="pt-2 border-t border-slate-200/40 text-[11px] text-dark-grey/60">
-                    <strong class="text-deep-indigo">Potential Causes:</strong> <a href="ms.php" class="hover:text-electric-blue font-medium underline">Multiple Sclerosis</a>, Myopathies, Motor neuron diseases.
+                    <strong class="text-deep-indigo">Potential Causes:</strong> <a href="ms" class="hover:text-electric-blue font-medium underline">Multiple Sclerosis</a>, Myopathies, Motor neuron diseases.
                 </div>
             </div>
         </div>
@@ -186,7 +186,7 @@ require_once __DIR__ . '/includes/header.php';
                     Under the clinical directorship of Dr. Praveen Gupta, Marengo Asia Hospital operates a dedicated 24/7 emergency stroke and seizure response protocol.
                 </p>
                 <div class="pt-4 border-t border-white/10">
-                    <a href="emergency-neurology-care.php" class="block w-full text-center bg-red-600 hover:bg-red-750 hover:bg-red-700 text-white font-bold py-3 rounded-2xl transition-colors text-sm">
+                    <a href="emergency-neurology-care" class="block w-full text-center bg-red-600 hover:bg-red-750 hover:bg-red-700 text-white font-bold py-3 rounded-2xl transition-colors text-sm">
                         View Emergency Protocols
                     </a>
                 </div>

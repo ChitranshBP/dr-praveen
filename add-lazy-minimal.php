@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 $file = 'index.php';
 $content = file_get_contents($file);
 

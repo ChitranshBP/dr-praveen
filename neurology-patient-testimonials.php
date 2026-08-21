@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Testimonials Page - Dr. Praveen Gupta
  */
@@ -19,7 +19,7 @@ require_once __DIR__ . '/includes/header.php';
         <div class="max-w-3xl text-left animate-fade-in-up">
             <!-- Breadcrumb -->
             <nav class="flex items-center space-x-2 text-white/80 text-sm mb-3">
-                <a href="index.php" class="hover:text-white transition-colors">Home</a>
+                <a href="index" class="hover:text-white transition-colors">Home</a>
                 <i class="fas fa-chevron-right text-[8px]"></i>
                 <span class="text-white font-medium">Testimonials</span>
             </nav>
@@ -51,8 +51,8 @@ require_once __DIR__ . '/includes/header.php';
                 <span class="text-xs md:text-sm text-dark-grey/60 font-medium mt-1 block">Years of Excellence</span>
             </div>
             <div class="p-4">
-                <span class="block text-3xl md:text-4xl font-extrabold text-cyan-accent">10,000+</span>
-                <span class="text-xs md:text-sm text-dark-grey/60 font-medium mt-1 block">Happy Patients</span>
+                <span class="block text-3xl md:text-4xl font-extrabold text-cyan-accent">3,00,000+</span>
+                <span class="text-xs md:text-sm text-dark-grey/60 font-medium mt-1 block">Patients Treated</span>
             </div>
             <div class="p-4">
                 <span class="block text-3xl md:text-4xl font-extrabold text-deep-indigo">4.9/5</span>
@@ -144,7 +144,7 @@ require_once __DIR__ . '/includes/header.php';
             Your journey can inspire others going through similar neurological challenges. If you have been treated by Dr. Praveen Gupta, we would love to hear your feedback.
         </p>
         <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
-            <a href="contact-us-top-neurologist-delhi-ncr.php" class="bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold px-6 py-3.5 rounded-xl shadow-lg hover:shadow-electric-blue/20 transition-all duration-300">
+            <a href="contact-us-top-neurologist-delhi-ncr" class="bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold px-6 py-3.5 rounded-xl shadow-lg hover:shadow-electric-blue/20 transition-all duration-300">
                 Submit Feedback
             </a>
             <a href="https://g.page/r/dr-praveen-gupta-neurologist/review" target="_blank" class="bg-white border border-slate-200 text-dark-grey font-semibold px-6 py-3.5 rounded-xl hover:bg-slate-50 transition-all duration-300 inline-flex items-center space-x-2">

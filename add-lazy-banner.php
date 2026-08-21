@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // Add loading="lazy" to first banner img tag
 
 $file = 'index.php';

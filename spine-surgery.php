@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Spine Surgery Clinic Page - Dr. Praveen Gupta
  */
@@ -20,9 +20,9 @@ require_once __DIR__ . '/includes/header.php';
         <div class="max-w-3xl text-left animate-fade-in-up">
             <!-- Breadcrumb -->
             <nav class="flex items-center space-x-2 text-white/80 text-sm mb-3">
-                <a href="index.php" class="hover:text-white transition-colors">Home</a>
+                <a href="index" class="hover:text-white transition-colors">Home</a>
                 <i class="fas fa-chevron-right text-[8px]"></i>
-                <a href="services.php" class="hover:text-white transition-colors">Services</a>
+                <a href="services" class="hover:text-white transition-colors">Services</a>
                 <i class="fas fa-chevron-right text-[8px]"></i>
                 <span class="text-white font-medium">Spine Surgery</span>
             </nav>
@@ -43,7 +43,7 @@ require_once __DIR__ . '/includes/header.php';
             </p>
 
             <div class="flex flex-wrap items-center gap-4">
-                <a href="contact-us-top-neurologist-delhi-ncr.php" class="group inline-flex items-center space-x-3 bg-white text-deep-indigo text-sm font-bold pl-6 pr-2 py-2.5 rounded-full hover:bg-soft-cyan transition-colors duration-300">
+                <a href="contact-us-top-neurologist-delhi-ncr" class="group inline-flex items-center space-x-3 bg-white text-deep-indigo text-sm font-bold pl-6 pr-2 py-2.5 rounded-full hover:bg-soft-cyan transition-colors duration-300">
                     <span>Schedule Evaluation</span>
                     <span class="w-7 h-7 rounded-full bg-deep-indigo text-white flex items-center justify-center transition-transform group-hover:rotate-45 duration-300">
                         <i class="fas fa-arrow-right text-[10px]"></i>
@@ -65,7 +65,7 @@ require_once __DIR__ . '/includes/header.php';
                     Spinal health affects every facet of daily movement. Our clinic covers the full range of spine pathology, prioritising conservative management first and turning to advanced Minimally Invasive Spine Surgery (MISS) only where it is genuinely warranted.
                 </p>
                 <p class="text-dark-grey/70 leading-relaxed mb-8">
-                    When surgery is the right answer, the goal is maximal decompression and stability with minimal disruption to the surrounding muscle — smaller incisions, less postoperative pain, and a shorter stay in hospital.
+                    When surgery is the right answer, the goal is maximal decompression and stability with minimal disruption to the surrounding muscle â€” smaller incisions, less postoperative pain, and a shorter stay in hospital.
                 </p>
 
                 <!-- Key Facts -->
@@ -208,7 +208,7 @@ require_once __DIR__ . '/includes/header.php';
                     <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">2</div>
                     <h3 class="text-lg font-bold text-dark-grey mb-3">Conservative Management</h3>
                     <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Physiotherapy, targeted injections and medical management are tried first — many patients recover fully without surgery.
+                        Physiotherapy, targeted injections and medical management are tried first â€” many patients recover fully without surgery.
                     </p>
                 </div>
                 <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
@@ -264,9 +264,9 @@ require_once __DIR__ . '/includes/header.php';
                         Dr. Praveen Gupta is a pioneering neurologist with 20+ years of clinical excellence. Renowned for introducing the first stroke mechanical thrombectomy services in Gurgaon and executing the region's first Deep Brain Stimulation (DBS) surgery, he leads Marengo Asia Neuro & Spine Institute with a commitment to state-of-the-art diagnostics and compassionate patient recovery.
                     </p>
                     <div class="flex flex-wrap gap-4 pt-2">
-                        <a href="about.php" class="text-xs font-semibold text-electric-blue hover:underline">Full Biography <i class="fas fa-arrow-right text-[10px] ml-1"></i></a>
+                        <a href="about" class="text-xs font-semibold text-electric-blue hover:underline">Full Biography <i class="fas fa-arrow-right text-[10px] ml-1"></i></a>
                         <span class="text-slate-300">|</span>
-                        <a href="why-choose-dr-praveen-gupta.php" class="text-xs font-semibold text-electric-blue hover:underline">Why Choose Dr. Praveen <i class="fas fa-arrow-right text-[10px] ml-1"></i></a>
+                        <a href="why-choose-dr-praveen-gupta" class="text-xs font-semibold text-electric-blue hover:underline">Why Choose Dr. Praveen <i class="fas fa-arrow-right text-[10px] ml-1"></i></a>
                     </div>
                 </div>
             </div>

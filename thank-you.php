@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Thank You Page - Dr. Praveen Gupta
  */
@@ -35,7 +35,7 @@ require_once __DIR__ . '/includes/header.php';
 
         <!-- Next Steps Cards -->
         <div class="grid sm:grid-cols-2 gap-4 max-w-lg mx-auto pt-6 text-left">
-            <a href="index.php" class="bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl p-5 flex items-start space-x-4 transition-all duration-300 group">
+            <a href="index" class="bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl p-5 flex items-start space-x-4 transition-all duration-300 group">
                 <span class="w-10 h-10 rounded-xl bg-cyan-accent/20 flex items-center justify-center text-cyan-accent flex-shrink-0">
                     <i class="fas fa-home text-base"></i>
                 </span>
@@ -57,7 +57,7 @@ require_once __DIR__ . '/includes/header.php';
         </div>
 
         <div class="pt-4">
-            <a href="index.php" class="inline-flex items-center space-x-2 text-xs font-bold text-cyan-accent hover:text-white uppercase tracking-wider group transition-colors">
+            <a href="index" class="inline-flex items-center space-x-2 text-xs font-bold text-cyan-accent hover:text-white uppercase tracking-wider group transition-colors">
                 <i class="fas fa-arrow-left text-[9px] group-hover:-translate-x-0.5 transition-transform"></i>
                 <span>Back to main website</span>
             </a>

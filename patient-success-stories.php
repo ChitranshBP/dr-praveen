@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Patient Success Stories Page - Dr. Praveen Gupta
  */
@@ -20,7 +20,7 @@ require_once __DIR__ . '/includes/header.php';
         <div class="max-w-3xl text-left animate-fade-in-up">
             <!-- Breadcrumb -->
             <nav class="flex items-center space-x-2 text-white/80 text-sm mb-3">
-                <a href="index.php" class="hover:text-white transition-colors">Home</a>
+                <a href="index" class="hover:text-white transition-colors">Home</a>
                 <i class="fas fa-chevron-right text-[8px]"></i>
                 <span class="text-white font-medium">Success Stories</span>
             </nav>
@@ -55,7 +55,7 @@ require_once __DIR__ . '/includes/header.php';
             <p class="text-xs text-dark-grey/70 leading-relaxed italic">
                 "My hand tremors had gotten so severe that I could no longer hold a pen, sign checks, or even drink tea without spilling. It was frustrating and humiliating. Dr. Praveen Gupta recommended DBS. The surgery went smoothly, and once the stimulator was programmed, my tremors stopped almost completely. Today, I can write again and enjoy independent living."
             </p>
-            <p class="text-[11px] font-bold text-deep-indigo text-right">— Ramesh Chandra, Gurgaon</p>
+            <p class="text-[11px] font-bold text-deep-indigo text-right">â€” Ramesh Chandra, Gurgaon</p>
         </div>
 
         <!-- Story 2 -->
@@ -67,7 +67,7 @@ require_once __DIR__ . '/includes/header.php';
             <p class="text-xs text-dark-grey/70 leading-relaxed italic">
                 "When my husband suddenly couldn't raise his left arm and his speech was slurred, we panicked. We called the emergency stroke helpline and reached Marengo Asia Hospital. The stroke team was ready, and Dr. Praveen Gupta guided his mechanical thrombectomy. Within 2 days, he was walking and speaking normally. We are forever grateful for the rapid, professional response."
             </p>
-            <p class="text-[11px] font-bold text-deep-indigo text-right">— Priya Verma, Delhi</p>
+            <p class="text-[11px] font-bold text-deep-indigo text-right">â€” Priya Verma, Delhi</p>
         </div>
 
         <!-- Story 3 -->
@@ -79,7 +79,7 @@ require_once __DIR__ . '/includes/header.php';
             <p class="text-xs text-dark-grey/70 leading-relaxed italic">
                 "Our teenage daughter suffered from recurrent seizures that multiple medications failed to control. Dr. Gupta set up prolonged video-EEG monitoring to identify the focus. By adjusting her dosage and introducing advanced anti-seizure medication, her seizures have stopped entirely for over two years. She is back in school and thriving."
             </p>
-            <p class="text-[11px] font-bold text-deep-indigo text-right">— Mrs. Kapoor (Parent), Noida</p>
+            <p class="text-[11px] font-bold text-deep-indigo text-right">â€” Mrs. Kapoor (Parent), Noida</p>
         </div>
     </div>
 </section>
@@ -88,7 +88,7 @@ require_once __DIR__ . '/includes/header.php';
 <?php
 $vtEyebrow = 'Video Stories';
 $vtHeading = 'Recovery Stories on <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 to-cyan-accent">Video</span>';
-$vtIntro   = 'Hear these journeys first hand — patients describing their diagnosis, treatment and recovery in their own words.';
+$vtIntro   = 'Hear these journeys first hand â€” patients describing their diagnosis, treatment and recovery in their own words.';
 require __DIR__ . '/includes/video-testimonials.php';
 ?>
 
@@ -100,7 +100,7 @@ require __DIR__ . '/includes/video-testimonials.php';
             Your recovery path can inspire others undergoing difficult diagnoses. Let us know how your health has improved.
         </p>
         <div class="pt-2">
-            <a href="contact-us-top-neurologist-delhi-ncr.php" class="inline-flex items-center space-x-3 bg-deep-indigo hover:bg-electric-blue text-white text-sm font-bold px-8 py-3.5 rounded-2xl transition-colors">
+            <a href="contact-us-top-neurologist-delhi-ncr" class="inline-flex items-center space-x-3 bg-deep-indigo hover:bg-electric-blue text-white text-sm font-bold px-8 py-3.5 rounded-2xl transition-colors">
                 <span>Book a Consultation</span>
             </a>
         </div>

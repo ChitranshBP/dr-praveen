@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Footer Include
  */
@@ -56,7 +56,7 @@ foreach (array_slice($services, 0, 6) as $svc) {
                     <!-- Buttons Row -->
                     <div class="flex flex-wrap gap-4 items-center">
                         <!-- Book Appointment Button -->
-                        <a href="contact-us-top-neurologist-delhi-ncr.php"
+                        <a href="contact-us-top-neurologist-delhi-ncr"
                            class="inline-flex items-center space-x-6 bg-[#111827] text-white text-xs md:text-sm font-semibold pl-6 pr-2.5 py-2.5 rounded-full hover:bg-black transition-all duration-300 shadow-lg hover:-translate-y-0.5 active:translate-y-0 group">
                             <span>Book Appointment</span>
                             <!-- Glossy metallic dot indicator -->
@@ -98,7 +98,7 @@ foreach (array_slice($services, 0, 6) as $svc) {
                 <!-- About -->
                 <div class="lg:col-span-4">
                     <div class="mb-6">
-                        <a href="index.php" class="inline-block group">
+                        <a href="index" class="inline-block group">
                             <img src="assets/logo/NeuroDoc-final-logo.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" width="200" height="56" class="h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 invert brightness-0">
                         </a>
                     </div>
@@ -109,7 +109,7 @@ foreach (array_slice($services, 0, 6) as $svc) {
                     <!-- Stats badges -->
                     <div class="flex items-center space-x-4 mb-6">
                         <div class="px-3 py-2 rounded-lg bg-white/5 border border-white/10">
-                            <div class="text-lg font-bold text-white">300K+</div>
+                            <div class="text-lg font-bold text-white">3,00,000+</div>
                             <div class="text-[10px] text-white/60 uppercase tracking-wide">Patients</div>
                         </div>
                         <div class="px-3 py-2 rounded-lg bg-white/5 border border-white/10">
@@ -117,7 +117,7 @@ foreach (array_slice($services, 0, 6) as $svc) {
                             <div class="text-[10px] text-white/60 uppercase tracking-wide">Awards</div>
                         </div>
                         <div class="px-3 py-2 rounded-lg bg-white/5 border border-white/10">
-                            <div class="text-lg font-bold text-white">4.9★</div>
+                            <div class="text-lg font-bold text-white">4.9â˜…</div>
                             <div class="text-[10px] text-white/60 uppercase tracking-wide">Rating</div>
                         </div>
                     </div>
@@ -126,17 +126,17 @@ foreach (array_slice($services, 0, 6) as $svc) {
                     <div>
                         <p class="text-xs text-white/60 uppercase tracking-wider font-semibold mb-3">Follow Us</p>
                         <div class="flex space-x-2">
-                            <a href="<?php echo SOCIAL_FACEBOOK; ?>" class="group relative w-10 h-10 rounded-xl bg-white/5 hover:bg-electric-blue border border-white/10 hover:border-electric-blue flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
-                                <i class="fab fa-facebook-f text-sm"></i>
+                            <a href="<?php echo SOCIAL_FACEBOOK; ?>" aria-label="Visit our Facebook page" target="_blank" rel="noopener noreferrer" class="group relative w-10 h-10 rounded-xl bg-white/5 hover:bg-electric-blue border border-white/10 hover:border-electric-blue flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
+                                <i class="fab fa-facebook-f text-sm" aria-hidden="true"></i>
                             </a>
-                            <a href="<?php echo SOCIAL_INSTAGRAM; ?>" class="group relative w-10 h-10 rounded-xl bg-white/5 hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 border border-white/10 hover:border-pink-500 flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
-                                <i class="fab fa-instagram text-sm"></i>
+                            <a href="<?php echo SOCIAL_INSTAGRAM; ?>" aria-label="Visit our Instagram profile" target="_blank" rel="noopener noreferrer" class="group relative w-10 h-10 rounded-xl bg-white/5 hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 border border-white/10 hover:border-pink-500 flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
+                                <i class="fab fa-instagram text-sm" aria-hidden="true"></i>
                             </a>
-                            <a href="<?php echo SOCIAL_TWITTER; ?>" class="group relative w-10 h-10 rounded-xl bg-white/5 hover:bg-cyan-accent border border-white/10 hover:border-cyan-accent flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
-                                <i class="fab fa-twitter text-sm"></i>
+                            <a href="<?php echo SOCIAL_TWITTER; ?>" aria-label="Visit our Twitter profile" target="_blank" rel="noopener noreferrer" class="group relative w-10 h-10 rounded-xl bg-white/5 hover:bg-cyan-accent border border-white/10 hover:border-cyan-accent flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
+                                <i class="fab fa-twitter text-sm" aria-hidden="true"></i>
                             </a>
-                            <a href="<?php echo SOCIAL_YOUTUBE; ?>" class="group relative w-10 h-10 rounded-xl bg-white/5 hover:bg-red-500 border border-white/10 hover:border-red-500 flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
-                                <i class="fab fa-youtube text-sm"></i>
+                            <a href="<?php echo SOCIAL_YOUTUBE; ?>" aria-label="Visit our YouTube channel" target="_blank" rel="noopener noreferrer" class="group relative w-10 h-10 rounded-xl bg-white/5 hover:bg-red-500 border border-white/10 hover:border-red-500 flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
+                                <i class="fab fa-youtube text-sm" aria-hidden="true"></i>
                             </a>
                         </div>
                     </div>
@@ -150,43 +150,43 @@ foreach (array_slice($services, 0, 6) as $svc) {
                     </h3>
                     <ul class="space-y-2.5">
                         <li>
-                            <a href="index.php" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                            <a href="index" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
                                 <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
                                 <span class="group-hover:translate-x-0.5 transition-transform">Home</span>
                             </a>
                         </li>
                         <li>
-                            <a href="about.php" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                            <a href="about" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
                                 <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
                                 <span class="group-hover:translate-x-0.5 transition-transform">About Dr. Praveen</span>
                             </a>
                         </li>
                         <li>
-                            <a href="services.php" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                            <a href="services" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
                                 <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
                                 <span class="group-hover:translate-x-0.5 transition-transform">Our Services</span>
                             </a>
                         </li>
                         <li>
-                            <a href="patient-info.php" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                            <a href="patient-info" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
                                 <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
                                 <span class="group-hover:translate-x-0.5 transition-transform">Patient Information</span>
                             </a>
                         </li>
                         <li>
-                            <a href="videos.php" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                            <a href="videos" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
                                 <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
                                 <span class="group-hover:translate-x-0.5 transition-transform">Media & Videos</span>
                             </a>
                         </li>
                         <li>
-                            <a href="gallery.php" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                            <a href="gallery" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
                                 <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
                                 <span class="group-hover:translate-x-0.5 transition-transform">Photo Gallery</span>
                             </a>
                         </li>
                         <li>
-                            <a href="dr-praveen-gupta-blog.php" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
+                            <a href="dr-praveen-gupta-blog" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-2 group text-sm">
                                 <i class="fas fa-chevron-right text-[10px] text-cyan-accent/60 group-hover:text-cyan-accent group-hover:translate-x-1 transition-all"></i>
                                 <span class="group-hover:translate-x-0.5 transition-transform">Blog & Articles</span>
                             </a>
@@ -203,7 +203,7 @@ foreach (array_slice($services, 0, 6) as $svc) {
                     <ul class="space-y-2.5">
                         <?php foreach ($footerServices as $service): ?>
                             <li>
-                                <a href="services.php" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-3 group text-sm">
+                                <a href="services" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-3 group text-sm">
                                     <span class="w-7 h-7 rounded-lg bg-white/5 group-hover:bg-cyan-accent/20 flex items-center justify-center transition-all duration-300 flex-shrink-0">
                                         <i class="fas fa-<?php echo $service['icon']; ?> text-[10px] text-cyan-accent/70 group-hover:text-cyan-accent transition-colors"></i>
                                     </span>
@@ -278,9 +278,9 @@ foreach (array_slice($services, 0, 6) as $svc) {
                 <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/60">
                     <p>&copy; <?php echo $currentYear; ?> <span class="text-white font-semibold">Dr. Praveen Gupta</span>. All rights reserved.</p>
                     <div class="flex items-center space-x-1">
-                        <a href="privacy-policy.php" class="px-3 py-1.5 rounded-full hover:bg-white/5 hover:text-cyan-accent transition-all">Privacy Policy</a>
-                        <span class="text-white/20">•</span>
-                        <a href="terms-of-service.php" class="px-3 py-1.5 rounded-full hover:bg-white/5 hover:text-cyan-accent transition-all">Terms of Service</a>
+                        <a href="privacy-policy" class="px-3 py-1.5 rounded-full hover:bg-white/5 hover:text-cyan-accent transition-all">Privacy Policy</a>
+                        <span class="text-white/20">â€¢</span>
+                        <a href="terms-of-service" class="px-3 py-1.5 rounded-full hover:bg-white/5 hover:text-cyan-accent transition-all">Terms of Service</a>
                     </div>
                 </div>
             </div>
@@ -334,7 +334,7 @@ foreach (array_slice($services, 0, 6) as $svc) {
         </a>
 
         <!-- Online Consult -->
-        <a href="online-neurologist-consultation.php" 
+        <a href="online-neurologist-consultation" 
            class="flex flex-col items-center justify-center text-center group">
             <span class="w-10 h-10 rounded-full bg-electric-blue/10 text-electric-blue flex items-center justify-center shadow-sm active:scale-90 transition-all duration-300">
                 <i class="fas fa-video text-base"></i>
@@ -343,7 +343,7 @@ foreach (array_slice($services, 0, 6) as $svc) {
         </a>
 
         <!-- Book Appointment Central Button -->
-        <a href="contact-us-top-neurologist-delhi-ncr.php" 
+        <a href="contact-us-top-neurologist-delhi-ncr" 
            class="flex-1 flex items-center justify-center gap-1.5 bg-gradient-to-r from-deep-indigo via-electric-blue to-cyan-accent text-white font-extrabold text-xs h-10 px-3 rounded-full shadow-[0_4px_15px_rgba(37,99,235,0.25)] active:scale-[0.97] transition-all duration-300">
             <i class="fas fa-calendar-check text-sm animate-pulse"></i>
             <span class="uppercase tracking-wider">Book Clinic</span>

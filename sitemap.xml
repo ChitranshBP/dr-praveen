@@ -3,7 +3,7 @@
       xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <!-- Homepage -->
     <url>
-        <loc>https://dr-praveen.com/index.php</loc>
+        <loc>https://drpraveengupta.com/index</loc>
         <lastmod>2025-06-10</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -11,7 +11,7 @@
 
     <!-- About Page -->
     <url>
-        <loc>https://dr-praveen.com/about.php</loc>
+        <loc>https://drpraveengupta.com/about</loc>
         <lastmod>2025-06-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -19,7 +19,7 @@
 
     <!-- Services Page -->
     <url>
-        <loc>https://dr-praveen.com/services.php</loc>
+        <loc>https://drpraveengupta.com/services</loc>
         <lastmod>2025-06-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -27,7 +27,7 @@
 
     <!-- Blogs Index -->
     <url>
-        <loc>https://dr-praveen.com/blog.php</loc>
+        <loc>https://drpraveengupta.com/blog</loc>
         <lastmod>2025-06-10</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -35,19 +35,19 @@
 
     <!-- Individual Blog Posts -->
     <url>
-        <loc>https://dr-praveen.com/blog-post.php?title=understanding-migraine</loc>
+        <loc>https://drpraveengupta.com/blog-post?title=understanding-migraine</loc>
         <lastmod>2025-06-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://dr-praveen.com/blog-post.php?title=stroke-awareness</loc>
+        <loc>https://drpraveengupta.com/blog-post?title=stroke-awareness</loc>
         <lastmod>2025-06-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://dr-praveen.com/blog-post.php?title=parkinsons-disease</loc>
+        <loc>https://drpraveengupta.com/blog-post?title=parkinsons-disease</loc>
         <lastmod>2025-06-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
@@ -55,7 +55,7 @@
 
     <!-- Contact Page -->
     <url>
-        <loc>https://dr-praveen.com/contact-us-top-neurologist-delhi-ncr.php</loc>
+        <loc>https://drpraveengupta.com/contact-us-top-neurologist-delhi-ncr</loc>
         <lastmod>2025-06-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -63,7 +63,7 @@
 
     <!-- Awards Page -->
     <url>
-        <loc>https://dr-praveen.com/awards.php</loc>
+        <loc>https://drpraveengupta.com/awards</loc>
         <lastmod>2025-06-10</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.5</priority>

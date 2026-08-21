@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Add WebP paths to config.php arrays
  */

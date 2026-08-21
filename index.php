@@ -26,26 +26,26 @@ if (file_exists($doctorsJsonPath)) {
 <!-- Hero Section - Banner Slider -->
 <section class="relative overflow-hidden bg-deep-indigo -mt-20 select-none">
     <!-- SEO H1 (visually hidden - headline is baked into the banner artwork) -->
-    <h1 class="sr-only">Dr. Praveen Gupta – Best Neurologist in India | Transforming Brain &amp; Spine Care with Precision</h1>
+    <h1 class="sr-only">Dr. Praveen Gupta â€“ Best Neurologist in India | Transforming Brain &amp; Spine Care with Precision</h1>
 
     <div id="hero-slider" class="w-full max-w-[1920px] mx-auto relative">
         <div id="hero-track" class="flex transition-transform duration-700 ease-in-out">
             <div class="min-w-full relative">
                 <picture>
                     <source media="(max-width: 767px)" srcset="assets/mobile-banner/1.png">
-                    <img src="assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500).png" class="w-full h-auto object-cover object-[32%_center] md:object-center block" alt="Transforming Brain & Spine Care with Precision – Led by Dr. Praveen Gupta, Chairman, Marengo Asia International Institute of Neuro & Spine" fetchpriority="high" loading="lazy"
-                         alt="Transforming Brain &amp; Spine Care with Precision – Led by Dr. Praveen Gupta, Chairman, Marengo Asia International Institute of Neuro &amp; Spine"
-                         fetchpriority="high"
-                         >
+                    <img src="assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500).png" 
+                         class="w-full h-auto object-cover object-[32%_center] md:object-center block" 
+                         alt="Transforming Brain & Spine Care with Precision â€“ Led by Dr. Praveen Gupta, Chairman, Marengo Asia International Institute of Neuro & Spine" 
+                         fetchpriority="high">
                 </picture>
             </div>
             <div class="min-w-full relative">
                 <picture>
                     <source media="(max-width: 767px)" srcset="assets/mobile-banner/2.png">
                     <img src="assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500)%20(1).png"
-                         alt="Your Brain Deserves Expert Care – Empowering every thought for a life beyond neurological limits"
+                         alt="Your Brain Deserves Expert Care â€“ Empowering every thought for a life beyond neurological limits"
                          loading="lazy"
-                         class="w-full h-auto object-cover object-[32%_center] md:object-center block" loading="lazy">
+                         class="w-full h-auto object-cover object-[32%_center] md:object-center block">
                 </picture>
             </div>
         </div>
@@ -157,7 +157,7 @@ if (file_exists($doctorsJsonPath)) {
                 Comprehensive Care for Every <span class="gradient-text">Brain & Spine</span> Condition
             </h2>
             <p class="text-lg text-dark-grey/70">
-                Expert diagnosis, advanced treatment, and personalized recovery—all under one roof.
+                Expert diagnosis, advanced treatment, and personalized recoveryâ€”all under one roof.
             </p>
         </div>
 
@@ -171,8 +171,13 @@ if (file_exists($doctorsJsonPath)) {
                         <!-- Image Container -->
                         <div
                             class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-6 bg-gradient-to-br from-soft-cyan to-silver-grey">
-                            <img src="<?php echo $service['image']; ?>" alt="<?php echo $service['title']; ?>"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <picture>
+                                <?php if(!empty($service['webp']) && file_exists(__DIR__ . '/' . $service['webp'])): ?>
+                                <source srcset="<?php echo $service['webp']; ?>" type="image/webp">
+                                <?php endif; ?>
+                                <img src="<?php echo $service['image']; ?>" alt="<?php echo $service['title']; ?>"
+                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                            </picture>
                         </div>
 
                         <!-- Title & Arrow Row -->
@@ -354,14 +359,14 @@ if (file_exists($doctorsJsonPath)) {
                     <span class="text-electric-blue text-sm font-semibold">About Dr. Praveen Gupta</span>
                 </div>
                 <h2 class="text-4xl md:text-5xl font-serif font-bold text-deep-indigo leading-tight mb-4">
-                    Dr. Praveen Gupta – <span class="gradient-text">Best Neurologist</span> in India
+                    Dr. Praveen Gupta â€“ <span class="gradient-text">Best Neurologist</span> in India
                 </h2>
 
                 <!-- Prestigious Appointments -->
                 <div class="flex flex-col space-y-2.5 mb-6">
                     <div class="flex items-center space-x-2.5 text-electric-blue font-medium text-xs md:text-sm">
                         <i class="fa-solid fa-award text-cyan-accent flex-shrink-0 text-base"></i>
-                        <span>Chairman – Marengo Asia International Institute of Neuro and Spine</span>
+                        <span>Chairman â€“ Marengo Asia International Institute of Neuro and Spine</span>
                     </div>
                     <div class="flex items-center space-x-2.5 text-electric-blue font-medium text-xs md:text-sm">
                         <i class="fa-solid fa-chart-line text-cyan-accent flex-shrink-0 text-base"></i>
@@ -382,7 +387,7 @@ if (file_exists($doctorsJsonPath)) {
                 </p>
 
                 <p class="text-base text-dark-grey/85 mb-4 leading-relaxed font-semibold">
-                    A true innovator, he has been responsible for several firsts in the country’s neurology landscape:
+                    A true innovator, he has been responsible for several firsts in the countryâ€™s neurology landscape:
                 </p>
 
                 <!-- List of Firsts -->
@@ -417,7 +422,7 @@ if (file_exists($doctorsJsonPath)) {
 
                 <!-- Button -->
                 <div>
-                    <a href="about.php"
+                    <a href="about"
                         class="inline-flex items-center space-x-2.5 bg-gradient-to-r from-electric-blue to-cyan-accent hover:from-deep-indigo hover:to-electric-blue text-white font-bold px-7 py-3.5 rounded-full shadow-lg shadow-electric-blue/25 hover:shadow-xl hover:shadow-electric-blue/40 hover:-translate-y-0.5 transition-all duration-300">
                         <span>More About Us</span>
                         <i class="fas fa-arrow-right text-xs"></i>
@@ -444,7 +449,7 @@ if (file_exists($doctorsJsonPath)) {
                 </h2>
 
                 <p class="text-lg text-dark-grey/70 mb-10 leading-relaxed max-w-xl">
-                    When it comes to your brain and spine health, expert care makes all the difference. At NeuroDoc, we combine expert clinical care, advanced neuroscience, and compassionate support to guide you from diagnosis to recovery—with confidence at every step.
+                    When it comes to your brain and spine health, expert care makes all the difference. At NeuroDoc, we combine expert clinical care, advanced neuroscience, and compassionate support to guide you from diagnosis to recoveryâ€”with confidence at every step.
                 </p>
 
                 <!-- Grid of 4 Items -->
@@ -500,7 +505,7 @@ if (file_exists($doctorsJsonPath)) {
 
                 <!-- Action Button -->
                 <div>
-                    <a href="contact-us-top-neurologist-delhi-ncr.php"
+                    <a href="contact-us-top-neurologist-delhi-ncr"
                         class="inline-flex items-center space-x-2.5 bg-gradient-to-r from-electric-blue to-cyan-accent hover:from-deep-indigo hover:to-electric-blue text-white font-bold px-7 py-3.5 rounded-full shadow-lg shadow-electric-blue/25 hover:shadow-xl hover:shadow-electric-blue/40 hover:-translate-y-0.5 transition-all duration-300">
                         <span>Get Started</span>
                         <i class="fas fa-arrow-right text-xs"></i>
@@ -524,7 +529,7 @@ if (file_exists($doctorsJsonPath)) {
     </div>
 </section>
 
-<!-- ════════ Virtual Consultation Strip ════════ -->
+<!-- â•â•â•â•â•â•â•â• Virtual Consultation Strip â•â•â•â•â•â•â•â• -->
 <section id="virtual-consultation" class="py-8 md:py-10 bg-gradient-to-r from-deep-indigo via-electric-blue to-cyan-accent relative overflow-hidden">
     <!-- Ambient glow -->
     <div class="absolute -top-20 -left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -549,14 +554,14 @@ if (file_exists($doctorsJsonPath)) {
                         Consult Dr. Praveen Gupta from Anywhere
                     </h2>
                     <p class="text-sm md:text-base text-white/80 leading-relaxed max-w-xl">
-                        Secure online video consultations for new diagnoses, treatment reviews and second opinions — no travel required.
+                        Secure online video consultations for new diagnoses, treatment reviews and second opinions â€” no travel required.
                     </p>
                 </div>
             </div>
 
             <!-- Actions -->
             <div class="flex flex-wrap items-center gap-4 flex-shrink-0">
-                <a href="online-neurologist-consultation.php"
+                <a href="online-neurologist-consultation"
                    class="inline-flex items-center space-x-2.5 bg-white hover:bg-deep-indigo text-deep-indigo hover:text-white font-bold px-7 py-3.5 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
                     <span>Book Video Consultation</span>
                     <i class="fas fa-arrow-right text-xs"></i>
@@ -625,14 +630,14 @@ if (file_exists($doctorsJsonPath)) {
                 Our Care <span class="gradient-text">Team</span>
             </h2>
             <p class="text-lg text-dark-grey/70">
-                The approach is simple: understand what’s causing the problem, explain it clearly, and guide you toward the right treatment and recovery plan.
+                The approach is simple: understand whatâ€™s causing the problem, explain it clearly, and guide you toward the right treatment and recovery plan.
             </p>
         </div>
 
         <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-none gap-6 pb-6 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-8 sm:pb-0 mb-10">
             <?php foreach ($homepageTeam as $doc): ?>
             <!-- Dynamic Team Card -->
-            <a href="team.php" class="group bg-white border border-silver-grey/50 p-6 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 observe flex flex-col items-center text-center hover:-translate-y-2 w-[70vw] sm:w-auto flex-shrink-0 snap-start">
+            <a href="team" class="group bg-white border border-silver-grey/50 p-6 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 observe flex flex-col items-center text-center hover:-translate-y-2 w-[70vw] sm:w-auto flex-shrink-0 snap-start">
                 <div class="w-32 h-32 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
                     <img src="<?php echo htmlspecialchars($doc['image']); ?>" alt="<?php echo htmlspecialchars($doc['alt']); ?>" class="w-full h-full object-cover object-top rounded-full transition-transform duration-500 group-hover:scale-105">
                 </div>
@@ -648,7 +653,7 @@ if (file_exists($doctorsJsonPath)) {
         </div>
 
         <div class="text-center">
-            <a href="team.php" class="inline-flex items-center space-x-2.5 bg-gradient-to-r from-electric-blue to-cyan-accent hover:from-deep-indigo hover:to-electric-blue text-white font-bold px-7 py-3.5 rounded-full shadow-lg shadow-electric-blue/25 hover:shadow-xl hover:shadow-electric-blue/40 hover:-translate-y-0.5 transition-all duration-300">
+            <a href="team" class="inline-flex items-center space-x-2.5 bg-gradient-to-r from-electric-blue to-cyan-accent hover:from-deep-indigo hover:to-electric-blue text-white font-bold px-7 py-3.5 rounded-full shadow-lg shadow-electric-blue/25 hover:shadow-xl hover:shadow-electric-blue/40 hover:-translate-y-0.5 transition-all duration-300">
                 <span>View Full Team Details</span>
                 <i class="fas fa-arrow-right text-xs"></i>
             </a>
@@ -656,7 +661,7 @@ if (file_exists($doctorsJsonPath)) {
     </div>
 </section>
 
-<!-- ════════ Written Testimonials Section ════════ -->
+<!-- â•â•â•â•â•â•â•â• Written Testimonials Section â•â•â•â•â•â•â•â• -->
 <section id="written-testimonials" class="py-10 md:py-14 bg-white relative overflow-hidden">
 
     <!-- Section Header -->
@@ -684,7 +689,17 @@ if (file_exists($doctorsJsonPath)) {
         'from-deep-indigo to-electric-blue',
         'from-electric-blue to-deep-indigo',
     ];
-    $marqueeRows = [$testimonials, array_reverse($testimonials)];
+    
+    // Split testimonials so each is only displayed in one row
+    $half = ceil(count($testimonials) / 2);
+    $row1 = array_slice($testimonials, 0, $half);
+    $row2 = array_slice($testimonials, $half);
+    
+    // Duplicate within track to ensure CSS marquee scrolls seamlessly
+    $marqueeRows = [
+        array_merge($row1, $row1),
+        array_merge($row2, $row2)
+    ];
 
     // Card markup, reused by both rows and both copies
     $renderQuoteCard = function ($testimonial, $idx, $ariaHidden = false) use ($avatarColors) {
@@ -746,7 +761,7 @@ if (file_exists($doctorsJsonPath)) {
     <!-- CTA -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mt-10 observe">
-            <a href="patient-reviews.php"
+            <a href="patient-reviews"
                class="inline-flex items-center space-x-2.5 bg-gradient-to-r from-electric-blue to-cyan-accent hover:from-deep-indigo hover:to-electric-blue text-white font-bold px-7 py-3.5 rounded-full shadow-lg shadow-electric-blue/25 hover:shadow-xl hover:shadow-electric-blue/40 hover:-translate-y-0.5 transition-all duration-300">
                 <span>Read All Patient Reviews</span>
                 <i class="fas fa-arrow-right text-xs"></i>
@@ -795,7 +810,7 @@ if (file_exists($doctorsJsonPath)) {
                 Latest <span class="gradient-text">Articles</span>
             </h2>
             <p class="text-lg text-dark-grey/70">
-                Guidance on neurological conditions, treatments and recovery — written for patients and their families.
+                Guidance on neurological conditions, treatments and recovery â€” written for patients and their families.
             </p>
         </div>
 
@@ -808,11 +823,16 @@ if (file_exists($doctorsJsonPath)) {
 
                     <!-- Image -->
                     <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden mb-6 bg-gradient-to-br from-soft-cyan to-silver-grey">
-                        <img src="<?php echo $blog['image']; ?>"
-                             alt="<?php echo htmlspecialchars($blog['title']); ?>"
-                             loading="lazy"
-                             width="640" height="480"
-                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <picture>
+                            <?php if(!empty($blog['webp']) && file_exists(__DIR__ . '/' . $blog['webp'])): ?>
+                            <source srcset="<?php echo htmlspecialchars($blog['webp']); ?>" type="image/webp">
+                            <?php endif; ?>
+                            <img src="<?php echo htmlspecialchars($blog['image']); ?>"
+                                 alt="<?php echo htmlspecialchars($blog['title']); ?>"
+                                 loading="lazy"
+                                 width="640" height="480"
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </picture>
                     </div>
 
                     <!-- Title -->
@@ -895,16 +915,13 @@ if (file_exists($doctorsJsonPath)) {
             <?php foreach ($educationVideos as $video): ?>
                 <div class="flex-shrink-0 w-[80vw] snap-start bg-white rounded-3xl overflow-hidden border border-silver-grey/50 shadow-lg">
                     <!-- Embed -->
-                    <div class="relative w-full aspect-video bg-dark-grey">
-                        <iframe
-                            class="w-full h-full"
-                            src="https://www.youtube.com/embed/<?php echo $video['id']; ?>?rel=0&modestbranding=1"
-                            title="<?php echo htmlspecialchars($video['title']); ?>"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen
-                            loading="lazy">
-                        </iframe>
+                    <div class="relative w-full aspect-video bg-dark-grey video-facade cursor-pointer group" data-embed="https://www.youtube.com/embed/<?php echo $video['id']; ?>?rel=0&modestbranding=1&autoplay=1">
+                        <img src="https://img.youtube.com/vi/<?php echo $video['id']; ?>/hqdefault.jpg" alt="<?php echo htmlspecialchars($video['title']); ?>" loading="lazy" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/10 transition-colors">
+                            <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                <i class="fas fa-play text-white ml-1"></i>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Card footer -->
@@ -932,16 +949,13 @@ if (file_exists($doctorsJsonPath)) {
                             <div class="group bg-white rounded-3xl overflow-hidden border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 observe">
 
                                 <!-- Embed -->
-                                <div class="relative w-full aspect-video bg-dark-grey">
-                                    <iframe
-                                        class="w-full h-full"
-                                        src="https://www.youtube.com/embed/<?php echo $video['id']; ?>?rel=0&modestbranding=1"
-                                        title="<?php echo htmlspecialchars($video['title']); ?>"
-                                        frameborder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowfullscreen
-                                        loading="lazy">
-                                    </iframe>
+                                <div class="relative w-full aspect-video bg-dark-grey video-facade cursor-pointer group" data-embed="https://www.youtube.com/embed/<?php echo $video['id']; ?>?rel=0&modestbranding=1&autoplay=1">
+                                    <img src="https://img.youtube.com/vi/<?php echo $video['id']; ?>/hqdefault.jpg" alt="<?php echo htmlspecialchars($video['title']); ?>" loading="lazy" class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/10 transition-colors">
+                                        <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                            <i class="fas fa-play text-white ml-1"></i>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <!-- Card footer -->
@@ -1018,7 +1032,7 @@ if (file_exists($doctorsJsonPath)) {
     </script>
 </section>
 
-<!-- ════════ Instagram Reels Section ════════ -->
+<!-- â•â•â•â•â•â•â•â• Instagram Reels Section â•â•â•â•â•â•â•â• -->
 <section id="instagram-reels" class="py-10 md:py-14 bg-soft-cyan/30 relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
@@ -1103,6 +1117,39 @@ if (file_exists($doctorsJsonPath)) {
             }
         }, 300);
     });
+    </script>
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Video Facade Logic for Performance and Pausing
+            document.querySelectorAll('.video-facade').forEach(facade => {
+                facade.addEventListener('click', function() {
+                    // Pause/remove iframes from all other facades
+                    document.querySelectorAll('.video-facade iframe').forEach(iframe => {
+                        let parent = iframe.parentElement;
+                        iframe.remove();
+                        // Restore play button and image
+                        parent.querySelector('img').style.display = 'block';
+                        parent.querySelector('div.absolute').style.display = 'flex';
+                    });
+                    
+                    // Hide image and play button for this facade
+                    this.querySelector('img').style.display = 'none';
+                    this.querySelector('div.absolute').style.display = 'none';
+                    
+                    // Inject iframe
+                    const iframe = document.createElement('iframe');
+                    iframe.className = 'w-full h-full absolute inset-0';
+                    iframe.src = this.dataset.embed;
+                    iframe.title = this.querySelector('img').alt;
+                    iframe.setAttribute('frameborder', '0');
+                    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+                    iframe.setAttribute('allowfullscreen', '1');
+                    
+                    this.appendChild(iframe);
+                });
+            });
+        });
     </script>
 </section>
 

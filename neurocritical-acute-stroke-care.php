@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Neurocritical & Acute Stroke Care - Dr. Praveen Gupta
  */
@@ -20,9 +20,9 @@ require_once __DIR__ . '/includes/header.php';
         <div class="max-w-3xl text-left animate-fade-in-up">
             <!-- Breadcrumb -->
             <nav class="flex items-center space-x-2 text-white/80 text-sm mb-3">
-                <a href="index.php" class="hover:text-white transition-colors">Home</a>
+                <a href="index" class="hover:text-white transition-colors">Home</a>
                 <i class="fas fa-chevron-right text-[8px]"></i>
-                <a href="services.php" class="hover:text-white transition-colors">Services</a>
+                <a href="services" class="hover:text-white transition-colors">Services</a>
                 <i class="fas fa-chevron-right text-[8px]"></i>
                 <span class="text-white font-medium">Neurocritical Care</span>
             </nav>
@@ -48,7 +48,7 @@ require_once __DIR__ . '/includes/header.php';
                     <span>Emergency Helpline</span>
                     <i class="fas fa-phone-alt text-xs text-red-500"></i>
                 </a>
-                <a href="contact-us-top-neurologist-delhi-ncr.php" class="inline-flex items-center space-x-2.5 bg-white/20 backdrop-blur-sm text-white font-semibold px-6 py-2.5 rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 text-sm">
+                <a href="contact-us-top-neurologist-delhi-ncr" class="inline-flex items-center space-x-2.5 bg-white/20 backdrop-blur-sm text-white font-semibold px-6 py-2.5 rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 text-sm">
                     <span>Book Consultation</span>
                 </a>
             </div>
@@ -170,7 +170,7 @@ require_once __DIR__ . '/includes/header.php';
                 </div>
                 <h3 class="text-lg font-bold text-dark-grey mb-3">Speech & Time</h3>
                 <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Speech is slurred, garbled, or difficult to understand, or the person cannot speak. Time is critical – call the emergency helpline immediately.
+                    Speech is slurred, garbled, or difficult to understand, or the person cannot speak. Time is critical â€“ call the emergency helpline immediately.
                 </p>
                 <div class="flex flex-wrap gap-2">
                     <span class="text-xs bg-red-50 text-red-650 px-3 py-1 rounded-full font-medium">Slurred Speech</span>
@@ -267,14 +267,14 @@ require_once __DIR__ . '/includes/header.php';
                     About Dr. Praveen Gupta
                 </span>
                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo leading-tight mb-4">
-                    Dr. Praveen Gupta – Best Neurologist in India
+                    Dr. Praveen Gupta â€“ Best Neurologist in India
                 </h2>
 
                 <!-- Prestigious Appointments -->
                 <div class="flex flex-col space-y-2.5 mb-6">
                     <div class="flex items-center space-x-2.5 text-electric-blue font-medium text-xs md:text-sm">
                         <i class="fa-solid fa-award text-cyan-accent flex-shrink-0 text-base"></i>
-                        <span>Chairman – Marengo Asia International Institute of Neuro and Spine</span>
+                        <span>Chairman â€“ Marengo Asia International Institute of Neuro and Spine</span>
                     </div>
                     <div class="flex items-center space-x-2.5 text-electric-blue font-medium text-xs md:text-sm">
                         <i class="fa-solid fa-chart-line text-cyan-accent flex-shrink-0 text-base"></i>
@@ -287,11 +287,11 @@ require_once __DIR__ . '/includes/header.php';
                 </div>
 
                 <p class="text-sm text-dark-grey/85 mb-4 leading-relaxed">
-                    With over 20 years of clinical experience, Dr. Praveen Gupta has emerged as a pioneering force in the diagnosis, treatment, and advancement of neurological sciences across India and beyond. He is responsible for several firsts in the country’s neurology landscape, including establishing Gurugram's first stroke centre and conducting pioneering BMT procedures for autoimmune neuro-disorders.
+                    With over 20 years of clinical experience, Dr. Praveen Gupta has emerged as a pioneering force in the diagnosis, treatment, and advancement of neurological sciences across India and beyond. He is responsible for several firsts in the countryâ€™s neurology landscape, including establishing Gurugram's first stroke centre and conducting pioneering BMT procedures for autoimmune neuro-disorders.
                 </p>
 
                 <div>
-                    <a href="about.php" class="inline-flex items-center space-x-4 border-2 border-dark-grey px-6 py-2.5 rounded-full hover:bg-dark-grey hover:text-white transition-all duration-300 group">
+                    <a href="about" class="inline-flex items-center space-x-4 border-2 border-dark-grey px-6 py-2.5 rounded-full hover:bg-dark-grey hover:text-white transition-all duration-300 group">
                         <span class="text-xs font-bold text-dark-grey group-hover:text-white transition-colors duration-300">More About Doctor</span>
                         <div class="w-8 h-8 rounded-full bg-dark-grey text-white flex items-center justify-center text-xs group-hover:bg-white group-hover:text-dark-grey transition-colors duration-300 flex-shrink-0">
                             <i class="fas fa-arrow-right -rotate-45 transition-transform duration-300"></i>

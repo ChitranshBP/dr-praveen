@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Terms of Service Page - Dr. Praveen Gupta
  */
@@ -12,7 +12,7 @@ require_once __DIR__ . '/includes/header.php';
         <div class="max-w-3xl text-left animate-fade-in-up">
             <!-- Breadcrumb -->
             <nav class="flex items-center space-x-2 text-white/80 text-sm mb-3">
-                <a href="index.php" class="hover:text-white transition-colors">Home</a>
+                <a href="index" class="hover:text-white transition-colors">Home</a>
                 <i class="fas fa-chevron-right text-[8px]"></i>
                 <span class="text-white font-medium">Terms of Service</span>
             </nav>

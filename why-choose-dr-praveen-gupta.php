@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Why Choose Dr. Praveen Gupta - Special Page
  */
@@ -15,7 +15,7 @@ require_once __DIR__ . '/includes/header.php';
         <div class="max-w-3xl text-left animate-fade-in-up">
             <!-- Breadcrumb -->
             <nav class="flex items-center space-x-2 text-white/80 text-sm mb-3">
-                <a href="index.php" class="hover:text-white transition-colors">Home</a>
+                <a href="index" class="hover:text-white transition-colors">Home</a>
                 <i class="fas fa-chevron-right text-[8px]"></i>
                 <span class="text-white font-medium">Why Choose Us</span>
             </nav>
@@ -36,7 +36,7 @@ require_once __DIR__ . '/includes/header.php';
             </p>
 
             <div class="flex flex-wrap items-center gap-4">
-                <a href="contact-us-top-neurologist-delhi-ncr.php" class="group inline-flex items-center space-x-3 bg-white text-deep-indigo text-sm font-bold pl-6 pr-2 py-2.5 rounded-full hover:bg-soft-cyan transition-colors duration-300">
+                <a href="contact-us-top-neurologist-delhi-ncr" class="group inline-flex items-center space-x-3 bg-white text-deep-indigo text-sm font-bold pl-6 pr-2 py-2.5 rounded-full hover:bg-soft-cyan transition-colors duration-300">
                     <span>Book a Consultation</span>
                     <span class="w-7 h-7 rounded-full bg-deep-indigo text-white flex items-center justify-center transition-transform group-hover:rotate-45 duration-300">
                         <i class="fas fa-arrow-right text-[10px]"></i>
@@ -167,7 +167,7 @@ require_once __DIR__ . '/includes/header.php';
                 <span class="text-electric-blue font-bold text-xs uppercase tracking-widest font-sans">Patient Care Philosophy</span>
                 <h2 class="text-3xl font-bold text-deep-indigo font-serif">Treating the Person, Not Just the Symptoms</h2>
                 <p class="text-sm text-dark-grey/70 leading-relaxed">
-                    We believe that successful treatment starts with listening, empathy, and transparent communication. Every neurological condition affects people differently, which is why we build tailored care plans designed around each patient’s unique lifestyle and diagnostic profile.
+                    We believe that successful treatment starts with listening, empathy, and transparent communication. Every neurological condition affects people differently, which is why we build tailored care plans designed around each patientâ€™s unique lifestyle and diagnostic profile.
                 </p>
                 <div class="grid sm:grid-cols-2 gap-6">
                     <div class="space-y-2">
@@ -228,7 +228,7 @@ require_once __DIR__ . '/includes/header.php';
                     </div>
                 </div>
                 <div class="pt-4 border-t border-white/10">
-                    <a href="contact-us-top-neurologist-delhi-ncr.php" class="block w-full text-center bg-cyan-accent hover:bg-cyan-500 text-deep-indigo font-bold py-3 rounded-2xl transition-colors">
+                    <a href="contact-us-top-neurologist-delhi-ncr" class="block w-full text-center bg-cyan-accent hover:bg-cyan-500 text-deep-indigo font-bold py-3 rounded-2xl transition-colors">
                         Book Appointment Online
                     </a>
                 </div>

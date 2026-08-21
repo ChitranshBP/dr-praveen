@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Neurology FAQs Hub - Dr. Praveen Gupta
  */
@@ -20,7 +20,7 @@ require_once __DIR__ . '/includes/header.php';
         <div class="max-w-3xl text-left animate-fade-in-up">
             <!-- Breadcrumb -->
             <nav class="flex items-center space-x-2 text-white/80 text-sm mb-3">
-                <a href="index.php" class="hover:text-white transition-colors">Home</a>
+                <a href="index" class="hover:text-white transition-colors">Home</a>
                 <i class="fas fa-chevron-right text-[8px]"></i>
                 <span class="text-white font-medium">FAQs Hub</span>
             </nav>
@@ -128,7 +128,7 @@ require_once __DIR__ . '/includes/header.php';
             Our medical coordination help desk is available to answer any clinical or procedural queries.
         </p>
         <div class="pt-2">
-            <a href="contact-us-top-neurologist-delhi-ncr.php" class="inline-flex items-center space-x-3 bg-deep-indigo hover:bg-electric-blue text-white text-sm font-bold px-8 py-3.5 rounded-2xl transition-colors">
+            <a href="contact-us-top-neurologist-delhi-ncr" class="inline-flex items-center space-x-3 bg-deep-indigo hover:bg-electric-blue text-white text-sm font-bold px-8 py-3.5 rounded-2xl transition-colors">
                 <span>Contact Us</span>
             </a>
         </div>

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Image Conversion Script - GD Method
  * Converts PNG/JPG to WebP using PHP GD library

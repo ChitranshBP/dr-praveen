@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Emergency Neurology Care Page - Dr. Praveen Gupta
  */
@@ -20,7 +20,7 @@ require_once __DIR__ . '/includes/header.php';
         <div class="max-w-3xl text-left animate-fade-in-up">
             <!-- Breadcrumb -->
             <nav class="flex items-center space-x-2 text-white/80 text-sm mb-3">
-                <a href="index.php" class="hover:text-white transition-colors">Home</a>
+                <a href="index" class="hover:text-white transition-colors">Home</a>
                 <i class="fas fa-chevron-right text-[8px]"></i>
                 <span class="text-white font-medium">Emergency Care</span>
             </nav>
@@ -113,7 +113,7 @@ require_once __DIR__ . '/includes/header.php';
                 </div>
                 <h3 class="text-lg font-bold text-deep-indigo">Sudden Paralysis / Weakness</h3>
                 <p class="text-xs text-dark-grey/65 leading-relaxed">
-                    Rapid onset of paralysis or loss of motor control in the legs or arms, which may indicate spinal cord compression, transverse myelitis, or Guillain-Barré syndrome.
+                    Rapid onset of paralysis or loss of motor control in the legs or arms, which may indicate spinal cord compression, transverse myelitis, or Guillain-BarrÃ© syndrome.
                 </p>
             </div>
 

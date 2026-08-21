@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // This script fixes the hero banner images by removing broken WebP source tags
 // and ensuring lazy loading is properly applied
 
@@ -12,7 +12,7 @@ $old = '<div class="min-w-full relative">
                 <picture>
                     <source media="(max-width: 767px)" srcset="assets/mobile-banner/1.png">
                     <img src="assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500).png"
-                         alt="Transforming Brain & Spine Care with Precision – Led by Dr. Praveen Gupta, Chairman, Marengo Asia International Institute of Neuro & Spine"
+                         alt="Transforming Brain & Spine Care with Precision â€“ Led by Dr. Praveen Gupta, Chairman, Marengo Asia International Institute of Neuro & Spine"
                          fetchpriority="high"
                          class="w-full h-auto object-cover object-[32%_center] md:object-center block">
                  </picture>
@@ -21,19 +21,19 @@ $old = '<div class="min-w-full relative">
                 <picture>
                     <source media="(max-width: 767px)" srcset="assets/mobile-banner/2.png">
                     <img src="assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500)%20(1).png"
-                         alt="Your Brain Deserves Expert Care – Empowering every thought for a life beyond neurological limits"
+                         alt="Your Brain Deserves Expert Care â€“ Empowering every thought for a life beyond neurological limits"
                          loading="lazy"
                          class="w-full h-auto object-cover object-[32%_center] md:object-center block">';
                          
 $new = '<div class="min-w-full relative">
                 <img src="assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500).png"
-                     alt="Transforming Brain & Spine Care with Precision – Led by Dr. Praveen Gupta, Chairman, Marengo Asia International Institute of Neuro & Spine"
+                     alt="Transforming Brain & Spine Care with Precision â€“ Led by Dr. Praveen Gupta, Chairman, Marengo Asia International Institute of Neuro & Spine"
                      fetchpriority="high"
                      class="w-full h-auto object-cover object-[32%_center] md:object-center block" loading="lazy">
              </div>
              <div class="min-w-full relative">
                 <img src="assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500)%20(1).png"
-                     alt="Your Brain Deserves Expert Care – Empowering every thought for a life beyond neurological limits"
+                     alt="Your Brain Deserves Expert Care â€“ Empowering every thought for a life beyond neurological limits"
                      loading="lazy"
                      class="w-full h-auto object-cover object-[32%_center] md:object-center block">';
                      

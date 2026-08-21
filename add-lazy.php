@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Add loading="lazy" to all img tags in index.php that don't have it
  */

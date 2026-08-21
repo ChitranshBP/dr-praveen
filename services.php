@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Services Listing Page - Dr. Praveen Gupta
  */
@@ -16,7 +16,7 @@ require_once __DIR__ . '/includes/header.php';
         <div class="max-w-3xl text-left animate-fade-in-up">
             <!-- Breadcrumb -->
             <nav class="flex items-center space-x-2 text-white/80 text-sm mb-3">
-                <a href="index.php" class="hover:text-white transition-colors">Home</a>
+                <a href="index" class="hover:text-white transition-colors">Home</a>
                 <i class="fas fa-chevron-right text-[8px]"></i>
                 <span class="text-white font-medium">Services</span>
             </nav>
@@ -38,7 +38,7 @@ require_once __DIR__ . '/includes/header.php';
 
             <!-- CTA Buttons -->
             <div class="flex flex-wrap gap-3">
-                <a href="contact.php" class="inline-flex items-center space-x-2.5 bg-white text-deep-indigo font-semibold px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-white/30 transition-all duration-300 transform hover:-translate-y-1 text-sm">
+                <a href="contact" class="inline-flex items-center space-x-2.5 bg-white text-deep-indigo font-semibold px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-white/30 transition-all duration-300 transform hover:-translate-y-1 text-sm">
                     <span>Book Appointment</span>
                     <i class="fas fa-arrow-right text-xs"></i>
                 </a>

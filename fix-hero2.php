@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 $file = 'index.php';
 $content = file_get_contents($file);
 
@@ -9,7 +9,7 @@ $old_hero = '<div id="hero-slider" class="w-full max-w-[1920px] mx-auto relative
                 <picture>
                     
                     <img src="assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500).png" class="w-full h-auto object-cover object-[32%_center] md:object-center block" loading="lazy"
-                         alt="Transforming Brain & Spine Care with Precision – Led by Dr. Praveen Gupta, Chairman, Marengo Asia International Institute of Neuro & Spine"
+                         alt="Transforming Brain & Spine Care with Precision â€“ Led by Dr. Praveen Gupta, Chairman, Marengo Asia International Institute of Neuro & Spine"
                          fetchpriority="high"
                          >
                  </picture>
@@ -18,7 +18,7 @@ $old_hero = '<div id="hero-slider" class="w-full max-w-[1920px] mx-auto relative
                 <picture>
                     
                     <img src="assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500)%20(1).png"
-                         alt="Your Brain Deserves Expert Care – Empowering every thought for a life beyond neurological limits"
+                         alt="Your Brain Deserves Expert Care â€“ Empowering every thought for a life beyond neurological limits"
                          loading="lazy"
                          class="w-full h-auto object-cover object-[32%_center] md:object-center block" loading="lazy">
                 </picture>
@@ -30,7 +30,7 @@ $new_hero = '<div id="hero-slider" class="w-full max-w-[1920px] mx-auto relative
             <div class="min-w-full relative">
                 <picture>
                     <img src="assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500).png"
-                         alt="Transforming Brain & Spine Care with Precision – Led by Dr. Praveen Gupta, Chairman, Marengo Asia International Institute of Neuro & Spine"
+                         alt="Transforming Brain & Spine Care with Precision â€“ Led by Dr. Praveen Gupta, Chairman, Marengo Asia International Institute of Neuro & Spine"
                          fetchpriority="high"
                          class="w-full h-auto object-cover object-[32%_center] md:object-center block"
                          loading="lazy">
@@ -39,7 +39,7 @@ $new_hero = '<div id="hero-slider" class="w-full max-w-[1920px] mx-auto relative
              <div class="min-w-full relative">
                 <picture>
                     <img src="assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500)%20(1).png"
-                         alt="Your Brain Deserves Expert Care – Empowering every thought for a life beyond neurological limits"
+                         alt="Your Brain Deserves Expert Care â€“ Empowering every thought for a life beyond neurological limits"
                          loading="lazy"
                          class="w-full h-auto object-cover object-[32%_center] md:object-center block">
                 </picture>

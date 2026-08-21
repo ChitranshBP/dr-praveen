@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Epilepsy Service Page - Dr. Praveen Gupta
  */
@@ -20,9 +20,9 @@ require_once __DIR__ . '/includes/header.php';
         <div class="max-w-3xl text-left animate-fade-in-up">
             <!-- Breadcrumb -->
             <nav class="flex items-center space-x-2 text-white/80 text-sm mb-3">
-                <a href="index.php" class="hover:text-white transition-colors">Home</a>
+                <a href="index" class="hover:text-white transition-colors">Home</a>
                 <i class="fas fa-chevron-right text-[8px]"></i>
-                <a href="services.php" class="hover:text-white transition-colors">Services</a>
+                <a href="services" class="hover:text-white transition-colors">Services</a>
                 <i class="fas fa-chevron-right text-[8px]"></i>
                 <span class="text-white font-medium">Epilepsy</span>
             </nav>
@@ -44,7 +44,7 @@ require_once __DIR__ . '/includes/header.php';
 
             <!-- CTA Buttons -->
             <div class="flex flex-wrap gap-3">
-                <a href="contact.php" class="inline-flex items-center space-x-2.5 bg-white text-deep-indigo font-semibold px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-white/30 transition-all duration-300 transform hover:-translate-y-1 text-sm">
+                <a href="contact" class="inline-flex items-center space-x-2.5 bg-white text-deep-indigo font-semibold px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-white/30 transition-all duration-300 transform hover:-translate-y-1 text-sm">
                     <span>Book Appointment</span>
                     <i class="fas fa-arrow-right text-xs"></i>
                 </a>
@@ -68,7 +68,7 @@ require_once __DIR__ . '/includes/header.php';
                     Epilepsy is a neurological disorder characterized by recurrent, unprovoked seizures. It affects over 50 million people worldwide, making it one of the most common neurological conditions. While epilepsy can develop at any age, it often begins in childhood or after age 60.
                 </p>
                 <p class="text-dark-grey/70 leading-relaxed mb-8">
-                    At our clinic, we understand that living with epilepsy affects every aspect of your life—from daily activities to personal relationships. Our comprehensive approach focuses not just on controlling seizures, but on improving your overall quality of life through evidence-based treatments and compassionate care.
+                    At our clinic, we understand that living with epilepsy affects every aspect of your lifeâ€”from daily activities to personal relationships. Our comprehensive approach focuses not just on controlling seizures, but on improving your overall quality of life through evidence-based treatments and compassionate care.
                 </p>
 
                 <!-- Key Facts -->
@@ -299,7 +299,7 @@ require_once __DIR__ . '/includes/header.php';
                     <div class="flex flex-wrap gap-2">
                         <span class="text-xs bg-white border border-electric-blue/20 px-3 py-1.5 rounded-full text-dark-grey/70">Visual disturbances</span>
                         <span class="text-xs bg-white border border-electric-blue/20 px-3 py-1.5 rounded-full text-dark-grey/70">Nausea</span>
-                        <span class="text-xs bg-white border border-electric-blue/20 px-3 py-1.5 rounded-full text-dark-grey/70">D déjà vu</span>
+                        <span class="text-xs bg-white border border-electric-blue/20 px-3 py-1.5 rounded-full text-dark-grey/70">D dÃ©jÃ  vu</span>
                         <span class="text-xs bg-white border border-electric-blue/20 px-3 py-1.5 rounded-full text-dark-grey/70">Numbness</span>
                         <span class="text-xs bg-white border border-electric-blue/20 px-3 py-1.5 rounded-full text-dark-grey/70">Speech difficulty</span>
                     </div>
@@ -436,7 +436,7 @@ require_once __DIR__ . '/includes/header.php';
         <!-- CTA -->
         <div class="text-center">
             <p class="text-dark-grey/70 mb-6">Ready to get a proper diagnosis? Schedule a consultation today.</p>
-            <a href="contact.php" class="inline-flex items-center space-x-3 bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold px-8 py-4 rounded-full hover:shadow-xl hover:shadow-electric-blue/30 transition-all duration-300 transform hover:-translate-y-1">
+            <a href="contact" class="inline-flex items-center space-x-3 bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold px-8 py-4 rounded-full hover:shadow-xl hover:shadow-electric-blue/30 transition-all duration-300 transform hover:-translate-y-1">
                 <span>Schedule Diagnosis</span>
                 <i class="fas fa-arrow-right text-sm"></i>
             </a>
@@ -887,22 +887,22 @@ function toggleFaq(button) {
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <a href="headache.php" class="group bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300">
+            <a href="headache" class="group bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300">
                 <h3 class="font-bold text-dark-grey mb-2 group-hover:text-electric-blue transition-colors">Headache</h3>
                 <p class="text-sm text-dark-grey/60">Comprehensive headache and migraine diagnosis and treatment.</p>
             </a>
 
-            <a href="stroke.php" class="group bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300">
+            <a href="stroke" class="group bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300">
                 <h3 class="font-bold text-dark-grey mb-2 group-hover:text-electric-blue transition-colors">Stroke</h3>
                 <p class="text-sm text-dark-grey/60">Prevention, treatment, and rehabilitation for stroke patients.</p>
             </a>
 
-            <a href="movement.php" class="group bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300">
+            <a href="movement" class="group bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300">
                 <h3 class="font-bold text-dark-grey mb-2 group-hover:text-electric-blue transition-colors">Movement Disorders</h3>
                 <p class="text-sm text-dark-grey/60">Expert care for tremors, dystonia, and other movement issues.</p>
             </a>
 
-            <a href="services.php" class="group bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300">
+            <a href="services" class="group bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300">
                 <h3 class="font-bold text-dark-grey mb-2 group-hover:text-electric-blue transition-colors">All Services</h3>
                 <p class="text-sm text-dark-grey/60">View our complete range of neurological treatments.</p>
             </a>

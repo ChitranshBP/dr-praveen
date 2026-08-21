@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Blog Page - Dr. Praveen Gupta
  * Displays the latest blog posts
@@ -26,7 +26,7 @@ $blogs = [
     ],
     [
         'title'    => 'Living with Parkinson\'s Disease: A Patient\'s Guide',
-        'excerpt'  => 'From Deep Brain Stimulation to lifestyle strategies — explore how patients manage Parkinson\'s disease with quality of life.',
+        'excerpt'  => 'From Deep Brain Stimulation to lifestyle strategies â€” explore how patients manage Parkinson\'s disease with quality of life.',
         'category' => 'Parkinson\'s',
         'date'     => 'May 14, 2025',
         'image'    => 'assets/services/parkinsons.png',
@@ -50,7 +50,7 @@ $pageTitle = 'Blog - Dr. Praveen Gupta';
                 Latest <span class="gradient-text">Articles</span>
             </h2>
             <p class="text-lg text-dark-grey/70">
-                Guidance on neurological conditions, treatments and recovery — written for patients and their families.
+                Guidance on neurological conditions, treatments and recovery â€” written for patients and their families.
             </p>
         </div>
 
@@ -103,7 +103,7 @@ $pageTitle = 'Blog - Dr. Praveen Gupta';
 </div>
 </section>
 
-<!-- ════════ Blog Single Post ════════ -->
+<!-- â•â•â•â•â•â•â•â• Blog Single Post â•â•â•â•â•â•â•â• -->
 <section class="py-10 md:py-14 bg-white relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-12 observe">

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Blog Single Post Page - Dr. Praveen Gupta
  * Displays a single blog post
@@ -46,7 +46,7 @@ We also cover other less common stroke symptoms, risk factors to watch for, and 
     ],
     'parkinsons-disease' => [
         'title'    => 'Living with Parkinson\'s Disease: A Patient\'s Guide',
-        'excerpt'  => 'From Deep Brain Stimulation to lifestyle strategies — explore how patients manage Parkinson\'s disease with quality of life.',
+        'excerpt'  => 'From Deep Brain Stimulation to lifestyle strategies â€” explore how patients manage Parkinson\'s disease with quality of life.',
         'content'  => 'Parkinson\'s disease is a progressive neurological disorder that affects movement, but with proper management, patients can maintain a good quality of life for years. This guide explores:
 
 - **Medication management**: How different medications work and when to adjust them
@@ -116,5 +116,5 @@ $pageDescription = $blog['excerpt'];
     </div>
 </section>
 
-<!-- ════════ Site Footer ════════ -->
+<!-- â•â•â•â•â•â•â•â• Site Footer â•â•â•â•â•â•â•â• -->
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

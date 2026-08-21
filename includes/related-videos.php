@@ -1,20 +1,20 @@
-<?php
+﻿<?php
 /**
  * Related Videos Section
  *
  * Renders the education videos that match the current page, using the
  * $pageVideos topic map in config.php. Pages with no mapping render nothing.
  *
- * Usage — drop this line in just above the footer include:
+ * Usage â€” drop this line in just above the footer include:
  *     <?php require __DIR__ . '/includes/related-videos.php'; ?>
  *
  * Optional overrides, set before the require:
- *     $relatedVideosEyebrow  — badge label   (default "Video Guides")
- *     $relatedVideosHeading  — h2 HTML       (default "Watch & <span…>Learn</span>")
- *     $relatedVideosIntro    — subtitle copy
+ *     $relatedVideosEyebrow  â€” badge label   (default "Video Guides")
+ *     $relatedVideosHeading  â€” h2 HTML       (default "Watch & <spanâ€¦>Learn</span>")
+ *     $relatedVideosIntro    â€” subtitle copy
  */
 
-$currentPageFile = basename($_SERVER['PHP_SELF'] ?? '');
+$currentPageFile = str_replace('.php', '', basename($_SERVER['PHP_SELF'] ?? ''));
 $relatedIds      = $pageVideos[$currentPageFile] ?? [];
 
 if (!empty($relatedIds) && !empty($educationVideos)) {
@@ -31,10 +31,10 @@ if (!empty($relatedIds) && !empty($educationVideos)) {
     if (!empty($relatedVideos)):
         $eyebrow = $relatedVideosEyebrow ?? 'Video Guides';
         $heading = $relatedVideosHeading ?? 'Watch & <span class="gradient-text">Learn</span>';
-        $intro   = $relatedVideosIntro   ?? 'Dr. Praveen Gupta explains the essentials in plain language — what to look out for, the treatment options available, and what to expect.';
+        $intro   = $relatedVideosIntro   ?? 'Dr. Praveen Gupta explains the essentials in plain language â€” what to look out for, the treatment options available, and what to expect.';
 ?>
 
-<!-- ════════ Related Videos ════════ -->
+<!-- â•â•â•â•â•â•â•â• Related Videos â•â•â•â•â•â•â•â• -->
 <section class="py-10 md:py-14 bg-[#edf5f9] relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -154,7 +154,7 @@ if (!empty($relatedIds) && !empty($educationVideos)) {
 
             function layout() {
                 maxIndex = Math.max(0, slides.length - visibleCount());
-                // Nothing to scroll — no point showing arrows or a single dot
+                // Nothing to scroll â€” no point showing arrows or a single dot
                 controls.classList.toggle('hidden', maxIndex === 0);
                 buildDots();
                 goTo(Math.min(index, maxIndex));
@@ -183,7 +183,7 @@ if (!empty($relatedIds) && !empty($educationVideos)) {
 
         <!-- CTA -->
         <div class="text-center mt-10 observe">
-            <a href="neurology-video-library.php"
+            <a href="neurology-video-library"
                class="inline-flex items-center space-x-2.5 bg-gradient-to-r from-electric-blue to-cyan-accent hover:from-deep-indigo hover:to-electric-blue text-white font-bold px-7 py-3.5 rounded-full shadow-lg shadow-electric-blue/25 hover:shadow-xl hover:shadow-electric-blue/40 hover:-translate-y-0.5 transition-all duration-300">
                 <span>Browse the Full Video Library</span>
                 <i class="fas fa-arrow-right text-xs"></i>

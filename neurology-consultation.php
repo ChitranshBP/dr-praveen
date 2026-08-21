@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Neurology Consultation Page - Dr. Praveen Gupta
  */
@@ -20,7 +20,7 @@ require_once __DIR__ . '/includes/header.php';
         <div class="max-w-3xl text-left animate-fade-in-up">
             <!-- Breadcrumb -->
             <nav class="flex items-center space-x-2 text-white/80 text-sm mb-3">
-                <a href="index.php" class="hover:text-white transition-colors">Home</a>
+                <a href="index" class="hover:text-white transition-colors">Home</a>
                 <i class="fas fa-chevron-right text-[8px]"></i>
                 <span class="text-white font-medium">Neurology Consultation</span>
             </nav>
@@ -41,7 +41,7 @@ require_once __DIR__ . '/includes/header.php';
             </p>
 
             <div class="flex flex-wrap items-center gap-4">
-                <a href="contact-us-top-neurologist-delhi-ncr.php" class="group inline-flex items-center space-x-3 bg-white text-deep-indigo text-sm font-bold pl-6 pr-2 py-2.5 rounded-full hover:bg-soft-cyan transition-colors duration-300">
+                <a href="contact-us-top-neurologist-delhi-ncr" class="group inline-flex items-center space-x-3 bg-white text-deep-indigo text-sm font-bold pl-6 pr-2 py-2.5 rounded-full hover:bg-soft-cyan transition-colors duration-300">
                     <span>Schedule Consultation</span>
                     <span class="w-7 h-7 rounded-full bg-deep-indigo text-white flex items-center justify-center transition-transform group-hover:rotate-45 duration-300">
                         <i class="fas fa-arrow-right text-[10px]"></i>
@@ -71,7 +71,7 @@ require_once __DIR__ . '/includes/header.php';
                             <span>Detailed Medical History</span>
                         </h3>
                         <p class="text-xs text-dark-grey/65 leading-relaxed">
-                            We will discuss your symptoms in detail—when they started, their pattern, triggers, severity, and any past treatments or family history.
+                            We will discuss your symptoms in detailâ€”when they started, their pattern, triggers, severity, and any past treatments or family history.
                         </p>
                     </div>
 

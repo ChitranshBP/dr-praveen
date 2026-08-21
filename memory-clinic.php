@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Memory & Cognitive Center Page - Dr. Praveen Gupta
  */
@@ -20,7 +20,7 @@ require_once __DIR__ . '/includes/header.php';
         <div class="max-w-3xl text-left animate-fade-in-up">
             <!-- Breadcrumb -->
             <nav class="flex items-center space-x-2 text-white/80 text-sm mb-3">
-                <a href="index.php" class="hover:text-white transition-colors">Home</a>
+                <a href="index" class="hover:text-white transition-colors">Home</a>
                 <i class="fas fa-chevron-right text-[8px]"></i>
                 <span class="text-white font-medium">Memory Clinic</span>
             </nav>
@@ -41,7 +41,7 @@ require_once __DIR__ . '/includes/header.php';
             </p>
 
             <div class="flex flex-wrap items-center gap-4">
-                <a href="contact-us-top-neurologist-delhi-ncr.php" class="group inline-flex items-center space-x-3 bg-white text-deep-indigo text-sm font-bold pl-6 pr-2 py-2.5 rounded-full hover:bg-soft-cyan transition-colors duration-300">
+                <a href="contact-us-top-neurologist-delhi-ncr" class="group inline-flex items-center space-x-3 bg-white text-deep-indigo text-sm font-bold pl-6 pr-2 py-2.5 rounded-full hover:bg-soft-cyan transition-colors duration-300">
                     <span>Schedule Evaluation</span>
                     <span class="w-7 h-7 rounded-full bg-deep-indigo text-white flex items-center justify-center transition-transform group-hover:rotate-45 duration-300">
                         <i class="fas fa-arrow-right text-[10px]"></i>
@@ -60,7 +60,7 @@ require_once __DIR__ . '/includes/header.php';
                 <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Cognitive Care</span>
                 <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Understanding Memory Disorders</h2>
                 <p class="text-dark-grey/70 leading-relaxed mb-6">
-                    Memory loss ranges from mild forgetfulness to progressive conditions such as dementia and Alzheimer's disease. Early detection is what makes the difference — it slows progression and buys quality of life for both patient and family.
+                    Memory loss ranges from mild forgetfulness to progressive conditions such as dementia and Alzheimer's disease. Early detection is what makes the difference â€” it slows progression and buys quality of life for both patient and family.
                 </p>
                 <p class="text-dark-grey/70 leading-relaxed mb-8">
                     Our centre maps the root cause of cognitive symptoms rather than assuming one, because a meaningful proportion of memory complaints turn out to be treatable: a vitamin deficiency, a thyroid imbalance or a medication effect.
@@ -150,7 +150,7 @@ require_once __DIR__ . '/includes/header.php';
                 </div>
                 <h3 class="text-lg font-bold text-dark-grey mb-3">Mild Cognitive Impairment</h3>
                 <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Addressing early-stage memory change that exceeds normal ageing but does not yet interfere with daily living — the window where intervention matters most.
+                    Addressing early-stage memory change that exceeds normal ageing but does not yet interfere with daily living â€” the window where intervention matters most.
                 </p>
                 <div class="flex flex-wrap gap-2">
                     <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Early Window</span>
@@ -182,7 +182,7 @@ require_once __DIR__ . '/includes/header.php';
             <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Experience</span>
             <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">What to Expect at Your Assessment</h2>
             <p class="text-dark-grey/70 leading-relaxed">
-                A full memory assessment is methodical by design — the aim is to find every contributing factor, including the reversible ones.
+                A full memory assessment is methodical by design â€” the aim is to find every contributing factor, including the reversible ones.
             </p>
         </div>
 
@@ -262,9 +262,9 @@ require_once __DIR__ . '/includes/header.php';
                         Dr. Praveen Gupta is a pioneering neurologist with 20+ years of clinical excellence. Renowned for introducing the first stroke mechanical thrombectomy services in Gurgaon and executing the region's first Deep Brain Stimulation (DBS) surgery, he leads Marengo Asia Neuro & Spine Institute with a commitment to state-of-the-art diagnostics and compassionate patient recovery.
                     </p>
                     <div class="flex flex-wrap gap-4 pt-2">
-                        <a href="about.php" class="text-xs font-semibold text-electric-blue hover:underline">Full Biography <i class="fas fa-arrow-right text-[10px] ml-1"></i></a>
+                        <a href="about" class="text-xs font-semibold text-electric-blue hover:underline">Full Biography <i class="fas fa-arrow-right text-[10px] ml-1"></i></a>
                         <span class="text-slate-300">|</span>
-                        <a href="why-choose-dr-praveen-gupta.php" class="text-xs font-semibold text-electric-blue hover:underline">Why Choose Dr. Praveen <i class="fas fa-arrow-right text-[10px] ml-1"></i></a>
+                        <a href="why-choose-dr-praveen-gupta" class="text-xs font-semibold text-electric-blue hover:underline">Why Choose Dr. Praveen <i class="fas fa-arrow-right text-[10px] ml-1"></i></a>
                     </div>
                 </div>
             </div>

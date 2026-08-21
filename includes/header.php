@@ -3,8 +3,8 @@
  * Header Include
  */
 require_once __DIR__ . '/config.php';
-$currentPage = basename($_SERVER['PHP_SELF']);
-$isHomepage = ($currentPage === 'index.php');
+$currentPage = str_replace('.php', '', basename($_SERVER['PHP_SELF']));
+$isHomepage = ($currentPage === 'index');
 $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
 ?>
 <!DOCTYPE html>
@@ -12,84 +12,31 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Dr. Praveen Gupta - Leading healthcare professional providing exceptional medical care with 25+ years of experience.">
+    <meta name="description" content="Dr. Praveen Gupta - Leading healthcare professional providing exceptional medical care with 20+ years of experience.">
     <meta name="keywords" content="Dr Praveen Gupta, healthcare, medical services, doctor, clinic">
     <meta name="author" content="Dr. Praveen Gupta">
     <title><?php echo SITE_NAME; ?> - <?php echo SITE_TAGLINE; ?></title>
 
-    <!-- Canonical URL (self-referencing on all pages) -->
-    <link rel="canonical" href="https://dr-praveen.com/<?php echo $currentPage; ?>">
+    <!-- Canonical URL -->
+    <?php
+    $canonicalUrl = rtrim(SITE_URL, '/') . '/';
+    if (!$isHomepage && $currentPage !== '') {
+        $canonicalUrl .= $currentPage;
+    }
+    ?>
+    <link rel="canonical" href="<?php echo $canonicalUrl; ?>">
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'electric-blue': '#2563EB',
-                        'cyan-accent': '#06B6D4',
-                        'deep-indigo': '#1E1B4B',
-                        'soft-cyan': '#ECFEFF',
-                        'silver-grey': '#E5E7EB',
-                        'dark-grey': '#111827',
-                    },
-                    fontFamily: {
-                        'sans': ['Inter', 'system-ui', 'sans-serif'],
-                        'serif': ['Playfair Display', 'serif'],
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'fade-in-up': 'fadeInUp 0.8s ease-out',
-                        'fade-in': 'fadeIn 1s ease-out',
-                        'slide-in-left': 'slideInLeft 0.8s ease-out',
-                        'slide-in-right': 'slideInRight 0.8s ease-out',
-                        'pulse-slow': 'pulse 3s infinite',
-                        'gradient': 'gradient 8s ease infinite',
-                        'shimmer': 'shimmer 2s linear infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(30px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
-                        },
-                        slideInLeft: {
-                            '0%': { opacity: '0', transform: 'translateX(-50px)' },
-                            '100%': { opacity: '1', transform: 'translateX(0)' },
-                        },
-                        slideInRight: {
-                            '0%': { opacity: '0', transform: 'translateX(50px)' },
-                            '100%': { opacity: '1', transform: 'translateX(0)' },
-                        },
-                        gradient: {
-                            '0%, 100%': { 'background-position': '0% 50%' },
-                            '50%': { 'background-position': '100% 50%' },
-                        },
-                        shimmer: {
-                            '0%': { 'background-position': '-200% 0' },
-                            '100%': { 'background-position': '200% 0' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Compiled Tailwind CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font Awesome (Deferred) -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/favicon/favicon.png">
@@ -278,7 +225,7 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
         }
     </style>
 </head>
-<body class="bg-white text-dark-grey antialiased">
+<body class="bg-white text-dark-grey antialiased overflow-x-hidden">
 
     <!-- Top Bar - Modern -->
     <!-- <div class="bg-gradient-to-r from-deep-indigo via-[#1E1B4B] to-deep-indigo text-white py-2.5 text-xs hidden md:block relative overflow-hidden">
@@ -338,7 +285,7 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
-                <a href="index.php" class="flex items-center group">
+                <a href="index" class="flex items-center group">
                     <img id="header-logo" src="assets/logo/NeuroDoc-final-logo.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" class="h-14 sm:h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 <?php echo $isHomepage || $isDarkHero ? 'invert brightness-0' : ''; ?>">
                 </a>
 
@@ -389,7 +336,7 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
                     </button> -->
 
                     <!-- CTA Button - Premium Style -->
-                    <a href="contact-us-top-neurologist-delhi-ncr.php" class="btn-shimmer group relative inline-flex items-center space-x-2 bg-gradient-to-r from-electric-blue to-cyan-accent text-white text-sm font-semibold pl-5 pr-2 py-2 rounded-full hover:shadow-xl hover:shadow-electric-blue/40 transition-all duration-300 transform hover:-translate-y-0.5">
+                    <a href="contact-us-top-neurologist-delhi-ncr" class="btn-shimmer group relative inline-flex items-center space-x-2 bg-gradient-to-r from-electric-blue to-cyan-accent text-white text-sm font-semibold pl-5 pr-2 py-2 rounded-full hover:shadow-xl hover:shadow-electric-blue/40 transition-all duration-300 transform hover:-translate-y-0.5">
                         <span>Book Appointment</span>
                         <span class="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center group-hover:rotate-45 transition-transform duration-300">
                             <i class="fas fa-arrow-right text-[10px]"></i>
@@ -440,7 +387,7 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
                         </a>
                     <?php endif; ?>
                 <?php endforeach; ?>
-                <a href="contact-us-top-neurologist-delhi-ncr.php" class="block mt-3 px-4 py-3 text-center bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold rounded-xl shadow-lg shadow-electric-blue/20">
+                <a href="contact-us-top-neurologist-delhi-ncr" class="block mt-3 px-4 py-3 text-center bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold rounded-xl shadow-lg shadow-electric-blue/20">
                     Book Appointment
                 </a>
             </div>
