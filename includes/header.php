@@ -17,6 +17,12 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
     <meta name="author" content="Dr. Praveen Gupta">
     <title><?php echo SITE_NAME; ?> - <?php echo SITE_TAGLINE; ?></title>
 
+    <?php if ($isHomepage): ?>
+    <!-- Preload Hero LCP Images -->
+    <link rel="preload" as="image" href="assets/webp/mobile-banner/1.webp" media="(max-width: 639px)" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/webp/banner/DrPraveen_WebBanner_New(1440X500).webp" media="(min-width: 640px)" fetchpriority="high">
+    <?php endif; ?>
+
     <!-- Canonical URL -->
     <?php
     $canonicalUrl = rtrim(SITE_URL, '/') . '/';
