@@ -222,13 +222,13 @@ if (file_exists($doctorsJsonPath)) {
         <div id="banner-slider" class="relative w-full overflow-hidden rounded-3xl shadow-lg border border-silver-grey/50">
             <div id="banner-track" class="flex transition-transform duration-700 ease-in-out">
                 <div class="min-w-full relative">
-                    <img src="assets/full-image/Dr-Praveen-Banner-1.png" alt="Dr. Praveen Gupta Slide 1" class="w-full h-auto block">
+                    <img src="assets/full-image/Dr-Praveen-Banner-1.webp" alt="Dr. Praveen Gupta Slide 1" class="w-full h-auto block" width="1440" height="500">
                 </div>
                 <div class="min-w-full relative">
-                    <img src="assets/full-image/Dr-Praveen-Banner-2.png" alt="Dr. Praveen Gupta Slide 2" class="w-full h-auto block">
+                    <img src="assets/full-image/Dr-Praveen-Banner-2.webp" alt="Dr. Praveen Gupta Slide 2" loading="lazy" class="w-full h-auto block" width="1440" height="500">
                 </div>
                 <div class="min-w-full relative">
-                    <img src="assets/full-image/Dr-Praveen-Banner-6.png" alt="Dr. Praveen Gupta Slide 3" class="w-full h-auto block">
+                    <img src="assets/full-image/Dr-Praveen-Banner-6.webp" alt="Dr. Praveen Gupta Slide 3" loading="lazy" class="w-full h-auto block" width="1440" height="500">
                 </div>
             </div>
 
@@ -1106,22 +1106,26 @@ if (file_exists($doctorsJsonPath)) {
 
     </div>
 
-    <!-- Instagram embed script (loads once, processes every blockquote on the page) -->
-    <script async src="https://www.instagram.com/embed.js"></script>
+    <!-- Instagram embed script (lazy loaded) -->
     <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // If embed.js was cached and ran before this markup existed, re-process manually.
-        let tries = 0;
-        const timer = setInterval(function () {
-            if (window.instgrm && window.instgrm.Embeds) {
-                window.instgrm.Embeds.process();
-                clearInterval(timer);
-            } else if (++tries > 20) {
-                clearInterval(timer);
-            }
-        }, 300);
+        const igSection = document.getElementById('instagram-reels');
+        if (!igSection) return;
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const script = document.createElement('script');
+                    script.async = true;
+                    script.src = 'https://www.instagram.com/embed.js';
+                    document.body.appendChild(script);
+                    observer.disconnect();
+                }
+            });
+        }, { rootMargin: '200px' });
+        
+        observer.observe(igSection);
     });
-    </script>
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
