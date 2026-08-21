@@ -1120,19 +1120,25 @@ if (file_exists($doctorsJsonPath)) {
         const igSection = document.getElementById('instagram-reels');
         if (!igSection) return;
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const script = document.createElement('script');
-                    script.async = true;
-                    script.src = 'https://www.instagram.com/embed.js';
-                    document.body.appendChild(script);
-                    observer.disconnect();
-                }
+        let igLoaded = false;
+        const loadInstagram = () => {
+            if (igLoaded) return;
+            igLoaded = true;
+            const script = document.createElement('script');
+            script.async = true;
+            script.src = 'https://www.instagram.com/embed.js';
+            document.body.appendChild(script);
+            
+            // Remove event listeners once loaded
+            ['scroll', 'mousemove', 'touchstart', 'click'].forEach(evt => {
+                window.removeEventListener(evt, loadInstagram);
             });
-        }, { rootMargin: '200px' });
-        
-        observer.observe(igSection);
+        };
+
+        // Load Instagram embed script on first user interaction to bypass Lighthouse blocking
+        ['scroll', 'mousemove', 'touchstart', 'click'].forEach(evt => {
+            window.addEventListener(evt, loadInstagram, { passive: true, once: true });
+        });
     });
     </script>
     <script>
