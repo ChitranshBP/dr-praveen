@@ -32,6 +32,8 @@ if (file_exists($doctorsJsonPath)) {
         <div id="hero-track" class="flex transition-transform duration-700 ease-in-out">
             <div class="min-w-full relative">
                 <picture>
+                    <source type="image/webp" media="(max-width: 767px)" srcset="assets/webp/mobile-banner/1.webp">
+                    <source type="image/webp" media="(min-width: 768px)" srcset="assets/webp/banner/DrPraveen_WebBanner_New(1440X500).webp">
                     <source media="(max-width: 767px)" srcset="assets/mobile-banner/1.png">
                     <img src="assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500).png" 
                          class="w-full h-auto object-cover object-[32%_center] md:object-center block" 
@@ -41,6 +43,8 @@ if (file_exists($doctorsJsonPath)) {
             </div>
             <div class="min-w-full relative">
                 <picture>
+                    <source type="image/webp" media="(max-width: 767px)" srcset="assets/webp/mobile-banner/2.webp">
+                    <source type="image/webp" media="(min-width: 768px)" srcset="assets/webp/banner/DrPraveen_WebBanner_New(1440X500) (1).webp">
                     <source media="(max-width: 767px)" srcset="assets/mobile-banner/2.png">
                     <img src="assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500)%20(1).png"
                          alt="Your Brain Deserves Expert Care â€“ Empowering every thought for a life beyond neurological limits"

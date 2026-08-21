@@ -20,5 +20,8 @@
   "homepage": "https://github.com/ChitranshBP/dr-praveen#readme",
   "devDependencies": {
     "tailwindcss": "^4.3.3"
+  },
+  "dependencies": {
+    "sharp": "^0.35.3"
   }
 }
