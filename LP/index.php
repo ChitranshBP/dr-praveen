@@ -608,7 +608,7 @@ $videos = [
                         <p class="text-sm font-medium text-dark-grey/60">Fill the form and our care team will call you back shortly.</p>
                     </div>
 
-                    <form id="appointment-form" class="space-y-4" novalidate>
+                    <form id="appointment-form" class="space-y-4" accept-charset="UTF-8" action="https://app.formester.com/forms/4a08Yw78e/submissions" method="POST">
                         <div>
                             <label for="lp-name" class="block text-xs font-bold text-dark-grey/70 uppercase tracking-wider mb-1.5">Full Name *</label>
                             <input type="text" id="lp-name" name="name" required placeholder="Enter your full name"
@@ -1261,37 +1261,7 @@ document.addEventListener('DOMContentLoaded', function () {
         statusEl.classList.toggle('text-emerald-700', !isError);
     }
 
-    form.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        var name = document.getElementById('lp-name').value.trim();
-        var phone = document.getElementById('lp-phone').value.trim();
-        var condition = document.getElementById('lp-condition').value;
-        var message = document.getElementById('lp-message').value.trim();
-
-        if (!name || !phone || !condition) {
-            showStatus('Please fill in your name, phone number and condition.', true);
-            return;
-        }
-        if (!/^[0-9+ ]{10,15}$/.test(phone)) {
-            showStatus('Please enter a valid phone number.', true);
-            return;
-        }
-
-        btnText.textContent = 'Connecting...';
-
-        var waMessage = 'New Appointment Request%0A'
-            + '%0AName: ' + encodeURIComponent(name)
-            + '%0APhone: ' + encodeURIComponent(phone)
-            + '%0ACondition: ' + encodeURIComponent(condition)
-            + (message ? '%0AMessage: ' + encodeURIComponent(message) : '');
-
-        window.open('https://wa.me/' + '<?php echo $whatsapp; ?>' + '?text=' + waMessage, '_blank');
-
-        showStatus('Thank you, ' + name + '! Your request has been prepared. Our team will contact you shortly.', false);
-        btnText.textContent = 'Request Callback';
-        form.reset();
-    });
+    // Form submission is now handled directly via Formester HTML attributes
 
     document.querySelectorAll('.video-card').forEach(function (card) {
         card.addEventListener('click', function () {

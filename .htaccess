@@ -4,12 +4,12 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    # LP Landing Page routing — canonical lowercase URL
-    # Redirect /LP (uppercase) to /lp (lowercase)
-    RewriteRule ^LP/?$ /lp [R=301,L]
+    # LP Landing Page routing — canonical URL as /enquire
+    # Redirect /LP (or /lp) to /enquire
+    RewriteRule ^(LP|lp)/?$ /enquire [R=301,L]
 
-    # Internally serve /lp from LP/index.php
-    RewriteRule ^lp/?$ /LP/index.php [L]
+    # Internally serve /enquire from LP/index.php
+    RewriteRule ^enquire/?$ /LP/index.php [L]
 
     # Force HTTPS
     RewriteCond %{HTTPS} off
