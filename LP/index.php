@@ -1032,7 +1032,7 @@ $videos = [
                         <div class="text-[10px] text-white/60 uppercase tracking-wide">Awards</div>
                     </div>
                     <div class="px-3 py-2 rounded-lg bg-white/5 border border-white/10">
-                        <div class="text-lg font-bold text-white">4.9â˜…</div>
+                        <div class="text-lg font-bold text-white">4.9+</div>
                         <div class="text-[10px] text-white/60 uppercase tracking-wide">Rating</div>
                     </div>
                 </div>
@@ -1137,7 +1137,7 @@ $videos = [
                 <p>&copy; <?php echo date('Y'); ?> <span class="text-white font-semibold">Dr. Praveen Gupta</span>. All rights reserved.</p>
                 <div class="flex items-center space-x-1">
                     <a href="../privacy-policy" class="px-3 py-1.5 rounded-full hover:bg-white/5 hover:text-cyan-accent transition-all">Privacy Policy</a>
-                    <span class="text-white/20">â€¢</span>
+                    
                     <a href="../terms-of-service" class="px-3 py-1.5 rounded-full hover:bg-white/5 hover:text-cyan-accent transition-all">Terms of Service</a>
                 </div>
             </div>
