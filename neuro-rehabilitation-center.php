@@ -64,7 +64,7 @@ require_once __DIR__ . '/includes/header.php';
                 <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Recovery Focus</span>
                 <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Rebuilding Independent Living</h2>
                 <p class="text-dark-grey/70 leading-relaxed mb-6">
-                    Following a stroke, brain trauma, or spinal cord injury, the nervous system requires specialized retraining. Our approach focuses on neuroplasticity â€“ the brain's innate ability to reorganize and form new neural connections in response to therapeutic exercise.
+                    Following a stroke, brain trauma, or spinal cord injury, the nervous system requires specialized retraining. Our approach focuses on neuroplasticity  the brain's innate ability to reorganize and form new neural connections in response to therapeutic exercise.
                 </p>
                 <p class="text-dark-grey/70 leading-relaxed mb-8">
                     Dr. Praveen Gupta coordinates the clinical team to ensure physical therapists, speech-language pathologists, and occupational therapists deliver unified therapy protocols tailored to your recovery targets.
@@ -267,14 +267,14 @@ require_once __DIR__ . '/includes/header.php';
                     About Dr. Praveen Gupta
                 </span>
                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo leading-tight mb-4">
-                    Dr. Praveen Gupta â€“ Best Neurologist in India
+                    Dr. Praveen Gupta  Best Neurologist in India
                 </h2>
 
                 <!-- Prestigious Appointments -->
                 <div class="flex flex-col space-y-2.5 mb-6">
                     <div class="flex items-center space-x-2.5 text-electric-blue font-medium text-xs md:text-sm">
                         <i class="fa-solid fa-award text-cyan-accent flex-shrink-0 text-base"></i>
-                        <span>Chairman â€“ Marengo Asia International Institute of Neuro and Spine</span>
+                        <span>Chairman  Marengo Asia International Institute of Neuro and Spine</span>
                     </div>
                     <div class="flex items-center space-x-2.5 text-electric-blue font-medium text-xs md:text-sm">
                         <i class="fa-solid fa-chart-line text-cyan-accent flex-shrink-0 text-base"></i>

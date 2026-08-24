@@ -170,7 +170,7 @@ require_once __DIR__ . '/includes/header.php';
                 </div>
                 <h3 class="text-lg font-bold text-dark-grey mb-3">Speech & Time</h3>
                 <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Speech is slurred, garbled, or difficult to understand, or the person cannot speak. Time is critical â€“ call the emergency helpline immediately.
+                    Speech is slurred, garbled, or difficult to understand, or the person cannot speak. Time is critical  call the emergency helpline immediately.
                 </p>
                 <div class="flex flex-wrap gap-2">
                     <span class="text-xs bg-red-50 text-red-650 px-3 py-1 rounded-full font-medium">Slurred Speech</span>
@@ -267,14 +267,14 @@ require_once __DIR__ . '/includes/header.php';
                     About Dr. Praveen Gupta
                 </span>
                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo leading-tight mb-4">
-                    Dr. Praveen Gupta â€“ Best Neurologist in India
+                    Dr. Praveen Gupta  Best Neurologist in India
                 </h2>
 
                 <!-- Prestigious Appointments -->
                 <div class="flex flex-col space-y-2.5 mb-6">
                     <div class="flex items-center space-x-2.5 text-electric-blue font-medium text-xs md:text-sm">
                         <i class="fa-solid fa-award text-cyan-accent flex-shrink-0 text-base"></i>
-                        <span>Chairman â€“ Marengo Asia International Institute of Neuro and Spine</span>
+                        <span>Chairman  Marengo Asia International Institute of Neuro and Spine</span>
                     </div>
                     <div class="flex items-center space-x-2.5 text-electric-blue font-medium text-xs md:text-sm">
                         <i class="fa-solid fa-chart-line text-cyan-accent flex-shrink-0 text-base"></i>

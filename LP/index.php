@@ -63,8 +63,8 @@ $videos = [
     })(window,document,'script','dataLayer','GTM-TF2TXQLK');</script>
     <!-- End Google Tag Manager -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Praveen Gupta â€“ Best Neurologist in Gurgaon | Book Appointment</title>
-    <meta name="description" content="Consult Dr. Praveen Gupta, Chairman â€“ Marengo Asia International Institute of Neuro & Spine. 20+ years of experience, 3,00,000+ patients treated. Book your appointment today.">
+    <title>Dr. Praveen Gupta  Best Neurologist in Gurgaon | Book Appointment</title>
+    <meta name="description" content="Consult Dr. Praveen Gupta, Chairman  Marengo Asia International Institute of Neuro & Spine. 20+ years of experience, 3,00,000+ patients treated. Book your appointment today.">
     <link rel="icon" type="image/png" href="assets/favicon/favicon.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -764,13 +764,13 @@ $videos = [
                     <span class="text-electric-blue text-sm font-semibold">About Dr. Praveen Gupta</span>
                 </div>
                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo leading-tight mb-4">
-                    Dr. Praveen Gupta â€“ <span class="gradient-text">Best Neurologist</span> in India
+                    Dr. Praveen Gupta  <span class="gradient-text">Best Neurologist</span> in India
                 </h2>
 
                 <div class="flex flex-col space-y-2.5 mb-6">
                     <div class="flex items-center space-x-2.5 text-electric-blue font-medium text-xs md:text-sm">
                         <i class="fa-solid fa-award text-cyan-accent flex-shrink-0 text-base"></i>
-                        <span>Chairman â€“ Marengo Asia International Institute of Neuro and Spine</span>
+                        <span>Chairman  Marengo Asia International Institute of Neuro and Spine</span>
                     </div>
                     <div class="flex items-center space-x-2.5 text-electric-blue font-medium text-xs md:text-sm">
                         <i class="fa-solid fa-chart-line text-cyan-accent flex-shrink-0 text-base"></i>

@@ -39,7 +39,7 @@ require_once __DIR__ . '/includes/header.php';
             </h1>
 
             <p class="text-sm md:text-base text-white/80 leading-relaxed mb-6 max-w-2xl">
-                Repetitive Transcranial Magnetic Stimulation (rTMS) â€“ a non-invasive, drug-free outpatient therapy utilizing magnetic fields to stimulate nerve cells for depression, chronic pain, and stroke recovery.
+                Repetitive Transcranial Magnetic Stimulation (rTMS)  a non-invasive, drug-free outpatient therapy utilizing magnetic fields to stimulate nerve cells for depression, chronic pain, and stroke recovery.
             </p>
 
             <!-- CTA Buttons -->
@@ -268,14 +268,14 @@ require_once __DIR__ . '/includes/header.php';
                     About Dr. Praveen Gupta
                 </span>
                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo leading-tight mb-4">
-                    Dr. Praveen Gupta â€“ Best Neurologist in India
+                    Dr. Praveen Gupta  Best Neurologist in India
                 </h2>
 
                 <!-- Prestigious Appointments -->
                 <div class="flex flex-col space-y-2.5 mb-6">
                     <div class="flex items-center space-x-2.5 text-electric-blue font-medium text-xs md:text-sm">
                         <i class="fa-solid fa-award text-cyan-accent flex-shrink-0 text-base"></i>
-                        <span>Chairman â€“ Marengo Asia International Institute of Neuro and Spine</span>
+                        <span>Chairman  Marengo Asia International Institute of Neuro and Spine</span>
                     </div>
                     <div class="flex items-center space-x-2.5 text-electric-blue font-medium text-xs md:text-sm">
                         <i class="fa-solid fa-chart-line text-cyan-accent flex-shrink-0 text-base"></i>

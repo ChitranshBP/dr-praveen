@@ -26,7 +26,7 @@ if (file_exists($doctorsJsonPath)) {
 <!-- Hero Section - Banner Slider -->
 <section class="relative overflow-hidden bg-deep-indigo -mt-20 select-none">
     <!-- SEO H1 (visually hidden - headline is baked into the banner artwork) -->
-    <h1 class="sr-only">Dr. Praveen Gupta â€“ Best Neurologist in India | Transforming Brain &amp; Spine Care with Precision</h1>
+    <h1 class="sr-only">Dr. Praveen Gupta Best Neurologist in India | Transforming Brain &amp; Spine Care with Precision</h1>
 
     <div id="hero-slider" class="w-full max-w-[1920px] mx-auto relative">
         <div id="hero-track" class="flex transition-transform duration-700 ease-in-out">
@@ -36,7 +36,7 @@ if (file_exists($doctorsJsonPath)) {
                     <source media="(min-width: 640px)" srcset="assets/webp/banner/DrPraveen_WebBanner_New(1440X500).webp" type="image/webp">
                     <img src="assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500).png" 
                          class="w-full h-auto object-cover object-[32%_center] md:object-center block" 
-                         alt="Transforming Brain & Spine Care with Precision â€“ Led by Dr. Praveen Gupta, Chairman, Marengo Asia International Institute of Neuro & Spine" 
+                         alt="Transforming Brain & Spine Care with Precision  Led by Dr. Praveen Gupta, Chairman, Marengo Asia International Institute of Neuro & Spine" 
                          width="1440" height="500"
                          fetchpriority="high">
                 </picture>
@@ -46,7 +46,7 @@ if (file_exists($doctorsJsonPath)) {
                     <source media="(max-width: 639px)" srcset="assets/webp/mobile-banner/mobile-1%20(1).webp" type="image/webp">
                     <source media="(min-width: 640px)" srcset="assets/webp/banner/DrPraveen_WebBanner_New(1440X500)%20(1).webp" type="image/webp">
                     <img src="assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500)%20(1).png"
-                         alt="Your Brain Deserves Expert Care â€“ Empowering every thought for a life beyond neurological limits"
+                         alt="Your Brain Deserves Expert Care  Empowering every thought for a life beyond neurological limits"
                          loading="lazy"
                          width="1440" height="500"
                          class="w-full h-auto object-cover object-[32%_center] md:object-center block">
@@ -363,14 +363,14 @@ if (file_exists($doctorsJsonPath)) {
                     <span class="text-electric-blue text-sm font-semibold">About Dr. Praveen Gupta</span>
                 </div>
                 <h2 class="text-4xl md:text-5xl font-serif font-bold text-deep-indigo leading-tight mb-4">
-                    Dr. Praveen Gupta â€“ <span class="gradient-text">Best Neurologist</span> in India
+                    Dr. Praveen Gupta  <span class="gradient-text">Best Neurologist</span> in India
                 </h2>
 
                 <!-- Prestigious Appointments -->
                 <div class="flex flex-col space-y-2.5 mb-6">
                     <div class="flex items-center space-x-2.5 text-electric-blue font-medium text-xs md:text-sm">
                         <i class="fa-solid fa-award text-cyan-accent flex-shrink-0 text-base"></i>
-                        <span>Chairman â€“ Marengo Asia International Institute of Neuro and Spine</span>
+                        <span>Chairman  Marengo Asia International Institute of Neuro and Spine</span>
                     </div>
                     <div class="flex items-center space-x-2.5 text-electric-blue font-medium text-xs md:text-sm">
                         <i class="fa-solid fa-chart-line text-cyan-accent flex-shrink-0 text-base"></i>
