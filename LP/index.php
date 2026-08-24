@@ -13,10 +13,10 @@ $email        = 'contact@drpraveengupta.com';
 $address      = 'Marengo Asia Hospitals, Shushant Lok 2, Sector 56, Gurugram, Haryana 122011';
 
 $stats = [
-    ['number' => '3,00,000+', 'label' => 'Patients Treated',      'icon' => 'fas fa-user-group',  'description' => 'Trusted by over 300,000 patients whose health and recovery remain our top priorities.'],
-    ['number' => '1,00,000+', 'label' => 'Success Stories',       'icon' => 'fas fa-face-smile',  'description' => 'Over 100,000 patient success stories driven by advanced neuro-clinical treatments.'],
-    ['number' => '50+',       'label' => 'Global Awards',         'icon' => 'fas fa-award',       'description' => 'Recognized globally with prestigious awards for pioneering achievements in neurosciences.'],
-    ['number' => '20+',       'label' => 'Years of Experience',   'icon' => 'fas fa-user-doctor', 'description' => 'Two decades of expert clinical diagnosis, treatment, and neurological care.'],
+    ['number' => '3,00,000+', 'label' => 'Patients Treated'],
+    ['number' => '1,00,000+', 'label' => 'Success Stories'],
+    ['number' => '50+',       'label' => 'Global Awards'],
+    ['number' => '20+',       'label' => 'Years of Experience'],
 ];
 
 $conditions = [
@@ -662,42 +662,31 @@ $videos = [
 </section>
 
 <!-- ════════ Stats : Modern Premium Design ════════ -->
-<section class="py-16 md:py-24 bg-dark-grey relative overflow-hidden">
+<section class="py-16 md:py-24 bg-gradient-to-br from-blue-50 to-cyan-50 relative overflow-hidden">
     <!-- Background Accents -->
-    <div class="absolute top-0 left-1/4 w-96 h-96 bg-electric-blue/20 rounded-full blur-[100px] pointer-events-none"></div>
-    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-accent/20 rounded-full blur-[100px] pointer-events-none"></div>
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-electric-blue/10 rounded-full blur-[100px] pointer-events-none"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-accent/10 rounded-full blur-[100px] pointer-events-none"></div>
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center max-w-3xl mx-auto mb-16 observe">
-            <h2 class="text-3xl md:text-5xl font-serif font-bold text-white mb-4">
+            <h2 class="text-3xl md:text-5xl font-serif font-bold text-gray-800 mb-4">
                 A Legacy of <span class="text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent">Healing & Hope</span>
             </h2>
-            <p class="text-lg text-silver-grey/80 font-medium">
+            <p class="text-lg text-gray-600 font-medium">
                 Pioneering treatments and compassionate care that have transformed countless lives globally.
             </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             <?php foreach ($stats as $index => $stat): ?>
-                <div class="relative group observe" style="transition-delay: <?php echo $index * 100; ?>ms;">
-                    <!-- Card Background Glow on Hover -->
-                    <div class="absolute -inset-0.5 bg-gradient-to-r from-electric-blue to-cyan-accent rounded-3xl blur opacity-0 group-hover:opacity-30 transition duration-500"></div>
-                    
-                    <div class="relative bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-3xl h-full flex flex-col items-start hover:-translate-y-2 transition-transform duration-500">
-                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-electric-blue/20 to-cyan-accent/20 border border-white/5 flex items-center justify-center text-2xl text-cyan-300 mb-6 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_15px_rgba(6,182,212,0.2)]">
-                            <i class="<?php echo $stat['icon']; ?>"></i>
-                        </div>
-                        <div class="text-4xl md:text-5xl font-extrabold text-white mb-2 tracking-tight">
+                <div class="relative group observe text-center" style="transition-delay: <?php echo $index * 100; ?>ms;">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-500 border border-gray-100">
+                        <div class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent mb-3 tracking-tight">
                             <?php echo $stat['number']; ?>
                         </div>
-                        
-                        <div class="text-lg font-bold text-cyan-100 mb-3 uppercase tracking-wide">
+                        <div class="text-base font-semibold text-gray-600 uppercase tracking-wider">
                             <?php echo $stat['label']; ?>
                         </div>
-                        
-                        <p class="text-sm text-silver-grey/70 leading-relaxed mt-auto">
-                            <?php echo $stat['description']; ?>
-                        </p>
                     </div>
                 </div>
             <?php endforeach; ?>
