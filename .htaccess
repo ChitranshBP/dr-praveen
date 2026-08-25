@@ -1,35 +1,34 @@
 # Dr. Praveen Gupta - Website Configuration
-# Apache configuration for clean URLs and security
+# Apache configuration for clean URLs, subfolders, and performance
+
+DirectoryIndex index.php index.html
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /
 
-    # 1. Prevent rewriting for existing real files and directories (assets, uploads, cms, data, LP)
+    # 1. Force HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # 2. Landing Page routing — /enquire to LP/index.php
+    RewriteRule ^(LP|lp)/?$ /enquire [R=301,L]
+    RewriteRule ^enquire/?$ /LP/index.php [L]
+
+    # 3. Redirect /index or /index.php to root /
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index(\.php)?\ HTTP/
+    RewriteRule ^index(\.php)?$ / [R=301,L]
+
+    # 4. If request is a real file or real directory, serve directly
     RewriteCond %{REQUEST_FILENAME} -f [OR]
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteRule ^ - [L]
 
-    # 2. Exclude cms, data, assets folders explicitly
-    RewriteRule ^(cms|data|assets|dist)($|/) - [L]
+    # 5. Internally rewrite extensionless URLs to .php if the .php file exists (works for root AND /cms/!)
+    RewriteCond %{REQUEST_FILENAME}.php -f
+    RewriteRule ^(.*)$ $1.php [L]
 
-    # 3. Landing Page routing — /enquire to LP/index.php
-    RewriteRule ^(LP|lp)/?$ /enquire [R=301,L]
-    RewriteRule ^enquire/?$ /LP/index.php [L]
-
-    # 4. Force HTTPS
-    RewriteCond %{HTTPS} off
-    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-    # 5. Redirect /index or /index.php to root /
-    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index(\.php)?\ HTTP/
-    RewriteRule ^index(\.php)?$ / [R=301,L]
-
-    # 6. Internally add .php extension for extensionless requests
-    RewriteCond %{DOCUMENT_ROOT}/$1.php -f
-    RewriteRule ^([^/]+)/?$ $1.php [L]
-
-    # 7. Remove trailing slash if not a directory
+    # 6. Remove trailing slash for non-directories
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)/$ /$1 [L,R=301]
 </IfModule>
@@ -51,7 +50,7 @@
     AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
 </IfModule>
 
-# Caching
+# Browser Caching
 <IfModule mod_expires.c>
     ExpiresActive On
     ExpiresByType image/jpg "access plus 1 year"
