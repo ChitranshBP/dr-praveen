@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($action === 'delete') {
         $id = $_POST['id'] ?? '';
-        $testimonials = array_values(array_filter($testimonials, fn($t) => $t['id'] !== $id));
+        $testimonials = array_values(array_filter($testimonials, function($t) use ($id) { return ($t['id'] ?? '') !== $id; }));
         CMS_DB::set('testimonials', $testimonials);
         cms_set_flash('success', 'Testimonial deleted.');
         header('Location: testimonials.php');

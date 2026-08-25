@@ -30,7 +30,7 @@ $banners = [];
 if (file_exists($cmsBannersFile)) {
     $banners = json_decode(file_get_contents($cmsBannersFile), true) ?: [];
 }
-$activeBanners = array_values(array_filter($banners, fn($b) => !isset($b['is_active']) || $b['is_active']));
+$activeBanners = array_values(array_filter($banners, function($b) { return !isset($b['is_active']) || !empty($b['is_active']); }));
 if (empty($activeBanners)) {
     $activeBanners = [
         [

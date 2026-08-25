@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($action === 'delete') {
         $id = $_POST['id'] ?? '';
-        $blogs = array_values(array_filter($blogs, fn($b) => $b['id'] !== $id));
+        $blogs = array_values(array_filter($blogs, function($b) use ($id) { return ($b['id'] ?? '') !== $id; }));
         CMS_DB::set('blogs', $blogs);
         cms_set_flash('success', 'Article deleted.');
         header('Location: blogs.php');

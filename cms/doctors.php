@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($action === 'delete') {
         $id = $_POST['id'] ?? '';
-        $doctors = array_values(array_filter($doctors, fn($d) => ($d['id'] ?? '') !== $id));
+        $doctors = array_values(array_filter($doctors, function($d) use ($id) { return ($d['id'] ?? '') !== $id; }));
         CMS_DB::set('doctors', $doctors);
         cms_set_flash('success', 'Doctor removed from team.');
         header('Location: doctors.php');

@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     } elseif ($action === 'delete') {
         $id = $_POST['banner_id'] ?? '';
-        $banners = array_values(array_filter($banners, fn($b) => $b['id'] !== $id));
+        $banners = array_values(array_filter($banners, function($b) use ($id) { return ($b['id'] ?? '') !== $id; }));
         CMS_DB::set('banners', $banners);
         cms_set_flash('success', 'Banner deleted.');
         header('Location: banners.php');

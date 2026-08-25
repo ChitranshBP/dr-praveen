@@ -12,17 +12,17 @@ define('DATA_DIR', dirname(CMS_ROOT) . '/data');
 define('UPLOADS_DIR', dirname(CMS_ROOT) . '/assets/uploads');
 
 if (!is_dir(DATA_DIR)) {
-    mkdir(DATA_DIR, 0755, true);
+    @mkdir(DATA_DIR, 0755, true);
 }
 if (!is_dir(UPLOADS_DIR)) {
-    mkdir(UPLOADS_DIR, 0755, true);
+    @mkdir(UPLOADS_DIR, 0755, true);
 }
 
 if (!file_exists(DATA_DIR . '/.htaccess')) {
-    file_put_contents(DATA_DIR . '/.htaccess', "Deny from all\n");
+    @file_put_contents(DATA_DIR . '/.htaccess', "Deny from all\n");
 }
 if (!file_exists(DATA_DIR . '/index.php')) {
-    file_put_contents(DATA_DIR . '/index.php', "<?php http_response_code(403); exit('Access Denied'); ?>");
+    @file_put_contents(DATA_DIR . '/index.php', "<?php http_response_code(403); exit('Access Denied'); ?>");
 }
 
 class CMS_DB {
