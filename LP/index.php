@@ -355,40 +355,9 @@ $videos = [
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
         const navbar = document.getElementById('navbar');
         const headerLogo = document.getElementById('header-logo');
         const scrollProgress = document.getElementById('scroll-progress');
-        
-        let menuOpen = false;
-
-        if (mobileMenuBtn) {
-            mobileMenuBtn.addEventListener('click', function() {
-                menuOpen = !menuOpen;
-                mobileMenu.classList.toggle('open');
-                
-                if (menuOpen) {
-                    menuIcon.classList.remove('fa-bars');
-                    menuIcon.classList.add('fa-xmark');
-                    navbar.classList.remove('navbar-glass');
-                    navbar.classList.add('navbar-solid');
-                    if (headerLogo) headerLogo.classList.remove('invert', 'brightness-0');
-                    if (menuIcon) menuIcon.classList.remove('text-white');
-                } else {
-                    menuIcon.classList.remove('fa-xmark');
-                    menuIcon.classList.add('fa-bars');
-                    updateNavbar();
-                }
-            });
-        }
-
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (menuOpen) mobileMenuBtn.click();
-            });
-        });
 
         function updateNavbar() {
             const scrollY = window.scrollY;
@@ -396,22 +365,17 @@ $videos = [
             const progress = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
             if (scrollProgress) scrollProgress.style.width = progress + '%';
 
-            if (menuOpen) return;
-
             if (scrollY > 50) {
                 navbar.classList.remove('navbar-glass');
                 navbar.classList.add('navbar-solid');
                 if (headerLogo) headerLogo.classList.remove('invert', 'brightness-0');
-                if (menuIcon) menuIcon.classList.remove('text-white');
             } else {
                 navbar.classList.remove('navbar-solid');
                 navbar.classList.add('navbar-glass');
                 if (headerLogo) headerLogo.classList.add('invert', 'brightness-0');
-                if (menuIcon) menuIcon.classList.add('text-white');
             }
         }
 
-        window.addEventListener('scroll', updateNavbar);
         window.addEventListener('scroll', updateNavbar, { passive: true });
         updateNavbar();
     });
