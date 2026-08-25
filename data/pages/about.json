@@ -1,0 +1,14 @@
+{
+    "slug": "about",
+    "file": "about.php",
+    "title": "About Dr. Praveen Gupta",
+    "category": "About",
+    "hero_badge": "Chairman & Neurologist",
+    "hero_title": "About Dr. Praveen Gupta",
+    "hero_desc": "Gold Medalist from AIIMS New Delhi with over 20 years of transformative leadership in Indian and global neurology.",
+    "hero_bg": "assets/breadcrumbs/about.png",
+    "section1_badge": "Biography",
+    "section1_title": "A Legacy of Innovation in Neurology",
+    "section1_text": "Dr. Praveen Gupta has pioneered numerous landmark interventions in India, including the first Brain Pacemaker for Epilepsy in Asia, Deep Brain Stimulation for Parkinson's, and mechanical thrombectomy for acute stroke.",
+    "section1_image": "assets/ggn-nuro-images/optimized/dr-praveen-gupta.webp"
+}

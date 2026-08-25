@@ -1,0 +1,14 @@
+{
+    "slug": "functional-neurosurgery",
+    "file": "functional-neurosurgery.php",
+    "title": "Functional Neurosurgery",
+    "category": "Services",
+    "hero_badge": "Advanced Neuromodulation Center",
+    "hero_title": "Functional Neurosurgery",
+    "hero_desc": "Advanced surgical treatments for movement disorders, pioneering Deep Brain Stimulation (DBS) to restore control, alleviate tremors, and improve daily functions.",
+    "hero_bg": "assets/breadcrumbs/dr-parveen-services-breadcrumb/Functional%20Neurosurgery.png",
+    "section1_badge": "Neuromodulation Excellence",
+    "section1_title": "Restoring Motor Functions",
+    "section1_text": "Functional neurosurgery restores neurological function and relieves motor deficits through direct electrical modulation of the brain circuits responsible — rather than through drugs that act on the whole body.\n\nDr. Praveen Gupta's team pioneered the first Deep Brain Stimulation surgeries in Gurgaon, and specialises in high-precision stereotactic procedures for patients whose symptoms no longer respond to conventional medication.",
+    "section1_image": "assets/services/functional-neuro.png"
+}

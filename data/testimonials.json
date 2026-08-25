@@ -1,0 +1,46 @@
+[
+    {
+        "id": "7a964b4aaacc9966",
+        "name": "Atul Saxena",
+        "role": "Patient's Son",
+        "rating": 5,
+        "condition": "Neuropathy",
+        "message": "I would like to express my heartfelt gratitude to Dr. Praveen Gupta and his outstanding team for the exceptional care during my mother's treatment for acute neuropathy. Dr. Gupta's clinical expertise, calm approach, and ability to explain every aspect of the treatment gave our family immense confidence.",
+        "video_id": "",
+        "featured": true,
+        "date": "2026-08-25"
+    },
+    {
+        "id": "fcdcf6b589c82d2c",
+        "name": "Yashu Jindal",
+        "role": "Patient's Son",
+        "rating": 5,
+        "condition": "Brain Stroke",
+        "message": "We are extremely grateful to Dr. Praveen Gupta for the exceptional care and treatment provided to my father during his brain stroke surgery. From the very beginning, Dr. Gupta guided us with confidence, clarity, and compassion during a very difficult time for our family.",
+        "video_id": "kEwXD0aT_rQ",
+        "featured": true,
+        "date": "2026-08-25"
+    },
+    {
+        "id": "9d18641bc4b434bc",
+        "name": "Dheeraj Tiwari",
+        "role": "Patient",
+        "rating": 5,
+        "condition": "Vertigo & Balance",
+        "message": "Really good experience at Dr. Praveen Gupta's clinic. My vertigo and dizziness improved a lot. My condition was explained in a way I could easily understand. I felt much better after following the treatment. Highly recommended.",
+        "video_id": "",
+        "featured": true,
+        "date": "2026-08-25"
+    },
+    {
+        "id": "5c000ce3ea63da45",
+        "name": "Syed Mazhar Kandhlavi",
+        "role": "Patient",
+        "rating": 5,
+        "condition": "Neurological Disorder",
+        "message": "Dr. Praveen Gupta is a brilliant, empathetic, and very supportive physician. I struggled with a neurological disorder for a decade, but under his care, I was completely cured in 10 days. He is genuinely an embodiment of compassion and healing.",
+        "video_id": "jg4e8bjYl-A",
+        "featured": true,
+        "date": "2026-08-25"
+    }
+]

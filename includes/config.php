@@ -1,28 +1,36 @@
-﻿<?php
+<?php
 /**
  * Site Configuration
  * Dr. Praveen Gupta - Official Website
  */
 
-// Site Information
-define('SITE_NAME', 'Dr. Praveen Gupta');
-define('SITE_TAGLINE', 'Excellence in Healthcare');
-define('SITE_URL', 'https://drpraveengupta.com');
-define('SITE_PHONE', '+91-87969-77903');
-define('STROKE_HELPLINE', '1800-309-0247');
-define('SITE_EMAIL', 'contact@drpraveengupta.com');
-define('SITE_ADDRESS', 'Marengo Asia Hospitals, Shushant Lok 2, Sector 56, Gurugram, Ghata, Haryana 122011');
+// Load dynamic settings from CMS if present
+$cmsSettingsFile = dirname(__DIR__) . '/data/settings.json';
+$cmsSettings = [];
+if (file_exists($cmsSettingsFile)) {
+    $cmsSettings = json_decode(file_get_contents($cmsSettingsFile), true) ?: [];
+}
 
-// WhatsApp â€” digits only, country code first, no '+', spaces or dashes (wa.me format)
-define('SITE_WHATSAPP', '918796977903');
-define('WHATSAPP_MESSAGE', 'Hello, I would like to book an appointment with Dr. Praveen Gupta.');
+// Site Information
+define('SITE_NAME', $cmsSettings['site_name'] ?? 'Dr. Praveen Gupta');
+define('SITE_TAGLINE', $cmsSettings['site_tagline'] ?? 'Excellence in Healthcare');
+define('SITE_URL', $cmsSettings['site_url'] ?? 'https://drpraveengupta.com');
+define('SITE_PHONE', $cmsSettings['phone'] ?? '+91-87969-77903');
+define('STROKE_HELPLINE', $cmsSettings['stroke_helpline'] ?? '1800-309-0247');
+define('SITE_EMAIL', $cmsSettings['email'] ?? 'contact@drpraveengupta.com');
+define('SITE_ADDRESS', $cmsSettings['address'] ?? 'Marengo Asia Hospitals, Shushant Lok 2, Sector 56, Gurugram, Ghata, Haryana 122011');
+
+// WhatsApp — digits only, country code first, no '+', spaces or dashes (wa.me format)
+define('SITE_WHATSAPP', $cmsSettings['whatsapp'] ?? '918796977903');
+define('WHATSAPP_MESSAGE', $cmsSettings['whatsapp_message'] ?? 'Hello, I would like to book an appointment with Dr. Praveen Gupta.');
 
 // Social Media
-define('SOCIAL_FACEBOOK', 'https://facebook.com/drpraveengupta');
-define('SOCIAL_INSTAGRAM', 'https://instagram.com/neuro_doc1');
-define('SOCIAL_TWITTER', 'https://twitter.com/drpraveengupta');
-define('SOCIAL_YOUTUBE', 'https://youtube.com/c/DrPraveenGupta');
-define('SOCIAL_LINKEDIN', 'https://linkedin.com/in/drpraveengupta');
+define('SOCIAL_FACEBOOK', $cmsSettings['social_facebook'] ?? 'https://facebook.com/drpraveengupta');
+define('SOCIAL_INSTAGRAM', $cmsSettings['social_instagram'] ?? 'https://instagram.com/neuro_doc1');
+define('SOCIAL_TWITTER', $cmsSettings['social_twitter'] ?? 'https://twitter.com/drpraveengupta');
+define('SOCIAL_YOUTUBE', $cmsSettings['social_youtube'] ?? 'https://youtube.com/c/DrPraveenGupta');
+define('SOCIAL_LINKEDIN', $cmsSettings['social_linkedin'] ?? 'https://linkedin.com/in/drpraveengupta');
+define('GTM_ID', $cmsSettings['gtm_id'] ?? 'GTM-TF2TXQLK');
 
 // Navigation
 $navItems = [
@@ -82,8 +90,44 @@ $navItems = [
     ['name' => 'Blog', 'url' => 'dr-praveen-gupta-blog'],
 ];
 
-// Services
-$services = [
+// Services - Loaded from CMS data if available
+$cmsServicesFile = dirname(__DIR__) . '/data/services.json';
+if (file_exists($cmsServicesFile)) {
+    $rawServices = json_decode(file_get_contents($cmsServicesFile), true);
+    if (!empty($rawServices) && is_array($rawServices)) {
+        $services = [];
+        foreach ($rawServices as $s) {
+            if (isset($s['is_active']) && !$s['is_active']) continue;
+            
+            $desc = $s['short_description'] ?? '';
+            if (!empty($s['features']) && is_array($s['features'])) {
+                $desc .= "\n" . '<details class="group mt-3" onclick="event.stopPropagation();">' . "\n";
+                $desc .= '    <summary class="text-xs text-electric-blue font-bold cursor-pointer focus:outline-none select-none flex items-center space-x-1 hover:underline list-none [&::-webkit-details-marker]:hidden" onclick="event.stopPropagation();">' . "\n";
+                $desc .= '        <span>Read More</span>' . "\n";
+                $desc .= '        <i class="fas fa-chevron-down text-[9px] transition-transform duration-300 group-open:rotate-180"></i>' . "\n";
+                $desc .= '    </summary>' . "\n";
+                $desc .= '    <div class="mt-3 grid grid-cols-1 gap-y-1 text-xs text-dark-grey/70 border-t border-silver-grey/40 pt-3">' . "\n";
+                foreach ($s['features'] as $feat) {
+                    $desc .= '        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>' . htmlspecialchars($feat) . '</span></div>' . "\n";
+                }
+                $desc .= '    </div>' . "\n";
+                $desc .= '</details>';
+            }
+
+            $services[] = [
+                'title' => $s['title'] ?? '',
+                'description' => $desc,
+                'bullet' => $s['bullet'] ?? '',
+                'image' => $s['image'] ?? 'assets/services/stroke-care.png',
+                'webp' => $s['webp'] ?? '',
+                'link' => $s['link'] ?? 'services'
+            ];
+        }
+    }
+}
+
+if (!isset($services)) {
+    $services = [
     [
         'title' => 'Stroke & Neurocritical Care Unit',
         'description' => 'Advanced Stroke Care in Gurgaon.
@@ -287,6 +331,7 @@ $services = [
         'link' => 'neuro-rehabilitation-center'
     ]
 ];
+}
 
 // Stats
 $stats = [
@@ -992,5 +1037,21 @@ function getServicePageLink($title) {
         return 'neuropathy';
     }
     return 'services';
+}
+
+/**
+ * CMS Page Content Helper
+ * Dynamically loads customized page text, headings, and images from data/pages/{slug}.json
+ */
+function get_page_content($slug, $defaults = []) {
+    $cleanSlug = preg_replace('/[^a-zA-Z0-9_-]/', '', $slug);
+    $dataFile = dirname(__DIR__) . '/data/pages/' . $cleanSlug . '.json';
+    if (file_exists($dataFile)) {
+        $data = json_decode(file_get_contents($dataFile), true);
+        if (is_array($data)) {
+            return array_merge($defaults, $data);
+        }
+    }
+    return $defaults;
 }
 

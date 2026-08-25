@@ -1,0 +1,14 @@
+{
+    "slug": "patient-reviews",
+    "file": "patient-reviews.php",
+    "title": "Patient Reviews",
+    "category": "Patient Info",
+    "hero_badge": "Patient Info Guide",
+    "hero_title": "Patient Reviews",
+    "hero_desc": "Read direct reviews, feedback, and statements left by patients regarding their diagnostic experiences and treatment outcomes.",
+    "hero_bg": "assets/breadcrumbs/patient.png",
+    "section1_badge": "Specialist Care",
+    "section1_title": "Expert Clinical Approach to Patient Reviews",
+    "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Patient Reviews.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+    "section1_image": "assets/breadcrumbs/patient.png"
+}

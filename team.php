@@ -1,33 +1,44 @@
-﻿<?php
+<?php
 /**
  * Team Listing Page - Dr. Praveen Gupta
  */
 $isDarkHero = true;
 require_once __DIR__ . '/includes/header.php';
 
-// Load doctor data from JSON
+// Load page content from CMS
+$pageContent = get_page_content('team', [
+    'hero_badge' => 'Medical & Support Team',
+    'hero_title' => 'Meet <span class="text-cyan-accent">Our Team</span>',
+    'hero_desc' => 'Our integrated team of neurologists, neurosurgeons, spine surgeons, and rehabilitation experts collaborates under the leadership of Dr. Praveen Gupta to provide world-class brain, spine, and nerve care.',
+    'hero_bg' => 'assets/breadcrumbs/about.png'
+]);
+
+// Load doctor data from CMS or fallback JSON
+$cmsDoctorsFile = __DIR__ . '/data/doctors.json';
 $doctorsJsonPath = __DIR__ . '/assets/doctors_full.json';
 $doctors = [];
 $praveenGupta = null;
 $specialtyTeam = [];
 
-if (file_exists($doctorsJsonPath)) {
-    $doctorsJson = file_get_contents($doctorsJsonPath);
-    $doctors = json_decode($doctorsJson, true);
-    if (is_array($doctors)) {
-        foreach ($doctors as $doc) {
-            if (isset($doc['name']) && $doc['name'] === 'Dr. Praveen Gupta') {
-                $praveenGupta = $doc;
-            } else {
-                $specialtyTeam[] = $doc;
-            }
+if (file_exists($cmsDoctorsFile)) {
+    $doctors = json_decode(file_get_contents($cmsDoctorsFile), true);
+} elseif (file_exists($doctorsJsonPath)) {
+    $doctors = json_decode(file_get_contents($doctorsJsonPath), true);
+}
+
+if (is_array($doctors)) {
+    foreach ($doctors as $doc) {
+        if (isset($doc['name']) && stripos($doc['name'], 'Praveen') !== false) {
+            $praveenGupta = $doc;
+        } else {
+            $specialtyTeam[] = $doc;
         }
     }
 }
 ?>
 
 <!-- Hero Section -->
-<section class="relative overflow-hidden text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20 bg-cover bg-center" style="background-image: url('assets/breadcrumbs/about.png');">
+<section class="relative overflow-hidden text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20 bg-cover bg-center" style="background-image: url('<?php echo htmlspecialchars($pageContent['hero_bg']); ?>');">
     <div class="absolute inset-0 bg-gradient-to-r from-deep-indigo/95 via-deep-indigo/85 to-electric-blue/30"></div>
     <div class="absolute -right-24 -bottom-24 w-96 h-96 bg-cyan-accent/20 rounded-full blur-[120px] pointer-events-none"></div>
 
@@ -43,16 +54,16 @@ if (file_exists($doctorsJsonPath)) {
             <!-- Badge -->
             <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4 border border-white/20">
                 <i class="fas fa-users text-cyan-accent text-[10px]"></i>
-                <span>Medical & Support Team</span>
+                <span><?php echo htmlspecialchars($pageContent['hero_badge']); ?></span>
             </div>
 
             <!-- Heading -->
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-3">
-                Meet <span class="text-cyan-accent">Our Team</span>
+                <?php echo $pageContent['hero_title']; ?>
             </h1>
 
             <p class="text-sm md:text-base text-white/85 leading-relaxed mb-6 max-w-2xl">
-                Our integrated team of neurologists, neurosurgeons, spine surgeons, and rehabilitation experts collaborates under the leadership of Dr. Praveen Gupta to provide world-class brain, spine, and nerve care.
+                <?php echo nl2br(htmlspecialchars($pageContent['hero_desc'])); ?>
             </p>
         </div>
     </div>

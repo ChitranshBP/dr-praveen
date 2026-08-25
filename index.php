@@ -23,6 +23,30 @@ if (file_exists($doctorsJsonPath)) {
 }
 ?>
 
+<?php
+// Load dynamic banners from CMS
+$cmsBannersFile = __DIR__ . '/data/banners.json';
+$banners = [];
+if (file_exists($cmsBannersFile)) {
+    $banners = json_decode(file_get_contents($cmsBannersFile), true) ?: [];
+}
+$activeBanners = array_values(array_filter($banners, fn($b) => !isset($b['is_active']) || $b['is_active']));
+if (empty($activeBanners)) {
+    $activeBanners = [
+        [
+            'desktop_image' => 'assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500).png',
+            'mobile_image' => 'assets/mobile-banner/1.png',
+            'alt_text' => 'Transforming Brain & Spine Care with Precision - Dr. Praveen Gupta'
+        ],
+        [
+            'desktop_image' => 'assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500) (1).png',
+            'mobile_image' => 'assets/mobile-banner/mobile-1 (1).png',
+            'alt_text' => 'Your Brain Deserves Expert Care - Dr. Praveen Gupta'
+        ]
+    ];
+}
+?>
+
 <!-- Hero Section - Banner Slider -->
 <section class="relative overflow-hidden bg-deep-indigo -mt-20 select-none">
     <!-- SEO H1 (visually hidden - headline is baked into the banner artwork) -->
@@ -30,28 +54,23 @@ if (file_exists($doctorsJsonPath)) {
 
     <div id="hero-slider" class="w-full max-w-[1920px] mx-auto relative">
         <div id="hero-track" class="flex transition-transform duration-700 ease-in-out">
+            <?php foreach ($activeBanners as $bIndex => $banner): 
+                $desktopImg = $banner['desktop_image'] ?? 'assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500).png';
+                $mobileImg = !empty($banner['mobile_image']) ? $banner['mobile_image'] : $desktopImg;
+                $alt = !empty($banner['alt_text']) ? $banner['alt_text'] : (!empty($banner['title']) ? $banner['title'] : 'Dr. Praveen Gupta Banner');
+            ?>
             <div class="min-w-full relative">
                 <picture>
-                    <source media="(max-width: 639px)" srcset="assets/webp/mobile-banner/1.webp" type="image/webp">
-                    <source media="(min-width: 640px)" srcset="assets/webp/banner/DrPraveen_WebBanner_New(1440X500).webp" type="image/webp">
-                    <img src="assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500).png" 
+                    <source media="(max-width: 639px)" srcset="<?php echo htmlspecialchars($mobileImg); ?>">
+                    <source media="(min-width: 640px)" srcset="<?php echo htmlspecialchars($desktopImg); ?>">
+                    <img src="<?php echo htmlspecialchars($desktopImg); ?>" 
                          class="w-full h-auto object-cover object-[32%_center] md:object-center block" 
-                         alt="Transforming Brain & Spine Care with Precision  Led by Dr. Praveen Gupta, Chairman, Marengo Asia International Institute of Neuro & Spine" 
+                         alt="<?php echo htmlspecialchars($alt); ?>" 
                          width="1440" height="500"
-                         fetchpriority="high">
+                         <?php echo $bIndex === 0 ? 'fetchpriority="high"' : 'loading="lazy"'; ?>>
                 </picture>
             </div>
-            <div class="min-w-full relative">
-                <picture>
-                    <source media="(max-width: 639px)" srcset="assets/webp/mobile-banner/mobile-1%20(1).webp" type="image/webp">
-                    <source media="(min-width: 640px)" srcset="assets/webp/banner/DrPraveen_WebBanner_New(1440X500)%20(1).webp" type="image/webp">
-                    <img src="assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500)%20(1).png"
-                         alt="Your Brain Deserves Expert Care  Empowering every thought for a life beyond neurological limits"
-                         loading="lazy"
-                         width="1440" height="500"
-                         class="w-full h-auto object-cover object-[32%_center] md:object-center block">
-                </picture>
-            </div>
+            <?php endforeach; ?>
         </div>
 
         <!-- Navigation Buttons -->
@@ -66,8 +85,9 @@ if (file_exists($doctorsJsonPath)) {
 
         <!-- Pagination Dots -->
         <div class="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex items-center space-x-2.5 z-20">
-            <button type="button" class="hero-dot w-2 h-2 rounded-full bg-white/45 transition-all duration-300 hover:bg-white" data-slide="0" aria-label="Go to slide 1"></button>
-            <button type="button" class="hero-dot w-2 h-2 rounded-full bg-white/45 transition-all duration-300 hover:bg-white" data-slide="1" aria-label="Go to slide 2"></button>
+            <?php foreach ($activeBanners as $dIndex => $b): ?>
+            <button type="button" class="hero-dot w-2 h-2 rounded-full bg-white/45 transition-all duration-300 hover:bg-white" data-slide="<?php echo $dIndex; ?>" aria-label="Go to slide <?php echo $dIndex + 1; ?>"></button>
+            <?php endforeach; ?>
         </div>
     </div>
 

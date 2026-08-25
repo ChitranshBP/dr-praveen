@@ -1,0 +1,14 @@
+{
+    "slug": "stroke",
+    "file": "stroke.php",
+    "title": "Stroke Care & Emergency",
+    "category": "Conditions",
+    "hero_badge": "24/7 Comprehensive Stroke Center",
+    "hero_title": "Stroke & Neurocritical Care",
+    "hero_desc": "Rapid, protocol-driven emergency treatment for acute ischemic stroke and brain hemorrhage. Every second saved preserves brain function.",
+    "hero_bg": "assets/breadcrumbs/conditions/Stroke.png",
+    "section1_badge": "Emergency Protocol",
+    "section1_title": "Thrombolysis & Mechanical Thrombectomy",
+    "section1_text": "Our 24/7 acute stroke team provides intravenous thrombolytic therapy and advanced mechanical thrombectomy to restore blood flow to the brain within the golden window.",
+    "section1_image": "assets/services/stroke-care.png"
+}

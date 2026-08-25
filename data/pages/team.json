@@ -1,0 +1,14 @@
+{
+    "slug": "team",
+    "file": "team.php",
+    "title": "Our Team Listing",
+    "category": "About",
+    "hero_badge": "Medical & Support Team",
+    "hero_title": "Meet Our Team",
+    "hero_desc": "Our integrated team of neurologists, neurosurgeons, spine surgeons, and rehabilitation experts collaborates under the leadership of Dr. Praveen Gupta to provide world-class brain, spine, and nerve care.",
+    "hero_bg": "assets/breadcrumbs/about.png",
+    "section1_badge": "Leadership",
+    "section1_title": "Clinical Director & Associate Specialists",
+    "section1_text": "Led by Dr. Praveen Gupta, Chairman of Marengo Asia International Institute of Neuro & Spine, our team combines decades of specialized experience across stroke, epilepsy, movement disorders, and spine surgery.",
+    "section1_image": "assets/ggn-nuro-images/optimized/dr-praveen-gupta.webp"
+}

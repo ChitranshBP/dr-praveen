@@ -1,0 +1,14 @@
+{
+    "slug": "neurology-consultation",
+    "file": "neurology-consultation.php",
+    "title": "Your Neurology Consultation",
+    "category": "Patient Info",
+    "hero_badge": "Patient Info Guide",
+    "hero_title": "Your Neurology Consultation",
+    "hero_desc": "Learn what to expect during your first neurological consultation with Dr. Praveen Gupta, and how to prepare to get the most out of your clinical evaluation.",
+    "hero_bg": "assets/breadcrumbs/patient.png",
+    "section1_badge": "Specialist Care",
+    "section1_title": "Expert Clinical Approach to Your Neurology Consultation",
+    "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Your Neurology Consultation.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+    "section1_image": "assets/breadcrumbs/patient.png"
+}

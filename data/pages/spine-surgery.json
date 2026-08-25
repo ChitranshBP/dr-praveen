@@ -1,0 +1,14 @@
+{
+    "slug": "spine-surgery",
+    "file": "spine-surgery.php",
+    "title": "Spine Surgery",
+    "category": "Services",
+    "hero_badge": "Minimally Invasive Spine Center",
+    "hero_title": "Advanced Spine Surgery",
+    "hero_desc": "Comprehensive surgical and non-surgical solutions for herniated discs, spinal stenosis, deformities, and chronic back pain.",
+    "hero_bg": "assets/breadcrumbs/dr-parveen-services-breadcrumb/Spine%20Surgery.png",
+    "section1_badge": "Fast Recovery",
+    "section1_title": "Endoscopic & Keyhole Spine Procedures",
+    "section1_text": "Ultra-minimally invasive techniques allow patients to walk within hours of surgery with minimal tissue disruption and rapid return to everyday life.",
+    "section1_image": "assets/services/spine-surgery.png"
+}

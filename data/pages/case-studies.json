@@ -1,0 +1,14 @@
+{
+    "slug": "case-studies",
+    "file": "case-studies.php",
+    "title": "Neurology Case Studies",
+    "category": "Patient Info",
+    "hero_badge": "Patient Info Guide",
+    "hero_title": "Neurology Case Studies",
+    "hero_desc": "Explore real clinical histories demonstrating the effectiveness of advanced stroke treatments, DBS programming, and specialized neurology interventions.",
+    "hero_bg": "assets/breadcrumbs/patient.png",
+    "section1_badge": "Specialist Care",
+    "section1_title": "Expert Clinical Approach to Neurology Case Studies",
+    "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Neurology Case Studies.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+    "section1_image": "assets/breadcrumbs/patient.png"
+}

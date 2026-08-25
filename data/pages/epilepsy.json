@@ -1,0 +1,14 @@
+{
+    "slug": "epilepsy",
+    "file": "epilepsy.php",
+    "title": "Epilepsy & Seizures",
+    "category": "Conditions",
+    "hero_badge": "Advanced Epilepsy Center",
+    "hero_title": "Epilepsy & Seizure Care",
+    "hero_desc": "Comprehensive diagnosis and individualized treatment plans for drug-resistant epilepsy, recurrent seizures, and pediatric neurological conditions.",
+    "hero_bg": "assets/breadcrumbs/conditions/Epilepsy.png",
+    "section1_badge": "Diagnostic Excellence",
+    "section1_title": "Video EEG & Neuromodulation",
+    "section1_text": "Equipped with state-of-the-art long-term Video EEG monitoring, stereotactic EEG, and pioneering brain pacemakers for drug-resistant epilepsy.",
+    "section1_image": "assets/services/epilepsy.png"
+}

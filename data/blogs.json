@@ -1,0 +1,28 @@
+[
+    {
+        "id": "252aa14e4942644c",
+        "title": "Understanding Parkinson’s Disease: Early Warning Signs & Modern Treatments",
+        "slug": "understanding-parkinsons-disease",
+        "excerpt": "From Deep Brain Stimulation to lifestyle strategies, explore how patients manage Parkinson disease with high quality of life.",
+        "content": "<p>Parkinson’s disease is a progressive neurodegenerative disorder that predominantly affects dopamine-producing neurons in a specific area of the brain called substantia nigra.</p><p>With modern advancements such as Deep Brain Stimulation (DBS) and targeted medical management, patients can experience significant symptomatic relief and lead active, fulfilling lives.</p>",
+        "author": "Dr. Praveen Gupta",
+        "category": "Movement Disorders",
+        "image": "assets/banner/1.png",
+        "date": "2026-08-25",
+        "status": "published",
+        "views": 142
+    },
+    {
+        "id": "629dd9f591c5e50b",
+        "title": "Emergency Stroke Care: Recognizing the F.A.S.T. Signs",
+        "slug": "emergency-stroke-care-fast-signs",
+        "excerpt": "Time is brain in acute stroke care. Learn the critical symptoms and why reaching a stroke-ready hospital within the golden hour saves lives.",
+        "content": "<p>During an acute ischemic stroke, approximately 1.9 million brain cells die every minute that treatment is delayed. Recognizing Face drooping, Arm weakness, and Speech difficulty means it is Time to call emergency care immediately.</p>",
+        "author": "Dr. Praveen Gupta",
+        "category": "Stroke Care",
+        "image": "assets/banner/2.png",
+        "date": "2026-08-25",
+        "status": "published",
+        "views": 289
+    }
+]

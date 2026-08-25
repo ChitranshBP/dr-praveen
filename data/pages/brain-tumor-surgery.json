@@ -1,0 +1,14 @@
+{
+    "slug": "brain-tumor-surgery",
+    "file": "brain-tumor-surgery.php",
+    "title": "Brain Tumor Surgery",
+    "category": "Services",
+    "hero_badge": "Precision Neurosurgery Hub",
+    "hero_title": "Brain Tumor Surgery",
+    "hero_desc": "State-of-the-art intraoperative neuro-navigation, awake craniotomy, and minimally invasive microsurgical resection.",
+    "hero_bg": "assets/breadcrumbs/dr-parveen-services-breadcrumb/Brain%20Tumor%20Surgery.png",
+    "section1_badge": "Microsurgical Innovation",
+    "section1_title": "Preserving Neurological Function",
+    "section1_text": "Combining high-definition neuro-navigation with awake functional brain mapping to maximize tumor removal while protecting speech, movement, and cognitive faculties.",
+    "section1_image": "assets/services/brain-tumor.png"
+}

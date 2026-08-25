@@ -1,0 +1,171 @@
+[
+    {
+        "id": "svc-1",
+        "title": "Stroke & Neurocritical Care Unit",
+        "short_description": "Advanced Stroke Care in Gurgaon.",
+        "bullet": "Thrombolytic therapy & 24/7 stroke care",
+        "features": [
+            "Thrombolytic therapy",
+            "Mechanical thrombectomy",
+            "24/7 stroke protocol",
+            "Neurorehabilitation services"
+        ],
+        "image": "assets/services/stroke-care.png",
+        "webp": "assets/webp/services/stroke-care.webp",
+        "link": "brain-stroke-helpline",
+        "is_active": true,
+        "order": 1
+    },
+    {
+        "id": "svc-2",
+        "title": "Epilepsy & Seizure Clinic",
+        "short_description": "Comprehensive seizure diagnosis and treatment.",
+        "bullet": "Video EEG monitoring",
+        "features": [
+            "Video EEG monitoring",
+            "24-hour ambulatory EEG",
+            "Interictal and ictal SPECT",
+            "Neuropsychological testing",
+            "Epilepsy surgery evaluation",
+            "Anti-seizure medication management"
+        ],
+        "image": "assets/services/epilepsy.png",
+        "webp": "assets/webp/services/epilepsy.webp",
+        "link": "epilepsy",
+        "is_active": true,
+        "order": 2
+    },
+    {
+        "id": "svc-3",
+        "title": "Brain Tumor Surgery",
+        "short_description": "Precision neurosurgery using advanced imaging.",
+        "bullet": "Minimally invasive tumor removal",
+        "features": [
+            "Minimally invasive tumor removal",
+            "Intraoperative neuromonitoring",
+            "Awake craniotomy",
+            "Brain mapping technology",
+            "Gamma Knife radiosurgery",
+            "Oncology collaboration"
+        ],
+        "image": "assets/services/brain-tumor.png",
+        "webp": "assets/webp/services/brain-tumor.webp",
+        "link": "brain-tumor-surgery",
+        "is_active": true,
+        "order": 3
+    },
+    {
+        "id": "svc-4",
+        "title": "Spine Surgery",
+        "short_description": "Comprehensive care for spinal conditions.",
+        "bullet": "Minimally invasive spine surgery",
+        "features": [
+            "Minimally invasive spine surgery",
+            "Disc herniation treatment",
+            "Spinal fusion procedures",
+            "Vertebroplasty",
+            "Endoscopic spine surgery",
+            "Decompression surgery"
+        ],
+        "image": "assets/services/spine-surgery.png",
+        "webp": "assets/webp/services/spine-surgery.webp",
+        "link": "spine-surgery",
+        "is_active": true,
+        "order": 4
+    },
+    {
+        "id": "svc-5",
+        "title": "Headache & Pain Clinic",
+        "short_description": "Targeted care for migraines and chronic headaches.",
+        "bullet": "Preventive therapies & Botox",
+        "features": [
+            "Preventive therapies",
+            "Botulinum toxin therapy",
+            "Monoclonal antibody therapy",
+            "Occipital nerve blocks",
+            "CGRP receptor antagonists",
+            "Trigger point injections"
+        ],
+        "image": "assets/services/headache.png",
+        "webp": "assets/webp/services/headache.webp",
+        "link": "headache",
+        "is_active": true,
+        "order": 5
+    },
+    {
+        "id": "svc-6",
+        "title": "Functional Neurosurgery",
+        "short_description": "Advanced surgical treatment for movement disorders.",
+        "bullet": "Deep Brain Stimulation (DBS) for Parkinson's",
+        "features": [
+            "Deep Brain Stimulation (DBS) for Parkinson's",
+            "Tremor management",
+            "Rigidity and bradykinesia treatment",
+            "DBS programming and adjustment",
+            "Essential tremor surgery",
+            "Dystonia treatment"
+        ],
+        "image": "assets/services/functional-neuro.png",
+        "webp": "assets/webp/services/functional-neuro.webp",
+        "link": "functional-neurosurgery",
+        "is_active": true,
+        "order": 6
+    },
+    {
+        "id": "svc-7",
+        "title": "Neurovascular Surgery",
+        "short_description": "Treatment of complex vascular conditions.",
+        "bullet": "Aneurysm clipping & coiling",
+        "features": [
+            "Aneurysm clipping",
+            "Aneurysm coiling",
+            "AVM (arteriovenous malformation) treatment",
+            "Cavernous angioma surgery",
+            "Intracranial stenting",
+            "Endovascular procedures"
+        ],
+        "image": "assets/services/neurovascular.png",
+        "webp": "assets/webp/services/neurovascular.webp",
+        "link": "neurovascular-surgery",
+        "is_active": true,
+        "order": 7
+    },
+    {
+        "id": "svc-8",
+        "title": "Geriatric & Dementia Clinic",
+        "short_description": "Care for dementia, Alzheimer's, and memory disorders.",
+        "bullet": "Neuropsychological testing & screening",
+        "features": [
+            "Neuropsychological testing",
+            "Cognitive screening and assessment",
+            "Alzheimer's disease management",
+            "Vascular dementia treatment",
+            "Parkinson's dementia care",
+            "Caregiver support programs"
+        ],
+        "image": "assets/services/memory-clinic.png",
+        "webp": "assets/webp/services/memory-clinic.webp",
+        "link": "memory-clinic",
+        "is_active": true,
+        "order": 8
+    },
+    {
+        "id": "svc-9",
+        "title": "Neuro-Rehabilitation Hub",
+        "short_description": "Specialized recovery for stroke, spine, and brain injury.",
+        "bullet": "Robotic & physical rehabilitation",
+        "features": [
+            "Robotic gait training",
+            "Speech and language therapy",
+            "Occupational therapy",
+            "Post-stroke motor recovery",
+            "Swallowing rehabilitation",
+            "Balance and vestibular therapy"
+        ],
+        "image": "assets/services/rehab.png",
+        "webp": "assets/webp/services/rehab.webp",
+        "link": "neuro-rehabilitation-center",
+        "is_active": true,
+        "order": 9
+    }
+]

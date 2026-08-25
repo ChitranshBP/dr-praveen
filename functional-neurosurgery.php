@@ -1,15 +1,25 @@
-﻿<?php
+<?php
 /**
  * Functional Neurosurgery Clinic Page - Dr. Praveen Gupta
  */
 $isDarkHero = true;
 require_once __DIR__ . '/includes/header.php';
+
+$pageContent = get_page_content('functional-neurosurgery', [
+    'hero_badge' => 'Advanced Neuromodulation Center',
+    'hero_title' => 'Functional <span class="text-cyan-accent">Neurosurgery</span>',
+    'hero_desc' => 'Advanced surgical treatments for movement disorders, pioneering Deep Brain Stimulation (DBS) to restore control, alleviate tremors, and improve daily functions.',
+    'hero_bg' => 'assets/breadcrumbs/dr-parveen-services-breadcrumb/Functional%20Neurosurgery.png',
+    'section1_badge' => 'Neuromodulation Excellence',
+    'section1_title' => 'Restoring Motor Functions',
+    'section1_text' => "Functional neurosurgery restores neurological function and relieves motor deficits through direct electrical modulation of the brain circuits responsible — rather than through drugs that act on the whole body.\n\nDr. Praveen Gupta's team pioneered the first Deep Brain Stimulation surgeries in Gurgaon, and specialises in high-precision stereotactic procedures for patients whose symptoms no longer respond to conventional medication."
+]);
 ?>
 
 <!-- Page Hero -->
 <section class="relative overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20">
     <!-- Background image -->
-    <img src="assets/breadcrumbs/dr-parveen-services-breadcrumb/Functional%20Neurosurgery.png" alt=""
+    <img src="<?php echo htmlspecialchars($pageContent['hero_bg']); ?>" alt="<?php echo strip_tags($pageContent['hero_title']); ?>"
          fetchpriority="high"
          class="absolute inset-0 w-full h-full object-cover object-[78%_center] md:object-right pointer-events-none select-none">
 
@@ -30,16 +40,16 @@ require_once __DIR__ . '/includes/header.php';
             <!-- Badge -->
             <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4 border border-white/20">
                 <i class="fas fa-microchip text-cyan-accent text-[10px]"></i>
-                <span>Advanced Neuromodulation Center</span>
+                <span><?php echo htmlspecialchars($pageContent['hero_badge']); ?></span>
             </div>
 
             <!-- Heading -->
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-3">
-                Functional <span class="text-cyan-accent">Neurosurgery</span>
+                <?php echo $pageContent['hero_title']; ?>
             </h1>
 
             <p class="text-sm md:text-base text-white/85 leading-relaxed mb-6 max-w-2xl">
-                Advanced surgical treatments for movement disorders, pioneering Deep Brain Stimulation (DBS) to restore control, alleviate tremors, and improve daily functions.
+                <?php echo nl2br(htmlspecialchars($pageContent['hero_desc'])); ?>
             </p>
 
             <div class="flex flex-wrap items-center gap-4">
@@ -59,14 +69,13 @@ require_once __DIR__ . '/includes/header.php';
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-2 gap-16 items-center">
             <div class="animate-slide-in-left">
-                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Neuromodulation Excellence</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Restoring Motor Functions</h2>
-                <p class="text-dark-grey/70 leading-relaxed mb-6">
-                    Functional neurosurgery restores neurological function and relieves motor deficits through direct electrical modulation of the brain circuits responsible â€” rather than through drugs that act on the whole body.
-                </p>
-                <p class="text-dark-grey/70 leading-relaxed mb-8">
-                    Dr. Praveen Gupta's team pioneered the first Deep Brain Stimulation surgeries in Gurgaon, and specialises in high-precision stereotactic procedures for patients whose symptoms no longer respond to conventional medication.
-                </p>
+                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider"><?php echo htmlspecialchars($pageContent['section1_badge']); ?></span>
+                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6"><?php echo htmlspecialchars($pageContent['section1_title']); ?></h2>
+                <div class="text-dark-grey/70 leading-relaxed mb-6 space-y-4">
+                    <?php foreach(explode("\n\n", $pageContent['section1_text']) as $para): ?>
+                    <p><?php echo nl2br(htmlspecialchars($para)); ?></p>
+                    <?php endforeach; ?>
+                </div>
 
                 <!-- Key Facts -->
                 <div class="grid grid-cols-2 gap-4">
