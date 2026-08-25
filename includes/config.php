@@ -333,33 +333,27 @@ if (!isset($services)) {
 ];
 }
 
-// Stats
 // Stats - Dynamic from CMS
 $stats = [
     [
-        'number' => '3,00,000+',
         'number' => $cmsSettings['stats_patients'] ?? '3,00,000+',
         'label' => 'Patients Treated',
         'icon' => 'fas fa-user-group',
-        'description' => 'We take pride in the trust of over 300,000 patients whose health and recovery remain our top priorities.'
         'description' => 'We take pride in the trust of over ' . ($cmsSettings['stats_patients'] ?? '300,000') . ' patients whose health and recovery remain our top priorities.'
     ],
     [
-        'number' => '1,00,000+',
         'number' => $cmsSettings['stats_success'] ?? '1,00,000+',
         'label' => 'Success Stories',
         'icon' => 'fas fa-face-smile',
         'description' => 'Documenting over 100,000 patient success stories driven by advanced neuro-clinical treatments.'
     ],
     [
-        'number' => '50+',
         'number' => $cmsSettings['stats_awards'] ?? '50+',
         'label' => 'Global Awards',
         'icon' => 'fas fa-award',
         'description' => 'Recognized globally with prestigious awards for pioneering achievements in neurosciences.'
     ],
     [
-        'number' => '20+',
         'number' => $cmsSettings['stats_experience'] ?? '20+',
         'label' => 'Years of Experience',
         'icon' => 'fas fa-user-doctor',

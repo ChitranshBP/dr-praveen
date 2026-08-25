@@ -47,17 +47,14 @@ require_once __DIR__ . '/includes/header.php';
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div class="p-4">
-                <span class="block text-3xl md:text-4xl font-extrabold text-electric-blue">20+</span>
                 <span class="block text-3xl md:text-4xl font-extrabold text-electric-blue"><?php echo htmlspecialchars($cmsSettings['stats_experience'] ?? '20+'); ?></span>
                 <span class="text-xs md:text-sm text-dark-grey/60 font-medium mt-1 block">Years of Excellence</span>
             </div>
             <div class="p-4">
-                <span class="block text-3xl md:text-4xl font-extrabold text-cyan-accent">3,00,000+</span>
                 <span class="block text-3xl md:text-4xl font-extrabold text-cyan-accent"><?php echo htmlspecialchars($cmsSettings['stats_patients'] ?? '3,00,000+'); ?></span>
                 <span class="text-xs md:text-sm text-dark-grey/60 font-medium mt-1 block">Patients Treated</span>
             </div>
             <div class="p-4">
-                <span class="block text-3xl md:text-4xl font-extrabold text-deep-indigo">4.9/5</span>
                 <span class="block text-3xl md:text-4xl font-extrabold text-deep-indigo"><?php echo htmlspecialchars($cmsSettings['stats_rating'] ?? '4.9'); ?>/5</span>
                 <span class="text-xs md:text-sm text-dark-grey/60 font-medium mt-1 block">Google Rating</span>
             </div>
