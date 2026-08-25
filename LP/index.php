@@ -5,10 +5,6 @@
  * Assets are referenced from the parent directory via assets/
  */
 
-$phone        = '+91-87969-77903';
-$phoneRaw     = '+918796977903';
-$whatsapp     = '918796977903';
-$helpline     = '1800-309-0247';
 $email        = 'contact@drpraveengupta.com';
 $address      = 'Marengo Asia Hospitals, Shushant Lok 2, Sector 56, Gurugram, Haryana 122011';
 
@@ -63,83 +59,15 @@ $videos = [
     })(window,document,'script','dataLayer','GTM-TF2TXQLK');</script>
     <!-- End Google Tag Manager -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Praveen Gupta  Best Neurologist in Gurgaon | Book Appointment</title>
-    <meta name="description" content="Consult Dr. Praveen Gupta, Chairman  Marengo Asia International Institute of Neuro & Spine. 20+ years of experience, 3,00,000+ patients treated. Book your appointment today.">
+    <title>Dr. Praveen Gupta &ndash; Best Neurologist in Gurgaon | Book Appointment</title>
+    <meta name="description" content="Consult Dr. Praveen Gupta, Chairman &ndash; Marengo Asia International Institute of Neuro & Spine. 20+ years of experience, 3,00,000+ patients treated. Book your appointment today.">
+    <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
     <link rel="icon" type="image/png" href="assets/favicon/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/<?php echo $whatsapp; ?>?text=<?php echo rawurlencode('Hello, I would like to book an appointment with Dr. Praveen Gupta.'); ?>"
-       target="_blank" rel="noopener noreferrer"
-       aria-label="Chat with us on WhatsApp"
-       class="hidden lg:flex group fixed bottom-8 right-8 w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#1DA851] text-white shadow-lg hover:shadow-xl hover:shadow-[#25D366]/50 hover:-translate-y-0.5 transition-all duration-300 items-center justify-center z-50">
-        <!-- Pulsing halo -->
-        <span class="absolute inset-0 rounded-full bg-[#25D366]/40 animate-ping pointer-events-none"></span>
-        <i class="fab fa-whatsapp text-2xl relative"></i>
-
-        <!-- Hover label (desktop) -->
-        <span class="hidden lg:block absolute right-full mr-3 whitespace-nowrap bg-deep-indigo text-white text-xs font-semibold px-3 py-2 rounded-full shadow-lg opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none">
-            Chat on WhatsApp
-        </span>
-    </a>
-
-    <!-- Back to Top Button (stacked above the WhatsApp button) -->
-    <button id="back-to-top" class="hidden lg:flex fixed bottom-28 right-9 w-12 h-12 rounded-full bg-white text-deep-indigo border border-silver-grey shadow-lg hover:bg-electric-blue hover:text-white hover:shadow-xl hover:shadow-electric-blue/40 transition-all duration-300 transform translate-y-20 opacity-0 z-50 items-center justify-center group">
-        <i class="fas fa-arrow-up group-hover:-translate-y-0.5 transition-transform"></i>
-    </button>
-
-    <!-- Floating Emergency Stroke Helpline Button -->
-    <a href="tel:<?php echo $helpline; ?>"
-       aria-label="Call 24x7 Emergency Stroke Helpline"
-       class="hidden lg:flex group fixed bottom-48 right-8 w-14 h-14 rounded-full bg-red-650 bg-red-600 hover:bg-red-750 hover:bg-red-700 text-white shadow-lg hover:shadow-xl hover:shadow-red-600/50 hover:-translate-y-0.5 transition-all duration-300 items-center justify-center z-50">
-        <!-- Pulsing halo -->
-        <span class="absolute inset-0 rounded-full bg-red-600/40 animate-ping pointer-events-none"></span>
-        <i class="fas fa-phone-alt text-lg relative animate-pulse"></i>
-
-        <!-- Hover label (desktop) -->
-        <span class="hidden lg:block absolute right-full mr-3 whitespace-nowrap bg-red-600 text-white text-xs font-bold px-3 py-2 rounded-full shadow-lg opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none">
-            24x7 Stroke Helpline: <?php echo $helpline; ?>
-        </span>
-    </a>
-
-    <!-- Sticky Bottom Bar (Mobile Only - Premium Floating Capsule) -->
-    <div class="lg:hidden fixed bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md border border-slate-200/80 shadow-[0_8px_30px_rgba(0,0,0,0.12)] rounded-[24px] z-50 px-4 py-2.5 flex items-center justify-between gap-3">
-        <!-- WhatsApp Link -->
-        <a href="https://wa.me/<?php echo $whatsapp; ?>?text=<?php echo rawurlencode('Hello, I would like to book an appointment with Dr. Praveen Gupta.'); ?>" 
-           target="_blank" rel="noopener noreferrer"
-           class="flex flex-col items-center justify-center text-center group">
-            <span class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shadow-sm active:scale-90 transition-all duration-300">
-                <i class="fab fa-whatsapp text-lg"></i>
-            </span>
-            <span class="text-[8px] font-bold text-slate-500 uppercase tracking-wider mt-1">WhatsApp</span>
-        </a>
-
-        <!-- Online Consult -->
-        <a href="online-neurologist-consultation" 
-           class="flex flex-col items-center justify-center text-center group">
-            <span class="w-10 h-10 rounded-full bg-electric-blue/10 text-electric-blue flex items-center justify-center shadow-sm active:scale-90 transition-all duration-300">
-                <i class="fas fa-video text-base"></i>
-            </span>
-            <span class="text-[8px] font-bold text-slate-500 uppercase tracking-wider mt-1">Online</span>
-        </a>
-
-        <!-- Book Appointment Central Button -->
-        <a href="contact-us-top-neurologist-delhi-ncr" 
-           class="flex-1 flex items-center justify-center gap-1.5 bg-gradient-to-r from-deep-indigo via-electric-blue to-cyan-accent text-white font-extrabold text-xs h-10 px-3 rounded-full shadow-[0_4px_15px_rgba(37,99,235,0.25)] active:scale-[0.97] transition-all duration-300">
-            <i class="fas fa-calendar-check text-sm animate-pulse"></i>
-            <span class="uppercase tracking-wider">Book Clinic</span>
-        </a>
-
-        <!-- Emergency Helpline Link -->
-        <a href="tel:<?php echo $helpline; ?>" 
-           class="flex flex-col items-center justify-center text-center group">
-            <span class="w-10 h-10 rounded-full bg-red-50 text-red-650 text-red-600 flex items-center justify-center shadow-sm active:scale-90 transition-all duration-300">
-                <i class="fas fa-phone-alt text-sm animate-pulse"></i>
-            </span>
-            <span class="text-[8px] font-bold text-slate-500 uppercase tracking-wider mt-1">Emergency</span>
-        </a>
-    </div>
-
     <script>
         tailwind.config = {
             theme: {
@@ -210,7 +138,11 @@ $videos = [
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
     <link rel="icon" type="image/png" href="assets/favicon/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
 
     <style>
         body {
@@ -398,7 +330,7 @@ $videos = [
 </head>
 <body class="bg-white text-dark-grey antialiased">
 
-<!-- â•â•â•â•â•â•â•â• Navbar â•â•â•â•â•â•â•â• -->
+<!-- Navbar -->
 <nav id="navbar" class="sticky top-0 z-50 transition-all duration-500 navbar-glass">
     <div class="scroll-progress" id="scroll-progress" style="width: 0%"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -408,53 +340,15 @@ $videos = [
                 <img id="header-logo" src="assets/logo/NeuroDoc-final-logo.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" class="h-14 sm:h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 invert brightness-0">
             </a>
 
-            <!-- Desktop Navigation -->
-            <div class="hidden lg:flex items-center space-x-1 bg-white/5 backdrop-blur-sm rounded-full px-2 py-1.5 border border-white/10 nav-glass-el">
-                <a href="#conditions" class="nav-link-anim relative px-5 py-2 text-sm font-semibold transition-colors duration-300 nav-link rounded-full text-dark-grey hover:bg-white/5">Conditions</a>
-                <a href="#about" class="nav-link-anim relative px-5 py-2 text-sm font-semibold transition-colors duration-300 nav-link rounded-full text-dark-grey hover:bg-white/5">About Doctor</a>
-                <a href="#testimonials" class="nav-link-anim relative px-5 py-2 text-sm font-semibold transition-colors duration-300 nav-link rounded-full text-dark-grey hover:bg-white/5">Testimonials</a>
-                <a href="#videos" class="nav-link-anim relative px-5 py-2 text-sm font-semibold transition-colors duration-300 nav-link rounded-full text-dark-grey hover:bg-white/5">Videos</a>
-            </div>
-
             <!-- Right Actions -->
-            <div class="hidden lg:flex items-center space-x-3">
-                <a href="#book" class="btn-shimmer group relative inline-flex items-center space-x-2 bg-gradient-to-r from-electric-blue to-cyan-accent text-white text-sm font-semibold pl-5 pr-2 py-2 rounded-full hover:shadow-xl hover:shadow-electric-blue/40 transition-all duration-300 transform hover:-translate-y-0.5">
+            <div class="flex items-center space-x-3">
+                <a href="#book" class="btn-shimmer group relative inline-flex items-center space-x-2 bg-gradient-to-r from-electric-blue to-cyan-accent text-white text-xs sm:text-sm font-semibold pl-4 sm:pl-5 pr-2 py-2 rounded-full hover:shadow-xl hover:shadow-electric-blue/40 transition-all duration-300 transform hover:-translate-y-0.5">
                     <span>Book Appointment</span>
-                    <span class="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center group-hover:rotate-45 transition-transform duration-300">
-                        <i class="fas fa-arrow-right text-[10px]"></i>
+                    <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white/20 flex items-center justify-center group-hover:rotate-45 transition-transform duration-300">
+                        <i class="fas fa-arrow-right text-[9px] sm:text-[10px]"></i>
                     </span>
                 </a>
             </div>
-
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="lg:hidden w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 nav-icon-btn border border-white/10 nav-glass-el">
-                <i class="fas fa-bars text-lg text-white" id="menu-icon"></i>
-            </button>
-        </div>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="mobile-menu-anim lg:hidden bg-white/95 backdrop-blur-xl border-t border-silver-grey/50">
-        <div class="max-w-7xl mx-auto px-4 py-4 space-y-1">
-            <a href="#conditions" class="flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-all text-dark-grey hover:bg-soft-cyan hover:text-electric-blue">
-                <span class="flex items-center space-x-3"><span class="w-1.5 h-1.5 rounded-full bg-silver-grey"></span><span>Conditions</span></span>
-                <i class="fas fa-chevron-right text-xs text-cyan-accent"></i>
-            </a>
-            <a href="#about" class="flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-all text-dark-grey hover:bg-soft-cyan hover:text-electric-blue">
-                <span class="flex items-center space-x-3"><span class="w-1.5 h-1.5 rounded-full bg-silver-grey"></span><span>About Doctor</span></span>
-                <i class="fas fa-chevron-right text-xs text-cyan-accent"></i>
-            </a>
-            <a href="#testimonials" class="flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-all text-dark-grey hover:bg-soft-cyan hover:text-electric-blue">
-                <span class="flex items-center space-x-3"><span class="w-1.5 h-1.5 rounded-full bg-silver-grey"></span><span>Testimonials</span></span>
-                <i class="fas fa-chevron-right text-xs text-cyan-accent"></i>
-            </a>
-            <a href="#videos" class="flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-all text-dark-grey hover:bg-soft-cyan hover:text-electric-blue">
-                <span class="flex items-center space-x-3"><span class="w-1.5 h-1.5 rounded-full bg-silver-grey"></span><span>Videos</span></span>
-                <i class="fas fa-chevron-right text-xs text-cyan-accent"></i>
-            </a>
-            <a href="#book" class="block mt-3 px-4 py-3 text-center bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold rounded-xl shadow-lg shadow-electric-blue/20">
-                Book Appointment
-            </a>
         </div>
     </div>
 </nav>
@@ -518,6 +412,7 @@ $videos = [
         }
 
         window.addEventListener('scroll', updateNavbar);
+        window.addEventListener('scroll', updateNavbar, { passive: true });
         updateNavbar();
     });
 </script>
@@ -579,20 +474,7 @@ $videos = [
                     </li>
                 </ul>
 
-                <div class="flex flex-wrap items-center gap-4">
-                    <a href="tel:<?php echo $phoneRaw; ?>" class="inline-flex items-center space-x-2.5 bg-white text-deep-indigo font-bold px-8 py-4 rounded-full shadow-[0_10px_25px_rgba(255,255,255,0.2)] hover:bg-cyan-50 hover:shadow-[0_15px_30px_rgba(255,255,255,0.3)] hover:-translate-y-1 transition-all duration-300">
-                        <div class="w-8 h-8 rounded-full bg-deep-indigo/10 flex items-center justify-center">
-                            <i class="fas fa-phone-alt text-sm"></i>
-                        </div>
-                        <span class="text-lg"><?php echo $phone; ?></span>
-                    </a>
-                    <a href="https://wa.me/<?php echo $whatsapp; ?>?text=<?php echo rawurlencode('Hello, I would like to book an appointment with Dr. Praveen Gupta.'); ?>"
-                       target="_blank" rel="noopener noreferrer"
-                       class="inline-flex items-center space-x-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white font-bold px-8 py-4 rounded-full hover:shadow-[0_10px_25px_rgba(0,0,0,0.2)] hover:-translate-y-1 transition-all duration-300">
-                        <i class="fab fa-whatsapp text-xl text-[#25D366]"></i>
-                        <span>WhatsApp</span>
-                    </a>
-                </div>
+                
             </div>
 
             <!-- Right : Appointment Form -->
@@ -734,7 +616,7 @@ $videos = [
     </div>
 </section>
 
-<!-- â•â•â•â•â•â•â•â• About Doctor â•â•â•â•â•â•â•â• -->
+<!-- About Doctor -->
 <section id="about" class="py-12 md:py-16 bg-soft-cyan/30 relative overflow-hidden">
     <div class="scroll-progress" id="scroll-progress" style="width: 0%"></div><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -759,7 +641,7 @@ $videos = [
                 <div class="flex flex-col space-y-2.5 mb-6">
                     <div class="flex items-center space-x-2.5 text-electric-blue font-medium text-xs md:text-sm">
                         <i class="fa-solid fa-award text-cyan-accent flex-shrink-0 text-base"></i>
-                        <span>Chairman  Marengo Asia International Institute of Neuro and Spine</span>
+                        <span>Chairman &ndash; Marengo Asia International Institute of Neuro and Spine</span>
                     </div>
                     <div class="flex items-center space-x-2.5 text-electric-blue font-medium text-xs md:text-sm">
                         <i class="fa-solid fa-chart-line text-cyan-accent flex-shrink-0 text-base"></i>
@@ -773,7 +655,7 @@ $videos = [
 
                 <p class="text-base text-dark-grey/85 mb-4 leading-relaxed">
                     With over 20 years of clinical experience and a DM from AIIMS, New Delhi, Dr. Praveen Gupta has emerged as a
-                    pioneering force in the diagnosis, treatment, and advancement of neurological sciences â€” a name synonymous
+                    pioneering force in the diagnosis, treatment, and advancement of neurological sciences &mdash; a name synonymous
                     with excellence and trust across India and beyond.
                 </p>
 
@@ -809,7 +691,7 @@ $videos = [
     </div>
 </section>
 
-<!-- â•â•â•â•â•â•â•â• Why Choose Us â•â•â•â•â•â•â•â• -->
+<!-- Why Choose Us -->
 <section class="py-12 md:py-16 bg-white relative overflow-hidden">
     <div class="scroll-progress" id="scroll-progress" style="width: 0%"></div><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -885,7 +767,7 @@ $videos = [
     </div>
 </section>
 
-<!-- â•â•â•â•â•â•â•â• Testimonials â•â•â•â•â•â•â•â• -->
+<!-- Testimonials -->
 <section id="testimonials" class="py-12 md:py-16 bg-soft-cyan/30 relative overflow-hidden">
     <div class="scroll-progress" id="scroll-progress" style="width: 0%"></div><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-10 md:mb-12 observe">
@@ -941,7 +823,7 @@ $videos = [
     </div>
 </section>
 
-<!-- â•â•â•â•â•â•â•â• Videos â•â•â•â•â•â•â•â• -->
+<!-- Videos -->
 <section id="videos" class="py-12 md:py-16 bg-deep-indigo relative overflow-hidden">
     <div class="absolute -top-24 -left-24 w-96 h-96 bg-electric-blue/20 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-cyan-accent/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -980,14 +862,7 @@ $videos = [
             <?php endforeach; ?>
         </div>
 
-        <div class="text-center mt-10 observe">
-            <a href="https://wa.me/<?php echo $whatsapp; ?>?text=<?php echo rawurlencode('Hello, I would like to book an appointment with Dr. Praveen Gupta.'); ?>"
-               target="_blank" rel="noopener noreferrer"
-               class="inline-flex items-center space-x-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/50 text-white font-bold px-7 py-3.5 rounded-full transition-all duration-300">
-                <span>Start Your Recovery Story</span>
-                <i class="fas fa-arrow-right text-xs"></i>
-            </a>
-        </div>
+        
         <div class="mt-10 text-center observe">
             <a href="#book" class="btn-shimmer group relative inline-flex items-center space-x-2.5 bg-gradient-to-r from-electric-blue to-cyan-accent hover:from-deep-indigo hover:to-electric-blue text-white font-bold px-7 py-3.5 rounded-full shadow-lg shadow-electric-blue/25 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
                 <span>Book Appointment</span>
@@ -997,7 +872,7 @@ $videos = [
     </div>
 </section>
 
-<!-- â•â•â•â•â•â•â•â• Footer â•â•â•â•â•â•â•â• -->
+<!-- Footer -->
 <footer class="bg-deep-indigo text-white relative overflow-hidden border-t border-white/10">
     <div class="h-1 bg-gradient-to-r from-electric-blue via-cyan-accent to-electric-blue"></div>
 
@@ -1021,7 +896,7 @@ $videos = [
                         <div class="text-[10px] text-white/60 uppercase tracking-wide">Awards</div>
                     </div>
                     <div class="px-3 py-2 rounded-lg bg-white/5 border border-white/10">
-                        <div class="text-lg font-bold text-white">4.9+</div>
+                        <div class="text-lg font-bold text-white">4.9 <i class="fas fa-star text-amber-400 text-xs"></i></div>
                         <div class="text-[10px] text-white/60 uppercase tracking-wide">Rating</div>
                     </div>
                 </div>
@@ -1078,24 +953,7 @@ $videos = [
                             <p class="text-white/90 text-sm font-semibold"><?php echo $address; ?></p>
                         </div>
                     </li>
-                    <li class="flex items-start space-x-3 group">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-electric-blue/20 to-cyan-accent/20 group-hover:from-electric-blue group-hover:to-cyan-accent flex items-center justify-center flex-shrink-0 transition-all duration-300">
-                            <i class="fas fa-phone text-cyan-accent group-hover:text-white transition-colors text-sm"></i>
-                        </div>
-                        <div class="pt-1">
-                            <p class="text-white/70 text-xs font-medium">Call Us</p>
-                            <a href="tel:<?php echo $phoneRaw; ?>" class="text-white/90 text-sm font-semibold hover:text-cyan-accent transition-colors"><?php echo $phone; ?></a>
-                        </div>
-                    </li>
-                    <li class="flex items-start space-x-3 group">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500/20 to-red-500/20 group-hover:from-red-500 group-hover:to-red-600 flex items-center justify-center flex-shrink-0 transition-all duration-300">
-                            <i class="fas fa-phone-alt text-red-400 group-hover:text-white transition-colors text-sm animate-pulse"></i>
-                        </div>
-                        <div class="pt-1">
-                            <p class="text-white/70 text-xs font-medium">24x7 Stroke Helpline</p>
-                            <a href="tel:18003090247" class="text-white/90 text-sm font-semibold hover:text-cyan-accent transition-colors"><?php echo $helpline; ?></a>
-                        </div>
-                    </li>
+                    
                     <li class="flex items-start space-x-3 group">
                         <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-electric-blue/20 to-cyan-accent/20 group-hover:from-electric-blue group-hover:to-cyan-accent flex items-center justify-center flex-shrink-0 transition-all duration-300">
                             <i class="fas fa-envelope text-cyan-accent group-hover:text-white transition-colors text-sm"></i>
@@ -1134,105 +992,10 @@ $videos = [
     </div>
 </footer>
 
-<!-- Floating WhatsApp Button -->
-<a href="https://wa.me/<?php echo $whatsapp; ?>?text=<?php echo rawurlencode('Hello, I would like to book an appointment with Dr. Praveen Gupta.'); ?>"
-   target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp"
-   class="hidden lg:flex group fixed bottom-8 right-8 w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#1DA851] text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 items-center justify-center z-50">
-    <span class="absolute inset-0 rounded-full bg-[#25D366]/40 animate-ping pointer-events-none"></span>
-    <i class="fab fa-whatsapp text-2xl relative"></i>
-</a>
-
-<!-- Sticky Bottom Bar (Mobile) -->
-<div class="lg:hidden fixed bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md border border-slate-200/80 shadow-[0_8px_30px_rgba(0,0,0,0.12)] rounded-[24px] z-50 px-4 py-2.5 flex items-center justify-between gap-3">
-    <a href="https://wa.me/<?php echo $whatsapp; ?>" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center text-center group">
-        <span class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shadow-sm active:scale-90 transition-all duration-300"><i class="fab fa-whatsapp text-lg"></i></span>
-        <span class="text-[8px] font-bold text-slate-500 uppercase tracking-wider mt-1">WhatsApp</span>
-    </a>
-    <a href="tel:<?php echo $phoneRaw; ?>" class="flex flex-col items-center justify-center text-center group">
-        <span class="w-10 h-10 rounded-full bg-electric-blue/10 text-electric-blue flex items-center justify-center shadow-sm active:scale-90 transition-all duration-300"><i class="fas fa-phone text-base"></i></span>
-        <span class="text-[8px] font-bold text-slate-500 uppercase tracking-wider mt-1">Call</span>
-    </a>
-    <a href="#book" class="flex-1 flex items-center justify-center gap-1.5 bg-gradient-to-r from-deep-indigo via-electric-blue to-cyan-accent text-white font-extrabold text-xs h-10 px-3 rounded-full shadow-[0_4px_15px_rgba(37,99,235,0.25)] active:scale-[0.97] transition-all duration-300">
-        <i class="fas fa-calendar-check text-sm animate-pulse"></i>
-        <span class="uppercase tracking-wider">Book Now</span>
-    </a>
-    <a href="tel:18003090247" class="flex flex-col items-center justify-center text-center group">
-        <span class="w-10 h-10 rounded-full bg-red-50 text-red-600 flex items-center justify-center shadow-sm active:scale-90 transition-all duration-300"><i class="fas fa-phone-alt text-sm animate-pulse"></i></span>
-        <span class="text-[8px] font-bold text-slate-500 uppercase tracking-wider mt-1">Emergency</span>
-    </a>
-</div>
-
-<!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/<?php echo $whatsapp; ?>?text=<?php echo rawurlencode('Hello, I would like to book an appointment with Dr. Praveen Gupta.'); ?>"
-       target="_blank" rel="noopener noreferrer"
-       aria-label="Chat with us on WhatsApp"
-       class="hidden lg:flex group fixed bottom-8 right-8 w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#1DA851] text-white shadow-lg hover:shadow-xl hover:shadow-[#25D366]/50 hover:-translate-y-0.5 transition-all duration-300 items-center justify-center z-50">
-        <!-- Pulsing halo -->
-        <span class="absolute inset-0 rounded-full bg-[#25D366]/40 animate-ping pointer-events-none"></span>
-        <i class="fab fa-whatsapp text-2xl relative"></i>
-
-        <!-- Hover label (desktop) -->
-        <span class="hidden lg:block absolute right-full mr-3 whitespace-nowrap bg-deep-indigo text-white text-xs font-semibold px-3 py-2 rounded-full shadow-lg opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none">
-            Chat on WhatsApp
-        </span>
-    </a>
-
-    <!-- Back to Top Button (stacked above the WhatsApp button) -->
-    <button id="back-to-top" class="hidden lg:flex fixed bottom-28 right-9 w-12 h-12 rounded-full bg-white text-deep-indigo border border-silver-grey shadow-lg hover:bg-electric-blue hover:text-white hover:shadow-xl hover:shadow-electric-blue/40 transition-all duration-300 transform translate-y-20 opacity-0 z-50 items-center justify-center group">
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="hidden lg:flex fixed bottom-8 right-8 w-12 h-12 rounded-full bg-white text-deep-indigo border border-silver-grey shadow-lg hover:bg-electric-blue hover:text-white hover:shadow-xl hover:shadow-electric-blue/40 transition-all duration-300 transform translate-y-20 opacity-0 z-50 items-center justify-center group">
         <i class="fas fa-arrow-up group-hover:-translate-y-0.5 transition-transform"></i>
     </button>
-
-    <!-- Floating Emergency Stroke Helpline Button -->
-    <a href="tel:<?php echo $helpline; ?>"
-       aria-label="Call 24x7 Emergency Stroke Helpline"
-       class="hidden lg:flex group fixed bottom-48 right-8 w-14 h-14 rounded-full bg-red-650 bg-red-600 hover:bg-red-750 hover:bg-red-700 text-white shadow-lg hover:shadow-xl hover:shadow-red-600/50 hover:-translate-y-0.5 transition-all duration-300 items-center justify-center z-50">
-        <!-- Pulsing halo -->
-        <span class="absolute inset-0 rounded-full bg-red-600/40 animate-ping pointer-events-none"></span>
-        <i class="fas fa-phone-alt text-lg relative animate-pulse"></i>
-
-        <!-- Hover label (desktop) -->
-        <span class="hidden lg:block absolute right-full mr-3 whitespace-nowrap bg-red-600 text-white text-xs font-bold px-3 py-2 rounded-full shadow-lg opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none">
-            24x7 Stroke Helpline: <?php echo $helpline; ?>
-        </span>
-    </a>
-
-    <!-- Sticky Bottom Bar (Mobile Only - Premium Floating Capsule) -->
-    <div class="lg:hidden fixed bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md border border-slate-200/80 shadow-[0_8px_30px_rgba(0,0,0,0.12)] rounded-[24px] z-50 px-4 py-2.5 flex items-center justify-between gap-3">
-        <!-- WhatsApp Link -->
-        <a href="https://wa.me/<?php echo $whatsapp; ?>?text=<?php echo rawurlencode('Hello, I would like to book an appointment with Dr. Praveen Gupta.'); ?>" 
-           target="_blank" rel="noopener noreferrer"
-           class="flex flex-col items-center justify-center text-center group">
-            <span class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shadow-sm active:scale-90 transition-all duration-300">
-                <i class="fab fa-whatsapp text-lg"></i>
-            </span>
-            <span class="text-[8px] font-bold text-slate-500 uppercase tracking-wider mt-1">WhatsApp</span>
-        </a>
-
-        <!-- Online Consult -->
-        <a href="online-neurologist-consultation" 
-           class="flex flex-col items-center justify-center text-center group">
-            <span class="w-10 h-10 rounded-full bg-electric-blue/10 text-electric-blue flex items-center justify-center shadow-sm active:scale-90 transition-all duration-300">
-                <i class="fas fa-video text-base"></i>
-            </span>
-            <span class="text-[8px] font-bold text-slate-500 uppercase tracking-wider mt-1">Online</span>
-        </a>
-
-        <!-- Book Appointment Central Button -->
-        <a href="contact-us-top-neurologist-delhi-ncr" 
-           class="flex-1 flex items-center justify-center gap-1.5 bg-gradient-to-r from-deep-indigo via-electric-blue to-cyan-accent text-white font-extrabold text-xs h-10 px-3 rounded-full shadow-[0_4px_15px_rgba(37,99,235,0.25)] active:scale-[0.97] transition-all duration-300">
-            <i class="fas fa-calendar-check text-sm animate-pulse"></i>
-            <span class="uppercase tracking-wider">Book Clinic</span>
-        </a>
-
-        <!-- Emergency Helpline Link -->
-        <a href="tel:<?php echo $helpline; ?>" 
-           class="flex flex-col items-center justify-center text-center group">
-            <span class="w-10 h-10 rounded-full bg-red-50 text-red-650 text-red-600 flex items-center justify-center shadow-sm active:scale-90 transition-all duration-300">
-                <i class="fas fa-phone-alt text-sm animate-pulse"></i>
-            </span>
-            <span class="text-[8px] font-bold text-slate-500 uppercase tracking-wider mt-1">Emergency</span>
-        </a>
-    </div>
 
     <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -1249,8 +1012,6 @@ document.addEventListener('DOMContentLoaded', function () {
         statusEl.classList.toggle('bg-emerald-50', !isError);
         statusEl.classList.toggle('text-emerald-700', !isError);
     }
-
-    // Form submission is now handled directly via Formester HTML attributes
 
     document.querySelectorAll('.video-card').forEach(function (card) {
         card.addEventListener('click', function () {
@@ -1284,86 +1045,32 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+
+    // Back to top button
+    const backToTopBtn = document.getElementById('back-to-top');
+    if (backToTopBtn) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('translate-y-20', 'opacity-0');
+                backToTopBtn.classList.add('translate-y-0', 'opacity-100');
+            } else {
+                backToTopBtn.classList.add('translate-y-20', 'opacity-0');
+                backToTopBtn.classList.remove('translate-y-0', 'opacity-100');
+            }
+        }, { passive: true });
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 });
-</script>
-
-<!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/<?php echo $whatsapp; ?>?text=<?php echo rawurlencode('Hello, I would like to book an appointment with Dr. Praveen Gupta.'); ?>"
-       target="_blank" rel="noopener noreferrer"
-       aria-label="Chat with us on WhatsApp"
-       class="hidden lg:flex group fixed bottom-8 right-8 w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#1DA851] text-white shadow-lg hover:shadow-xl hover:shadow-[#25D366]/50 hover:-translate-y-0.5 transition-all duration-300 items-center justify-center z-50">
-        <!-- Pulsing halo -->
-        <span class="absolute inset-0 rounded-full bg-[#25D366]/40 animate-ping pointer-events-none"></span>
-        <i class="fab fa-whatsapp text-2xl relative"></i>
-
-        <!-- Hover label (desktop) -->
-        <span class="hidden lg:block absolute right-full mr-3 whitespace-nowrap bg-deep-indigo text-white text-xs font-semibold px-3 py-2 rounded-full shadow-lg opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none">
-            Chat on WhatsApp
-        </span>
-    </a>
-
-    <!-- Back to Top Button (stacked above the WhatsApp button) -->
-    <button id="back-to-top" class="hidden lg:flex fixed bottom-28 right-9 w-12 h-12 rounded-full bg-white text-deep-indigo border border-silver-grey shadow-lg hover:bg-electric-blue hover:text-white hover:shadow-xl hover:shadow-electric-blue/40 transition-all duration-300 transform translate-y-20 opacity-0 z-50 items-center justify-center group">
-        <i class="fas fa-arrow-up group-hover:-translate-y-0.5 transition-transform"></i>
-    </button>
-
-    <!-- Floating Emergency Stroke Helpline Button -->
-    <a href="tel:<?php echo $helpline; ?>"
-       aria-label="Call 24x7 Emergency Stroke Helpline"
-       class="hidden lg:flex group fixed bottom-48 right-8 w-14 h-14 rounded-full bg-red-650 bg-red-600 hover:bg-red-750 hover:bg-red-700 text-white shadow-lg hover:shadow-xl hover:shadow-red-600/50 hover:-translate-y-0.5 transition-all duration-300 items-center justify-center z-50">
-        <!-- Pulsing halo -->
-        <span class="absolute inset-0 rounded-full bg-red-600/40 animate-ping pointer-events-none"></span>
-        <i class="fas fa-phone-alt text-lg relative animate-pulse"></i>
-
-        <!-- Hover label (desktop) -->
-        <span class="hidden lg:block absolute right-full mr-3 whitespace-nowrap bg-red-600 text-white text-xs font-bold px-3 py-2 rounded-full shadow-lg opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none">
-            24x7 Stroke Helpline: <?php echo $helpline; ?>
-        </span>
-    </a>
-
-    <!-- Sticky Bottom Bar (Mobile Only - Premium Floating Capsule) -->
-    <div class="lg:hidden fixed bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md border border-slate-200/80 shadow-[0_8px_30px_rgba(0,0,0,0.12)] rounded-[24px] z-50 px-4 py-2.5 flex items-center justify-between gap-3">
-        <!-- WhatsApp Link -->
-        <a href="https://wa.me/<?php echo $whatsapp; ?>?text=<?php echo rawurlencode('Hello, I would like to book an appointment with Dr. Praveen Gupta.'); ?>" 
-           target="_blank" rel="noopener noreferrer"
-           class="flex flex-col items-center justify-center text-center group">
-            <span class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shadow-sm active:scale-90 transition-all duration-300">
-                <i class="fab fa-whatsapp text-lg"></i>
-            </span>
-            <span class="text-[8px] font-bold text-slate-500 uppercase tracking-wider mt-1">WhatsApp</span>
-        </a>
-
-        <!-- Online Consult -->
-        <a href="online-neurologist-consultation" 
-           class="flex flex-col items-center justify-center text-center group">
-            <span class="w-10 h-10 rounded-full bg-electric-blue/10 text-electric-blue flex items-center justify-center shadow-sm active:scale-90 transition-all duration-300">
-                <i class="fas fa-video text-base"></i>
-            </span>
-            <span class="text-[8px] font-bold text-slate-500 uppercase tracking-wider mt-1">Online</span>
-        </a>
-
-        <!-- Book Appointment Central Button -->
-        <a href="contact-us-top-neurologist-delhi-ncr" 
-           class="flex-1 flex items-center justify-center gap-1.5 bg-gradient-to-r from-deep-indigo via-electric-blue to-cyan-accent text-white font-extrabold text-xs h-10 px-3 rounded-full shadow-[0_4px_15px_rgba(37,99,235,0.25)] active:scale-[0.97] transition-all duration-300">
-            <i class="fas fa-calendar-check text-sm animate-pulse"></i>
-            <span class="uppercase tracking-wider">Book Clinic</span>
-        </a>
-
-        <!-- Emergency Helpline Link -->
-        <a href="tel:<?php echo $helpline; ?>" 
-           class="flex flex-col items-center justify-center text-center group">
-            <span class="w-10 h-10 rounded-full bg-red-50 text-red-650 text-red-600 flex items-center justify-center shadow-sm active:scale-90 transition-all duration-300">
-                <i class="fas fa-phone-alt text-sm animate-pulse"></i>
-            </span>
-            <span class="text-[8px] font-bold text-slate-500 uppercase tracking-wider mt-1">Emergency</span>
-        </a>
-    </div>
+    </script>
 
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TF2TXQLK"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <script>const scrollProgress = document.getElementById('scroll-progress'); window.addEventListener('scroll', () => { const scrollY = window.scrollY; const docHeight = document.documentElement.scrollHeight - window.innerHeight; const progress = docHeight > 0 ? (scrollY / docHeight) * 100 : 0; scrollProgress.style.width = progress + '%'; });</script></body>
+    <script>const scrollProgress = document.getElementById('scroll-progress'); window.addEventListener('scroll', () => { const scrollY = window.scrollY; const docHeight = document.documentElement.scrollHeight - window.innerHeight; const progress = docHeight > 0 ? (scrollY / docHeight) * 100 : 0; scrollProgress.style.width = progress + '%'; });</script>
+</body>
 </html>
 
 
