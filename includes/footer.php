@@ -113,14 +113,17 @@ foreach (array_slice($services, 0, 6) as $svc) {
                     <div class="flex items-center space-x-4 mb-6">
                         <div class="px-3 py-2 rounded-lg bg-white/5 border border-white/10">
                             <div class="text-lg font-bold text-white">3,00,000+</div>
+                            <div class="text-lg font-bold text-white"><?php echo htmlspecialchars($cmsSettings['stats_patients'] ?? '3,00,000+'); ?></div>
                             <div class="text-[10px] text-white/60 uppercase tracking-wide">Patients</div>
                         </div>
                         <div class="px-3 py-2 rounded-lg bg-white/5 border border-white/10">
                             <div class="text-lg font-bold text-white">50+</div>
+                            <div class="text-lg font-bold text-white"><?php echo htmlspecialchars($cmsSettings['stats_awards'] ?? '50+'); ?></div>
                             <div class="text-[10px] text-white/60 uppercase tracking-wide">Awards</div>
                         </div>
                         <div class="px-3 py-2 rounded-lg bg-white/5 border border-white/10">
                             <div class="text-lg font-bold text-white">4.9 <i class="fas fa-star text-amber-400 text-xs"></i></div>
+                            <div class="text-lg font-bold text-white"><?php echo htmlspecialchars($cmsSettings['stats_rating'] ?? '4.9'); ?> <i class="fas fa-star text-amber-400 text-xs"></i></div>
                             <div class="text-[10px] text-white/60 uppercase tracking-wide">Rating</div>
                         </div>
                     </div>

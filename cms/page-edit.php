@@ -1,6 +1,7 @@
 <?php
-$pageTitle = 'Edit Page Content';
-require_once __DIR__ . '/includes/header.php';
+require_once __DIR__ . '/includes/auth.php';
+require_once __DIR__ . '/includes/db.php';
+require_once __DIR__ . '/includes/functions.php';
 
 $slug = $_GET['slug'] ?? 'functional-neurosurgery';
 $pagesCatalog = CMS_DB::get('pages_catalog', []);
@@ -51,6 +52,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Location: page-edit.php?slug=' . urlencode($slug));
     exit;
 }
+
+$pageTitle = 'Edit Page Content';
+require_once __DIR__ . '/includes/header.php';
 ?>
 
 <div class="max-w-4xl bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
@@ -67,7 +71,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <div class="flex items-center space-x-3">
-            <!-- Quick Page Switcher -->
             <select onchange="if(this.value) window.location.href='page-edit.php?slug='+encodeURIComponent(this.value);"
                     class="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 focus:ring-2 focus:ring-blue-500 focus:outline-none">
                 <option value="">Switch to another page...</option>

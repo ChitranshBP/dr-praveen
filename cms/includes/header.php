@@ -1,4 +1,6 @@
 <?php
+ob_start();
+
 require_once __DIR__ . '/auth.php';
 require_once __DIR__ . '/functions.php';
 cms_require_auth();

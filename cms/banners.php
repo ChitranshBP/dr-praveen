@@ -1,86 +1,88 @@
 <?php
-$pageTitle = 'Hero Banners & Slider';
-require_once __DIR__ . '/includes/header.php';
+require_once __DIR__ . '/includes/auth.php';
+require_once __DIR__ . '/includes/db.php';
+require_once __DIR__ . '/includes/functions.php';
 
 $banners = CMS_DB::get('banners', []);
 
-// Handle Actions
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     cms_verify_csrf();
     $action = $_POST['action'] ?? '';
 
-    if ($action === 'delete') {
-        $id = $_POST['id'] ?? '';
-        $banners = array_values(array_filter($banners, fn($b) => $b['id'] !== $id));
-        CMS_DB::set('banners', $banners);
-        cms_set_flash('success', 'Banner slide deleted.');
-        header('Location: banners.php');
-        exit;
-    }
-
-    if ($action === 'save') {
-        $id = $_POST['id'] ?? '';
+    if ($action === 'create' || $action === 'edit') {
+        $id = $_POST['banner_id'] ?? '';
         $title = trim($_POST['title'] ?? '');
         $subtitle = trim($_POST['subtitle'] ?? '');
-        $cta_text = trim($_POST['cta_text'] ?? '');
-        $cta_link = trim($_POST['cta_link'] ?? '');
-        $alt_text = trim($_POST['alt_text'] ?? '');
-        $is_active = isset($_POST['is_active']);
+        $ctaText = trim($_POST['cta_text'] ?? '');
+        $ctaLink = trim($_POST['cta_link'] ?? '');
+        $altText = trim($_POST['alt_text'] ?? '');
+        $isActive = isset($_POST['is_active']);
 
-        // Upload desktop banner
-        $desktopPath = $_POST['existing_desktop'] ?? '';
-        $desktopUpload = cms_handle_upload('desktop_image', 'banner');
-        if ($desktopUpload && !isset($desktopUpload['error'])) {
-            $desktopPath = $desktopUpload['path'];
+        $desktopImg = $_POST['existing_desktop_image'] ?? '';
+        $deskUpload = cms_handle_upload('desktop_image', 'banner');
+        if ($deskUpload && !isset($deskUpload['error'])) {
+            $desktopImg = $deskUpload['path'];
         }
 
-        // Upload mobile banner
-        $mobilePath = $_POST['existing_mobile'] ?? '';
-        $mobileUpload = cms_handle_upload('mobile_image', 'banner');
-        if ($mobileUpload && !isset($mobileUpload['error'])) {
-            $mobilePath = $mobileUpload['path'];
+        $mobileImg = $_POST['existing_mobile_image'] ?? '';
+        $mobUpload = cms_handle_upload('mobile_image', 'banner');
+        if ($mobUpload && !isset($mobUpload['error'])) {
+            $mobileImg = $mobUpload['path'];
         }
 
-        if ($id) {
+        if ($action === 'create') {
+            $newBanner = [
+                'id' => CMS_DB::generateId('banner-'),
+                'title' => $title,
+                'subtitle' => $subtitle,
+                'cta_text' => $ctaText,
+                'cta_link' => $ctaLink,
+                'alt_text' => $altText,
+                'desktop_image' => $desktopImg ?: 'assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500).png',
+                'mobile_image' => $mobileImg ?: 'assets/mobile-banner/1.png',
+                'is_active' => $isActive,
+                'order' => count($banners) + 1
+            ];
+            $banners[] = $newBanner;
+            cms_set_flash('success', 'Banner created successfully.');
+        } else {
             foreach ($banners as &$b) {
                 if ($b['id'] === $id) {
                     $b['title'] = $title;
                     $b['subtitle'] = $subtitle;
-                    $b['cta_text'] = $cta_text;
-                    $b['cta_link'] = $cta_link;
-                    $b['alt_text'] = $alt_text;
-                    $b['is_active'] = $is_active;
-                    if ($desktopPath) $b['desktop_image'] = $desktopPath;
-                    if ($mobilePath) $b['mobile_image'] = $mobilePath;
+                    $b['cta_text'] = $ctaText;
+                    $b['cta_link'] = $ctaLink;
+                    $b['alt_text'] = $altText;
+                    $b['is_active'] = $isActive;
+                    if ($desktopImg) $b['desktop_image'] = $desktopImg;
+                    if ($mobileImg) $b['mobile_image'] = $mobileImg;
                     break;
                 }
             }
-        } else {
-            $banners[] = [
-                'id' => 'banner-' . uniqid(),
-                'title' => $title,
-                'subtitle' => $subtitle,
-                'cta_text' => $cta_text,
-                'cta_link' => $cta_link,
-                'alt_text' => $alt_text,
-                'desktop_image' => $desktopPath ?: 'assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500).png',
-                'mobile_image' => $mobilePath ?: 'assets/mobile-banner/1.png',
-                'is_active' => $is_active,
-                'order' => count($banners) + 1
-            ];
+            cms_set_flash('success', 'Banner updated successfully.');
         }
 
         CMS_DB::set('banners', $banners);
-        cms_set_flash('success', 'Banner saved successfully.');
+        header('Location: banners.php');
+        exit;
+    } elseif ($action === 'delete') {
+        $id = $_POST['banner_id'] ?? '';
+        $banners = array_values(array_filter($banners, fn($b) => $b['id'] !== $id));
+        CMS_DB::set('banners', $banners);
+        cms_set_flash('success', 'Banner deleted.');
         header('Location: banners.php');
         exit;
     }
 }
 
+$pageTitle = 'Hero Banners';
+require_once __DIR__ . '/includes/header.php';
+
+$editId = $_GET['edit'] ?? '';
 $editBanner = null;
-if (isset($_GET['edit'])) {
+if ($editId) {
     foreach ($banners as $b) {
-        if ($b['id'] === $_GET['edit']) {
+        if ($b['id'] === $editId) {
             $editBanner = $b;
             break;
         }
@@ -88,97 +90,95 @@ if (isset($_GET['edit'])) {
 }
 ?>
 
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-7xl">
-    <!-- List of Banners -->
-    <div class="lg:col-span-7 space-y-4">
-        <div class="flex items-center justify-between">
-            <h2 class="text-sm font-bold text-slate-800 uppercase tracking-wider">Active Homepage Slides (<?php echo count($banners); ?>)</h2>
-            <a href="banners.php" class="text-xs text-brand-blue font-bold hover:underline">+ Add New Slide</a>
+<div class="space-y-6 max-w-6xl">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-200">
+        <div>
+            <h2 class="text-base font-bold text-slate-900">Hero Slider Banners</h2>
+            <p class="text-xs text-slate-500 mt-0.5">Manage and reorder banners displayed at the top of your homepage.</p>
         </div>
+        <button onclick="document.getElementById('bannerFormModal').classList.toggle('hidden');" class="px-4 py-2 bg-brand-blue hover:bg-blue-700 text-white text-xs font-bold rounded-xl shadow-sm transition-all flex items-center space-x-1.5 self-start sm:self-auto">
+            <i class="fas fa-plus"></i>
+            <span>Add New Banner</span>
+        </button>
+    </div>
 
-        <div class="space-y-3">
-            <?php foreach ($banners as $index => $b): ?>
-            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-start space-x-4">
-                <div class="w-32 h-16 rounded-xl bg-slate-100 overflow-hidden border border-slate-200 flex-shrink-0">
-                    <img src="../<?php echo htmlspecialchars($b['desktop_image']); ?>" class="w-full h-full object-cover" alt="Banner">
+    <!-- Active Banners List -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <?php foreach ($banners as $index => $b): ?>
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow">
+            <div>
+                <!-- Image Preview -->
+                <div class="relative w-full aspect-[1440/500] bg-slate-100 overflow-hidden border-b border-slate-100">
+                    <img src="../<?php echo htmlspecialchars($b['desktop_image']); ?>" class="w-full h-full object-cover" alt="Desktop Banner">
+                    <span class="absolute top-3 right-3 px-2 py-0.5 rounded-full text-[10px] font-bold shadow-sm <?php echo !empty($b['is_active']) ? 'bg-emerald-500 text-white' : 'bg-slate-800 text-slate-200'; ?>">
+                        <?php echo !empty($b['is_active']) ? 'Active' : 'Disabled'; ?>
+                    </span>
                 </div>
-                <div class="flex-1 min-w-0">
-                    <div class="flex items-center space-x-2">
-                        <span class="px-2 py-0.5 rounded text-[10px] font-bold <?php echo !empty($b['is_active']) ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-500'; ?>">
-                            <?php echo !empty($b['is_active']) ? 'Active' : 'Disabled'; ?>
-                        </span>
-                        <h3 class="text-xs font-bold text-slate-900 truncate"><?php echo htmlspecialchars($b['title'] ?: 'Slide #' . ($index+1)); ?></h3>
-                    </div>
-                    <p class="text-[11px] text-slate-500 truncate mt-1"><?php echo htmlspecialchars($b['subtitle'] ?? ''); ?></p>
-                    <div class="flex items-center space-x-3 mt-2 text-xs">
-                        <a href="banners.php?edit=<?php echo urlencode($b['id']); ?>" class="text-brand-blue font-semibold hover:underline">Edit</a>
-                        <form method="POST" action="" onsubmit="return confirm('Are you sure you want to delete this banner?');" class="inline">
-                            <?php echo cms_csrf_field(); ?>
-                            <input type="hidden" name="action" value="delete">
-                            <input type="hidden" name="id" value="<?php echo htmlspecialchars($b['id']); ?>">
-                            <button type="submit" class="text-red-500 font-semibold hover:underline">Delete</button>
-                        </form>
+
+                <div class="p-4 space-y-2">
+                    <div class="flex items-start justify-between">
+                        <h3 class="text-xs font-bold text-slate-900 leading-tight"><?php echo htmlspecialchars($b['title'] ?: 'Hero Banner Slide #' . ($index + 1)); ?></h3>
+                        <span class="text-[10px] text-slate-400 font-mono">Slide #<?php echo $index + 1; ?></span>
                     </div>
                 </div>
             </div>
-            <?php endforeach; ?>
+
+            <div class="p-3 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs">
+                <a href="banners.php?edit=<?php echo urlencode($b['id']); ?>" class="px-3 py-1.5 bg-brand-blue hover:bg-blue-700 text-white font-bold rounded-lg transition-colors flex items-center space-x-1">
+                    <i class="fas fa-edit text-[10px]"></i>
+                    <span>Edit Artwork</span>
+                </a>
+                <form method="POST" action="" onsubmit="return confirm('Delete this banner slide?');">
+                    <?php echo cms_csrf_field(); ?>
+                    <input type="hidden" name="action" value="delete">
+                    <input type="hidden" name="banner_id" value="<?php echo htmlspecialchars($b['id']); ?>">
+                    <button type="submit" class="p-1.5 text-slate-400 hover:text-red-600 transition-colors">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </form>
+            </div>
         </div>
+        <?php endforeach; ?>
     </div>
 
-    <!-- Form Editor -->
-    <div class="lg:col-span-5">
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm sticky top-6">
-            <h2 class="text-sm font-bold text-slate-900 uppercase tracking-wider pb-3 border-b border-slate-100 mb-4">
-                <?php echo $editBanner ? 'Edit Banner Slide' : 'Add New Slide'; ?>
-            </h2>
+    <!-- Banner Edit Modal / Form -->
+    <div id="bannerFormModal" class="<?php echo $editBanner ? '' : 'hidden'; ?> fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-xl w-full p-6 max-h-[90vh] overflow-y-auto shadow-2xl space-y-5">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <h3 class="text-sm font-bold text-slate-900"><?php echo $editBanner ? 'Edit Banner Slide' : 'Add New Banner Slide'; ?></h3>
+                <a href="banners.php" class="text-slate-400 hover:text-slate-600"><i class="fas fa-times"></i></a>
+            </div>
 
-            <form method="POST" action="" enctype="multipart/form-data" class="space-y-4">
+            <form method="POST" action="" enctype="multipart/form-data" class="space-y-4 text-xs">
                 <?php echo cms_csrf_field(); ?>
-                <input type="hidden" name="action" value="save">
-                <input type="hidden" name="id" value="<?php echo htmlspecialchars($editBanner['id'] ?? ''); ?>">
-                <input type="hidden" name="existing_desktop" value="<?php echo htmlspecialchars($editBanner['desktop_image'] ?? ''); ?>">
-                <input type="hidden" name="existing_mobile" value="<?php echo htmlspecialchars($editBanner['mobile_image'] ?? ''); ?>">
+                <input type="hidden" name="action" value="<?php echo $editBanner ? 'edit' : 'create'; ?>">
+                <input type="hidden" name="banner_id" value="<?php echo htmlspecialchars($editBanner['id'] ?? ''); ?>">
+                <input type="hidden" name="existing_desktop_image" value="<?php echo htmlspecialchars($editBanner['desktop_image'] ?? ''); ?>">
+                <input type="hidden" name="existing_mobile_image" value="<?php echo htmlspecialchars($editBanner['mobile_image'] ?? ''); ?>">
 
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Headline (Title)</label>
-                    <input type="text" name="title" value="<?php echo htmlspecialchars($editBanner['title'] ?? ''); ?>" required class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    <label class="block font-bold text-slate-700 mb-1">Banner Title / Name</label>
+                    <input type="text" name="title" value="<?php echo htmlspecialchars($editBanner['title'] ?? ''); ?>" placeholder="e.g. Transforming Brain & Spine Care" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Subtitle / Supporting Text</label>
-                    <input type="text" name="subtitle" value="<?php echo htmlspecialchars($editBanner['subtitle'] ?? ''); ?>" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    <label class="block font-bold text-slate-700 mb-1">Desktop Banner Image (1440x500 WebP/PNG/JPG)</label>
+                    <input type="file" name="desktop_image" accept="image/*" class="w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700">
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Desktop Banner Image (1440x500 / 2160x750)</label>
-                    <input type="file" name="desktop_image" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Mobile Banner Image (400x506)</label>
-                    <input type="file" name="mobile_image" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
-                </div>
-
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-1">CTA Button Text</label>
-                        <input type="text" name="cta_text" value="<?php echo htmlspecialchars($editBanner['cta_text'] ?? 'Book Appointment'); ?>" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-1">CTA Link</label>
-                        <input type="text" name="cta_link" value="<?php echo htmlspecialchars($editBanner['cta_link'] ?? 'contact-us-top-neurologist-delhi-ncr'); ?>" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    </div>
+                    <label class="block font-bold text-slate-700 mb-1">Mobile Banner Image (Optional)</label>
+                    <input type="file" name="mobile_image" accept="image/*" class="w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700">
                 </div>
 
                 <div class="flex items-center space-x-2 pt-2">
                     <input type="checkbox" id="is_active" name="is_active" <?php echo !isset($editBanner) || !empty($editBanner['is_active']) ? 'checked' : ''; ?> class="w-4 h-4 text-blue-600 rounded">
-                    <label for="is_active" class="text-xs font-bold text-slate-700">Display this slide on live site</label>
+                    <label for="is_active" class="font-bold text-slate-700">Enable this banner on website</label>
                 </div>
 
-                <div class="pt-2">
-                    <button type="submit" class="w-full py-2.5 bg-brand-blue hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-md transition-all">
-                        <?php echo $editBanner ? 'Update Slide' : 'Create Slide'; ?>
-                    </button>
+                <div class="flex items-center justify-end space-x-2 pt-4 border-t border-slate-100">
+                    <a href="banners.php" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl">Cancel</a>
+                    <button type="submit" class="px-5 py-2 bg-brand-blue hover:bg-blue-700 text-white font-bold rounded-xl shadow-sm">Save Banner</button>
                 </div>
             </form>
         </div>

@@ -1,6 +1,7 @@
 <?php
-$pageTitle = 'Edit Condition Card';
-require_once __DIR__ . '/includes/header.php';
+require_once __DIR__ . '/includes/auth.php';
+require_once __DIR__ . '/includes/db.php';
+require_once __DIR__ . '/includes/functions.php';
 
 $services = CMS_DB::get('services', []);
 $id = $_GET['id'] ?? '';
@@ -64,6 +65,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Location: services.php');
     exit;
 }
+
+$pageTitle = 'Edit Condition Card';
+require_once __DIR__ . '/includes/header.php';
 ?>
 
 <div class="max-w-3xl bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
