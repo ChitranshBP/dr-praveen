@@ -222,19 +222,56 @@ $videos = [
             width: 70%;
         }
 
-        /* Glass navbar (transparent) */
+        /* Individual liquid glass pill for each nav link */
+        .nav-pill-link {
+            padding: 0.45rem 1.05rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.92);
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.06));
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 2px 8px rgba(2, 6, 23, 0.10);
+            -webkit-backdrop-filter: blur(8px) saturate(160%);
+            backdrop-filter: blur(8px) saturate(160%);
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+            white-space: nowrap;
+            transition: all 0.3s cubic-bezier(.4, 0, .2, 1);
+        }
+        .nav-pill-link:hover {
+            color: #ffffff;
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0.30), rgba(255, 255, 255, 0.14));
+            transform: translateY(-1px);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.40), 0 6px 18px rgba(2, 6, 23, 0.18);
+        }
+        .navbar-solid .nav-pill-link {
+            color: #334155;
+            text-shadow: none;
+            background: linear-gradient(120deg, rgba(15, 23, 42, 0.045), rgba(15, 23, 42, 0.02));
+            border-color: rgba(15, 23, 42, 0.10);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.90), 0 2px 8px rgba(15, 23, 42, 0.06);
+        }
+        .navbar-solid .nav-pill-link:hover {
+            color: #2563EB;
+            background: linear-gradient(120deg, rgba(37, 99, 235, 0.12), rgba(6, 182, 212, 0.08));
+            border-color: rgba(37, 99, 235, 0.25);
+            transform: translateY(-1px);
+        }
+
+        /* macOS-style liquid glass pill */
         .navbar-glass {
-            background: transparent;
-            backdrop-filter: none;
-            -webkit-backdrop-filter: none;
-            border-bottom: 1px solid transparent;
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06));
+            backdrop-filter: blur(18px) saturate(160%);
+            -webkit-backdrop-filter: blur(18px) saturate(160%);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 32px rgba(2, 6, 23, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.28);
         }
         .navbar-solid {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.72);
             backdrop-filter: blur(20px) saturate(180%);
             -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border-bottom: 1px solid rgba(229, 231, 235, 0.6);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.75);
+            box-shadow: 0 8px 32px rgba(15, 23, 42, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.95);
         }
 
         /* Navbar text colors for glass state */
@@ -300,15 +337,52 @@ $videos = [
             opacity: 0.3;
         }
 
-        /* Mobile menu animation */
-        .mobile-menu-anim {
-            max-height: 0;
+        /* Mobile liquid glass menu panel */
+        .mobile-menu-panel {
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 0;
+            right: 0;
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+            opacity: 0;
+            transform: translateY(-12px) scale(0.97);
+            transform-origin: top right;
+            pointer-events: none;
+            transition: opacity 0.35s cubic-bezier(.4, 0, .2, 1), transform 0.35s cubic-bezier(.4, 0, .2, 1);
             overflow: hidden;
-            transition: max-height 0.4s ease-in-out;
+            z-index: 60;
         }
-        .mobile-menu-anim.open {
-            max-height: 1000px;
+        .mobile-menu-panel.open {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
         }
+
+        /* Hamburger button states */
+        #mobile-menu-btn {
+            background: rgba(255, 255, 255, 0.10);
+            border: 1px solid rgba(255, 255, 255, 0.30);
+            color: #ffffff !important;
+        }
+        #mobile-menu-btn:hover {
+            background: rgba(255, 255, 255, 0.20) !important;
+        }
+        .navbar-solid #mobile-menu-btn {
+            background: rgba(15, 23, 42, 0.05);
+            border-color: rgba(15, 23, 42, 0.12);
+            color: #1e293b !important;
+        }
+        .navbar-solid #mobile-menu-btn:hover {
+            background: rgba(15, 23, 42, 0.08) !important;
+        }
+
+        /* Offset anchor scroll for fixed navbar */
+        section[id] { scroll-margin-top: 96px; }
 
         /* Scroll progress bar */
         .scroll-progress {
@@ -341,15 +415,26 @@ $videos = [
 </head>
 <body class="bg-white text-dark-grey antialiased">
 
-<!-- Navbar -->
-<nav id="navbar" class="sticky top-0 z-50 transition-all duration-500 navbar-glass">
-    <div class="scroll-progress" id="scroll-progress" style="width: 0%"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-14 sm:h-20">
+<!-- Navbar : Floating Liquid Glass Pill -->
+<nav id="navbar" class="fixed top-0 left-0 w-full z-50 px-3 sm:px-6 pt-3 sm:pt-4">
+    <div class="max-w-7xl mx-auto relative">
+        <!-- Pill -->
+        <div id="nav-pill" class="navbar-glass relative flex justify-between items-center h-14 sm:h-16 pl-4 pr-2 sm:pl-6 sm:pr-3 rounded-full overflow-hidden transition-all duration-500">
+            <div class="scroll-progress" id="scroll-progress" style="width: 0%"></div>
+
             <!-- Logo -->
             <a href="#" class="flex items-center group">
-                <img id="header-logo" src="assets/logo/NeuroDoc-final-logo.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" class="h-9 sm:h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 invert brightness-0">
+                <img id="header-logo" src="assets/logo/NeuroDoc-final-logo.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" class="h-8 sm:h-11 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 invert brightness-0">
             </a>
+
+            <!-- Nav Links (Desktop) -->
+            <div class="hidden lg:flex items-center space-x-1.5">
+                <a href="#book" class="nav-pill-link">Home</a>
+                <a href="#conditions" class="nav-pill-link">Conditions</a>
+                <a href="#about" class="nav-pill-link">About</a>
+                <a href="#testimonials" class="nav-pill-link">Testimonials</a>
+                <a href="#videos" class="nav-pill-link">Videos</a>
+            </div>
 
             <!-- Right Actions -->
             <div class="flex items-center space-x-2 sm:space-x-3">
@@ -359,6 +444,54 @@ $videos = [
                         <i class="fas fa-arrow-right text-[8px] sm:text-[10px]"></i>
                     </span>
                 </a>
+
+                <!-- Hamburger (Mobile) -->
+                <button id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="lg:hidden w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                    <i id="menu-icon" class="fas fa-bars text-sm"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel (Liquid Glass) -->
+        <div id="mobile-menu" class="mobile-menu-panel lg:hidden">
+            <div class="p-3">
+                <nav class="flex flex-col space-y-2">
+                    <a href="#book" class="flex items-center justify-between px-4 py-2.5 rounded-full bg-white/70 border border-slate-200/80 shadow-sm text-sm font-semibold text-deep-indigo hover:bg-electric-blue/10 hover:text-electric-blue hover:border-electric-blue/30 transition-all duration-200">
+                        <span><i class="fas fa-house w-6 text-xs text-cyan-accent mr-2"></i>Home</span>
+                        <i class="fas fa-chevron-right text-[10px] text-slate-400"></i>
+                    </a>
+                    <a href="#conditions" class="flex items-center justify-between px-4 py-2.5 rounded-full bg-white/70 border border-slate-200/80 shadow-sm text-sm font-semibold text-deep-indigo hover:bg-electric-blue/10 hover:text-electric-blue hover:border-electric-blue/30 transition-all duration-200">
+                        <span><i class="fas fa-heart-pulse w-6 text-xs text-cyan-accent mr-2"></i>Conditions We Treat</span>
+                        <i class="fas fa-chevron-right text-[10px] text-slate-400"></i>
+                    </a>
+                    <a href="#about" class="flex items-center justify-between px-4 py-2.5 rounded-full bg-white/70 border border-slate-200/80 shadow-sm text-sm font-semibold text-deep-indigo hover:bg-electric-blue/10 hover:text-electric-blue hover:border-electric-blue/30 transition-all duration-200">
+                        <span><i class="fas fa-user-doctor w-6 text-xs text-cyan-accent mr-2"></i>About Dr. Praveen</span>
+                        <i class="fas fa-chevron-right text-[10px] text-slate-400"></i>
+                    </a>
+                    <a href="#testimonials" class="flex items-center justify-between px-4 py-2.5 rounded-full bg-white/70 border border-slate-200/80 shadow-sm text-sm font-semibold text-deep-indigo hover:bg-electric-blue/10 hover:text-electric-blue hover:border-electric-blue/30 transition-all duration-200">
+                        <span><i class="fas fa-quote-right w-6 text-xs text-cyan-accent mr-2"></i>Testimonials</span>
+                        <i class="fas fa-chevron-right text-[10px] text-slate-400"></i>
+                    </a>
+                    <a href="#videos" class="flex items-center justify-between px-4 py-2.5 rounded-full bg-white/70 border border-slate-200/80 shadow-sm text-sm font-semibold text-deep-indigo hover:bg-electric-blue/10 hover:text-electric-blue hover:border-electric-blue/30 transition-all duration-200">
+                        <span><i class="fas fa-video w-6 text-xs text-cyan-accent mr-2"></i>Videos</span>
+                        <i class="fas fa-chevron-right text-[10px] text-slate-400"></i>
+                    </a>
+                </nav>
+                <div class="h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent my-3 mx-4"></div>
+                <div class="flex items-center justify-center space-x-3 pb-1">
+                    <a href="https://www.instagram.com/neurodocpg?igsi=MzI5Y25hZDY2eDZw" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-9 h-9 rounded-full bg-white border border-slate-200 shadow-sm flex items-center justify-center text-deep-indigo hover:text-white hover:bg-gradient-to-br hover:from-electric-blue hover:to-cyan-accent hover:border-transparent transition-all duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/share/1DNxuR8Cqj/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-9 h-9 rounded-full bg-white border border-slate-200 shadow-sm flex items-center justify-center text-deep-indigo hover:text-white hover:bg-gradient-to-br hover:from-electric-blue hover:to-cyan-accent hover:border-transparent transition-all duration-300">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://youtube.com/@neuro_doc?si=g5fPVsZLdMZjFALm" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="w-9 h-9 rounded-full bg-white border border-slate-200 shadow-sm flex items-center justify-center text-deep-indigo hover:text-white hover:bg-gradient-to-br hover:from-electric-blue hover:to-cyan-accent hover:border-transparent transition-all duration-300">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/dr-praveen-gupta-635b9317?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-9 h-9 rounded-full bg-white border border-slate-200 shadow-sm flex items-center justify-center text-deep-indigo hover:text-white hover:bg-gradient-to-br hover:from-electric-blue hover:to-cyan-accent hover:border-transparent transition-all duration-300">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -366,9 +499,42 @@ $videos = [
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const navbar = document.getElementById('navbar');
+        const navbar = document.getElementById('nav-pill');
         const headerLogo = document.getElementById('header-logo');
         const scrollProgress = document.getElementById('scroll-progress');
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('open');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            menuIcon.classList.remove('fa-xmark');
+            menuIcon.classList.add('fa-bars');
+        }
+
+        mobileMenuBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const isOpen = mobileMenu.classList.toggle('open');
+            mobileMenuBtn.setAttribute('aria-expanded', String(isOpen));
+            menuIcon.classList.toggle('fa-bars', !isOpen);
+            menuIcon.classList.toggle('fa-xmark', isOpen);
+        });
+
+        mobileMenu.querySelectorAll('a[href^="#"]').forEach(function(link) {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        document.addEventListener('click', function(e) {
+            if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                closeMobileMenu();
+            }
+        });
+
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 1024) closeMobileMenu();
+        });
 
         function updateNavbar() {
             const scrollY = window.scrollY;
@@ -393,14 +559,14 @@ $videos = [
 </script>
 
 <!-- ════════ Hero : Content Left / Form Right ════════ -->
-<section id="book" class="relative overflow-hidden -mt-14 sm:-mt-20">
+<section id="book" class="relative overflow-hidden">
     <!-- Flipped Background Image -->
     <div class="absolute inset-0 w-full h-full bg-cover bg-center" style="background-image: url('assets/banner/web-banner-hero.webp'); transform: scaleX(-1);"></div>
     <!-- Advanced Gradient Overlay -->
     <div class="absolute inset-0 bg-gradient-to-r from-deep-indigo/95 via-deep-indigo/70 to-deep-indigo/30 pointer-events-none z-0"></div>
     <div class="absolute inset-0 bg-black/20 z-0"></div>
 
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-28 lg:pt-36 pb-8 sm:pb-14 lg:pb-20 z-10">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 lg:pt-36 pb-8 sm:pb-14 lg:pb-20 z-10">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-8 lg:gap-12 items-center">
 
             <!-- Left : Content -->
@@ -769,30 +935,30 @@ $videos = [
     </div>
 
     <div class="marquee-wrap relative observe">
-        <?php foreach ($testimonials as $t): ?>
-            <div class="overflow-hidden">
-                <div class="marquee-track flex w-max">
-                        <div class="quote-card w-[300px] sm:w-[360px] flex-shrink-0 mr-6">
-                            <div class="h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col">
-                                <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
-                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <div class="overflow-hidden">
+            <div class="marquee-track flex w-max">
+                <?php foreach ($testimonials as $t): ?>
+                    <div class="quote-card w-[300px] sm:w-[360px] flex-shrink-0 mr-6">
+                        <div class="h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col">
+                            <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5"><?php echo $t['message']; ?></p>
+                            <div class="w-full h-px bg-silver-grey mb-4"></div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
+                                    <?php echo strtoupper(substr($t['name'], 0, 1)); ?>
                                 </div>
-                                <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5"><?php echo $t['message']; ?></p>
-                                <div class="w-full h-px bg-silver-grey mb-4"></div>
-                                <div class="flex items-center space-x-3">
-                                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                                        <?php echo strtoupper(substr($t['name'], 0, 1)); ?>
-                                    </div>
-                                    <div>
-                                        <p class="font-bold text-deep-indigo text-sm leading-tight"><?php echo $t['name']; ?></p>
-                                        <p class="text-xs text-cyan-accent font-medium mt-0.5"><?php echo $t['role']; ?></p>
-                                    </div>
+                                <div>
+                                    <p class="font-bold text-deep-indigo text-sm leading-tight"><?php echo $t['name']; ?></p>
+                                    <p class="text-xs text-cyan-accent font-medium mt-0.5"><?php echo $t['role']; ?></p>
                                 </div>
                             </div>
                         </div>
-                    <?php endforeach; ?>
-                </div>
+                    </div>
+                <?php endforeach; ?>
             </div>
+        </div>
 
         <div class="absolute inset-y-0 left-0 w-12 md:w-32 bg-gradient-to-r from-soft-cyan to-transparent pointer-events-none z-10"></div>
         <div class="absolute inset-y-0 right-0 w-12 md:w-32 bg-gradient-to-l from-soft-cyan to-transparent pointer-events-none z-10"></div>
@@ -880,6 +1046,26 @@ $videos = [
                     <div class="px-3 py-2 rounded-lg bg-white/5 border border-white/10">
                         <div class="text-lg font-bold text-white">4.9 <i class="fas fa-star text-amber-400 text-xs"></i></div>
                         <div class="text-[10px] text-white/60 uppercase tracking-wide">Rating</div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-base font-bold mb-4 flex items-center">
+                        <span class="w-1 h-5 bg-gradient-to-b from-electric-blue to-cyan-accent rounded-full mr-3"></span>
+                        Follow Us
+                    </h3>
+                    <div class="flex items-center space-x-3">
+                        <a href="https://www.instagram.com/neurodocpg?igsi=MzI5Y25hZDY2eDZw" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-gradient-to-br hover:from-electric-blue hover:to-cyan-accent hover:border-transparent hover:-translate-y-1 transition-all duration-300">
+                            <i class="fab fa-instagram text-lg"></i>
+                        </a>
+                        <a href="https://www.facebook.com/share/1DNxuR8Cqj/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-gradient-to-br hover:from-electric-blue hover:to-cyan-accent hover:border-transparent hover:-translate-y-1 transition-all duration-300">
+                            <i class="fab fa-facebook-f text-lg"></i>
+                        </a>
+                        <a href="https://youtube.com/@neuro_doc?si=g5fPVsZLdMZjFALm" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-gradient-to-br hover:from-electric-blue hover:to-cyan-accent hover:border-transparent hover:-translate-y-1 transition-all duration-300">
+                            <i class="fab fa-youtube text-lg"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/dr-praveen-gupta-635b9317?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-gradient-to-br hover:from-electric-blue hover:to-cyan-accent hover:border-transparent hover:-translate-y-1 transition-all duration-300">
+                            <i class="fab fa-linkedin-in text-lg"></i>
+                        </a>
                     </div>
                 </div>
             </div>
