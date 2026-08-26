@@ -29,12 +29,42 @@ function cms_handle_upload($fileKey, $subfolder = '') {
     }
 
     $file = $_FILES[$fileKey];
-    $allowed = ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'application/pdf'];
     $extAllowed = ['jpg', 'jpeg', 'png', 'webp', 'gif', 'pdf'];
 
+    // Size cap: 8 MB
+    if (($file['size'] ?? 0) > 8 * 1024 * 1024) {
+        return ['error' => 'File is too large (max 8 MB).'];
+    }
+
     $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-    if (!in_array($ext, $extAllowed)) {
+    if (!in_array($ext, $extAllowed, true)) {
         return ['error' => 'Invalid file extension: ' . $ext];
+    }
+
+    // Server-side MIME validation (extension alone can be spoofed)
+    $mimeToExt = [
+        'image/jpeg'      => ['jpg', 'jpeg'],
+        'image/png'       => ['png'],
+        'image/webp'      => ['webp'],
+        'image/gif'       => ['gif'],
+        'application/pdf' => ['pdf'],
+    ];
+    if (function_exists('finfo_open')) {
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $mime = $finfo ? finfo_file($finfo, $file['tmp_name']) : '';
+        if ($finfo) {
+            finfo_close($finfo);
+        }
+        $okMime = false;
+        foreach ($mimeToExt as $mimeAllowed => $exts) {
+            if ($mime === $mimeAllowed && in_array($ext, $exts, true)) {
+                $okMime = true;
+                break;
+            }
+        }
+        if (!$okMime) {
+            return ['error' => 'File content does not match its extension.'];
+        }
     }
 
     $targetDir = UPLOADS_DIR . ($subfolder ? '/' . trim($subfolder, '/') : '');

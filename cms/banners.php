@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($action === 'create') {
             $newBanner = [
-                'id' => CMS_DB::generateId('banner-'),
+                'id' => CMS_DB::generateId(),
                 'title' => $title,
                 'subtitle' => $subtitle,
                 'cta_text' => $ctaText,

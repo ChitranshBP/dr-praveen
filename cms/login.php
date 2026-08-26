@@ -95,10 +95,6 @@ $siteName = CMS_DB::getSetting('site_name', 'Dr. Praveen Gupta');
                     </button>
                 </div>
             </form>
-
-            <div class="mt-6 pt-5 border-t border-slate-100 text-center">
-                <p class="text-[11px] text-slate-400">Default login: <span class="font-bold text-slate-600">admin</span> / <span class="font-bold text-slate-600">admin123</span></p>
-            </div>
         </div>
     </div>
 

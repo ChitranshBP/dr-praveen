@@ -15,14 +15,14 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-TF2TXQLK');</script>
+    })(window,document,'script','dataLayer','<?php echo GTM_ID; ?>');</script>
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Dr. Praveen Gupta - Leading healthcare professional providing exceptional medical care with 20+ years of experience.">
+    <meta name="description" content="<?php echo htmlspecialchars($pageDescription ?? 'Dr. Praveen Gupta - Leading healthcare professional providing exceptional medical care with 20+ years of experience.'); ?>">
     <meta name="keywords" content="Dr Praveen Gupta, healthcare, medical services, doctor, clinic">
     <meta name="author" content="Dr. Praveen Gupta">
-    <title><?php echo SITE_NAME; ?> - <?php echo SITE_TAGLINE; ?></title>
+    <title><?php echo !empty($pageTitle) ? htmlspecialchars($pageTitle) : SITE_NAME . ' - ' . SITE_TAGLINE; ?></title>
 
     <?php if ($isHomepage): ?>
     <!-- Preload Hero LCP Images -->
@@ -33,7 +33,10 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
     <!-- Canonical URL -->
     <?php
     $canonicalUrl = rtrim(SITE_URL, '/') . '/';
-    if (!$isHomepage && $currentPage !== '') {
+    if (!empty($canonicalPath)) {
+        // Pages can override the canonical path (e.g. blog-post.php?slug=...)
+        $canonicalUrl .= ltrim((string)$canonicalPath, '/');
+    } elseif (!$isHomepage && $currentPage !== '') {
         $canonicalUrl .= $currentPage;
     }
     ?>

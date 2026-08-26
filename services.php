@@ -56,7 +56,12 @@ require_once __DIR__ . '/includes/header.php';
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <?php foreach ($services as $index => $service): 
-                $link = getServicePageLink($service['title']);
+                // Honor an explicit link set in the CMS card editor; otherwise
+                // fall back to automatic title-based page matching.
+                $storedLink = trim((string)($service['link'] ?? ''));
+                $link = ($storedLink !== '' && $storedLink !== 'services')
+                    ? $storedLink
+                    : getServicePageLink($service['title']);
             ?>
                 <a href="<?php echo $link; ?>" class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe"
                     style="animation-delay: <?php echo $index * 100; ?>ms;">

@@ -5,14 +5,25 @@
  * Assets are referenced from the parent directory via assets/
  */
 
+// Settings managed from the CMS (/cms/lp-manager.php)
+$lp = [];
+if (is_file(dirname(__DIR__) . '/data/lp.json')) {
+    $decoded = json_decode((string)file_get_contents(dirname(__DIR__) . '/data/lp.json'), true);
+    if (is_array($decoded)) {
+        $lp = $decoded;
+    }
+}
+$lpHeroTitle    = trim((string)($lp['hero_title'] ?? ''));
+$lpHeroSubtitle = trim((string)($lp['hero_subtitle'] ?? ''));
+
 $email        = 'contact@drpraveengupta.com';
 $address      = 'Marengo Asia Hospitals, Shushant Lok 2, Sector 56, Gurugram, Haryana 122011';
 
 $stats = [
-    ['number' => '3,00,000+', 'label' => 'Patients Treated'],
-    ['number' => '1,00,000+', 'label' => 'Success Stories'],
-    ['number' => '50+',       'label' => 'Global Awards'],
-    ['number' => '20+',       'label' => 'Years of Experience'],
+    ['number' => ($lp['stats_treated'] ?? '') !== '' ? $lp['stats_treated'] : '3,00,000+', 'label' => 'Patients Treated'],
+    ['number' => ($lp['stats_stories'] ?? '') !== '' ? $lp['stats_stories'] : '1,00,000+', 'label' => 'Success Stories'],
+    ['number' => ($lp['stats_awards'] ?? '') !== '' ? $lp['stats_awards'] : '50+',       'label' => 'Global Awards'],
+    ['number' => ($lp['stats_experience'] ?? '') !== '' ? $lp['stats_experience'] : '20+',       'label' => 'Years of Experience'],
 ];
 
 $conditions = [
@@ -400,14 +411,22 @@ $videos = [
                 </div>
 
                 <h1 class="text-2xl sm:text-4xl md:text-5xl xl:text-6xl font-serif font-extrabold leading-tight mb-2.5 sm:mb-6 drop-shadow-2xl">
-                    Consult <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-white to-cyan-100 drop-shadow-md">Dr. Praveen Gupta</span><br class="hidden sm:inline">
-                    <span class="text-xl sm:text-4xl md:text-5xl xl:text-6xl font-serif font-bold text-white/95">Best Neurologist in Gurgaon</span>
+                    <?php if ($lpHeroTitle !== ''): ?>
+                        <?php echo htmlspecialchars($lpHeroTitle); ?>
+                    <?php else: ?>
+                        Consult <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-white to-cyan-100 drop-shadow-md">Dr. Praveen Gupta</span><br class="hidden sm:inline">
+                        <span class="text-xl sm:text-4xl md:text-5xl xl:text-6xl font-serif font-bold text-white/95">Best Neurologist in Gurgaon</span>
+                    <?php endif; ?>
                 </h1>
 
                 <div class="bg-white/5 backdrop-blur-sm border-l-2 sm:border-l-4 border-cyan-accent p-2.5 sm:p-4 mb-3 sm:mb-8 rounded-r-xl">
                     <p class="text-xs sm:text-base md:text-xl text-white/95 leading-snug sm:leading-relaxed font-medium">
-                        20+ years of pioneering brain & spine care &bull; DM (AIIMS, New Delhi) &bull; Trusted by
-                        <strong class="text-white font-bold">3,00,000+ patients</strong> for stroke, epilepsy, Parkinson's, migraine and complex neurological disorders.
+                        <?php if ($lpHeroSubtitle !== ''): ?>
+                            <?php echo htmlspecialchars($lpHeroSubtitle); ?>
+                        <?php else: ?>
+                            20+ years of pioneering brain &amp; spine care &bull; DM (AIIMS, New Delhi) &bull; Trusted by
+                            <strong class="text-white font-bold">3,00,000+ patients</strong> for stroke, epilepsy, Parkinson's, migraine and complex neurological disorders.
+                        <?php endif; ?>
                     </p>
                 </div>
 
@@ -454,7 +473,14 @@ $videos = [
                         <p class="text-xs sm:text-sm font-medium text-dark-grey/60">Fill the form and our care team will call you back shortly.</p>
                     </div>
 
-                    <form id="appointment-form" class="space-y-2.5 sm:space-y-4" accept-charset="UTF-8" action="https://app.formester.com/forms/4a08Yw78e/submissions" method="POST">
+                    <form id="appointment-form" class="space-y-2.5 sm:space-y-4" accept-charset="UTF-8" action="../api/save-lead.php" method="POST">
+                        <input type="hidden" name="form_key" value="lp">
+                        <input type="hidden" name="form_type" value="Landing Page Appointment">
+                        <!-- Honeypot (hidden from humans, catches bots) -->
+                        <div class="hidden" aria-hidden="true">
+                            <label for="lp-website">Website</label>
+                            <input type="text" id="lp-website" name="website" tabindex="-1" autocomplete="off">
+                        </div>
                         <div>
                             <label for="lp-name" class="block text-[10px] sm:text-xs font-bold text-dark-grey/70 uppercase tracking-wider mb-1 sm:mb-1.5">Full Name *</label>
                             <input type="text" id="lp-name" name="name" required placeholder="Enter your full name"
@@ -859,12 +885,6 @@ $videos = [
                         <div class="text-lg font-bold text-white">4.9 <i class="fas fa-star text-amber-400 text-xs"></i></div>
                         <div class="text-[10px] text-white/60 uppercase tracking-wide">Rating</div>
                     </div>
-                </div>
-                <div class="flex space-x-2">
-                    <a href="https://facebook.com/drpraveengupta" aria-label="Facebook" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-electric-blue border border-white/10 flex items-center justify-center transition-all duration-300 hover:-translate-y-1"><i class="fab fa-facebook-f text-sm"></i></a>
-                    <a href="https://instagram.com/neuro_doc1" aria-label="Instagram" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 border border-white/10 flex items-center justify-center transition-all duration-300 hover:-translate-y-1"><i class="fab fa-instagram text-sm"></i></a>
-                    <a href="https://twitter.com/drpraveengupta" aria-label="Twitter" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-cyan-accent border border-white/10 flex items-center justify-center transition-all duration-300 hover:-translate-y-1"><i class="fab fa-twitter text-sm"></i></a>
-                    <a href="https://youtube.com/c/DrPraveenGupta" aria-label="YouTube" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-red-500 border border-white/10 flex items-center justify-center transition-all duration-300 hover:-translate-y-1"><i class="fab fa-youtube text-sm"></i></a>
                 </div>
             </div>
 

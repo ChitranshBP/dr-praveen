@@ -10,13 +10,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $buildScript = dirname(CMS_ROOT) . '/build.php';
     if (file_exists($buildScript)) {
-        $cmd = 'php ' . escapeshellarg($buildScript);
-        $output = shell_exec($cmd . ' 2>&1');
-        $status = 'success';
-        cms_set_flash('success', 'Static website compiled and generated into /dist successfully!');
+        $lines = [];
+        $exitCode = 1;
+        exec('php ' . escapeshellarg($buildScript) . ' 2>&1', $lines, $exitCode);
+        $output = implode("\n", $lines);
+
+        if ($exitCode === 0) {
+            // Double-check the build actually produced output files
+            $distDir = dirname(CMS_ROOT) . '/dist';
+            $htmlFiles = is_dir($distDir) ? glob($distDir . '/*.html') : [];
+            if (!empty($htmlFiles)) {
+                $status = 'success';
+                cms_set_flash('success', count($htmlFiles) . ' static page(s) compiled into /dist successfully!');
+            } else {
+                $status = 'error';
+                cms_set_flash('error', 'Build finished but no HTML files were generated. Check the log below.');
+            }
+        } else {
+            $status = 'error';
+            cms_set_flash('error', 'Build FAILED (exit code ' . $exitCode . '). Check the log below.');
+        }
     } else {
         $output = 'build.php script not found.';
         $status = 'error';
+        cms_set_flash('error', 'build.php script was not found on the server.');
     }
 }
 ?>

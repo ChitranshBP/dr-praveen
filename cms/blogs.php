@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <div class="space-y-6 max-w-6xl">
     <div class="flex items-center justify-between">
-        <h2 class="text-sm font-bold text-slate-800 uppercase tracking-wider">All Published Articles (<?php echo count($blogs); ?>)</h2>
+        <h2 class="text-sm font-bold text-slate-800 uppercase tracking-wider">All Articles (<?php echo count($blogs); ?>)</h2>
         <a href="blog-edit.php" class="px-4 py-2 bg-brand-blue hover:bg-blue-700 text-white text-xs font-bold rounded-xl shadow-sm transition-all flex items-center space-x-1.5">
             <i class="fas fa-plus"></i>
             <span>Write New Post</span>
@@ -34,6 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div>
                 <div class="flex items-center justify-between text-xs text-slate-400 mb-2">
                     <span class="font-semibold text-brand-blue"><?php echo htmlspecialchars($b['category'] ?? 'Health'); ?></span>
+                    <?php if (($b['status'] ?? 'published') !== 'published'): ?>
+                    <span class="px-1.5 py-0.5 rounded bg-amber-100 text-amber-700 text-[10px] font-bold uppercase">Draft</span>
+                    <?php endif; ?>
                     <span><?php echo htmlspecialchars($b['date'] ?? ''); ?></span>
                 </div>
                 <h3 class="text-sm font-bold text-slate-900 mb-2 line-clamp-2"><?php echo htmlspecialchars($b['title']); ?></h3>

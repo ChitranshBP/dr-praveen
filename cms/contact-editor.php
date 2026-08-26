@@ -8,13 +8,16 @@ $settings = CMS_DB::get('settings', []);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     cms_verify_csrf();
 
+    // Keys must match what includes/config.php + footer read:
+    // phone, whatsapp, email, address, working_hours_weekdays, working_hours_sunday
     $updates = [
-        'site_phone' => trim($_POST['site_phone'] ?? ''),
-        'stroke_helpline' => trim($_POST['stroke_helpline'] ?? ''),
-        'site_whatsapp' => trim($_POST['site_whatsapp'] ?? ''),
-        'site_email' => trim($_POST['site_email'] ?? ''),
-        'site_address' => trim($_POST['site_address'] ?? ''),
-        'working_hours' => trim($_POST['working_hours'] ?? ''),
+        'phone'                  => trim($_POST['site_phone'] ?? ''),
+        'stroke_helpline'        => trim($_POST['stroke_helpline'] ?? ''),
+        'whatsapp'               => preg_replace('/[^0-9]/', '', trim($_POST['site_whatsapp'] ?? '')),
+        'email'                  => trim($_POST['site_email'] ?? ''),
+        'address'                => trim($_POST['site_address'] ?? ''),
+        'working_hours_weekdays' => trim($_POST['working_hours_weekdays'] ?? ''),
+        'working_hours_sunday'   => trim($_POST['working_hours_sunday'] ?? ''),
     ];
 
     CMS_DB::setMultipleSettings($updates);
@@ -39,35 +42,41 @@ require_once __DIR__ . '/includes/header.php';
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
                 <label class="block text-xs font-bold text-slate-700 mb-1">Primary Phone Number</label>
-                <input type="text" name="site_phone" value="<?php echo htmlspecialchars($settings['site_phone'] ?? '+91-9810000000'); ?>" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                <input type="text" name="site_phone" value="<?php echo htmlspecialchars($settings['phone'] ?? '+91-87969-77903'); ?>" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
             </div>
 
             <div>
                 <label class="block text-xs font-bold text-slate-700 mb-1">24/7 Stroke Helpline</label>
-                <input type="text" name="stroke_helpline" value="<?php echo htmlspecialchars($settings['stroke_helpline'] ?? '1800-123-4567'); ?>" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                <input type="text" name="stroke_helpline" value="<?php echo htmlspecialchars($settings['stroke_helpline'] ?? '1800-309-0247'); ?>" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
             </div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">WhatsApp Chat Number</label>
-                <input type="text" name="site_whatsapp" value="<?php echo htmlspecialchars($settings['site_whatsapp'] ?? '919810000000'); ?>" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                <label class="block text-xs font-bold text-slate-700 mb-1">WhatsApp Chat Number (digits only)</label>
+                <input type="text" name="site_whatsapp" value="<?php echo htmlspecialchars($settings['whatsapp'] ?? '918796977903'); ?>" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
             </div>
 
             <div>
                 <label class="block text-xs font-bold text-slate-700 mb-1">Email Address</label>
-                <input type="email" name="site_email" value="<?php echo htmlspecialchars($settings['site_email'] ?? 'contact@drpraveengupta.in'); ?>" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                <input type="email" name="site_email" value="<?php echo htmlspecialchars($settings['email'] ?? 'contact@drpraveengupta.com'); ?>" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
             </div>
         </div>
 
         <div>
             <label class="block text-xs font-bold text-slate-700 mb-1">Clinic Address</label>
-            <textarea name="site_address" rows="3" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($settings['site_address'] ?? 'Marengo Asia Hospitals, Sector 56, Gurgaon, Haryana 122011'); ?></textarea>
+            <textarea name="site_address" rows="3" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($settings['address'] ?? 'Marengo Asia Hospitals, Shushant Lok 2, Sector 56, Gurugram, Haryana 122011'); ?></textarea>
         </div>
 
-        <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Consultation / OPD Hours</label>
-            <input type="text" name="working_hours" value="<?php echo htmlspecialchars($settings['working_hours'] ?? 'Mon - Sat: 9:00 AM - 6:00 PM'); ?>" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Weekday OPD Hours</label>
+                <input type="text" name="working_hours_weekdays" value="<?php echo htmlspecialchars($settings['working_hours_weekdays'] ?? 'Mon - Sat: 9 AM - 7 PM'); ?>" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Sunday Hours</label>
+                <input type="text" name="working_hours_sunday" value="<?php echo htmlspecialchars($settings['working_hours_sunday'] ?? 'Sunday: Closed'); ?>" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
         </div>
 
         <div class="pt-4 border-t border-slate-100 flex justify-end">

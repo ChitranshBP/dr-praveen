@@ -101,6 +101,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
 
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Author</label>
+                <input type="text" name="author" value="<?php echo htmlspecialchars($blog['author'] ?? 'Dr. Praveen Gupta'); ?>" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Status</label>
+                <select name="status" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    <option value="published" <?php echo ($blog['status'] ?? 'published') === 'published' ? 'selected' : ''; ?>>Published (visible on website)</option>
+                    <option value="draft" <?php echo ($blog['status'] ?? '') === 'draft' ? 'selected' : ''; ?>>Draft (hidden from website)</option>
+                </select>
+            </div>
+            <?php if (!$blog): ?>
+            <div class="flex items-end">
+                <p class="text-[11px] text-slate-400">New articles appear on the Blog page immediately unless saved as Draft.</p>
+            </div>
+            <?php endif; ?>
+        </div>
+
         <div>
             <label class="block text-xs font-bold text-slate-700 mb-1">Featured Banner Image</label>
             <input type="file" name="blog_image" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">

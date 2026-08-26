@@ -4,22 +4,19 @@
  */
 require_once __DIR__ . '/includes/header.php';
 
-// Load doctor data from JSON for the homepage team section
-$doctorsJsonPath = __DIR__ . '/assets/doctors_full.json';
+// Load doctor data from the CMS-managed file (data/doctors.json), falling back
+// to the original static export so the homepage team always matches the Team page.
 $specialtyTeam = [];
 $homepageTeam = [];
 
-if (file_exists($doctorsJsonPath)) {
-    $doctorsJson = file_get_contents($doctorsJsonPath);
-    $doctors = json_decode($doctorsJson, true);
-    if (is_array($doctors)) {
-        foreach ($doctors as $doc) {
-            if (isset($doc['name']) && $doc['name'] !== 'Dr. Praveen Gupta') {
-                $specialtyTeam[] = $doc;
-            }
+$doctors = cms_doctors();
+if (is_array($doctors)) {
+    foreach ($doctors as $doc) {
+        if (isset($doc['name']) && stripos($doc['name'], 'Praveen') === false) {
+            $specialtyTeam[] = $doc;
         }
-        $homepageTeam = array_slice($specialtyTeam, 0, 4);
     }
+    $homepageTeam = array_slice($specialtyTeam, 0, 4);
 }
 ?>
 

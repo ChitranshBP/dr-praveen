@@ -42,8 +42,13 @@ foreach ($pages as $srcFile) {
     
     if (file_exists($tmpOutput)) {
         $html = file_get_contents($tmpOutput);
-        // Replace .php extensions with .html for static linking
-        $html = str_replace(['php"', "php'", 'php#', 'php/'], ['html"', "html'", 'html#', 'html/'], $html);
+        // Rewrite internal links only: href/src/action/poster attributes pointing
+        // at .php files become .html. (A blind global str_replace corrupted text.)
+        $html = preg_replace_callback(
+            '/(\b(?:href|src|action|poster)\s*=\s*["\'][^"\']*?)\.php/i',
+            function ($m) { return $m[1] . '.html'; },
+            $html
+        );
         // Write to dist folder
         file_put_contents($destPath, $html);
         unlink($tmpOutput);

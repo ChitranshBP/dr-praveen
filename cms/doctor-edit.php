@@ -32,25 +32,59 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $imagePath = $imgUpload['path'];
     }
 
-    $docData = [
-        'id' => $id ?: CMS_DB::generateId(),
-        'name' => $name,
-        'specialty' => $specialty,
-        'designation' => $designation,
-        'experience' => $experience,
-        'image' => $imagePath ?: 'assets/ggn-nuro-images/optimized/dr-praveen-gupta.webp',
-        'alt' => $name,
-        'modal' => [
-            'title' => $name,
-            'subtitle' => $specialty,
-            'role' => $designation,
-            'sections' => [
-                'About' => array_filter([$about]),
-                'Qualifications' => array_filter(array_map('trim', explode("\n", $qualifications))),
-                'Areas of Expertise' => array_filter(array_map('trim', explode("\n", $expertise)))
-            ]
-        ]
-    ];
+    $docData = $doc; // start from existing record so unmanaged fields are preserved
+    if (!is_array($docData)) {
+        $docData = [];
+    }
+    if (empty($docData['id'])) {
+        $docData['id'] = $id ?: CMS_DB::generateId();
+    }
+    $docData['name'] = $name;
+    $docData['specialty'] = $specialty;
+    $docData['designation'] = $designation;
+    $docData['experience'] = $experience;
+    if ($imagePath) {
+        $docData['image'] = $imagePath;
+    } elseif (empty($docData['image'])) {
+        $docData['image'] = 'assets/ggn-nuro-images/optimized/dr-praveen-gupta.webp';
+    }
+    $docData['alt'] = $docData['alt'] ?? $name;
+
+    // Merge modal sections: About / Qualifications / Expertise are managed here,
+    // every other existing section (Designation, Experience, Key Achievements,
+    // Research, Philanthropy, ...) is kept untouched.
+    $modal = $docData['modal'] ?? [];
+    if (!is_array($modal)) {
+        $modal = [];
+    }
+    $modal['title'] = $modal['title'] ?? $name;
+    $modal['subtitle'] = $modal['subtitle'] ?? $specialty;
+    $modal['role'] = $modal['role'] ?? $designation;
+    $sections = $modal['sections'] ?? [];
+    if (!is_array($sections)) {
+        $sections = [];
+    }
+
+    // Preserve the original "Designation" section when present
+    if (!isset($sections['Designation']) && $designation !== '') {
+        $sections['Designation'] = [$designation];
+    }
+
+    $aboutLines = array_values(array_filter(array_map('trim', explode("\n", $about))));
+    if (!empty($aboutLines)) {
+        $sections['About'] = $aboutLines;
+    }
+    $qualLines = array_values(array_filter(array_map('trim', explode("\n", $qualifications))));
+    if (!empty($qualLines)) {
+        $sections['Qualifications'] = $qualLines;
+    }
+    $expLines = array_values(array_filter(array_map('trim', explode("\n", $expertise))));
+    if (!empty($expLines)) {
+        $sections['Areas of Expertise'] = $expLines;
+    }
+
+    $modal['sections'] = $sections;
+    $docData['modal'] = $modal;
 
     if ($id && $doc) {
         foreach ($doctors as &$d) {

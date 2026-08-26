@@ -4,6 +4,9 @@
  * Dr. Praveen Gupta - Official Website
  */
 
+// Safe JSON readers for everything the /cms admin panel writes
+require_once __DIR__ . '/cms-load.php';
+
 // Load dynamic settings from CMS if present
 $cmsSettingsFile = dirname(__DIR__) . '/data/settings.json';
 $cmsSettings = [];
@@ -361,8 +364,8 @@ $stats = [
     ],
 ];
 
-// Testimonials
-$testimonials = [
+// Testimonials — managed in CMS (/cms/testimonials.php); the array below is only the fallback
+$fallbackTestimonials = [
     [
         'name' => 'Atul Saxena',
         'role' => 'Patient\'s Son',
@@ -425,8 +428,12 @@ $testimonials = [
     ],
 ];
 
-// Blog Posts
-$blogs = [
+// Prefer CMS-managed testimonials; fall back to the built-in list above.
+$cmsTestimonials = cms_testimonials();
+$testimonials = $cmsTestimonials !== null ? $cmsTestimonials : $fallbackTestimonials;
+
+// Blog posts — managed in CMS (/cms/blogs.php); the list below is only the fallback.
+$fallbackBlogs = [
     [
         'title'    => 'Understanding Migraine: Causes & Modern Treatments',
         'excerpt'  => 'Migraines are more than headaches. Learn the neurological triggers and the latest preventive therapies available today.',
@@ -453,8 +460,29 @@ $blogs = [
     ],
 ];
 
-// Video Testimonials (YouTube Shorts IDs)
-$videoTestimonials = [
+// Prefer CMS-managed posts so the homepage shows what the admin wrote.
+$cmsBlogPosts = cms_blogs_published();
+if (!empty($cmsBlogPosts)) {
+    $blogs = [];
+    foreach ($cmsBlogPosts as $bp) {
+        $bpDate = (string)($bp['date'] ?? '');
+        $blogs[] = [
+            'title'    => $bp['title'] ?? '',
+            'excerpt'  => $bp['excerpt'] ?? '',
+            'category' => $bp['category'] ?? 'Neurology',
+            'date'     => $bpDate !== '' ? date('M j, Y', strtotime($bpDate)) : '',
+            'image'    => $bp['image'] ?? 'assets/services/migraine.png',
+            'url'      => 'blog-post.php?slug=' . urlencode($bp['slug'] ?? ''),
+            'slug'     => $bp['slug'] ?? '',
+            'author'   => $bp['author'] ?? 'Dr. Praveen Gupta',
+        ];
+    }
+} else {
+    $blogs = $fallbackBlogs;
+}
+
+// Video Testimonials (YouTube IDs) — CMS entries carrying a video id win; static list is fallback
+$fallbackVideoTestimonials = [
     [
         'id' => 'QhoPKOgHrwY',
         'title' => 'Patient Recovery Story 1'
@@ -480,6 +508,18 @@ $videoTestimonials = [
         'title' => 'Patient Recovery Story 6'
     ]
 ];
+
+// Merge CMS video testimonials (from /cms/testimonials.php) in front of the fallback list.
+$cmsVideos = cms_video_testimonials();
+if ($cmsVideos !== null) {
+    $videoTestimonials = [];
+    foreach ($cmsVideos as $cv) {
+        $videoTestimonials[] = [
+            'id'    => $cv['video_id'],
+            'title' => trim($cv['name'] . ($cv['condition'] !== '' ? ' — ' . $cv['condition'] : '')),
+        ];
+    }
+}
 
 // Instagram Reels â€” shortcodes from the reel URL: instagram.com/reel/<shortcode>/
 // Add or reorder entries here; the homepage section renders them automatically.

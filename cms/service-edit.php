@@ -118,6 +118,12 @@ require_once __DIR__ . '/includes/header.php';
             <input type="text" name="bullet" value="<?php echo htmlspecialchars($service['bullet'] ?? ''); ?>" placeholder="e.g. Video EEG monitoring" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
         </div>
 
+        <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Card Link (page slug, e.g. epilepsy)</label>
+            <input type="text" name="link" value="<?php echo htmlspecialchars($service['link'] ?? ''); ?>" placeholder="Leave blank to auto-link by title" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <p class="text-[11px] text-slate-400 mt-1">Used as the card's destination page. Example values: stroke, epilepsy, brain-tumor-surgery, spine-surgery.</p>
+        </div>
+
         <div class="flex items-center space-x-2">
             <input type="checkbox" id="is_active" name="is_active" <?php echo !isset($service) || !empty($service['is_active']) ? 'checked' : ''; ?> class="w-4 h-4 text-blue-600 rounded">
             <label for="is_active" class="text-xs font-bold text-slate-700">Show this card on the website</label>
