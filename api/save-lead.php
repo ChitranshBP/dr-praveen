@@ -49,7 +49,10 @@ $hits[] = $now;
 function lead_clean($key, $maxLen = 500) {
     $v = trim((string)($_POST[$key] ?? ''));
     $v = strip_tags($v);
-    return mb_substr($v, 0, $maxLen);
+    if (function_exists('mb_substr')) {
+        return mb_substr($v, 0, $maxLen);
+    }
+    return substr($v, 0, $maxLen);
 }
 
 $name     = lead_clean('name', 120);

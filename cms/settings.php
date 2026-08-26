@@ -3,6 +3,45 @@ $pageTitle = 'Site Settings & Branding';
 require_once __DIR__ . '/includes/header.php';
 
 $settings = CMS_DB::get('settings', []);
+$currentUser = cms_current_user();
+
+// Change Password form (separate action so it never mixes with settings save)
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'change_password') {
+    cms_verify_csrf();
+
+    $current = (string)($_POST['current_password'] ?? '');
+    $new     = (string)($_POST['new_password'] ?? '');
+    $confirm = (string)($_POST['confirm_password'] ?? '');
+
+    if (strlen($new) < 8) {
+        cms_set_flash('error', 'New password must be at least 8 characters long.');
+    } elseif ($new !== $confirm) {
+        cms_set_flash('error', 'New password and confirmation do not match.');
+    } else {
+        $users = CMS_DB::get('users', []);
+        $done = false;
+        foreach ($users as &$u) {
+            if (($u['id'] ?? '') === ($currentUser['id'] ?? '')) {
+                if (!password_verify($current, $u['password'])) {
+                    cms_set_flash('error', 'Current password is incorrect.');
+                    $done = true;
+                    break;
+                }
+                $u['password'] = password_hash($new, PASSWORD_BCRYPT);
+                CMS_DB::set('users', $users);
+                cms_set_flash('success', 'Password changed successfully.');
+                $done = true;
+                break;
+            }
+        }
+        unset($u);
+        if (!$done) {
+            cms_set_flash('error', 'User account not found.');
+        }
+    }
+    header('Location: settings.php');
+    exit;
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     cms_verify_csrf();
@@ -173,5 +212,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </button>
     </div>
 </form>
+
+<!-- Change Password Card -->
+<div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4 max-w-5xl mt-6">
+    <h2 class="text-sm font-bold text-slate-900 uppercase tracking-wider pb-3 border-b border-slate-100 flex items-center">
+        <i class="fas fa-key text-brand-blue mr-2"></i> Change Admin Password
+    </h2>
+    <?php
+    $usingDefaultPassword = false;
+    foreach (CMS_DB::get('users', []) as $u) {
+        if (($u['id'] ?? '') === ($currentUser['id'] ?? '') && password_verify('admin123', $u['password'] ?? '')) {
+            $usingDefaultPassword = true;
+            break;
+        }
+    }
+    ?>
+    <?php if ($usingDefaultPassword): ?>
+    <div class="p-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-xs font-semibold">
+        <i class="fas fa-exclamation-triangle mr-1.5"></i>
+        You are still using the default password. Please change it now.
+    </div>
+    <?php endif; ?>
+    <form method="POST" action="" class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+        <?php echo cms_csrf_field(); ?>
+        <input type="hidden" name="action" value="change_password">
+        <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Current Password</label>
+            <input type="password" name="current_password" required class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
+        <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">New Password (min 8 chars)</label>
+            <input type="password" name="new_password" required minlength="8" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
+        <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Confirm New Password</label>
+            <input type="password" name="confirm_password" required minlength="8" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
+        <div class="md:col-span-3 flex justify-end">
+            <button type="submit" class="px-5 py-2 bg-brand-blue hover:bg-blue-700 text-white text-xs font-bold rounded-xl shadow-md transition-all">
+                Update Password
+            </button>
+        </div>
+    </form>
+</div>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

@@ -8,6 +8,9 @@
 // Accept both ?slug= and legacy ?title=
 $slug = trim((string)($_GET['slug'] ?? $_GET['title'] ?? 'understanding-migraine'));
 
+// Load CMS readers before looking up the post
+require_once __DIR__ . '/includes/cms-load.php';
+
 // Legacy built-in posts (kept so old links never break)
 $legacyBlogs = [
     'understanding-migraine' => [

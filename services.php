@@ -5,6 +5,12 @@
 $isDarkHero = true;
 require_once __DIR__ . '/includes/header.php';
 
+$pageContent = get_page_content('services', [
+    'hero_badge' => 'Our Expertise',
+    'hero_title' => 'Neurological <span class="text-white">Services</span> & Treatments',
+    'hero_desc'  => 'Dr. Praveen Gupta offers state-of-the-art diagnostic and treatment solutions for a wide range of brain, spinal cord, and nerve disorders. Explore our specialized services below.'
+]);
+
 // Link mapping helper for service details pages is now defined in config.php
 ?>
 
@@ -24,16 +30,16 @@ require_once __DIR__ . '/includes/header.php';
             <!-- Badge -->
             <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4">
                 <i class="fas fa-stethoscope text-[10px]"></i>
-                <span>Our Expertise</span>
+                <span><?php echo htmlspecialchars($pageContent['hero_badge']); ?></span>
             </div>
 
             <!-- Heading -->
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-3">
-                Neurological <span class="text-white">Services</span> & Treatments
+                <?php echo $pageContent['hero_title']; ?>
             </h1>
 
             <p class="text-sm md:text-base text-white/80 leading-relaxed mb-6 max-w-2xl">
-                Dr. Praveen Gupta offers state-of-the-art diagnostic and treatment solutions for a wide range of brain, spinal cord, and nerve disorders. Explore our specialized services below.
+                <?php echo nl2br(htmlspecialchars($pageContent['hero_desc'])); ?>
             </p>
 
             <!-- CTA Buttons -->
