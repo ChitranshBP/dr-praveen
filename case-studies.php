@@ -4,12 +4,19 @@
  */
 $isDarkHero = true;
 require_once __DIR__ . '/includes/header.php';
+
+$pageContent = get_page_content('case-studies', [
+    'hero_badge' => 'Anonymized Clinical Case Files',
+    'hero_title' => 'Neurology <span class="text-cyan-accent">Case Studies</span>',
+    'hero_desc'  => 'Explore real clinical histories demonstrating the effectiveness of advanced stroke treatments, DBS programming, and specialized neurology interventions.',
+    'hero_bg'    => 'assets/breadcrumbs/patient.png'
+]);
 ?>
 
 <!-- Hero Section -->
 <section class="relative overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20">
     <!-- Background image -->
-    <img src="assets/breadcrumbs/patient.png" alt=""
+    <img src="<?php echo htmlspecialchars($pageContent['hero_bg']); ?>" alt=""
          fetchpriority="high"
          class="absolute inset-0 w-full h-full object-cover object-[78%_center] md:object-right pointer-events-none select-none">
 
@@ -28,16 +35,16 @@ require_once __DIR__ . '/includes/header.php';
             <!-- Badge -->
             <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4 border border-white/20">
                 <i class="fas fa-microscope text-cyan-accent text-[10px]"></i>
-                <span>Anonymized Clinical Case Files</span>
+                <span><?php echo htmlspecialchars($pageContent['hero_badge']); ?></span>
             </div>
 
             <!-- Heading -->
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-3">
-                Neurology <span class="text-cyan-accent">Case Studies</span>
+                <?php echo $pageContent['hero_title']; ?>
             </h1>
 
             <p class="text-sm md:text-base text-white/85 leading-relaxed mb-6 max-w-2xl">
-                Explore real clinical histories demonstrating the effectiveness of advanced stroke treatments, DBS programming, and specialized neurology interventions.
+                <?php echo nl2br(htmlspecialchars($pageContent['hero_desc'])); ?>
             </p>
         </div>
     </div>

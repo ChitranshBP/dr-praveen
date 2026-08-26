@@ -4,6 +4,12 @@
  */
 $isDarkHero = true;
 require_once __DIR__ . '/includes/header.php';
+
+$pageContent = get_page_content('neurological-symptoms', [
+    'hero_badge' => 'Symptom Directory & Guidance',
+    'hero_title' => 'Neurological <span class="text-cyan-accent">Symptoms</span>',
+    'hero_desc'  => 'Recognize key warning signs and symptoms that affect the nervous system, understand their potential causes, and learn when you should consult a neurologist.'
+]);
 ?>
 
 <!-- Hero Section -->
@@ -23,16 +29,16 @@ require_once __DIR__ . '/includes/header.php';
             <!-- Badge -->
             <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4 border border-white/20">
                 <i class="fas fa-notes-medical text-cyan-accent text-[10px]"></i>
-                <span>Symptom Directory & Guidance</span>
+                <span><?php echo htmlspecialchars($pageContent['hero_badge']); ?></span>
             </div>
 
             <!-- Heading -->
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-3">
-                Neurological <span class="text-cyan-accent">Symptoms</span>
+                <?php echo $pageContent['hero_title']; ?>
             </h1>
 
             <p class="text-sm md:text-base text-white/85 leading-relaxed mb-6 max-w-2xl">
-                Recognize key warning signs and symptoms that affect the nervous system, understand their potential causes, and learn when you should consult a neurologist.
+                <?php echo nl2br(htmlspecialchars($pageContent['hero_desc'])); ?>
             </p>
 
             <div class="flex flex-wrap items-center gap-4">

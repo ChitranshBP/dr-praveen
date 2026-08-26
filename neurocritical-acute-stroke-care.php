@@ -4,12 +4,19 @@
  */
 $isDarkHero = true;
 require_once __DIR__ . '/includes/header.php';
+
+$pageContent = get_page_content('neurocritical-acute-stroke-care', [
+    'hero_badge' => '24/7 Stroke Rescue & ICU',
+    'hero_title' => 'Neurocritical & <span class="text-cyan-accent">Acute Stroke Care</span>',
+    'hero_desc'  => 'Immediate, lifesaving interventions for brain stroke, severe trauma, status epilepticus, and neurological emergencies. Monitored continuously in our specialized Neuro-ICU.',
+    'hero_bg'    => 'assets/breadcrumbs/dr-parveen-services-breadcrumb/Neurocritical%20%26%20Acute%20Stroke.png',
+]);
 ?>
 
 <!-- Page Hero -->
 <section class="relative overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20">
     <!-- Background image -->
-    <img src="assets/breadcrumbs/dr-parveen-services-breadcrumb/Neurocritical%20%26%20Acute%20Stroke.png" alt=""
+    <img src="<?php echo htmlspecialchars($pageContent['hero_bg']); ?>" alt=""
          fetchpriority="high"
          class="absolute inset-0 w-full h-full object-cover object-[78%_center] md:object-right pointer-events-none select-none">
 
@@ -30,16 +37,16 @@ require_once __DIR__ . '/includes/header.php';
             <!-- Badge -->
             <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4">
                 <i class="fas fa-clock text-[10px] animate-pulse text-red-400"></i>
-                <span>24/7 Stroke Rescue & ICU</span>
+                <span><?php echo htmlspecialchars($pageContent['hero_badge']); ?></span>
             </div>
 
             <!-- Heading -->
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-3">
-                Neurocritical & <span class="text-cyan-accent">Acute Stroke Care</span>
+                <?php echo $pageContent['hero_title']; ?>
             </h1>
 
             <p class="text-sm md:text-base text-white/80 leading-relaxed mb-6 max-w-2xl">
-                Immediate, lifesaving interventions for brain stroke, severe trauma, status epilepticus, and neurological emergencies. Monitored continuously in our specialized Neuro-ICU.
+                <?php echo nl2br(htmlspecialchars($pageContent['hero_desc'])); ?>
             </p>
 
             <!-- CTA Buttons -->

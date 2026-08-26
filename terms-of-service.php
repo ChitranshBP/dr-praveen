@@ -4,6 +4,13 @@
  */
 $isDarkHero = true;
 require_once __DIR__ . '/includes/header.php';
+
+$pageContent = get_page_content('terms-of-service', [
+    'hero_badge' => '',
+    'hero_title' => 'Terms of <span class="text-cyan-accent">Service</span>',
+    'hero_desc'  => 'Review the terms and clinical disclaimers governing the use of this website and online consultation portals.',
+    'hero_bg'    => ''
+]);
 ?>
 
 <!-- Hero Section -->
@@ -19,11 +26,11 @@ require_once __DIR__ . '/includes/header.php';
 
             <!-- Heading -->
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-3">
-                Terms of <span class="text-cyan-accent">Service</span>
+                <?php echo $pageContent['hero_title']; ?>
             </h1>
 
             <p class="text-sm md:text-base text-white/85 leading-relaxed max-w-2xl">
-                Review the terms and clinical disclaimers governing the use of this website and online consultation portals.
+                <?php echo nl2br(htmlspecialchars($pageContent['hero_desc'])); ?>
             </p>
         </div>
     </div>

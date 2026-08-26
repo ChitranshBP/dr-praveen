@@ -4,12 +4,19 @@
  */
 $isDarkHero = true;
 require_once __DIR__ . '/includes/header.php';
+
+$pageContent = get_page_content('neuro-rehabilitation-center', [
+    'hero_badge' => 'Comprehensive Neuro-Rehabilitation',
+    'hero_title' => 'Neurological <span class="text-cyan-accent">Rehabilitation Hub</span>',
+    'hero_desc'  => 'Restoring function, independence, and confidence. Tailored physical, occupational, and speech rehabilitation programs for stroke, trauma, and progressive movement disorders.',
+    'hero_bg'    => 'assets/breadcrumbs/dr-parveen-services-breadcrumb/rehab.png',
+]);
 ?>
 
 <!-- Page Hero -->
 <section class="relative overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20">
     <!-- Background image -->
-    <img src="assets/breadcrumbs/dr-parveen-services-breadcrumb/rehab.png" alt=""
+    <img src="<?php echo htmlspecialchars($pageContent['hero_bg']); ?>" alt=""
          fetchpriority="high"
          class="absolute inset-0 w-full h-full object-cover object-[78%_center] md:object-right pointer-events-none select-none">
 
@@ -30,16 +37,16 @@ require_once __DIR__ . '/includes/header.php';
             <!-- Badge -->
             <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4 border border-white/20">
                 <i class="fas fa-child text-cyan-accent text-[10px]"></i>
-                <span>Comprehensive Neuro-Rehabilitation</span>
+                <span><?php echo htmlspecialchars($pageContent['hero_badge']); ?></span>
             </div>
 
             <!-- Heading -->
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-3">
-                Neurological <span class="text-cyan-accent">Rehabilitation Hub</span>
+                <?php echo $pageContent['hero_title']; ?>
             </h1>
 
             <p class="text-sm md:text-base text-white/85 leading-relaxed mb-6 max-w-2xl">
-                Restoring function, independence, and confidence. Tailored physical, occupational, and speech rehabilitation programs for stroke, trauma, and progressive movement disorders.
+                <?php echo nl2br(htmlspecialchars($pageContent['hero_desc'])); ?>
             </p>
 
             <div class="flex flex-wrap items-center gap-3">

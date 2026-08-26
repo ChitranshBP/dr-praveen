@@ -4,10 +4,17 @@
  */
 $isDarkHero = true;
 require_once __DIR__ . '/includes/header.php';
+
+$pageContent = get_page_content('why-choose-dr-praveen-gupta', [
+    'hero_badge' => 'Leading Neurologist in India',
+    'hero_title' => 'Why Choose <span class="text-cyan-accent">Dr. Praveen Gupta</span>',
+    'hero_desc'  => 'Discover the credentials, achievements, and unique patient-first healthcare philosophy that make Dr. Praveen Gupta one of India\'s most trusted neurological specialists.',
+    'hero_bg'    => 'assets/breadcrumbs/about.png'
+]);
 ?>
 
 <!-- Hero Section -->
-<section class="relative overflow-hidden text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20 bg-cover bg-center" style="background-image: url('assets/breadcrumbs/about.png');">
+<section class="relative overflow-hidden text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20 bg-cover bg-center" style="background-image: url('<?php echo htmlspecialchars($pageContent['hero_bg']); ?>');">
     <div class="absolute inset-0 bg-gradient-to-r from-deep-indigo/95 via-deep-indigo/85 to-electric-blue/30"></div>
     <div class="absolute -right-24 -bottom-24 w-96 h-96 bg-cyan-accent/20 rounded-full blur-[120px] pointer-events-none"></div>
 
@@ -23,16 +30,16 @@ require_once __DIR__ . '/includes/header.php';
             <!-- Badge -->
             <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4 border border-white/20">
                 <i class="fas fa-award text-cyan-accent text-[10px]"></i>
-                <span>Leading Neurologist in India</span>
+                <span><?php echo htmlspecialchars($pageContent['hero_badge']); ?></span>
             </div>
 
             <!-- Heading -->
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-3">
-                Why Choose <span class="text-cyan-accent">Dr. Praveen Gupta</span>
+                <?php echo $pageContent['hero_title']; ?>
             </h1>
 
             <p class="text-sm md:text-base text-white/85 leading-relaxed mb-6 max-w-2xl">
-                Discover the credentials, achievements, and unique patient-first healthcare philosophy that make Dr. Praveen Gupta one of India's most trusted neurological specialists.
+                <?php echo nl2br(htmlspecialchars($pageContent['hero_desc'])); ?>
             </p>
 
             <div class="flex flex-wrap items-center gap-4">

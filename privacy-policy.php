@@ -4,6 +4,13 @@
  */
 $isDarkHero = true;
 require_once __DIR__ . '/includes/header.php';
+
+$pageContent = get_page_content('privacy-policy', [
+    'hero_badge' => '',
+    'hero_title' => 'Privacy <span class="text-cyan-accent">Policy</span>',
+    'hero_desc'  => 'Learn how we collect, protect, and use your personal information and clinical records on this website.',
+    'hero_bg'    => ''
+]);
 ?>
 
 <!-- Hero Section -->
@@ -19,11 +26,11 @@ require_once __DIR__ . '/includes/header.php';
 
             <!-- Heading -->
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-3">
-                Privacy <span class="text-cyan-accent">Policy</span>
+                <?php echo $pageContent['hero_title']; ?>
             </h1>
 
             <p class="text-sm md:text-base text-white/85 leading-relaxed max-w-2xl">
-                Learn how we collect, protect, and use your personal information and clinical records on this website.
+                <?php echo nl2br(htmlspecialchars($pageContent['hero_desc'])); ?>
             </p>
         </div>
     </div>

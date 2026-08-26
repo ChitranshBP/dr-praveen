@@ -19,7 +19,8 @@ if (!is_dir(UPLOADS_DIR)) {
 }
 
 if (!file_exists(DATA_DIR . '/.htaccess')) {
-    @file_put_contents(DATA_DIR . '/.htaccess', "Deny from all\n");
+    @file_put_contents(DATA_DIR . '/.htaccess',
+        "<IfModule mod_authz_core.c>\n    Require all denied\n</IfModule>\n<IfModule !mod_authz_core.c>\n    Order allow,deny\n    Deny from all\n</IfModule>\n");
 }
 if (!file_exists(DATA_DIR . '/index.php')) {
     @file_put_contents(DATA_DIR . '/index.php', "<?php http_response_code(403); exit('Access Denied'); ?>");
@@ -137,27 +138,15 @@ function cms_init_seed() {
         $banners = [
             [
                 'id' => 'banner-1',
-                'title' => 'Transforming Brain & Spine Care with Precision',
-                'subtitle' => 'Led by Dr. Praveen Gupta, Chairman, Marengo Asia International Institute of Neuro & Spine',
-                'desktop_image' => 'assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500).png',
-                'mobile_image' => 'assets/mobile-banner/1.png',
-                'alt_text' => 'Transforming Brain & Spine Care with Precision - Dr. Praveen Gupta',
-                'cta_text' => 'Book Appointment',
-                'cta_link' => 'contact-us-top-neurologist-delhi-ncr',
+                'title' => "Don't Let Seizures Control Your Life",
+                'subtitle' => 'Expert diagnosis & personalised advanced epilepsy care',
+                'desktop_image' => 'assets/webp/banner/Epilepsy-Care-WebBanner.webp',
+                'mobile_image' => 'assets/banner/banner-new/Epilepsy-Care-WebBanner.jpg',
+                'alt_text' => "Don't Let Seizures Control Your Life - Expert diagnosis and personalised advanced epilepsy care by Dr. Praveen Gupta",
+                'cta_text' => 'Consult for Epilepsy',
+                'cta_link' => 'epilepsy',
                 'is_active' => true,
                 'order' => 1
-            ],
-            [
-                'id' => 'banner-2',
-                'title' => 'Your Brain Deserves Expert Care',
-                'subtitle' => 'Empowering every thought for a life beyond neurological limits',
-                'desktop_image' => 'assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500) (1).png',
-                'mobile_image' => 'assets/mobile-banner/mobile-1 (1).png',
-                'alt_text' => 'Your Brain Deserves Expert Care - Dr. Praveen Gupta',
-                'cta_text' => 'Consult Online',
-                'cta_link' => 'online-neurologist-consultation',
-                'is_active' => true,
-                'order' => 2
             ]
         ];
         CMS_DB::set('banners', $banners);

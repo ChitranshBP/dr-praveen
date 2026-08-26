@@ -4,10 +4,17 @@
  */
 $isDarkHero = true;
 require_once __DIR__ . '/includes/header.php';
+
+$pageContent = get_page_content('about', [
+    'hero_badge' => '',
+    'hero_title' => '<span class="text-cyan-accent">Dr. Praveen Gupta</span>',
+    'hero_desc'  => '',
+    'hero_bg'    => 'assets/breadcrumbs/about.png'
+]);
 ?>
 
 <!-- Hero Section -->
-<section class="relative overflow-hidden text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20 bg-cover bg-center" style="background-image: url('assets/breadcrumbs/about.png');">
+<section class="relative overflow-hidden text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20 bg-cover bg-center" style="background-image: url('<?php echo htmlspecialchars($pageContent['hero_bg']); ?>');">
     <div class="absolute inset-0 bg-gradient-to-r from-deep-indigo/95 via-deep-indigo/85 to-electric-blue/30"></div>
     <div class="absolute -right-24 -bottom-24 w-96 h-96 bg-cyan-accent/20 rounded-full blur-[120px] pointer-events-none"></div>
 
@@ -22,7 +29,7 @@ require_once __DIR__ . '/includes/header.php';
 
             <!-- Heading -->
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4">
-                <span class="text-cyan-accent">Dr. Praveen Gupta</span>
+                <?php echo $pageContent['hero_title']; ?>
             </h1>
 
             <!-- Designations Stack -->

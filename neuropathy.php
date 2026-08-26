@@ -4,12 +4,19 @@
  */
 $isDarkHero = true;
 require_once __DIR__ . '/includes/header.php';
+
+$pageContent = get_page_content('neuropathy', [
+    'hero_badge' => 'Specialized Neurological Care',
+    'hero_title' => 'Expert <span class="text-white">Neuropathy</span> Treatment',
+    'hero_desc'  => 'Advanced nerve diagnostics and targeted pain relief strategies for chronic burning, tingling, and numbness. Dr. Praveen Gupta provides customized care for long-term nerve health.',
+    'hero_bg'    => 'assets/breadcrumbs/conditions/Peripheral%20Neuropathy.png',
+]);
 ?>
 
 <!-- Page Hero -->
 <section class="relative overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20">
     <!-- Background image -->
-    <img src="assets/breadcrumbs/conditions/Peripheral%20Neuropathy.png" alt=""
+    <img src="<?php echo htmlspecialchars($pageContent['hero_bg']); ?>" alt=""
          fetchpriority="high"
          class="absolute inset-0 w-full h-full object-cover object-[78%_center] md:object-right pointer-events-none select-none">
 
@@ -30,16 +37,16 @@ require_once __DIR__ . '/includes/header.php';
             <!-- Badge -->
             <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4">
                 <i class="fas fa-bolt text-[10px]"></i>
-                <span>Specialized Neurological Care</span>
+                <span><?php echo htmlspecialchars($pageContent['hero_badge']); ?></span>
             </div>
 
             <!-- Heading -->
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-3">
-                Expert <span class="text-white">Neuropathy</span> Treatment
+                <?php echo $pageContent['hero_title']; ?>
             </h1>
 
             <p class="text-sm md:text-base text-white/80 leading-relaxed mb-6 max-w-2xl">
-                Advanced nerve diagnostics and targeted pain relief strategies for chronic burning, tingling, and numbness. Dr. Praveen Gupta provides customized care for long-term nerve health.
+                <?php echo nl2br(htmlspecialchars($pageContent['hero_desc'])); ?>
             </p>
 
             <!-- CTA Buttons -->

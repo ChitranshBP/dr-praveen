@@ -6,10 +6,17 @@ $isDarkHero = true;
 require_once __DIR__ . '/includes/header.php';
 
 // Categories come from getVideoCategory() in includes/config.php
+
+$pageContent = get_page_content('neurology-video-library', [
+    'hero_badge' => 'Educational Neurology Library',
+    'hero_title' => 'Neurology <span class="text-cyan-accent">Video Library</span>',
+    'hero_desc'  => 'Explore clinical explanations, medical guidelines, and diagnostic insights shared directly by Dr. Praveen Gupta.',
+    'hero_bg'    => 'assets/breadcrumbs/media.png'
+]);
 ?>
 
 <!-- Hero Section -->
-<section class="relative overflow-hidden text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20 bg-cover bg-center" style="background-image: url('assets/breadcrumbs/media.png');">
+<section class="relative overflow-hidden text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20 bg-cover bg-center" style="background-image: url('<?php echo htmlspecialchars($pageContent['hero_bg']); ?>');">
     <div class="absolute inset-0 bg-gradient-to-r from-deep-indigo/95 via-deep-indigo/85 to-electric-blue/30"></div>
     <div class="absolute -right-24 -bottom-24 w-96 h-96 bg-cyan-accent/20 rounded-full blur-[120px] pointer-events-none"></div>
 
@@ -25,16 +32,16 @@ require_once __DIR__ . '/includes/header.php';
             <!-- Badge -->
             <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4 border border-white/20">
                 <i class="fas fa-video text-cyan-accent text-[10px]"></i>
-                <span>Educational Neurology Library</span>
+                <span><?php echo htmlspecialchars($pageContent['hero_badge']); ?></span>
             </div>
 
             <!-- Heading -->
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-3">
-                Neurology <span class="text-cyan-accent">Video Library</span>
+                <?php echo $pageContent['hero_title']; ?>
             </h1>
 
             <p class="text-sm md:text-base text-white/85 leading-relaxed mb-6 max-w-2xl">
-                Explore clinical explanations, medical guidelines, and diagnostic insights shared directly by Dr. Praveen Gupta.
+                <?php echo nl2br(htmlspecialchars($pageContent['hero_desc'])); ?>
             </p>
         </div>
     </div>

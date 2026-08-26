@@ -31,14 +31,9 @@ $activeBanners = array_values(array_filter($banners, function($b) { return !isse
 if (empty($activeBanners)) {
     $activeBanners = [
         [
-            'desktop_image' => 'assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500).png',
-            'mobile_image' => 'assets/mobile-banner/1.png',
-            'alt_text' => 'Transforming Brain & Spine Care with Precision - Dr. Praveen Gupta'
-        ],
-        [
-            'desktop_image' => 'assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500) (1).png',
-            'mobile_image' => 'assets/mobile-banner/mobile-1 (1).png',
-            'alt_text' => 'Your Brain Deserves Expert Care - Dr. Praveen Gupta'
+            'desktop_image' => 'assets/webp/banner/Epilepsy-Care-WebBanner.webp',
+            'mobile_image' => 'assets/banner/banner-new/Epilepsy-Care-WebBanner.jpg',
+            'alt_text' => "Don't Let Seizures Control Your Life - Expert diagnosis and personalised advanced epilepsy care by Dr. Praveen Gupta"
         ]
     ];
 }

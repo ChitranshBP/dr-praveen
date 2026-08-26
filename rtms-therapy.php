@@ -4,12 +4,19 @@
  */
 $isDarkHero = true;
 require_once __DIR__ . '/includes/header.php';
+
+$pageContent = get_page_content('rtms-therapy', [
+    'hero_badge' => 'Non-Invasive Neuromodulation',
+    'hero_title' => 'Advanced <span class="text-white">rTMS Therapy</span>',
+    'hero_desc'  => 'Repetitive Transcranial Magnetic Stimulation (rTMS)  a non-invasive, drug-free outpatient therapy utilizing magnetic fields to stimulate nerve cells for depression, chronic pain, and stroke recovery.',
+    'hero_bg'    => 'assets/breadcrumbs/dr-parveen-services-breadcrumb/rtms.png',
+]);
 ?>
 
 <!-- Page Hero -->
 <section class="relative overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20">
     <!-- Background image -->
-    <img src="assets/breadcrumbs/dr-parveen-services-breadcrumb/rtms.png" alt=""
+    <img src="<?php echo htmlspecialchars($pageContent['hero_bg']); ?>" alt=""
          fetchpriority="high"
          class="absolute inset-0 w-full h-full object-cover object-[78%_center] md:object-right pointer-events-none select-none">
 
@@ -30,16 +37,16 @@ require_once __DIR__ . '/includes/header.php';
             <!-- Badge -->
             <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4">
                 <i class="fas fa-wave-square text-[10px]"></i>
-                <span>Non-Invasive Neuromodulation</span>
+                <span><?php echo htmlspecialchars($pageContent['hero_badge']); ?></span>
             </div>
 
             <!-- Heading -->
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-3">
-                Advanced <span class="text-white">rTMS Therapy</span>
+                <?php echo $pageContent['hero_title']; ?>
             </h1>
 
             <p class="text-sm md:text-base text-white/80 leading-relaxed mb-6 max-w-2xl">
-                Repetitive Transcranial Magnetic Stimulation (rTMS)  a non-invasive, drug-free outpatient therapy utilizing magnetic fields to stimulate nerve cells for depression, chronic pain, and stroke recovery.
+                <?php echo nl2br(htmlspecialchars($pageContent['hero_desc'])); ?>
             </p>
 
             <!-- CTA Buttons -->
