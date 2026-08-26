@@ -334,18 +334,18 @@ $videos = [
 <nav id="navbar" class="sticky top-0 z-50 transition-all duration-500 navbar-glass">
     <div class="scroll-progress" id="scroll-progress" style="width: 0%"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-20">
+        <div class="flex justify-between items-center h-14 sm:h-20">
             <!-- Logo -->
             <a href="#" class="flex items-center group">
-                <img id="header-logo" src="assets/logo/NeuroDoc-final-logo.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" class="h-14 sm:h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 invert brightness-0">
+                <img id="header-logo" src="assets/logo/NeuroDoc-final-logo.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" class="h-9 sm:h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 invert brightness-0">
             </a>
 
             <!-- Right Actions -->
-            <div class="flex items-center space-x-3">
-                <a href="#book" class="btn-shimmer group relative inline-flex items-center space-x-2 bg-gradient-to-r from-electric-blue to-cyan-accent text-white text-xs sm:text-sm font-semibold pl-4 sm:pl-5 pr-2 py-2 rounded-full hover:shadow-xl hover:shadow-electric-blue/40 transition-all duration-300 transform hover:-translate-y-0.5">
+            <div class="flex items-center space-x-2 sm:space-x-3">
+                <a href="#book" class="btn-shimmer group relative inline-flex items-center space-x-1.5 sm:space-x-2 bg-gradient-to-r from-electric-blue to-cyan-accent text-white text-xs sm:text-sm font-semibold pl-3.5 sm:pl-5 pr-1.5 sm:pr-2 py-1.5 sm:py-2 rounded-full hover:shadow-xl hover:shadow-electric-blue/40 transition-all duration-300 transform hover:-translate-y-0.5">
                     <span>Book Appointment</span>
-                    <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white/20 flex items-center justify-center group-hover:rotate-45 transition-transform duration-300">
-                        <i class="fas fa-arrow-right text-[9px] sm:text-[10px]"></i>
+                    <span class="w-5 h-5 sm:w-7 sm:h-7 rounded-full bg-white/20 flex items-center justify-center group-hover:rotate-45 transition-transform duration-300">
+                        <i class="fas fa-arrow-right text-[8px] sm:text-[10px]"></i>
                     </span>
                 </a>
             </div>
@@ -382,59 +382,59 @@ $videos = [
 </script>
 
 <!-- ════════ Hero : Content Left / Form Right ════════ -->
-<section id="book" class="relative overflow-hidden -mt-20">
+<section id="book" class="relative overflow-hidden -mt-14 sm:-mt-20">
     <!-- Flipped Background Image -->
     <div class="absolute inset-0 w-full h-full bg-cover bg-center" style="background-image: url('assets/banner/web-banner-hero.webp'); transform: scaleX(-1);"></div>
     <!-- Advanced Gradient Overlay -->
     <div class="absolute inset-0 bg-gradient-to-r from-deep-indigo/95 via-deep-indigo/70 to-deep-indigo/30 pointer-events-none z-0"></div>
     <div class="absolute inset-0 bg-black/20 z-0"></div>
 
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-14 lg:pt-40 lg:pb-24 z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-28 lg:pt-36 pb-8 sm:pb-14 lg:pb-20 z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-8 lg:gap-12 items-center">
 
             <!-- Left : Content -->
             <div class="lg:col-span-7 text-white observe">
-                <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full mb-6 shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:bg-white/15 transition-all cursor-default">
-                    <span class="w-2 h-2 rounded-full bg-cyan-accent animate-pulse shadow-[0_0_10px_#06B6D4]"></span>
-                    <span class="text-xs font-bold uppercase tracking-wider text-cyan-50">Chairman - Marengo Asia International Institute of Neuro & Spine</span>
+                <div class="inline-flex items-center space-x-1.5 sm:space-x-2 bg-white/10 backdrop-blur-md border border-white/20 px-2.5 py-1 sm:px-4 sm:py-2 rounded-full mb-2.5 sm:mb-6 shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:bg-white/15 transition-all cursor-default">
+                    <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-cyan-accent animate-pulse shadow-[0_0_10px_#06B6D4]"></span>
+                    <span class="text-[9px] sm:text-xs font-bold uppercase tracking-wider text-cyan-50">Chairman - Marengo Asia International Institute of Neuro & Spine</span>
                 </div>
 
-                <h1 class="text-4xl md:text-5xl xl:text-6xl font-serif font-extrabold leading-tight mb-6 drop-shadow-2xl">
-                    Consult <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-white to-cyan-100 drop-shadow-md">Dr. Praveen Gupta</span><br>
-                    Best Neurologist in Gurgaon
+                <h1 class="text-2xl sm:text-4xl md:text-5xl xl:text-6xl font-serif font-extrabold leading-tight mb-2.5 sm:mb-6 drop-shadow-2xl">
+                    Consult <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-white to-cyan-100 drop-shadow-md">Dr. Praveen Gupta</span><br class="hidden sm:inline">
+                    <span class="text-xl sm:text-4xl md:text-5xl xl:text-6xl font-serif font-bold text-white/95">Best Neurologist in Gurgaon</span>
                 </h1>
 
-                <div class="bg-white/5 backdrop-blur-sm border-l-4 border-cyan-accent p-4 mb-8 rounded-r-xl">
-                    <p class="text-lg md:text-xl text-white/95 leading-relaxed font-medium">
-                        20+ years of pioneering brain & spine care. DM (AIIMS, New Delhi) - trusted by
-                        <strong class="text-white text-xl">3,00,000+ patients</strong> for stroke, epilepsy, Parkinson's, migraine and complex neurological disorders.
+                <div class="bg-white/5 backdrop-blur-sm border-l-2 sm:border-l-4 border-cyan-accent p-2.5 sm:p-4 mb-3 sm:mb-8 rounded-r-xl">
+                    <p class="text-xs sm:text-base md:text-xl text-white/95 leading-snug sm:leading-relaxed font-medium">
+                        20+ years of pioneering brain & spine care &bull; DM (AIIMS, New Delhi) &bull; Trusted by
+                        <strong class="text-white font-bold">3,00,000+ patients</strong> for stroke, epilepsy, Parkinson's, migraine and complex neurological disorders.
                     </p>
                 </div>
 
-                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 mb-10">
-                    <li class="flex items-start space-x-3 group">
-                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-cyan-accent/20 flex items-center justify-center group-hover:bg-cyan-accent/40 transition-colors mt-0.5">
-                            <i class="fas fa-check text-cyan-accent text-xs"></i>
+                <ul class="grid grid-cols-2 gap-2 sm:gap-y-4 sm:gap-x-6 mb-3 sm:mb-10 text-[11px] sm:text-sm">
+                    <li class="flex items-center space-x-1.5 sm:space-x-3 group">
+                        <div class="flex-shrink-0 w-4 h-4 sm:w-6 sm:h-6 rounded-full bg-cyan-400/25 border border-cyan-300/40 flex items-center justify-center group-hover:bg-cyan-400/40 transition-colors">
+                            <svg class="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-cyan-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                         </div>
-                        <span class="text-sm text-white/90 font-medium">First stroke centre in Gurugram</span>
+                        <span class="text-white/90 font-medium leading-tight">First stroke centre in Gurugram</span>
                     </li>
-                    <li class="flex items-start space-x-3 group">
-                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-cyan-accent/20 flex items-center justify-center group-hover:bg-cyan-accent/40 transition-colors mt-0.5">
-                            <i class="fas fa-check text-cyan-accent text-xs"></i>
+                    <li class="flex items-center space-x-1.5 sm:space-x-3 group">
+                        <div class="flex-shrink-0 w-4 h-4 sm:w-6 sm:h-6 rounded-full bg-cyan-400/25 border border-cyan-300/40 flex items-center justify-center group-hover:bg-cyan-400/40 transition-colors">
+                            <svg class="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-cyan-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                         </div>
-                        <span class="text-sm text-white/90 font-medium">First epileptic DBS surgery in Asia</span>
+                        <span class="text-white/90 font-medium leading-tight">First epileptic DBS surgery in Asia</span>
                     </li>
-                    <li class="flex items-start space-x-3 group">
-                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-cyan-accent/20 flex items-center justify-center group-hover:bg-cyan-accent/40 transition-colors mt-0.5">
-                            <i class="fas fa-check text-cyan-accent text-xs"></i>
+                    <li class="flex items-center space-x-1.5 sm:space-x-3 group">
+                        <div class="flex-shrink-0 w-4 h-4 sm:w-6 sm:h-6 rounded-full bg-cyan-400/25 border border-cyan-300/40 flex items-center justify-center group-hover:bg-cyan-400/40 transition-colors">
+                            <svg class="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-cyan-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                         </div>
-                        <span class="text-sm text-white/90 font-medium">First DBS for Parkinson's in Gurugram</span>
+                        <span class="text-white/90 font-medium leading-tight">First DBS for Parkinson's in Gurugram</span>
                     </li>
-                    <li class="flex items-start space-x-3 group">
-                        <div class="flex-shrink-0 w-6 h-6 rounded-full bg-cyan-accent/20 flex items-center justify-center group-hover:bg-cyan-accent/40 transition-colors mt-0.5">
-                            <i class="fas fa-check text-cyan-accent text-xs"></i>
+                    <li class="flex items-center space-x-1.5 sm:space-x-3 group">
+                        <div class="flex-shrink-0 w-4 h-4 sm:w-6 sm:h-6 rounded-full bg-cyan-400/25 border border-cyan-300/40 flex items-center justify-center group-hover:bg-cyan-400/40 transition-colors">
+                            <svg class="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-cyan-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                         </div>
-                        <span class="text-sm text-white/90 font-medium">Pioneered BMT for autoimmune neuro disorders</span>
+                        <span class="text-white/90 font-medium leading-tight">Pioneered BMT for neuro disorders</span>
                     </li>
                 </ul>
 
@@ -442,33 +442,33 @@ $videos = [
             </div>
 
             <!-- Right : Appointment Form -->
-            <div class="lg:col-span-5 relative mt-8 lg:mt-0">
+            <div class="lg:col-span-5 relative mt-2 sm:mt-8 lg:mt-0">
                 <!-- Glowing backdrop blob -->
-                <div class="absolute -inset-2 bg-gradient-to-br from-electric-blue/40 to-cyan-accent/40 rounded-[3rem] blur-2xl opacity-60 pointer-events-none"></div>
-                <div class="bg-white/95 backdrop-blur-3xl rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] p-7 md:p-9 border border-white/50 relative z-10 observe">
-                    <div class="text-center mb-6">
-                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-electric-blue to-cyan-accent text-white text-2xl mb-4 shadow-xl shadow-electric-blue/40 transform -translate-y-4">
+                <div class="absolute -inset-2 bg-gradient-to-br from-electric-blue/40 to-cyan-accent/40 rounded-2xl sm:rounded-[3rem] blur-xl sm:blur-2xl opacity-60 pointer-events-none"></div>
+                <div class="bg-white/95 backdrop-blur-3xl rounded-2xl sm:rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] p-4 sm:p-7 md:p-9 border border-white/50 relative z-10 observe">
+                    <div class="text-center mb-3 sm:mb-6">
+                        <div class="hidden sm:inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-electric-blue to-cyan-accent text-white text-2xl mb-4 shadow-xl shadow-electric-blue/40 transform -translate-y-4">
                             <i class="fas fa-calendar-check animate-pulse"></i>
                         </div>
-                        <h2 class="text-2xl font-serif font-bold text-deep-indigo mb-1.5 -mt-2">Book Your Appointment</h2>
-                        <p class="text-sm font-medium text-dark-grey/60">Fill the form and our care team will call you back shortly.</p>
+                        <h2 class="text-lg sm:text-2xl font-serif font-bold text-deep-indigo mb-0.5 sm:mb-1.5">Book Your Appointment</h2>
+                        <p class="text-xs sm:text-sm font-medium text-dark-grey/60">Fill the form and our care team will call you back shortly.</p>
                     </div>
 
-                    <form id="appointment-form" class="space-y-4" accept-charset="UTF-8" action="https://app.formester.com/forms/4a08Yw78e/submissions" method="POST">
+                    <form id="appointment-form" class="space-y-2.5 sm:space-y-4" accept-charset="UTF-8" action="https://app.formester.com/forms/4a08Yw78e/submissions" method="POST">
                         <div>
-                            <label for="lp-name" class="block text-xs font-bold text-dark-grey/70 uppercase tracking-wider mb-1.5">Full Name *</label>
+                            <label for="lp-name" class="block text-[10px] sm:text-xs font-bold text-dark-grey/70 uppercase tracking-wider mb-1 sm:mb-1.5">Full Name *</label>
                             <input type="text" id="lp-name" name="name" required placeholder="Enter your full name"
-                                   class="w-full px-5 py-3.5 rounded-2xl border border-slate-200 bg-slate-50/50 text-sm font-medium focus:outline-none focus:bg-white focus:ring-4 focus:ring-electric-blue/10 focus:border-electric-blue transition-all shadow-sm">
+                                   class="w-full px-3.5 py-2.5 sm:px-5 sm:py-3.5 rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-50/50 text-xs sm:text-sm font-medium focus:outline-none focus:bg-white focus:ring-4 focus:ring-electric-blue/10 focus:border-electric-blue transition-all shadow-sm">
                         </div>
                         <div>
-                            <label for="lp-phone" class="block text-xs font-bold text-dark-grey/70 uppercase tracking-wider mb-1.5">Phone Number *</label>
+                            <label for="lp-phone" class="block text-[10px] sm:text-xs font-bold text-dark-grey/70 uppercase tracking-wider mb-1 sm:mb-1.5">Phone Number *</label>
                             <input type="tel" id="lp-phone" name="phone" required pattern="[0-9+ ]{10,15}" placeholder="Enter your mobile number"
-                                   class="w-full px-5 py-3.5 rounded-2xl border border-slate-200 bg-slate-50/50 text-sm font-medium focus:outline-none focus:bg-white focus:ring-4 focus:ring-electric-blue/10 focus:border-electric-blue transition-all shadow-sm">
+                                   class="w-full px-3.5 py-2.5 sm:px-5 sm:py-3.5 rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-50/50 text-xs sm:text-sm font-medium focus:outline-none focus:bg-white focus:ring-4 focus:ring-electric-blue/10 focus:border-electric-blue transition-all shadow-sm">
                         </div>
                         <div>
-                            <label for="lp-condition" class="block text-xs font-bold text-dark-grey/70 uppercase tracking-wider mb-1.5">Condition / Concern *</label>
+                            <label for="lp-condition" class="block text-[10px] sm:text-xs font-bold text-dark-grey/70 uppercase tracking-wider mb-1 sm:mb-1.5">Condition / Concern *</label>
                             <select id="lp-condition" name="condition" required
-                                    class="w-full px-5 py-3.5 rounded-2xl border border-slate-200 bg-slate-50/50 text-sm font-medium text-dark-grey focus:outline-none focus:bg-white focus:ring-4 focus:ring-electric-blue/10 focus:border-electric-blue transition-all shadow-sm">
+                                    class="w-full px-3.5 py-2.5 sm:px-5 sm:py-3.5 rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-50/50 text-xs sm:text-sm font-medium text-dark-grey focus:outline-none focus:bg-white focus:ring-4 focus:ring-electric-blue/10 focus:border-electric-blue transition-all shadow-sm">
                                 <option value="" disabled selected>Select your concern</option>
                                 <option>Stroke</option>
                                 <option>Epilepsy / Seizures</option>
@@ -483,20 +483,20 @@ $videos = [
                             </select>
                         </div>
                         <div>
-                            <label for="lp-message" class="block text-xs font-bold text-dark-grey/70 uppercase tracking-wider mb-1.5">Message (Optional)</label>
-                            <textarea id="lp-message" name="message" rows="3" placeholder="Briefly describe your symptoms..."
-                                      class="w-full px-5 py-3.5 rounded-2xl border border-slate-200 bg-slate-50/50 text-sm font-medium focus:outline-none focus:bg-white focus:ring-4 focus:ring-electric-blue/10 focus:border-electric-blue transition-all resize-none shadow-sm"></textarea>
+                            <label for="lp-message" class="block text-[10px] sm:text-xs font-bold text-dark-grey/70 uppercase tracking-wider mb-1 sm:mb-1.5">Message (Optional)</label>
+                            <textarea id="lp-message" name="message" rows="2" placeholder="Briefly describe your symptoms..."
+                                      class="w-full px-3.5 py-2.5 sm:px-5 sm:py-3.5 rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-50/50 text-xs sm:text-sm font-medium focus:outline-none focus:bg-white focus:ring-4 focus:ring-electric-blue/10 focus:border-electric-blue transition-all resize-none shadow-sm sm:rows-3"></textarea>
                         </div>
 
                         <button type="submit"
-                                class="btn-shimmer relative w-full inline-flex items-center justify-center space-x-2.5 bg-gradient-to-r from-electric-blue to-cyan-accent hover:from-deep-indigo hover:to-electric-blue text-white font-bold py-4 rounded-xl shadow-xl shadow-electric-blue/30 hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+                                class="btn-shimmer relative w-full inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-electric-blue to-cyan-accent hover:from-deep-indigo hover:to-electric-blue text-white font-bold py-3 sm:py-4 rounded-xl shadow-xl shadow-electric-blue/30 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden text-xs sm:text-sm">
                             <span id="form-btn-text">Request Callback</span>
-                            <i class="fas fa-arrow-right text-xs"></i>
+                            <i class="fas fa-arrow-right text-[10px] sm:text-xs"></i>
                         </button>
 
-                        <p id="form-status" class="hidden text-center text-sm font-semibold rounded-xl px-4 py-3"></p>
+                        <p id="form-status" class="hidden text-center text-xs sm:text-sm font-semibold rounded-xl px-3 py-2 sm:px-4 sm:py-3"></p>
 
-                        <p class="text-[11px] text-dark-grey/45 text-center leading-relaxed">
+                        <p class="text-[10px] sm:text-[11px] text-dark-grey/45 text-center leading-relaxed">
                             <i class="fas fa-lock mr-1"></i>Your information is private and secure.
                         </p>
                     </form>
@@ -542,7 +542,7 @@ $videos = [
 
 <!-- ════════ Conditions We Treat ════════ -->
 <section id="conditions" class="py-12 md:py-16 bg-white relative overflow-hidden">
-    <div class="scroll-progress" id="scroll-progress" style="width: 0%"></div><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-10 md:mb-12 observe">
             <div class="inline-flex items-center space-x-2 bg-electric-blue/10 px-4 py-2 rounded-full mb-4">
                 <i class="fas fa-brain text-electric-blue text-sm"></i>
@@ -563,11 +563,7 @@ $videos = [
                         <i class="fas fa-brain text-xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-deep-indigo mb-2 group-hover:text-electric-blue transition-colors"><?php echo $cond['title']; ?></h3>
-                    <p class="text-sm text-dark-grey/70 leading-relaxed mb-4"><?php echo $cond['desc']; ?></p>
-                    <a href="#book" class="mt-auto pt-4 inline-flex items-center space-x-2 text-electric-blue text-sm font-bold group-hover:underline">
-                        <span>Book Consultation</span>
-                        <i class="fas fa-arrow-right text-xs transition-transform duration-300 group-hover:translate-x-1"></i>
-                    </a>
+                    <p class="text-sm text-dark-grey/70 leading-relaxed"><?php echo $cond['desc']; ?></p>
                 </div>
             <?php endforeach; ?>
         </div>
@@ -582,7 +578,7 @@ $videos = [
 
 <!-- About Doctor -->
 <section id="about" class="py-12 md:py-16 bg-soft-cyan/30 relative overflow-hidden">
-    <div class="scroll-progress" id="scroll-progress" style="width: 0%"></div><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <div class="lg:col-span-5 relative observe">
                 <div class="absolute -inset-4 bg-gradient-to-br from-electric-blue/20 to-cyan-accent/20 rounded-[3rem] blur-2xl opacity-60 pointer-events-none"></div>
@@ -657,7 +653,7 @@ $videos = [
 
 <!-- Why Choose Us -->
 <section class="py-12 md:py-16 bg-white relative overflow-hidden">
-    <div class="scroll-progress" id="scroll-progress" style="width: 0%"></div><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <div class="lg:col-span-7 observe">
                 <div class="inline-flex items-center space-x-2 bg-electric-blue/10 px-4 py-2 rounded-full mb-4">
@@ -733,7 +729,7 @@ $videos = [
 
 <!-- Testimonials -->
 <section id="testimonials" class="py-12 md:py-16 bg-soft-cyan/30 relative overflow-hidden">
-    <div class="scroll-progress" id="scroll-progress" style="width: 0%"></div><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-10 md:mb-12 observe">
             <div class="inline-flex items-center space-x-2 bg-electric-blue/10 px-4 py-2 rounded-full mb-4">
                 <i class="fas fa-quote-right text-electric-blue text-sm"></i>
@@ -750,7 +746,7 @@ $videos = [
         <?php
         $rows = [$testimonials, array_reverse($testimonials)];
         foreach ($rows as $rowIdx => $row): ?>
-            <div class="overflow-hidden <?php echo $rowIdx > 0 ? 'mt-6' : ''; ?>">
+            <div class="overflow-hidden <?php echo $rowIdx > 0 ? 'hidden md:block mt-6' : ''; ?>">
                 <div class="marquee-track flex w-max <?php echo $rowIdx > 0 ? 'marquee-reverse' : ''; ?>">
                     <?php foreach ($row as $t): ?>
                         <div class="quote-card w-[300px] sm:w-[360px] flex-shrink-0 mr-6">
