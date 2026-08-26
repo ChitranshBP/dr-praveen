@@ -769,12 +769,9 @@ $videos = [
     </div>
 
     <div class="marquee-wrap relative observe">
-        <?php
-        $rows = [$testimonials, array_reverse($testimonials)];
-        foreach ($rows as $rowIdx => $row): ?>
-            <div class="overflow-hidden <?php echo $rowIdx > 0 ? 'hidden md:block mt-6' : ''; ?>">
-                <div class="marquee-track flex w-max <?php echo $rowIdx > 0 ? 'marquee-reverse' : ''; ?>">
-                    <?php foreach ($row as $t): ?>
+        <?php foreach ($testimonials as $t): ?>
+            <div class="overflow-hidden">
+                <div class="marquee-track flex w-max">
                         <div class="quote-card w-[300px] sm:w-[360px] flex-shrink-0 mr-6">
                             <div class="h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col">
                                 <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
@@ -796,7 +793,6 @@ $videos = [
                     <?php endforeach; ?>
                 </div>
             </div>
-        <?php endforeach; ?>
 
         <div class="absolute inset-y-0 left-0 w-12 md:w-32 bg-gradient-to-r from-soft-cyan to-transparent pointer-events-none z-10"></div>
         <div class="absolute inset-y-0 right-0 w-12 md:w-32 bg-gradient-to-l from-soft-cyan to-transparent pointer-events-none z-10"></div>
