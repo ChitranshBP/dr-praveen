@@ -173,7 +173,7 @@ function cms_init_seed() {
                 'order' => 3
             ],
             [
-                'id' => 'banner-parkinsons-male',
+                'id' => 'banner-parkinsons',
                 'title' => "Move With Confidence. Live With Freedom.",
                 'subtitle' => "Expert care for Parkinson's, tremors & movement disorders.",
                 'desktop_image' => 'assets/banner/dr-praveen-banner-desktop/parkinsons-care-male.jpeg',
@@ -183,18 +183,6 @@ function cms_init_seed() {
                 'cta_link' => 'parkinsons',
                 'is_active' => true,
                 'order' => 4
-            ],
-            [
-                'id' => 'banner-parkinsons-female',
-                'title' => "Move With Confidence. Live With Freedom.",
-                'subtitle' => "Expert care for Parkinson's, tremors & movement disorders.",
-                'desktop_image' => 'assets/banner/dr-praveen-banner-desktop/parkinsons-care-female.jpeg',
-                'mobile_image' => 'assets/banner/dr-praveen-banner-mobile/parkinsons-care-female-mobile.jpeg',
-                'alt_text' => "Move With Confidence. Live With Freedom - Tremor & Movement Disorders Care by Dr. Praveen Gupta",
-                'cta_text' => "Consult for Parkinson's",
-                'cta_link' => 'parkinsons',
-                'is_active' => true,
-                'order' => 5
             ]
         ];
         CMS_DB::set('banners', $banners);
