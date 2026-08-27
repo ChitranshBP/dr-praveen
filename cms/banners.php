@@ -38,8 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'cta_text' => $ctaText,
                 'cta_link' => $ctaLink,
                 'alt_text' => $altText,
-                'desktop_image' => $desktopImg ?: 'assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500).png',
-                'mobile_image' => $mobileImg ?: 'assets/mobile-banner/1.png',
+                'desktop_image' => $desktopImg ?: 'assets/banner/dr-praveen-banner-desktop/stroke-care.jpeg',
+                'mobile_image' => $mobileImg ?: 'assets/banner/dr-praveen-banner-mobile/stroke-care-mobile.jpeg',
                 'is_active' => $isActive,
                 'order' => count($banners) + 1
             ];

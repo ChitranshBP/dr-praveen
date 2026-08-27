@@ -26,8 +26,8 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
 
     <?php if ($isHomepage): ?>
     <!-- Preload Hero LCP Images -->
-    <link rel="preload" as="image" href="assets/banner/banner-new/Epilepsy-Care-WebBanner.jpg" media="(max-width: 639px)" fetchpriority="high">
-    <link rel="preload" as="image" href="assets/webp/banner/Epilepsy-Care-WebBanner.webp" media="(min-width: 640px)" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/banner/dr-praveen-banner-mobile/stroke-care-mobile.jpeg" media="(max-width: 639px)" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/banner/dr-praveen-banner-desktop/stroke-care.jpeg" media="(min-width: 640px)" fetchpriority="high">
     <?php endif; ?>
 
     <!-- Canonical URL -->

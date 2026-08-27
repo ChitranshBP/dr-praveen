@@ -31,9 +31,9 @@ $activeBanners = array_values(array_filter($banners, function($b) { return !isse
 if (empty($activeBanners)) {
     $activeBanners = [
         [
-            'desktop_image' => 'assets/webp/banner/Epilepsy-Care-WebBanner.webp',
-            'mobile_image' => 'assets/banner/banner-new/Epilepsy-Care-WebBanner.jpg',
-            'alt_text' => "Don't Let Seizures Control Your Life - Expert diagnosis and personalised advanced epilepsy care by Dr. Praveen Gupta"
+            'desktop_image' => 'assets/banner/dr-praveen-banner-desktop/stroke-care.jpeg',
+            'mobile_image' => 'assets/banner/dr-praveen-banner-mobile/stroke-care-mobile.jpeg',
+            'alt_text' => "Stroke Doesn't Wait. Neither Should You - Emergency Stroke Care by Dr. Praveen Gupta"
         ]
     ];
 }
@@ -47,7 +47,7 @@ if (empty($activeBanners)) {
     <div id="hero-slider" class="w-full max-w-[1920px] mx-auto relative">
         <div id="hero-track" class="flex transition-transform duration-700 ease-in-out">
             <?php foreach ($activeBanners as $bIndex => $banner): 
-                $desktopImg = $banner['desktop_image'] ?? 'assets/banner/banner-new/DrPraveen_WebBanner_New(1440X500).png';
+                $desktopImg = $banner['desktop_image'] ?? 'assets/banner/dr-praveen-banner-desktop/stroke-care.jpeg';
                 $mobileImg = !empty($banner['mobile_image']) ? $banner['mobile_image'] : $desktopImg;
                 $alt = !empty($banner['alt_text']) ? $banner['alt_text'] : (!empty($banner['title']) ? $banner['title'] : 'Dr. Praveen Gupta Banner');
             ?>

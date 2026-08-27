@@ -4,9 +4,9 @@
         "username": "admin",
         "name": "Dr. Praveen Gupta Admin",
         "email": "contact@drpraveengupta.com",
-        "password": "$2y$12$sr2tmiDUGmKr8oupS2qNqOUqz4XE/nPDNcscXuyKaKzHItZwnP3Lq",
+        "password": "$2y$12$ur.b3i6YvOTmscDjwQXFDObZYNQ0nscdCHpf53Scbrc2dcCPh633u",
         "role": "admin",
         "created_at": "2026-08-25 11:04:50",
-        "last_login": "2026-08-26 10:39:02"
+        "last_login": "2026-08-27 08:11:26"
     }
 ]

@@ -88,7 +88,7 @@ function cms_init_seed() {
                 'username' => 'admin',
                 'name' => 'Dr. Praveen Gupta Admin',
                 'email' => 'contact@drpraveengupta.com',
-                'password' => password_hash('admin123', PASSWORD_BCRYPT),
+                'password' => password_hash('@Praveen@123', PASSWORD_BCRYPT),
                 'role' => 'admin',
                 'created_at' => date('Y-m-d H:i:s'),
                 'last_login' => null
@@ -137,16 +137,64 @@ function cms_init_seed() {
     if (empty($banners)) {
         $banners = [
             [
-                'id' => 'banner-1',
+                'id' => 'banner-stroke',
+                'title' => "Stroke Doesn't Wait. Neither Should You.",
+                'subtitle' => 'Expert Care. Every Minute Matters. Time is Brain.',
+                'desktop_image' => 'assets/banner/dr-praveen-banner-desktop/stroke-care.jpeg',
+                'mobile_image' => 'assets/banner/dr-praveen-banner-mobile/stroke-care-mobile.jpeg',
+                'alt_text' => "Stroke Doesn't Wait. Neither Should You - Emergency Stroke Care by Dr. Praveen Gupta",
+                'cta_text' => 'Emergency Stroke Care',
+                'cta_link' => 'stroke',
+                'is_active' => true,
+                'order' => 1
+            ],
+            [
+                'id' => 'banner-epilepsy',
                 'title' => "Don't Let Seizures Control Your Life",
                 'subtitle' => 'Expert diagnosis & personalised advanced epilepsy care',
-                'desktop_image' => 'assets/webp/banner/Epilepsy-Care-WebBanner.webp',
-                'mobile_image' => 'assets/banner/banner-new/Epilepsy-Care-WebBanner.jpg',
-                'alt_text' => "Don't Let Seizures Control Your Life - Expert diagnosis and personalised advanced epilepsy care by Dr. Praveen Gupta",
+                'desktop_image' => 'assets/banner/dr-praveen-banner-desktop/epilepsy-care.jpeg',
+                'mobile_image' => 'assets/banner/dr-praveen-banner-mobile/epilepsy-care-mobile.jpeg',
+                'alt_text' => "Don't Let Seizures Control Your Life - Advanced Epilepsy Care by Dr. Praveen Gupta",
                 'cta_text' => 'Consult for Epilepsy',
                 'cta_link' => 'epilepsy',
                 'is_active' => true,
-                'order' => 1
+                'order' => 2
+            ],
+            [
+                'id' => 'banner-migraine',
+                'title' => "It's More Than 'Just a Headache.'",
+                'subtitle' => 'Expert care for migraine & recurring headaches.',
+                'desktop_image' => 'assets/banner/dr-praveen-banner-desktop/migraine-care.jpeg',
+                'mobile_image' => 'assets/banner/dr-praveen-banner-mobile/migraine-care-mobile.jpeg',
+                'alt_text' => "It's More Than Just a Headache - Expert Migraine Care by Dr. Praveen Gupta",
+                'cta_text' => 'Consult for Migraine',
+                'cta_link' => 'migraine',
+                'is_active' => true,
+                'order' => 3
+            ],
+            [
+                'id' => 'banner-parkinsons-male',
+                'title' => "Move With Confidence. Live With Freedom.",
+                'subtitle' => "Expert care for Parkinson's, tremors & movement disorders.",
+                'desktop_image' => 'assets/banner/dr-praveen-banner-desktop/parkinsons-care-male.jpeg',
+                'mobile_image' => 'assets/banner/dr-praveen-banner-mobile/parkinsons-care-male-mobile.jpeg',
+                'alt_text' => "Move With Confidence. Live With Freedom - Parkinson's Treatment by Dr. Praveen Gupta",
+                'cta_text' => "Consult for Parkinson's",
+                'cta_link' => 'parkinsons',
+                'is_active' => true,
+                'order' => 4
+            ],
+            [
+                'id' => 'banner-parkinsons-female',
+                'title' => "Move With Confidence. Live With Freedom.",
+                'subtitle' => "Expert care for Parkinson's, tremors & movement disorders.",
+                'desktop_image' => 'assets/banner/dr-praveen-banner-desktop/parkinsons-care-female.jpeg',
+                'mobile_image' => 'assets/banner/dr-praveen-banner-mobile/parkinsons-care-female-mobile.jpeg',
+                'alt_text' => "Move With Confidence. Live With Freedom - Tremor & Movement Disorders Care by Dr. Praveen Gupta",
+                'cta_text' => "Consult for Parkinson's",
+                'cta_link' => 'parkinsons',
+                'is_active' => true,
+                'order' => 5
             ]
         ];
         CMS_DB::set('banners', $banners);

@@ -21,7 +21,7 @@ const convertDir = async (srcDir, destDir) => {
 (async () => {
     console.log('Starting compression...');
     await convertDir('./assets/services', './assets/webp/services');
-    await convertDir('./assets/banner/banner-new', './assets/webp/banner');
-    await convertDir('./assets/mobile-banner', './assets/webp/mobile-banner');
+    await convertDir('./assets/banner/dr-praveen-banner-desktop', './assets/webp/banner/desktop');
+    await convertDir('./assets/banner/dr-praveen-banner-mobile', './assets/webp/banner/mobile');
     console.log('Done!');
 })();

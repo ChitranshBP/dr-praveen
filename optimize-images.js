@@ -96,14 +96,14 @@ async function convertDir(srcDir, destDir, options = {}) {
     // ─── 3. Banner Images ───
     // Desktop banners displayed at 1440×500 max. Keep at 1440 wide, quality reduce
     console.log('\n▸ Desktop banners (target: 1440w, quality 70)...');
-    await convertDir('./assets/banner/banner-new', './assets/webp/banner', { 
+    await convertDir('./assets/banner/dr-praveen-banner-desktop', './assets/webp/banner/desktop', { 
         width: 1440, quality: 70 
     });
     
     // ─── 4. Mobile Banners ───
     // Mobile banners at ~768px max. Resize to 768 wide
     console.log('\n▸ Mobile banners (target: 768w, quality 72)...');
-    await convertDir('./assets/mobile-banner', './assets/webp/mobile-banner', { 
+    await convertDir('./assets/banner/dr-praveen-banner-mobile', './assets/webp/banner/mobile', { 
         width: 768, quality: 72 
     });
     
