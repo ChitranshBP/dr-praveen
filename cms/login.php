@@ -71,7 +71,7 @@ $siteName = CMS_DB::getSetting('site_name', 'Dr. Praveen Gupta');
                         <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
                             <i class="fas fa-user text-xs"></i>
                         </span>
-                        <input type="text" name="username" required autofocus placeholder="admin"
+                        <input type="text" name="username" required autofocus placeholder="Admin@Dr-Praveen"
                                class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all">
                     </div>
                 </div>

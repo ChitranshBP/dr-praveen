@@ -85,7 +85,7 @@ function cms_init_seed() {
         $users = [
             [
                 'id' => CMS_DB::generateId(),
-                'username' => 'admin',
+                'username' => 'Admin@Dr-Praveen',
                 'name' => 'Dr. Praveen Gupta Admin',
                 'email' => 'contact@drpraveengupta.com',
                 'password' => password_hash('@Praveen@123', PASSWORD_BCRYPT),
