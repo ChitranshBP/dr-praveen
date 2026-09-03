@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Blog Single Post Page - Dr. Praveen Gupta
  * Renders an article managed in the CMS (/cms/blogs.php) by slug.
@@ -82,7 +82,7 @@ if (!$post) {
 $postDate = !empty($post['date']) ? date('F j, Y', strtotime($post['date'])) : '';
 $pageTitle       = $post['title'] . ' - Dr. Praveen Gupta, Neurologist';
 $pageDescription = $post['excerpt'] ?? '';
-$canonicalPath   = 'blog-post.php?slug=' . ($post['slug'] ?? $slug);
+$canonicalPath   = 'blog-post?slug=' . ($post['slug'] ?? $slug);
 
 require_once __DIR__ . '/includes/header.php';
 ?>
@@ -115,10 +115,11 @@ require_once __DIR__ . '/includes/header.php';
 
             <!-- Featured Image -->
             <?php if (!empty($post['image'])): ?>
-            <div class="w-full rounded-3xl overflow-hidden mb-8">
+            <div class="w-full rounded-3xl overflow-hidden mb-8 bg-slate-100">
                 <img src="<?php echo htmlspecialchars($post['image']); ?>"
                      alt="<?php echo htmlspecialchars($post['title']); ?>"
                      width="800" height="600"
+                     onerror="this.onerror=null; this.src='assets/services/migraine.png';"
                      class="w-full h-auto object-cover">
             </div>
             <?php endif; ?>

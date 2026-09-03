@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Blog Hub Page - Dr. Praveen Gupta
  * Lists articles managed in the CMS (/cms/blogs.php).
@@ -55,7 +55,7 @@ $pageDescription = 'Expert guides, healthy lifestyle tips, and detailed neuro-he
                 </div>
                 <?php else: ?>
                 <?php foreach ($posts as $post):
-                    $postUrl  = 'blog-post.php?slug=' . urlencode($post['slug'] ?? '');
+                    $postUrl  = 'blog-post?slug=' . urlencode($post['slug'] ?? '');
                     $postDate = !empty($post['date']) ? date('F j, Y', strtotime($post['date'])) : '';
                 ?>
                 <article class="bg-slate-50 border border-slate-200/50 rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 grid md:grid-cols-12 gap-6 p-6">

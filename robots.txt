@@ -1,21 +1,10 @@
 User-agent: *
 Allow: /
 
+# Disallow CMS administration and raw data directories
+Disallow: /cms/
+Disallow: /data/
+Disallow: /includes/
+
 # Sitemap location
 Sitemap: https://drpraveengupta.com/sitemap.xml
-
-# Allow key pages
-Allow: /index
-Allow: /about
-Allow: /services
-Allow: /blog
-Allow: /blog-post
-Allow: /contact-us-top-neurologist-delhi-ncr
-Allow: /awards
-
-# Disallow administration and temporary pages
-Disallow: /wp-admin/
-Disallow: /admin/
-
-# Rate limiting
-Crawl-delay: 1

@@ -141,6 +141,9 @@ foreach (array_slice($services, 0, 6) as $svc) {
                             <a href="<?php echo SOCIAL_YOUTUBE; ?>" aria-label="Visit our YouTube channel" target="_blank" rel="noopener noreferrer" class="group relative w-10 h-10 rounded-xl bg-white/5 hover:bg-red-500 border border-white/10 hover:border-red-500 flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
                                 <i class="fab fa-youtube text-sm" aria-hidden="true"></i>
                             </a>
+                            <a href="<?php echo SOCIAL_LINKEDIN; ?>" aria-label="Visit our LinkedIn profile" target="_blank" rel="noopener noreferrer" class="group relative w-10 h-10 rounded-xl bg-white/5 hover:bg-[#0A66C2] border border-white/10 hover:border-[#0A66C2] flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
+                                <i class="fab fa-linkedin-in text-sm" aria-hidden="true"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -225,17 +228,21 @@ foreach (array_slice($services, 0, 6) as $svc) {
                     </h3>
                     <ul class="space-y-3">
                         <li class="flex items-start space-x-3 group">
-                            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-electric-blue/20 to-cyan-accent/20 group-hover:from-electric-blue group-hover:to-cyan-accent flex items-center justify-center flex-shrink-0 transition-all duration-300">
-                                <i class="fas fa-map-marker-alt text-cyan-accent group-hover:text-white transition-colors text-sm"></i>
-                            </div>
-                            <div class="pt-1">
-                                <p class="text-white/70 text-xs font-medium">Our Location</p>
-                                <p class="text-white/90 text-sm font-semibold"><?php echo SITE_ADDRESS; ?></p>
-                                <a href="https://www.google.com/maps/search/?api=1&query=<?php echo urlencode('Marengo Asia Hospitals, Shushant Lok 2, Sector 56, Gurugram, Haryana 122011'); ?>"
-                                   class="text-white/70 text-xs font-medium mt-1 block hover:text-cyan-accent transition-colors">
-                                    View on Google Maps
-                                </a>
-                            </div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=<?php echo urlencode('Marengo Asia Hospitals, Shushant Lok 2, Sector 56, Gurugram, Haryana 122011'); ?>"
+                               target="_blank" rel="noopener noreferrer"
+                               class="flex items-start space-x-3 group/loc hover:text-cyan-accent transition-colors">
+                                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-electric-blue/20 to-cyan-accent/20 group-hover/loc:from-electric-blue group-hover/loc:to-cyan-accent flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                                    <i class="fas fa-map-marker-alt text-cyan-accent group-hover/loc:text-white transition-colors text-sm"></i>
+                                </div>
+                                <div class="pt-1">
+                                    <p class="text-white/70 text-xs font-medium">Our Location</p>
+                                    <p class="text-white/90 text-sm font-semibold group-hover/loc:text-cyan-accent transition-colors"><?php echo SITE_ADDRESS; ?></p>
+                                    <span class="text-cyan-accent text-xs font-medium mt-1 inline-flex items-center space-x-1">
+                                        <span>View on Google Maps</span>
+                                        <i class="fas fa-external-link-alt text-[9px]"></i>
+                                    </span>
+                                </div>
+                            </a>
                         </li>
                         <li class="flex items-start space-x-3 group">
                             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-electric-blue/20 to-cyan-accent/20 group-hover:from-electric-blue group-hover:to-cyan-accent flex items-center justify-center flex-shrink-0 transition-all duration-300">

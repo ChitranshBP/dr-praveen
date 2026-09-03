@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Blog Page - Dr. Praveen Gupta
  * Lists all published articles managed in the CMS (/cms/blogs.php).
@@ -38,7 +38,7 @@ $pageDescription = 'Articles and health guides on stroke, epilepsy, migraine, Pa
         <!-- 3-column card grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <?php foreach ($posts as $blogIdx => $post):
-                $postUrl  = 'blog-post.php?slug=' . urlencode($post['slug'] ?? '');
+                $postUrl  = 'blog-post?slug=' . urlencode($post['slug'] ?? '');
                 $postDate = !empty($post['date']) ? date('M j, Y', strtotime($post['date'])) : '';
             ?>
                 <a href="<?php echo $postUrl; ?>"

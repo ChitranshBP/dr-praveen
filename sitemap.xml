@@ -1,70 +1,335 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9"
-      xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9">
     <!-- Homepage -->
     <url>
-        <loc>https://drpraveengupta.com/index</loc>
-        <lastmod>2025-06-10</lastmod>
+        <loc>https://drpraveengupta.com/</loc>
+        <lastmod>2026-09-03</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
 
-    <!-- About Page -->
+    <!-- Core About & Doctor Pages -->
     <url>
         <loc>https://drpraveengupta.com/about</loc>
-        <lastmod>2025-06-10</lastmod>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/why-choose-dr-praveen-gupta</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/team</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/awards-and-recognition</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/contact-us-top-neurologist-delhi-ncr</loc>
+        <lastmod>2026-09-03</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
-    <!-- Services Page -->
+    <!-- Services Hub & Procedures -->
     <url>
         <loc>https://drpraveengupta.com/services</loc>
-        <lastmod>2025-06-10</lastmod>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/brain-tumor-surgery</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/spine-surgery</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/functional-neurosurgery</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/neurovascular-surgery</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/memory-clinic</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/neuro-rehabilitation-center</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/brain-health-center</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/neurocritical-acute-stroke-care</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/rtms-therapy</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/neurology-procedures</loc>
+        <lastmod>2026-09-03</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
-    <!-- Blogs Index -->
+    <!-- Conditions Hub & Sub-conditions -->
     <url>
-        <loc>https://drpraveengupta.com/blog</loc>
-        <lastmod>2025-06-10</lastmod>
+        <loc>https://drpraveengupta.com/neurological-conditions</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/epilepsy</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/headache</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/migraine</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/stroke</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/vertigo</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/parkinsons</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/ms</loc>
+        <lastmod>2026-09-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
-    <!-- Individual Blog Posts -->
     <url>
-        <loc>https://drpraveengupta.com/blog-post?title=understanding-migraine</loc>
-        <lastmod>2025-06-10</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
+        <loc>https://drpraveengupta.com/movement</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://drpraveengupta.com/blog-post?title=stroke-awareness</loc>
-        <lastmod>2025-06-10</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
+        <loc>https://drpraveengupta.com/neuropathy</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://drpraveengupta.com/blog-post?title=parkinsons-disease</loc>
-        <lastmod>2025-06-10</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-
-    <!-- Contact Page -->
-    <url>
-        <loc>https://drpraveengupta.com/contact-us-top-neurologist-delhi-ncr</loc>
-        <lastmod>2025-06-10</lastmod>
+        <loc>https://drpraveengupta.com/neurological-symptoms</loc>
+        <lastmod>2026-09-03</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
-    <!-- Awards Page -->
+    <!-- Patient Services & Support -->
     <url>
-        <loc>https://drpraveengupta.com/awards</loc>
-        <lastmod>2025-06-10</lastmod>
+        <loc>https://drpraveengupta.com/patient-info</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/neurology-consultation</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/online-neurologist-consultation</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/neurology-second-opinion</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/emergency-neurology-care</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/brain-stroke-helpline</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/neurology-patient-testimonials</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/patient-success-stories</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/case-studies</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/patient-reviews</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/neurology-faqs</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/faqs-neurologist-near-me</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Media & Gallery -->
+    <url>
+        <loc>https://drpraveengupta.com/videos</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/neurology-video-library</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/video-testimonials</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/media-coverage</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/gallery</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Blog & Articles -->
+    <url>
+        <loc>https://drpraveengupta.com/dr-praveen-gupta-blog</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/blog-post?slug=understanding-parkinsons-disease</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/blog-post?slug=emergency-stroke-care-fast-signs</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/blog-post?slug=understanding-migraine</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/blog-post?slug=stroke-awareness</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/blog-post?slug=parkinsons-disease</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Legal -->
+    <url>
+        <loc>https://drpraveengupta.com/privacy-policy</loc>
+        <lastmod>2026-09-03</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://drpraveengupta.com/terms-of-service</loc>
+        <lastmod>2026-09-03</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.5</priority>
     </url>

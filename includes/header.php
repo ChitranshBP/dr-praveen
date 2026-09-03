@@ -243,6 +243,9 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
             background: rgba(0, 0, 0, 0.05) !important;
         }
     </style>
+
+    <!-- Schema.org JSON-LD Structured Data -->
+    <?php require_once __DIR__ . '/schema.php'; ?>
 </head>
 <body class="bg-white text-dark-grey antialiased overflow-x-hidden">
     <!-- Google Tag Manager (noscript) -->

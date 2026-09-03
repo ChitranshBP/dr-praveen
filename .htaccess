@@ -19,6 +19,11 @@ DirectoryIndex index.php index.html
     RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index(\.php)?\ HTTP/
     RewriteRule ^index(\.php)?$ / [R=301,L]
 
+    # 3b. 301 Redirect any direct *.php request to clean extensionless URL (except /cms/)
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^.]+)\.php(\?[^\ ]*)?\ HTTP/
+    RewriteCond %{REQUEST_URI} !^/cms/
+    RewriteRule ^([^.]+)\.php$ /$1 [R=301,L]
+
     # 4. If request is a real file or real directory, serve directly
     RewriteCond %{REQUEST_FILENAME} -f [OR]
     RewriteCond %{REQUEST_FILENAME} -d
@@ -32,6 +37,9 @@ DirectoryIndex index.php index.html
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)/$ /$1 [L,R=301]
 </IfModule>
+
+# Custom 404 Error Document
+ErrorDocument 404 /404.php
 
 # Security Headers
 <IfModule mod_headers.c>
