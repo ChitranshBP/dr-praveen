@@ -697,27 +697,14 @@ if (empty($activeBanners)) {
     </div>
 
     <?php
-    // Two rows drifting in opposite directions. Each row is rendered three times so the
-    // keyframe lands exactly on a repeat and the loop is seamless on any screen width.
     $avatarColors = [
         'from-electric-blue to-cyan-accent',
         'from-cyan-accent to-electric-blue',
         'from-deep-indigo to-electric-blue',
         'from-electric-blue to-deep-indigo',
     ];
-    
-    // Split testimonials so each is only displayed in one row
-    $half = ceil(count($testimonials) / 2);
-    $row1 = array_slice($testimonials, 0, $half);
-    $row2 = array_slice($testimonials, $half);
-    
-    // Duplicate within track to ensure CSS marquee scrolls seamlessly
-    $marqueeRows = [
-        array_merge($row1, $row1),
-        array_merge($row2, $row2)
-    ];
 
-    // Card markup, reused by both rows and both copies
+    // Card markup
     $renderQuoteCard = function ($testimonial, $idx, $ariaHidden = false) use ($avatarColors) {
         $color   = $avatarColors[$idx % count($avatarColors)];
         $rating  = (int) ($testimonial['rating'] ?? 5);
@@ -757,17 +744,18 @@ if (empty($activeBanners)) {
     };
     ?>
 
-    <!-- Marquee rows (full-bleed so cards run edge to edge) -->
+    <!-- Single Marquee row (full-bleed) -->
     <div class="marquee-wrap relative observe">
-        <?php foreach ($marqueeRows as $rowIdx => $row): ?>
-            <div class="overflow-hidden <?php echo $rowIdx > 0 ? 'mt-6' : ''; ?>">
-                <div class="marquee-track flex w-max <?php echo $rowIdx > 0 ? 'marquee-reverse' : ''; ?>">
-                    <?php foreach ($row as $idx => $testimonial): ?>
-                        <?php echo $renderQuoteCard($testimonial, $idx, $rowIdx > 0); ?>
-                    <?php endforeach; ?>
-                </div>
+        <div class="overflow-hidden">
+            <div class="marquee-track flex w-max">
+                <?php foreach ($testimonials as $idx => $testimonial): ?>
+                    <?php echo $renderQuoteCard($testimonial, $idx); ?>
+                <?php endforeach; ?>
+                <?php foreach ($testimonials as $idx => $testimonial): ?>
+                    <?php echo $renderQuoteCard($testimonial, $idx, true); ?>
+                <?php endforeach; ?>
             </div>
-        <?php endforeach; ?>
+        </div>
 
         <!-- Edge fades -->
         <div class="absolute inset-y-0 left-0 w-12 md:w-32 bg-gradient-to-r from-white to-transparent pointer-events-none z-10"></div>
