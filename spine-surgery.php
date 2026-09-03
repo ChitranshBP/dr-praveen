@@ -72,7 +72,7 @@ $pageContent = get_page_content('spine-surgery', [
                     Spinal health affects every facet of daily movement. Our clinic covers the full range of spine pathology, prioritising conservative management first and turning to advanced Minimally Invasive Spine Surgery (MISS) only where it is genuinely warranted.
                 </p>
                 <p class="text-dark-grey/70 leading-relaxed mb-8">
-                    When surgery is the right answer, the goal is maximal decompression and stability with minimal disruption to the surrounding muscle â€” smaller incisions, less postoperative pain, and a shorter stay in hospital.
+                    When surgery is the right answer, the goal is maximal decompression and stability with minimal disruption to the surrounding muscle — smaller incisions, less postoperative pain, and a shorter stay in hospital.
                 </p>
 
                 <!-- Key Facts -->
@@ -215,7 +215,7 @@ $pageContent = get_page_content('spine-surgery', [
                     <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">2</div>
                     <h3 class="text-lg font-bold text-dark-grey mb-3">Conservative Management</h3>
                     <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Physiotherapy, targeted injections and medical management are tried first â€” many patients recover fully without surgery.
+                        Physiotherapy, targeted injections and medical management are tried first — many patients recover fully without surgery.
                     </p>
                 </div>
                 <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">

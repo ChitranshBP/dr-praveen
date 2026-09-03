@@ -72,7 +72,7 @@ $pageContent = get_page_content('neurovascular-surgery', [
                     Neurovascular disorders affect the delicate blood vessels supplying the brain and spinal cord. Our clinic integrates advanced neuro-interventional radiology with open microsurgery, so the right technique can be chosen for the vessel rather than the other way round.
                 </p>
                 <p class="text-dark-grey/70 leading-relaxed mb-8">
-                    That combination lets us perform life-saving interventions for strokes, haemorrhages and vascular abnormalities â€” including emergency cases arriving through our 24/7 stroke helpline and neuro-ICU.
+                    That combination lets us perform life-saving interventions for strokes, haemorrhages and vascular abnormalities — including emergency cases arriving through our 24/7 stroke helpline and neuro-ICU.
                 </p>
 
                 <!-- Key Facts -->
@@ -133,7 +133,7 @@ $pageContent = get_page_content('neurovascular-surgery', [
             <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Applications</span>
             <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Vascular Conditions Managed</h2>
             <p class="text-dark-grey/70 leading-relaxed">
-                Each of these conditions carries a risk of sudden, catastrophic bleeding â€” which is why they are treated as time-critical.
+                Each of these conditions carries a risk of sudden, catastrophic bleeding — which is why they are treated as time-critical.
             </p>
         </div>
 
@@ -145,7 +145,7 @@ $pageContent = get_page_content('neurovascular-surgery', [
                 </div>
                 <h3 class="text-lg font-bold text-dark-grey mb-3">Cerebral Aneurysms</h3>
                 <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Preventing subarachnoid haemorrhage â€” bleeding around the brain â€” by securing the weak point through clipping or coiling.
+                    Preventing subarachnoid haemorrhage — bleeding around the brain — by securing the weak point through clipping or coiling.
                 </p>
                 <div class="flex flex-wrap gap-2">
                     <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Clipping</span>

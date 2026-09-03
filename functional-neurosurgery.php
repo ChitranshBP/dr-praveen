@@ -193,7 +193,7 @@ $pageContent = get_page_content('functional-neurosurgery', [
             <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Experience</span>
             <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">What to Expect, Start to Finish</h2>
             <p class="text-dark-grey/70 leading-relaxed">
-                DBS is a dynamic therapy â€” the implant is the midpoint of the pathway, not the end of it.
+                DBS is a dynamic therapy — the implant is the midpoint of the pathway, not the end of it.
             </p>
         </div>
 

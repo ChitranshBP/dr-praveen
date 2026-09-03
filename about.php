@@ -96,7 +96,7 @@ $pageContent = get_page_content('about', [
                 </p>
 
                 <p class="text-base text-dark-grey/70 leading-relaxed">
-                    His groundbreaking achievements include conducting the <strong class="text-deep-indigo">first Deep Brain Stimulation (DBS) procedure in Gurugram</strong> and performing the <strong class="text-deep-indigo">first epileptic DBS in Asia</strong> â€” setting new benchmarks for neurological innovation.
+                    His groundbreaking achievements include conducting the <strong class="text-deep-indigo">first Deep Brain Stimulation (DBS) procedure in Gurugram</strong> and performing the <strong class="text-deep-indigo">first epileptic DBS in Asia</strong> — setting new benchmarks for neurological innovation.
                 </p>
 
                 <!-- Key Highlights Grid -->
@@ -180,7 +180,7 @@ $pageContent = get_page_content('about', [
                 Areas of <span class="gradient-text">Expertise</span>
             </h2>
             <p class="text-base text-dark-grey/70 max-w-2xl mx-auto leading-relaxed">
-                A deep commitment to patient-centric care and innovation has shaped comprehensive stroke, epilepsy, and movement disorder programs â€” setting new benchmarks in neurology.
+                A deep commitment to patient-centric care and innovation has shaped comprehensive stroke, epilepsy, and movement disorder programs — setting new benchmarks in neurology.
             </p>
         </div>
 
@@ -217,7 +217,7 @@ $pageContent = get_page_content('about', [
                         </div>
                         <h3 class="text-base font-semibold text-deep-indigo">Epilepsy & Seizures</h3>
                     </div>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed">Performed the first epileptic DBS in Asia â€” redefining advanced epilepsy treatment.</p>
+                    <p class="text-sm text-dark-grey/60 leading-relaxed">Performed the first epileptic DBS in Asia — redefining advanced epilepsy treatment.</p>
                 </div>
             </div>
 
@@ -292,7 +292,7 @@ $pageContent = get_page_content('about', [
     </div>
 </section>
 
-<!-- Achievements â€” Image Carousel Style -->
+<!-- Achievements — Image Carousel Style -->
 <section class="py-14 lg:py-20 bg-white overflow-hidden">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -377,7 +377,7 @@ $pageContent = get_page_content('about', [
     </div>
 </section>
 
-<!-- Awards Gallery â€” Grid -->
+<!-- Awards Gallery — Grid -->
 <section class="py-14 lg:py-20 bg-soft-cyan/30 overflow-hidden">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Section Header -->
@@ -416,7 +416,7 @@ $pageContent = get_page_content('about', [
     </div>
 </section>
 
-<!-- Vision â€” Minimal Quote Section -->
+<!-- Vision — Minimal Quote Section -->
 <section class="py-14 lg:py-20 bg-white">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div class="inline-flex items-center space-x-2 mb-8">
@@ -432,17 +432,17 @@ $pageContent = get_page_content('about', [
         <div class="relative">
             <i class="fas fa-quote-left text-cyan-accent/20 text-5xl absolute -top-4 -left-4"></i>
             <p class="text-xl md:text-2xl text-deep-indigo/90 font-serif italic leading-relaxed relative">
-                Integrating technology with empathy â€” ensuring every patient receives personalized, evidence-based treatment aimed at improving quality of life.
+                Integrating technology with empathy — ensuring every patient receives personalized, evidence-based treatment aimed at improving quality of life.
             </p>
         </div>
 
         <p class="text-sm text-dark-grey/60 mt-10 max-w-xl mx-auto leading-relaxed">
-            As one of India's leading neurologists, Dr. Gupta's vision extends beyond treatment â€” focusing on awareness, prevention, and rehabilitation to make advanced neurological therapies more accessible and affordable.
+            As one of India's leading neurologists, Dr. Gupta's vision extends beyond treatment — focusing on awareness, prevention, and rehabilitation to make advanced neurological therapies more accessible and affordable.
         </p>
     </div>
 </section>
 
-<!-- Testimonials â€” Modern Elevated Slider -->
+<!-- Testimonials — Modern Elevated Slider -->
 <section class="py-14 lg:py-20 bg-soft-cyan/30">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-10">

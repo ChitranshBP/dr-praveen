@@ -63,7 +63,7 @@ $pageContent = get_page_content('neurological-conditions', [
         </div>
 
         <?php
-        // Condition directory â€” image, title, blurb and destination for each card
+        // Condition directory — image, title, blurb and destination for each card
         $conditionCards = [
             [
                 'url'   => 'stroke.php',

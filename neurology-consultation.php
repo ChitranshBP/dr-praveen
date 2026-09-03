@@ -78,7 +78,7 @@ $pageContent = get_page_content('neurology-consultation', [
                             <span>Detailed Medical History</span>
                         </h3>
                         <p class="text-xs text-dark-grey/65 leading-relaxed">
-                            We will discuss your symptoms in detailâ€”when they started, their pattern, triggers, severity, and any past treatments or family history.
+                            We will discuss your symptoms in detail—when they started, their pattern, triggers, severity, and any past treatments or family history.
                         </p>
                     </div>
 

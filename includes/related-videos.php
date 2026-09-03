@@ -1,17 +1,17 @@
-﻿<?php
+<?php
 /**
  * Related Videos Section
  *
  * Renders the education videos that match the current page, using the
  * $pageVideos topic map in config.php. Pages with no mapping render nothing.
  *
- * Usage â€” drop this line in just above the footer include:
+ * Usage — drop this line in just above the footer include:
  *     <?php require __DIR__ . '/includes/related-videos.php'; ?>
  *
  * Optional overrides, set before the require:
- *     $relatedVideosEyebrow  â€” badge label   (default "Video Guides")
- *     $relatedVideosHeading  â€” h2 HTML       (default "Watch & <spanâ€¦>Learn</span>")
- *     $relatedVideosIntro    â€” subtitle copy
+ *     $relatedVideosEyebrow  — badge label   (default "Video Guides")
+ *     $relatedVideosHeading  — h2 HTML       (default "Watch & <span>Learn</span>")
+ *     $relatedVideosIntro    — subtitle copy
  */
 
 $currentPageFile = str_replace('.php', '', basename($_SERVER['PHP_SELF'] ?? ''));
@@ -31,7 +31,7 @@ if (!empty($relatedIds) && !empty($educationVideos)) {
     if (!empty($relatedVideos)):
         $eyebrow = $relatedVideosEyebrow ?? 'Video Guides';
         $heading = $relatedVideosHeading ?? 'Watch & <span class="gradient-text">Learn</span>';
-        $intro   = $relatedVideosIntro   ?? 'Dr. Praveen Gupta explains the essentials in plain language â€” what to look out for, the treatment options available, and what to expect.';
+        $intro   = $relatedVideosIntro   ?? 'Dr. Praveen Gupta explains the essentials in plain language — what to look out for, the treatment options available, and what to expect.';
 ?>
 
 <!-- â•â•â•â•â•â•â•â• Related Videos â•â•â•â•â•â•â•â• -->
@@ -154,7 +154,7 @@ if (!empty($relatedIds) && !empty($educationVideos)) {
 
             function layout() {
                 maxIndex = Math.max(0, slides.length - visibleCount());
-                // Nothing to scroll â€” no point showing arrows or a single dot
+                // Nothing to scroll — no point showing arrows or a single dot
                 controls.classList.toggle('hidden', maxIndex === 0);
                 buildDots();
                 goTo(Math.min(index, maxIndex));

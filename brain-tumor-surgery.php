@@ -133,7 +133,7 @@ $pageContent = get_page_content('brain-tumor-surgery', [
             <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Techniques</span>
             <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">How We Operate</h2>
             <p class="text-dark-grey/70 leading-relaxed">
-                Three techniques underpin every tumor resection we perform â€” chosen and combined according to where the tumor sits and what it touches.
+                Three techniques underpin every tumor resection we perform — chosen and combined according to where the tumor sits and what it touches.
             </p>
         </div>
 
@@ -160,7 +160,7 @@ $pageContent = get_page_content('brain-tumor-surgery', [
                 </div>
                 <h3 class="text-lg font-bold text-dark-grey mb-3">Intraoperative Neuronavigation</h3>
                 <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    A high-resolution computer guidance system â€” effectively GPS for the brain â€” tracks tumor boundaries with sub-millimetre precision throughout the operation.
+                    A high-resolution computer guidance system — effectively GPS for the brain — tracks tumor boundaries with sub-millimetre precision throughout the operation.
                 </p>
                 <div class="flex flex-wrap gap-2">
                     <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Sub-mm Precision</span>

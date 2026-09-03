@@ -62,7 +62,7 @@ $pageContent = get_page_content('patient-success-stories', [
             <p class="text-xs text-dark-grey/70 leading-relaxed italic">
                 "My hand tremors had gotten so severe that I could no longer hold a pen, sign checks, or even drink tea without spilling. It was frustrating and humiliating. Dr. Praveen Gupta recommended DBS. The surgery went smoothly, and once the stimulator was programmed, my tremors stopped almost completely. Today, I can write again and enjoy independent living."
             </p>
-            <p class="text-[11px] font-bold text-deep-indigo text-right">â€” Ramesh Chandra, Gurgaon</p>
+            <p class="text-[11px] font-bold text-deep-indigo text-right">— Ramesh Chandra, Gurgaon</p>
         </div>
 
         <!-- Story 2 -->
@@ -74,7 +74,7 @@ $pageContent = get_page_content('patient-success-stories', [
             <p class="text-xs text-dark-grey/70 leading-relaxed italic">
                 "When my husband suddenly couldn't raise his left arm and his speech was slurred, we panicked. We called the emergency stroke helpline and reached Marengo Asia Hospital. The stroke team was ready, and Dr. Praveen Gupta guided his mechanical thrombectomy. Within 2 days, he was walking and speaking normally. We are forever grateful for the rapid, professional response."
             </p>
-            <p class="text-[11px] font-bold text-deep-indigo text-right">â€” Priya Verma, Delhi</p>
+            <p class="text-[11px] font-bold text-deep-indigo text-right">— Priya Verma, Delhi</p>
         </div>
 
         <!-- Story 3 -->
@@ -86,7 +86,7 @@ $pageContent = get_page_content('patient-success-stories', [
             <p class="text-xs text-dark-grey/70 leading-relaxed italic">
                 "Our teenage daughter suffered from recurrent seizures that multiple medications failed to control. Dr. Gupta set up prolonged video-EEG monitoring to identify the focus. By adjusting her dosage and introducing advanced anti-seizure medication, her seizures have stopped entirely for over two years. She is back in school and thriving."
             </p>
-            <p class="text-[11px] font-bold text-deep-indigo text-right">â€” Mrs. Kapoor (Parent), Noida</p>
+            <p class="text-[11px] font-bold text-deep-indigo text-right">— Mrs. Kapoor (Parent), Noida</p>
         </div>
     </div>
 </section>
@@ -95,7 +95,7 @@ $pageContent = get_page_content('patient-success-stories', [
 <?php
 $vtEyebrow = 'Video Stories';
 $vtHeading = 'Recovery Stories on <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 to-cyan-accent">Video</span>';
-$vtIntro   = 'Hear these journeys first hand â€” patients describing their diagnosis, treatment and recovery in their own words.';
+$vtIntro   = 'Hear these journeys first hand — patients describing their diagnosis, treatment and recovery in their own words.';
 require __DIR__ . '/includes/video-testimonials.php';
 ?>
 

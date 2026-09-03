@@ -174,7 +174,7 @@ $pageContent = get_page_content('why-choose-dr-praveen-gupta', [
                 <span class="text-electric-blue font-bold text-xs uppercase tracking-widest font-sans">Patient Care Philosophy</span>
                 <h2 class="text-3xl font-bold text-deep-indigo font-serif">Treating the Person, Not Just the Symptoms</h2>
                 <p class="text-sm text-dark-grey/70 leading-relaxed">
-                    We believe that successful treatment starts with listening, empathy, and transparent communication. Every neurological condition affects people differently, which is why we build tailored care plans designed around each patientâ€™s unique lifestyle and diagnostic profile.
+                    We believe that successful treatment starts with listening, empathy, and transparent communication. Every neurological condition affects people differently, which is why we build tailored care plans designed around each patient's unique lifestyle and diagnostic profile.
                 </p>
                 <div class="grid sm:grid-cols-2 gap-6">
                     <div class="space-y-2">

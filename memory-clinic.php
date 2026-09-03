@@ -67,7 +67,7 @@ $pageContent = get_page_content('memory-clinic', [
                 <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Cognitive Care</span>
                 <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Understanding Memory Disorders</h2>
                 <p class="text-dark-grey/70 leading-relaxed mb-6">
-                    Memory loss ranges from mild forgetfulness to progressive conditions such as dementia and Alzheimer's disease. Early detection is what makes the difference â€” it slows progression and buys quality of life for both patient and family.
+                    Memory loss ranges from mild forgetfulness to progressive conditions such as dementia and Alzheimer's disease. Early detection is what makes the difference — it slows progression and buys quality of life for both patient and family.
                 </p>
                 <p class="text-dark-grey/70 leading-relaxed mb-8">
                     Our centre maps the root cause of cognitive symptoms rather than assuming one, because a meaningful proportion of memory complaints turn out to be treatable: a vitamin deficiency, a thyroid imbalance or a medication effect.
@@ -157,7 +157,7 @@ $pageContent = get_page_content('memory-clinic', [
                 </div>
                 <h3 class="text-lg font-bold text-dark-grey mb-3">Mild Cognitive Impairment</h3>
                 <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Addressing early-stage memory change that exceeds normal ageing but does not yet interfere with daily living â€” the window where intervention matters most.
+                    Addressing early-stage memory change that exceeds normal ageing but does not yet interfere with daily living — the window where intervention matters most.
                 </p>
                 <div class="flex flex-wrap gap-2">
                     <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Early Window</span>
@@ -189,7 +189,7 @@ $pageContent = get_page_content('memory-clinic', [
             <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Experience</span>
             <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">What to Expect at Your Assessment</h2>
             <p class="text-dark-grey/70 leading-relaxed">
-                A full memory assessment is methodical by design â€” the aim is to find every contributing factor, including the reversible ones.
+                A full memory assessment is methodical by design — the aim is to find every contributing factor, including the reversible ones.
             </p>
         </div>
 

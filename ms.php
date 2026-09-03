@@ -286,7 +286,7 @@ $pageContent = get_page_content('ms', [
             <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Diagnosis</span>
             <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Diagnosing Multiple Sclerosis</h2>
             <p class="text-dark-grey/70 leading-relaxed">
-                Since there is no single test for MS, diagnosis requires proving "dissemination in time and space"â€”lesions in different brain areas occurring at different times.
+                Since there is no single test for MS, diagnosis requires proving "dissemination in time and space"—lesions in different brain areas occurring at different times.
             </p>
         </div>
 

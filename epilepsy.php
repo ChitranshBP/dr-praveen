@@ -75,7 +75,7 @@ $pageContent = get_page_content('epilepsy', [
                     Epilepsy is a neurological disorder characterized by recurrent, unprovoked seizures. It affects over 50 million people worldwide, making it one of the most common neurological conditions. While epilepsy can develop at any age, it often begins in childhood or after age 60.
                 </p>
                 <p class="text-dark-grey/70 leading-relaxed mb-8">
-                    At our clinic, we understand that living with epilepsy affects every aspect of your lifeâ€”from daily activities to personal relationships. Our comprehensive approach focuses not just on controlling seizures, but on improving your overall quality of life through evidence-based treatments and compassionate care.
+                    At our clinic, we understand that living with epilepsy affects every aspect of your life—from daily activities to personal relationships. Our comprehensive approach focuses not just on controlling seizures, but on improving your overall quality of life through evidence-based treatments and compassionate care.
                 </p>
 
                 <!-- Key Facts -->

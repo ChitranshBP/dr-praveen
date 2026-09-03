@@ -597,7 +597,7 @@ $pageContent = get_page_content('movement', [
                         </button>
                         <div class="faq-content hidden px-6 pb-6">
                             <p class="text-dark-grey/70 leading-relaxed">
-                                Parkinson's tremors are typically "resting tremors"â€”they happen when muscles are completely relaxed. Essential Tremor is an "action tremor"â€”shaking occurs when using the hands to write, drink, or perform tasks. Parkinson's also includes stiffness and slow movements, which are absent in Essential Tremor.
+                                Parkinson's tremors are typically "resting tremors"—they happen when muscles are completely relaxed. Essential Tremor is an "action tremor"—shaking occurs when using the hands to write, drink, or perform tasks. Parkinson's also includes stiffness and slow movements, which are absent in Essential Tremor.
                             </p>
                         </div>
                     </div>

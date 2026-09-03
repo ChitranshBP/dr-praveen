@@ -173,7 +173,7 @@ if (empty($activeBanners)) {
                 Comprehensive Care for Every <span class="gradient-text">Brain & Spine</span> Condition
             </h2>
             <p class="text-lg text-dark-grey/70">
-                Expert diagnosis, advanced treatment, and personalized recoveryâ€”all under one roof.
+                Expert diagnosis, advanced treatment, and personalized recovery—all under one roof.
             </p>
         </div>
 
@@ -403,7 +403,7 @@ if (empty($activeBanners)) {
                 </p>
 
                 <p class="text-base text-dark-grey/85 mb-4 leading-relaxed font-semibold">
-                    A true innovator, he has been responsible for several firsts in the countryâ€™s neurology landscape:
+                    A true innovator, he has been responsible for several firsts in the country's neurology landscape:
                 </p>
 
                 <!-- List of Firsts -->
@@ -465,7 +465,7 @@ if (empty($activeBanners)) {
                 </h2>
 
                 <p class="text-lg text-dark-grey/70 mb-10 leading-relaxed max-w-xl">
-                    When it comes to your brain and spine health, expert care makes all the difference. At NeuroDoc, we combine expert clinical care, advanced neuroscience, and compassionate support to guide you from diagnosis to recoveryâ€”with confidence at every step.
+                    When it comes to your brain and spine health, expert care makes all the difference. At NeuroDoc, we combine expert clinical care, advanced neuroscience, and compassionate support to guide you from diagnosis to recovery—with confidence at every step.
                 </p>
 
                 <!-- Grid of 4 Items -->
@@ -570,7 +570,7 @@ if (empty($activeBanners)) {
                         Consult Dr. Praveen Gupta from Anywhere
                     </h2>
                     <p class="text-sm md:text-base text-white/80 leading-relaxed max-w-xl">
-                        Secure online video consultations for new diagnoses, treatment reviews and second opinions â€” no travel required.
+                        Secure online video consultations for new diagnoses, treatment reviews and second opinions — no travel required.
                     </p>
                 </div>
             </div>
@@ -646,7 +646,7 @@ if (empty($activeBanners)) {
                 Our Care <span class="gradient-text">Team</span>
             </h2>
             <p class="text-lg text-dark-grey/70">
-                The approach is simple: understand whatâ€™s causing the problem, explain it clearly, and guide you toward the right treatment and recovery plan.
+                The approach is simple: understand what's causing the problem, explain it clearly, and guide you toward the right treatment and recovery plan.
             </p>
         </div>
 
@@ -814,7 +814,7 @@ if (empty($activeBanners)) {
                 Latest <span class="gradient-text">Articles</span>
             </h2>
             <p class="text-lg text-dark-grey/70">
-                Guidance on neurological conditions, treatments and recovery â€” written for patients and their families.
+                Guidance on neurological conditions, treatments and recovery — written for patients and their families.
             </p>
         </div>
 

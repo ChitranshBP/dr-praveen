@@ -452,7 +452,7 @@ $fallbackBlogs = [
     ],
     [
         'title'    => 'Living with Parkinson\'s Disease: A Patient\'s Guide',
-        'excerpt'  => 'From Deep Brain Stimulation to lifestyle strategies â€” explore how patients manage Parkinson\'s disease with quality of life.',
+        'excerpt'  => 'From Deep Brain Stimulation to lifestyle strategies — explore how patients manage Parkinson\'s disease with quality of life.',
         'category' => 'Parkinson\'s',
         'date'     => 'May 14, 2025',
         'image'    => 'assets/services/parkinsons.png',
@@ -521,7 +521,7 @@ if ($cmsVideos !== null) {
     }
 }
 
-// Instagram Reels â€” shortcodes from the reel URL: instagram.com/reel/<shortcode>/
+// Instagram Reels — shortcodes from the reel URL: instagram.com/reel/<shortcode>/
 // Add or reorder entries here; the homepage section renders them automatically.
 $instagramHandle  = 'neuro_doc1';
 $instagramProfile = 'https://www.instagram.com/neuro_doc1/';
@@ -535,7 +535,7 @@ $instagramReels = [
  * Topic map: which education videos belong on which condition / service page.
  *
  * Keys are page filenames, values are video IDs drawn from $educationVideos above.
- * Order matters â€” the most directly relevant video should come first.
+ * Order matters — the most directly relevant video should come first.
  * A page with no entry here simply renders no related-videos section.
  * Rendered by includes/related-videos.
  */
@@ -1027,7 +1027,7 @@ $educationVideos = [
 /**
  * Tags an education video into a filter category from its title.
  * Shared by videos and neurology-video-library so both pages
- * bucket the library identically â€” keep the filter buttons on those
+ * bucket the library identically — keep the filter buttons on those
  * pages in sync with the categories returned here.
  */
 function getVideoCategory($title) {

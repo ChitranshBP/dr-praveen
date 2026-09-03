@@ -58,7 +58,7 @@ $pageContent = get_page_content('brain-health-center', [
                 <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Preventive Neurology</span>
                 <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Brain Health Starts Before Symptoms</h2>
                 <p class="text-dark-grey/70 leading-relaxed mb-6">
-                    Most neurological decline is decades in the making. The habits and vascular risks that lead to stroke and dementia are measurable â€” and modifiable â€” long before anything goes wrong.
+                    Most neurological decline is decades in the making. The habits and vascular risks that lead to stroke and dementia are measurable — and modifiable — long before anything goes wrong.
                 </p>
                 <p class="text-dark-grey/70 leading-relaxed mb-8">
                     Dr. Praveen Gupta recommends regular neurological wellness checks for adults over 50, and earlier for anyone with a family history of stroke, dementia or vascular disease.
@@ -218,7 +218,7 @@ $pageContent = get_page_content('brain-health-center', [
                     <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">2</div>
                     <h3 class="text-lg font-bold text-dark-grey mb-3">Vascular Screening</h3>
                     <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Blood pressure, cholesterol and carotid arterial health are checked â€” the three factors that most directly govern stroke risk.
+                        Blood pressure, cholesterol and carotid arterial health are checked — the three factors that most directly govern stroke risk.
                     </p>
                 </div>
                 <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">

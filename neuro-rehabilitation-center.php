@@ -294,7 +294,7 @@ $pageContent = get_page_content('neuro-rehabilitation-center', [
                 </div>
 
                 <p class="text-sm text-dark-grey/85 mb-4 leading-relaxed">
-                    With over 20 years of clinical experience, Dr. Praveen Gupta has emerged as a pioneering force in the diagnosis, treatment, and advancement of neurological sciences across India and beyond. He is responsible for several firsts in the countryâ€™s neurology landscape, including establishing Gurugram's first stroke centre and conducting pioneering BMT procedures for autoimmune neuro-disorders.
+                    With over 20 years of clinical experience, Dr. Praveen Gupta has emerged as a pioneering force in the diagnosis, treatment, and advancement of neurological sciences across India and beyond. He is responsible for several firsts in the country's neurology landscape, including establishing Gurugram's first stroke centre and conducting pioneering BMT procedures for autoimmune neuro-disorders.
                 </p>
 
                 <div>
@@ -353,7 +353,7 @@ $pageContent = get_page_content('neuro-rehabilitation-center', [
                 </button>
                 <div class="faq-content hidden px-6 pb-6">
                     <p class="text-xs text-dark-grey/70 leading-relaxed">
-                        Rehabilitation should begin as soon as the patient is medically stableâ€”often within 24 to 48 hours of the event. Early mobilization stimulates neuroplasticity and prevents secondary complications like muscle stiffness and joint contractures.
+                        Rehabilitation should begin as soon as the patient is medically stable—often within 24 to 48 hours of the event. Early mobilization stimulates neuroplasticity and prevents secondary complications like muscle stiffness and joint contractures.
                     </p>
                 </div>
             </div>
