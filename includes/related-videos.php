@@ -10,7 +10,7 @@
  *
  * Optional overrides, set before the require:
  *     $relatedVideosEyebrow  — badge label   (default "Video Guides")
- *     $relatedVideosHeading  — h2 HTML       (default "Watch & <span>Learn</span>")
+ *     $relatedVideosHeading  — h2 HTML       (default "Watch & <spanâ€¦>Learn</span>")
  *     $relatedVideosIntro    — subtitle copy
  */
 
