@@ -18,6 +18,7 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
     })(window,document,'script','dataLayer','<?php echo GTM_ID; ?>');</script>
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
+    <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<?php echo htmlspecialchars($pageDescription ?? 'Dr. Praveen Gupta - Leading healthcare professional providing exceptional medical care with 20+ years of experience.'); ?>">
     <meta name="keywords" content="Dr Praveen Gupta, healthcare, medical services, doctor, clinic">
@@ -26,8 +27,8 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
 
     <?php if ($isHomepage): ?>
     <!-- Preload Hero LCP Images -->
-    <link rel="preload" as="image" href="assets/banner/dr-praveen-banner-mobile/stroke-care-mobile.jpeg" media="(max-width: 639px)" fetchpriority="high">
-    <link rel="preload" as="image" href="assets/banner/dr-praveen-banner-desktop/stroke-care.jpeg" media="(min-width: 640px)" fetchpriority="high">
+    <link rel="preload" as="image" href="/assets/banner/dr-praveen-banner-mobile/stroke-care-mobile.jpeg" media="(max-width: 639px)" fetchpriority="high">
+    <link rel="preload" as="image" href="/assets/banner/dr-praveen-banner-desktop/stroke-care.jpeg" media="(min-width: 640px)" fetchpriority="high">
     <?php endif; ?>
 
     <!-- Canonical URL -->
@@ -43,7 +44,7 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
     <link rel="canonical" href="<?php echo $canonicalUrl; ?>">
 
     <!-- Compiled Tailwind CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 
     <!-- Google Fonts (reduced to 4 weights: Inter 400,600,700 + Playfair 700) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,11 +57,11 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-    <link rel="icon" type="image/png" href="assets/favicon/favicon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
 
     <style>
         body {
