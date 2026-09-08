@@ -639,7 +639,7 @@ $videos = [
                         <p class="text-xs sm:text-sm font-medium text-dark-grey/60">Fill the form and our care team will call you back shortly.</p>
                     </div>
 
-                    <form id="appointment-form" class="space-y-2.5 sm:space-y-4" accept-charset="UTF-8" action="../api/save-lead.php" method="POST">
+                    <form id="appointment-form" class="space-y-2.5 sm:space-y-4" accept-charset="UTF-8" action="api/save-lead.php" method="POST">
                         <input type="hidden" name="form_key" value="lp">
                         <input type="hidden" name="form_type" value="Landing Page Appointment">
                         <!-- Honeypot (hidden from humans, catches bots) -->
@@ -1173,6 +1173,14 @@ document.addEventListener('DOMContentLoaded', function () {
         statusEl.classList.toggle('text-red-600', !!isError);
         statusEl.classList.toggle('bg-emerald-50', !isError);
         statusEl.classList.toggle('text-emerald-700', !isError);
+    }
+
+    if (form) {
+        form.addEventListener('submit', function () {
+            if (btnText) {
+                btnText.textContent = 'Submitting...';
+            }
+        });
     }
 
     document.querySelectorAll('.video-card').forEach(function (card) {
