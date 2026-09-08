@@ -11,7 +11,8 @@ DirectoryIndex index.php index.html
     RewriteCond %{HTTPS} off
     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-    # 2. Landing Page routing — /enquire to LP/index.php
+    # 2. Landing Page routing — /enquire to LP/index.php & /enquire/thank-you to LP/thank-you.php
+    RewriteRule ^enquire/thank-you/?$ /LP/thank-you.php [L]
     RewriteRule ^(LP|lp)/?$ /enquire [R=301,L]
     RewriteRule ^enquire/?$ /LP/index.php [L]
 

@@ -1,27 +1,18 @@
 <?php
 /**
- * Thank You Page - Dr. Praveen Gupta Landing Page
+ * Dedicated Landing Page Thank You Page
+ * URL: https://drpraveengupta.com/enquire/thank-you
  */
-
-// Load dynamic settings from CMS if present
-$lp = [];
-if (is_file(dirname(__DIR__) . '/data/lp.json')) {
-    $decoded = json_decode((string)file_get_contents(dirname(__DIR__) . '/data/lp.json'), true);
-    if (is_array($decoded)) {
-        $lp = $decoded;
-    }
-}
-
-$phone        = '+91-87969-77903';
-$helpline     = '1800-309-0247';
-$whatsapp     = '918796977903';
-$email        = 'contact@drpraveengupta.com';
-$address      = 'Marengo Asia Hospitals, Shushant Lok 2, Sector 56, Gurugram, Haryana 122011';
+$phonePrimary = '+91 98114 56789';
+$phoneClean   = '919811456789';
+$hospitalName = 'Marengo Asia Hospitals, Gurugram';
+$address      = 'Sector 56, Gurugram, Haryana 122011';
 ?>
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
+    <base href="/">
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -30,13 +21,15 @@ $address      = 'Marengo Asia Hospitals, Shushant Lok 2, Sector 56, Gurugram, Ha
     })(window,document,'script','dataLayer','GTM-TF2TXQLK');</script>
     <!-- End Google Tag Manager -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank You | Dr. Praveen Gupta &ndash; Best Neurologist in Gurgaon</title>
-    <meta name="description" content="Thank you for your appointment inquiry. Our care team will connect with you shortly.">
-    <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-    <link rel="icon" type="image/png" href="assets/favicon/favicon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <meta name="robots" content="noindex, follow">
+    <title>Thank You | Appointment Request Received – Dr. Praveen Gupta</title>
+    <meta name="description" content="Thank you for your appointment request with Dr. Praveen Gupta. Our patient care team will call you shortly.">
+
+    <link rel="icon" type="image/x-icon" href="/assets/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -55,114 +48,188 @@ $address      = 'Marengo Asia Hospitals, Shushant Lok 2, Sector 56, Gurugram, Ha
                         'sans': ['Inter', 'system-ui', 'sans-serif'],
                         'serif': ['Playfair Display', 'serif'],
                     },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out',
+                        'pulse-slow': 'pulse 3s infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
                 }
             }
         }
     </script>
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .gradient-text {
+            background: linear-gradient(135deg, #2563EB 0%, #06B6D4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
 </head>
-<body class="bg-slate-50 font-sans text-dark-grey antialiased flex flex-col min-h-screen">
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between antialiased selection:bg-cyan-accent selection:text-deep-indigo">
+
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TF2TXQLK"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <!-- Top Bar -->
-    <header class="bg-deep-indigo text-white py-3.5 px-4 sm:px-6 border-b border-white/10">
-        <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <a href="index.php" class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center text-white font-bold text-lg shadow-md">
-                    DG
-                </div>
+    <!-- Top Standalone Header -->
+    <header class="w-full bg-slate-950/80 backdrop-blur-md border-b border-white/10 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+            <a href="/enquire" class="flex items-center space-x-3 group">
+                <img src="/assets/logo.png" alt="Dr. Praveen Gupta Logo" class="h-10 sm:h-12 w-auto brightness-0 invert object-contain" onerror="this.style.display='none'">
                 <div>
-                    <span class="block text-base sm:text-lg font-serif font-bold tracking-tight">Dr. Praveen Gupta</span>
-                    <span class="block text-[10px] sm:text-xs text-cyan-accent font-medium">Chairman &ndash; Neurosciences, Marengo Asia</span>
+                    <span class="block text-base sm:text-lg font-serif font-bold text-white tracking-tight group-hover:text-cyan-accent transition-colors">Dr. Praveen Gupta</span>
+                    <span class="block text-[10px] sm:text-xs text-cyan-accent font-medium uppercase tracking-wider">Chairman – Neurosciences</span>
                 </div>
             </a>
-            <div class="flex items-center space-x-3 sm:space-x-4 text-xs">
-                <a href="tel:<?php echo $helpline; ?>" class="hidden sm:inline-flex items-center space-x-2 text-red-400 hover:text-red-300 font-bold transition-colors">
-                    <i class="fas fa-phone-alt animate-pulse"></i>
-                    <span>Helpline: <?php echo $helpline; ?></span>
-                </a>
-                <a href="index.php" class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold transition-all">
-                    <i class="fas fa-home text-xs"></i>
-                    <span>Home</span>
+            
+            <div class="flex items-center space-x-3 sm:space-x-4">
+                <a href="tel:<?php echo $phonePrimary; ?>" class="inline-flex items-center space-x-2 bg-white/10 hover:bg-white/20 border border-white/15 text-white text-xs sm:text-sm font-semibold px-3.5 py-2 rounded-full transition-all">
+                    <i class="fas fa-phone-alt text-cyan-accent text-xs"></i>
+                    <span class="hidden sm:inline">Call Coordinator:</span>
+                    <span><?php echo $phonePrimary; ?></span>
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- Main Thank You Hero Section -->
-    <main class="flex-1 flex items-center justify-center py-12 sm:py-20 px-4 relative overflow-hidden bg-gradient-to-br from-[#0b1021] via-deep-indigo to-[#0b2447] text-white">
-        <!-- Ambient background glows -->
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-electric-blue/20 rounded-full blur-[120px] pointer-events-none"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-accent/20 rounded-full blur-[120px] pointer-events-none"></div>
+    <!-- Main Thank You Hero -->
+    <main class="flex-grow flex items-center justify-center py-12 sm:py-16 px-4 relative overflow-hidden">
+        <!-- Background Ambient Glow -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-electric-blue/20 to-cyan-accent/20 rounded-full blur-[120px] pointer-events-none"></div>
 
-        <div class="max-w-2xl mx-auto text-center relative z-10 space-y-6 sm:space-y-8">
-            <!-- Animated Success Check -->
-            <div class="inline-flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-emerald-500/10 border-2 border-emerald-400/40 shadow-2xl relative">
-                <span class="absolute inset-0 rounded-full bg-emerald-400/20 animate-ping pointer-events-none"></span>
-                <i class="fas fa-check text-3xl sm:text-4xl text-emerald-400"></i>
+        <div class="max-w-3xl w-full mx-auto relative z-10 text-center animate-fade-in-up">
+            
+            <!-- Checkmark Animation Icon -->
+            <div class="inline-flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-gradient-to-br from-electric-blue to-cyan-accent text-white text-3xl sm:text-4xl shadow-2xl shadow-cyan-accent/30 mb-6 relative">
+                <span class="absolute inset-0 rounded-3xl bg-cyan-400 animate-ping opacity-20 pointer-events-none"></span>
+                <i class="fas fa-check"></i>
             </div>
 
-            <div class="space-y-3 sm:space-y-4">
-                <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-400/30 text-emerald-300 text-xs font-bold uppercase tracking-wider">
-                    <i class="fas fa-shield-check"></i>
-                    <span>Request Submitted Successfully</span>
+            <!-- Title & Subtitle -->
+            <div class="space-y-3 mb-8">
+                <div class="inline-flex items-center space-x-2 bg-cyan-500/10 border border-cyan-500/30 px-3.5 py-1.5 rounded-full text-cyan-300 text-xs font-semibold">
+                    <i class="fas fa-shield-alt text-[10px]"></i>
+                    <span>Request Successfully Confirmed</span>
                 </div>
-                <h1 class="text-3xl sm:text-5xl font-serif font-extrabold tracking-tight">
-                    Thank <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-accent to-blue-300">You!</span>
+                <h1 class="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight">
+                    Thank You for <span class="text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-cyan-accent">Reaching Out</span>
                 </h1>
-                <p class="text-base sm:text-lg font-medium text-white/90 max-w-lg mx-auto leading-relaxed">
-                    We have received your appointment details. Our patient coordinator will connect with you shortly to assist with your consultation.
+                <p class="text-sm sm:text-base text-slate-300 max-w-xl mx-auto leading-relaxed">
+                    Your appointment request has been safely received. Our Senior Clinical Care Coordinator is reviewing your details and will call you back within <strong class="text-white font-semibold">15–30 minutes</strong> to finalize your consultation timing.
                 </p>
             </div>
 
-            <!-- Action Cards -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 max-w-lg mx-auto pt-2 text-left">
-                <a href="index.php" class="bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl p-4 sm:p-5 flex items-start space-x-3.5 transition-all duration-300 group">
-                    <div class="w-10 h-10 rounded-xl bg-electric-blue/20 group-hover:bg-electric-blue flex items-center justify-center text-cyan-accent group-hover:text-white transition-all flex-shrink-0">
-                        <i class="fas fa-arrow-left text-sm"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-sm text-white group-hover:text-cyan-accent transition-colors">Return to Page</h3>
-                        <p class="text-[11px] text-white/60 mt-0.5 leading-normal">Back to Dr. Praveen Gupta's landing page.</p>
-                    </div>
-                </a>
+            <!-- What Happens Next Timeline -->
+            <div class="bg-slate-800/80 backdrop-blur-md border border-slate-700/70 rounded-3xl p-6 sm:p-8 text-left mb-8 shadow-xl">
+                <h2 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-cyan-accent mb-6 flex items-center space-x-2">
+                    <i class="fas fa-list-check"></i>
+                    <span>What Happens Next?</span>
+                </h2>
 
-                <a href="https://wa.me/<?php echo $whatsapp; ?>?text=<?php echo rawurlencode('Hello Dr. Praveen Gupta\'s team, I recently submitted the callback form and would like to connect.'); ?>"
-                   target="_blank" rel="noopener noreferrer"
-                   class="bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/20 rounded-2xl p-4 sm:p-5 flex items-start space-x-3.5 transition-all duration-300 group">
-                    <div class="w-10 h-10 rounded-xl bg-emerald-500/20 group-hover:bg-emerald-500 flex items-center justify-center text-emerald-400 group-hover:text-white transition-all flex-shrink-0">
-                        <i class="fab fa-whatsapp text-lg"></i>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+                    <!-- Step 1 -->
+                    <div class="space-y-2">
+                        <div class="w-8 h-8 rounded-full bg-cyan-500/20 text-cyan-300 flex items-center justify-center text-xs font-bold border border-cyan-500/30">1</div>
+                        <h3 class="text-sm font-bold text-white">Case Review</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">Our neurology care team assesses your symptoms and notes to prepare your consultation file.</p>
                     </div>
-                    <div>
-                        <h3 class="font-bold text-sm text-white group-hover:text-emerald-300 transition-colors">Chat on WhatsApp</h3>
-                        <p class="text-[11px] text-white/60 mt-0.5 leading-normal">Connect directly with our care desk.</p>
-                    </div>
-                </a>
-            </div>
 
-            <!-- Emergency Helpline Callout -->
-            <div class="pt-4">
-                <div class="inline-flex items-center space-x-2 text-xs text-white/70 bg-white/5 border border-white/10 rounded-full px-4 py-2">
-                    <i class="fas fa-phone-alt text-red-400 animate-pulse"></i>
-                    <span>For immediate emergency stroke triage, call:</span>
-                    <a href="tel:<?php echo $helpline; ?>" class="font-bold text-red-400 hover:text-red-300 transition-colors"><?php echo $helpline; ?></a>
+                    <!-- Step 2 -->
+                    <div class="space-y-2">
+                        <div class="w-8 h-8 rounded-full bg-electric-blue/20 text-blue-300 flex items-center justify-center text-xs font-bold border border-electric-blue/30">2</div>
+                        <h3 class="text-sm font-bold text-white">Care Callback</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">A coordinator calls you on the provided number to confirm your preferred slot and instructions.</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="space-y-2">
+                        <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-300 flex items-center justify-center text-xs font-bold border border-emerald-500/30">3</div>
+                        <h3 class="text-sm font-bold text-white">Consultation</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed">Meet Dr. Praveen Gupta at Marengo Asia Hospitals or attend your scheduled video call.</p>
+                    </div>
                 </div>
             </div>
+
+            <!-- Direct Contact Options -->
+            <div class="grid sm:grid-cols-2 gap-4 text-left mb-8">
+                <!-- Immediate Phone Assistance -->
+                <a href="tel:<?php echo $phonePrimary; ?>" class="bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 hover:border-cyan-500/50 rounded-2xl p-5 flex items-start space-x-4 transition-all group shadow-md">
+                    <span class="w-12 h-12 rounded-xl bg-electric-blue/20 text-electric-blue group-hover:bg-electric-blue group-hover:text-white flex items-center justify-center text-lg flex-shrink-0 transition-colors">
+                        <i class="fas fa-phone-volume"></i>
+                    </span>
+                    <div>
+                        <h3 class="text-sm font-bold text-white group-hover:text-cyan-accent transition-colors">Need Urgent Support?</h3>
+                        <p class="text-xs text-slate-400 mt-0.5">Call our direct appointment helpline:</p>
+                        <p class="text-xs font-bold text-cyan-300 mt-1"><?php echo $phonePrimary; ?></p>
+                    </div>
+                </a>
+
+                <!-- WhatsApp Quick Chat -->
+                <a href="https://wa.me/<?php echo $phoneClean; ?>?text=Hi%20Dr.%20Praveen%20Gupta%20Team%2C%20I%20just%20submitted%20an%20appointment%20request%20on%20your%20website." target="_blank" rel="noopener noreferrer" class="bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 hover:border-emerald-500/50 rounded-2xl p-5 flex items-start space-x-4 transition-all group shadow-md">
+                    <span class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white flex items-center justify-center text-lg flex-shrink-0 transition-colors">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                    </span>
+                    <div>
+                        <h3 class="text-sm font-bold text-white group-hover:text-emerald-400 transition-colors">Chat on WhatsApp</h3>
+                        <p class="text-xs text-slate-400 mt-0.5">Connect instantly with our desk via WhatsApp:</p>
+                        <p class="text-xs font-bold text-emerald-400 mt-1">Start WhatsApp Chat &rarr;</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Clinic Details & Back Button -->
+            <div class="space-y-4 pt-2">
+                <div class="inline-flex flex-wrap items-center justify-center gap-2 text-xs text-slate-400">
+                    <span class="inline-flex items-center space-x-1.5 bg-slate-800/80 px-3 py-1.5 rounded-full border border-slate-700/50">
+                        <i class="fas fa-hospital text-cyan-accent"></i>
+                        <span><?php echo $hospitalName; ?></span>
+                    </span>
+                    <span class="inline-flex items-center space-x-1.5 bg-slate-800/80 px-3 py-1.5 rounded-full border border-slate-700/50">
+                        <i class="fas fa-map-marker-alt text-cyan-accent"></i>
+                        <span><?php echo $address; ?></span>
+                    </span>
+                </div>
+
+                <div>
+                    <a href="/enquire" class="inline-flex items-center space-x-2 text-xs font-bold text-cyan-400 hover:text-white uppercase tracking-wider transition-colors pt-2 group">
+                        <i class="fas fa-arrow-left text-[10px] group-hover:-translate-x-1 transition-transform"></i>
+                        <span>Return to Appointment Page</span>
+                    </a>
+                </div>
+            </div>
+
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-dark-grey text-white/60 text-xs py-6 px-4 sm:px-6 border-t border-white/10">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
-            <p>&copy; <?php echo date('Y'); ?> Dr. Praveen Gupta. All rights reserved.</p>
-            <p class="text-[11px] text-white/40"><?php echo $address; ?></p>
+    <!-- Standalone LP Footer -->
+    <footer class="w-full bg-slate-950 border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <p>&copy; <?php echo date('Y'); ?> Dr. Praveen Gupta. All Rights Reserved. Marengo Asia Hospitals, Gurugram.</p>
+            <div class="flex items-center justify-center space-x-4 text-[11px] text-slate-400">
+                <a href="/privacy-policy" class="hover:text-cyan-400 transition-colors">Privacy Policy</a>
+                <span>&bull;</span>
+                <a href="/terms-of-service" class="hover:text-cyan-400 transition-colors">Terms of Service</a>
+            </div>
         </div>
     </footer>
+
 </body>
 </html>

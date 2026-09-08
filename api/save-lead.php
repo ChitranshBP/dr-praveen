@@ -43,7 +43,8 @@ $FORMESTER_URL = $FORMESTER_URLS[$formKey];
 
 // ---- Honeypot: bots fill this hidden field, humans never see it -------------
 if (!empty($_POST['website'])) {
-    lead_respond(true, '/thank-you');
+    $thankYouUrl = ($formKey === 'lp') ? '/enquire/thank-you' : '/thank-you';
+    lead_respond(true, $thankYouUrl);
 }
 
 // ---- Basic rate limit: 10 submissions / 10 minutes / IP ---------------------
@@ -178,6 +179,7 @@ if (function_exists('curl_init')) {
     curl_exec($ch);
 }
 
-// ---- Thank the user: Always redirect to /thank-you -----------------------------
-lead_respond(true, '/thank-you');
+// ---- Thank the user: Dedicated thank-you page for LP, default for main website --
+$thankYouUrl = ($formKey === 'lp') ? '/enquire/thank-you' : '/thank-you';
+lead_respond(true, $thankYouUrl);
 
