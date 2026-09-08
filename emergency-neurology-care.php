@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Emergency Neurology Care Page - Dr. Praveen Gupta
  */
@@ -222,7 +222,7 @@ $pageContent = get_page_content('emergency-neurology-care', [
                     </p>
                 </div>
 
-                <form class="space-y-4 pt-4 max-w-2xl mx-auto" accept-charset="UTF-8" action="https://app.formester.com/forms/MUVNkRKYA/submissions" method="POST">
+                <form class="space-y-4 pt-4 max-w-2xl mx-auto" accept-charset="UTF-8" action="/api/save-lead.php" method="POST">
                     <input type="hidden" name="form_type" value="Emergency Callback Request">
                     <div class="grid md:grid-cols-2 gap-4">
                         <div>

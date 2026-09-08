@@ -4,43 +4,60 @@
  * - Stores every submission in /data/leads.json (visible in CMS -> Leads & Inquiries)
  * - Forwards the same fields to Formester so existing automations keep working
  * - Optionally saves uploaded reports under /assets/uploads/leads/
+ * - Supports both AJAX/JSON responses and direct HTTP 302 redirects
  */
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: ../contact-us-top-neurologist-delhi-ncr');
+$isAjax = (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest')
+       || (isset($_SERVER['HTTP_ACCEPT']) && strpos($_SERVER['HTTP_ACCEPT'], 'application/json') !== false);
+
+function lead_respond($success, $redirectUrl, $errorMsg = '') {
+    global $isAjax;
+    if ($isAjax) {
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode([
+            'success'  => $success,
+            'redirect' => $redirectUrl,
+            'error'    => $errorMsg
+        ]);
+        exit;
+    }
+    header('Location: ' . $redirectUrl);
     exit;
 }
 
-$dataDir = dirname(__DIR__) . '/data';
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    lead_respond(false, '/contact-us-top-neurologist-delhi-ncr', 'Invalid request method');
+}
+
+$dataDir   = dirname(__DIR__) . '/data';
 $leadsFile = $dataDir . '/leads.json';
 $uploadDir = dirname(__DIR__) . '/assets/uploads/leads';
 
-// Allowlisted Formester endpoints (never accept arbitrary URLs from the request)
+// Allowlisted Formester endpoints
 $FORMESTER_URLS = [
     'main' => 'https://app.formester.com/forms/MUVNkRKYA/submissions',
     'lp'   => 'https://app.formester.com/forms/4a08Yw78e/submissions',
 ];
-$formKey = ($_POST['form_key'] ?? '') === 'lp' ? 'lp' : 'main';
+$formKey       = ($_POST['form_key'] ?? '') === 'lp' ? 'lp' : 'main';
 $FORMESTER_URL = $FORMESTER_URLS[$formKey];
 
 // ---- Honeypot: bots fill this hidden field, humans never see it -------------
 if (!empty($_POST['website'])) {
-    header('Location: ../thank-you');
-    exit;
+    lead_respond(true, '/thank-you');
 }
 
 // ---- Basic rate limit: 10 submissions / 10 minutes / IP ---------------------
-$ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
+$ip     = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
 $rlFile = sys_get_temp_dir() . '/lead_rl_' . md5($ip);
-$hits = [];
+$hits   = [];
 if (is_file($rlFile)) {
     $hits = json_decode((string)file_get_contents($rlFile), true) ?: [];
 }
-$now = time();
+$now  = time();
 $hits = array_values(array_filter($hits, function ($t) use ($now) { return ($now - (int)$t) < 600; }));
 if (count($hits) >= 10) {
-    header('Location: ../contact-us-top-neurologist-delhi-ncr?error=rate');
-    exit;
+    $errorBack = ($formKey === 'lp') ? '/enquire?error=rate' : '/contact-us-top-neurologist-delhi-ncr?error=rate';
+    lead_respond(false, $errorBack, 'Rate limit exceeded. Please try again later.');
 }
 $hits[] = $now;
 @file_put_contents($rlFile, json_encode($hits), LOCK_EX);
@@ -67,18 +84,26 @@ if ($subject === '') {
     $subject = lead_clean('condition', 120);
 }
 
+// Fallbacks for inquiry/diagnosis fields from sub-service forms
+if ($message === '') {
+    $message = lead_clean('inquiry', 3000);
+}
+if ($message === '') {
+    $message = lead_clean('diagnosis', 3000);
+}
+
 if ($formType === '') {
     $formType = $formKey === 'lp' ? 'Landing Page Appointment' : 'Website Enquiry';
 }
 
-// Newsletter-style submissions may only carry an email
-if ($name === '' && $email === '') {
-    header('Location: ../contact-us-top-neurologist-delhi-ncr?error=missing');
-    exit;
+$errorBack = ($formKey === 'lp') ? '/enquire?error=' : '/contact-us-top-neurologist-delhi-ncr?error=';
+
+// Submissions must have at least a phone number or email or name
+if ($name === '' && $phone === '' && $email === '') {
+    lead_respond(false, $errorBack . 'missing', 'Please provide your contact information.');
 }
 if ($email !== '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    header('Location: ../contact-us-top-neurologist-delhi-ncr?error=email');
-    exit;
+    lead_respond(false, $errorBack . 'email', 'Please provide a valid email address.');
 }
 
 // ---- Optional file upload ----------------------------------------------------
@@ -151,9 +176,8 @@ if (function_exists('curl_init')) {
         CURLOPT_FOLLOWLOCATION => true,
     ]);
     curl_exec($ch);
-    curl_close($ch);
 }
 
-// ---- Thank the user ------------------------------------------------------------
-header('Location: ../thank-you');
-exit;
+// ---- Thank the user: Always redirect to /thank-you -----------------------------
+lead_respond(true, '/thank-you');
+

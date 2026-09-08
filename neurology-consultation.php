@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Neurology Consultation Page - Dr. Praveen Gupta
  */
@@ -138,7 +138,7 @@ $pageContent = get_page_content('neurology-consultation', [
                     </li>
                 </ul>
 
-                <form class="pt-4 border-t border-cyan-accent/20 space-y-3" accept-charset="UTF-8" action="https://app.formester.com/forms/MUVNkRKYA/submissions" method="POST">
+                <form class="pt-4 border-t border-cyan-accent/20 space-y-3" accept-charset="UTF-8" action="/api/save-lead.php" method="POST">
                     <input type="hidden" name="form_type" value="Neurology Consultation Request">
                     <span class="block text-xs font-bold text-deep-indigo uppercase tracking-wider">Quick Request</span>
                     <div>

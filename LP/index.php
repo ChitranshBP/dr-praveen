@@ -639,7 +639,7 @@ $videos = [
                         <p class="text-xs sm:text-sm font-medium text-dark-grey/60">Fill the form and our care team will call you back shortly.</p>
                     </div>
 
-                    <form id="appointment-form" class="space-y-2.5 sm:space-y-4" accept-charset="UTF-8" action="api/save-lead.php" method="POST">
+                    <form id="appointment-form" class="space-y-2.5 sm:space-y-4" accept-charset="UTF-8" action="/api/save-lead.php" method="POST">
                         <input type="hidden" name="form_key" value="lp">
                         <input type="hidden" name="form_type" value="Landing Page Appointment">
                         <!-- Honeypot (hidden from humans, catches bots) -->
@@ -1176,10 +1176,31 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (form) {
-        form.addEventListener('submit', function () {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
             if (btnText) {
                 btnText.textContent = 'Submitting...';
             }
+            var formData = new FormData(form);
+            fetch('/api/save-lead.php', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+            .then(function (res) { return res.json(); })
+            .then(function (data) {
+                if (data.success) {
+                    window.location.href = data.redirect || '/thank-you';
+                } else {
+                    showStatus(data.error || 'Something went wrong. Please try again.', true);
+                    if (btnText) btnText.textContent = 'Request Callback';
+                }
+            })
+            .catch(function () {
+                form.submit();
+            });
         });
     }
 
