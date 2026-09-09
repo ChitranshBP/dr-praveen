@@ -38,9 +38,174 @@ $flash = cms_get_flash();
     <script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
     <style>
         body { font-family: 'Inter', sans-serif; }
-        .ql-toolbar.ql-snow { border-top-left-radius: 0.75rem; border-top-right-radius: 0.75rem; border-color: #e2e8f0; background: #f8fafc; }
-        .ql-container.ql-snow { border-bottom-left-radius: 0.75rem; border-bottom-right-radius: 0.75rem; border-color: #e2e8f0; background: #ffffff; font-family: 'Inter', sans-serif; font-size: 0.875rem; }
-        .ql-editor { min-height: 160px; line-height: 1.6; }
+        .ql-toolbar.ql-snow { 
+            border-top-left-radius: 0.75rem; 
+            border-top-right-radius: 0.75rem; 
+            border-color: #e2e8f0; 
+            background: #f8fafc; 
+            padding: 8px 10px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2px;
+        }
+        .ql-snow .ql-formats {
+            margin-right: 6px !important;
+            padding-right: 6px !important;
+            border-right: 1px solid #e2e8f0 !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 2px !important;
+            margin-bottom: 3px !important;
+        }
+        .ql-snow .ql-formats:last-child {
+            border-right: none !important;
+            margin-right: 0 !important;
+            padding-right: 0 !important;
+        }
+        .ql-container.ql-snow { 
+            border-bottom-left-radius: 0.75rem; 
+            border-bottom-right-radius: 0.75rem; 
+            border-color: #e2e8f0; 
+            background: #ffffff; 
+            font-family: 'Inter', sans-serif; 
+            font-size: 0.875rem; 
+        }
+        .ql-editor { 
+            min-height: 180px; 
+            line-height: 1.65; 
+            color: #1e293b;
+        }
+        .ql-editor p { margin-bottom: 0.75rem; }
+        .ql-editor h1 { font-size: 2rem; font-weight: 800; margin: 1.25rem 0 0.5rem; color: #0f172a; }
+        .ql-editor h2 { font-size: 1.5rem; font-weight: 700; margin: 1rem 0 0.5rem; color: #0f172a; }
+        .ql-editor h3 { font-size: 1.25rem; font-weight: 700; margin: 0.875rem 0 0.5rem; color: #1e293b; }
+        .ql-editor h4 { font-size: 1.1rem; font-weight: 600; margin: 0.75rem 0 0.5rem; color: #334155; }
+        
+        /* Table Styles inside Editor */
+        .ql-editor table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.875rem;
+        }
+        .ql-editor th, .ql-editor td {
+            border: 1px solid #cbd5e1;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        .ql-editor th {
+            background-color: #f1f5f9;
+            font-weight: 700;
+            color: #0f172a;
+        }
+        .ql-editor blockquote {
+            border-left: 4px solid #2563eb;
+            padding-left: 1rem;
+            color: #475569;
+            font-style: italic;
+            margin: 1rem 0;
+        }
+        .ql-editor hr {
+            border: 0;
+            border-top: 2px solid #e2e8f0;
+            margin: 1.5rem 0;
+        }
+
+        /* Custom Font Size Dropdown Labels */
+        .ql-snow .ql-picker.ql-size { width: 125px; }
+        .ql-snow .ql-picker.ql-size .ql-picker-label::before,
+        .ql-snow .ql-picker.ql-size .ql-picker-item::before {
+            content: '14px (Normal)';
+        }
+        .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="10px"]::before,
+        .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="10px"]::before { content: '10px (Tiny)'; }
+        .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="12px"]::before,
+        .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="12px"]::before { content: '12px (Small)'; }
+        .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="14px"]::before,
+        .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="14px"]::before { content: '14px (Normal)'; }
+        .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="16px"]::before,
+        .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="16px"]::before { content: '16px (Medium)'; }
+        .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="18px"]::before,
+        .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="18px"]::before { content: '18px (Large)'; }
+        .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="20px"]::before,
+        .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="20px"]::before { content: '20px (XL)'; }
+        .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="24px"]::before,
+        .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="24px"]::before { content: '24px (2XL)'; }
+        .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="28px"]::before,
+        .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="28px"]::before { content: '28px (3XL)'; }
+        .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="32px"]::before,
+        .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="32px"]::before { content: '32px (4XL)'; }
+        .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="36px"]::before,
+        .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="36px"]::before { content: '36px (5XL)'; }
+        .ql-snow .ql-picker.ql-size .ql-picker-label[data-value="48px"]::before,
+        .ql-snow .ql-picker.ql-size .ql-picker-item[data-value="48px"]::before { content: '48px (Huge)'; }
+
+        /* Custom Font Family Dropdown Labels */
+        .ql-snow .ql-picker.ql-font { width: 135px; }
+        .ql-snow .ql-picker.ql-font .ql-picker-label::before,
+        .ql-snow .ql-picker.ql-font .ql-picker-item::before {
+            content: 'Default Font';
+        }
+        .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="sans-serif"]::before,
+        .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="sans-serif"]::before { content: 'Sans-Serif'; font-family: sans-serif; }
+        .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="Arial"]::before,
+        .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="Arial"]::before { content: 'Arial'; font-family: Arial, sans-serif; }
+        .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="Georgia"]::before,
+        .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="Georgia"]::before { content: 'Georgia'; font-family: Georgia, serif; }
+        .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="Times New Roman"]::before,
+        .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="Times New Roman"]::before { content: 'Times New Roman'; font-family: 'Times New Roman', serif; }
+        .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="Trebuchet MS"]::before,
+        .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="Trebuchet MS"]::before { content: 'Trebuchet MS'; font-family: 'Trebuchet MS', sans-serif; }
+        .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="Verdana"]::before,
+        .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="Verdana"]::before { content: 'Verdana'; font-family: Verdana, sans-serif; }
+        .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="Roboto"]::before,
+        .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="Roboto"]::before { content: 'Roboto'; font-family: 'Roboto', sans-serif; }
+        .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="monospace"]::before,
+        .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="monospace"]::before { content: 'Monospace'; font-family: monospace; }
+        .ql-snow .ql-picker.ql-font .ql-picker-label[data-value="serif"]::before,
+        .ql-snow .ql-picker.ql-font .ql-picker-item[data-value="serif"]::before { content: 'Serif'; font-family: serif; }
+
+        /* Headings Dropdown Labels */
+        .ql-snow .ql-picker.ql-header { width: 125px; }
+        .ql-snow .ql-picker.ql-header .ql-picker-label::before,
+        .ql-snow .ql-picker.ql-header .ql-picker-item::before { content: 'Normal Text'; }
+        .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="1"]::before,
+        .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="1"]::before { content: 'Heading 1'; }
+        .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="2"]::before,
+        .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="2"]::before { content: 'Heading 2'; }
+        .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="3"]::before,
+        .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="3"]::before { content: 'Heading 3'; }
+        .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="4"]::before,
+        .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="4"]::before { content: 'Heading 4'; }
+        .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="5"]::before,
+        .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="5"]::before { content: 'Heading 5'; }
+        .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="6"]::before,
+        .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="6"]::before { content: 'Heading 6'; }
+
+        /* Fullscreen Mode */
+        .cms-quill-fullscreen-mode {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            z-index: 999999 !important;
+            background: #f1f5f9 !important;
+            padding: 1.25rem !important;
+            box-sizing: border-box !important;
+            display: flex !important;
+            flex-direction: column !important;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+        }
+        .cms-quill-fullscreen-mode .ql-container {
+            flex: 1 !important;
+            overflow-y: auto !important;
+            background: #ffffff !important;
+        }
+        .cms-quill-fullscreen-mode .ql-toolbar {
+            background: #ffffff !important;
+        }
     </style>
 </head>
 <body class="h-full flex flex-col antialiased text-slate-800">
