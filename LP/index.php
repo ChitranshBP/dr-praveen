@@ -578,7 +578,7 @@ $videos = [
 
                 <h1 class="text-2xl sm:text-4xl md:text-5xl xl:text-6xl font-serif font-extrabold leading-tight mb-2.5 sm:mb-6 drop-shadow-2xl">
                     <?php if ($lpHeroTitle !== ''): ?>
-                        <?php echo htmlspecialchars($lpHeroTitle); ?>
+                        <?php echo function_exists('cms_render_html') ? cms_render_html($lpHeroTitle) : $lpHeroTitle; ?>
                     <?php else: ?>
                         Consult <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-white to-cyan-100 drop-shadow-md">Dr. Praveen Gupta</span><br class="hidden sm:inline">
                         <span class="text-xl sm:text-4xl md:text-5xl xl:text-6xl font-serif font-bold text-white/95">Best Neurologist in Gurgaon</span>
@@ -588,7 +588,7 @@ $videos = [
                 <div class="bg-white/5 backdrop-blur-sm border-l-2 sm:border-l-4 border-cyan-accent p-2.5 sm:p-4 mb-3 sm:mb-8 rounded-r-xl">
                     <p class="text-xs sm:text-base md:text-xl text-white/95 leading-snug sm:leading-relaxed font-medium">
                         <?php if ($lpHeroSubtitle !== ''): ?>
-                            <?php echo htmlspecialchars($lpHeroSubtitle); ?>
+                            <?php echo function_exists('cms_render_html') ? cms_render_html($lpHeroSubtitle) : $lpHeroSubtitle; ?>
                         <?php else: ?>
                             20+ years of pioneering brain &amp; spine care &bull; DM (AIIMS, New Delhi) &bull; Trusted by
                             <strong class="text-white font-bold">3,00,000+ patients</strong> for stroke, epilepsy, Parkinson's, migraine and complex neurological disorders.

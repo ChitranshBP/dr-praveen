@@ -43,7 +43,7 @@ $pageContent = get_page_content('contact-us-top-neurologist-delhi-ncr', [
             </h1>
 
             <p class="text-sm md:text-base text-white/80 leading-relaxed mb-6 max-w-2xl">
-                <?php echo nl2br(htmlspecialchars($pageContent['hero_desc'])); ?>
+                <?php echo cms_render_html($pageContent['hero_desc']); ?>
             </p>
         </div>
     </div>

@@ -1095,3 +1095,48 @@ function get_page_content($slug, $defaults = []) {
     return $defaults;
 }
 
+/**
+ * CMS Content & Hyperlink Renderer
+ * Converts markdown links [Anchor Text](/url) and preserves safe HTML tags (<a>, <strong>, <em>, <span>, etc.)
+ */
+function cms_render_html($content) {
+    if ($content === null || $content === '') {
+        return '';
+    }
+    
+    // 1. Convert markdown-style links: [Link Text](url) or [Link Text](url "title")
+    $content = preg_replace_callback(
+        '/\[([^\]]+)\]\((https?:\/\/[^\s\)\"]+|\/[^\s\)\"]+|tel:[^\s\)\"]+|mailto:[^\s\)\"]+)(?:\s+\"([^\"]+)\")?\)/i',
+        function ($matches) {
+            $text = $matches[1];
+            $url  = $matches[2];
+            $title = !empty($matches[3]) ? ' title="' . htmlspecialchars($matches[3], ENT_QUOTES) . '"' : '';
+            $isExternal = preg_match('/^https?:\/\//i', $url) && strpos($url, 'drpraveengupta.com') === false;
+            $targetRel = $isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
+            return '<a href="' . htmlspecialchars($url, ENT_QUOTES) . '" class="text-electric-blue hover:text-cyan-accent underline decoration-cyan-accent/50 hover:decoration-cyan-accent transition-colors font-medium"' . $title . $targetRel . '>' . $text . '</a>';
+        },
+        $content
+    );
+
+    // 2. Add smooth default styles to standard <a ...> tags if class is missing
+    $content = preg_replace_callback('/<a\s+(?!.*?class=)([^>]+)>(.*?)<\/a>/is', function($matches) {
+        $attrs = $matches[1];
+        $text  = $matches[2];
+        $isExternal = (stripos($attrs, 'http://') !== false || stripos($attrs, 'https://') !== false) && stripos($attrs, 'drpraveengupta.com') === false;
+        $targetRel = $isExternal && stripos($attrs, 'target=') === false ? ' target="_blank" rel="noopener noreferrer"' : '';
+        return '<a class="text-electric-blue hover:text-cyan-accent underline decoration-cyan-accent/50 hover:decoration-cyan-accent transition-colors font-medium" ' . trim($attrs) . $targetRel . '>' . $text . '</a>';
+    }, $content);
+
+    // 3. Allow safe formatting tags
+    $allowedTags = '<a><span><strong><b><em><i><br><p><mark><ul><ol><li><u><del><div><small><h2><h3><h4><h5><h6><blockquote>';
+    $sanitized = strip_tags($content, $allowedTags);
+
+    // 4. If content is plain text without HTML block tags, convert newlines to <br>
+    if (strpos($sanitized, '<p>') === false && strpos($sanitized, '<br') === false && strpos($sanitized, '<div') === false) {
+        $sanitized = nl2br($sanitized);
+    }
+
+    return $sanitized;
+}
+
+

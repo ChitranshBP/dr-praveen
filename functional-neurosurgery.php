@@ -49,7 +49,7 @@ $pageContent = get_page_content('functional-neurosurgery', [
             </h1>
 
             <p class="text-sm md:text-base text-white/85 leading-relaxed mb-6 max-w-2xl">
-                <?php echo nl2br(htmlspecialchars($pageContent['hero_desc'])); ?>
+                <?php echo cms_render_html($pageContent['hero_desc']); ?>
             </p>
 
             <div class="flex flex-wrap items-center gap-4">
@@ -73,7 +73,7 @@ $pageContent = get_page_content('functional-neurosurgery', [
                 <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6"><?php echo htmlspecialchars($pageContent['section1_title']); ?></h2>
                 <div class="text-dark-grey/70 leading-relaxed mb-6 space-y-4">
                     <?php foreach(explode("\n\n", $pageContent['section1_text']) as $para): ?>
-                    <p><?php echo nl2br(htmlspecialchars($para)); ?></p>
+                    <p><?php echo cms_render_html($para); ?></p>
                     <?php endforeach; ?>
                 </div>
 

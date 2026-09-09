@@ -63,7 +63,7 @@ if (is_array($doctors)) {
             </h1>
 
             <p class="text-sm md:text-base text-white/85 leading-relaxed mb-6 max-w-2xl">
-                <?php echo nl2br(htmlspecialchars($pageContent['hero_desc'])); ?>
+                <?php echo cms_render_html($pageContent['hero_desc']); ?>
             </p>
         </div>
     </div>
@@ -318,12 +318,20 @@ if (is_array($doctors)) {
                 header.innerHTML = `<i class="${iconClass} text-electric-blue shrink-0"></i> <span>${sectionTitle}</span>`;
                 sectionDiv.appendChild(header);
                 
+                function parseRichText(str) {
+                    if (!str) return '';
+                    return str.replace(/\[([^\]]+)\]\((https?:\/\/[^\s\)\"]+|\/[^\s\)\"]+|tel:[^\s\)\"]+|mailto:[^\s\)\"]+)\)/gi, function(m, t, u) {
+                        var isExt = /^https?:\/\//i.test(u) && !u.includes('drpraveengupta.com');
+                        return '<a href="' + u + '" class="text-electric-blue hover:text-cyan-accent underline decoration-cyan-accent/50 hover:decoration-cyan-accent font-semibold transition-colors"' + (isExt ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' + t + '</a>';
+                    });
+                }
+
                 // Render List
                 if (listStyle === 'paragraphs') {
                     items.forEach(text => {
                         const p = document.createElement('p');
                         p.className = 'text-sm text-dark-grey/85 leading-relaxed';
-                        p.innerText = text;
+                        p.innerHTML = parseRichText(text);
                         sectionDiv.appendChild(p);
                     });
                 } else if (listStyle === 'pills') {
@@ -332,7 +340,7 @@ if (is_array($doctors)) {
                     items.forEach(text => {
                         const pill = document.createElement('span');
                         pill.className = 'px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200/60 text-[11px] text-deep-indigo font-semibold';
-                        pill.innerText = text;
+                        pill.innerHTML = parseRichText(text);
                         flexDiv.appendChild(pill);
                     });
                     sectionDiv.appendChild(flexDiv);
@@ -342,7 +350,7 @@ if (is_array($doctors)) {
                     items.forEach(text => {
                         const li = document.createElement('li');
                         li.className = 'flex items-start space-x-3 text-sm text-dark-grey/85 leading-relaxed bg-amber-50/20 p-3 rounded-2xl border border-amber-100/30';
-                        li.innerHTML = `<i class="fas fa-star text-[10px] text-amber-500 shrink-0 mt-1"></i> <span>${text}</span>`;
+                        li.innerHTML = `<i class="fas fa-star text-[10px] text-amber-500 shrink-0 mt-1"></i> <span>${parseRichText(text)}</span>`;
                         ul.appendChild(li);
                     });
                     sectionDiv.appendChild(ul);
@@ -352,7 +360,7 @@ if (is_array($doctors)) {
                     items.forEach(text => {
                         const li = document.createElement('li');
                         li.className = 'flex items-start space-x-3 text-sm text-dark-grey/85 leading-relaxed';
-                        li.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-electric-blue shrink-0 mt-1.5"></span> <span>${text}</span>`;
+                        li.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-electric-blue shrink-0 mt-1.5"></span> <span>${parseRichText(text)}</span>`;
                         ul.appendChild(li);
                     });
                     sectionDiv.appendChild(ul);

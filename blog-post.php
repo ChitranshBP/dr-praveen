@@ -124,9 +124,9 @@ require_once __DIR__ . '/includes/header.php';
             </div>
             <?php endif; ?>
 
-            <!-- Content (CMS body is trusted admin-authored HTML; legacy bodies are plain text) -->
-            <div class="space-y-4 text-dark-grey/80 leading-relaxed">
-                <?php echo $isCmsPost ? ($post['content'] ?? '') : nl2br(htmlspecialchars($post['content'])); ?>
+            <!-- Content -->
+            <div class="space-y-4 text-dark-grey/80 leading-relaxed prose prose-indigo max-w-none">
+                <?php echo cms_render_html($post['content'] ?? ''); ?>
             </div>
 
             <!-- Metadata -->
