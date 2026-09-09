@@ -203,8 +203,47 @@ $flash = cms_get_flash();
             overflow-y: auto !important;
             background: #ffffff !important;
         }
-        .cms-quill-fullscreen-mode .ql-toolbar {
-            background: #ffffff !important;
+        /* Links inside Editor */
+        .ql-editor a {
+            color: #2563eb !important;
+            text-decoration: underline !important;
+            font-weight: 600 !important;
+            cursor: pointer;
+        }
+
+        /* Quill Link Tooltip */
+        .ql-snow .ql-tooltip {
+            border-radius: 0.75rem !important;
+            border: 1px solid #cbd5e1 !important;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+            background-color: #ffffff !important;
+            padding: 8px 12px !important;
+            z-index: 100 !important;
+            font-family: 'Inter', sans-serif !important;
+        }
+        .ql-snow .ql-tooltip input[type=text] {
+            border-radius: 0.5rem !important;
+            border: 1px solid #cbd5e1 !important;
+            padding: 5px 10px !important;
+            font-size: 0.75rem !important;
+            background-color: #f8fafc !important;
+            outline: none !important;
+        }
+        .ql-snow .ql-tooltip input[type=text]:focus {
+            border-color: #2563eb !important;
+            background-color: #ffffff !important;
+        }
+        .ql-snow .ql-tooltip a.ql-action {
+            font-weight: 700 !important;
+            color: #2563eb !important;
+            margin-left: 8px !important;
+            text-decoration: none !important;
+        }
+        .ql-snow .ql-tooltip a.ql-remove {
+            font-weight: 700 !important;
+            color: #ef4444 !important;
+            margin-left: 8px !important;
+            text-decoration: none !important;
         }
     </style>
 </head>
