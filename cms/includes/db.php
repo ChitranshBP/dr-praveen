@@ -73,6 +73,10 @@ class CMS_DB {
         return self::set('settings', $settings);
     }
 
+    public static function getPagesCatalog() {
+        return self::get('pages_catalog', []);
+    }
+
     public static function generateId() {
         return bin2hex(random_bytes(8));
     }
