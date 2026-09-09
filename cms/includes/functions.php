@@ -117,9 +117,25 @@ if (!function_exists('cms_render_html')) {
             $targetRel = $isExternal && stripos($attrs, 'target=') === false ? ' target="_blank" rel="noopener noreferrer"' : '';
             return '<a class="text-electric-blue hover:text-cyan-accent underline decoration-cyan-accent/50 hover:decoration-cyan-accent transition-colors font-medium" ' . trim($attrs) . $targetRel . '>' . $text . '</a>';
         }, $content);
-        $allowedTags = '<a><span><strong><b><em><i><br><p><mark><ul><ol><li><u><del><div><small><h2><h3><h4><h5><h6><blockquote>';
+        $content = str_replace(
+            ['class="ql-align-center"', 'class="ql-align-right"', 'class="ql-align-justify"'],
+            ['class="text-center"', 'class="text-right"', 'class="text-justify"'],
+            $content
+        );
+        $content = preg_replace_callback('/<iframe([^>]+src=["\']([^"\']+)["\'][^>]*)><\/iframe>/is', function($matches) {
+            $attrs = $matches[1];
+            return '<div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-lg my-6 bg-slate-900"><iframe class="absolute inset-0 w-full h-full border-0" ' . trim($attrs) . ' allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
+        }, $content);
+        $content = preg_replace_callback('/<img\s+([^>]+)>/is', function($matches) {
+            $attrs = $matches[1];
+            if (stripos($attrs, 'class=') === false) {
+                return '<img class="rounded-2xl max-w-full h-auto my-4 shadow-md border border-slate-100" ' . trim($attrs) . '>';
+            }
+            return '<img ' . trim($attrs) . '>';
+        }, $content);
+        $allowedTags = '<a><span><strong><b><em><i><br><p><mark><ul><ol><li><u><s><del><div><small><h2><h3><h4><h5><h6><blockquote><iframe><video><source><img><pre><code><hr>';
         $sanitized = strip_tags($content, $allowedTags);
-        if (strpos($sanitized, '<p>') === false && strpos($sanitized, '<br') === false && strpos($sanitized, '<div') === false) {
+        if (strpos($sanitized, '<p>') === false && strpos($sanitized, '<br') === false && strpos($sanitized, '<div') === false && strpos($sanitized, '<h') === false && strpos($sanitized, '<ul') === false) {
             $sanitized = nl2br($sanitized);
         }
         return $sanitized;

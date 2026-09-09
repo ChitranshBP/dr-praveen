@@ -28,12 +28,16 @@ if (file_exists($cmsBannersFile)) {
     $banners = json_decode(file_get_contents($cmsBannersFile), true) ?: [];
 }
 $activeBanners = array_values(array_filter($banners, function($b) { return !isset($b['is_active']) || !empty($b['is_active']); }));
+usort($activeBanners, function($a, $b) {
+    return ((int)($a['order'] ?? 99)) <=> ((int)($b['order'] ?? 99));
+});
 if (empty($activeBanners)) {
     $activeBanners = [
         [
             'desktop_image' => 'assets/banner/dr-praveen-banner-desktop/stroke-care.jpeg',
             'mobile_image' => 'assets/banner/dr-praveen-banner-mobile/stroke-care-mobile.jpeg',
-            'alt_text' => "Stroke Doesn't Wait. Neither Should You - Emergency Stroke Care by Dr. Praveen Gupta"
+            'alt_text' => "Stroke Doesn't Wait. Neither Should You - Emergency Stroke Care by Dr. Praveen Gupta",
+            'order' => 1
         ]
     ];
 }

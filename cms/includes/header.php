@@ -33,7 +33,15 @@ $flash = cms_get_flash();
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>body { font-family: 'Inter', sans-serif; }</style>
+    <!-- Quill WYSIWYG Rich Editor -->
+    <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .ql-toolbar.ql-snow { border-top-left-radius: 0.75rem; border-top-right-radius: 0.75rem; border-color: #e2e8f0; background: #f8fafc; }
+        .ql-container.ql-snow { border-bottom-left-radius: 0.75rem; border-bottom-right-radius: 0.75rem; border-color: #e2e8f0; background: #ffffff; font-family: 'Inter', sans-serif; font-size: 0.875rem; }
+        .ql-editor { min-height: 160px; line-height: 1.6; }
+    </style>
 </head>
 <body class="h-full flex flex-col antialiased text-slate-800">
 

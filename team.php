@@ -83,7 +83,7 @@ if (is_array($doctors)) {
             <div class="grid md:grid-cols-12 gap-8 items-center p-8">
                 <div class="md:col-span-4 aspect-[4/5] rounded-2xl overflow-hidden relative shadow-md bg-gradient-to-br from-deep-indigo to-electric-blue p-0.5">
                     <div class="relative w-full h-full rounded-[0.9rem] overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent">
-                        <img src="<?php echo htmlspecialchars($praveenGupta['image']); ?>" alt="Dr. Praveen Gupta" class="w-full h-full object-cover object-top">
+                        <img src="<?php echo htmlspecialchars($praveenGupta['image']); ?>" alt="<?php echo htmlspecialchars($praveenGupta['image_alt'] ?? $praveenGupta['alt'] ?? 'Dr. Praveen Gupta'); ?>" class="w-full h-full object-cover object-top">
                     </div>
                 </div>
                 <div class="md:col-span-8 space-y-4">
@@ -120,7 +120,7 @@ if (is_array($doctors)) {
             <!-- Team Member Card -->
             <div onclick="openDoctorModal(<?php echo $index; ?>)" class="bg-white border border-silver-grey/30 p-6 rounded-3xl hover:shadow-lg hover:border-electric-blue/30 transition-all duration-300 flex flex-col items-center text-center cursor-pointer group hover:-translate-y-1">
                 <div class="w-32 h-32 rounded-full overflow-hidden mb-4 bg-gradient-to-br from-electric-blue to-cyan-accent p-0.5 shadow-md">
-                    <img src="<?php echo htmlspecialchars($doc['image']); ?>" alt="<?php echo htmlspecialchars($doc['alt']); ?>" class="w-full h-full object-cover object-top rounded-full group-hover:scale-105 transition-transform duration-500">
+                    <img src="<?php echo htmlspecialchars($doc['image']); ?>" alt="<?php echo htmlspecialchars($doc['image_alt'] ?? $doc['alt'] ?? $doc['name'] ?? 'Doctor Profile'); ?>" class="w-full h-full object-cover object-top rounded-full group-hover:scale-105 transition-transform duration-500">
                 </div>
                 <h3 class="font-bold text-deep-indigo text-base leading-tight"><?php echo htmlspecialchars($doc['name']); ?></h3>
                 <p class="text-[11px] text-cyan-accent font-semibold mt-1.5 leading-relaxed"><?php echo htmlspecialchars($doc['specialty']); ?></p>

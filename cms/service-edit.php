@@ -23,6 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $short_desc = trim($_POST['short_description'] ?? '');
     $bullet = trim($_POST['bullet'] ?? '');
     $link = trim($_POST['link'] ?? '');
+    $imageAlt = trim($_POST['image_alt'] ?? '');
     $features_raw = trim($_POST['features'] ?? '');
     $features = array_filter(array_map('trim', explode("\n", $features_raw)));
     $is_active = isset($_POST['is_active']);
@@ -41,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $s['bullet'] = $bullet;
                 $s['link'] = $link;
                 $s['features'] = $features;
+                $s['image_alt'] = $imageAlt ?: $title;
                 $s['is_active'] = $is_active;
                 if ($imagePath) $s['image'] = $imagePath;
                 break;
@@ -55,6 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'link' => $link,
             'features' => $features,
             'image' => $imagePath ?: 'assets/services/stroke-care.png',
+            'image_alt' => $imageAlt ?: $title,
             'is_active' => $is_active,
             'order' => count($services) + 1
         ];
@@ -70,11 +73,11 @@ $pageTitle = 'Edit Condition Card';
 require_once __DIR__ . '/includes/header.php';
 ?>
 
-<div class="max-w-3xl bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-    <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
+<div class="max-w-3xl bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+    <div class="flex items-center justify-between pb-4 border-b border-slate-100">
         <div>
-            <h2 class="text-sm font-bold text-slate-900 uppercase tracking-wider"><?php echo $service ? 'Edit Card Content' : 'Add Condition Card'; ?></h2>
-            <p class="text-xs text-slate-500 mt-0.5">Customize the card title, photo, summary, and bullet procedures.</p>
+            <h2 class="text-base font-bold text-slate-900"><?php echo $service ? 'Edit Card Content' : 'Add Condition Card'; ?></h2>
+            <p class="text-xs text-slate-500 mt-0.5">Customize the card title, photo, alt tag, summary, and procedure bullets.</p>
         </div>
         <a href="services.php" class="text-xs text-slate-500 font-semibold hover:underline">&larr; Back to Cards</a>
     </div>
@@ -83,40 +86,43 @@ require_once __DIR__ . '/includes/header.php';
         <?php echo cms_csrf_field(); ?>
         <input type="hidden" name="existing_image" value="<?php echo htmlspecialchars($service['image'] ?? ''); ?>">
 
-        <!-- Current Image Preview -->
-        <?php if (!empty($service['image'])): ?>
-        <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1.5">Current Card Image</label>
-            <div class="w-48 aspect-[4/3] rounded-xl overflow-hidden border border-slate-200 bg-slate-100">
-                <img src="../<?php echo htmlspecialchars($service['image']); ?>" class="w-full h-full object-cover" alt="Card Image">
-            </div>
-        </div>
-        <?php endif; ?>
-
-        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
             <div class="flex items-center justify-between">
                 <label class="block text-xs font-bold text-slate-800">
-                    <i class="fas fa-image text-brand-blue mr-1"></i> Upload Card Image (Replaces current photo)
+                    <i class="fas fa-image text-brand-blue mr-1"></i> Condition Card Photo
                 </label>
                 <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Recommended: 800 × 600 px</span>
             </div>
             <p class="text-[10px] text-slate-500">Standard 4:3 landscape photo. Supported: WebP, PNG, JPG (Max 4MB).</p>
+            <?php if (!empty($service['image'])): ?>
+            <div class="flex items-center space-x-3 py-1">
+                <div class="w-36 aspect-[4/3] rounded-xl overflow-hidden border border-slate-200 bg-slate-100">
+                    <img src="../<?php echo htmlspecialchars($service['image']); ?>" class="w-full h-full object-cover" alt="Card preview">
+                </div>
+                <span class="text-[10px] text-slate-400 font-mono"><?php echo htmlspecialchars($service['image']); ?></span>
+            </div>
+            <?php endif; ?>
             <input type="file" name="service_image" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+
+            <div class="pt-2 border-t border-slate-200/60">
+                <label class="block text-xs font-bold text-slate-700 mb-1">Card Image Alt Tag (SEO & Accessibility)</label>
+                <input type="text" name="image_alt" value="<?php echo htmlspecialchars($service['image_alt'] ?? ''); ?>" placeholder="e.g. <?php echo htmlspecialchars($service['title'] ?? 'Treatment'); ?> - Dr. Praveen Gupta" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
         </div>
 
         <div>
             <label class="block text-xs font-bold text-slate-700 mb-1">Card Title</label>
-            <input type="text" name="title" value="<?php echo htmlspecialchars($service['title'] ?? ''); ?>" required placeholder="e.g. Stroke & Neurocritical Care Unit" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <input type="text" name="title" value="<?php echo htmlspecialchars($service['title'] ?? ''); ?>" required placeholder="e.g. Stroke & Neurocritical Care Unit" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
         </div>
 
         <div>
             <label class="block text-xs font-bold text-slate-700 mb-1">Short Description</label>
-            <textarea name="short_description" rows="2" placeholder="e.g. Advanced Stroke Care in Gurgaon." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($service['short_description'] ?? ''); ?></textarea>
+            <textarea name="short_description" rows="3" placeholder="e.g. Advanced Stroke Care in Gurgaon." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($service['short_description'] ?? ''); ?></textarea>
         </div>
 
         <div>
             <label class="block text-xs font-bold text-slate-700 mb-1">Key Procedures / "Read More" Dropdown Items (1 per line)</label>
-            <textarea name="features" rows="5" placeholder="Thrombolytic therapy&#10;Mechanical thrombectomy&#10;24/7 stroke protocol" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars(implode("\n", $service['features'] ?? [])); ?></textarea>
+            <textarea name="features" rows="4" placeholder="Thrombolytic therapy&#10;Mechanical thrombectomy&#10;24/7 stroke protocol" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars(implode("\n", $service['features'] ?? [])); ?></textarea>
         </div>
 
         <div>

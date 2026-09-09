@@ -80,8 +80,8 @@ if (!$post) {
 }
 
 $postDate = !empty($post['date']) ? date('F j, Y', strtotime($post['date'])) : '';
-$pageTitle       = $post['title'] . ' - Dr. Praveen Gupta, Neurologist';
-$pageDescription = $post['excerpt'] ?? '';
+$pageTitle       = !empty($post['meta_title']) ? $post['meta_title'] : ($post['title'] . ' - Dr. Praveen Gupta, Neurologist');
+$pageDescription = !empty($post['meta_description']) ? $post['meta_description'] : ($post['excerpt'] ?? '');
 $canonicalPath   = 'blog-post?slug=' . ($post['slug'] ?? $slug);
 
 require_once __DIR__ . '/includes/header.php';
@@ -93,23 +93,20 @@ require_once __DIR__ . '/includes/header.php';
         <!-- Section Header -->
         <div class="text-center max-w-3xl mx-auto mb-12 observe">
             <div class="inline-flex items-center space-x-2 bg-electric-blue/10 px-4 py-2 rounded-full mb-4">
-                <i class="fas fa-newspaper text-electric-blue text-sm"></i>
-                <a href="dr-praveen-gupta-blog" class="text-electric-blue text-sm font-semibold hover:underline">Blog</a>
+                <i class="fas fa-newspaper text-electric-blue text-xs"></i>
+                <span class="text-xs font-bold text-electric-blue uppercase tracking-wider">Health Articles</span>
             </div>
-            <h2 class="text-4xl md:text-5xl font-serif font-bold text-deep-indigo mb-4">
-                Latest <span class="gradient-text">Articles</span>
-            </h2>
+            <p class="text-xs text-dark-grey/60 font-medium">Published on <?php echo htmlspecialchars($postDate); ?> &bull; By <?php echo htmlspecialchars($post['author'] ?? 'Dr. Praveen Gupta'); ?></p>
         </div>
 
-        <!-- Blog Content -->
         <article class="prose mx-auto max-w-xl lg:max-w-2xl">
             <h1 class="text-4xl md:text-5xl font-serif font-bold text-deep-indigo mb-6 leading-tight">
                 <?php echo htmlspecialchars($post['title']); ?>
             </h1>
 
-            <?php if (!empty($pageDescription)): ?>
+            <?php if (!empty($post['excerpt'])): ?>
             <p class="text-base text-dark-grey/70 italic mb-6">
-                <?php echo htmlspecialchars($pageDescription); ?>
+                <?php echo htmlspecialchars($post['excerpt']); ?>
             </p>
             <?php endif; ?>
 
@@ -117,7 +114,7 @@ require_once __DIR__ . '/includes/header.php';
             <?php if (!empty($post['image'])): ?>
             <div class="w-full rounded-3xl overflow-hidden mb-8 bg-slate-100">
                 <img src="<?php echo htmlspecialchars($post['image']); ?>"
-                     alt="<?php echo htmlspecialchars($post['title']); ?>"
+                     alt="<?php echo htmlspecialchars($post['image_alt'] ?? $post['title'] ?? 'Blog Featured Image'); ?>"
                      width="800" height="600"
                      onerror="this.onerror=null; this.src='assets/services/migraine.png';"
                      class="w-full h-auto object-cover">

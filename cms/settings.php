@@ -47,8 +47,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     cms_verify_csrf();
 
     $fields = [
-        'site_name', 'site_tagline', 'site_url', 'phone', 'stroke_helpline',
+        'site_name', 'site_tagline', 'site_url', 'logo_alt', 'phone', 'stroke_helpline',
         'email', 'address', 'whatsapp', 'whatsapp_message',
+        'homepage_meta_title', 'homepage_meta_description',
         'social_facebook', 'social_instagram', 'social_twitter', 'social_youtube', 'social_linkedin',
         'gtm_id', 'ga4_id', 'meta_pixel_id', 'custom_head_scripts', 'custom_body_scripts',
         'working_hours_weekdays', 'working_hours_sunday',
@@ -67,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     CMS_DB::setMultipleSettings($updated);
-    cms_set_flash('success', 'Site settings have been updated successfully!');
+    cms_set_flash('success', 'Site settings and SEO metadata have been updated successfully!');
     header('Location: settings.php');
     exit;
 }
@@ -75,6 +76,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <form method="POST" action="" enctype="multipart/form-data" class="space-y-6 max-w-5xl">
     <?php echo cms_csrf_field(); ?>
+
+    <!-- Homepage & Global SEO Card -->
+    <div class="bg-gradient-to-br from-white to-blue-50/40 p-6 rounded-2xl border border-blue-100 shadow-sm space-y-4">
+        <div class="flex items-center justify-between pb-3 border-b border-blue-100">
+            <h2 class="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center">
+                <i class="fas fa-search text-brand-blue mr-2"></i> Homepage & Default SEO Meta Tags
+            </h2>
+            <span class="text-[11px] text-blue-700 font-semibold bg-blue-100/60 px-2.5 py-0.5 rounded-full">Google Default</span>
+        </div>
+        <div class="space-y-3">
+            <div>
+                <div class="flex items-center justify-between mb-1">
+                    <label class="block text-xs font-bold text-slate-700">Homepage / Default Meta Title (&lt;title&gt;)</label>
+                    <span class="text-[10px] text-slate-400">Recommended: 50 – 60 characters</span>
+                </div>
+                <input type="text" name="homepage_meta_title" value="<?php echo htmlspecialchars($settings['homepage_meta_title'] ?? ''); ?>" placeholder="Dr. Praveen Gupta – Best Neurologist in Gurgaon & Delhi NCR | Artemis Hospital" class="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-xs font-semibold text-slate-900 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
+            <div>
+                <div class="flex items-center justify-between mb-1">
+                    <label class="block text-xs font-bold text-slate-700">Homepage / Default Meta Description (&lt;meta name="description"&gt;)</label>
+                    <span class="text-[10px] text-slate-400">Recommended: 140 – 160 characters</span>
+                </div>
+                <textarea name="homepage_meta_description" rows="2" placeholder="Dr. Praveen Gupta is a world-renowned Neurologist in Gurgaon & Delhi NCR with 20+ years of experience in stroke, epilepsy, migraine, and neurological disorders." class="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-xs font-medium text-slate-800 focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($settings['homepage_meta_description'] ?? ''); ?></textarea>
+            </div>
+        </div>
+    </div>
 
     <!-- General & Branding Card -->
     <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
@@ -94,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label class="block text-xs font-bold text-slate-700 mb-1">Site URL</label>
                 <input type="url" name="site_url" value="<?php echo htmlspecialchars($settings['site_url'] ?? ''); ?>" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
             </div>
-            <div class="md:col-span-2 bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+            <div class="md:col-span-2 bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
                 <div class="flex items-center justify-between">
                     <label class="block text-xs font-bold text-slate-800">
                         <i class="fas fa-image text-brand-blue mr-1"></i> Website Header & Footer Logo
@@ -111,6 +138,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <?php endif; ?>
                 <input type="file" name="logo_file" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+
+                <div class="pt-2 border-t border-slate-200/60">
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Website Logo Alt Tag (SEO & Accessibility)</label>
+                    <input type="text" name="logo_alt" value="<?php echo htmlspecialchars($settings['logo_alt'] ?? 'Dr. Praveen Gupta - Leading Neurologist Delhi NCR'); ?>" placeholder="e.g. Dr. Praveen Gupta - Leading Neurologist in Delhi NCR Logo" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                </div>
             </div>
         </div>
     </div>

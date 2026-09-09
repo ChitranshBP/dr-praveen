@@ -101,7 +101,7 @@ foreach (array_slice($services, 0, 6) as $svc) {
                         <a href="index" class="inline-block group">
                             <picture>
                                 <source srcset="assets/logo/NeuroDoc-final-logo.webp" type="image/webp">
-                                <img src="assets/logo/NeuroDoc-final-logo.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" width="200" height="56" class="h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 invert brightness-0">
+                                <img src="assets/logo/NeuroDoc-final-logo.png" alt="<?php echo htmlspecialchars($cmsSettings['logo_alt'] ?? 'Dr. Praveen Gupta - NeuroDoc Logo'); ?>" width="200" height="56" class="h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 invert brightness-0">
                             </picture>
                         </a>
                     </div>

@@ -1,4 +1,8 @@
 <?php
+require_once __DIR__ . '/includes/auth.php';
+require_once __DIR__ . '/includes/db.php';
+require_once __DIR__ . '/includes/functions.php';
+
 $pageTitle = 'Edit Doctor Profile';
 require_once __DIR__ . '/includes/header.php';
 
@@ -25,6 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $about = trim($_POST['about'] ?? '');
     $qualifications = trim($_POST['qualifications'] ?? '');
     $expertise = trim($_POST['expertise'] ?? '');
+    $imageAlt = trim($_POST['image_alt'] ?? '');
 
     $imagePath = $_POST['existing_image'] ?? '';
     $imgUpload = cms_handle_upload('doctor_photo', 'doctors');
@@ -32,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $imagePath = $imgUpload['path'];
     }
 
-    $docData = $doc; // start from existing record so unmanaged fields are preserved
+    $docData = $doc;
     if (!is_array($docData)) {
         $docData = [];
     }
@@ -43,16 +48,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $docData['specialty'] = $specialty;
     $docData['designation'] = $designation;
     $docData['experience'] = $experience;
+    $docData['alt'] = $imageAlt ?: $name;
+    $docData['image_alt'] = $imageAlt ?: $name;
     if ($imagePath) {
         $docData['image'] = $imagePath;
     } elseif (empty($docData['image'])) {
         $docData['image'] = 'assets/ggn-nuro-images/optimized/dr-praveen-gupta.webp';
     }
-    $docData['alt'] = $docData['alt'] ?? $name;
 
-    // Merge modal sections: About / Qualifications / Expertise are managed here,
-    // every other existing section (Designation, Experience, Key Achievements,
-    // Research, Philanthropy, ...) is kept untouched.
     $modal = $docData['modal'] ?? [];
     if (!is_array($modal)) {
         $modal = [];
@@ -65,7 +68,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $sections = [];
     }
 
-    // Preserve the original "Designation" section when present
     if (!isset($sections['Designation']) && $designation !== '') {
         $sections['Designation'] = [$designation];
     }
@@ -98,15 +100,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     CMS_DB::set('doctors', $doctors);
-    cms_set_flash('success', 'Doctor profile updated.');
+    cms_set_flash('success', 'Doctor profile updated successfully.');
     header('Location: doctors.php');
     exit;
 }
 ?>
 
-<div class="max-w-4xl bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-    <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
-        <h2 class="text-sm font-bold text-slate-900 uppercase tracking-wider"><?php echo $doc ? 'Edit Doctor' : 'Add New Doctor'; ?></h2>
+<div class="max-w-4xl bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+    <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+        <h2 class="text-base font-bold text-slate-900"><?php echo $doc ? 'Edit Doctor Profile' : 'Add New Doctor'; ?></h2>
         <a href="doctors.php" class="text-xs text-slate-500 font-semibold hover:underline">&larr; Back to Team</a>
     </div>
 
@@ -131,21 +133,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label class="block text-xs font-bold text-slate-700 mb-1">Experience</label>
                 <input type="text" name="experience" value="<?php echo htmlspecialchars($doc['experience'] ?? ''); ?>" placeholder="e.g. 15+ Years Experience" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
             </div>
-            <div class="md:col-span-2 bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+            <div class="md:col-span-2 bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
                 <div class="flex items-center justify-between">
                     <label class="block text-xs font-bold text-slate-800">
-                        <i class="fas fa-camera text-brand-blue mr-1"></i> Doctor Photo (Upload new to replace)
+                        <i class="fas fa-camera text-brand-blue mr-1"></i> Doctor Profile Photo
                     </label>
                     <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Recommended: 600 × 750 px</span>
                 </div>
                 <p class="text-[10px] text-slate-500">Portrait format (Aspect ratio ~4:5). Supported: WebP, PNG, JPG (Max 4MB).</p>
+                <?php if (!empty($doc['image'])): ?>
+                <div class="flex items-center space-x-3 py-1">
+                    <img src="../<?php echo htmlspecialchars($doc['image']); ?>" class="h-14 w-12 object-cover rounded-lg border border-slate-200" alt="Doctor photo">
+                    <span class="text-[10px] text-slate-400 font-mono"><?php echo htmlspecialchars($doc['image']); ?></span>
+                </div>
+                <?php endif; ?>
                 <input type="file" name="doctor_photo" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+
+                <div class="pt-2 border-t border-slate-200/60">
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Doctor Photo Alt Tag (SEO & Accessibility)</label>
+                    <input type="text" name="image_alt" value="<?php echo htmlspecialchars($doc['image_alt'] ?? $doc['alt'] ?? ''); ?>" placeholder="e.g. <?php echo htmlspecialchars($doc['name'] ?? 'Doctor'); ?> - Artemis Hospital" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                </div>
             </div>
         </div>
 
         <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">About / Bio</label>
-            <textarea name="about" rows="4" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($doc['modal']['sections']['About'][0] ?? ''); ?></textarea>
+            <label class="block text-xs font-bold text-slate-700 mb-1">About / Biography (Full Rich Text Editor)</label>
+            <textarea name="about" rows="5" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($doc['modal']['sections']['About'][0] ?? ''); ?></textarea>
         </div>
 
         <div>

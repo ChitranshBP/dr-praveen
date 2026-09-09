@@ -3,9 +3,10 @@ require_once __DIR__ . '/includes/auth.php';
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/functions.php';
 
-$slug = $_GET['slug'] ?? 'functional-neurosurgery';
-$pagesCatalog = CMS_DB::get('pages_catalog', []);
+$pagesCatalog = CMS_DB::getPagesCatalog();
+$slug = trim($_GET['slug'] ?? 'stroke');
 
+// Find page in catalog
 $pageMeta = null;
 foreach ($pagesCatalog as $p) {
     if ($p['slug'] === $slug) {
@@ -14,7 +15,7 @@ foreach ($pagesCatalog as $p) {
     }
 }
 
-$pageDataFile = DATA_DIR . '/pages/' . preg_replace('/[^a-zA-Z0-9_-]/', '', $slug) . '.json';
+$pageDataFile = dirname(__DIR__) . '/data/pages/' . preg_replace('/[^a-zA-Z0-9_-]/', '', $slug) . '.json';
 $pageData = [];
 if (file_exists($pageDataFile)) {
     $pageData = json_decode(file_get_contents($pageDataFile), true) ?: [];
@@ -29,10 +30,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pageData['hero_badge'] = trim($_POST['hero_badge'] ?? '');
     $pageData['hero_title'] = trim($_POST['hero_title'] ?? '');
     $pageData['hero_desc'] = trim($_POST['hero_desc'] ?? '');
+    $pageData['hero_bg_alt'] = trim($_POST['hero_bg_alt'] ?? '');
     
     $pageData['section1_badge'] = trim($_POST['section1_badge'] ?? '');
     $pageData['section1_title'] = trim($_POST['section1_title'] ?? '');
     $pageData['section1_text'] = trim($_POST['section1_text'] ?? '');
+    $pageData['section1_img_alt'] = trim($_POST['section1_img_alt'] ?? '');
+
+    // SEO Meta Title & Meta Description
+    $pageData['meta_title'] = trim($_POST['meta_title'] ?? '');
+    $pageData['meta_description'] = trim($_POST['meta_description'] ?? '');
 
     // Handle Hero Banner image upload
     $heroUpload = cms_handle_upload('hero_bg_file', 'breadcrumbs');
@@ -48,12 +55,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     file_put_contents($pageDataFile, json_encode($pageData, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE), LOCK_EX);
 
-    cms_set_flash('success', 'Page content and images saved successfully!');
+    cms_set_flash('success', 'Page content, SEO metadata, and images saved successfully!');
     header('Location: page-edit.php?slug=' . urlencode($slug));
     exit;
 }
 
-$pageTitle = 'Edit Page Content';
+$pageTitle = 'Edit Page Content: ' . ($pageMeta['title'] ?? $slug);
 require_once __DIR__ . '/includes/header.php';
 ?>
 
@@ -91,6 +98,34 @@ require_once __DIR__ . '/includes/header.php';
     <form method="POST" action="" enctype="multipart/form-data" class="space-y-6">
         <?php echo cms_csrf_field(); ?>
 
+        <!-- SEO Meta Tags Card -->
+        <div class="bg-gradient-to-br from-slate-50 to-blue-50/30 p-5 rounded-2xl border border-blue-100/80 space-y-4 shadow-sm">
+            <div class="flex items-center justify-between border-b border-blue-100 pb-2.5">
+                <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center">
+                    <i class="fas fa-search text-brand-blue mr-2"></i> SEO & Search Engine Meta Tags
+                </h3>
+                <span class="text-[11px] text-blue-700 font-semibold bg-blue-100/60 px-2 py-0.5 rounded-full">Google Snippet</span>
+            </div>
+
+            <div class="space-y-3 text-xs">
+                <div>
+                    <div class="flex items-center justify-between mb-1">
+                        <label class="font-bold text-slate-800">SEO Page Title (&lt;title&gt; tag)</label>
+                        <span class="text-[10px] text-slate-400">Recommended: 50 – 60 characters</span>
+                    </div>
+                    <input type="text" name="meta_title" value="<?php echo htmlspecialchars($pageData['meta_title'] ?? ''); ?>" placeholder="<?php echo htmlspecialchars(($pageMeta['title'] ?? 'Neurology Care') . ' - Dr. Praveen Gupta | Artemis Hospital'); ?>" class="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-semibold text-slate-900 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                </div>
+
+                <div>
+                    <div class="flex items-center justify-between mb-1">
+                        <label class="font-bold text-slate-800">SEO Meta Description (&lt;meta name="description"&gt;)</label>
+                        <span class="text-[10px] text-slate-400">Recommended: 140 – 160 characters</span>
+                    </div>
+                    <textarea name="meta_description" rows="2" placeholder="Brief summary of this page that appears under the title in Google search results..." class="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-xs font-medium text-slate-800 leading-relaxed focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($pageData['meta_description'] ?? ''); ?></textarea>
+                </div>
+            </div>
+        </div>
+
         <!-- Hero Section Box -->
         <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4">
             <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center">
@@ -113,7 +148,7 @@ require_once __DIR__ . '/includes/header.php';
                 <textarea name="hero_desc" rows="3" class="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-sm leading-relaxed focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($pageData['hero_desc'] ?? ''); ?></textarea>
             </div>
 
-            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-3">
                 <div class="flex items-center justify-between">
                     <label class="block text-xs font-bold text-slate-800">
                         <i class="fas fa-image text-brand-blue mr-1"></i> Hero Background Banner
@@ -128,6 +163,11 @@ require_once __DIR__ . '/includes/header.php';
                 </div>
                 <?php endif; ?>
                 <input type="file" name="hero_bg_file" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+
+                <div class="pt-2 border-t border-slate-100">
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Hero Banner Image Alt Tag</label>
+                    <input type="text" name="hero_bg_alt" value="<?php echo htmlspecialchars($pageData['hero_bg_alt'] ?? ''); ?>" placeholder="e.g. <?php echo htmlspecialchars($pageMeta['title'] ?? 'Neurology Service'); ?> Banner - Dr. Praveen Gupta" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                </div>
             </div>
         </div>
 
@@ -149,11 +189,11 @@ require_once __DIR__ . '/includes/header.php';
             </div>
 
             <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Section Content Paragraphs (Supports multiple paragraphs)</label>
-                <textarea name="section1_text" rows="6" class="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-sm leading-relaxed focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($pageData['section1_text'] ?? ''); ?></textarea>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Section Content Paragraphs (Full Rich Text Editor)</label>
+                <textarea name="section1_text" rows="8" class="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-sm leading-relaxed focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($pageData['section1_text'] ?? ''); ?></textarea>
             </div>
 
-            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-3">
                 <div class="flex items-center justify-between">
                     <label class="block text-xs font-bold text-slate-800">
                         <i class="fas fa-camera text-brand-blue mr-1"></i> Section Feature Photo
@@ -163,10 +203,15 @@ require_once __DIR__ . '/includes/header.php';
                 <p class="text-[10px] text-slate-500">Standard 4:3 landscape photo. Supported: WebP, PNG, JPG (Max 4MB).</p>
                 <?php if (!empty($pageData['section1_image'])): ?>
                 <div class="w-32 aspect-[4/3] rounded-lg overflow-hidden border border-slate-200 py-1">
-                    <img src="../<?php echo htmlspecialchars($pageData['section1_image']); ?>" class="w-full h-full object-cover" alt="Section Image">
+                    <img src="../<?php echo htmlspecialchars($pageData['section1_image']); ?>" class="w-full h-full object-cover" alt="<?php echo htmlspecialchars($pageData['section1_img_alt'] ?? 'Section Image'); ?>">
                 </div>
                 <?php endif; ?>
                 <input type="file" name="section1_img_file" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+
+                <div class="pt-2 border-t border-slate-100">
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Section Photo Alt Tag</label>
+                    <input type="text" name="section1_img_alt" value="<?php echo htmlspecialchars($pageData['section1_img_alt'] ?? ''); ?>" placeholder="e.g. <?php echo htmlspecialchars($pageMeta['title'] ?? 'Treatment'); ?> Clinical Procedure" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                </div>
             </div>
         </div>
 
@@ -174,7 +219,7 @@ require_once __DIR__ . '/includes/header.php';
             <a href="pages.php" class="text-xs text-slate-500 font-semibold hover:underline">&larr; Back to All Pages</a>
             <button type="submit" class="px-6 py-2.5 bg-brand-blue hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-md transition-all flex items-center space-x-1.5">
                 <i class="fas fa-save"></i>
-                <span>Save Page Content</span>
+                <span>Save Page Content &amp; SEO Meta</span>
             </button>
         </div>
     </form>

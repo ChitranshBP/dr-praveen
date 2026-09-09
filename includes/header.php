@@ -4,8 +4,39 @@
  */
 require_once __DIR__ . '/config.php';
 $currentPage = str_replace('.php', '', basename($_SERVER['PHP_SELF']));
-$isHomepage = ($currentPage === 'index');
+$isHomepage = ($currentPage === 'index' || $currentPage === '');
 $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
+
+// Load CMS Settings for Global SEO & Logo
+$settingsFile = dirname(__DIR__) . '/data/settings.json';
+$cmsSettings = [];
+if (file_exists($settingsFile)) {
+    $cmsSettings = json_decode(file_get_contents($settingsFile), true) ?: [];
+}
+
+// 1. Resolve Page SEO Meta Title & Description from CMS if not explicitly overridden
+$cmsPageData = get_page_content($isHomepage ? 'index' : $currentPage, []);
+if (empty($pageTitle) && !empty($cmsPageData['meta_title'])) {
+    $pageTitle = $cmsPageData['meta_title'];
+}
+if (empty($pageDescription) && !empty($cmsPageData['meta_description'])) {
+    $pageDescription = $cmsPageData['meta_description'];
+}
+
+// 2. Homepage default fallbacks
+if ($isHomepage) {
+    if (empty($pageTitle) && !empty($cmsSettings['homepage_meta_title'])) {
+        $pageTitle = $cmsSettings['homepage_meta_title'];
+    }
+    if (empty($pageDescription) && !empty($cmsSettings['homepage_meta_description'])) {
+        $pageDescription = $cmsSettings['homepage_meta_description'];
+    }
+}
+
+// 3. Absolute fallbacks
+$finalMetaTitle = !empty($pageTitle) ? $pageTitle : (SITE_NAME . ' - ' . SITE_TAGLINE);
+$finalMetaDesc  = !empty($pageDescription) ? $pageDescription : ($cmsSettings['homepage_meta_description'] ?? 'Dr. Praveen Gupta - Leading healthcare professional providing exceptional medical care with 20+ years of experience.');
+$logoAltText    = !empty($cmsSettings['logo_alt']) ? $cmsSettings['logo_alt'] : 'Dr. Praveen Gupta - Top Neurologist Delhi NCR Logo';
 ?>
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
@@ -20,10 +51,10 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
     <meta charset="UTF-8">
     <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="<?php echo htmlspecialchars($pageDescription ?? 'Dr. Praveen Gupta - Leading healthcare professional providing exceptional medical care with 20+ years of experience.'); ?>">
+    <meta name="description" content="<?php echo htmlspecialchars($finalMetaDesc); ?>">
     <meta name="keywords" content="Dr Praveen Gupta, healthcare, medical services, doctor, clinic">
     <meta name="author" content="Dr. Praveen Gupta">
-    <title><?php echo !empty($pageTitle) ? htmlspecialchars($pageTitle) : SITE_NAME . ' - ' . SITE_TAGLINE; ?></title>
+    <title><?php echo htmlspecialchars($finalMetaTitle); ?></title>
 
     <?php if ($isHomepage): ?>
     <!-- Preload Hero LCP Images -->
@@ -315,7 +346,7 @@ $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
                 <a href="index" class="flex items-center group">
                     <picture>
                         <source srcset="assets/logo/NeuroDoc-final-logo.webp" type="image/webp">
-                        <img id="header-logo" src="assets/logo/NeuroDoc-final-logo.png" alt="Dr. Praveen Gupta - NeuroDoc Logo" width="200" height="56" class="h-14 sm:h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 <?php echo $isHomepage || $isDarkHero ? 'invert brightness-0' : ''; ?>">
+                        <img id="header-logo" src="assets/logo/NeuroDoc-final-logo.png" alt="<?php echo htmlspecialchars($logoAltText); ?>" width="200" height="56" class="h-14 sm:h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 <?php echo $isHomepage || $isDarkHero ? 'invert brightness-0' : ''; ?>">
                     </picture>
                 </a>
 
