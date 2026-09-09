@@ -141,3 +141,36 @@ if (!function_exists('cms_render_html')) {
         return $sanitized;
     }
 }
+
+if (!function_exists('cms_parse_multiline_items')) {
+    function cms_parse_multiline_items($input) {
+        if (empty($input)) return [];
+        if (is_array($input)) {
+            $cleaned = [];
+            foreach ($input as $item) {
+                if (is_string($item) && trim($item) !== '') {
+                    $cleaned[] = trim($item);
+                }
+            }
+            return $cleaned;
+        }
+
+        // Convert list item closures, paragraph closures, heading closures and <br> into newlines
+        $normalized = preg_replace('/<\/(li|p|div|h[1-6])>/i', "$0\n", $input);
+        $normalized = preg_replace('/<br\s*\/?>/i', "\n", $normalized);
+        
+        $lines = explode("\n", $normalized);
+        $items = [];
+        foreach ($lines as $line) {
+            $trimmed = trim($line);
+            if ($trimmed === '' || $trimmed === '<br>' || $trimmed === '<br/>') continue;
+            // Unwrap outer <p>...</p>, <li>...</li>, <div>...</div>
+            $unwrapped = preg_replace('/^<(li|p|div)[^>]*>(.*)<\/\1>$/is', '$2', $trimmed);
+            $unwrapped = trim($unwrapped);
+            if ($unwrapped !== '' && strip_tags($unwrapped) !== '') {
+                $items[] = $unwrapped;
+            }
+        }
+        return $items;
+    }
+}

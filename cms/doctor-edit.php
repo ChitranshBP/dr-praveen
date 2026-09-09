@@ -72,18 +72,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $sections['Designation'] = [$designation];
     }
 
-    $aboutLines = array_values(array_filter(array_map('trim', explode("\n", $about))));
-    if (!empty($aboutLines)) {
-        $sections['About'] = $aboutLines;
+    $aboutText = trim($about);
+    if ($aboutText !== '') {
+        $sections['About'] = [$aboutText];
     }
-    $qualLines = array_values(array_filter(array_map('trim', explode("\n", $qualifications))));
-    if (!empty($qualLines)) {
-        $sections['Qualifications'] = $qualLines;
-    }
-    $expLines = array_values(array_filter(array_map('trim', explode("\n", $expertise))));
-    if (!empty($expLines)) {
-        $sections['Areas of Expertise'] = $expLines;
-    }
+    $sections['Qualifications'] = cms_parse_multiline_items($qualifications);
+    $sections['Areas of Expertise'] = cms_parse_multiline_items($expertise);
 
     $modal['sections'] = $sections;
     $docData['modal'] = $modal;
@@ -108,11 +102,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <div class="max-w-4xl bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
     <div class="flex items-center justify-between pb-4 border-b border-slate-100">
-        <h2 class="text-base font-bold text-slate-900"><?php echo $doc ? 'Edit Doctor Profile' : 'Add New Doctor'; ?></h2>
-        <a href="doctors.php" class="text-xs text-slate-500 font-semibold hover:underline">&larr; Back to Team</a>
+        <div>
+            <h2 class="text-lg font-bold text-slate-800"><?php echo $id ? 'Edit Specialist' : 'Add New Specialist'; ?></h2>
+            <p class="text-xs text-slate-500">Manage credentials, bio, qualifications, and areas of expertise with rich formatting.</p>
+        </div>
+        <a href="doctors.php" class="px-3.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl">Back</a>
     </div>
 
-    <form method="POST" action="" enctype="multipart/form-data" class="space-y-4">
+    <form method="POST" enctype="multipart/form-data" class="space-y-5">
         <?php echo cms_csrf_field(); ?>
         <input type="hidden" name="existing_image" value="<?php echo htmlspecialchars($doc['image'] ?? ''); ?>">
 
@@ -123,26 +120,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <div>
                 <label class="block text-xs font-bold text-slate-700 mb-1">Specialty / Department</label>
-                <input type="text" name="specialty" value="<?php echo htmlspecialchars($doc['specialty'] ?? ''); ?>" placeholder="e.g. Neurology, Neurosciences" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                <input type="text" name="specialty" value="<?php echo htmlspecialchars($doc['specialty'] ?? ''); ?>" required class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
             </div>
             <div>
                 <label class="block text-xs font-bold text-slate-700 mb-1">Designation</label>
-                <input type="text" name="designation" value="<?php echo htmlspecialchars($doc['designation'] ?? ''); ?>" placeholder="e.g. Associate Director" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                <input type="text" name="designation" value="<?php echo htmlspecialchars($doc['designation'] ?? $doc['modal']['role'] ?? ''); ?>" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
             </div>
             <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Experience</label>
-                <input type="text" name="experience" value="<?php echo htmlspecialchars($doc['experience'] ?? ''); ?>" placeholder="e.g. 15+ Years Experience" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                <label class="block text-xs font-bold text-slate-700 mb-1">Experience (Years)</label>
+                <input type="text" name="experience" value="<?php echo htmlspecialchars($doc['experience'] ?? ''); ?>" placeholder="e.g. 15+ Years" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
             </div>
-            <div class="md:col-span-2 bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
-                <div class="flex items-center justify-between">
-                    <label class="block text-xs font-bold text-slate-800">
+        </div>
+
+        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200/80 space-y-3">
+            <div>
+                <div class="flex items-center justify-between mb-1">
+                    <label class="block text-xs font-bold text-slate-700">
                         <i class="fas fa-camera text-brand-blue mr-1"></i> Doctor Profile Photo
                     </label>
                     <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Recommended: 600 × 750 px</span>
                 </div>
                 <p class="text-[10px] text-slate-500">Portrait format (Aspect ratio ~4:5). Supported: WebP, PNG, JPG (Max 4MB).</p>
                 <?php if (!empty($doc['image'])): ?>
-                <div class="flex items-center space-x-3 py-1">
+                <div class="flex items-center space-x-3 py-2">
                     <img src="../<?php echo htmlspecialchars($doc['image']); ?>" class="h-14 w-12 object-cover rounded-lg border border-slate-200" alt="Doctor photo">
                     <span class="text-[10px] text-slate-400 font-mono"><?php echo htmlspecialchars($doc['image']); ?></span>
                 </div>
@@ -157,18 +157,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">About / Biography (Full Rich Text Editor)</label>
-            <textarea name="about" rows="5" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($doc['modal']['sections']['About'][0] ?? ''); ?></textarea>
+            <label class="block text-xs font-bold text-slate-700 mb-1">About / Biography</label>
+            <textarea name="about" rows="4" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php 
+                $aboutSection = $doc['modal']['sections']['About'] ?? [];
+                echo htmlspecialchars(is_array($aboutSection) ? implode("\n\n", $aboutSection) : $aboutSection); 
+            ?></textarea>
         </div>
 
         <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Qualifications (1 per line)</label>
-            <textarea name="qualifications" rows="3" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars(implode("\n", $doc['modal']['sections']['Qualifications'] ?? [])); ?></textarea>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Degrees & Qualifications</label>
+            <textarea name="qualifications" rows="3" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php 
+                $quals = $doc['modal']['sections']['Qualifications'] ?? [];
+                if (is_array($quals)) {
+                    foreach ($quals as $q) {
+                        echo htmlspecialchars($q) . "\n";
+                    }
+                } else {
+                    echo htmlspecialchars($quals);
+                }
+            ?></textarea>
         </div>
 
         <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Areas of Expertise (1 per line)</label>
-            <textarea name="expertise" rows="3" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars(implode("\n", $doc['modal']['sections']['Areas of Expertise'] ?? [])); ?></textarea>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Areas of Clinical Expertise</label>
+            <textarea name="expertise" rows="3" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php 
+                $exps = $doc['modal']['sections']['Areas of Expertise'] ?? [];
+                if (is_array($exps)) {
+                    foreach ($exps as $e) {
+                        echo htmlspecialchars($e) . "\n";
+                    }
+                } else {
+                    echo htmlspecialchars($exps);
+                }
+            ?></textarea>
         </div>
 
         <div class="flex items-center justify-end space-x-3 pt-4 border-t border-slate-100">

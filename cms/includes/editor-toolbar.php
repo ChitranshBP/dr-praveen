@@ -1,6 +1,6 @@
 <?php
 /**
- * CMS Rich Text WYSIWYG Editor Suite (Excel & Word Ribbon Edition)
+ * CMS Rich Text WYSIWYG Editor Suite
  * Provides Font Family, Font Size, Headings, Bold/Italic/Underline/Strike/Sub/Super, 
  * Text & Background Color Pickers, Left/Center/Right/Justify, Indent, Lists, 
  * Hyperlinks, Images, Videos, Excel Tables, Horizontal Dividers, Undo/Redo, Fullscreen & HTML Code View.
@@ -35,7 +35,7 @@
     <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl space-y-4 animate-fade-in border border-slate-200">
         <div class="flex items-center justify-between pb-3 border-b border-slate-100">
             <h3 class="text-sm font-bold text-slate-800 flex items-center">
-                <i class="fas fa-table text-brand-blue mr-2"></i> Insert Table (Excel Style)
+                <i class="fas fa-table text-brand-blue mr-2"></i> Insert Table
             </h3>
             <button type="button" onclick="closeCmsTableModal()" class="text-slate-400 hover:text-slate-600 text-lg leading-none">&times;</button>
         </div>
@@ -196,7 +196,7 @@
     // Initialize Rich Editor on textareas
     document.addEventListener('DOMContentLoaded', function() {
         const targetTextareas = document.querySelectorAll(
-            'textarea[name="content"], textarea[name="section1_text"], textarea[name="about"], textarea[name="hero_desc"], textarea.wysiwyg-editor, textarea.rich-editor'
+            'textarea[name="content"], textarea[name="section1_text"], textarea[name="about"], textarea[name="hero_desc"], textarea[name="qualifications"], textarea[name="expertise"], textarea[name="features"], textarea[name="short_description"], textarea[name="excerpt"], textarea[name="message"], textarea.wysiwyg-editor, textarea.rich-editor'
         );
 
         targetTextareas.forEach(function(textarea, idx) {
@@ -207,7 +207,7 @@
             const wrapper = document.createElement('div');
             wrapper.className = 'quill-editor-wrapper space-y-1 my-2';
 
-            // Top Status Bar
+            // Top Status Bar (without "Excel / Word Style Toolbar")
             const topBar = document.createElement('div');
             topBar.className = 'flex items-center justify-between px-2 py-1 bg-slate-100 rounded-t-xl border-t border-l border-r border-slate-200 text-[11px] text-slate-600 font-semibold';
             topBar.innerHTML = `
@@ -215,8 +215,6 @@
                     <span class="inline-flex items-center text-brand-blue font-bold">
                         <i class="fas fa-file-signature mr-1.5 text-xs"></i> Rich Text & Formatting Editor
                     </span>
-                    <span class="text-slate-300">|</span>
-                    <span class="text-slate-400 font-normal">Excel / Word Style Toolbar</span>
                 </div>
                 <div class="flex items-center space-x-3">
                     <button type="button" class="fullscreen-toggle-btn text-slate-600 hover:text-brand-blue font-bold flex items-center space-x-1 transition-colors" title="Toggle Fullscreen">
@@ -317,7 +315,7 @@
                     <button class="ql-link" type="button" title="Insert / Edit Hyperlink"><i class="fas fa-link"></i></button>
                     <button class="ql-image" type="button" title="Insert Image (Upload or URL)"><i class="fas fa-image"></i></button>
                     <button class="ql-video" type="button" title="Embed Video (YouTube / Vimeo)"><i class="fas fa-video"></i></button>
-                    <button class="ql-table" type="button" title="Insert Excel Table Grid"><i class="fas fa-table"></i></button>
+                    <button class="ql-table" type="button" title="Insert Table Grid"><i class="fas fa-table"></i></button>
                     <button class="ql-hr" type="button" title="Insert Horizontal Divider Line"><i class="fas fa-minus"></i></button>
                 </span>
 
@@ -331,7 +329,10 @@
             const quillContainer = document.createElement('div');
             quillContainer.id = 'quill-editor-' + idx;
             quillContainer.className = 'bg-white rounded-b-xl shadow-sm';
-            quillContainer.style.minHeight = textarea.rows > 5 ? '280px' : '180px';
+            
+            const fieldName = textarea.name || '';
+            const isCompactField = ['qualifications', 'expertise', 'features', 'short_description', 'excerpt', 'message'].includes(fieldName);
+            quillContainer.style.minHeight = isCompactField ? '150px' : (textarea.rows > 5 ? '280px' : '180px');
 
             // Insert into DOM
             textarea.parentNode.insertBefore(wrapper, textarea);

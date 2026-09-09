@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $link = trim($_POST['link'] ?? '');
     $imageAlt = trim($_POST['image_alt'] ?? '');
     $features_raw = trim($_POST['features'] ?? '');
-    $features = array_filter(array_map('trim', explode("\n", $features_raw)));
+    $features = cms_parse_multiline_items($features_raw);
     $is_active = isset($_POST['is_active']);
 
     $imagePath = $_POST['existing_image'] ?? '';
@@ -76,15 +76,39 @@ require_once __DIR__ . '/includes/header.php';
 <div class="max-w-3xl bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
     <div class="flex items-center justify-between pb-4 border-b border-slate-100">
         <div>
-            <h2 class="text-base font-bold text-slate-900"><?php echo $service ? 'Edit Card Content' : 'Add Condition Card'; ?></h2>
-            <p class="text-xs text-slate-500 mt-0.5">Customize the card title, photo, alt tag, summary, and procedure bullets.</p>
+            <h2 class="text-lg font-bold text-slate-800"><?php echo $id ? 'Edit Brain & Spine Condition Card' : 'Add New Condition Card'; ?></h2>
+            <p class="text-xs text-slate-500">Edit title, description, features, image and links visible on the services section.</p>
         </div>
-        <a href="services.php" class="text-xs text-slate-500 font-semibold hover:underline">&larr; Back to Cards</a>
+        <a href="services.php" class="px-3.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl">Back</a>
     </div>
 
-    <form method="POST" action="" enctype="multipart/form-data" class="space-y-5">
+    <form method="POST" enctype="multipart/form-data" class="space-y-5">
         <?php echo cms_csrf_field(); ?>
         <input type="hidden" name="existing_image" value="<?php echo htmlspecialchars($service['image'] ?? ''); ?>">
+
+        <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Service Title / Brain Condition</label>
+            <input type="text" name="title" value="<?php echo htmlspecialchars($service['title'] ?? ''); ?>" required placeholder="e.g. Stroke & Neurocritical Care Unit" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
+
+        <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Short Description</label>
+            <textarea name="short_description" rows="3" placeholder="e.g. Advanced Stroke Care in Gurgaon." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($service['short_description'] ?? ''); ?></textarea>
+        </div>
+
+        <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Key Procedures / Key Highlights (1 per line)</label>
+            <textarea name="features" rows="4" placeholder="Thrombolytic therapy&#10;Mechanical thrombectomy&#10;24/7 stroke protocol" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php 
+                $feats = $service['features'] ?? [];
+                if (is_array($feats)) {
+                    foreach ($feats as $f) {
+                        echo htmlspecialchars($f) . "\n";
+                    }
+                } else {
+                    echo htmlspecialchars($feats);
+                }
+            ?></textarea>
+        </div>
 
         <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
             <div class="flex items-center justify-between">
