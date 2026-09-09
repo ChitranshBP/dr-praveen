@@ -120,8 +120,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php endif; ?>
         </div>
 
-        <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Featured Banner Image</label>
+        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+            <div class="flex items-center justify-between">
+                <label class="block text-xs font-bold text-slate-800">
+                    <i class="fas fa-image text-brand-blue mr-1"></i> Featured Banner Image
+                </label>
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Recommended: 1200 × 630 px</span>
+            </div>
+            <p class="text-[10px] text-slate-500">Wide landscape format (Aspect ratio 16:9 or 1.91:1 standard social card). Supported: WebP, PNG, JPG (Max 5MB).</p>
+            <?php if (!empty($blog['image'])): ?>
+            <div class="flex items-center space-x-3 py-1">
+                <img src="../<?php echo htmlspecialchars($blog['image']); ?>" class="h-14 w-24 object-cover rounded-lg border border-slate-200" alt="Current Blog Image">
+                <span class="text-[10px] text-slate-400 font-mono"><?php echo htmlspecialchars($blog['image']); ?></span>
+            </div>
+            <?php endif; ?>
             <input type="file" name="blog_image" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
         </div>
 

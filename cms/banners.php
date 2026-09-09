@@ -161,14 +161,38 @@ if ($editId) {
                     <input type="text" name="title" value="<?php echo htmlspecialchars($editBanner['title'] ?? ''); ?>" placeholder="e.g. Transforming Brain & Spine Care" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
                 </div>
 
-                <div>
-                    <label class="block font-bold text-slate-700 mb-1">Desktop Banner Image (1440x500 WebP/PNG/JPG)</label>
-                    <input type="file" name="desktop_image" accept="image/*" class="w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700">
+                <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <label class="block font-bold text-slate-800">
+                            <i class="fas fa-desktop text-brand-blue mr-1"></i> Desktop Banner Artwork
+                        </label>
+                        <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Recommended: 1920 × 670 px (or 1440 × 500 px)</span>
+                    </div>
+                    <p class="text-[10px] text-slate-500">Wide landscape format (Aspect ratio ~16:5). Supported: WebP, PNG, JPG (Max 4MB).</p>
+                    <?php if (!empty($editBanner['desktop_image'])): ?>
+                    <div class="flex items-center space-x-2 py-1">
+                        <img src="../<?php echo htmlspecialchars($editBanner['desktop_image']); ?>" class="h-10 w-28 object-cover rounded border border-slate-200" alt="Current Desktop Banner">
+                        <span class="text-[10px] text-slate-400 font-mono"><?php echo htmlspecialchars($editBanner['desktop_image']); ?></span>
+                    </div>
+                    <?php endif; ?>
+                    <input type="file" name="desktop_image" accept="image/*" class="w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
                 </div>
 
-                <div>
-                    <label class="block font-bold text-slate-700 mb-1">Mobile Banner Image (Optional)</label>
-                    <input type="file" name="mobile_image" accept="image/*" class="w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700">
+                <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <label class="block font-bold text-slate-800">
+                            <i class="fas fa-mobile-alt text-brand-blue mr-1"></i> Mobile Banner Artwork (Portrait)
+                        </label>
+                        <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-100 text-purple-800">Recommended: 750 × 900 px (or 1080 × 1300 px)</span>
+                    </div>
+                    <p class="text-[10px] text-slate-500">Optimized portrait format for phones (Aspect ratio ~4:5 / 5:6). Supported: WebP, PNG, JPG (Max 4MB).</p>
+                    <?php if (!empty($editBanner['mobile_image'])): ?>
+                    <div class="flex items-center space-x-2 py-1">
+                        <img src="../<?php echo htmlspecialchars($editBanner['mobile_image']); ?>" class="h-10 w-10 object-cover rounded border border-slate-200" alt="Current Mobile Banner">
+                        <span class="text-[10px] text-slate-400 font-mono"><?php echo htmlspecialchars($editBanner['mobile_image']); ?></span>
+                    </div>
+                    <?php endif; ?>
+                    <input type="file" name="mobile_image" accept="image/*" class="w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
                 </div>
 
                 <div class="flex items-center space-x-2 pt-2">

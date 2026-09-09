@@ -94,6 +94,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label class="block text-xs font-bold text-slate-700 mb-1">Site URL</label>
                 <input type="url" name="site_url" value="<?php echo htmlspecialchars($settings['site_url'] ?? ''); ?>" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
             </div>
+            <div class="md:col-span-2 bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                <div class="flex items-center justify-between">
+                    <label class="block text-xs font-bold text-slate-800">
+                        <i class="fas fa-image text-brand-blue mr-1"></i> Website Header & Footer Logo
+                    </label>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Recommended: 300 × 80 px</span>
+                </div>
+                <p class="text-[10px] text-slate-500">Transparent PNG, SVG, or WebP format (Max 2MB). Ideal aspect ratio ~4:1 or 3:1.</p>
+                <?php if (!empty($settings['logo_path'])): ?>
+                <div class="flex items-center space-x-3 py-1">
+                    <div class="bg-white p-2 rounded-lg border border-slate-200 inline-block">
+                        <img src="../<?php echo htmlspecialchars($settings['logo_path']); ?>" class="h-8 max-w-xs object-contain" alt="Current Logo">
+                    </div>
+                    <span class="text-[10px] text-slate-400 font-mono"><?php echo htmlspecialchars($settings['logo_path']); ?></span>
+                </div>
+                <?php endif; ?>
+                <input type="file" name="logo_file" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+            </div>
         </div>
     </div>
 

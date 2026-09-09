@@ -113,10 +113,16 @@ require_once __DIR__ . '/includes/header.php';
                 <textarea name="hero_desc" rows="3" class="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-sm leading-relaxed focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($pageData['hero_desc'] ?? ''); ?></textarea>
             </div>
 
-            <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Hero Background Image</label>
+            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                <div class="flex items-center justify-between">
+                    <label class="block text-xs font-bold text-slate-800">
+                        <i class="fas fa-image text-brand-blue mr-1"></i> Hero Background Banner
+                    </label>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Recommended: 1920 × 600 px</span>
+                </div>
+                <p class="text-[10px] text-slate-500">Wide header backdrop (Aspect ratio ~16:5). Supported: WebP, PNG, JPG (Max 4MB).</p>
                 <?php if (!empty($pageData['hero_bg'])): ?>
-                <div class="flex items-center space-x-3 mb-2">
+                <div class="flex items-center space-x-3 py-1">
                     <img src="../<?php echo htmlspecialchars($pageData['hero_bg']); ?>" class="w-24 h-12 object-cover rounded-lg border border-slate-200" alt="Hero bg">
                     <span class="text-[11px] text-slate-400 font-mono"><?php echo htmlspecialchars($pageData['hero_bg']); ?></span>
                 </div>
@@ -147,10 +153,16 @@ require_once __DIR__ . '/includes/header.php';
                 <textarea name="section1_text" rows="6" class="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-sm leading-relaxed focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($pageData['section1_text'] ?? ''); ?></textarea>
             </div>
 
-            <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Section Feature Photo</label>
+            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                <div class="flex items-center justify-between">
+                    <label class="block text-xs font-bold text-slate-800">
+                        <i class="fas fa-camera text-brand-blue mr-1"></i> Section Feature Photo
+                    </label>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Recommended: 800 × 600 px</span>
+                </div>
+                <p class="text-[10px] text-slate-500">Standard 4:3 landscape photo. Supported: WebP, PNG, JPG (Max 4MB).</p>
                 <?php if (!empty($pageData['section1_image'])): ?>
-                <div class="w-32 aspect-[4/3] rounded-lg overflow-hidden border border-slate-200 mb-2">
+                <div class="w-32 aspect-[4/3] rounded-lg overflow-hidden border border-slate-200 py-1">
                     <img src="../<?php echo htmlspecialchars($pageData['section1_image']); ?>" class="w-full h-full object-cover" alt="Section Image">
                 </div>
                 <?php endif; ?>

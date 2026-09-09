@@ -98,8 +98,14 @@ require_once __DIR__ . '/includes/header.php';
         </div>
 
         <!-- Doctor Photo Upload -->
-        <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Doctor Photo (Upload to replace current photo)</label>
+        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+            <div class="flex items-center justify-between">
+                <label class="block text-xs font-bold text-slate-800">
+                    <i class="fas fa-camera text-brand-blue mr-1"></i> Doctor Photo (Upload to replace current photo)
+                </label>
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Recommended: 600 × 750 px</span>
+            </div>
+            <p class="text-[10px] text-slate-500">Portrait format (Aspect ratio ~4:5). Supported: WebP, PNG, JPG (Max 4MB). High-resolution transparent PNG or clean background recommended.</p>
             <input type="file" name="doctor_photo" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
         </div>
 
