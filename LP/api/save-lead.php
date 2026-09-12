@@ -74,35 +74,8 @@ if ($name === '' && $phone === '') {
     exit;
 }
 
-// ---- Store locally -----------------------------------------------------------
-if (!is_dir($dataDir)) {
-    @mkdir($dataDir, 0755, true);
-}
-
-$lead = [
-    'id'         => bin2hex(random_bytes(8)),
-    'created_at' => date('Y-m-d H:i:s'),
-    'name'       => $name,
-    'phone'      => $phone,
-    'email'      => $email,
-    'source'     => $formType,
-    'subject'    => $subject,
-    'message'    => $message,
-];
-
-$leads = [];
-if (is_file($leadsFile)) {
-    $decoded = json_decode((string)file_get_contents($leadsFile), true);
-    if (is_array($decoded)) {
-        $leads = $decoded;
-    }
-}
-$leads[] = $lead;
-
-$tmp = $leadsFile . '.tmp.' . uniqid();
-if (@file_put_contents($tmp, json_encode($leads, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE), LOCK_EX) !== false) {
-    @rename($tmp, $leadsFile);
-}
+// Formester endpoint
+$FORMESTER_URL = 'https://app.formester.com/forms/MUVNkRKYA/submissions';
 
 // ---- Forward to Formester ----------------------------------------------------
 if (function_exists('curl_init')) {

@@ -162,7 +162,7 @@ $pageContent = get_page_content('online-neurologist-consultation', [
                 <p class="text-xs text-white/80 leading-relaxed">
                     Have your medical history and imaging scans ready before scheduling a slot. For urgent cases, please call the emergency desk directly.
                 </p>
-                <form class="pt-2 border-t border-white/10 space-y-3" accept-charset="UTF-8" action="/api/save-lead.php" method="POST">
+                <form class="pt-2 border-t border-white/10 space-y-3" accept-charset="UTF-8" action="https://app.formester.com/forms/MUVNkRKYA/submissions" method="POST">
                     <input type="hidden" name="form_type" value="Online Consultation Request">
                     <div>
                         <label for="tele-name" class="sr-only">Full Name</label>
