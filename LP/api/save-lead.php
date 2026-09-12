@@ -25,7 +25,7 @@ $FORMESTER_URL = 'https://app.formester.com/forms/4a08Yw78e/submissions';
 
 // ---- Honeypot ---------------------------------------------------------------
 if (!empty($_POST['website'])) {
-    header('Location: ../thank-you');
+    header('Location: https://drpraveengupta.com/enquire/thank-you');
     exit;
 }
 
@@ -101,5 +101,5 @@ if (function_exists('curl_init')) {
 }
 
 // ---- Redirect to Thank You page ----------------------------------------------
-header('Location: ../thank-you');
+header('Location: https://drpraveengupta.com/enquire/thank-you');
 exit;
