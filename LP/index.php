@@ -1179,30 +1179,22 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (form) {
+        var isSubmitting = false;
         form.addEventListener('submit', function (e) {
-            e.preventDefault();
+            if (isSubmitting) {
+                e.preventDefault();
+                return;
+            }
+            isSubmitting = true;
             if (btnText) {
                 btnText.textContent = 'Submitting...';
             }
-            var formData = new FormData(form);
-            fetch('https://app.formester.com/forms/4a08Yw78e/submissions.json', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(function (res) {
-                if (res.ok) {
-                    window.location.href = 'https://drpraveengupta.com/enquire/thank-you';
-                } else {
-                    showStatus('Something went wrong. Please try again.', true);
-                    if (btnText) btnText.textContent = 'Request Callback';
-                }
-            })
-            .catch(function () {
-                form.submit();
-            });
+            var btn = form.querySelector('button[type="submit"]');
+            if (btn) {
+                btn.disabled = true;
+                btn.classList.add('opacity-80', 'cursor-not-allowed');
+            }
+            // Allow native form POST to https://app.formester.com/forms/4a08Yw78e/submissions
         });
     }
 
