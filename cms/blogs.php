@@ -12,7 +12,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id = $_POST['id'] ?? '';
         $blogs = array_values(array_filter($blogs, function($b) use ($id) { return ($b['id'] ?? '') !== $id; }));
         CMS_DB::set('blogs', $blogs);
-        cms_set_flash('success', 'Article deleted.');
+
+        // Auto-regenerate sitemap.xml
+        $sitemapGen = dirname(__DIR__) . '/includes/generate-sitemap.php';
+        if (file_exists($sitemapGen)) {
+            require_once $sitemapGen;
+            if (function_exists('generate_sitemap_xml')) {
+                generate_sitemap_xml();
+            }
+        }
+
+        cms_set_flash('success', 'Article deleted and sitemap updated.');
         header('Location: blogs.php');
         exit;
     }
@@ -46,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
                 <div class="flex items-center space-x-3">
                     <a href="blog-edit.php?id=<?php echo urlencode($b['id']); ?>" class="text-brand-blue font-bold hover:underline">Edit Article</a>
-                    <a href="../blog-post?slug=<?php echo urlencode($b['slug']); ?>" target="_blank" class="text-slate-500 hover:text-brand-blue font-medium flex items-center space-x-1">
+                    <a href="../blog/<?php echo urlencode($b['slug']); ?>" target="_blank" class="text-slate-500 hover:text-brand-blue font-medium flex items-center space-x-1">
                         <span>View Live</span>
                         <i class="fas fa-external-link-alt text-[10px]"></i>
                     </a>

@@ -75,7 +75,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     CMS_DB::set('blogs', $blogs);
-    cms_set_flash('success', 'Article saved successfully.');
+    
+    // Auto-regenerate sitemap.xml
+    $sitemapGen = dirname(__DIR__) . '/includes/generate-sitemap.php';
+    if (file_exists($sitemapGen)) {
+        require_once $sitemapGen;
+        if (function_exists('generate_sitemap_xml')) {
+            generate_sitemap_xml();
+        }
+    }
+
+    cms_set_flash('success', 'Article saved successfully and sitemap updated.');
     header('Location: blogs.php');
     exit;
 }
@@ -89,7 +99,7 @@ require_once __DIR__ . '/includes/header.php';
         <h2 class="text-base font-bold text-slate-900"><?php echo $blog ? 'Edit Article' : 'Write New Article'; ?></h2>
         <div class="flex items-center space-x-3 text-xs">
             <?php if (!empty($blog['slug'])): ?>
-            <a href="../blog-post?slug=<?php echo urlencode($blog['slug']); ?>" target="_blank" class="px-3 py-1 bg-blue-50 text-brand-blue font-bold rounded-lg hover:bg-blue-100 transition-colors flex items-center space-x-1.5">
+            <a href="../blog/<?php echo urlencode($blog['slug']); ?>" target="_blank" class="px-3 py-1 bg-blue-50 text-brand-blue font-bold rounded-lg hover:bg-blue-100 transition-colors flex items-center space-x-1.5">
                 <span>View Live Article</span>
                 <i class="fas fa-external-link-alt text-[10px]"></i>
             </a>

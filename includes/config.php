@@ -474,7 +474,7 @@ if (!empty($cmsBlogPosts)) {
             'category' => $bp['category'] ?? 'Neurology',
             'date'     => $bpDate !== '' ? date('M j, Y', strtotime($bpDate)) : '',
             'image'    => $bp['image'] ?? 'assets/services/migraine.png',
-            'url'      => 'blog-post.php?slug=' . urlencode($bp['slug'] ?? ''),
+            'url'      => 'blog/' . urlencode($bp['slug'] ?? ''),
             'slug'     => $bp['slug'] ?? '',
             'author'   => $bp['author'] ?? 'Dr. Praveen Gupta',
         ];

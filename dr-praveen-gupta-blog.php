@@ -20,7 +20,7 @@ $pageDescription = 'Expert guides, healthy lifestyle tips, and detailed neuro-he
         <div class="max-w-3xl text-left animate-fade-in-up">
             <!-- Breadcrumb -->
             <nav class="flex items-center space-x-2 text-white/80 text-sm mb-3">
-                <a href="index" class="hover:text-white transition-colors">Home</a>
+                <a href="/" class="hover:text-white transition-colors">Home</a>
                 <i class="fas fa-chevron-right text-[8px]"></i>
                 <span class="text-white font-medium">Blog</span>
             </nav>
@@ -55,7 +55,7 @@ $pageDescription = 'Expert guides, healthy lifestyle tips, and detailed neuro-he
                 </div>
                 <?php else: ?>
                 <?php foreach ($posts as $post):
-                    $postUrl  = 'blog-post?slug=' . urlencode($post['slug'] ?? '');
+                    $postUrl  = 'blog/' . urlencode($post['slug'] ?? '');
                     $postDate = !empty($post['date']) ? date('F j, Y', strtotime($post['date'])) : '';
                 ?>
                 <article class="bg-slate-50 border border-slate-200/50 rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 grid md:grid-cols-12 gap-6 p-6">

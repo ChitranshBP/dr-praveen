@@ -82,7 +82,7 @@ if (!$post) {
 $postDate = !empty($post['date']) ? date('F j, Y', strtotime($post['date'])) : '';
 $pageTitle       = !empty($post['meta_title']) ? $post['meta_title'] : ($post['title'] . ' - Dr. Praveen Gupta, Neurologist');
 $pageDescription = !empty($post['meta_description']) ? $post['meta_description'] : ($post['excerpt'] ?? '');
-$canonicalPath   = 'blog-post?slug=' . ($post['slug'] ?? $slug);
+$canonicalPath   = 'blog/' . ($post['slug'] ?? $slug);
 
 require_once __DIR__ . '/includes/header.php';
 ?>
@@ -231,7 +231,7 @@ require_once __DIR__ . '/includes/header.php';
                 <h3 class="text-2xl font-serif font-bold text-deep-indigo mb-6">More Health Articles</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <?php foreach ($related as $rel):
-                        $relUrl = 'blog-post?slug=' . urlencode($rel['slug'] ?? '');
+                        $relUrl = 'blog/' . urlencode($rel['slug'] ?? '');
                         $relDate = !empty($rel['date']) ? date('M j, Y', strtotime($rel['date'])) : '';
                     ?>
                     <a href="<?php echo $relUrl; ?>" class="group bg-slate-50 border border-slate-200/60 rounded-2xl p-4 flex flex-col justify-between hover:shadow-md hover:bg-white transition-all duration-300">
