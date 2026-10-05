@@ -822,15 +822,16 @@ if (empty($activeBanners)) {
             </p>
         </div>
 
-        <!-- 3-column card grid -->
-        <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-none gap-6 pb-6 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-3 md:gap-8 md:pb-0">
-            <?php foreach ($blogs as $blogIdx => $blog): ?>
+        <!-- 1.5 rows / 4-card teaser grid on desktop & horizontal peek on mobile -->
+        <?php $homepageBlogs = array_slice($blogs, 0, 4); ?>
+        <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-none gap-6 pb-6 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 md:pb-0">
+            <?php foreach ($homepageBlogs as $blogIdx => $blog): ?>
                 <a href="<?php echo $blog['url']; ?>"
-                   class="group bg-white rounded-3xl p-5 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 flex flex-col observe w-[80vw] md:w-auto flex-shrink-0 snap-start"
+                   class="group bg-white rounded-3xl p-5 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 flex flex-col observe w-[80vw] sm:w-[50vw] md:w-auto flex-shrink-0 snap-start"
                    style="animation-delay: <?php echo $blogIdx * 100; ?>ms;">
 
                     <!-- Image -->
-                    <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden mb-6 bg-gradient-to-br from-soft-cyan to-silver-grey">
+                    <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden mb-5 bg-gradient-to-br from-soft-cyan to-silver-grey">
                         <picture>
                             <?php if(!empty($blog['webp']) && file_exists(__DIR__ . '/' . $blog['webp'])): ?>
                             <source srcset="<?php echo htmlspecialchars($blog['webp']); ?>" type="image/webp">
@@ -844,24 +845,33 @@ if (empty($activeBanners)) {
                     </div>
 
                     <!-- Title -->
-                    <h3 class="text-xl font-bold text-deep-indigo leading-snug mb-3 group-hover:text-electric-blue transition-colors duration-300">
+                    <h3 class="text-base sm:text-lg font-bold text-deep-indigo leading-snug mb-2 line-clamp-2 group-hover:text-electric-blue transition-colors duration-300">
                         <?php echo $blog['title']; ?>
                     </h3>
 
                     <!-- Excerpt -->
-                    <p class="text-sm text-dark-grey/70 leading-relaxed mb-5 flex-1">
+                    <p class="text-xs sm:text-sm text-dark-grey/70 leading-relaxed mb-4 line-clamp-3 flex-1">
                         <?php echo $blog['excerpt']; ?>
                     </p>
 
                     <!-- Footer: category pill + date -->
-                    <div class="mt-auto pt-4 border-t border-silver-grey/60 flex items-center space-x-4">
-                        <span class="inline-block bg-electric-blue/10 text-electric-blue text-xs font-bold px-3 py-1.5 rounded-full">
+                    <div class="mt-auto pt-3 border-t border-silver-grey/60 flex items-center justify-between text-xs">
+                        <span class="inline-block bg-electric-blue/10 text-electric-blue font-bold px-2.5 py-1 rounded-full text-[11px]">
                             <?php echo $blog['category']; ?>
                         </span>
-                        <span class="text-xs text-dark-grey/45 font-medium"><?php echo $blog['date']; ?></span>
+                        <span class="text-dark-grey/45 font-medium text-[11px]"><?php echo $blog['date']; ?></span>
                     </div>
                 </a>
             <?php endforeach; ?>
+        </div>
+
+        <!-- See All Blogs Button -->
+        <div class="text-center mt-10 md:mt-12 observe">
+            <a href="dr-praveen-gupta-blog"
+               class="inline-flex items-center space-x-2.5 bg-gradient-to-r from-electric-blue to-cyan-accent hover:from-deep-indigo hover:to-electric-blue text-white font-bold px-8 py-4 rounded-full shadow-lg shadow-electric-blue/30 hover:shadow-xl hover:shadow-electric-blue/40 hover:-translate-y-0.5 transition-all duration-300 group text-sm md:text-base">
+                <span>See All Blogs</span>
+                <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+            </a>
         </div>
 
     </div>
@@ -1179,6 +1189,225 @@ if (empty($activeBanners)) {
     </script>
 </section>
 
+<!-- ══════════════════════════════════════════════════════════
+     Frequently Asked Questions (FAQ) Section
+     ══════════════════════════════════════════════════════════ -->
+<section id="homepage-faqs" class="py-14 md:py-20 bg-gradient-to-b from-white via-slate-50 to-white relative overflow-hidden">
+    <!-- Subtle background ambient blurs -->
+    <div class="absolute -left-20 top-1/3 w-72 h-72 bg-electric-blue/5 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -right-20 bottom-1/3 w-72 h-72 bg-cyan-accent/5 rounded-full blur-3xl pointer-events-none"></div>
 
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-10 md:mb-14 observe">
+            <div class="inline-flex items-center space-x-2 bg-electric-blue/10 px-4 py-2 rounded-full mb-4">
+                <i class="fas fa-question-circle text-electric-blue text-sm"></i>
+                <span class="text-electric-blue text-sm font-semibold">Common Queries</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-deep-indigo mb-4">
+                Frequently Asked <span class="gradient-text">Questions</span>
+            </h2>
+            <p class="text-base sm:text-lg text-dark-grey/70 leading-relaxed">
+                Clear answers regarding neurological consultations, diagnostic procedures, stroke emergency care, and treatment planning under Dr. Praveen Gupta.
+            </p>
+        </div>
+
+        <!-- FAQ Accordion List -->
+        <div class="space-y-4 md:space-y-5">
+
+            <!-- FAQ 1 -->
+            <details class="group bg-white border border-slate-200/80 rounded-2xl md:rounded-3xl p-5 sm:p-6 shadow-sm hover:shadow-md hover:border-electric-blue/30 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden cursor-pointer observe" open>
+                <summary class="flex justify-between items-center text-base sm:text-lg font-bold text-deep-indigo list-none gap-4">
+                    <span>How do I book an in-person or online video consultation with Dr. Praveen Gupta?</span>
+                    <span class="w-8 h-8 rounded-full bg-slate-100 group-open:bg-electric-blue group-open:text-white flex items-center justify-center text-xs text-electric-blue flex-shrink-0 transition-all duration-300">
+                        <i class="fas fa-plus group-open:hidden"></i>
+                        <i class="fas fa-minus hidden group-open:inline"></i>
+                    </span>
+                </summary>
+                <div class="text-xs sm:text-sm text-dark-grey/75 leading-relaxed mt-4 pt-4 border-t border-slate-100 space-y-2">
+                    <p>
+                        You can easily schedule an in-person consultation at <strong>Marengo Asia Hospitals, Sector 56, Gurugram</strong> or request a tele-consultation by clicking <a href="contact-us-top-neurologist-delhi-ncr" class="text-electric-blue font-semibold hover:underline">Book Appointment</a> on this website. You can also call our direct appointment desk at <strong><?php echo defined('PRIMARY_PHONE') ? PRIMARY_PHONE : '+91 98114 56789'; ?></strong>.
+                    </p>
+                </div>
+            </details>
+
+            <!-- FAQ 2 -->
+            <details class="group bg-white border border-slate-200/80 rounded-2xl md:rounded-3xl p-5 sm:p-6 shadow-sm hover:shadow-md hover:border-electric-blue/30 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden cursor-pointer observe">
+                <summary class="flex justify-between items-center text-base sm:text-lg font-bold text-deep-indigo list-none gap-4">
+                    <span>What neurological conditions does Dr. Praveen Gupta specialize in?</span>
+                    <span class="w-8 h-8 rounded-full bg-slate-100 group-open:bg-electric-blue group-open:text-white flex items-center justify-center text-xs text-electric-blue flex-shrink-0 transition-all duration-300">
+                        <i class="fas fa-plus group-open:hidden"></i>
+                        <i class="fas fa-minus hidden group-open:inline"></i>
+                    </span>
+                </summary>
+                <div class="text-xs sm:text-sm text-dark-grey/75 leading-relaxed mt-4 pt-4 border-t border-slate-100 space-y-2">
+                    <p>
+                        With 20+ years of clinical excellence and DM in Neurology from <strong>AIIMS, New Delhi</strong>, Dr. Praveen Gupta specializes in:
+                    </p>
+                    <ul class="list-disc pl-5 space-y-1 text-xs sm:text-sm text-dark-grey/75">
+                        <li><strong>Acute Brain Stroke:</strong> 24/7 thrombolysis and mechanical thrombectomy.</li>
+                        <li><strong>Epilepsy & Seizure Disorders:</strong> Digital video EEG and refractory epilepsy management.</li>
+                        <li><strong>Parkinson’s & Movement Disorders:</strong> Deep Brain Stimulation (DBS) therapy.</li>
+                        <li><strong>Headache & Migraine:</strong> Chronic migraine management and Botox therapy.</li>
+                        <li><strong>Multiple Sclerosis & Autoimmune Neuro Disorders:</strong> Advanced immunotherapies.</li>
+                        <li><strong>Memory Loss & Dementia:</strong> Comprehensive cognitive screening.</li>
+                        <li><strong>Spine & Neuropathy:</strong> Nerve compression, radiculopathy, and sciatica care.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <!-- FAQ 3 -->
+            <details class="group bg-white border border-slate-200/80 rounded-2xl md:rounded-3xl p-5 sm:p-6 shadow-sm hover:shadow-md hover:border-electric-blue/30 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden cursor-pointer observe">
+                <summary class="flex justify-between items-center text-base sm:text-lg font-bold text-deep-indigo list-none gap-4">
+                    <span>What is the difference between a Neurologist and a Neurosurgeon?</span>
+                    <span class="w-8 h-8 rounded-full bg-slate-100 group-open:bg-electric-blue group-open:text-white flex items-center justify-center text-xs text-electric-blue flex-shrink-0 transition-all duration-300">
+                        <i class="fas fa-plus group-open:hidden"></i>
+                        <i class="fas fa-minus hidden group-open:inline"></i>
+                    </span>
+                </summary>
+                <div class="text-xs sm:text-sm text-dark-grey/75 leading-relaxed mt-4 pt-4 border-t border-slate-100 space-y-2">
+                    <p>
+                        A <strong>Neurologist</strong> is a medical doctor specialized in diagnosing, evaluating, and medically managing conditions of the brain, spinal cord, nerves, and muscles (such as stroke, migraine, Parkinson’s, seizures, and neuropathies) through advanced pharmacology, neuromodulation, and rehabilitation.
+                    </p>
+                    <p>
+                        A <strong>Neurosurgeon</strong> performs surgical interventions when physical correction is needed (such as removing a brain tumour, clipping an aneurysm, or spinal decompression surgery). At our institute, neurologists and neurosurgeons collaborate in unified tumor boards and spine panels to ensure optimal, conservative-first patient care.
+                    </p>
+                </div>
+            </details>
+
+            <!-- FAQ 4 -->
+            <details class="group bg-white border border-slate-200/80 rounded-2xl md:rounded-3xl p-5 sm:p-6 shadow-sm hover:shadow-md hover:border-electric-blue/30 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden cursor-pointer observe">
+                <summary class="flex justify-between items-center text-base sm:text-lg font-bold text-deep-indigo list-none gap-4">
+                    <span>Can I get an expert Second Opinion on my MRI/CT scans and surgery advice?</span>
+                    <span class="w-8 h-8 rounded-full bg-slate-100 group-open:bg-electric-blue group-open:text-white flex items-center justify-center text-xs text-electric-blue flex-shrink-0 transition-all duration-300">
+                        <i class="fas fa-plus group-open:hidden"></i>
+                        <i class="fas fa-minus hidden group-open:inline"></i>
+                    </span>
+                </summary>
+                <div class="text-xs sm:text-sm text-dark-grey/75 leading-relaxed mt-4 pt-4 border-t border-slate-100 space-y-2">
+                    <p>
+                        <strong>Yes, absolutely.</strong> Many neurological conditions and spine surgery recommendations benefit greatly from a detailed second opinion. You can share your past prescriptions, MRI/CT scans, and medical history online via our <a href="neurology-second-opinion" class="text-electric-blue font-semibold hover:underline">Second Opinion Portal</a> or in person to receive an objective, evidence-based assessment.
+                    </p>
+                </div>
+            </details>
+
+            <!-- FAQ 5 -->
+            <details class="group bg-white border border-slate-200/80 rounded-2xl md:rounded-3xl p-5 sm:p-6 shadow-sm hover:shadow-md hover:border-electric-blue/30 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden cursor-pointer observe">
+                <summary class="flex justify-between items-center text-base sm:text-lg font-bold text-deep-indigo list-none gap-4">
+                    <span>What emergency care facilities are available for Acute Stroke patients?</span>
+                    <span class="w-8 h-8 rounded-full bg-slate-100 group-open:bg-electric-blue group-open:text-white flex items-center justify-center text-xs text-electric-blue flex-shrink-0 transition-all duration-300">
+                        <i class="fas fa-plus group-open:hidden"></i>
+                        <i class="fas fa-minus hidden group-open:inline"></i>
+                    </span>
+                </summary>
+                <div class="text-xs sm:text-sm text-dark-grey/75 leading-relaxed mt-4 pt-4 border-t border-slate-100 space-y-2">
+                    <p>
+                        Marengo Asia Hospital operates a <strong>24x7 Stroke-Ready Center</strong> with dedicated emergency triage, ultra-fast 3T MRI & 128-slice CT imaging, round-the-clock IV thrombolysis, a state-of-the-art biplane Cath Lab for mechanical thrombectomy (clot retrieval), and a dedicated Neuro-Intensive Care Unit (NICU).
+                    </p>
+                    <p class="text-red-600 font-semibold">
+                        In case of sudden stroke symptoms (Face drooping, Arm weakness, Speech difficulty), rush to our emergency or call our 24/7 Stroke Helpline: <a href="tel:<?php echo defined('STROKE_HELPLINE') ? STROKE_HELPLINE : '+919811456789'; ?>" class="underline"><?php echo defined('STROKE_HELPLINE') ? STROKE_HELPLINE : '+91 98114 56789'; ?></a>.
+                    </p>
+                </div>
+            </details>
+
+            <!-- FAQ 6 -->
+            <details class="group bg-white border border-slate-200/80 rounded-2xl md:rounded-3xl p-5 sm:p-6 shadow-sm hover:shadow-md hover:border-electric-blue/30 transition-all duration-300 [&_summary::-webkit-details-marker]:hidden cursor-pointer observe">
+                <summary class="flex justify-between items-center text-base sm:text-lg font-bold text-deep-indigo list-none gap-4">
+                    <span>What diagnostic tests (EEG, EMG, NCS, MRI) are available at the clinic?</span>
+                    <span class="w-8 h-8 rounded-full bg-slate-100 group-open:bg-electric-blue group-open:text-white flex items-center justify-center text-xs text-electric-blue flex-shrink-0 transition-all duration-300">
+                        <i class="fas fa-plus group-open:hidden"></i>
+                        <i class="fas fa-minus hidden group-open:inline"></i>
+                    </span>
+                </summary>
+                <div class="text-xs sm:text-sm text-dark-grey/75 leading-relaxed mt-4 pt-4 border-t border-slate-100 space-y-2">
+                    <p>
+                        Our institute provides comprehensive, hospital-grade neuro-diagnostic suites under one roof, including:
+                    </p>
+                    <ul class="list-disc pl-5 space-y-1 text-xs sm:text-sm text-dark-grey/75">
+                        <li><strong>Digital Video EEG & Sleep EEG:</strong> For precise epilepsy diagnosis and seizure monitoring.</li>
+                        <li><strong>Electromyography (EMG) & Nerve Conduction Studies (NCS):</strong> For neuropathies, muscle diseases, and nerve compressions.</li>
+                        <li><strong>Repetitive Nerve Stimulation (RNST):</strong> For Myasthenia Gravis testing.</li>
+                        <li><strong>Visual & Somatosensory Evoked Potentials (VEP/SSEP):</strong> For optic nerve and spinal sensory pathway assessment.</li>
+                        <li><strong>repetitive Transcranial Magnetic Stimulation (rTMS):</strong> Non-invasive therapy for depression, stroke rehab, and neuropathic pain.</li>
+                    </ul>
+                </div>
+            </details>
+
+        </div>
+
+        <!-- FAQ Bottom CTA Links -->
+        <div class="text-center mt-10 md:mt-12 observe flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="neurology-faqs" class="inline-flex items-center space-x-2 text-electric-blue font-bold text-sm hover:text-deep-indigo transition-colors py-2 px-4 rounded-xl hover:bg-slate-100">
+                <i class="fas fa-book-open text-xs"></i>
+                <span>View Full FAQs Hub</span>
+            </a>
+            <span class="hidden sm:inline text-slate-300">&bull;</span>
+            <a href="contact-us-top-neurologist-delhi-ncr" class="inline-flex items-center space-x-2 text-dark-grey/70 font-semibold text-sm hover:text-electric-blue transition-colors py-2 px-4 rounded-xl hover:bg-slate-100">
+                <i class="fas fa-headset text-xs"></i>
+                <span>Contact Our Patient Care Team</span>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- FAQPage JSON-LD Structured Data Schema for Google Rich Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I book an in-person or online video consultation with Dr. Praveen Gupta?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can schedule an in-person consultation at Marengo Asia Hospitals, Sector 56, Gurugram or request a tele-consultation by visiting our online appointment portal or calling +91 98114 56789."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What neurological conditions does Dr. Praveen Gupta specialize in?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dr. Praveen Gupta specializes in acute brain stroke, epilepsy, Parkinson's disease (Deep Brain Stimulation), migraine, multiple sclerosis, memory disorders, and neuropathy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between a Neurologist and a Neurosurgeon?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A neurologist diagnoses and medically treats disorders of the brain, nerves, and spinal cord without surgery. A neurosurgeon performs operations when structural correction or tumor removal is needed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I get an expert Second Opinion on my MRI/CT scans and surgery advice?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, Dr. Praveen Gupta provides comprehensive second opinions for complex neurological diagnoses and surgical recommendations online and in clinic."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What emergency care facilities are available for Acute Stroke patients?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Marengo Asia Hospital runs a 24x7 Stroke-Ready Center with rapid MRI/CT, round-the-clock IV thrombolysis, mechanical thrombectomy, and dedicated Neuro-ICU care."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What diagnostic tests are available at the clinic?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The clinic is equipped with High-Definition 3T MRI, Digital Video EEG, Electromyography (EMG), Nerve Conduction Studies (NCS), and rTMS therapy."
+          }
+        }
+      ]
+    }
+    </script>
+</section>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
