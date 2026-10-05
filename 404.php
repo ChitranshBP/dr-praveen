@@ -6,6 +6,7 @@ http_response_code(404);
 $pageTitle = '404 - Page Not Found | Dr. Praveen Gupta';
 $pageDescription = 'The page you are looking for might have been removed, renamed, or is temporarily unavailable.';
 $isDarkHero = true;
+$robotsMeta = 'noindex, follow';
 
 require_once __DIR__ . '/includes/header.php';
 ?>

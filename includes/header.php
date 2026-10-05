@@ -51,6 +51,7 @@ $logoAltText    = !empty($cmsSettings['logo_alt']) ? $cmsSettings['logo_alt'] : 
     <meta charset="UTF-8">
     <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="<?php echo htmlspecialchars($robotsMeta ?? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'); ?>">
     <meta name="description" content="<?php echo htmlspecialchars($finalMetaDesc); ?>">
     <meta name="keywords" content="Dr Praveen Gupta, healthcare, medical services, doctor, clinic">
     <meta name="author" content="Dr. Praveen Gupta">

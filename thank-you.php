@@ -3,6 +3,7 @@
  * Thank You Page - Dr. Praveen Gupta
  */
 $isDarkHero = true;
+$robotsMeta = 'noindex, follow';
 require_once __DIR__ . '/includes/header.php';
 ?>
 
