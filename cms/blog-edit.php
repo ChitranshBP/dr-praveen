@@ -87,7 +87,15 @@ require_once __DIR__ . '/includes/header.php';
 <div class="max-w-4xl bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
     <div class="flex items-center justify-between pb-4 border-b border-slate-100">
         <h2 class="text-base font-bold text-slate-900"><?php echo $blog ? 'Edit Article' : 'Write New Article'; ?></h2>
-        <a href="blogs.php" class="text-xs text-slate-500 font-semibold hover:underline">&larr; Back to Blog List</a>
+        <div class="flex items-center space-x-3 text-xs">
+            <?php if (!empty($blog['slug'])): ?>
+            <a href="../blog-post?slug=<?php echo urlencode($blog['slug']); ?>" target="_blank" class="px-3 py-1 bg-blue-50 text-brand-blue font-bold rounded-lg hover:bg-blue-100 transition-colors flex items-center space-x-1.5">
+                <span>View Live Article</span>
+                <i class="fas fa-external-link-alt text-[10px]"></i>
+            </a>
+            <?php endif; ?>
+            <a href="blogs.php" class="text-slate-500 font-semibold hover:underline">&larr; Back to Blog List</a>
+        </div>
     </div>
 
     <form method="POST" action="" enctype="multipart/form-data" class="space-y-5">

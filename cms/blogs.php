@@ -44,7 +44,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                <a href="blog-edit.php?id=<?php echo urlencode($b['id']); ?>" class="text-brand-blue font-bold hover:underline">Edit Article</a>
+                <div class="flex items-center space-x-3">
+                    <a href="blog-edit.php?id=<?php echo urlencode($b['id']); ?>" class="text-brand-blue font-bold hover:underline">Edit Article</a>
+                    <a href="../blog-post?slug=<?php echo urlencode($b['slug']); ?>" target="_blank" class="text-slate-500 hover:text-brand-blue font-medium flex items-center space-x-1">
+                        <span>View Live</span>
+                        <i class="fas fa-external-link-alt text-[10px]"></i>
+                    </a>
+                </div>
                 <form method="POST" action="" onsubmit="return confirm('Delete this blog post?');" class="inline">
                     <?php echo cms_csrf_field(); ?>
                     <input type="hidden" name="action" value="delete">

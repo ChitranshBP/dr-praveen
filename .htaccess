@@ -16,6 +16,9 @@ DirectoryIndex index.php index.html
     RewriteRule ^(LP|lp)/?$ /enquire [R=301,L]
     RewriteRule ^enquire/?$ /LP/index.php [L]
 
+    # 2b. Clean Blog Post routing — /blog/<slug> and /blog-post/<slug> to /blog-post.php?slug=$2
+    RewriteRule ^(blog|blog-post)/([a-zA-Z0-9_-]+)/?$ /blog-post.php?slug=$2 [L,QSA]
+
     # 3. Redirect /index or /index.php to root /
     RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index(\.php)?\ HTTP/
     RewriteRule ^index(\.php)?$ / [R=301,L]

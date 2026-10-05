@@ -99,45 +99,160 @@ require_once __DIR__ . '/includes/header.php';
             <p class="text-xs text-dark-grey/60 font-medium">Published on <?php echo htmlspecialchars($postDate); ?> &bull; By <?php echo htmlspecialchars($post['author'] ?? 'Dr. Praveen Gupta'); ?></p>
         </div>
 
-        <article class="prose mx-auto max-w-xl lg:max-w-2xl">
-            <h1 class="text-4xl md:text-5xl font-serif font-bold text-deep-indigo mb-6 leading-tight">
+        <article class="mx-auto max-w-3xl lg:max-w-4xl">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-deep-indigo mb-6 leading-tight">
                 <?php echo htmlspecialchars($post['title']); ?>
             </h1>
 
             <?php if (!empty($post['excerpt'])): ?>
-            <p class="text-base text-dark-grey/70 italic mb-6">
+            <p class="text-base md:text-lg text-dark-grey/75 italic mb-8 border-l-4 border-electric-blue pl-4 bg-slate-50 py-3 rounded-r-xl">
                 <?php echo htmlspecialchars($post['excerpt']); ?>
             </p>
             <?php endif; ?>
 
             <!-- Featured Image -->
             <?php if (!empty($post['image'])): ?>
-            <div class="w-full rounded-3xl overflow-hidden mb-8 bg-slate-100">
+            <div class="w-full rounded-3xl overflow-hidden mb-10 bg-slate-100 shadow-md">
                 <img src="<?php echo htmlspecialchars($post['image']); ?>"
                      alt="<?php echo htmlspecialchars($post['image_alt'] ?? $post['title'] ?? 'Blog Featured Image'); ?>"
-                     width="800" height="600"
+                     width="1200" height="630"
                      onerror="this.onerror=null; this.src='assets/services/migraine.png';"
-                     class="w-full h-auto object-cover">
+                     class="w-full max-h-[480px] object-cover">
             </div>
             <?php endif; ?>
 
             <!-- Content -->
-            <div class="space-y-4 text-dark-grey/80 leading-relaxed prose prose-indigo max-w-none">
+            <div class="blog-content text-dark-grey/85 leading-relaxed text-base md:text-lg space-y-6">
                 <?php echo cms_render_html($post['content'] ?? ''); ?>
             </div>
 
+            <style>
+                .blog-content h2 {
+                    font-family: 'Playfair Display', serif;
+                    font-size: 1.75rem;
+                    font-weight: 700;
+                    color: #1E1B4B;
+                    margin-top: 2.25rem;
+                    margin-bottom: 1rem;
+                    line-height: 1.3;
+                    border-bottom: 2px solid #F1F5F9;
+                    padding-bottom: 0.5rem;
+                }
+                .blog-content h3 {
+                    font-size: 1.25rem;
+                    font-weight: 700;
+                    color: #2563EB;
+                    margin-top: 1.75rem;
+                    margin-bottom: 0.75rem;
+                    line-height: 1.4;
+                }
+                .blog-content p {
+                    margin-bottom: 1.25rem;
+                    line-height: 1.8;
+                }
+                .blog-content ul, .blog-content ol {
+                    margin-top: 0.75rem;
+                    margin-bottom: 1.5rem;
+                    padding-left: 1.5rem;
+                }
+                .blog-content ul {
+                    list-style-type: disc;
+                }
+                .blog-content ol {
+                    list-style-type: decimal;
+                }
+                .blog-content li {
+                    margin-bottom: 0.5rem;
+                    line-height: 1.7;
+                }
+                .blog-content strong {
+                    color: #0F172A;
+                    font-weight: 700;
+                }
+                .blog-content blockquote {
+                    border-left: 4px solid #06B6D4;
+                    padding-left: 1rem;
+                    margin: 1.5rem 0;
+                    color: #475569;
+                    font-style: italic;
+                    background: #F8FAFC;
+                    padding: 1rem;
+                    border-radius: 0 0.75rem 0.75rem 0;
+                }
+            </style>
+
             <!-- Metadata -->
-            <div class="flex flex-col sm:flex-row items-center sm:space-x-4 pt-6 mt-8 border-t border-silver-grey/60">
-                <span class="inline-block bg-electric-blue/10 text-electric-blue text-xs font-bold px-3 py-1.5 rounded-full mb-2 sm:mb-0">
-                    <?php echo htmlspecialchars($post['category'] ?? 'Neurology'); ?>
-                </span>
-                <?php if (!empty($post['author'])): ?>
-                <span class="text-xs text-dark-grey/45 font-medium">By <?php echo htmlspecialchars($post['author']); ?></span>
-                <?php endif; ?>
-                <span class="text-xs text-dark-grey/45 font-medium"><?php echo htmlspecialchars($postDate); ?></span>
+            <div class="flex flex-col sm:flex-row items-center justify-between pt-6 mt-10 border-t border-silver-grey/60">
+                <div class="flex items-center space-x-3 mb-4 sm:mb-0">
+                    <span class="inline-block bg-electric-blue/10 text-electric-blue text-xs font-bold px-3 py-1.5 rounded-full">
+                        <?php echo htmlspecialchars($post['category'] ?? 'Neurology'); ?>
+                    </span>
+                    <?php if (!empty($post['author'])): ?>
+                    <span class="text-xs text-dark-grey/60 font-medium">By <?php echo htmlspecialchars($post['author']); ?></span>
+                    <?php endif; ?>
+                </div>
+                <span class="text-xs text-dark-grey/50 font-medium"><?php echo htmlspecialchars($postDate); ?></span>
             </div>
 
-            <div class="pt-8 text-center">
+            <!-- Doctor Bio & Consultation CTA Card -->
+            <div class="mt-12 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-deep-indigo via-slate-900 to-electric-blue text-white shadow-xl relative overflow-hidden">
+                <div class="relative z-10 flex flex-col md:flex-row items-center gap-6">
+                    <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-white/20 flex-shrink-0 bg-white/10">
+                        <img src="assets/banner/1.png" alt="Dr. Praveen Gupta" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='assets/logo/NeuroDoc-final-logo.png';">
+                    </div>
+                    <div class="flex-1 text-center md:text-left space-y-2">
+                        <span class="text-[10px] uppercase font-bold tracking-widest text-cyan-accent bg-cyan-accent/10 px-2.5 py-1 rounded-full inline-block">Expert Care</span>
+                        <h3 class="text-xl sm:text-2xl font-bold font-serif text-white">Consult Dr. Praveen Gupta</h3>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">Chairman – Marengo Asia International Institute of Neuro & Spine &bull; 20+ Years Experience &bull; DM (AIIMS, New Delhi)</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row md:flex-col gap-3 w-full md:w-auto">
+                        <a href="contact-us-top-neurologist-delhi-ncr" class="inline-flex items-center justify-center space-x-2 px-5 py-3 bg-gradient-to-r from-electric-blue to-cyan-accent hover:from-cyan-accent hover:to-electric-blue text-white text-xs font-bold rounded-xl shadow-lg transition-all duration-300 whitespace-nowrap">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>Book Consultation</span>
+                        </a>
+                        <a href="tel:<?php echo defined('PRIMARY_PHONE') ? PRIMARY_PHONE : '+919811456789'; ?>" class="inline-flex items-center justify-center space-x-2 px-5 py-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-bold rounded-xl transition-all duration-300 whitespace-nowrap">
+                            <i class="fas fa-phone-alt text-cyan-accent"></i>
+                            <span>Call Clinic</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Related Articles -->
+            <?php
+            $allPub = function_exists('cms_blogs_published') ? cms_blogs_published() : [];
+            $related = array_values(array_filter($allPub, function ($p) use ($post) {
+                return ($p['slug'] ?? '') !== ($post['slug'] ?? '');
+            }));
+            if (!empty($related)):
+                $related = array_slice($related, 0, 3);
+            ?>
+            <div class="mt-16 pt-10 border-t border-slate-200">
+                <h3 class="text-2xl font-serif font-bold text-deep-indigo mb-6">More Health Articles</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <?php foreach ($related as $rel):
+                        $relUrl = 'blog-post?slug=' . urlencode($rel['slug'] ?? '');
+                        $relDate = !empty($rel['date']) ? date('M j, Y', strtotime($rel['date'])) : '';
+                    ?>
+                    <a href="<?php echo $relUrl; ?>" class="group bg-slate-50 border border-slate-200/60 rounded-2xl p-4 flex flex-col justify-between hover:shadow-md hover:bg-white transition-all duration-300">
+                        <div>
+                            <div class="aspect-video bg-slate-200 rounded-xl overflow-hidden mb-3">
+                                <img src="<?php echo htmlspecialchars($rel['image'] ?? 'assets/services/migraine.png'); ?>" alt="<?php echo htmlspecialchars($rel['title']); ?>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                            </div>
+                            <span class="text-[10px] font-bold text-electric-blue uppercase tracking-wider"><?php echo htmlspecialchars($rel['category'] ?? 'Neurology'); ?></span>
+                            <h4 class="text-sm font-bold text-slate-900 mt-1 line-clamp-2 group-hover:text-electric-blue transition-colors"><?php echo htmlspecialchars($rel['title']); ?></h4>
+                        </div>
+                        <span class="text-[11px] text-slate-400 mt-3 flex items-center justify-between">
+                            <span><?php echo $relDate; ?></span>
+                            <span class="font-bold text-electric-blue group-hover:underline">Read &rarr;</span>
+                        </span>
+                    </a>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <?php endif; ?>
+
+            <div class="pt-10 text-center">
                 <a href="dr-praveen-gupta-blog" class="inline-flex items-center space-x-2 text-electric-blue font-bold text-sm hover:underline">
                     <i class="fas fa-arrow-left text-xs"></i>
                     <span>Back to All Articles</span>
