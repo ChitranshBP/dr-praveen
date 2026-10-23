@@ -11,17 +11,30 @@ $pageContent = get_page_content('epilepsy', [
     'hero_desc'  => 'Comprehensive care for seizures and epilepsy disorders. Dr. Praveen Gupta provides advanced diagnosis and personalized treatment plans to help you achieve seizure freedom.',
     'hero_bg'    => 'assets/breadcrumbs/dr-parveen-epilepsy.png',
 ]);
+
+$section = get_page_section($pageContent, [
+    'badge' => 'Understanding',
+    'title' => 'What is Epilepsy?',
+    'text' => "Epilepsy is a neurological disorder characterized by recurrent, unprovoked seizures. It affects over 50 million people worldwide, making it one of the most common neurological conditions. While epilepsy can develop at any age, it often begins in childhood or after age 60.\n\nAt our clinic, we understand that living with epilepsy affects every aspect of your life—from daily activities to personal relationships. Our comprehensive approach focuses not just on controlling seizures, but on improving your overall quality of life through evidence-based treatments and compassionate care.",
+    'image' => 'assets/services/epilepsy.png',
+    'image_alt' => 'Understanding Epilepsy',
+]);
+$heroBg = cms_media_path($pageContent['hero_bg'] ?? '', 'assets/breadcrumbs/dr-parveen-epilepsy.png');
+$heroAlt = trim((string)($pageContent['hero_bg_alt'] ?? ''));
+if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'Dr. Praveen Gupta'));
 ?>
 
 <!-- Page Hero -->
 <section class="relative overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20">
     <!-- Background image (gradient above stays as the fallback if it fails to load) -->
-    <img src="<?php echo htmlspecialchars($pageContent['hero_bg']); ?>" alt=""
+    <?php if ($heroBg): ?>
+    <img src="<?php echo htmlspecialchars($heroBg); ?>" alt="<?php echo htmlspecialchars($heroAlt); ?>"
          fetchpriority="high"
          class="absolute inset-0 w-full h-full object-cover object-[78%_center] md:object-right pointer-events-none select-none">
 
     <!-- Legibility overlay: solid behind the copy, clearing towards the photo on the right -->
     <div class="absolute inset-0 bg-gradient-to-r from-deep-indigo/95 via-deep-indigo/75 to-deep-indigo/35 md:to-transparent"></div>
+    <?php endif; ?>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl text-left animate-fade-in-up">
@@ -69,14 +82,9 @@ $pageContent = get_page_content('epilepsy', [
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-2 gap-16 items-center">
             <div class="animate-slide-in-left">
-                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Understanding</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">What is Epilepsy?</h2>
-                <p class="text-dark-grey/70 leading-relaxed mb-6">
-                    Epilepsy is a neurological disorder characterized by recurrent, unprovoked seizures. It affects over 50 million people worldwide, making it one of the most common neurological conditions. While epilepsy can develop at any age, it often begins in childhood or after age 60.
-                </p>
-                <p class="text-dark-grey/70 leading-relaxed mb-8">
-                    At our clinic, we understand that living with epilepsy affects every aspect of your life—from daily activities to personal relationships. Our comprehensive approach focuses not just on controlling seizures, but on improving your overall quality of life through evidence-based treatments and compassionate care.
-                </p>
+                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider"><?php echo htmlspecialchars($section['badge']); ?></span>
+                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6"><?php echo htmlspecialchars($section['title']); ?></h2>
+                <?php echo cms_section_paragraphs($section['text']); ?>
 
                 <!-- Key Facts -->
                 <div class="grid grid-cols-2 gap-4">
@@ -122,7 +130,7 @@ $pageContent = get_page_content('epilepsy', [
             <!-- Image Side -->
             <div class="relative flex justify-center lg:justify-end animate-slide-in-right">
                 <div class="relative w-full max-w-md lg:max-w-none aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-soft-cyan to-silver-grey border border-silver-grey/20">
-                    <img src="assets/services/epilepsy.png" alt="Understanding Epilepsy" class="w-full h-full object-cover">
+                    <img src="<?php echo htmlspecialchars($section['image']); ?>" alt="<?php echo htmlspecialchars($section['image_alt']); ?>" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>

@@ -3,8 +3,10 @@ require_once __DIR__ . '/includes/auth.php';
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/functions.php';
 
+cms_require_auth();
+
 $services = CMS_DB::get('services', []);
-$id = $_GET['id'] ?? '';
+$id = trim($_POST['id'] ?? $_GET['id'] ?? '');
 $service = null;
 
 if ($id) {
@@ -26,12 +28,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $imageAlt = trim($_POST['image_alt'] ?? '');
     $features_raw = trim($_POST['features'] ?? '');
     $features = cms_parse_multiline_items($features_raw);
+    // The field is a one-per-line list, not rich text. Strip any markup that
+    // the editor may have inserted so literal tags never reach the card.
+    $features = array_values(array_filter(array_map(function ($f) {
+        return trim(strip_tags((string)$f));
+    }, $features), function ($f) {
+        return $f !== '';
+    }));
     $is_active = isset($_POST['is_active']);
 
     $imagePath = $_POST['existing_image'] ?? '';
+    $imageChanged = false;
+    $uploadError = '';
     $imgUpload = cms_handle_upload('service_image', 'services');
-    if ($imgUpload && !isset($imgUpload['error'])) {
+    if (is_array($imgUpload) && isset($imgUpload['error'])) {
+        $uploadError = $imgUpload['error'];
+    } elseif (is_array($imgUpload) && !empty($imgUpload['path'])) {
         $imagePath = $imgUpload['path'];
+        $imageChanged = true;
     }
 
     if ($id && $service) {
@@ -45,6 +59,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $s['image_alt'] = $imageAlt ?: $title;
                 $s['is_active'] = $is_active;
                 if ($imagePath) $s['image'] = $imagePath;
+                // The old WebP derivative no longer matches a newly uploaded
+                // photo, so drop it instead of serving a stale image.
+                if ($imageChanged) $s['webp'] = '';
                 break;
             }
         }
@@ -57,14 +74,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'link' => $link,
             'features' => $features,
             'image' => $imagePath ?: 'assets/services/stroke-care.png',
+            'webp' => '',
             'image_alt' => $imageAlt ?: $title,
             'is_active' => $is_active,
             'order' => count($services) + 1
         ];
     }
 
-    CMS_DB::set('services', $services);
-    cms_set_flash('success', 'Condition card content and image updated successfully.');
+    $saved = CMS_DB::set('services', $services);
+    if (!$saved) {
+        cms_set_flash('error', 'Could not save the condition card. Please check that data/services.json is writable.');
+    } elseif ($uploadError !== '') {
+        cms_set_flash('error', 'The card text was saved, but the image upload failed: ' . $uploadError);
+    } else {
+        cms_set_flash('success', 'Condition card content and image updated successfully.');
+    }
     header('Location: services.php');
     exit;
 }
@@ -84,6 +108,7 @@ require_once __DIR__ . '/includes/header.php';
 
     <form method="POST" enctype="multipart/form-data" class="space-y-5">
         <?php echo cms_csrf_field(); ?>
+        <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
         <input type="hidden" name="existing_image" value="<?php echo htmlspecialchars($service['image'] ?? ''); ?>">
 
         <div>
@@ -102,10 +127,10 @@ require_once __DIR__ . '/includes/header.php';
                 $feats = $service['features'] ?? [];
                 if (is_array($feats)) {
                     foreach ($feats as $f) {
-                        echo htmlspecialchars($f) . "\n";
+                        echo htmlspecialchars(strip_tags((string)$f)) . "\n";
                     }
                 } else {
-                    echo htmlspecialchars($feats);
+                    echo htmlspecialchars(strip_tags((string)$feats));
                 }
             ?></textarea>
         </div>
@@ -132,21 +157,6 @@ require_once __DIR__ . '/includes/header.php';
                 <label class="block text-xs font-bold text-slate-700 mb-1">Card Image Alt Tag (SEO & Accessibility)</label>
                 <input type="text" name="image_alt" value="<?php echo htmlspecialchars($service['image_alt'] ?? ''); ?>" placeholder="e.g. <?php echo htmlspecialchars($service['title'] ?? 'Treatment'); ?> - Dr. Praveen Gupta" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none">
             </div>
-        </div>
-
-        <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Card Title</label>
-            <input type="text" name="title" value="<?php echo htmlspecialchars($service['title'] ?? ''); ?>" required placeholder="e.g. Stroke & Neurocritical Care Unit" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
-        </div>
-
-        <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Short Description</label>
-            <textarea name="short_description" rows="3" placeholder="e.g. Advanced Stroke Care in Gurgaon." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($service['short_description'] ?? ''); ?></textarea>
-        </div>
-
-        <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Key Procedures / "Read More" Dropdown Items (1 per line)</label>
-            <textarea name="features" rows="4" placeholder="Thrombolytic therapy&#10;Mechanical thrombectomy&#10;24/7 stroke protocol" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars(implode("\n", $service['features'] ?? [])); ?></textarea>
         </div>
 
         <div>

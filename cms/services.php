@@ -40,7 +40,7 @@ $services = CMS_DB::get('services', []);
                         <?php foreach (array_slice($svc['features'], 0, 3) as $feat): ?>
                         <div class="flex items-center space-x-1.5 truncate">
                             <i class="fas fa-check text-[9px] text-brand-blue flex-shrink-0"></i>
-                            <span class="truncate"><?php echo htmlspecialchars($feat); ?></span>
+                            <span class="truncate"><?php echo htmlspecialchars(strip_tags((string)$feat)); ?></span>
                         </div>
                         <?php endforeach; ?>
                         <?php if (count($svc['features']) > 3): ?>

@@ -11,12 +11,23 @@ $pageContent = get_page_content('services', [
     'hero_desc'  => 'Dr. Praveen Gupta offers state-of-the-art diagnostic and treatment solutions for a wide range of brain, spinal cord, and nerve disorders. Explore our specialized services below.'
 ]);
 
+$heroBg = cms_media_path($pageContent['hero_bg'] ?? '');
+$heroAlt = trim((string)($pageContent['hero_bg_alt'] ?? ''));
+if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'Dr. Praveen Gupta'));
+
 // Link mapping helper for service details pages is now defined in config.php
 ?>
 
 <!-- Page Hero -->
 <section class="relative overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20">
+    <?php if ($heroBg): ?>
+    <img src="<?php echo htmlspecialchars($heroBg); ?>" alt="<?php echo htmlspecialchars($heroAlt); ?>"
+         fetchpriority="high"
+         class="absolute inset-0 w-full h-full object-cover object-[78%_center] md:object-right pointer-events-none select-none">
+    <div class="absolute inset-0 bg-gradient-to-r from-deep-indigo/95 via-deep-indigo/75 to-deep-indigo/35 md:to-transparent"></div>
+    <?php else: ?>
     <div class="absolute inset-0 bg-black/5"></div>
+    <?php endif; ?>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl text-left animate-fade-in-up">
@@ -69,19 +80,25 @@ $pageContent = get_page_content('services', [
                     ? $storedLink
                     : getServicePageLink($service['title']);
             ?>
-                <a href="<?php echo $link; ?>" class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe"
+                <a href="<?php echo htmlspecialchars($link); ?>" class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe"
                     style="animation-delay: <?php echo $index * 100; ?>ms;">
                     <div>
                         <!-- Image Container -->
                         <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-6 bg-gradient-to-br from-soft-cyan to-silver-grey">
-                            <img src="<?php echo htmlspecialchars($service['image']); ?>" alt="<?php echo htmlspecialchars($service['image_alt'] ?? $service['alt'] ?? $service['title'] ?? 'Neurology Service Card'); ?>"
+                            <?php
+                            $cardAlt = trim((string)($service['image_alt'] ?? ''));
+                            if ($cardAlt === '') $cardAlt = trim((string)($service['alt'] ?? ''));
+                            if ($cardAlt === '') $cardAlt = trim((string)($service['title'] ?? ''));
+                            if ($cardAlt === '') $cardAlt = 'Neurology Service Card';
+                            ?>
+                            <img src="<?php echo htmlspecialchars($service['image'] ?? ''); ?>" alt="<?php echo htmlspecialchars($cardAlt); ?>"
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         </div>
 
                         <!-- Title & Arrow Row -->
                         <div class="flex justify-between items-start mb-3">
                             <h3 class="text-2xl font-bold text-deep-indigo group-hover:text-electric-blue transition-colors leading-tight">
-                                <?php echo $service['title']; ?>
+                                <?php echo htmlspecialchars($service['title'] ?? ''); ?>
                             </h3>
                             <div class="w-10 h-10 rounded-full border border-silver-grey flex items-center justify-center text-dark-grey group-hover:text-white group-hover:bg-gradient-to-r group-hover:from-electric-blue group-hover:to-cyan-accent group-hover:border-transparent transition-all duration-300 flex-shrink-0 ml-4">
                                 <i class="fas fa-arrow-right group-hover:-rotate-45 transition-transform duration-300"></i>
@@ -97,7 +114,7 @@ $pageContent = get_page_content('services', [
                         <?php if (!empty($service['bullet'])): ?>
                             <div class="mt-auto pt-4 border-t border-silver-grey/60 flex items-center space-x-2.5 text-xs font-bold">
                                 <i class="fas <?php echo strpos($service['bullet'], '1800') !== false ? 'fa-phone-alt animate-pulse text-red-500' : 'fa-chevron-right text-cyan-accent'; ?> text-xs flex-shrink-0"></i>
-                                <span class="<?php echo strpos($service['bullet'], '1800') !== false ? 'text-red-650 text-red-600' : 'text-dark-grey/75'; ?>"><?php echo $service['bullet']; ?></span>
+                                <span class="<?php echo strpos($service['bullet'], '1800') !== false ? 'text-red-650 text-red-600' : 'text-dark-grey/75'; ?>"><?php echo htmlspecialchars($service['bullet']); ?></span>
                             </div>
                         <?php endif; ?>
                     </div>

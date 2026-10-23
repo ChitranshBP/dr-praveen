@@ -196,7 +196,7 @@
     // Initialize Rich Editor on textareas
     document.addEventListener('DOMContentLoaded', function() {
         const targetTextareas = document.querySelectorAll(
-            'textarea[name="content"], textarea[name="section1_text"], textarea[name="about"], textarea[name="hero_desc"], textarea[name="qualifications"], textarea[name="expertise"], textarea[name="features"], textarea[name="short_description"], textarea[name="excerpt"], textarea[name="message"], textarea.wysiwyg-editor, textarea.rich-editor'
+            'textarea[name="content"], textarea[name="section1_text"], textarea[name="about"], textarea[name="hero_desc"], textarea[name="qualifications"], textarea[name="expertise"], textarea[name="short_description"], textarea[name="excerpt"], textarea[name="message"], textarea.wysiwyg-editor, textarea.rich-editor'
         );
 
         targetTextareas.forEach(function(textarea, idx) {

@@ -4,11 +4,49 @@
  */
 $isDarkHero = true;
 require_once __DIR__ . '/includes/header.php';
+
+$pageContent = get_page_content('neurology-procedures', [
+    'hero_badge' => 'Advanced Diagnostics & Therapeutics',
+    'hero_title' => 'Neurology <span class="text-cyan-accent">Procedures</span>',
+    'hero_desc'  => 'Explore the advanced clinical diagnostic tests and highly specialized therapeutic procedures conducted under the supervision of Dr. Praveen Gupta.',
+    'hero_bg'    => '',
+]);
+
+// Ignore auto-generated catalog placeholders so the original hero copy stays.
+$heroBadge = trim((string)($pageContent['hero_badge'] ?? ''));
+if ($heroBadge === '' || $heroBadge === 'General Guide') {
+    $heroBadge = 'Advanced Diagnostics & Therapeutics';
+}
+$heroTitle = trim((string)($pageContent['hero_title'] ?? ''));
+if ($heroTitle === '' || trim(strip_tags($heroTitle)) === 'Neurology Procedures') {
+    $heroTitle = 'Neurology <span class="text-cyan-accent">Procedures</span>';
+}
+$heroDesc = trim((string)($pageContent['hero_desc'] ?? ''));
+if ($heroDesc === '' || trim(strip_tags($heroDesc)) === 'Explore the advanced clinical diagnostic tests and highly specialized therapeutic procedures conducted under the supervision of Dr. Praveen Gupta.') {
+    $heroDesc = 'Explore the advanced clinical diagnostic tests and highly specialized therapeutic procedures conducted under the supervision of Dr. Praveen Gupta.';
+}
+$section = get_page_section($pageContent, [
+    'badge' => 'Diagnostic Excellence',
+    'title' => 'Advanced Diagnostic Testing',
+    'text' => 'State-of-the-art neurological mapping to precisely evaluate brain, spinal cord, muscle, and nerve health.',
+    'image' => '',
+    'image_alt' => '',
+]);
+$heroBg = cms_media_path($pageContent['hero_bg'] ?? '');
+$heroAlt = trim((string)($pageContent['hero_bg_alt'] ?? ''));
+if ($heroAlt === '') $heroAlt = trim(strip_tags($heroTitle));
 ?>
 
 <!-- Hero Section -->
 <section class="relative overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20">
+    <?php if ($heroBg): ?>
+    <img src="<?php echo htmlspecialchars($heroBg); ?>" alt="<?php echo htmlspecialchars($heroAlt); ?>"
+         fetchpriority="high"
+         class="absolute inset-0 w-full h-full object-cover object-[78%_center] md:object-right pointer-events-none select-none">
+    <div class="absolute inset-0 bg-gradient-to-r from-deep-indigo/95 via-deep-indigo/75 to-deep-indigo/35 md:to-transparent"></div>
+    <?php else: ?>
     <div class="absolute inset-0 bg-black/10"></div>
+    <?php endif; ?>
     <div class="absolute -right-24 -bottom-24 w-96 h-96 bg-cyan-accent/20 rounded-full blur-[120px] pointer-events-none"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -23,16 +61,16 @@ require_once __DIR__ . '/includes/header.php';
             <!-- Badge -->
             <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4 border border-white/20">
                 <i class="fas fa-microscope text-cyan-accent text-[10px]"></i>
-                <span>Advanced Diagnostics & Therapeutics</span>
+                <span><?php echo htmlspecialchars($heroBadge); ?></span>
             </div>
 
             <!-- Heading -->
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-3">
-                Neurology <span class="text-cyan-accent">Procedures</span>
+                <?php echo $heroTitle; ?>
             </h1>
 
             <p class="text-sm md:text-base text-white/85 leading-relaxed mb-6 max-w-2xl">
-                Explore the advanced clinical diagnostic tests and highly specialized therapeutic procedures conducted under the supervision of Dr. Praveen Gupta.
+                <?php echo cms_render_html($heroDesc); ?>
             </p>
 
             <div class="flex flex-wrap items-center gap-4">
@@ -49,12 +87,16 @@ require_once __DIR__ . '/includes/header.php';
 <section id="diagnostics" class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-12">
-            <span class="text-electric-blue font-bold text-xs uppercase tracking-wider font-sans">Diagnostic Excellence</span>
-            <h2 class="text-3xl font-bold text-deep-indigo font-serif mt-2">Advanced Diagnostic Testing</h2>
-            <p class="text-sm text-dark-grey/65 mt-3 leading-relaxed">
-                State-of-the-art neurological mapping to precisely evaluate brain, spinal cord, muscle, and nerve health.
-            </p>
+            <span class="text-electric-blue font-bold text-xs uppercase tracking-wider font-sans"><?php echo htmlspecialchars($section['badge']); ?></span>
+            <h2 class="text-3xl font-bold text-deep-indigo font-serif mt-2"><?php echo htmlspecialchars($section['title']); ?></h2>
+            <?php echo cms_section_paragraphs($section['text'], 'text-sm text-dark-grey/65 mt-3 leading-relaxed', 'mb-0'); ?>
         </div>
+
+        <?php if (!empty($section['image'])): ?>
+        <div class="max-w-3xl mx-auto -mt-4 mb-10 rounded-3xl overflow-hidden shadow-lg border border-slate-200/50">
+            <img src="<?php echo htmlspecialchars($section['image']); ?>" alt="<?php echo htmlspecialchars($section['image_alt']); ?>" class="w-full h-auto object-cover">
+        </div>
+        <?php endif; ?>
 
         <div class="grid md:grid-cols-2 gap-8">
             <!-- Test 1 -->

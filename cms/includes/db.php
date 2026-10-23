@@ -45,11 +45,16 @@ class CMS_DB {
     public static function set($collection, $data) {
         $file = self::getFilePath($collection);
         $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-        
+        if ($json === false) {
+            return false;
+        }
+
         $tempFile = $file . '.tmp.' . uniqid();
         if (file_put_contents($tempFile, $json, LOCK_EX) !== false) {
-            rename($tempFile, $file);
-            return true;
+            if (rename($tempFile, $file)) {
+                return true;
+            }
+            @unlink($tempFile);
         }
         return false;
     }
@@ -305,7 +310,7 @@ function cms_init_seed() {
                 'icon' => 'person-walking',
                 'short_description' => 'Minimally invasive spine surgery, endoscopic discectomy, spinal fusion, and artificial disc replacement for back and neck pain.',
                 'features' => ['Endoscopic Discectomy', 'Spinal Fusion & Decompression', 'Disc Replacement', 'Non-Surgical Pain Management'],
-                'image' => 'assets/services/spine.png',
+                'image' => 'assets/services/spine-surgery.png',
                 'is_active' => true,
                 'order' => 4
             ],
@@ -327,7 +332,7 @@ function cms_init_seed() {
                 'icon' => 'bolt',
                 'short_description' => 'Pioneering Deep Brain Stimulation for Parkinson’s disease, essential tremor, dystonia, and neuropsychiatric disorders.',
                 'features' => ['Parkinson’s DBS', 'Dystonia Management', 'Tremor Control', 'Post-Op Programming'],
-                'image' => 'assets/services/functional.png',
+                'image' => 'assets/services/functional-neuro.png',
                 'is_active' => true,
                 'order' => 6
             ]

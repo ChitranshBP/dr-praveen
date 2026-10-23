@@ -111,7 +111,7 @@ if (file_exists($cmsServicesFile)) {
                 $desc .= '    </summary>' . "\n";
                 $desc .= '    <div class="mt-3 grid grid-cols-1 gap-y-1 text-xs text-dark-grey/70 border-t border-silver-grey/40 pt-3">' . "\n";
                 foreach ($s['features'] as $feat) {
-                    $desc .= '        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>' . htmlspecialchars($feat) . '</span></div>' . "\n";
+                    $desc .= '        <div class="flex items-center space-x-1.5"><i class="fas fa-check text-[8px] text-electric-blue"></i> <span>' . htmlspecialchars(strip_tags((string)$feat)) . '</span></div>' . "\n";
                 }
                 $desc .= '    </div>' . "\n";
                 $desc .= '</details>';
@@ -1091,6 +1091,21 @@ function get_page_content($slug, $defaults = []) {
     if (file_exists($dataFile)) {
         $data = json_decode(file_get_contents($dataFile), true);
         if (is_array($data)) {
+            // The catalog auto-seeded generic eyebrow labels such as
+            // "Conditions Guide" onto every page. Fall back to the template's
+            // own label instead of printing those placeholders on the site.
+            $genericBadges = [
+                'General Guide', 'Conditions Guide', 'Services Guide',
+                'Patient Info Guide', 'About Doctor Guide', 'Media & Blog Guide',
+                'Media Guide', 'Blog Guide', 'Contact & Legal Guide',
+            ];
+            if (
+                isset($data['hero_badge'])
+                && array_key_exists('hero_badge', $defaults)
+                && in_array(trim((string)$data['hero_badge']), $genericBadges, true)
+            ) {
+                unset($data['hero_badge']);
+            }
             return array_merge($defaults, $data);
         }
     }
@@ -1160,6 +1175,122 @@ function cms_render_html($content) {
     }
 
     return $sanitized;
+}
+
+/**
+ * Resolve a public asset path, returning the fallback when the file is missing.
+ * Handles URL-encoded paths (e.g. "My%20Image.png") without changing the URL
+ * that is eventually printed into the page.
+ */
+function cms_media_path($path, $fallback = '') {
+    $root = dirname(__DIR__);
+
+    $resolve = static function ($value) use ($root) {
+        $value = trim((string)$value);
+        if ($value === '') {
+            return '';
+        }
+        if (preg_match('#^(https?:)?//#i', $value) || strpos($value, 'data:') === 0) {
+            return $value;
+        }
+
+        $relative = ltrim(preg_replace('#^/+#', '', $value), '/');
+        if (strpos($relative, '..') !== false) {
+            return '';
+        }
+
+        foreach (array_unique([$relative, rawurldecode($relative)]) as $candidate) {
+            $check = preg_split('/[?#]/', $candidate, 2)[0];
+            if ($check !== '' && is_file($root . '/' . $check)) {
+                return $value;
+            }
+        }
+        return '';
+    };
+
+    $resolved = $resolve($path);
+    return $resolved !== '' ? $resolved : $resolve($fallback);
+}
+
+/**
+ * Resolve the CMS "Main Body Section" fields for a page.
+ *
+ * The catalog generator used to seed every page with placeholder copy such as
+ * "Expert Clinical Approach to ...". Those values must not replace the real
+ * section that is hard-coded in a template, otherwise every page turns into
+ * generic boilerplate. A field is used only once an editor has changed it.
+ */
+function get_page_section($pageContent, $defaults = []) {
+    $defaults = array_merge([
+        'badge' => '',
+        'title' => '',
+        'text' => '',
+        'image' => '',
+        'image_alt' => '',
+    ], is_array($defaults) ? $defaults : []);
+
+    $pageContent = is_array($pageContent) ? $pageContent : [];
+
+    $badge = trim((string)($pageContent['section1_badge'] ?? ''));
+    $title = trim((string)($pageContent['section1_title'] ?? ''));
+    $text  = trim((string)($pageContent['section1_text'] ?? ''));
+    $image = trim((string)($pageContent['section1_image'] ?? ''));
+    $imageAlt = trim((string)($pageContent['section1_img_alt'] ?? ''));
+
+    $titlePlain = trim(preg_replace('/\s+/u', ' ', html_entity_decode(strip_tags($title), ENT_QUOTES | ENT_HTML5, 'UTF-8')));
+    $textPlain  = trim(preg_replace('/\s+/u', ' ', html_entity_decode(strip_tags($text), ENT_QUOTES | ENT_HTML5, 'UTF-8')));
+
+    $titleIsPlaceholder = ($title === '' || strpos($titlePlain, 'Expert Clinical Approach to ') === 0);
+    $textIsPlaceholder  = ($text === '' || strpos($textPlain, 'Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for ') === 0);
+    // Breadcrumb banners are hero images, not 4:3 body photos.
+    $imageIsPlaceholder = ($image === '' || strpos($image, 'assets/breadcrumbs/') === 0);
+
+    if ($titleIsPlaceholder) $title = $defaults['title'];
+    if ($textIsPlaceholder)  $text  = $defaults['text'];
+    if ($imageIsPlaceholder) $image = $defaults['image'];
+    $genericBadges = ['Specialist Care', 'General Guide', 'Conditions Guide', 'Services Guide', 'Patient Info Guide'];
+    if ($badge === '' || in_array($badge, $genericBadges, true)) {
+        $badge = $defaults['badge'];
+    }
+    if ($imageAlt === '') $imageAlt = $defaults['image_alt'];
+
+    return [
+        'badge' => $badge,
+        'title' => $title,
+        'text' => $text,
+        'image' => cms_media_path($image, $defaults['image']),
+        'image_alt' => $imageAlt,
+    ];
+}
+
+/**
+ * Render the paragraphs of a CMS section. Plain text is split on blank lines
+ * and wrapped in the standard body-paragraph classes; rich HTML is passed
+ * through the normal CMS renderer unchanged.
+ */
+function cms_section_paragraphs($text, $class = 'text-dark-grey/70 leading-relaxed', $lastMargin = 'mb-8') {
+    $text = trim((string)$text);
+    if ($text === '') {
+        return '';
+    }
+
+    if (preg_match('/<(p|div|h[1-6]|ul|ol|blockquote)\b/i', $text)) {
+        return cms_render_html($text);
+    }
+
+    $paras = preg_split('/\n\s*\n/', $text);
+    $paras = array_values(array_filter($paras, function ($p) {
+        return trim($p) !== '';
+    }));
+
+    $out = '';
+    $count = count($paras);
+    foreach ($paras as $i => $para) {
+        $margin = ($i === $count - 1) ? $lastMargin : 'mb-6';
+        $out .= '<p class="' . htmlspecialchars(trim($class . ' ' . $margin), ENT_QUOTES) . '">'
+              . cms_render_html($para) . '</p>';
+    }
+    return $out;
 }
 
 

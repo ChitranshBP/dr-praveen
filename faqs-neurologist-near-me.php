@@ -10,11 +10,22 @@ $pageContent = get_page_content('faqs-neurologist-near-me', [
     'hero_title' => 'Frequently Asked <span class="text-white font-normal">Questions</span>',
     'hero_desc'  => 'Got questions? We have answers. Browse common queries related to doctor consultations, clinical programs, diagnoses, and hospital TPAs.'
 ]);
+
+$heroBg = cms_media_path($pageContent['hero_bg'] ?? '');
+$heroAlt = trim((string)($pageContent['hero_bg_alt'] ?? ''));
+if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'Dr. Praveen Gupta'));
 ?>
 
 <!-- Page Hero -->
 <section class="relative overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20">
+    <?php if ($heroBg): ?>
+    <img src="<?php echo htmlspecialchars($heroBg); ?>" alt="<?php echo htmlspecialchars($heroAlt); ?>"
+         fetchpriority="high"
+         class="absolute inset-0 w-full h-full object-cover object-[78%_center] md:object-right pointer-events-none select-none">
+    <div class="absolute inset-0 bg-gradient-to-r from-deep-indigo/95 via-deep-indigo/75 to-deep-indigo/35 md:to-transparent"></div>
+    <?php else: ?>
     <div class="absolute inset-0 bg-black/5"></div>
+    <?php endif; ?>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl text-left animate-fade-in-up">
             <!-- Breadcrumb -->

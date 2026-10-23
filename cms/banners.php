@@ -3,6 +3,8 @@ require_once __DIR__ . '/includes/auth.php';
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/functions.php';
 
+cms_require_auth();
+
 $banners = CMS_DB::get('banners', []);
 
 // Ensure all banners have integer orders and default alt tags

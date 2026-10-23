@@ -3,6 +3,8 @@ require_once __DIR__ . '/includes/auth.php';
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/functions.php';
 
+cms_require_auth();
+
 $doctors = CMS_DB::get('doctors', []);
 $settings = CMS_DB::get('settings', []);
 

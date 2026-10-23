@@ -11,11 +11,29 @@ $pageContent = get_page_content('vertigo', [
     'hero_desc'  => 'Detailed balance assessments and effective vestibular rehabilitation. Dr. Praveen Gupta specializes in relieving dizziness and restoring stability.',
     'hero_bg'    => '',
 ]);
+
+$section = get_page_section($pageContent, [
+    'badge' => 'Understanding',
+    'title' => 'What is Vertigo?',
+    'text' => "Vertigo is a sensation of spinning or motion when you are perfectly still. Often described as dizziness, it makes you feel as if your surroundings are moving. Vertigo is typically a symptom of an underlying vestibular system issue in the inner ear or brain.\n\nLiving with recurrent vertigo can lead to fall risks, anxiety, and extreme nausea. Our clinic focuses on accurate diagnosis, pinpointing peripheral or central causes, and utilizing drug-free therapies to resolve balance issues successfully.",
+    'image' => 'assets/services/vertigo.png',
+    'image_alt' => 'Understanding Vertigo',
+]);
+$heroBg = cms_media_path($pageContent['hero_bg'] ?? '');
+$heroAlt = trim((string)($pageContent['hero_bg_alt'] ?? ''));
+if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'Dr. Praveen Gupta'));
 ?>
 
 <!-- Page Hero -->
 <section class="relative overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20">
+    <?php if ($heroBg): ?>
+    <img src="<?php echo htmlspecialchars($heroBg); ?>" alt="<?php echo htmlspecialchars($heroAlt); ?>"
+         fetchpriority="high"
+         class="absolute inset-0 w-full h-full object-cover object-[78%_center] md:object-right pointer-events-none select-none">
+    <div class="absolute inset-0 bg-gradient-to-r from-deep-indigo/95 via-deep-indigo/75 to-deep-indigo/35 md:to-transparent"></div>
+    <?php else: ?>
     <div class="absolute inset-0 bg-black/5"></div>
+    <?php endif; ?>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl text-left animate-fade-in-up">
@@ -63,14 +81,9 @@ $pageContent = get_page_content('vertigo', [
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-2 gap-16 items-center">
             <div class="animate-slide-in-left">
-                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Understanding</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">What is Vertigo?</h2>
-                <p class="text-dark-grey/70 leading-relaxed mb-6">
-                    Vertigo is a sensation of spinning or motion when you are perfectly still. Often described as dizziness, it makes you feel as if your surroundings are moving. Vertigo is typically a symptom of an underlying vestibular system issue in the inner ear or brain.
-                </p>
-                <p class="text-dark-grey/70 leading-relaxed mb-8">
-                    Living with recurrent vertigo can lead to fall risks, anxiety, and extreme nausea. Our clinic focuses on accurate diagnosis, pinpointing peripheral or central causes, and utilizing drug-free therapies to resolve balance issues successfully.
-                </p>
+                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider"><?php echo htmlspecialchars($section['badge']); ?></span>
+                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6"><?php echo htmlspecialchars($section['title']); ?></h2>
+                <?php echo cms_section_paragraphs($section['text']); ?>
 
                 <!-- Key Facts -->
                 <div class="grid grid-cols-2 gap-4">
@@ -116,7 +129,7 @@ $pageContent = get_page_content('vertigo', [
             <!-- Image Side -->
             <div class="relative flex justify-center lg:justify-end animate-slide-in-right">
                 <div class="relative w-full max-w-md lg:max-w-none aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-soft-cyan to-silver-grey border border-silver-grey/20">
-                    <img src="assets/services/vertigo.png" alt="Understanding Vertigo" class="w-full h-full object-cover">
+                    <img src="<?php echo htmlspecialchars($section['image']); ?>" alt="<?php echo htmlspecialchars($section['image_alt']); ?>" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>

@@ -183,19 +183,35 @@ if (empty($activeBanners)) {
 
         <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-none gap-6 pb-6 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:pb-0">
             <?php foreach ($services as $index => $service): 
-                $link = getServicePageLink($service['title']);
+                // Honor an explicit link set in the CMS card editor; otherwise
+                // fall back to automatic title-based page matching.
+                $storedLink = trim((string)($service['link'] ?? ''));
+                $link = ($storedLink !== '' && $storedLink !== 'services')
+                    ? $storedLink
+                    : getServicePageLink($service['title']);
+
+                // Only serve the WebP derivative when it still belongs to the
+                // current photo. After a CMS upload the old .webp is stale.
+                $cardWebp = trim((string)($service['webp'] ?? ''));
+                $imageBase = strtolower(pathinfo((string)($service['image'] ?? ''), PATHINFO_FILENAME));
+                $webpBase = strtolower(pathinfo($cardWebp, PATHINFO_FILENAME));
+                $useWebp = ($cardWebp !== '' && $imageBase !== '' && $webpBase === $imageBase && file_exists(__DIR__ . '/' . $cardWebp));
+                $cardAlt = trim((string)($service['image_alt'] ?? ''));
+                if ($cardAlt === '') $cardAlt = trim((string)($service['alt'] ?? ''));
+                if ($cardAlt === '') $cardAlt = trim((string)($service['title'] ?? ''));
+                if ($cardAlt === '') $cardAlt = 'Neurology Service Card';
             ?>
-                <a href="<?php echo $link; ?>" class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe w-[80vw] md:w-auto flex-shrink-0 snap-start"
+                <a href="<?php echo htmlspecialchars($link); ?>" class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe w-[80vw] md:w-auto flex-shrink-0 snap-start"
                     style="animation-delay: <?php echo $index * 100; ?>ms;">
                     <div>
                         <!-- Image Container -->
                         <div
                             class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-6 bg-gradient-to-br from-soft-cyan to-silver-grey">
                             <picture>
-                                <?php if(!empty($service['webp']) && file_exists(__DIR__ . '/' . $service['webp'])): ?>
-                                <source srcset="<?php echo $service['webp']; ?>" type="image/webp">
+                                <?php if($useWebp): ?>
+                                <source srcset="<?php echo htmlspecialchars($cardWebp); ?>" type="image/webp">
                                 <?php endif; ?>
-                                <img src="<?php echo $service['image']; ?>" alt="<?php echo $service['title']; ?>"
+                                <img src="<?php echo htmlspecialchars($service['image']); ?>" alt="<?php echo htmlspecialchars($cardAlt); ?>"
                                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
                             </picture>
                         </div>
@@ -204,7 +220,7 @@ if (empty($activeBanners)) {
                         <div class="flex justify-between items-start mb-3">
                             <h3
                                 class="text-2xl font-bold text-deep-indigo group-hover:text-electric-blue transition-colors leading-tight">
-                                <?php echo $service['title']; ?>
+                                <?php echo htmlspecialchars($service['title'] ?? ''); ?>
                             </h3>
                             <div
                                 class="w-10 h-10 rounded-full border border-silver-grey flex items-center justify-center text-dark-grey group-hover:text-white group-hover:bg-gradient-to-r group-hover:from-electric-blue group-hover:to-cyan-accent group-hover:border-transparent transition-all duration-300 flex-shrink-0 ml-4">
@@ -221,7 +237,7 @@ if (empty($activeBanners)) {
                         <?php if (!empty($service['bullet'])): ?>
                             <div class="mt-auto pt-4 border-t border-silver-grey/60 flex items-center space-x-2.5 text-xs font-bold">
                                 <i class="fas <?php echo strpos($service['bullet'], '1800') !== false ? 'fa-phone-alt animate-pulse text-red-500' : 'fa-chevron-right text-cyan-accent'; ?> text-xs flex-shrink-0"></i>
-                                <span class="<?php echo strpos($service['bullet'], '1800') !== false ? 'text-red-650 text-red-600' : 'text-dark-grey/75'; ?>"><?php echo $service['bullet']; ?></span>
+                                <span class="<?php echo strpos($service['bullet'], '1800') !== false ? 'text-red-650 text-red-600' : 'text-dark-grey/75'; ?>"><?php echo htmlspecialchars($service['bullet']); ?></span>
                             </div>
                         <?php endif; ?>
                     </div>

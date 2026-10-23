@@ -11,17 +11,30 @@ $pageContent = get_page_content('migraine', [
     'hero_desc'  => 'Advanced relief plans and prevention programs for acute and chronic migraine. Dr. Praveen Gupta provides customized care to help you regain control of your life.',
     'hero_bg'    => 'assets/breadcrumbs/dr-parveen-migraine.png',
 ]);
+
+$section = get_page_section($pageContent, [
+    'badge' => 'Understanding',
+    'title' => 'What is a Migraine?',
+    'text' => "A migraine is a neurological condition that causes intense, throbbing head pain, usually on one side. Unlike common tension headaches, migraines often present with associated symptoms like severe nausea, vomiting, and extreme sensitivity to light, sound, and smell.\n\nAn attack can last from several hours to days, making daily activities impossible. Our targeted diagnostic and therapy framework aims to reduce the severity and frequency of your migraine episodes using cutting-edge medical treatments.",
+    'image' => 'assets/services/migraine.png',
+    'image_alt' => 'Understanding Migraine',
+]);
+$heroBg = cms_media_path($pageContent['hero_bg'] ?? '', 'assets/breadcrumbs/dr-parveen-migraine.png');
+$heroAlt = trim((string)($pageContent['hero_bg_alt'] ?? ''));
+if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'Dr. Praveen Gupta'));
 ?>
 
 <!-- Page Hero -->
 <section class="relative overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20">
     <!-- Background image (gradient above stays as the fallback if it fails to load) -->
-    <img src="<?php echo htmlspecialchars($pageContent['hero_bg']); ?>" alt=""
+    <?php if ($heroBg): ?>
+    <img src="<?php echo htmlspecialchars($heroBg); ?>" alt="<?php echo htmlspecialchars($heroAlt); ?>"
          fetchpriority="high"
          class="absolute inset-0 w-full h-full object-cover object-[68%_center] md:object-right pointer-events-none select-none">
 
     <!-- Legibility overlay: solid behind the copy, clearing towards the photo on the right -->
     <div class="absolute inset-0 bg-gradient-to-r from-deep-indigo/95 via-deep-indigo/75 to-deep-indigo/35 md:to-transparent"></div>
+    <?php endif; ?>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl text-left animate-fade-in-up">
@@ -69,14 +82,9 @@ $pageContent = get_page_content('migraine', [
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-2 gap-16 items-center">
             <div class="animate-slide-in-left">
-                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Understanding</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">What is a Migraine?</h2>
-                <p class="text-dark-grey/70 leading-relaxed mb-6">
-                    A migraine is a neurological condition that causes intense, throbbing head pain, usually on one side. Unlike common tension headaches, migraines often present with associated symptoms like severe nausea, vomiting, and extreme sensitivity to light, sound, and smell.
-                </p>
-                <p class="text-dark-grey/70 leading-relaxed mb-8">
-                    An attack can last from several hours to days, making daily activities impossible. Our targeted diagnostic and therapy framework aims to reduce the severity and frequency of your migraine episodes using cutting-edge medical treatments.
-                </p>
+                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider"><?php echo htmlspecialchars($section['badge']); ?></span>
+                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6"><?php echo htmlspecialchars($section['title']); ?></h2>
+                <?php echo cms_section_paragraphs($section['text']); ?>
 
                 <!-- Key Facts -->
                 <div class="grid grid-cols-2 gap-4">
@@ -122,7 +130,7 @@ $pageContent = get_page_content('migraine', [
             <!-- Image Side -->
             <div class="relative flex justify-center lg:justify-end animate-slide-in-right">
                 <div class="relative w-full max-w-md lg:max-w-none aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-soft-cyan to-silver-grey border border-silver-grey/20">
-                    <img src="assets/services/migraine.png" alt="Understanding Migraine" class="w-full h-full object-cover">
+                    <img src="<?php echo htmlspecialchars($section['image']); ?>" alt="<?php echo htmlspecialchars($section['image_alt']); ?>" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>

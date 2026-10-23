@@ -11,17 +11,30 @@ $pageContent = get_page_content('neurocritical-acute-stroke-care', [
     'hero_desc'  => 'Immediate, lifesaving interventions for brain stroke, severe trauma, status epilepticus, and neurological emergencies. Monitored continuously in our specialized Neuro-ICU.',
     'hero_bg'    => 'assets/breadcrumbs/dr-parveen-services-breadcrumb/Neurocritical%20%26%20Acute%20Stroke.png',
 ]);
+
+$section = get_page_section($pageContent, [
+    'badge' => 'Emergency Response',
+    'title' => 'Expert Acute Stroke & Neuro ICU',
+    'text' => "A neurological emergency requires rapid diagnostics and immediate treatment. The \"Golden Hour\" represents the first few hours after stroke symptoms begin. Restoring blood flow to the brain via thrombolysis (clot-busting medication) or mechanical thrombectomy (catheter clot retrieval) can reverse paralysis and save lives.\n\nFollowing initial rescue, critically ill patients are monitored in our advanced Neuro-ICU. Here, we track intracranial pressure (ICP), brain oxygenation, and continuous electroencephalography (EEG) to detect non-convulsive seizures and protect tissue.",
+    'image' => 'assets/services/stroke-care.png',
+    'image_alt' => 'Neurocritical ICU room',
+]);
+$heroBg = cms_media_path($pageContent['hero_bg'] ?? '');
+$heroAlt = trim((string)($pageContent['hero_bg_alt'] ?? ''));
+if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'Dr. Praveen Gupta'));
 ?>
 
 <!-- Page Hero -->
 <section class="relative overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20">
     <!-- Background image -->
-    <img src="<?php echo htmlspecialchars($pageContent['hero_bg']); ?>" alt=""
+    <?php if ($heroBg): ?>
+    <img src="<?php echo htmlspecialchars($heroBg); ?>" alt="<?php echo htmlspecialchars($heroAlt); ?>"
          fetchpriority="high"
          class="absolute inset-0 w-full h-full object-cover object-[78%_center] md:object-right pointer-events-none select-none">
 
     <!-- Legibility overlay -->
     <div class="absolute inset-0 bg-gradient-to-r from-deep-indigo/95 via-deep-indigo/75 to-deep-indigo/35 md:to-transparent"></div>
+    <?php endif; ?>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl text-left animate-fade-in-up">
@@ -68,14 +81,9 @@ $pageContent = get_page_content('neurocritical-acute-stroke-care', [
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-2 gap-16 items-center">
             <div class="animate-slide-in-left">
-                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Emergency Response</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Expert Acute Stroke & Neuro ICU</h2>
-                <p class="text-dark-grey/70 leading-relaxed mb-6">
-                    A neurological emergency requires rapid diagnostics and immediate treatment. The "Golden Hour" represents the first few hours after stroke symptoms begin. Restoring blood flow to the brain via thrombolysis (clot-busting medication) or mechanical thrombectomy (catheter clot retrieval) can reverse paralysis and save lives.
-                </p>
-                <p class="text-dark-grey/70 leading-relaxed mb-8">
-                    Following initial rescue, critically ill patients are monitored in our advanced Neuro-ICU. Here, we track intracranial pressure (ICP), brain oxygenation, and continuous electroencephalography (EEG) to detect non-convulsive seizures and protect tissue.
-                </p>
+                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider"><?php echo htmlspecialchars($section['badge']); ?></span>
+                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6"><?php echo htmlspecialchars($section['title']); ?></h2>
+                <?php echo cms_section_paragraphs($section['text']); ?>
 
                 <!-- Key Facts -->
                 <div class="grid grid-cols-2 gap-4">
@@ -121,7 +129,7 @@ $pageContent = get_page_content('neurocritical-acute-stroke-care', [
             <!-- Image Side -->
             <div class="relative flex justify-center lg:justify-end animate-slide-in-right">
                 <div class="relative w-full max-w-md lg:max-w-none aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-red-50 to-white border border-red-200/50">
-                    <img src="assets/services/stroke-care.png" alt="Neurocritical ICU room" class="w-full h-full object-cover">
+                    <img src="<?php echo htmlspecialchars($section['image']); ?>" alt="<?php echo htmlspecialchars($section['image_alt']); ?>" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>

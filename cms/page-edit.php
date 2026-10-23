@@ -3,8 +3,10 @@ require_once __DIR__ . '/includes/auth.php';
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/functions.php';
 
+cms_require_auth();
+
 $pagesCatalog = CMS_DB::get('pages_catalog', []);
-$slug = trim($_GET['slug'] ?? 'stroke');
+$slug = trim($_POST['slug'] ?? $_GET['slug'] ?? 'stroke');
 
 // Find page in catalog
 $pageMeta = null;
@@ -24,6 +26,20 @@ if (empty($pageData) && $pageMeta) {
     $pageData = $pageMeta;
 }
 
+// Only pages whose template renders the CMS "Main Body Section" fields should
+// expose that editor. Other templates keep their body copy, so showing the
+// fields there would create edits that never appear on the live page.
+$sectionSupportedSlugs = [
+    'stroke', 'epilepsy', 'headache', 'migraine', 'parkinsons', 'movement', 'ms',
+    'neuropathy', 'vertigo', 'brain-tumor-surgery', 'spine-surgery',
+    'neurovascular-surgery', 'memory-clinic', 'rtms-therapy',
+    'neuro-rehabilitation-center', 'brain-health-center',
+    'neurocritical-acute-stroke-care', 'brain-stroke-helpline',
+    'functional-neurosurgery', 'neurological-conditions', 'neurological-symptoms',
+    'neurology-procedures',
+];
+$showSectionEditor = in_array($slug, $sectionSupportedSlugs, true);
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     cms_verify_csrf();
 
@@ -31,31 +47,58 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pageData['hero_title'] = trim($_POST['hero_title'] ?? '');
     $pageData['hero_desc'] = trim($_POST['hero_desc'] ?? '');
     $pageData['hero_bg_alt'] = trim($_POST['hero_bg_alt'] ?? '');
-    
-    $pageData['section1_badge'] = trim($_POST['section1_badge'] ?? '');
-    $pageData['section1_title'] = trim($_POST['section1_title'] ?? '');
-    $pageData['section1_text'] = trim($_POST['section1_text'] ?? '');
-    $pageData['section1_img_alt'] = trim($_POST['section1_img_alt'] ?? '');
+
+    if ($showSectionEditor) {
+        $pageData['section1_badge'] = trim($_POST['section1_badge'] ?? '');
+        $pageData['section1_title'] = trim($_POST['section1_title'] ?? '');
+        $pageData['section1_text'] = trim($_POST['section1_text'] ?? '');
+        $pageData['section1_img_alt'] = trim($_POST['section1_img_alt'] ?? '');
+    }
 
     // SEO Meta Title & Meta Description
     $pageData['meta_title'] = trim($_POST['meta_title'] ?? '');
     $pageData['meta_description'] = trim($_POST['meta_description'] ?? '');
 
+    $uploadErrors = [];
+
     // Handle Hero Banner image upload
     $heroUpload = cms_handle_upload('hero_bg_file', 'breadcrumbs');
-    if ($heroUpload && !isset($heroUpload['error'])) {
+    if (is_array($heroUpload) && isset($heroUpload['error'])) {
+        $uploadErrors[] = 'Hero banner: ' . $heroUpload['error'];
+    } elseif (is_array($heroUpload) && !empty($heroUpload['path'])) {
         $pageData['hero_bg'] = $heroUpload['path'];
     }
 
     // Handle Section Image upload
-    $secUpload = cms_handle_upload('section1_img_file', 'services');
-    if ($secUpload && !isset($secUpload['error'])) {
-        $pageData['section1_image'] = $secUpload['path'];
+    if ($showSectionEditor) {
+        $secUpload = cms_handle_upload('section1_img_file', 'services');
+        if (is_array($secUpload) && isset($secUpload['error'])) {
+            $uploadErrors[] = 'Section photo: ' . $secUpload['error'];
+        } elseif (is_array($secUpload) && !empty($secUpload['path'])) {
+            $pageData['section1_image'] = $secUpload['path'];
+            // A new photo invalidates any old alt-text placeholder, but keep a
+            // real alt tag the editor already wrote.
+            if (empty($pageData['section1_img_alt'])) {
+                $pageData['section1_img_alt'] = $pageData['section1_title'] ?? '';
+            }
+        }
     }
 
-    file_put_contents($pageDataFile, json_encode($pageData, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE), LOCK_EX);
+    $dataDir = dirname($pageDataFile);
+    if (!is_dir($dataDir)) {
+        @mkdir($dataDir, 0755, true);
+    }
 
-    cms_set_flash('success', 'Page content, SEO metadata, and images saved successfully!');
+    $json = json_encode($pageData, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+    $saved = ($json !== false) && file_put_contents($pageDataFile, $json, LOCK_EX) !== false;
+
+    if (!$saved) {
+        cms_set_flash('error', 'Could not save this page. Please check that data/pages is writable on the server.');
+    } elseif (!empty($uploadErrors)) {
+        cms_set_flash('error', 'Page content was saved, but an image upload failed: ' . implode(' ', $uploadErrors));
+    } else {
+        cms_set_flash('success', 'Page content, SEO metadata, and images saved successfully!');
+    }
     header('Location: page-edit.php?slug=' . urlencode($slug));
     exit;
 }
@@ -97,6 +140,7 @@ require_once __DIR__ . '/includes/header.php';
 
     <form method="POST" action="" enctype="multipart/form-data" class="space-y-6">
         <?php echo cms_csrf_field(); ?>
+        <input type="hidden" name="slug" value="<?php echo htmlspecialchars($slug); ?>">
 
         <!-- SEO Meta Tags Card -->
         <div class="bg-gradient-to-br from-slate-50 to-blue-50/30 p-5 rounded-2xl border border-blue-100/80 space-y-4 shadow-sm">
@@ -136,6 +180,7 @@ require_once __DIR__ . '/includes/header.php';
                 <div>
                     <label class="block text-xs font-bold text-slate-700 mb-1">Top Badge Text</label>
                     <input type="text" name="hero_badge" value="<?php echo htmlspecialchars($pageData['hero_badge'] ?? ''); ?>" class="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    <p class="text-[10px] text-slate-500 mt-1">Generic labels such as "General Guide" are replaced by this page's default badge on the live site. Enter a specific label to override it.</p>
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-slate-700 mb-1">Page Hero Title (H1)</label>
@@ -171,11 +216,13 @@ require_once __DIR__ . '/includes/header.php';
             </div>
         </div>
 
+        <?php if ($showSectionEditor): ?>
         <!-- Main Section Content Box -->
         <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4">
             <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center">
                 <i class="fas fa-align-left text-brand-blue mr-2"></i> Main Body Section Content
             </h3>
+            <p class="text-[10px] text-slate-500 -mt-2">This section is rendered in the body of this service/condition page. Auto-generated placeholder text is ignored on the live site, so the page's built-in copy stays visible until you enter specific content here.</p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
@@ -214,6 +261,17 @@ require_once __DIR__ . '/includes/header.php';
                 </div>
             </div>
         </div>
+        <?php else: ?>
+        <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+            <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center mb-2">
+                <i class="fas fa-circle-info text-brand-blue mr-2"></i> Main Body Section Content
+            </h3>
+            <p class="text-[11px] text-slate-500 leading-relaxed">
+                The body of this page is built into its template and is not controlled by the fields above.
+                You can still edit the hero banner, hero text, image alt tags and SEO metadata here.
+            </p>
+        </div>
+        <?php endif; ?>
 
         <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
             <a href="pages.php" class="text-xs text-slate-500 font-semibold hover:underline">&larr; Back to All Pages</a>

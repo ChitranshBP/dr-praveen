@@ -205,6 +205,7 @@ $flash = cms_get_flash();
         }
         .cms-quill-fullscreen-mode .ql-toolbar {
             background: #ffffff !important;
+        }
         /* Links inside Editor */
         .ql-editor a {
             color: #2563eb !important;

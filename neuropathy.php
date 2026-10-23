@@ -11,17 +11,30 @@ $pageContent = get_page_content('neuropathy', [
     'hero_desc'  => 'Advanced nerve diagnostics and targeted pain relief strategies for chronic burning, tingling, and numbness. Dr. Praveen Gupta provides customized care for long-term nerve health.',
     'hero_bg'    => 'assets/breadcrumbs/conditions/Peripheral%20Neuropathy.png',
 ]);
+
+$section = get_page_section($pageContent, [
+    'badge' => 'Understanding',
+    'title' => 'What is Peripheral Neuropathy?',
+    'text' => "Peripheral neuropathy refers to damage or dysfunction of the peripheral nerves, which carry information between the brain, spinal cord, and the rest of the body. This condition often results in numbness, tingling, weakness, or sharp, burning pain, commonly starting in the feet and hands (known as a \"stocking-glove\" pattern).\n\nNerve damage can stem from diabetes, metabolic disorders, vitamin deficiencies, autoimmune diseases, or toxin exposures. Our clinical team focuses on identifying the root cause to halt nerve decline, relieve painful symptoms, and restore normal sensation.",
+    'image' => 'assets/services/neuropathy.png',
+    'image_alt' => 'Understanding Peripheral Neuropathy',
+]);
+$heroBg = cms_media_path($pageContent['hero_bg'] ?? '');
+$heroAlt = trim((string)($pageContent['hero_bg_alt'] ?? ''));
+if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'Dr. Praveen Gupta'));
 ?>
 
 <!-- Page Hero -->
 <section class="relative overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20">
     <!-- Background image -->
-    <img src="<?php echo htmlspecialchars($pageContent['hero_bg']); ?>" alt=""
+    <?php if ($heroBg): ?>
+    <img src="<?php echo htmlspecialchars($heroBg); ?>" alt="<?php echo htmlspecialchars($heroAlt); ?>"
          fetchpriority="high"
          class="absolute inset-0 w-full h-full object-cover object-[78%_center] md:object-right pointer-events-none select-none">
 
     <!-- Legibility overlay -->
     <div class="absolute inset-0 bg-gradient-to-r from-deep-indigo/95 via-deep-indigo/75 to-deep-indigo/35 md:to-transparent"></div>
+    <?php endif; ?>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl text-left animate-fade-in-up">
@@ -69,14 +82,9 @@ $pageContent = get_page_content('neuropathy', [
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-2 gap-16 items-center">
             <div class="animate-slide-in-left">
-                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Understanding</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">What is Peripheral Neuropathy?</h2>
-                <p class="text-dark-grey/70 leading-relaxed mb-6">
-                    Peripheral neuropathy refers to damage or dysfunction of the peripheral nerves, which carry information between the brain, spinal cord, and the rest of the body. This condition often results in numbness, tingling, weakness, or sharp, burning pain, commonly starting in the feet and hands (known as a "stocking-glove" pattern).
-                </p>
-                <p class="text-dark-grey/70 leading-relaxed mb-8">
-                    Nerve damage can stem from diabetes, metabolic disorders, vitamin deficiencies, autoimmune diseases, or toxin exposures. Our clinical team focuses on identifying the root cause to halt nerve decline, relieve painful symptoms, and restore normal sensation.
-                </p>
+                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider"><?php echo htmlspecialchars($section['badge']); ?></span>
+                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6"><?php echo htmlspecialchars($section['title']); ?></h2>
+                <?php echo cms_section_paragraphs($section['text']); ?>
 
                 <!-- Key Facts -->
                 <div class="grid grid-cols-2 gap-4">
@@ -122,7 +130,7 @@ $pageContent = get_page_content('neuropathy', [
             <!-- Image Side -->
             <div class="relative flex justify-center lg:justify-end animate-slide-in-right">
                 <div class="relative w-full max-w-md lg:max-w-none aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-soft-cyan to-silver-grey border border-silver-grey/20">
-                    <img src="assets/services/neuropathy.png" alt="Understanding Peripheral Neuropathy" class="w-full h-full object-cover">
+                    <img src="<?php echo htmlspecialchars($section['image']); ?>" alt="<?php echo htmlspecialchars($section['image_alt']); ?>" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>

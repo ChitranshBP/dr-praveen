@@ -11,17 +11,30 @@ $pageContent = get_page_content('brain-tumor-surgery', [
     'hero_desc'  => 'Advanced surgical techniques using state-of-the-art brain mapping, computer-guided neuronavigation, and minimally invasive approaches for maximum tumor removal and safety.',
     'hero_bg'    => 'assets/breadcrumbs/dr-parveen-services-breadcrumb/Brain%20Tumor%20Surgery.png',
 ]);
+
+$section = get_page_section($pageContent, [
+    'badge' => 'Neurosurgical Excellence',
+    'title' => 'Comprehensive Brain Tumor Care',
+    'text' => "Brain tumor treatment requires extreme precision and a multidisciplinary approach. Our clinic specializes in both benign and malignant brain tumors, using advanced imaging to map critical speech and motor pathways before a single incision is made.\n\nThe goal in every case is the same: remove as much of the tumor as safely possible while preserving the brain function that defines who you are. Surgery is planned jointly with neuro-oncology and radiation specialists so the whole pathway is agreed before treatment begins.",
+    'image' => 'assets/services/brain-tumor.png',
+    'image_alt' => 'Brain Tumor Surgery',
+]);
+$heroBg = cms_media_path($pageContent['hero_bg'] ?? '');
+$heroAlt = trim((string)($pageContent['hero_bg_alt'] ?? ''));
+if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'Dr. Praveen Gupta'));
 ?>
 
 <!-- Page Hero -->
 <section class="relative overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20">
     <!-- Background image -->
-    <img src="<?php echo htmlspecialchars($pageContent['hero_bg']); ?>" alt=""
+    <?php if ($heroBg): ?>
+    <img src="<?php echo htmlspecialchars($heroBg); ?>" alt="<?php echo htmlspecialchars($heroAlt); ?>"
          fetchpriority="high"
          class="absolute inset-0 w-full h-full object-cover object-[78%_center] md:object-right pointer-events-none select-none">
 
     <!-- Legibility overlay -->
     <div class="absolute inset-0 bg-gradient-to-r from-deep-indigo/95 via-deep-indigo/75 to-deep-indigo/35 md:to-transparent"></div>
+    <?php endif; ?>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl text-left animate-fade-in-up">
@@ -66,14 +79,9 @@ $pageContent = get_page_content('brain-tumor-surgery', [
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-2 gap-16 items-center">
             <div class="animate-slide-in-left">
-                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Neurosurgical Excellence</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Comprehensive Brain Tumor Care</h2>
-                <p class="text-dark-grey/70 leading-relaxed mb-6">
-                    Brain tumor treatment requires extreme precision and a multidisciplinary approach. Our clinic specializes in both benign and malignant brain tumors, using advanced imaging to map critical speech and motor pathways before a single incision is made.
-                </p>
-                <p class="text-dark-grey/70 leading-relaxed mb-8">
-                    The goal in every case is the same: remove as much of the tumor as safely possible while preserving the brain function that defines who you are. Surgery is planned jointly with neuro-oncology and radiation specialists so the whole pathway is agreed before treatment begins.
-                </p>
+                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider"><?php echo htmlspecialchars($section['badge']); ?></span>
+                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6"><?php echo htmlspecialchars($section['title']); ?></h2>
+                <?php echo cms_section_paragraphs($section['text']); ?>
 
                 <!-- Key Facts -->
                 <div class="grid grid-cols-2 gap-4">
@@ -119,7 +127,7 @@ $pageContent = get_page_content('brain-tumor-surgery', [
             <!-- Image Side -->
             <div class="relative flex justify-center lg:justify-end animate-slide-in-right">
                 <div class="relative w-full max-w-md lg:max-w-none aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-soft-cyan to-silver-grey border border-silver-grey/20">
-                    <img src="assets/services/brain-tumor.png" alt="Brain Tumor Surgery" class="w-full h-full object-cover">
+                    <img src="<?php echo htmlspecialchars($section['image']); ?>" alt="<?php echo htmlspecialchars($section['image_alt']); ?>" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>

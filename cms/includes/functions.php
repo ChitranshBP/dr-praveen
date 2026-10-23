@@ -24,8 +24,24 @@ function cms_get_flash() {
 
 // File Upload Helper with WebP optimization
 function cms_handle_upload($fileKey, $subfolder = '') {
-    if (!isset($_FILES[$fileKey]) || $_FILES[$fileKey]['error'] !== UPLOAD_ERR_OK) {
+    if (!isset($_FILES[$fileKey])) {
         return null;
+    }
+
+    $uploadError = $_FILES[$fileKey]['error'] ?? UPLOAD_ERR_NO_FILE;
+    if ($uploadError === UPLOAD_ERR_NO_FILE) {
+        return null;
+    }
+    if ($uploadError !== UPLOAD_ERR_OK) {
+        $messages = [
+            UPLOAD_ERR_INI_SIZE   => 'The file is larger than the server upload limit.',
+            UPLOAD_ERR_FORM_SIZE  => 'The file is larger than the form upload limit.',
+            UPLOAD_ERR_PARTIAL    => 'The file was only partially uploaded. Please try again.',
+            UPLOAD_ERR_NO_TMP_DIR => 'The server has no temporary upload folder configured.',
+            UPLOAD_ERR_CANT_WRITE => 'The server could not write the uploaded file to disk.',
+            UPLOAD_ERR_EXTENSION  => 'A server extension stopped the upload.',
+        ];
+        return ['error' => $messages[$uploadError] ?? 'Upload failed (error code ' . $uploadError . ').'];
     }
 
     $file = $_FILES[$fileKey];

@@ -11,17 +11,30 @@ $pageContent = get_page_content('brain-stroke-helpline', [
     'hero_desc'  => 'A stroke is a medical emergency. Every minute counts. Under the leadership of Dr. Praveen Gupta, Marengo Asia Hospital offers round-the-clock emergency thrombolysis and mechanical thrombectomy.',
     'hero_bg'    => 'assets/breadcrumbs/patient.png'
 ]);
+
+$section = get_page_section($pageContent, [
+    'badge' => 'Clinical Protocol',
+    'title' => 'Golden Hour Window',
+    'text' => 'When a stroke strikes, millions of brain cells die every minute. Reversing this damage is highly dependent on how quickly blood flow is restored.',
+    'image' => '',
+    'image_alt' => 'Emergency stroke protocol',
+]);
+$heroBg = cms_media_path($pageContent['hero_bg'] ?? '');
+$heroAlt = trim((string)($pageContent['hero_bg_alt'] ?? ''));
+if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'Dr. Praveen Gupta'));
 ?>
 
 <!-- Page Hero -->
 <section class="relative overflow-hidden bg-gradient-to-br from-deep-indigo via-electric-blue to-cyan-accent text-white pt-28 md:pt-32 pb-8 md:pb-10 -mt-20">
     <!-- Background image -->
-    <img src="<?php echo htmlspecialchars($pageContent['hero_bg']); ?>" alt=""
+    <?php if ($heroBg): ?>
+    <img src="<?php echo htmlspecialchars($heroBg); ?>" alt="<?php echo htmlspecialchars($heroAlt); ?>"
          fetchpriority="high"
          class="absolute inset-0 w-full h-full object-cover object-[78%_center] md:object-right pointer-events-none select-none">
 
     <!-- Legibility overlay -->
     <div class="absolute inset-0 bg-gradient-to-r from-deep-indigo/95 via-deep-indigo/75 to-deep-indigo/35 md:to-transparent"></div>
+    <?php endif; ?>
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl text-left animate-fade-in-up">
@@ -124,11 +137,14 @@ $pageContent = get_page_content('brain-stroke-helpline', [
             <!-- Left Card: Urgent Care Timelines -->
             <div class="lg:col-span-5 space-y-6">
                 <div>
-                    <span class="text-red-600 font-bold text-xs uppercase tracking-wider">Clinical Protocol</span>
-                    <h2 class="text-3xl font-bold text-dark-grey mt-2 mb-4">Golden Hour Window</h2>
-                    <p class="text-sm text-dark-grey/65 leading-relaxed">
-                        When a stroke strikes, millions of brain cells die every minute. Reversing this damage is highly dependent on how quickly blood flow is restored.
-                    </p>
+                    <span class="text-red-600 font-bold text-xs uppercase tracking-wider"><?php echo htmlspecialchars($section['badge']); ?></span>
+                    <h2 class="text-3xl font-bold text-dark-grey mt-2 mb-4"><?php echo htmlspecialchars($section['title']); ?></h2>
+                    <?php echo cms_section_paragraphs($section['text'], 'text-sm text-dark-grey/65 leading-relaxed', 'mb-0'); ?>
+                    <?php if (!empty($section['image'])): ?>
+                    <div class="mt-4 rounded-2xl overflow-hidden border border-slate-200/60">
+                        <img src="<?php echo htmlspecialchars($section['image']); ?>" alt="<?php echo htmlspecialchars($section['image_alt']); ?>" class="w-full h-auto object-cover">
+                    </div>
+                    <?php endif; ?>
                 </div>
                 <div class="space-y-4">
                     <div class="flex items-start space-x-3.5">
