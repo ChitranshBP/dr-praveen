@@ -1,0 +1,1105 @@
+{
+    "brain-tumor-surgery": {
+        "techniques": {
+            "label": "Surgical Techniques",
+            "type": "cards",
+            "badge": "Techniques",
+            "title": "How We Operate",
+            "description": "Three techniques underpin every tumor resection we perform — chosen and combined according to where the tumor sits and what it touches.",
+            "items": [
+                {
+                    "icon": "fa-shield-alt",
+                    "color": "electric-blue",
+                    "title": "Minimally Invasive Removal",
+                    "text": "Micro-neurosurgery and keyhole techniques reach deep-seated tumors through smaller incisions, minimising tissue trauma and shortening recovery.",
+                    "tags": [
+                        "Keyhole Access",
+                        "Faster Recovery"
+                    ]
+                },
+                {
+                    "icon": "fa-crosshairs",
+                    "color": "cyan-accent",
+                    "title": "Intraoperative Neuronavigation",
+                    "text": "A high-resolution computer guidance system — effectively GPS for the brain — tracks tumor boundaries with sub-millimetre precision throughout the operation.",
+                    "tags": [
+                        "Sub-mm Precision",
+                        "Live Guidance"
+                    ]
+                },
+                {
+                    "icon": "fa-comments",
+                    "color": "deep-indigo",
+                    "title": "Awake Brain Mapping",
+                    "text": "For tumors near speech or movement centres, the patient stays awake and responsive so those functions can be tested live and protected during resection.",
+                    "tags": [
+                        "Speech Safety",
+                        "Motor Safety"
+                    ]
+                }
+            ]
+        },
+        "experience": {
+            "label": "Treatment Journey",
+            "type": "steps",
+            "badge": "Experience",
+            "title": "What to Expect, Start to Finish",
+            "description": "Surgery is one stage in a longer pathway. Here is how care runs from the first scan through to rehabilitation.",
+            "items": [
+                {
+                    "title": "Diagnosis & Imaging",
+                    "text": "High-resolution MRI and functional imaging establish the tumor type, its exact boundaries, and which pathways sit closest to it."
+                },
+                {
+                    "title": "Surgical Planning",
+                    "text": "The approach, technique and expected outcome are agreed jointly with neuro-oncology and radiation specialists, then explained to you and your family."
+                },
+                {
+                    "title": "Micro-Neurosurgery",
+                    "text": "Resection under 3D microscopy with live neuronavigation and continuous neuromonitoring, so neural integrity is checked at every stage."
+                },
+                {
+                    "title": "Recovery & Rehab",
+                    "text": "Focused physical, occupational and cognitive therapy to regain strength and coordination, with follow-up medical management throughout."
+                }
+            ]
+        }
+    },
+    "spine-surgery": {
+        "conditions-we-treat": {
+            "label": "Conditions We Treat",
+            "type": "cards",
+            "badge": "Applications",
+            "title": "Conditions We Treat",
+            "description": "From nerve compression to structural instability, these are the spinal problems we see and correct most often.",
+            "items": [
+                {
+                    "title": "Herniated & Slip Discs",
+                    "text": "Relieving compressed sciatic nerves in the lumbar or cervical spine, restoring pain-free movement and sensation.",
+                    "icon": "fa-bone",
+                    "color": "electric-blue",
+                    "tags": [
+                        "Sciatica",
+                        "Nerve Relief"
+                    ]
+                },
+                {
+                    "title": "Spinal Canal Stenosis",
+                    "text": "Widening narrowed passages in the spinal canal to take pressure off the cord and restore walking capacity.",
+                    "icon": "fa-arrows-left-right",
+                    "color": "cyan-accent",
+                    "tags": [
+                        "Decompression",
+                        "Mobility"
+                    ]
+                },
+                {
+                    "title": "Spondylolisthesis",
+                    "text": "Stabilising slipped vertebrae using micro-fixation and fusion strategies that preserve as much natural motion as possible.",
+                    "icon": "fa-layer-group",
+                    "color": "deep-indigo",
+                    "tags": [
+                        "Micro-Fixation",
+                        "Stability"
+                    ]
+                }
+            ]
+        },
+        "what-to-expect": {
+            "label": "What to Expect, Start to Finish",
+            "type": "steps",
+            "badge": "Experience",
+            "title": "What to Expect, Start to Finish",
+            "description": "Most spinal problems never reach an operating theatre. Here is the full pathway, from first assessment through rehabilitation.",
+            "items": [
+                {
+                    "title": "Assessment & Imaging",
+                    "text": "Clinical examination alongside MRI or CT to identify exactly which structure is compressing which nerve, and how much."
+                },
+                {
+                    "title": "Conservative Management",
+                    "text": "Physiotherapy, targeted injections and medical management are tried first — many patients recover fully without surgery."
+                },
+                {
+                    "title": "Minimally Invasive Surgery",
+                    "text": "Where surgery is needed: laminectomy, microdiscectomy or keyhole fusion through tubular dilators with real-time neural mapping."
+                },
+                {
+                    "title": "Rehabilitation",
+                    "text": "Core mobilisation to safely rebuild lumbar stabilisers, plus posture and ergonomic training to prevent recurring micro-stress on the joints."
+                }
+            ]
+        }
+    },
+    "neurovascular-surgery": {
+        "vascular-conditions": {
+            "label": "Vascular Conditions Managed",
+            "type": "cards",
+            "badge": "Applications",
+            "title": "Vascular Conditions Managed",
+            "description": "Each of these conditions carries a risk of sudden, catastrophic bleeding — which is why they are treated as time-critical.",
+            "items": [
+                {
+                    "title": "Cerebral Aneurysms",
+                    "text": "Preventing subarachnoid haemorrhage — bleeding around the brain — by securing the weak point through clipping or coiling.",
+                    "icon": "fa-circle-dot",
+                    "color": "electric-blue",
+                    "tags": [
+                        "Clipping",
+                        "Coiling"
+                    ]
+                },
+                {
+                    "title": "Arteriovenous Malformations",
+                    "text": "Resecting or embolising complex tangles of arteries and veins before they rupture and bleed into brain tissue.",
+                    "icon": "fa-diagram-project",
+                    "color": "cyan-accent",
+                    "tags": [
+                        "Resection",
+                        "Embolisation"
+                    ]
+                },
+                {
+                    "title": "Carotid Stenosis",
+                    "text": "Carotid endarterectomy or stenting to reopen the narrowed neck arteries that supply the brain, preventing acute stroke.",
+                    "icon": "fa-heart-pulse",
+                    "color": "deep-indigo",
+                    "tags": [
+                        "Endarterectomy",
+                        "Stenting"
+                    ]
+                }
+            ]
+        },
+        "what-to-expect": {
+            "label": "What to Expect, Start to Finish",
+            "type": "steps",
+            "badge": "Experience",
+            "title": "What to Expect, Start to Finish",
+            "description": "Vascular conditions demand hyper-acute responses. This is how a case moves from presentation to recovery.",
+            "items": [
+                {
+                    "title": "Urgent Imaging",
+                    "text": "CT, MRI and angiography establish where the vessel is weak or blocked, and how urgently it needs securing."
+                },
+                {
+                    "title": "Treatment Planning",
+                    "text": "The team decides between open microsurgery and an endovascular approach based on the location, size and shape of the lesion."
+                },
+                {
+                    "title": "Intervention",
+                    "text": "Surgical clipping under the microscope, or micro-catheters fed from the groin for coiling, stent-assisted reconstruction or flow diversion."
+                },
+                {
+                    "title": "Neuro-ICU & Follow-Up",
+                    "text": "Post-operative monitoring in the neuro-ICU to manage vascular spasm and intracranial pressure, then structured outpatient review."
+                }
+            ]
+        }
+    },
+    "functional-neurosurgery": {
+        "key-indications": {
+            "label": "Key Indications Treated",
+            "type": "cards",
+            "badge": "Applications",
+            "title": "Key Indications Treated",
+            "description": "Neuromodulation targets movement disorders where the underlying brain circuit, not the muscle, is the problem.",
+            "items": [
+                {
+                    "title": "DBS for Parkinson's",
+                    "text": "Reversing motor fluctuations and the severe medication side-effects that develop in advanced disease, restoring predictable daily function.",
+                    "icon": "fa-brain",
+                    "color": "electric-blue",
+                    "tags": [
+                        "Motor Control",
+                        "Fewer Side-Effects"
+                    ]
+                },
+                {
+                    "title": "Tremor Control",
+                    "text": "Suppressing severe essential tremor so patients can write, eat and hold objects with coordination they had lost.",
+                    "icon": "fa-hand-dots",
+                    "color": "cyan-accent",
+                    "tags": [
+                        "Essential Tremor",
+                        "Coordination"
+                    ]
+                },
+                {
+                    "title": "Dystonia Relief",
+                    "text": "Managing severe, painful muscle spasms by modulating the specific brain circuits driving the abnormal contraction.",
+                    "icon": "fa-person-walking",
+                    "color": "deep-indigo",
+                    "tags": [
+                        "Spasm Relief",
+                        "Pain Control"
+                    ]
+                }
+            ]
+        },
+        "what-to-expect": {
+            "label": "What to Expect, Start to Finish",
+            "type": "steps",
+            "badge": "Experience",
+            "title": "What to Expect, Start to Finish",
+            "description": "DBS is a dynamic therapy — the implant is the midpoint of the pathway, not the end of it.",
+            "items": [
+                {
+                    "title": "Candidate Selection",
+                    "text": "Detailed movement-disorder assessment establishes whether symptoms are likely to respond to stimulation, and which target is right."
+                },
+                {
+                    "title": "Stereotactic Planning",
+                    "text": "High-resolution imaging maps the precise brain co-ordinates for electrode placement, down to the millimetre."
+                },
+                {
+                    "title": "Electrode Implantation",
+                    "text": "Thin leads are placed in the movement-control regions, connected to a pacemaker-like generator implanted below the collarbone."
+                },
+                {
+                    "title": "Programming & Support",
+                    "text": "Wireless programming sessions tune pulse rate and voltage to the patient’s lifestyle, with caregiver guidance on charging and battery checks."
+                }
+            ]
+        }
+    },
+    "memory-clinic": {
+        "conditions-we-assess": {
+            "label": "Conditions We Assess",
+            "type": "cards",
+            "badge": "Applications",
+            "title": "Conditions We Assess",
+            "description": "Dementia affects the entire household, so our care plans cover the family alongside the patient.",
+            "items": [
+                {
+                    "title": "Alzheimer's & Dementia",
+                    "text": "Evaluating progressive cognitive decline, memory impairment, spatial disorientation and behavioural change through structured medical strategy.",
+                    "icon": "fa-brain",
+                    "color": "electric-blue",
+                    "tags": [
+                        "Early Diagnosis",
+                        "Progression Control"
+                    ]
+                },
+                {
+                    "title": "Mild Cognitive Impairment",
+                    "text": "Addressing early-stage memory change that exceeds normal ageing but does not yet interfere with daily living — the window where intervention matters most.",
+                    "icon": "fa-clock-rotate-left",
+                    "color": "cyan-accent",
+                    "tags": [
+                        "Early Window",
+                        "Monitoring"
+                    ]
+                },
+                {
+                    "title": "Caregiver Support",
+                    "text": "Behavioural strategies for confusion, mood change and disturbed sleep-wake cycles, plus home safety guidance to prevent falls and wandering.",
+                    "icon": "fa-people-roof",
+                    "color": "deep-indigo",
+                    "tags": [
+                        "Home Safety",
+                        "Family Training"
+                    ]
+                }
+            ]
+        },
+        "what-to-expect": {
+            "label": "What to Expect at Your Assessment",
+            "type": "steps",
+            "badge": "Experience",
+            "title": "What to Expect at Your Assessment",
+            "description": "A full memory assessment is methodical by design — the aim is to find every contributing factor, including the reversible ones.",
+            "items": [
+                {
+                    "title": "Cognitive Testing",
+                    "text": "Standardised memory, reasoning and speech assessments (MoCA, MMSE) establish an objective baseline to measure against."
+                },
+                {
+                    "title": "Advanced Brain Imaging",
+                    "text": "High-resolution brain MRI checks for tissue shrinkage, vascular damage and other structural causes of cognitive change."
+                },
+                {
+                    "title": "Laboratory Panels",
+                    "text": "Blood profiles rule out vitamin deficiencies, thyroid imbalance and other treatable contributors to memory loss."
+                },
+                {
+                    "title": "Care & Caregiver Plan",
+                    "text": "A combined plan covering medication, behavioural strategy, home safety and connection to respite services for the family."
+                }
+            ]
+        }
+    },
+    "rtms-therapy": {
+        "key-indications": {
+            "label": "Key Indications Treated",
+            "type": "cards",
+            "badge": "Applications",
+            "title": "Key Indications Treated",
+            "description": "rTMS is clinical neuromodulation that targets a variety of chronic, drug-resistant neurological conditions.",
+            "items": [
+                {
+                    "title": "Refractory Depression (TRD)",
+                    "text": "Stimulates the left dorsolateral prefrontal cortex (DLPFC), modulating neural activity to alleviate treatment-resistant mood disorders.",
+                    "icon": "fa-brain",
+                    "color": "electric-blue",
+                    "tags": [
+                        "Drug-Free",
+                        "Mood Support"
+                    ]
+                },
+                {
+                    "title": "Stroke Paralysis Recovery",
+                    "text": "Encourages neuroplasticity in damaged motor pathways to help patients recover arm/leg movement and coordination post-stroke.",
+                    "icon": "fa-hand-holding-hand",
+                    "color": "cyan-accent",
+                    "tags": [
+                        "Motor Skill",
+                        "Neuroplasticity"
+                    ]
+                },
+                {
+                    "title": "Chronic Pain & Migraine",
+                    "text": "Desensitizes pain pathways in the brain to reduce the frequency and intensity of chronic pain conditions and migraine attacks.",
+                    "icon": "fa-shield",
+                    "color": "deep-indigo",
+                    "tags": [
+                        "Pain Control",
+                        "Migraine Relief"
+                    ]
+                }
+            ]
+        },
+        "what-to-expect": {
+            "label": "What to Expect During rTMS Treatment",
+            "type": "steps",
+            "badge": "Experience",
+            "title": "What to Expect During rTMS Treatment",
+            "description": "Our protocol ensures patient comfort, clinical mapping accuracy, and tailored treatment parameters.",
+            "items": [
+                {
+                    "title": "Motor Thresholding",
+                    "text": "Mapping the patient's motor cortex to identify the exact threshold of stimulation and determine customized dosage guidelines."
+                },
+                {
+                    "title": "Coil Positioning",
+                    "text": "The treatment coil is positioned over the target brain region while the patient rests in a comfortable recliner chair."
+                },
+                {
+                    "title": "Magnetic Pulses",
+                    "text": "Magnetic pulses are delivered in patterns, producing a clicking sound. A tapping feeling on the scalp is felt."
+                },
+                {
+                    "title": "Immediate Discharge",
+                    "text": "Sessions last 20-30 minutes. Once complete, you can drive, work, and resume all activities immediately."
+                }
+            ]
+        }
+    },
+    "neuro-rehabilitation-center": {
+        "core-therapies": {
+            "label": "Core Rehabilitation Therapies",
+            "type": "cards",
+            "badge": "Our Services",
+            "title": "Core Rehabilitation Therapies",
+            "description": "We combine experienced clinical expertise with state-of-the-art diagnostic and recovery tracking tools to ensure precise treatments.",
+            "items": [
+                {
+                    "title": "Neuro-Physiotherapy",
+                    "text": "Focuses on rebuilding muscle strength, improving balance, training gait cycles, and recovering motor control following a stroke, spine injury, or onset of neuropathy.",
+                    "icon": "fa-walking",
+                    "color": "electric-blue",
+                    "tags": [
+                        "Gait Training",
+                        "Strength"
+                    ]
+                },
+                {
+                    "title": "Occupational Therapy",
+                    "text": "Aids patients in relearning daily living activities (bathing, dressing, writing). We provide cognitive adaptation, motor skills coordination, and assistive technology advice.",
+                    "icon": "fa-hands-holding",
+                    "color": "cyan-accent",
+                    "tags": [
+                        "Life Skills",
+                        "Fine Motor"
+                    ]
+                },
+                {
+                    "title": "Speech & Swallowing",
+                    "text": "Addresses dysphagia (swallowing difficulties) and speech clarity challenges (aphasia/dysarthria) caused by neurological damage, helping patients communicate safely.",
+                    "icon": "fa-volume-up",
+                    "color": "deep-indigo",
+                    "tags": [
+                        "Dysphagia",
+                        "Speech Clarity"
+                    ]
+                }
+            ]
+        },
+        "recovery-journey": {
+            "label": "Your Recovery Journey",
+            "type": "steps",
+            "badge": "Pathway",
+            "title": "Your Recovery Journey",
+            "description": "Our structured recovery protocol ensures patient progress is monitored continuously from admission to outpatient support.",
+            "items": [
+                {
+                    "title": "Baseline Assessment",
+                    "text": "Comprehensive clinical evaluation of motor control, cognitive functions, and sensory status to set realistic recovery targets."
+                },
+                {
+                    "title": "Custom Treatment",
+                    "text": "A personalized rehabilitation schedule combining physical therapy, speech pathology, and occupational exercises."
+                },
+                {
+                    "title": "Active Monitoring",
+                    "text": "We utilize advanced biofeedback tools (like Phezee) to monitor joint mobility and electromyography muscle recovery trends in real-time."
+                },
+                {
+                    "title": "Home Care Care",
+                    "text": "Preparing patients for discharge with customized home care guides, training caregivers, and setting up periodic checkups."
+                }
+            ]
+        }
+    },
+    "stroke": {
+        "types": {
+            "label": "Types of Stroke",
+            "type": "cards",
+            "badge": "Classification",
+            "title": "Types of Stroke",
+            "description": "Strokes are divided into categories based on whether they involve blood vessel blockage or rupture.",
+            "items": [
+                {
+                    "title": "Ischemic Stroke",
+                    "text": "The most common type (accounts for 87% of strokes). Caused by a blood clot blocking an artery that supplies blood to the brain, cutting off oxygen.",
+                    "icon": "fa-circle-minus",
+                    "color": "electric-blue",
+                    "tags": [
+                        "Clot Blockage",
+                        "Thrombolysis"
+                    ]
+                },
+                {
+                    "title": "Hemorrhagic Stroke",
+                    "text": "Occurs when a weakened blood vessel ruptures and leaks blood into the surrounding brain tissue, causing severe local pressure and damage.",
+                    "icon": "fa-droplet",
+                    "color": "cyan-accent",
+                    "tags": [
+                        "Vessel Rupture",
+                        "Bleeding Care"
+                    ]
+                },
+                {
+                    "title": "Transient Ischemic Attack (TIA)",
+                    "text": "Known as a \"mini-stroke.\" Blood flow is blocked temporarily (often resolving within minutes). Although symptoms fade quickly, a TIA is a warning sign of an impending major stroke.",
+                    "icon": "fa-triangle-exclamation",
+                    "color": "deep-indigo",
+                    "tags": [
+                        "Temporary Block",
+                        "Warning Indicator"
+                    ]
+                }
+            ]
+        },
+        "diagnosis": {
+            "label": "How We Diagnose Stroke",
+            "type": "steps",
+            "badge": "Diagnosis",
+            "title": "How We Diagnose Stroke",
+            "description": "Emergency diagnostics are completed within minutes of arrival to determine if a stroke is ischemic or hemorrhagic, guiding immediate intervention.",
+            "items": [
+                {
+                    "title": "Rapid Neuro Exam",
+                    "text": "Immediate clinical checking of sensory inputs, pupillary reflexes, speech clarity, and motor strengths to assess severity."
+                },
+                {
+                    "title": "Emergency Brain CT",
+                    "text": "Fast imaging to rule out brain bleeding (hemorrhage) before prescribing blood thinners or clot-busting medications."
+                },
+                {
+                    "title": "Brain MRI & MRA",
+                    "text": "Detailed imaging scan to trace exact brain tissue damage locations and map arterial blood flow pathways."
+                },
+                {
+                    "title": "Vascular Ultrasound",
+                    "text": "Carotid duplex ultrasound checks for narrow neck arteries or plaques that could spark subsequent strokes."
+                }
+            ],
+            "options": {
+                "card_bg": "bg-white"
+            }
+        }
+    },
+    "epilepsy": {
+        "types": {
+            "label": "Types of Seizures",
+            "type": "cards",
+            "badge": "Recognition",
+            "title": "Types of Seizures",
+            "description": "Understanding the different types of seizures is crucial for proper diagnosis and treatment. Seizures are categorized based on where they begin in the brain.",
+            "items": [
+                {
+                    "title": "Focal Onset Seizures",
+                    "text": "Begin in one area of the brain. May cause changes in sensation, emotions, or movements while the person remains conscious (focal aware) or may cause loss of awareness (focal impaired awareness).",
+                    "icon": "fa-brain",
+                    "color": "electric-blue",
+                    "tags": [
+                        "Motor",
+                        "Non-Motor"
+                    ]
+                },
+                {
+                    "title": "Generalized Onset Seizures",
+                    "text": "Affect both sides of the brain simultaneously from the start. These include absence seizures (brief loss of awareness), tonic seizures (muscle stiffening), and clonic seizures (rhythmic jerking).",
+                    "icon": "fa-bolt",
+                    "color": "cyan-accent",
+                    "tags": [
+                        "Tonic-Clonic",
+                        "Absence"
+                    ]
+                },
+                {
+                    "title": "Unknown Onset Seizures",
+                    "text": "When the beginning of a seizure cannot be determined as focal or generalized. Further testing and monitoring may be needed to classify the seizure type accurately.",
+                    "icon": "fa-question",
+                    "color": "deep-indigo",
+                    "tags": [
+                        "Unclassified",
+                        "Diagnostic"
+                    ]
+                }
+            ]
+        },
+        "diagnosis": {
+            "label": "How We Diagnose Epilepsy",
+            "type": "steps",
+            "badge": "Diagnosis",
+            "title": "How We Diagnose Epilepsy",
+            "description": "Accurate diagnosis is the foundation of effective treatment. Our comprehensive diagnostic approach combines clinical evaluation with advanced technology to identify the type and cause of your seizures.",
+            "items": [
+                {
+                    "title": "Clinical Assessment",
+                    "text": "Detailed review of your medical history, seizure description, family history, and physical examination to understand your symptoms.",
+                    "bullets": [
+                        "Medical history review",
+                        "Seizure description",
+                        "Physical examination"
+                    ]
+                },
+                {
+                    "title": "EEG Monitoring",
+                    "text": "Electroencephalogram (EEG) records brain electrical activity to identify seizure patterns and determine the seizure focus.",
+                    "bullets": [
+                        "Standard EEG",
+                        "Video EEG monitoring",
+                        "Ambulatory EEG"
+                    ]
+                },
+                {
+                    "title": "Advanced Imaging",
+                    "text": "MRI and CT scans to identify structural abnormalities, tumors, or brain lesions that may be causing seizures.",
+                    "bullets": [
+                        "High-resolution MRI",
+                        "Functional MRI",
+                        "PET scans"
+                    ]
+                },
+                {
+                    "title": "Lab Tests",
+                    "text": "Blood tests and other laboratory investigations to rule out metabolic causes and identify any underlying conditions.",
+                    "bullets": [
+                        "Blood panel",
+                        "Metabolic screening",
+                        "Genetic testing"
+                    ]
+                }
+            ],
+            "options": {
+                "card_bg": "bg-white"
+            }
+        }
+    },
+    "headache": {
+        "types": {
+            "label": "Common Headache Types",
+            "type": "cards",
+            "badge": "Classification",
+            "title": "Common Headache Types",
+            "description": "Headaches are classified as primary (not caused by another condition) or secondary (caused by an underlying health problem).",
+            "items": [
+                {
+                    "title": "Tension Headache",
+                    "text": "The most common type, causing a constant dull ache or feeling of tight band pressure around the forehead, back of the head, and neck. Usually related to stress or muscle tension.",
+                    "icon": "fa-head-side-virus",
+                    "color": "electric-blue",
+                    "tags": [
+                        "Stress-Related",
+                        "Muscle Tension"
+                    ]
+                },
+                {
+                    "title": "Cluster Headache",
+                    "text": "Severe, piercing pain that occurs in cycles or clusters, usually concentrated around one eye. Often accompanied by watering of the eye, nasal congestion, and restlessness.",
+                    "icon": "fa-bolt",
+                    "color": "cyan-accent",
+                    "tags": [
+                        "Cyclic Pain",
+                        "One-Sided"
+                    ]
+                },
+                {
+                    "title": "Secondary Headache",
+                    "text": "Headaches resulting from other medical conditions, such as sinus infections, dental problems, high blood pressure, head injuries, or blood vessel issues in the brain.",
+                    "icon": "fa-circle-info",
+                    "color": "deep-indigo",
+                    "tags": [
+                        "Symptomatic",
+                        "Diagnostic Needs"
+                    ]
+                }
+            ]
+        },
+        "diagnosis": {
+            "label": "Diagnosing Headache Disorders",
+            "type": "steps",
+            "badge": "Diagnosis",
+            "title": "Diagnosing Headache Disorders",
+            "description": "Accurate classification is key. We run dedicated neurological evaluations to differentiate harmless primary headaches from complex secondary conditions.",
+            "items": [
+                {
+                    "title": "Medical History",
+                    "text": "In-depth evaluation of your headache patterns, severity, location, duration, family history, and possible lifestyle triggers."
+                },
+                {
+                    "title": "Neurological Exam",
+                    "text": "Testing motor skills, cranial nerve function, sensory responses, balance, and reflexes to verify neurological integrity."
+                },
+                {
+                    "title": "Brain MRI / CT",
+                    "text": "High-resolution imaging to rule out brain abnormalities, aneurysms, tumors, or internal structural issues."
+                },
+                {
+                    "title": "Lab Tests",
+                    "text": "Blood investigations to rule out toxic, endocrine, infectious, or systemic causes behind secondary headache symptoms."
+                }
+            ],
+            "options": {
+                "card_bg": "bg-white"
+            }
+        }
+    },
+    "migraine": {
+        "types": {
+            "label": "Types of Migraines",
+            "type": "cards",
+            "badge": "Recognition",
+            "title": "Types of Migraines",
+            "description": "Migraines are classified depending on the presence of sensory warning signs called auras.",
+            "items": [
+                {
+                    "title": "Migraine with Aura",
+                    "text": "Preceded by visual flashes, blind spots, tingling in hands/face, or temporary speech issues about 10-60 minutes before the headache begins.",
+                    "icon": "fa-eye",
+                    "color": "electric-blue",
+                    "tags": [
+                        "Visual Aura",
+                        "Sensory Warning"
+                    ]
+                },
+                {
+                    "title": "Migraine without Aura",
+                    "text": "The most common type. Severe, throbbing, one-sided pain occurs without prior warning signs, lasting 4-72 hours if left untreated.",
+                    "icon": "fa-head-side-slash",
+                    "color": "cyan-accent",
+                    "tags": [
+                        "Common Type",
+                        "Pulsating Pain"
+                    ]
+                },
+                {
+                    "title": "Chronic Migraine",
+                    "text": "Diagnosed when headaches occur on 15 or more days a month for at least 3 months, with at least 8 of those days presenting as typical migraines.",
+                    "icon": "fa-calendar-days",
+                    "color": "deep-indigo",
+                    "tags": [
+                        "Severe Pattern",
+                        "Daily Impact"
+                    ]
+                }
+            ]
+        },
+        "diagnosis": {
+            "label": "Diagnosing Migraines",
+            "type": "steps",
+            "badge": "Diagnosis",
+            "title": "Diagnosing Migraines",
+            "description": "We combine historical symptom tracking with diagnostic imaging to identify the specific migraine type and formulate a tailored care plan.",
+            "items": [
+                {
+                    "title": "Detailed History",
+                    "text": "Mapping pain frequency, location, duration, family history, and associated triggers like stress or diet."
+                },
+                {
+                    "title": "Neurological Exam",
+                    "text": "Checking reflexes, eye movements, sensation, cranial nerve responses, and coordination."
+                },
+                {
+                    "title": "Brain MRI",
+                    "text": "Advanced imaging scans to rule out secondary headache causes, structural issues, or vascular abnormalities."
+                },
+                {
+                    "title": "Trigger Mapping",
+                    "text": "Creating a digital diary tracking lifestyle patterns, hormonal cycles, sleep quality, and diet to narrow triggers."
+                }
+            ],
+            "options": {
+                "card_bg": "bg-white"
+            }
+        }
+    },
+    "parkinsons": {
+        "types": {
+            "label": "Parkinsonian Disorders",
+            "type": "cards",
+            "badge": "Recognition",
+            "title": "Parkinsonian Disorders",
+            "description": "Symptoms of slowness and tremors can be caused by idiopathic Parkinson's disease or other look-alike syndromes.",
+            "items": [
+                {
+                    "title": "Idiopathic Parkinson's",
+                    "text": "The classic form of the disease. Responsive to levodopa therapy. Primary symptoms include resting tremors, muscle stiffness, and slowness.",
+                    "icon": "fa-brain",
+                    "color": "electric-blue",
+                    "tags": [
+                        "Levodopa Responsive",
+                        "Classic Type"
+                    ]
+                },
+                {
+                    "title": "Parkinson-Plus",
+                    "text": "Syndromes like Multiple System Atrophy (MSA) or Progressive Supranuclear Palsy (PSP) that present with tremors but have additional symptoms and progress differently.",
+                    "icon": "fa-circle-nodes",
+                    "color": "cyan-accent",
+                    "tags": [
+                        "Atypical",
+                        "PSP & MSA"
+                    ]
+                },
+                {
+                    "title": "Drug-Induced",
+                    "text": "Reversible parkinsonism symptoms caused by certain medications (such as antipsychotics) that block dopamine receptors in the brain.",
+                    "icon": "fa-capsules",
+                    "color": "deep-indigo",
+                    "tags": [
+                        "Reversible",
+                        "Dopamine Block"
+                    ]
+                }
+            ]
+        },
+        "diagnosis": {
+            "label": "Diagnosing Parkinson's",
+            "type": "steps",
+            "badge": "Diagnosis",
+            "title": "Diagnosing Parkinson's",
+            "description": "Diagnosing Parkinson's relies primarily on expert clinical observation of motor patterns, reflexes, and response to specific dopaminergic drugs.",
+            "items": [
+                {
+                    "title": "Clinical Evaluation",
+                    "text": "Expert examination of resting tremors, motor rigidity, postural balance, and gait patterns."
+                },
+                {
+                    "title": "Drug Challenge",
+                    "text": "Assessing physical response to Levodopa medication. A significant improvement in motor speed supports a Parkinson's diagnosis."
+                },
+                {
+                    "title": "DaTscan Imaging",
+                    "text": "Dopamine Transporter SPECT scan tracing dopamine pathways in the brain to confirm neurodegenerative drop-offs."
+                },
+                {
+                    "title": "Brain MRI",
+                    "text": "High-resolution imaging scans to rule out atypical parkinsonism, strokes, fluid blockages, or brain stem abnormalities."
+                }
+            ],
+            "options": {
+                "card_bg": "bg-white"
+            }
+        }
+    },
+    "movement": {
+        "types": {
+            "label": "Common Movement Disorders",
+            "type": "cards",
+            "badge": "Recognition",
+            "title": "Common Movement Disorders",
+            "description": "Movement disorders present as involuntary muscle twitching, steady shaking, or a lack of coordination.",
+            "items": [
+                {
+                    "title": "Essential Tremor",
+                    "text": "A common nerve disorder causing involuntary shaking, typically in the hands during active tasks like writing, drinking, or holding objects.",
+                    "icon": "fa-hand-holding",
+                    "color": "electric-blue",
+                    "tags": [
+                        "Active Shaking",
+                        "Hands Focus"
+                    ]
+                },
+                {
+                    "title": "Dystonia",
+                    "text": "Causes involuntary muscle contractions, leading to repetitive twisting movements or abnormal postures (such as writer's cramp or cervical neck twisting).",
+                    "icon": "fa-arrows-spin",
+                    "color": "cyan-accent",
+                    "tags": [
+                        "Twisting Muscle",
+                        "Botox Treatment"
+                    ]
+                },
+                {
+                    "title": "Ataxia",
+                    "text": "A degenerative condition affecting the cerebellum, resulting in a severe lack of voluntary muscle coordination, balance problems, and unsteady walking.",
+                    "icon": "fa-person-running",
+                    "color": "deep-indigo",
+                    "tags": [
+                        "Cerebellum Focus",
+                        "Balance Loss"
+                    ]
+                }
+            ]
+        },
+        "diagnosis": {
+            "label": "Diagnosing Movement Disorders",
+            "type": "steps",
+            "badge": "Diagnosis",
+            "title": "Diagnosing Movement Disorders",
+            "description": "Diagnosing movement disorders combines expert motor skill tracking, nerve path conduction tests, and brain scans to map basal ganglia pathways.",
+            "items": [
+                {
+                    "title": "Motor Evaluation",
+                    "text": "In-depth testing of reflexes, gait patterns, tremor speed, range of motion, and fine motor skills."
+                },
+                {
+                    "title": "EMG & Nerve Studies",
+                    "text": "Electromyography (EMG) and Nerve Conduction Studies measure electrical pathways inside active muscles and peripheral nerves."
+                },
+                {
+                    "title": "Brain MRI",
+                    "text": "High-resolution imaging scans search for damage in the basal ganglia, cerebellum, or brainstem pathways."
+                },
+                {
+                    "title": "Genetic Screening",
+                    "text": "Investigating chromosomal factors for hereditary conditions like Huntington's disease, ataxia, or early-onset dystonia."
+                }
+            ],
+            "options": {
+                "card_bg": "bg-white"
+            }
+        }
+    },
+    "ms": {
+        "types": {
+            "label": "Types of Multiple Sclerosis",
+            "type": "cards",
+            "badge": "Recognition",
+            "title": "Types of Multiple Sclerosis",
+            "description": "Multiple Sclerosis manifests differently in each patient, following distinct progression patterns.",
+            "items": [
+                {
+                    "title": "Relapsing-Remitting MS (RRMS)",
+                    "text": "The most common form (85% of cases). Defined by clear relapses (attacks) followed by periods of remission where symptoms resolve completely or partially.",
+                    "icon": "fa-wave-square",
+                    "color": "electric-blue",
+                    "tags": [
+                        "Relapse Attacks",
+                        "Remission Phases"
+                    ]
+                },
+                {
+                    "title": "Primary Progressive MS (PPMS)",
+                    "text": "Steady worsening of symptoms from the onset without distinct relapses or remissions. Typically diagnosed in patients after age 40.",
+                    "icon": "fa-arrow-trend-up",
+                    "color": "cyan-accent",
+                    "tags": [
+                        "Steady Decline",
+                        "No Remission"
+                    ]
+                },
+                {
+                    "title": "Secondary Progressive (SPMS)",
+                    "text": "Follows an initial relapsing-remitting course. Over time, the disease transitions into a progressive phase with steady worsening of symptoms between attacks.",
+                    "icon": "fa-repeat",
+                    "color": "deep-indigo",
+                    "tags": [
+                        "Transition Phase",
+                        "Progressive Course"
+                    ]
+                }
+            ]
+        },
+        "diagnosis": {
+            "label": "Diagnosing Multiple Sclerosis",
+            "type": "steps",
+            "badge": "Diagnosis",
+            "title": "Diagnosing Multiple Sclerosis",
+            "description": "Since there is no single test for MS, diagnosis requires proving \"dissemination in time and space\"—lesions in different brain areas occurring at different times.",
+            "items": [
+                {
+                    "title": "Clinical Evaluation",
+                    "text": "A detailed history of neurological symptoms, relapses, and physical exams tracking sensory and motor nerve deficits."
+                },
+                {
+                    "title": "Brain & Spine MRI",
+                    "text": "High-resolution scans using contrast dye to detect active and scarred lesions (plaques) within myelin structures."
+                },
+                {
+                    "title": "Lumbar Puncture",
+                    "text": "Analyzing spinal fluid to look for oligoclonal bands or specific immunoglobulins indicative of an active CNS immune response."
+                },
+                {
+                    "title": "Evoked Potentials",
+                    "text": "Testing the speed of electrical signals traveling through visual or sensory nerve pathways to detect myelin slowing."
+                }
+            ],
+            "options": {
+                "card_bg": "bg-white"
+            }
+        }
+    },
+    "neuropathy": {
+        "types": {
+            "label": "Neuropathy Categories",
+            "type": "cards",
+            "badge": "Classification",
+            "title": "Neuropathy Categories",
+            "description": "Nerve damage is classified by its underlying trigger, guiding our targeted treatment approach.",
+            "items": [
+                {
+                    "title": "Diabetic Neuropathy",
+                    "text": "The most common form. High blood sugars over time damage small blood vessels that feed peripheral nerves, resulting in chronic numbness or burning in the feet.",
+                    "icon": "fa-house-medical",
+                    "color": "electric-blue",
+                    "tags": [
+                        "Metabolic Blood Sugar",
+                        "Stocking-Glove Pattern"
+                    ]
+                },
+                {
+                    "title": "Inflammatory Neuropathies",
+                    "text": "Autoimmune attacks on peripheral myelin. Includes acute Guillain-BarrÃ© Syndrome (GBS) and chronic CIDP, presenting with rapidly progressive muscle weakness.",
+                    "icon": "fa-shield-virus",
+                    "color": "cyan-accent",
+                    "tags": [
+                        "Autoimmune",
+                        "GBS & CIDP Care"
+                    ]
+                },
+                {
+                    "title": "Nutritional & Toxic Neuropathy",
+                    "text": "Nerve damage due to vitamin deficiencies (such as B12, B1, or B6), chronic alcohol consumption, heavy metals, or chemotherapy drugs.",
+                    "icon": "fa-leaf",
+                    "color": "deep-indigo",
+                    "tags": [
+                        "Vitamin B12 Deficit",
+                        "Chemotherapy Linked"
+                    ]
+                }
+            ]
+        },
+        "diagnosis": {
+            "label": "Diagnosing Neuropathy",
+            "type": "steps",
+            "badge": "Diagnosis",
+            "title": "Diagnosing Neuropathy",
+            "description": "Diagnosing peripheral neuropathy involves checking electrical conduction speed inside nerves, combined with lab screens to pinpoint root causes.",
+            "items": [
+                {
+                    "title": "EMG & NCV Studies",
+                    "text": "Nerve Conduction Velocity (NCV) tests and Electromyography (EMG) measure electrical activity in muscles to locate nerve compression or damage."
+                },
+                {
+                    "title": "Metabolic Lab Tests",
+                    "text": "Comprehensive blood screens checking HbA1c (diabetes), vitamin B12 levels, thyroid markers, renal functions, and autoantibodies."
+                },
+                {
+                    "title": "Quantitative Sensory",
+                    "text": "Sensory testing checking temperature shifts, touch thresholds, and vibration limits to identify large vs. small nerve fiber damage."
+                },
+                {
+                    "title": "Skin Biopsy",
+                    "text": "A minimally invasive, 3mm punch skin biopsy to check intraepidermal nerve fiber density, confirming small fiber neuropathy."
+                }
+            ],
+            "options": {
+                "card_bg": "bg-white"
+            }
+        }
+    },
+    "vertigo": {
+        "types": {
+            "label": "Common Vertigo Types",
+            "type": "cards",
+            "badge": "Recognition",
+            "title": "Common Vertigo Types",
+            "description": "Vertigo is categorized based on whether the origin is inside the inner ear balance canals or the brain.",
+            "items": [
+                {
+                    "title": "BPPV",
+                    "text": "Benign Paroxysmal Positional Vertigo. Triggered by specific head movements, caused by tiny calcium carbonate crystals displacing into the inner ear fluid canals.",
+                    "icon": "fa-arrows-spin",
+                    "color": "electric-blue",
+                    "tags": [
+                        "Ear Crystals",
+                        "Positional"
+                    ]
+                },
+                {
+                    "title": "Peripheral Vertigo",
+                    "text": "Originates in the inner ear balance nerves. Common causes include vestibular neuritis (viral infection of the nerve) and Meniere's disease (fluid build-up in the ear).",
+                    "icon": "fa-ear-deaf",
+                    "color": "cyan-accent",
+                    "tags": [
+                        "Inner Ear",
+                        "Nerve Swelling"
+                    ]
+                },
+                {
+                    "title": "Central Vertigo",
+                    "text": "Originates in the brainstem or cerebellum. Triggered by conditions like vestibular migraines, strokes, tumors, or multiple sclerosis.",
+                    "icon": "fa-brain",
+                    "color": "deep-indigo",
+                    "tags": [
+                        "Brain Stem",
+                        "Central Origins"
+                    ]
+                }
+            ]
+        },
+        "diagnosis": {
+            "label": "Diagnosing Vertigo",
+            "type": "steps",
+            "badge": "Diagnosis",
+            "title": "Diagnosing Vertigo",
+            "description": "Diagnosing vertigo involves checking both your balance systems and inner ear fluid pathways to identify positional triggers.",
+            "items": [
+                {
+                    "title": "Dix-Hallpike Maneuver",
+                    "text": "A clinical movement test to trigger positional nystagmus (involuntary eye movement) and verify BPPV in the canals."
+                },
+                {
+                    "title": "Vestibular Testing",
+                    "text": "Video-nystagmography (VNG) tests and caloric stimulation check inner ear balance responses."
+                },
+                {
+                    "title": "Brain MRI",
+                    "text": "High-resolution imaging to rule out brainstem strokes, multiple sclerosis plaques, acoustic neuromas, or tumors."
+                },
+                {
+                    "title": "Hearing Evaluation",
+                    "text": "Audiometry screening to rule out Meniere's disease or acoustic nerve issues that affect hearing pathways."
+                }
+            ],
+            "options": {
+                "card_bg": "bg-white"
+            }
+        }
+    }
+}

@@ -134,131 +134,17 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
     </div>
 </section>
 
-<!-- Surgical Techniques -->
+<!-- Surgical Techniques (managed in CMS → All Pages) -->
 <section class="py-12 bg-[#edf5f9]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Techniques</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">How We Operate</h2>
-            <p class="text-dark-grey/70 leading-relaxed">
-                Three techniques underpin every tumor resection we perform — chosen and combined according to where the tumor sits and what it touches.
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Technique 1 -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-electric-blue/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-electric-blue transition-all duration-300">
-                    <i class="fas fa-shield-alt text-electric-blue text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Minimally Invasive Removal</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Micro-neurosurgery and keyhole techniques reach deep-seated tumors through smaller incisions, minimising tissue trauma and shortening recovery.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Keyhole Access</span>
-                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Faster Recovery</span>
-                </div>
-            </div>
-
-            <!-- Technique 2 -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-cyan-accent/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-cyan-accent transition-all duration-300">
-                    <i class="fas fa-crosshairs text-cyan-accent text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Intraoperative Neuronavigation</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    A high-resolution computer guidance system — effectively GPS for the brain — tracks tumor boundaries with sub-millimetre precision throughout the operation.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Sub-mm Precision</span>
-                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Live Guidance</span>
-                </div>
-            </div>
-
-            <!-- Technique 3 -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-deep-indigo/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-deep-indigo transition-all duration-300">
-                    <i class="fas fa-comments text-deep-indigo text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Awake Brain Mapping</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    For tumors near speech or movement centres, the patient stays awake and responsive so those functions can be tested live and protected during resection.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Speech Safety</span>
-                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Motor Safety</span>
-                </div>
-            </div>
-        </div>
+        <?php cms_render_page_block('brain-tumor-surgery', 'techniques'); ?>
     </div>
 </section>
 
-<!-- Treatment Journey Steps -->
+<!-- Treatment Journey Steps (managed in CMS → All Pages) -->
 <section class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Experience</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">What to Expect, Start to Finish</h2>
-            <p class="text-dark-grey/70 leading-relaxed">
-                Surgery is one stage in a longer pathway. Here is how care runs from the first scan through to rehabilitation.
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            <!-- Step 1 -->
-            <div class="relative">
-                <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">1</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Diagnosis &amp; Imaging</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        High-resolution MRI and functional imaging establish the tumor type, its exact boundaries, and which pathways sit closest to it.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-
-            <!-- Step 2 -->
-            <div class="relative">
-                <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">2</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Surgical Planning</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        The approach, technique and expected outcome are agreed jointly with neuro-oncology and radiation specialists, then explained to you and your family.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-
-            <!-- Step 3 -->
-            <div class="relative">
-                <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">3</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Micro-Neurosurgery</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Resection under 3D microscopy with live neuronavigation and continuous neuromonitoring, so neural integrity is checked at every stage.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-
-            <!-- Step 4 -->
-            <div class="relative">
-                <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">4</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Recovery &amp; Rehab</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Focused physical, occupational and cognitive therapy to regain strength and coordination, with follow-up medical management throughout.
-                    </p>
-                </div>
-            </div>
-        </div>
+        <?php cms_render_page_block('brain-tumor-surgery', 'experience'); ?>
     </div>
 </section>
 

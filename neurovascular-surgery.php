@@ -137,123 +137,14 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
 <!-- Vascular Conditions Managed -->
 <section class="py-12 bg-[#edf5f9]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Applications</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Vascular Conditions Managed</h2>
-            <p class="text-dark-grey/70 leading-relaxed">
-                Each of these conditions carries a risk of sudden, catastrophic bleeding — which is why they are treated as time-critical.
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Card 1 -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-electric-blue/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-electric-blue transition-all duration-300">
-                    <i class="fas fa-circle-dot text-electric-blue text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Cerebral Aneurysms</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Preventing subarachnoid haemorrhage — bleeding around the brain — by securing the weak point through clipping or coiling.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Clipping</span>
-                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Coiling</span>
-                </div>
-            </div>
-            <!-- Card 2 -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-cyan-accent/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-cyan-accent transition-all duration-300">
-                    <i class="fas fa-diagram-project text-cyan-accent text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Arteriovenous Malformations</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Resecting or embolising complex tangles of arteries and veins before they rupture and bleed into brain tissue.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Resection</span>
-                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Embolisation</span>
-                </div>
-            </div>
-            <!-- Card 3 -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-deep-indigo/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-deep-indigo transition-all duration-300">
-                    <i class="fas fa-heart-pulse text-deep-indigo text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Carotid Stenosis</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Carotid endarterectomy or stenting to reopen the narrowed neck arteries that supply the brain, preventing acute stroke.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Endarterectomy</span>
-                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Stenting</span>
-                </div>
-            </div>
-        </div>
+        <?php cms_render_page_block('neurovascular-surgery', 'vascular-conditions'); ?>
     </div>
 </section>
 
 <!-- Treatment Journey -->
 <section class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Experience</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">What to Expect, Start to Finish</h2>
-            <p class="text-dark-grey/70 leading-relaxed">
-                Vascular conditions demand hyper-acute responses. This is how a case moves from presentation to recovery.
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            <!-- Step 1 -->
-            <div class="relative">
-                <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">1</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Urgent Imaging</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        CT, MRI and angiography establish where the vessel is weak or blocked, and how urgently it needs securing.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-            <!-- Step 2 -->
-            <div class="relative">
-                <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">2</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Treatment Planning</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        The team decides between open microsurgery and an endovascular approach based on the location, size and shape of the lesion.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-            <!-- Step 3 -->
-            <div class="relative">
-                <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">3</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Intervention</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Surgical clipping under the microscope, or micro-catheters fed from the groin for coiling, stent-assisted reconstruction or flow diversion.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-            <!-- Step 4 -->
-            <div class="relative">
-                <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">4</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Neuro-ICU &amp; Follow-Up</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Post-operative monitoring in the neuro-ICU to manage vascular spasm and intracranial pressure, then structured outpatient review.
-                    </p>
-                </div>
-            </div>
-        </div>
+        <?php cms_render_page_block('neurovascular-surgery', 'what-to-expect'); ?>
     </div>
 </section>
 

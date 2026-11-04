@@ -139,60 +139,7 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
 <!-- Types of Vertigo -->
 <section class="py-12 bg-[#edf5f9]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Recognition</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Common Vertigo Types</h2>
-            <p class="text-dark-grey/70 leading-relaxed">
-                Vertigo is categorized based on whether the origin is inside the inner ear balance canals or the brain.
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- BPPV -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-electric-blue/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-electric-blue group-hover:text-white transition-all duration-300">
-                    <i class="fas fa-arrows-spin text-electric-blue text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">BPPV</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Benign Paroxysmal Positional Vertigo. Triggered by specific head movements, caused by tiny calcium carbonate crystals displacing into the inner ear fluid canals.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Ear Crystals</span>
-                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Positional</span>
-                </div>
-            </div>
-
-            <!-- Peripheral Vertigo -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-cyan-accent/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-cyan-accent transition-all duration-300">
-                    <i class="fas fa-ear-deaf text-cyan-accent text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Peripheral Vertigo</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Originates in the inner ear balance nerves. Common causes include vestibular neuritis (viral infection of the nerve) and Meniere's disease (fluid build-up in the ear).
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Inner Ear</span>
-                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Nerve Swelling</span>
-                </div>
-            </div>
-
-            <!-- Central Vertigo -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-deep-indigo/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-deep-indigo transition-all duration-300">
-                    <i class="fas fa-brain text-deep-indigo text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Central Vertigo</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Originates in the brainstem or cerebellum. Triggered by conditions like vestibular migraines, strokes, tumors, or multiple sclerosis.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Brain Stem</span>
-                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Central Origins</span>
-                </div>
-            </div>
-        </div>
+        <?php cms_render_page_block('vertigo', 'types'); ?>
 
         <!-- Warning Signs -->
         <div class="mt-12 bg-white rounded-2xl p-8 border border-silver-grey/20">
@@ -320,69 +267,7 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
 <!-- Diagnosis Section -->
 <section class="py-12 bg-[#edf5f9]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Diagnosis</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Diagnosing Vertigo</h2>
-            <p class="text-dark-grey/70 leading-relaxed">
-                Diagnosing vertigo involves checking both your balance systems and inner ear fluid pathways to identify positional triggers.
-            </p>
-        </div>
-
-        <!-- Diagnosis Steps -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            <!-- Step 1 -->
-            <div class="relative">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">1</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Dix-Hallpike Maneuver</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        A clinical movement test to trigger positional nystagmus (involuntary eye movement) and verify BPPV in the canals.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-
-            <!-- Step 2 -->
-            <div class="relative">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">2</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Vestibular Testing</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Video-nystagmography (VNG) tests and caloric stimulation check inner ear balance responses.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-
-            <!-- Step 3 -->
-            <div class="relative">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">3</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Brain MRI</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        High-resolution imaging to rule out brainstem strokes, multiple sclerosis plaques, acoustic neuromas, or tumors.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-
-            <!-- Step 4 -->
-            <div class="relative">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">4</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Hearing Evaluation</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Audiometry screening to rule out Meniere's disease or acoustic nerve issues that affect hearing pathways.
-                    </p>
-                </div>
-            </div>
-        </div>
+        <?php cms_render_page_block('vertigo', 'diagnosis'); ?>
 
         <div class="text-center">
             <p class="text-dark-grey/70 mb-6">Ready to get a proper diagnosis? Schedule a consultation today.</p>

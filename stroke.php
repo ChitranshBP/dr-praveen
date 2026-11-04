@@ -139,60 +139,7 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
 <!-- Types of Stroke -->
 <section class="py-12 bg-[#edf5f9]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Classification</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Types of Stroke</h2>
-            <p class="text-dark-grey/70 leading-relaxed">
-                Strokes are divided into categories based on whether they involve blood vessel blockage or rupture.
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Ischemic Stroke -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-electric-blue/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-electric-blue group-hover:text-white transition-all duration-300">
-                    <i class="fas fa-circle-minus text-electric-blue text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Ischemic Stroke</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    The most common type (accounts for 87% of strokes). Caused by a blood clot blocking an artery that supplies blood to the brain, cutting off oxygen.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Clot Blockage</span>
-                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Thrombolysis</span>
-                </div>
-            </div>
-
-            <!-- Hemorrhagic Stroke -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-cyan-accent/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-cyan-accent transition-all duration-300">
-                    <i class="fas fa-droplet text-cyan-accent text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Hemorrhagic Stroke</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Occurs when a weakened blood vessel ruptures and leaks blood into the surrounding brain tissue, causing severe local pressure and damage.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Vessel Rupture</span>
-                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Bleeding Care</span>
-                </div>
-            </div>
-
-            <!-- Transient Ischemic Attack (TIA) -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-deep-indigo/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-deep-indigo transition-all duration-300">
-                    <i class="fas fa-triangle-exclamation text-deep-indigo text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Transient Ischemic Attack (TIA)</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Known as a "mini-stroke." Blood flow is blocked temporarily (often resolving within minutes). Although symptoms fade quickly, a TIA is a warning sign of an impending major stroke.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Temporary Block</span>
-                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Warning Indicator</span>
-                </div>
-            </div>
-        </div>
+        <?php cms_render_page_block('stroke', 'types'); ?>
 
         <!-- Warning Signs -->
         <div class="mt-12 bg-white rounded-2xl p-8 border border-silver-grey/20">
@@ -320,69 +267,7 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
 <!-- Diagnosis Section -->
 <section class="py-12 bg-[#edf5f9]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Diagnosis</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">How We Diagnose Stroke</h2>
-            <p class="text-dark-grey/70 leading-relaxed">
-                Emergency diagnostics are completed within minutes of arrival to determine if a stroke is ischemic or hemorrhagic, guiding immediate intervention.
-            </p>
-        </div>
-
-        <!-- Diagnosis Steps -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            <!-- Step 1 -->
-            <div class="relative">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">1</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Rapid Neuro Exam</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Immediate clinical checking of sensory inputs, pupillary reflexes, speech clarity, and motor strengths to assess severity.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-
-            <!-- Step 2 -->
-            <div class="relative">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">2</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Emergency Brain CT</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Fast imaging to rule out brain bleeding (hemorrhage) before prescribing blood thinners or clot-busting medications.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-
-            <!-- Step 3 -->
-            <div class="relative">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">3</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Brain MRI & MRA</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Detailed imaging scan to trace exact brain tissue damage locations and map arterial blood flow pathways.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-
-            <!-- Step 4 -->
-            <div class="relative">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">4</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Vascular Ultrasound</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Carotid duplex ultrasound checks for narrow neck arteries or plaques that could spark subsequent strokes.
-                    </p>
-                </div>
-            </div>
-        </div>
+        <?php cms_render_page_block('stroke', 'diagnosis'); ?>
 
         <div class="text-center">
             <p class="text-dark-grey/70 mb-6">Ready to get a proper diagnosis? Schedule a consultation today.</p>

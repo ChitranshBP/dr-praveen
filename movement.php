@@ -140,60 +140,7 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
 <!-- Types of Movement Disorders -->
 <section class="py-12 bg-[#edf5f9]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Recognition</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Common Movement Disorders</h2>
-            <p class="text-dark-grey/70 leading-relaxed">
-                Movement disorders present as involuntary muscle twitching, steady shaking, or a lack of coordination.
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Essential Tremor -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-electric-blue/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-electric-blue group-hover:text-white transition-all duration-300">
-                    <i class="fas fa-hand-holding text-electric-blue text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Essential Tremor</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    A common nerve disorder causing involuntary shaking, typically in the hands during active tasks like writing, drinking, or holding objects.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Active Shaking</span>
-                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Hands Focus</span>
-                </div>
-            </div>
-
-            <!-- Dystonia -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-cyan-accent/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-cyan-accent transition-all duration-300">
-                    <i class="fas fa-arrows-spin text-cyan-accent text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Dystonia</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Causes involuntary muscle contractions, leading to repetitive twisting movements or abnormal postures (such as writer's cramp or cervical neck twisting).
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Twisting Muscle</span>
-                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Botox Treatment</span>
-                </div>
-            </div>
-
-            <!-- Ataxia -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-deep-indigo/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-deep-indigo transition-all duration-300">
-                    <i class="fas fa-person-running text-deep-indigo text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Ataxia</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    A degenerative condition affecting the cerebellum, resulting in a severe lack of voluntary muscle coordination, balance problems, and unsteady walking.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Cerebellum Focus</span>
-                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Balance Loss</span>
-                </div>
-            </div>
-        </div>
+        <?php cms_render_page_block('movement', 'types'); ?>
     </div>
 </section>
 
@@ -290,69 +237,7 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
 <!-- Diagnosis Section -->
 <section class="py-12 bg-[#edf5f9]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Diagnosis</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Diagnosing Movement Disorders</h2>
-            <p class="text-dark-grey/70 leading-relaxed">
-                Diagnosing movement disorders combines expert motor skill tracking, nerve path conduction tests, and brain scans to map basal ganglia pathways.
-            </p>
-        </div>
-
-        <!-- Diagnosis Steps -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            <!-- Step 1 -->
-            <div class="relative">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">1</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Motor Evaluation</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        In-depth testing of reflexes, gait patterns, tremor speed, range of motion, and fine motor skills.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-
-            <!-- Step 2 -->
-            <div class="relative">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">2</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">EMG & Nerve Studies</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Electromyography (EMG) and Nerve Conduction Studies measure electrical pathways inside active muscles and peripheral nerves.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-
-            <!-- Step 3 -->
-            <div class="relative">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">3</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Brain MRI</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        High-resolution imaging scans search for damage in the basal ganglia, cerebellum, or brainstem pathways.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-
-            <!-- Step 4 -->
-            <div class="relative">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">4</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Genetic Screening</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Investigating chromosomal factors for hereditary conditions like Huntington's disease, ataxia, or early-onset dystonia.
-                    </p>
-                </div>
-            </div>
-        </div>
+        <?php cms_render_page_block('movement', 'diagnosis'); ?>
 
         <div class="text-center">
             <p class="text-dark-grey/70 mb-6">Ready to get a proper diagnosis? Schedule a consultation today.</p>

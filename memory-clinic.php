@@ -135,123 +135,14 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
 <!-- Conditions We Assess -->
 <section class="py-12 bg-[#edf5f9]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Applications</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Conditions We Assess</h2>
-            <p class="text-dark-grey/70 leading-relaxed">
-                Dementia affects the entire household, so our care plans cover the family alongside the patient.
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Card 1 -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-electric-blue/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-electric-blue transition-all duration-300">
-                    <i class="fas fa-brain text-electric-blue text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Alzheimer's &amp; Dementia</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Evaluating progressive cognitive decline, memory impairment, spatial disorientation and behavioural change through structured medical strategy.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Early Diagnosis</span>
-                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Progression Control</span>
-                </div>
-            </div>
-            <!-- Card 2 -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-cyan-accent/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-cyan-accent transition-all duration-300">
-                    <i class="fas fa-clock-rotate-left text-cyan-accent text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Mild Cognitive Impairment</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Addressing early-stage memory change that exceeds normal ageing but does not yet interfere with daily living — the window where intervention matters most.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Early Window</span>
-                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Monitoring</span>
-                </div>
-            </div>
-            <!-- Card 3 -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-deep-indigo/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-deep-indigo transition-all duration-300">
-                    <i class="fas fa-people-roof text-deep-indigo text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Caregiver Support</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Behavioural strategies for confusion, mood change and disturbed sleep-wake cycles, plus home safety guidance to prevent falls and wandering.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Home Safety</span>
-                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Family Training</span>
-                </div>
-            </div>
-        </div>
+        <?php cms_render_page_block('memory-clinic', 'conditions-we-assess'); ?>
     </div>
 </section>
 
 <!-- Assessment Journey -->
 <section class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Experience</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">What to Expect at Your Assessment</h2>
-            <p class="text-dark-grey/70 leading-relaxed">
-                A full memory assessment is methodical by design — the aim is to find every contributing factor, including the reversible ones.
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            <!-- Step 1 -->
-            <div class="relative">
-                <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">1</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Cognitive Testing</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Standardised memory, reasoning and speech assessments (MoCA, MMSE) establish an objective baseline to measure against.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-            <!-- Step 2 -->
-            <div class="relative">
-                <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">2</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Advanced Brain Imaging</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        High-resolution brain MRI checks for tissue shrinkage, vascular damage and other structural causes of cognitive change.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-            <!-- Step 3 -->
-            <div class="relative">
-                <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">3</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Laboratory Panels</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Blood profiles rule out vitamin deficiencies, thyroid imbalance and other treatable contributors to memory loss.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-            <!-- Step 4 -->
-            <div class="relative">
-                <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">4</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Care &amp; Caregiver Plan</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        A combined plan covering medication, behavioural strategy, home safety and connection to respite services for the family.
-                    </p>
-                </div>
-            </div>
-        </div>
+        <?php cms_render_page_block('memory-clinic', 'what-to-expect'); ?>
     </div>
 </section>
 

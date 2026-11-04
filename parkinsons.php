@@ -139,60 +139,7 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
 <!-- Types of Parkinsonism -->
 <section class="py-12 bg-[#edf5f9]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Recognition</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Parkinsonian Disorders</h2>
-            <p class="text-dark-grey/70 leading-relaxed">
-                Symptoms of slowness and tremors can be caused by idiopathic Parkinson's disease or other look-alike syndromes.
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Idiopathic Parkinson's -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-electric-blue/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-electric-blue group-hover:text-white transition-all duration-300">
-                    <i class="fas fa-brain text-electric-blue text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Idiopathic Parkinson's</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    The classic form of the disease. Responsive to levodopa therapy. Primary symptoms include resting tremors, muscle stiffness, and slowness.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Levodopa Responsive</span>
-                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Classic Type</span>
-                </div>
-            </div>
-
-            <!-- Parkinson-Plus Syndromes -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-cyan-accent/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-cyan-accent transition-all duration-300">
-                    <i class="fas fa-circle-nodes text-cyan-accent text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Parkinson-Plus</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Syndromes like Multiple System Atrophy (MSA) or Progressive Supranuclear Palsy (PSP) that present with tremors but have additional symptoms and progress differently.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Atypical</span>
-                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">PSP & MSA</span>
-                </div>
-            </div>
-
-            <!-- Drug-Induced Parkinsonism -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-deep-indigo/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-deep-indigo transition-all duration-300">
-                    <i class="fas fa-capsules text-deep-indigo text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Drug-Induced</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Reversible parkinsonism symptoms caused by certain medications (such as antipsychotics) that block dopamine receptors in the brain.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Reversible</span>
-                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Dopamine Block</span>
-                </div>
-            </div>
-        </div>
+        <?php cms_render_page_block('parkinsons', 'types'); ?>
     </div>
 </section>
 
@@ -289,69 +236,7 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
 <!-- Diagnosis Section -->
 <section class="py-12 bg-[#edf5f9]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Diagnosis</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Diagnosing Parkinson's</h2>
-            <p class="text-dark-grey/70 leading-relaxed">
-                Diagnosing Parkinson's relies primarily on expert clinical observation of motor patterns, reflexes, and response to specific dopaminergic drugs.
-            </p>
-        </div>
-
-        <!-- Diagnosis Steps -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            <!-- Step 1 -->
-            <div class="relative">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">1</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Clinical Evaluation</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Expert examination of resting tremors, motor rigidity, postural balance, and gait patterns.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-
-            <!-- Step 2 -->
-            <div class="relative">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">2</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Drug Challenge</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Assessing physical response to Levodopa medication. A significant improvement in motor speed supports a Parkinson's diagnosis.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-
-            <!-- Step 3 -->
-            <div class="relative">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">3</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">DaTscan Imaging</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Dopamine Transporter SPECT scan tracing dopamine pathways in the brain to confirm neurodegenerative drop-offs.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-
-            <!-- Step 4 -->
-            <div class="relative">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">4</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Brain MRI</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        High-resolution imaging scans to rule out atypical parkinsonism, strokes, fluid blockages, or brain stem abnormalities.
-                    </p>
-                </div>
-            </div>
-        </div>
+        <?php cms_render_page_block('parkinsons', 'diagnosis'); ?>
 
         <div class="text-center">
             <p class="text-dark-grey/70 mb-6">Ready to get a proper diagnosis? Schedule a consultation today.</p>

@@ -140,60 +140,7 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
 <!-- Types of Migraines -->
 <section class="py-12 bg-[#edf5f9]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Recognition</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Types of Migraines</h2>
-            <p class="text-dark-grey/70 leading-relaxed">
-                Migraines are classified depending on the presence of sensory warning signs called auras.
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Migraine with Aura -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-electric-blue/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-electric-blue group-hover:text-white transition-all duration-300">
-                    <i class="fas fa-eye text-electric-blue text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Migraine with Aura</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Preceded by visual flashes, blind spots, tingling in hands/face, or temporary speech issues about 10-60 minutes before the headache begins.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Visual Aura</span>
-                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Sensory Warning</span>
-                </div>
-            </div>
-
-            <!-- Migraine without Aura -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-cyan-accent/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-cyan-accent transition-all duration-300">
-                    <i class="fas fa-head-side-slash text-cyan-accent text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Migraine without Aura</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    The most common type. Severe, throbbing, one-sided pain occurs without prior warning signs, lasting 4-72 hours if left untreated.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Common Type</span>
-                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Pulsating Pain</span>
-                </div>
-            </div>
-
-            <!-- Chronic Migraine -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-deep-indigo/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-deep-indigo transition-all duration-300">
-                    <i class="fas fa-calendar-days text-deep-indigo text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Chronic Migraine</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Diagnosed when headaches occur on 15 or more days a month for at least 3 months, with at least 8 of those days presenting as typical migraines.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Severe Pattern</span>
-                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Daily Impact</span>
-                </div>
-            </div>
-        </div>
+        <?php cms_render_page_block('migraine', 'types'); ?>
 
         <!-- Warning Signs -->
         <div class="mt-12 bg-white rounded-2xl p-8 border border-silver-grey/20">
@@ -322,69 +269,7 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
 <!-- Diagnosis Section -->
 <section class="py-12 bg-[#edf5f9]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Diagnosis</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Diagnosing Migraines</h2>
-            <p class="text-dark-grey/70 leading-relaxed">
-                We combine historical symptom tracking with diagnostic imaging to identify the specific migraine type and formulate a tailored care plan.
-            </p>
-        </div>
-
-        <!-- Diagnosis Steps -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            <!-- Step 1 -->
-            <div class="relative">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">1</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Detailed History</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Mapping pain frequency, location, duration, family history, and associated triggers like stress or diet.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-
-            <!-- Step 2 -->
-            <div class="relative">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">2</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Neurological Exam</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Checking reflexes, eye movements, sensation, cranial nerve responses, and coordination.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-
-            <!-- Step 3 -->
-            <div class="relative">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">3</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Brain MRI</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Advanced imaging scans to rule out secondary headache causes, structural issues, or vascular abnormalities.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-
-            <!-- Step 4 -->
-            <div class="relative">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">4</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Trigger Mapping</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Creating a digital diary tracking lifestyle patterns, hormonal cycles, sleep quality, and diet to narrow triggers.
-                    </p>
-                </div>
-            </div>
-        </div>
+        <?php cms_render_page_block('migraine', 'diagnosis'); ?>
 
         <div class="text-center">
             <p class="text-dark-grey/70 mb-6">Ready to get a proper diagnosis? Schedule a consultation today.</p>

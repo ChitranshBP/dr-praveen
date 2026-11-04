@@ -139,129 +139,14 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
 <!-- Core Rehabilitation Programs -->
 <section class="py-12 bg-[#edf5f9]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Our Services</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Core Rehabilitation Therapies</h2>
-            <p class="text-dark-grey/70 leading-relaxed">
-                We combine experienced clinical expertise with state-of-the-art diagnostic and recovery tracking tools to ensure precise treatments.
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Program 1 -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-electric-blue/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-electric-blue group-hover:text-white transition-all duration-300">
-                    <i class="fas fa-walking text-electric-blue text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Neuro-Physiotherapy</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Focuses on rebuilding muscle strength, improving balance, training gait cycles, and recovering motor control following a stroke, spine injury, or onset of neuropathy.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Gait Training</span>
-                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Strength</span>
-                </div>
-            </div>
-
-            <!-- Program 2 -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-cyan-accent/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-cyan-accent transition-all duration-300">
-                    <i class="fas fa-hands-holding text-cyan-accent text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Occupational Therapy</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Aids patients in relearning daily living activities (bathing, dressing, writing). We provide cognitive adaptation, motor skills coordination, and assistive technology advice.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Life Skills</span>
-                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Fine Motor</span>
-                </div>
-            </div>
-
-            <!-- Program 3 -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-deep-indigo/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-deep-indigo transition-all duration-300">
-                    <i class="fas fa-volume-up text-deep-indigo text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Speech & Swallowing</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Addresses dysphagia (swallowing difficulties) and speech clarity challenges (aphasia/dysarthria) caused by neurological damage, helping patients communicate safely.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Dysphagia</span>
-                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Speech Clarity</span>
-                </div>
-            </div>
-        </div>
+        <?php cms_render_page_block('neuro-rehabilitation-center', 'core-therapies'); ?>
     </div>
 </section>
 
 <!-- Rehabilitation Steps -->
 <section class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Pathway</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Your Recovery Journey</h2>
-            <p class="text-dark-grey/70 leading-relaxed">
-                Our structured recovery protocol ensures patient progress is monitored continuously from admission to outpatient support.
-            </p>
-        </div>
-
-        <!-- Progress Steps -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            <!-- Step 1 -->
-            <div class="relative">
-                <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">1</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Baseline Assessment</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Comprehensive clinical evaluation of motor control, cognitive functions, and sensory status to set realistic recovery targets.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-
-            <!-- Step 2 -->
-            <div class="relative">
-                <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">2</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Custom Treatment</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        A personalized rehabilitation schedule combining physical therapy, speech pathology, and occupational exercises.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-
-            <!-- Step 3 -->
-            <div class="relative">
-                <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">3</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Active Monitoring</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        We utilize advanced biofeedback tools (like Phezee) to monitor joint mobility and electromyography muscle recovery trends in real-time.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-
-            <!-- Step 4 -->
-            <div class="relative">
-                <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">4</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Home Care Care</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Preparing patients for discharge with customized home care guides, training caregivers, and setting up periodic checkups.
-                    </p>
-                </div>
-            </div>
-        </div>
+        <?php cms_render_page_block('neuro-rehabilitation-center', 'recovery-journey'); ?>
     </div>
 </section>
 

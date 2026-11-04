@@ -140,60 +140,7 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
 <!-- Classifications of Neuropathy -->
 <section class="py-12 bg-[#edf5f9]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Classification</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Neuropathy Categories</h2>
-            <p class="text-dark-grey/70 leading-relaxed">
-                Nerve damage is classified by its underlying trigger, guiding our targeted treatment approach.
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Diabetic Neuropathy -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-electric-blue/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-electric-blue group-hover:text-white transition-all duration-300">
-                    <i class="fas fa-house-medical text-electric-blue text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Diabetic Neuropathy</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    The most common form. High blood sugars over time damage small blood vessels that feed peripheral nerves, resulting in chronic numbness or burning in the feet.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Metabolic Blood Sugar</span>
-                    <span class="text-xs bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full font-medium">Stocking-Glove Pattern</span>
-                </div>
-            </div>
-
-            <!-- Inflammatory & GBS/CIDP -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-cyan-accent/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-cyan-accent transition-all duration-300">
-                    <i class="fas fa-shield-virus text-cyan-accent text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Inflammatory Neuropathies</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Autoimmune attacks on peripheral myelin. Includes acute Guillain-BarrÃ© Syndrome (GBS) and chronic CIDP, presenting with rapidly progressive muscle weakness.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">Autoimmune</span>
-                    <span class="text-xs bg-cyan-accent/10 text-cyan-accent px-3 py-1 rounded-full font-medium">GBS & CIDP Care</span>
-                </div>
-            </div>
-
-            <!-- Nutritional & Toxic -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-deep-indigo/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-deep-indigo transition-all duration-300">
-                    <i class="fas fa-leaf text-deep-indigo text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Nutritional & Toxic Neuropathy</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Nerve damage due to vitamin deficiencies (such as B12, B1, or B6), chronic alcohol consumption, heavy metals, or chemotherapy drugs.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Vitamin B12 Deficit</span>
-                    <span class="text-xs bg-deep-indigo/10 text-deep-indigo px-3 py-1 rounded-full font-medium">Chemotherapy Linked</span>
-                </div>
-            </div>
-        </div>
+        <?php cms_render_page_block('neuropathy', 'types'); ?>
     </div>
 </section>
 
@@ -290,69 +237,7 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
 <!-- Diagnosis Section -->
 <section class="py-12 bg-[#edf5f9]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Diagnosis</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Diagnosing Neuropathy</h2>
-            <p class="text-dark-grey/70 leading-relaxed">
-                Diagnosing peripheral neuropathy involves checking electrical conduction speed inside nerves, combined with lab screens to pinpoint root causes.
-            </p>
-        </div>
-
-        <!-- Diagnosis Steps -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            <!-- Step 1 -->
-            <div class="relative">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">1</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">EMG & NCV Studies</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Nerve Conduction Velocity (NCV) tests and Electromyography (EMG) measure electrical activity in muscles to locate nerve compression or damage.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-
-            <!-- Step 2 -->
-            <div class="relative">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">2</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Metabolic Lab Tests</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Comprehensive blood screens checking HbA1c (diabetes), vitamin B12 levels, thyroid markers, renal functions, and autoantibodies.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-
-            <!-- Step 3 -->
-            <div class="relative">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">3</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Quantitative Sensory</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Sensory testing checking temperature shifts, touch thresholds, and vibration limits to identify large vs. small nerve fiber damage.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-electric-blue/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-
-            <!-- Step 4 -->
-            <div class="relative">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-electric-blue text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">4</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Skin Biopsy</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        A minimally invasive, 3mm punch skin biopsy to check intraepidermal nerve fiber density, confirming small fiber neuropathy.
-                    </p>
-                </div>
-            </div>
-        </div>
+        <?php cms_render_page_block('neuropathy', 'diagnosis'); ?>
 
         <div class="text-center">
             <p class="text-dark-grey/70 mb-6">Ready to get a proper diagnosis? Schedule a consultation today.</p>

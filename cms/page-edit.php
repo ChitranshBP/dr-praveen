@@ -2,6 +2,7 @@
 require_once __DIR__ . '/includes/auth.php';
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/functions.php';
+require_once dirname(__DIR__) . '/includes/page-blocks.php';
 
 cms_require_auth();
 
@@ -111,6 +112,69 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
     $pageData['custom_sections'] = $customSections;
+
+    // Editable page blocks (Techniques, What to Expect, ...). Defaults come
+    // from data/page-blocks.json; the submitted values are stored here.
+    $blockDefaults = cms_page_blocks_defaults($slug);
+    $postedBlocks = $_POST['page_blocks'] ?? [];
+    if (!empty($blockDefaults) && is_array($postedBlocks)) {
+        $existingBlocks = (isset($pageData['blocks']) && is_array($pageData['blocks'])) ? $pageData['blocks'] : [];
+        $savedBlocks = $existingBlocks;
+        foreach ($blockDefaults as $bKey => $bDefault) {
+            if (!is_array($bDefault) || !isset($postedBlocks[$bKey]) || !is_array($postedBlocks[$bKey])) {
+                continue;
+            }
+            $pb = $postedBlocks[$bKey];
+            if (empty($pb['_present'])) {
+                continue;
+            }
+            $bType = ($bDefault['type'] ?? 'cards') === 'steps' ? 'steps' : 'cards';
+            $block = [
+                'type'        => $bType,
+                'badge'       => trim($pb['badge'] ?? ''),
+                'title'       => trim($pb['title'] ?? ''),
+                'description' => trim($pb['description'] ?? ''),
+                'items'       => [],
+            ];
+            foreach (($pb['items'] ?? []) as $item) {
+                if (!is_array($item)) {
+                    continue;
+                }
+                $it = [
+                    'title' => trim($item['title'] ?? ''),
+                    'text'  => trim($item['text'] ?? ''),
+                ];
+                $bulletsRaw = $item['bullets'] ?? '';
+                $bullets = is_array($bulletsRaw) ? $bulletsRaw : preg_split('/\r\n|\r|\n/', (string)$bulletsRaw);
+                $bullets = array_values(array_filter(array_map('trim', $bullets), function ($b) {
+                    return $b !== '';
+                }));
+                if (!empty($bullets)) {
+                    $it['bullets'] = $bullets;
+                }
+                if ($bType === 'cards') {
+                    $icon = trim($item['icon'] ?? '');
+                    $it['icon'] = $icon !== '' ? $icon : 'fa-check';
+                    $color = $item['color'] ?? 'electric-blue';
+                    if (!in_array($color, ['electric-blue', 'cyan-accent', 'deep-indigo'], true)) {
+                        $color = 'electric-blue';
+                    }
+                    $it['color'] = $color;
+                    $tagsRaw = $item['tags'] ?? '';
+                    $tags = is_array($tagsRaw) ? $tagsRaw : explode(',', (string)$tagsRaw);
+                    $it['tags'] = array_values(array_filter(array_map('trim', $tags), function ($t) {
+                        return $t !== '';
+                    }));
+                }
+                if ($it['title'] === '' && $it['text'] === '') {
+                    continue;
+                }
+                $block['items'][] = $it;
+            }
+            $savedBlocks[$bKey] = $block;
+        }
+        $pageData['blocks'] = $savedBlocks;
+    }
 
     $dataDir = dirname($pageDataFile);
     if (!is_dir($dataDir)) {
@@ -289,6 +353,200 @@ require_once __DIR__ . '/includes/header.php';
                 </div>
             </div>
         </div>
+
+        <!-- Editable Existing Page Sections -->
+        <?php $editableBlocks = cms_page_blocks($slug); ?>
+        <?php if (!empty($editableBlocks)): ?>
+        <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4">
+            <div>
+                <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center">
+                    <i class="fas fa-pen-to-square text-brand-blue mr-2"></i> Existing Page Content Sections
+                </h3>
+                <p class="text-[10px] text-slate-500 mt-1">Edit the sections that already appear on this page. Changes save with the rest of the page.</p>
+            </div>
+
+            <?php foreach ($editableBlocks as $blockKey => $block): ?>
+            <?php
+                $blockType = ($block['type'] ?? 'cards') === 'steps' ? 'steps' : 'cards';
+                $blockItems = is_array($block['items'] ?? null) ? array_values($block['items']) : [];
+            ?>
+            <div class="page-block-card bg-white p-4 rounded-xl border border-slate-200 space-y-3"
+                 data-block-key="<?php echo htmlspecialchars($blockKey); ?>"
+                 data-block-type="<?php echo htmlspecialchars($blockType); ?>">
+                <input type="hidden" name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][_present]" value="1">
+                <div class="flex items-center justify-between">
+                    <h4 class="text-xs font-bold text-slate-800"><?php echo htmlspecialchars($block['label'] ?? $blockKey); ?></h4>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">
+                        <?php echo $blockType === 'steps' ? 'Numbered steps' : 'Card grid'; ?>
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Sub-Badge</label>
+                        <input type="text" name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][badge]" value="<?php echo htmlspecialchars($block['badge'] ?? ''); ?>" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Heading (H2)</label>
+                        <input type="text" name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][title]" value="<?php echo htmlspecialchars($block['title'] ?? ''); ?>" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-[11px] font-bold text-slate-700 mb-1">Introductory Paragraph</label>
+                    <textarea name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][description]" rows="2" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs leading-relaxed focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($block['description'] ?? ''); ?></textarea>
+                </div>
+
+                <div class="pt-2 border-t border-slate-100">
+                    <div class="flex items-center justify-between mb-2">
+                        <label class="text-[11px] font-bold text-slate-700">
+                            <?php echo $blockType === 'steps' ? 'Steps' : 'Cards'; ?> (<?php echo count($blockItems); ?>)
+                        </label>
+                        <button type="button" onclick="pageBlockAddItem(this)" class="px-2.5 py-1.5 bg-brand-blue hover:bg-blue-700 text-white text-[11px] font-bold rounded-lg transition-colors flex items-center space-x-1">
+                            <i class="fas fa-plus text-[9px]"></i>
+                            <span>Add <?php echo $blockType === 'steps' ? 'Step' : 'Card'; ?></span>
+                        </button>
+                    </div>
+
+                    <div class="page-block-items space-y-3" data-next-index="<?php echo count($blockItems); ?>">
+                        <?php foreach ($blockItems as $ii => $item): ?>
+                        <div class="page-block-item bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-2">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-bold text-slate-500"><?php echo $blockType === 'steps' ? 'Step' : 'Card'; ?> <?php echo (int)$ii + 1; ?></span>
+                                <button type="button" onclick="pageBlockRemoveItem(this)" class="text-[10px] text-red-500 font-bold hover:underline">
+                                    <i class="fas fa-trash text-[9px]"></i> Remove
+                                </button>
+                            </div>
+
+                            <?php if ($blockType === 'cards'): ?>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                <div>
+                                    <label class="block text-[10px] font-bold text-slate-600 mb-1">Font Awesome Icon</label>
+                                    <input type="text" name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][items][<?php echo (int)$ii; ?>][icon]" value="<?php echo htmlspecialchars($item['icon'] ?? 'fa-check'); ?>" placeholder="fa-shield-alt" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] font-mono focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-[10px] font-bold text-slate-600 mb-1">Icon Colour</label>
+                                    <select name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][items][<?php echo (int)$ii; ?>][color]" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] font-semibold focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                                        <option value="electric-blue" <?php echo ($item['color'] ?? '') === 'electric-blue' ? 'selected' : ''; ?>>Electric blue</option>
+                                        <option value="cyan-accent" <?php echo ($item['color'] ?? '') === 'cyan-accent' ? 'selected' : ''; ?>>Cyan</option>
+                                        <option value="deep-indigo" <?php echo ($item['color'] ?? '') === 'deep-indigo' ? 'selected' : ''; ?>>Deep indigo</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <?php endif; ?>
+
+                            <div>
+                                <label class="block text-[10px] font-bold text-slate-600 mb-1">Title</label>
+                                <input type="text" name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][items][<?php echo (int)$ii; ?>][title]" value="<?php echo htmlspecialchars($item['title'] ?? ''); ?>" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] font-semibold focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold text-slate-600 mb-1">Description</label>
+                                <textarea name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][items][<?php echo (int)$ii; ?>][text]" rows="2" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] leading-relaxed focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($item['text'] ?? ''); ?></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold text-slate-600 mb-1">Bullet Points (one per line, optional)</label>
+                                <textarea name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][items][<?php echo (int)$ii; ?>][bullets]" rows="2" placeholder="One item per line" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] leading-relaxed focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars(is_array($item['bullets'] ?? null) ? implode("\n", $item['bullets']) : (string)($item['bullets'] ?? '')); ?></textarea>
+                            </div>
+                            <?php if ($blockType === 'cards'): ?>
+                            <div>
+                                <label class="block text-[10px] font-bold text-slate-600 mb-1">Tag Pills (comma-separated)</label>
+                                <input type="text" name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][items][<?php echo (int)$ii; ?>][tags]" value="<?php echo htmlspecialchars(implode(', ', (array)($item['tags'] ?? []))); ?>" placeholder="Keyhole Access, Faster Recovery" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            </div>
+                            <?php endif; ?>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+
+        <template id="page-block-card-template">
+            <div class="page-block-item bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-2">
+                <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-bold text-slate-500">Card</span>
+                    <button type="button" onclick="pageBlockRemoveItem(this)" class="text-[10px] text-red-500 font-bold hover:underline"><i class="fas fa-trash text-[9px]"></i> Remove</button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    <div>
+                        <label class="block text-[10px] font-bold text-slate-600 mb-1">Font Awesome Icon</label>
+                        <input type="text" name="page_blocks[__KEY__][items][__INDEX__][icon]" value="fa-check" placeholder="fa-shield-alt" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] font-mono focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold text-slate-600 mb-1">Icon Colour</label>
+                        <select name="page_blocks[__KEY__][items][__INDEX__][color]" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] font-semibold focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            <option value="electric-blue">Electric blue</option>
+                            <option value="cyan-accent">Cyan</option>
+                            <option value="deep-indigo">Deep indigo</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-slate-600 mb-1">Title</label>
+                    <input type="text" name="page_blocks[__KEY__][items][__INDEX__][title]" value="" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] font-semibold focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-slate-600 mb-1">Description</label>
+                    <textarea name="page_blocks[__KEY__][items][__INDEX__][text]" rows="2" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] leading-relaxed focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-slate-600 mb-1">Bullet Points (one per line, optional)</label>
+                    <textarea name="page_blocks[__KEY__][items][__INDEX__][bullets]" rows="2" placeholder="One item per line" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] leading-relaxed focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-slate-600 mb-1">Tag Pills (comma-separated)</label>
+                    <input type="text" name="page_blocks[__KEY__][items][__INDEX__][tags]" value="" placeholder="Keyhole Access, Faster Recovery" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                </div>
+            </div>
+        </template>
+
+        <template id="page-block-step-template">
+            <div class="page-block-item bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-2">
+                <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-bold text-slate-500">Step</span>
+                    <button type="button" onclick="pageBlockRemoveItem(this)" class="text-[10px] text-red-500 font-bold hover:underline"><i class="fas fa-trash text-[9px]"></i> Remove</button>
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-slate-600 mb-1">Title</label>
+                    <input type="text" name="page_blocks[__KEY__][items][__INDEX__][title]" value="" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] font-semibold focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-slate-600 mb-1">Description</label>
+                    <textarea name="page_blocks[__KEY__][items][__INDEX__][text]" rows="2" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] leading-relaxed focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-slate-600 mb-1">Bullet Points (one per line, optional)</label>
+                    <textarea name="page_blocks[__KEY__][items][__INDEX__][bullets]" rows="2" placeholder="One item per line" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] leading-relaxed focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+                </div>
+            </div>
+        </template>
+
+        <script>
+        function pageBlockAddItem(button) {
+            var block = button.closest('.page-block-card');
+            if (!block) return;
+            var key = block.getAttribute('data-block-key');
+            var type = block.getAttribute('data-block-type');
+            var container = block.querySelector('.page-block-items');
+            var template = document.getElementById(type === 'steps' ? 'page-block-step-template' : 'page-block-card-template');
+            if (!container || !template) return;
+
+            var index = parseInt(container.getAttribute('data-next-index') || '0', 10);
+            var html = template.innerHTML.replace(/__KEY__/g, key).replace(/__INDEX__/g, String(index));
+            var wrapper = document.createElement('div');
+            wrapper.innerHTML = html.trim();
+            var item = wrapper.firstElementChild;
+            if (!item) return;
+            container.appendChild(item);
+            container.setAttribute('data-next-index', String(index + 1));
+        }
+
+        function pageBlockRemoveItem(button) {
+            var item = button.closest('.page-block-item');
+            if (item) item.remove();
+        }
+        </script>
+        <?php endif; ?>
 
         <!-- Additional Custom Sections -->
         <?php $existingCustomSections = is_array($pageData['custom_sections'] ?? null) ? array_values($pageData['custom_sections']) : []; ?>
