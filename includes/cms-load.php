@@ -29,6 +29,63 @@ function cms_json_read($file) {
  */
 
 /**
+ * FAQ pages and items — managed in CMS (/cms/faqs.php).
+ *
+ * data/faqs.json is keyed by page slug. Each entry holds the section header
+ * (badge/title/description), a layout and an ordered list of items.
+ */
+function cms_faqs_all() {
+    $faqs = cms_json_read(CMS_DATA_DIR . '/faqs.json');
+    return is_array($faqs) ? $faqs : [];
+}
+
+function cms_faq_page($slug) {
+    $slug = preg_replace('/[^a-zA-Z0-9_-]/', '', (string)$slug);
+    if ($slug === '') {
+        return null;
+    }
+    $all = cms_faqs_all();
+    if (!isset($all[$slug]) || !is_array($all[$slug])) {
+        return null;
+    }
+    $page = $all[$slug];
+    $items = [];
+    foreach (($page['items'] ?? []) as $item) {
+        if (!is_array($item)) {
+            continue;
+        }
+        if (isset($item['is_active']) && !$item['is_active']) {
+            continue;
+        }
+        $question = trim((string)($item['question'] ?? ''));
+        if ($question === '') {
+            continue;
+        }
+        $items[] = [
+            'id' => (string)($item['id'] ?? ''),
+            'question' => $question,
+            'answer' => (string)($item['answer'] ?? ''),
+            'category' => trim((string)($item['category'] ?? '')),
+            'order' => (int)($item['order'] ?? 999),
+            'is_active' => true,
+        ];
+    }
+    usort($items, function ($a, $b) {
+        return $a['order'] <=> $b['order'];
+    });
+    if (empty($items)) {
+        return null;
+    }
+    return [
+        'badge' => (string)($page['badge'] ?? 'FAQ'),
+        'title' => (string)($page['title'] ?? 'Frequently Asked Questions'),
+        'description' => (string)($page['description'] ?? ''),
+        'layout' => (string)($page['layout'] ?? 'split'),
+        'items' => $items,
+    ];
+}
+
+/**
  * All blog posts (any status), newest date first.
  */
 function cms_blogs_all() {

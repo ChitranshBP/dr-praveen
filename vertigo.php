@@ -609,103 +609,10 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
 <!-- Related Videos (topic-matched, see $pageVideos in includes/config.php) -->
 <?php require __DIR__ . "/includes/related-videos.php"; ?>
 
-<!-- FAQ Section -->
-<section class="py-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            <!-- Left Column: Header Information -->
-            <div class="lg:col-span-5 lg:sticky lg:top-24 self-start">
-                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">FAQ</span>
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-dark-grey mt-3 mb-6">Frequently Asked Questions</h2>
-                <p class="text-dark-grey/70 leading-relaxed max-w-md">
-                    Answers to common questions regarding vertigo, balance retraining, and treatments.
-                </p>
-            </div>
+<!-- FAQ Section (managed in CMS → FAQs) -->
+<?php $faqSlug = 'vertigo'; require __DIR__ . '/includes/faq-section.php'; ?>
 
-            <!-- Right Column: Accordions -->
-            <div class="lg:col-span-7">
-                <div class="space-y-4" id="faq-container">
-                    <!-- FAQ 1 -->
-                    <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
-                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
-                            <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">What is Benign Paroxysmal Positional Vertigo (BPPV)?</span>
-                            <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
-                                <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
-                            </span>
-                        </button>
-                        <div class="faq-content hidden px-6 pb-6">
-                            <p class="text-dark-grey/70 leading-relaxed">
-                                BPPV is the most common cause of peripheral vertigo. It occurs when small calcium carbonate crystals (otoconia) in the inner ear detach from their normal positions and migrate into the fluid-filled semicircular canals, sending incorrect movement signals to the brain during head movements.
-                            </p>
-                        </div>
-                    </div>
 
-                    <!-- FAQ 2 -->
-                    <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
-                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
-                            <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">Can vertigo be treated without pills?</span>
-                            <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
-                                <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
-                            </span>
-                        </button>
-                        <div class="faq-content hidden px-6 pb-6">
-                            <p class="text-dark-grey/70 leading-relaxed">
-                                Yes, positional vertigo like BPPV is best treated without pills. We use specialized canalith repositioning procedures (such as the Epley maneuver) to physically guide displaced crystals back to their proper place, which resolves symptoms rapidly in a vast majority of patients.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- FAQ 3 -->
-                    <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
-                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
-                            <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">How long does vertigo recovery take?</span>
-                            <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
-                                <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
-                            </span>
-                        </button>
-                        <div class="faq-content hidden px-6 pb-6">
-                            <p class="text-dark-grey/70 leading-relaxed">
-                                BPPV can often be resolved in just one or two clinic sessions of repositioning maneuvers. For other vestibular nerve issues (like vestibular neuritis) or chronic imbalance, customized vestibular rehabilitation exercises can take from 2 to 6 weeks to retrain the brain and restore coordination.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- FAQ Toggle Script -->
-<script>
-function toggleFaq(button) {
-    const item = button.closest('.faq-item');
-    const content = button.nextElementSibling;
-    const icon = button.querySelector('i');
-    const isOpen = !content.classList.contains('hidden');
-
-    // Close all other FAQs
-    document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
-    document.querySelectorAll('.faq-item').forEach(i => {
-        i.classList.remove('bg-[#edf5f9]');
-        i.classList.add('bg-white');
-    });
-    document.querySelectorAll('.faq-toggle i').forEach(i => {
-        i.classList.remove('fa-minus');
-        i.classList.add('fa-plus');
-        i.style.transform = 'rotate(0deg)';
-    });
-
-    // Toggle current
-    if (!isOpen) {
-        content.classList.remove('hidden');
-        item.classList.remove('bg-white');
-        item.classList.add('bg-[#edf5f9]');
-        icon.classList.remove('fa-plus');
-        icon.classList.add('fa-minus');
-        icon.style.transform = 'rotate(180deg)';
-    }
-}
-</script>
 
 <!-- Related Services -->
 <section class="py-12 bg-[#edf5f9]">

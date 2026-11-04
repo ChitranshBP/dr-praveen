@@ -193,15 +193,12 @@
         });
     }
 
-    // Initialize Rich Editor on textareas
-    document.addEventListener('DOMContentLoaded', function() {
-        const targetTextareas = document.querySelectorAll(
-            'textarea[name="content"], textarea[name="section1_text"], textarea[name="about"], textarea[name="hero_desc"], textarea[name="qualifications"], textarea[name="expertise"], textarea[name="short_description"], textarea[name="excerpt"], textarea[name="message"], textarea.wysiwyg-editor, textarea.rich-editor'
-        );
-
-        targetTextareas.forEach(function(textarea, idx) {
-            if (textarea.dataset.quillInitialized) return;
-            textarea.dataset.quillInitialized = 'true';
+    // Initialize Rich Editor on a single textarea
+    let richEditorIndex = 0;
+    function initCmsRichEditor(textarea) {
+        if (textarea.dataset.quillInitialized) return;
+        textarea.dataset.quillInitialized = 'true';
+        const idx = richEditorIndex++;
 
             // Create wrapper
             const wrapper = document.createElement('div');
@@ -469,7 +466,18 @@
                     }
                 });
             }
-        });
+    }
+
+    // Public initializer so dynamically added editors (FAQ rows, custom page
+    // sections) can be upgraded after the page has loaded.
+    window.cmsInitRichEditors = function(scope) {
+        (scope || document).querySelectorAll(
+            'textarea[name="content"], textarea[name="section1_text"], textarea[name="about"], textarea[name="hero_desc"], textarea[name="qualifications"], textarea[name="expertise"], textarea[name="short_description"], textarea[name="excerpt"], textarea[name="message"], textarea.wysiwyg-editor, textarea.rich-editor, textarea.faq-answer-editor'
+        ).forEach(initCmsRichEditor);
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+        window.cmsInitRichEditors(document);
     });
 })();
 </script>

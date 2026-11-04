@@ -50,82 +50,8 @@ $pageContent = get_page_content('neurology-faqs', [
     </div>
 </section>
 
-<!-- Accordion FAQs Section -->
-<section class="py-16 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="space-y-8">
-            <!-- Category 1: General & Appointments -->
-            <div class="space-y-4">
-                <h3 class="text-lg font-bold text-deep-indigo border-b border-slate-200 pb-2">Consultation & Appointments</h3>
-                
-                <!-- Q1 -->
-                <details class="group bg-slate-50 border border-slate-200/50 rounded-3xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer" open>
-                    <summary class="flex justify-between items-center text-sm font-bold text-deep-indigo list-none">
-                        <span>How do I book a consultation with Dr. Praveen Gupta?</span>
-                        <span class="transition group-open:rotate-185 text-xs text-cyan-accent"><i class="fas fa-plus group-open:hidden"></i><i class="fas fa-minus hidden group-open:inline"></i></span>
-                    </summary>
-                    <p class="text-xs text-dark-grey/65 leading-relaxed mt-3 border-t border-slate-200/40 pt-3">
-                        You can book an in-person appointment or a video teleconsultation by visiting our online appointment portal, calling our direct scheduling line at <?php echo SITE_PHONE; ?>, or emailing us at <?php echo SITE_EMAIL; ?>.
-                    </p>
-                </details>
-
-                <!-- Q2 -->
-                <details class="group bg-slate-50 border border-slate-200/50 rounded-3xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
-                    <summary class="flex justify-between items-center text-sm font-bold text-deep-indigo list-none">
-                        <span>What documents should I bring for my first consultation?</span>
-                        <span class="transition group-open:rotate-185 text-xs text-cyan-accent"><i class="fas fa-plus group-open:hidden"></i><i class="fas fa-minus hidden group-open:inline"></i></span>
-                    </summary>
-                    <p class="text-xs text-dark-grey/65 leading-relaxed mt-3 border-t border-slate-200/40 pt-3">
-                        Please bring all past medical prescriptions, blood test reports, and imaging scans (MRI/CT films or CDs) related to your neurological condition. Additionally, keep a list of your current medications handy.
-                    </p>
-                </details>
-            </div>
-
-            <!-- Category 2: Diagnostics & Tests -->
-            <div class="space-y-4 pt-4">
-                <h3 class="text-lg font-bold text-deep-indigo border-b border-slate-200 pb-2">Diagnostic Tests (EEG, EMG)</h3>
-
-                <!-- Q3 -->
-                <details class="group bg-slate-50 border border-slate-200/50 rounded-3xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
-                    <summary class="flex justify-between items-center text-sm font-bold text-deep-indigo list-none">
-                        <span>Is any preparation required before undergoing an EEG test?</span>
-                        <span class="transition group-open:rotate-185 text-xs text-cyan-accent"><i class="fas fa-plus group-open:hidden"></i><i class="fas fa-minus hidden group-open:inline"></i></span>
-                    </summary>
-                    <p class="text-xs text-dark-grey/65 leading-relaxed mt-3 border-t border-slate-200/40 pt-3">
-                        Yes. Please wash your hair the night before or the morning of the test, and do not apply hair oils, sprays, or gels. Avoid caffeine on the day of the test as it can interfere with results. Take your usual medications unless advised otherwise by your doctor.
-                    </p>
-                </details>
-
-                <!-- Q4 -->
-                <details class="group bg-slate-50 border border-slate-200/50 rounded-3xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
-                    <summary class="flex justify-between items-center text-sm font-bold text-deep-indigo list-none">
-                        <span>Are EMG and Nerve Conduction Studies painful?</span>
-                        <span class="transition group-open:rotate-185 text-xs text-cyan-accent"><i class="fas fa-plus group-open:hidden"></i><i class="fas fa-minus hidden group-open:inline"></i></span>
-                    </summary>
-                    <p class="text-xs text-dark-grey/65 leading-relaxed mt-3 border-t border-slate-200/40 pt-3">
-                        Nerve conduction studies involve mild electrical stimulation, which feels like a sudden tapping sensation. Electromyography (EMG) involves inserting a tiny needle electrode into specific muscles, causing minor, temporary discomfort similar to an injection.
-                    </p>
-                </details>
-            </div>
-
-            <!-- Category 3: Conditions & Emergencies -->
-            <div class="space-y-4 pt-4">
-                <h3 class="text-lg font-bold text-deep-indigo border-b border-slate-200 pb-2">Emergency Protocols</h3>
-
-                <!-- Q5 -->
-                <details class="group bg-slate-50 border border-slate-200/50 rounded-3xl p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
-                    <summary class="flex justify-between items-center text-sm font-bold text-deep-indigo list-none">
-                        <span>What is the "Golden Hour" for a brain stroke?</span>
-                        <span class="transition group-open:rotate-185 text-xs text-cyan-accent"><i class="fas fa-plus group-open:hidden"></i><i class="fas fa-minus hidden group-open:inline"></i></span>
-                    </summary>
-                    <p class="text-xs text-dark-grey/65 leading-relaxed mt-3 border-t border-slate-200/40 pt-3">
-                        The golden hour refers to the first 4.5 hours after stroke symptoms begin. Administering clot-dissolving medications (thrombolysis) within this window significantly increases the chances of saving dying brain cells and achieving a full recovery.
-                    </p>
-                </details>
-            </div>
-        </div>
-    </div>
-</section>
+<!-- Accordion FAQs Section (managed in CMS → FAQs) -->
+<?php $faqSlug = 'neurology-faqs'; require __DIR__ . '/includes/faq-section.php'; ?>
 
 <!-- Call to Action -->
 <section class="py-16 bg-slate-50 border-t border-b border-silver-grey/40">

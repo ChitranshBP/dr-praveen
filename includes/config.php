@@ -1220,7 +1220,13 @@ function cms_media_path($path, $fallback = '') {
  * section that is hard-coded in a template, otherwise every page turns into
  * generic boilerplate. A field is used only once an editor has changed it.
  */
-function get_page_section($pageContent, $defaults = []) {
+function get_page_section($pageContent, $defaults = [], $markUsed = true) {
+    if ($markUsed) {
+        // Lets includes/footer.php know this template already rendered its own
+        // body section, so it must not print the generic CMS section again.
+        $GLOBALS['cms_page_section_used'] = true;
+    }
+
     $defaults = array_merge([
         'badge' => '',
         'title' => '',

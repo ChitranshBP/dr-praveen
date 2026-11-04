@@ -611,103 +611,10 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
 <!-- Related Videos (topic-matched, see $pageVideos in includes/config.php) -->
 <?php require __DIR__ . "/includes/related-videos.php"; ?>
 
-<!-- FAQ Section -->
-<section class="py-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            <!-- Left Column: Header Information -->
-            <div class="lg:col-span-5 lg:sticky lg:top-24 self-start">
-                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">FAQ</span>
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-dark-grey mt-3 mb-6">Frequently Asked Questions</h2>
-                <p class="text-dark-grey/70 leading-relaxed max-w-md">
-                    Answers to common questions regarding headache types, triggers, and relief treatments.
-                </p>
-            </div>
+<!-- FAQ Section (managed in CMS → FAQs) -->
+<?php $faqSlug = 'headache'; require __DIR__ . '/includes/faq-section.php'; ?>
 
-            <!-- Right Column: Accordions -->
-            <div class="lg:col-span-7">
-                <div class="space-y-4" id="faq-container">
-                    <!-- FAQ 1 -->
-                    <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
-                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
-                            <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">When should I consult a neurologist for a headache?</span>
-                            <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
-                                <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
-                            </span>
-                        </button>
-                        <div class="faq-content hidden px-6 pb-6">
-                            <p class="text-dark-grey/70 leading-relaxed">
-                                You should consult a neurologist if your headaches are chronic (occurring 15 or more days a month), sudden and exceptionally severe, accompanied by neurological symptoms (like weakness, numbness, speech difficulties), or if they are unresponsive to over-the-counter pain medications.
-                            </p>
-                        </div>
-                    </div>
 
-                    <!-- FAQ 2 -->
-                    <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
-                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
-                            <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">Can stress cause tension-type headaches?</span>
-                            <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
-                                <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
-                            </span>
-                        </button>
-                        <div class="faq-content hidden px-6 pb-6">
-                            <p class="text-dark-grey/70 leading-relaxed">
-                                Yes, stress is the most frequently reported trigger for tension headaches. Stress leads to muscle contraction in the shoulders, neck, and scalp, resulting in tension pain. Managing stress through therapy, exercise, and meditation is a key part of treatment.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- FAQ 3 -->
-                    <div class="faq-item bg-white rounded-2xl overflow-hidden border border-slate-200/80 transition-all duration-300">
-                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left focus:outline-none" onclick="toggleFaq(this)">
-                            <span class="font-semibold text-dark-grey pr-4 transition-colors duration-300">What are medication overuse (rebound) headaches?</span>
-                            <span class="faq-icon-wrapper w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-all duration-300">
-                                <i class="fas fa-plus text-dark-grey/50 text-xs transition-transform duration-300"></i>
-                            </span>
-                        </button>
-                        <div class="faq-content hidden px-6 pb-6">
-                            <p class="text-dark-grey/70 leading-relaxed">
-                                Rebound headaches are caused by frequent, repetitive use of headache relief medications (like triptans, NSAIDs, or combination pain relievers). When the medication wears off, a withdrawal headache occurs, prompting the patient to take more medication, creating a vicious cycle. We help patients safely taper off these medications to break the cycle.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- FAQ Toggle Script -->
-<script>
-function toggleFaq(button) {
-    const item = button.closest('.faq-item');
-    const content = button.nextElementSibling;
-    const icon = button.querySelector('i');
-    const isOpen = !content.classList.contains('hidden');
-
-    // Close all other FAQs
-    document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
-    document.querySelectorAll('.faq-item').forEach(i => {
-        i.classList.remove('bg-[#edf5f9]');
-        i.classList.add('bg-white');
-    });
-    document.querySelectorAll('.faq-toggle i').forEach(i => {
-        i.classList.remove('fa-minus');
-        i.classList.add('fa-plus');
-        i.style.transform = 'rotate(0deg)';
-    });
-
-    // Toggle current
-    if (!isOpen) {
-        content.classList.remove('hidden');
-        item.classList.remove('bg-white');
-        item.classList.add('bg-[#edf5f9]');
-        icon.classList.remove('fa-plus');
-        icon.classList.add('fa-minus');
-        icon.style.transform = 'rotate(180deg)';
-    }
-}
-</script>
 
 <!-- Related Services -->
 <section class="py-12 bg-[#edf5f9]">

@@ -22,9 +22,12 @@ foreach (array_slice($services, 0, 6) as $svc) {
     $footerServices[] = [
         'name' => $svc['title'],
         'icon' => $serviceIcons[$svc['title']] ?? 'stethoscope',
+        'link' => !empty($svc['link']) ? $svc['link'] : getServicePageLink($svc['title']),
     ];
 }
 ?>
+
+    <?php require __DIR__ . '/cms-sections.php'; ?>
 
     <!-- CTA Section -->
     <section class="relative py-12 bg-white overflow-hidden">
@@ -209,7 +212,7 @@ foreach (array_slice($services, 0, 6) as $svc) {
                     <ul class="space-y-2.5">
                         <?php foreach ($footerServices as $service): ?>
                             <li>
-                                <a href="services" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-3 group text-sm">
+                                <a href="<?php echo htmlspecialchars($service['link']); ?>" class="text-white/70 hover:text-cyan-accent transition-all duration-300 flex items-center space-x-3 group text-sm">
                                     <span class="w-7 h-7 rounded-lg bg-white/5 group-hover:bg-cyan-accent/20 flex items-center justify-center transition-all duration-300 flex-shrink-0">
                                         <i class="fas fa-<?php echo $service['icon']; ?> text-[10px] text-cyan-accent/70 group-hover:text-cyan-accent transition-colors"></i>
                                     </span>

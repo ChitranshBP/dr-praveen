@@ -26,19 +26,9 @@ if (empty($pageData) && $pageMeta) {
     $pageData = $pageMeta;
 }
 
-// Only pages whose template renders the CMS "Main Body Section" fields should
-// expose that editor. Other templates keep their body copy, so showing the
-// fields there would create edits that never appear on the live page.
-$sectionSupportedSlugs = [
-    'stroke', 'epilepsy', 'headache', 'migraine', 'parkinsons', 'movement', 'ms',
-    'neuropathy', 'vertigo', 'brain-tumor-surgery', 'spine-surgery',
-    'neurovascular-surgery', 'memory-clinic', 'rtms-therapy',
-    'neuro-rehabilitation-center', 'brain-health-center',
-    'neurocritical-acute-stroke-care', 'brain-stroke-helpline',
-    'functional-neurosurgery', 'neurological-conditions', 'neurological-symptoms',
-    'neurology-procedures',
-];
-$showSectionEditor = in_array($slug, $sectionSupportedSlugs, true);
+// Every page now supports CMS body content. Templates that render their own
+// section read the section1_* fields directly; the rest are printed by
+// includes/cms-sections.php before the footer.
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     cms_verify_csrf();
@@ -48,12 +38,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pageData['hero_desc'] = trim($_POST['hero_desc'] ?? '');
     $pageData['hero_bg_alt'] = trim($_POST['hero_bg_alt'] ?? '');
 
-    if ($showSectionEditor) {
-        $pageData['section1_badge'] = trim($_POST['section1_badge'] ?? '');
-        $pageData['section1_title'] = trim($_POST['section1_title'] ?? '');
-        $pageData['section1_text'] = trim($_POST['section1_text'] ?? '');
-        $pageData['section1_img_alt'] = trim($_POST['section1_img_alt'] ?? '');
-    }
+    $pageData['section1_badge'] = trim($_POST['section1_badge'] ?? '');
+    $pageData['section1_title'] = trim($_POST['section1_title'] ?? '');
+    $pageData['section1_text'] = trim($_POST['section1_text'] ?? '');
+    $pageData['section1_img_alt'] = trim($_POST['section1_img_alt'] ?? '');
 
     // SEO Meta Title & Meta Description
     $pageData['meta_title'] = trim($_POST['meta_title'] ?? '');
@@ -70,19 +58,59 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Handle Section Image upload
-    if ($showSectionEditor) {
-        $secUpload = cms_handle_upload('section1_img_file', 'services');
-        if (is_array($secUpload) && isset($secUpload['error'])) {
-            $uploadErrors[] = 'Section photo: ' . $secUpload['error'];
-        } elseif (is_array($secUpload) && !empty($secUpload['path'])) {
-            $pageData['section1_image'] = $secUpload['path'];
-            // A new photo invalidates any old alt-text placeholder, but keep a
-            // real alt tag the editor already wrote.
-            if (empty($pageData['section1_img_alt'])) {
-                $pageData['section1_img_alt'] = $pageData['section1_title'] ?? '';
-            }
+    $secUpload = cms_handle_upload('section1_img_file', 'services');
+    if (is_array($secUpload) && isset($secUpload['error'])) {
+        $uploadErrors[] = 'Section photo: ' . $secUpload['error'];
+    } elseif (is_array($secUpload) && !empty($secUpload['path'])) {
+        $pageData['section1_image'] = $secUpload['path'];
+        // A new photo invalidates any old alt-text placeholder, but keep a
+        // real alt tag the editor already wrote.
+        if (empty($pageData['section1_img_alt'])) {
+            $pageData['section1_img_alt'] = $pageData['section1_title'] ?? '';
         }
     }
+
+    // Additional custom page sections (optional repeater).
+    $customSections = [];
+    $postedSections = $_POST['custom_sections'] ?? [];
+    if (is_array($postedSections)) {
+        foreach ($postedSections as $i => $sec) {
+            if (!is_array($sec)) {
+                continue;
+            }
+            $cImage = trim($sec['image'] ?? '');
+            $uploadKey = 'custom_section_image_' . $i;
+            $cUpload = cms_handle_upload($uploadKey, 'pages');
+            if (is_array($cUpload) && isset($cUpload['error'])) {
+                $uploadErrors[] = 'Custom section ' . ((int)$i + 1) . ' photo: ' . $cUpload['error'];
+            } elseif (is_array($cUpload) && !empty($cUpload['path'])) {
+                $cImage = $cUpload['path'];
+            }
+
+            $cTitle = trim($sec['title'] ?? '');
+            $cText = trim($sec['text'] ?? '');
+            $cBadge = trim($sec['badge'] ?? '');
+            $cAlt = trim($sec['image_alt'] ?? '');
+            if ($cTitle === '' && trim(strip_tags($cText)) === '' && $cImage === '') {
+                continue; // ignore empty repeater rows
+            }
+
+            $cLayout = $sec['layout'] ?? 'image-right';
+            if (!in_array($cLayout, ['image-right', 'image-left', 'text-only'], true)) {
+                $cLayout = 'image-right';
+            }
+
+            $customSections[] = [
+                'badge' => $cBadge,
+                'title' => $cTitle,
+                'text'  => $cText,
+                'image' => $cImage,
+                'image_alt' => $cAlt,
+                'layout' => $cLayout,
+            ];
+        }
+    }
+    $pageData['custom_sections'] = $customSections;
 
     $dataDir = dirname($pageDataFile);
     if (!is_dir($dataDir)) {
@@ -216,13 +244,13 @@ require_once __DIR__ . '/includes/header.php';
             </div>
         </div>
 
-        <?php if ($showSectionEditor): ?>
         <!-- Main Section Content Box -->
         <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4">
             <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center">
                 <i class="fas fa-align-left text-brand-blue mr-2"></i> Main Body Section Content
             </h3>
-            <p class="text-[10px] text-slate-500 -mt-2">This section is rendered in the body of this service/condition page. Auto-generated placeholder text is ignored on the live site, so the page's built-in copy stays visible until you enter specific content here.</p>
+            <p class="text-[10px] text-slate-500 -mt-2">This content is rendered in the body of the page. Service and condition templates place it inside their own layout; every other page shows it just above the footer. Leave a field empty to keep the page's built-in copy.</p>
+            <p class="text-[10px] text-amber-600 -mt-1"><i class="fas fa-circle-info mr-1"></i> Catalog placeholder text (for example “Expert Clinical Approach to…”) is ignored on the live site — replace it with your own copy to make this section appear.</p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
@@ -261,17 +289,177 @@ require_once __DIR__ . '/includes/header.php';
                 </div>
             </div>
         </div>
-        <?php else: ?>
-        <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
-            <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center mb-2">
-                <i class="fas fa-circle-info text-brand-blue mr-2"></i> Main Body Section Content
-            </h3>
-            <p class="text-[11px] text-slate-500 leading-relaxed">
-                The body of this page is built into its template and is not controlled by the fields above.
-                You can still edit the hero banner, hero text, image alt tags and SEO metadata here.
-            </p>
+
+        <!-- Additional Custom Sections -->
+        <?php $existingCustomSections = is_array($pageData['custom_sections'] ?? null) ? array_values($pageData['custom_sections']) : []; ?>
+        <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                    <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center">
+                        <i class="fas fa-layer-group text-brand-blue mr-2"></i> Additional Page Sections
+                    </h3>
+                    <p class="text-[10px] text-slate-500 mt-1">Add extra body sections to this page. They appear below the main section and above the footer.</p>
+                </div>
+                <button type="button" onclick="addCustomSection()" class="px-3.5 py-2 bg-brand-blue hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-colors flex items-center justify-center space-x-1.5 self-start sm:self-auto">
+                    <i class="fas fa-plus text-[10px]"></i>
+                    <span>Add Section</span>
+                </button>
+            </div>
+
+            <div id="custom-sections-container" class="space-y-4" data-next-index="<?php echo count($existingCustomSections); ?>">
+                <?php foreach ($existingCustomSections as $ci => $cs): ?>
+                <div class="custom-section-card bg-white p-4 rounded-xl border border-slate-200 space-y-3" data-index="<?php echo (int)$ci; ?>">
+                    <div class="flex items-center justify-between">
+                        <h4 class="text-xs font-bold text-slate-800 custom-section-number">Section <?php echo (int)$ci + 1; ?></h4>
+                        <button type="button" onclick="removeCustomSection(this)" class="text-[11px] text-red-500 font-bold hover:underline flex items-center space-x-1">
+                            <i class="fas fa-trash text-[9px]"></i>
+                            <span>Remove</span>
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-700 mb-1">Sub-Badge</label>
+                            <input type="text" name="custom_sections[<?php echo (int)$ci; ?>][badge]" value="<?php echo htmlspecialchars($cs['badge'] ?? ''); ?>" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-700 mb-1">Heading (H2)</label>
+                            <input type="text" name="custom_sections[<?php echo (int)$ci; ?>][title]" value="<?php echo htmlspecialchars($cs['title'] ?? ''); ?>" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-700 mb-1">Layout</label>
+                            <select name="custom_sections[<?php echo (int)$ci; ?>][layout]" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                                <option value="image-right" <?php echo ($cs['layout'] ?? '') === 'image-right' ? 'selected' : ''; ?>>Image on right</option>
+                                <option value="image-left" <?php echo ($cs['layout'] ?? '') === 'image-left' ? 'selected' : ''; ?>>Image on left</option>
+                                <option value="text-only" <?php echo ($cs['layout'] ?? '') === 'text-only' ? 'selected' : ''; ?>>Text only</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-700 mb-1">Photo Alt Tag</label>
+                            <input type="text" name="custom_sections[<?php echo (int)$ci; ?>][image_alt]" value="<?php echo htmlspecialchars($cs['image_alt'] ?? ''); ?>" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Section Content</label>
+                        <textarea name="custom_sections[<?php echo (int)$ci; ?>][text]" rows="6" class="wysiwyg-editor w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs leading-relaxed focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($cs['text'] ?? ''); ?></textarea>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-700 mb-1">Photo Path or URL</label>
+                            <input type="text" name="custom_sections[<?php echo (int)$ci; ?>][image]" value="<?php echo htmlspecialchars($cs['image'] ?? ''); ?>" placeholder="assets/... or https://..." class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-mono focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-700 mb-1">Upload Photo</label>
+                            <input type="file" name="custom_section_image_<?php echo (int)$ci; ?>" accept="image/*" class="w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-[11px] file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                        </div>
+                    </div>
+
+                    <?php if (!empty($cs['image'])): ?>
+                    <div class="w-28 aspect-[4/3] rounded-lg overflow-hidden border border-slate-200">
+                        <img src="../<?php echo htmlspecialchars($cs['image']); ?>" class="w-full h-full object-cover" alt="<?php echo htmlspecialchars($cs['image_alt'] ?? 'Custom section image'); ?>">
+                    </div>
+                    <?php endif; ?>
+                </div>
+                <?php endforeach; ?>
+            </div>
+
+            <p class="text-[10px] text-slate-400">Tip: leave a section's heading and content empty to remove it when saving.</p>
         </div>
-        <?php endif; ?>
+
+        <template id="custom-section-template">
+            <div class="custom-section-card bg-white p-4 rounded-xl border border-slate-200 space-y-3" data-index="__INDEX__">
+                <div class="flex items-center justify-between">
+                    <h4 class="text-xs font-bold text-slate-800 custom-section-number">Section</h4>
+                    <button type="button" onclick="removeCustomSection(this)" class="text-[11px] text-red-500 font-bold hover:underline flex items-center space-x-1">
+                        <i class="fas fa-trash text-[9px]"></i>
+                        <span>Remove</span>
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Sub-Badge</label>
+                        <input type="text" name="custom_sections[__INDEX__][badge]" value="" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Heading (H2)</label>
+                        <input type="text" name="custom_sections[__INDEX__][title]" value="" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Layout</label>
+                        <select name="custom_sections[__INDEX__][layout]" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            <option value="image-right">Image on right</option>
+                            <option value="image-left">Image on left</option>
+                            <option value="text-only">Text only</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Photo Alt Tag</label>
+                        <input type="text" name="custom_sections[__INDEX__][image_alt]" value="" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-[11px] font-bold text-slate-700 mb-1">Section Content</label>
+                    <textarea name="custom_sections[__INDEX__][text]" rows="6" class="wysiwyg-editor w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs leading-relaxed focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Photo Path or URL</label>
+                        <input type="text" name="custom_sections[__INDEX__][image]" value="" placeholder="assets/... or https://..." class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-mono focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Upload Photo</label>
+                        <input type="file" name="custom_section_image___INDEX__" accept="image/*" class="w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-[11px] file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <script>
+        function renumberCustomSections() {
+            document.querySelectorAll('#custom-sections-container .custom-section-card').forEach(function (card, i) {
+                var label = card.querySelector('.custom-section-number');
+                if (label) label.textContent = 'Section ' + (i + 1);
+            });
+        }
+
+        function addCustomSection() {
+            var container = document.getElementById('custom-sections-container');
+            var template = document.getElementById('custom-section-template');
+            if (!container || !template) return;
+
+            var index = parseInt(container.getAttribute('data-next-index') || '0', 10);
+            var html = template.innerHTML.replace(/__INDEX__/g, String(index));
+            var wrapper = document.createElement('div');
+            wrapper.innerHTML = html.trim();
+            var card = wrapper.firstElementChild;
+            if (!card) return;
+
+            container.appendChild(card);
+            container.setAttribute('data-next-index', String(index + 1));
+            renumberCustomSections();
+
+            if (typeof window.cmsInitRichEditors === 'function') {
+                window.cmsInitRichEditors(card);
+            }
+        }
+
+        function removeCustomSection(button) {
+            var card = button.closest('.custom-section-card');
+            if (card) card.remove();
+            renumberCustomSections();
+        }
+        </script>
 
         <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
             <a href="pages.php" class="text-xs text-slate-500 font-semibold hover:underline">&larr; Back to All Pages</a>

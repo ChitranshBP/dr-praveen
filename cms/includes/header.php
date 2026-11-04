@@ -299,6 +299,10 @@ $flash = cms_get_flash();
                         <i class="fas fa-file-alt w-5 text-center mr-2.5"></i>
                         <span>All Pages Content</span>
                     </a>
+                    <a href="faqs.php" class="flex items-center px-3 py-2.5 rounded-xl transition-all <?php echo $currentPage === 'faqs' || $currentPage === 'faq-edit' ? 'bg-brand-blue text-white shadow-md' : 'text-slate-300 hover:bg-white/10 hover:text-white'; ?>">
+                        <i class="fas fa-circle-question w-5 text-center mr-2.5"></i>
+                        <span>Page FAQs</span>
+                    </a>
                     <a href="doctors.php" class="flex items-center px-3 py-2.5 rounded-xl transition-all <?php echo $currentPage === 'doctors' || $currentPage === 'doctor-edit' ? 'bg-brand-blue text-white shadow-md' : 'text-slate-300 hover:bg-white/10 hover:text-white'; ?>">
                         <i class="fas fa-users w-5 text-center mr-2.5"></i>
                         <span>Our Medical Team</span>

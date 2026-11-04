@@ -1,0 +1,1198 @@
+{
+    "brain-tumor-surgery": {
+        "badge": "FAQ",
+        "title": "Frequently Asked Questions",
+        "description": "Answers to common questions regarding brain tumor mapping, biopsy protocols, and surgical recovery.",
+        "layout": "split",
+        "items": [
+            {
+                "question": "Are all brain tumors cancerous (malignant)?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                No. Many brain tumors are benign (non-cancerous), meaning they grow slowly and do not spread. However, even benign tumors can cause symptoms by pressing on surrounding brain tissue and may require surgical removal.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "7d1355246f87",
+                "order": 1,
+                "is_active": true
+            },
+            {
+                "question": "What is a minimally invasive brain tumor surgery?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                Minimally invasive surgery uses advanced keyhole techniques, specialized endoscopes, and intraoperative microscopes to access the tumor through very small incisions, reducing recovery time and damage to healthy brain structures.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "3081171c45f9",
+                "order": 2,
+                "is_active": true
+            },
+            {
+                "question": "What is Awake Craniotomy?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                Awake craniotomy is a specialized surgical procedure where the patient is awake for part of the surgery. This allows neurosurgeons to map and test language, motor, or sensory functions in real-time, ensuring these areas are not damaged when removing the tumor.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "e01f36ce4bfb",
+                "order": 3,
+                "is_active": true
+            }
+        ]
+    },
+    "brain-health-center": {
+        "badge": "FAQ",
+        "title": "Frequently Asked Questions",
+        "description": "Answers to common questions regarding cognitive wellness, preventive screenings, and brain lifestyle habits.",
+        "layout": "split",
+        "items": [
+            {
+                "question": "What is a cognitive wellness audit?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                A cognitive wellness audit is a proactive assessment designed to baseline your memory, attention, and executive functions. It helps identify early, subtle changes in cognitive health and establishes a blueprint for preventative care.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "cd8f23ed393e",
+                "order": 1,
+                "is_active": true
+            },
+            {
+                "question": "At what age should I start focusing on preventive brain health screenings?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                While brain health habits should be practiced at all ages, formal preventive screenings are highly recommended starting at age 50, or earlier if you have a family history of strokes, Alzheimer's, or vascular diseases.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "8e273e37e703",
+                "order": 2,
+                "is_active": true
+            },
+            {
+                "question": "Can lifestyle changes really reverse or prevent cognitive decline?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                Clinical studies show that regular exercise, a Mediterranean-style diet, cognitive training, and managing cardiovascular risk factors (blood pressure, diabetes) can slow down cognitive aging and significantly reduce the risk of developing dementia.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "a7724d4a5e03",
+                "order": 3,
+                "is_active": true
+            }
+        ]
+    },
+    "brain-stroke-helpline": {
+        "badge": "FAQ",
+        "title": "Frequently Asked Questions",
+        "description": "Answers to crucial questions regarding stroke timelines, emergency responses, and hotline actions.",
+        "layout": "split",
+        "items": [
+            {
+                "question": "Is the stroke helpline active 24/7?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                Yes, the dedicated helpline **1800-309-0247** is fully operational 24 hours a day, 7 days a week, connecting you directly to our stroke response team.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "106a7a0ed3a2",
+                "order": 1,
+                "is_active": true
+            },
+            {
+                "question": "Why is the first hour after a stroke called the 'Golden Hour'?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                The \"Golden Hour\" is the critical period immediately following a stroke. Administering clot-busting medication (thrombolysis) or performing clot removal (thrombectomy) within this window can drastically reduce brain damage and prevent permanent disability.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "18e4a3aeab2f",
+                "order": 2,
+                "is_active": true
+            },
+            {
+                "question": "Can I call the helpline for general neurological issues?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                The stroke helpline is reserved exclusively for acute emergency situations like suspected brain strokes, sudden paralysis, or loss of speech. For general appointments or routine queries, please use our standard contact number: +91-87969-77903.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "986d83a8e4c0",
+                "order": 3,
+                "is_active": true
+            }
+        ]
+    },
+    "contact-us-top-neurologist-delhi-ncr": {
+        "badge": "FAQ",
+        "title": "Frequently Asked Questions",
+        "description": "Answers to common queries regarding appointment scheduling, consultations, and second opinions.",
+        "layout": "split",
+        "items": [
+            {
+                "question": "What are Dr. Praveen Gupta's OPD consultation hours?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                Dr. Praveen Gupta consults at Marengo Asia Hospitals, Gurgaon, from Monday to Saturday, between 9:00 AM and 5:00 PM. Prior booking is highly recommended to minimize wait times.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "603f9d8dc493",
+                "order": 1,
+                "is_active": true
+            },
+            {
+                "question": "How can I book a second opinion for a complex neurological case?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                You can schedule a second opinion by filling out our online form and selecting \"Second Opinion\" as the subject. Please upload or bring all previous scans (MRI/CT), medical prescriptions, and discharge summaries for an accurate clinical review.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "22b5bfde3c2f",
+                "order": 2,
+                "is_active": true
+            }
+        ]
+    },
+    "epilepsy": {
+        "badge": "FAQ",
+        "title": "Frequently Asked Questions",
+        "description": "We compiled a list of answers to address your most pressing questions regarding epilepsy diagnosis, treatment, and management.",
+        "layout": "split",
+        "items": [
+            {
+                "question": "What is the difference between epilepsy and a single seizure?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                A single seizure doesn't necessarily mean you have epilepsy. Epilepsy is diagnosed when a person has two or more unprovoked seizures occurring at least 24 hours apart. Single seizures can be triggered by various factors like fever, head injury, or metabolic disturbances, and may not recur.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "861fcf5ef7be",
+                "order": 1,
+                "is_active": true
+            },
+            {
+                "question": "Can epilepsy be cured completely?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                While there's no universal cure for epilepsy, many people achieve complete seizure control with proper treatment. About 70% of people with epilepsy can be seizure-free with medication. Some patients, particularly children, may outgrow epilepsy. In select cases of drug-resistant epilepsy, surgery can potentially provide a cure.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "f903180fbcbd",
+                "order": 2,
+                "is_active": true
+            },
+            {
+                "question": "What should I do if someone is having a seizure?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                Stay calm and move nearby objects out of the way. Gently guide the person to the ground if they're standing. Turn them on their side to keep airways clear. Don't put anything in their mouth. Time the seizure and call emergency services if it lasts more than 5 minutes, they don't wake up after, or they're injured.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "89d92dc64eec",
+                "order": 3,
+                "is_active": true
+            },
+            {
+                "question": "Can I live a normal life with epilepsy?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                Absolutely. With proper treatment and management, many people with epilepsy live full, active lives. Most people with well-controlled seizures can work, drive (when seizure-free per local regulations), exercise, and participate in all normal activities. We work with you to minimize limitations and maximize quality of life.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "2de053094690",
+                "order": 4,
+                "is_active": true
+            },
+            {
+                "question": "What are common epilepsy triggers?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                Common triggers vary by individual but may include lack of sleep, stress, alcohol or drug use, flashing lights (photosensitivity), certain medications, hormonal changes, and missed anti-seizure doses. We help you identify your personal triggers through detailed history and seizure diaries.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "a1a61e1690f1",
+                "order": 5,
+                "is_active": true
+            },
+            {
+                "question": "How often should I see my neurologist?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                Follow-up frequency depends on seizure control and medication side effects. Initially, visits may be every 1-3 months. Once stable, visits typically occur every 6-12 months. You'll need more frequent visits if adjustments are being made to medication or if breakthrough seizures occur.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "ea7b6a0e58a8",
+                "order": 6,
+                "is_active": true
+            }
+        ]
+    },
+    "emergency-neurology-care": {
+        "badge": "FAQ",
+        "title": "Frequently Asked Questions",
+        "description": "Answers to critical questions regarding emergency admissions, stroke response, and first-aid measures.",
+        "layout": "split",
+        "items": [
+            {
+                "question": "What constitutes a neurological emergency?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                Neurological emergencies include sudden onset of facial drooping, arm or leg weakness, difficulty speaking, severe sudden headache (thunderclap headache), sudden vision loss, loss of consciousness, or prolonged seizures.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "eaa5a1d38be4",
+                "order": 1,
+                "is_active": true
+            },
+            {
+                "question": "Does the hospital have a dedicated stroke unit?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                Yes, Marengo Asia Hospital features a dedicated, round-the-clock Stroke and Neurocritical Care Unit with rapid access to CT/MRI imaging, catheterization labs for mechanical thrombectomy, and highly specialized intensive care.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "eb91953b5d53",
+                "order": 2,
+                "is_active": true
+            },
+            {
+                "question": "What should I do while waiting for emergency transport?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                Keep the patient calm, lying down on their side to keep the airway clear. Note the exact time when the first symptom started. Do not give the patient anything to eat or drink (including water or aspirin) as they may have swallowing difficulties.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "db416af8036f",
+                "order": 3,
+                "is_active": true
+            }
+        ]
+    },
+    "functional-neurosurgery": {
+        "badge": "FAQ",
+        "title": "Frequently Asked Questions",
+        "description": "Answers to common questions regarding Deep Brain Stimulation (DBS) surgery, settings, and tremors control.",
+        "layout": "split",
+        "items": [
+            {
+                "question": "What is Deep Brain Stimulation (DBS) and how does it work?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                DBS is a surgical treatment involving the implantation of a medical device (a brain pacemaker) that sends electrical signals to specific brain areas. These signals block the abnormal impulses that cause motor symptoms like tremors, stiffness, and slow movement.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "c377b68cc5f4",
+                "order": 1,
+                "is_active": true
+            },
+            {
+                "question": "Who is a good candidate for DBS in Parkinson's disease?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                DBS is suited for patients who have had Parkinson's for at least 4 years, experience significant motor fluctuations or tremors, and still respond to levodopa medication but suffer from its disabling side effects (dyskinesias).\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "762066a0029f",
+                "order": 2,
+                "is_active": true
+            },
+            {
+                "question": "Is DBS surgery permanent? Can it be reversed?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                DBS is fully adjustable and reversible. The stimulation can be turned off or customized wirelessly using an external programmer. In rare cases, if necessary, the electrodes and pulse generator can be surgically removed.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "6d4317bda856",
+                "order": 3,
+                "is_active": true
+            }
+        ]
+    },
+    "headache": {
+        "badge": "FAQ",
+        "title": "Frequently Asked Questions",
+        "description": "Answers to common questions regarding headache types, triggers, and relief treatments.",
+        "layout": "split",
+        "items": [
+            {
+                "question": "When should I consult a neurologist for a headache?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                You should consult a neurologist if your headaches are chronic (occurring 15 or more days a month), sudden and exceptionally severe, accompanied by neurological symptoms (like weakness, numbness, speech difficulties), or if they are unresponsive to over-the-counter pain medications.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "9f42717aea2e",
+                "order": 1,
+                "is_active": true
+            },
+            {
+                "question": "Can stress cause tension-type headaches?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                Yes, stress is the most frequently reported trigger for tension headaches. Stress leads to muscle contraction in the shoulders, neck, and scalp, resulting in tension pain. Managing stress through therapy, exercise, and meditation is a key part of treatment.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "0e967e6102cd",
+                "order": 2,
+                "is_active": true
+            },
+            {
+                "question": "What are medication overuse (rebound) headaches?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                Rebound headaches are caused by frequent, repetitive use of headache relief medications (like triptans, NSAIDs, or combination pain relievers). When the medication wears off, a withdrawal headache occurs, prompting the patient to take more medication, creating a vicious cycle. We help patients safely taper off these medications to break the cycle.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "97e8c37a17ac",
+                "order": 3,
+                "is_active": true
+            }
+        ]
+    },
+    "memory-clinic": {
+        "badge": "FAQ",
+        "title": "Frequently Asked Questions",
+        "description": "Answers to common questions regarding memory loss, dementia evaluations, and caregiver safety strategies.",
+        "layout": "split",
+        "items": [
+            {
+                "question": "What is the difference between normal forgetfulness and dementia?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                Normal forgetfulness includes occasionally misplacing keys or forgetting names but remembering them later. Dementia is a progressive cognitive decline that interferes with daily tasks, such as getting lost in familiar places, experiencing severe confusion, or struggling with language.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "fd9541fa477c",
+                "order": 1,
+                "is_active": true
+            },
+            {
+                "question": "What diagnostic tests are performed at the Memory Clinic?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                We perform comprehensive cognitive screenings (such as MoCA and MMSE tests), high-resolution brain MRIs to identify patterns of brain atrophy or structural issues, and blood panels to rule out metabolic or vitamin deficiencies.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "6dbba8b00faf",
+                "order": 2,
+                "is_active": true
+            },
+            {
+                "question": "How can families and caregivers support patients with Alzheimer's?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                Families can help by establishing structured daily routines, ensuring a safe home environment to prevent falls or wandering, utilizing clear communication, and actively participating in caregiver training to manage behavioral changes.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "5cfb2138d5b7",
+                "order": 3,
+                "is_active": true
+            }
+        ]
+    },
+    "migraine": {
+        "badge": "FAQ",
+        "title": "Frequently Asked Questions",
+        "description": "Answers to common questions regarding migraine types, triggers, and relief treatments.",
+        "layout": "split",
+        "items": [
+            {
+                "question": "What is the difference between a headache and a migraine?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                A headache causes general pain in the head or neck area, while a migraine is a complex neurological disorder. Migraines cause throbbing, pulse-like pain (typically on one side), often accompanied by sensory sensitivities (light, sound, smell), severe nausea, or visual auras.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "bf5e1f20f67b",
+                "order": 1,
+                "is_active": true
+            },
+            {
+                "question": "What are common migraine triggers?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                Common triggers vary but include hormonal fluctuations, stress, skipped meals, dehydration, lack of sleep, sensory stimuli (bright lights, loud noises), changes in weather, and certain foods or beverages (such as caffeine or aged cheeses).\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "ce77fb1f0be0",
+                "order": 2,
+                "is_active": true
+            },
+            {
+                "question": "Can migraines be cured completely?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                While there is currently no cure for migraines, modern therapies (such as Botox, CGRP injections, and oral preventive medications) can dramatically reduce the frequency, duration, and severity of attacks, allowing most sufferers to live completely pain-free lives.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "533a23113d44",
+                "order": 3,
+                "is_active": true
+            }
+        ]
+    },
+    "movement": {
+        "badge": "FAQ",
+        "title": "Frequently Asked Questions",
+        "description": "Answers to common questions regarding essential tremors, dystonias, and physical balance retraining.",
+        "layout": "split",
+        "items": [
+            {
+                "question": "What is the difference between Essential Tremor and Parkinson's?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                Parkinson's tremors are typically \"resting tremors\"—they happen when muscles are completely relaxed. Essential Tremor is an \"action tremor\"—shaking occurs when using the hands to write, drink, or perform tasks. Parkinson's also includes stiffness and slow movements, which are absent in Essential Tremor.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "66961d1a6d31",
+                "order": 1,
+                "is_active": true
+            },
+            {
+                "question": "How do Botox injections help dystonias?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                Dystonia causes involuntary, sustained muscle contractions. Injecting Botox (botulinum toxin) directly into affected muscles blocks the chemical signals that trigger muscle tightening, relaxing the spasm and relieving twisting or painful posturing for up to 3 to 4 months.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "ba9cb00e4036",
+                "order": 2,
+                "is_active": true
+            },
+            {
+                "question": "Can ataxia symptoms be managed?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                While progressive cerebellar ataxia does not have a single cure, symptoms are managed using targeted physical therapies focusing on balance preservation, gait coordination, and occupational adaptations (like weighted utensils) to help patients retain daily independence.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "aabcc66c3856",
+                "order": 3,
+                "is_active": true
+            }
+        ]
+    },
+    "ms": {
+        "badge": "FAQ",
+        "title": "Frequently Asked Questions",
+        "description": "Answers to common questions regarding Multiple Sclerosis diagnosis, symptoms, and therapies.",
+        "layout": "split",
+        "items": [
+            {
+                "question": "Can Multiple Sclerosis (MS) be cured completely?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                Currently, there is no permanent cure for MS. However, the development of advanced Disease-Modifying Therapies (DMTs) has transformed treatment. These medications can dramatically reduce the rate of relapses, prevent new brain lesions, and slow down the progression of physical disability.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "413704f75b29",
+                "order": 1,
+                "is_active": true
+            },
+            {
+                "question": "What is the difference between a relapse and normal fatigue?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                An MS relapse (flare-up or attack) is defined as the occurrence of new neurological symptoms or the worsening of old symptoms that last for at least 24 hours in the absence of a fever or infection. Fatigue is a chronic, daily background symptom that fluctuates but does not represent a new inflammatory attack on nerves.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "c603cb42082e",
+                "order": 2,
+                "is_active": true
+            },
+            {
+                "question": "Who is at risk of developing MS?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                MS is most commonly diagnosed in people between the ages of 20 and 40, and it affects women about two to three times more often than men. Genetic factors, vitamin D deficiency, smoking, and geographic location (temperate zones farther from the equator) also contribute to increased risks.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "f6064fbcedc5",
+                "order": 3,
+                "is_active": true
+            }
+        ]
+    },
+    "neuro-rehabilitation-center": {
+        "badge": "Patient FAQ",
+        "title": "Frequently Asked Questions",
+        "description": "Common questions regarding Neurological Rehabilitation.",
+        "layout": "centered",
+        "items": [
+            {
+                "question": "What does neuro-rehabilitation involve?",
+                "answer": "<p class=\"text-xs text-dark-grey/70 leading-relaxed\">\r\n                        Neuro-rehabilitation is a multidisciplinary program designed to support patients recovering from injury, disease, or disorders of the nervous system. It combines neurological physical therapy, occupational therapy, and speech therapy to recover lost functions and rebuild motor skills.\r\n                    </p>",
+                "category": "",
+                "category_id": "",
+                "id": "7fc57e6a49f9",
+                "order": 1,
+                "is_active": true
+            },
+            {
+                "question": "How soon should rehabilitation start after a stroke?",
+                "answer": "<p class=\"text-xs text-dark-grey/70 leading-relaxed\">\r\n                        Rehabilitation should begin as soon as the patient is medically stable—often within 24 to 48 hours of the event. Early mobilization stimulates neuroplasticity and prevents secondary complications like muscle stiffness and joint contractures.\r\n                    </p>",
+                "category": "",
+                "category_id": "",
+                "id": "eaaa36e02bdb",
+                "order": 2,
+                "is_active": true
+            },
+            {
+                "question": "Can rehabilitation help with progressive disorders like Parkinson's?",
+                "answer": "<p class=\"text-xs text-dark-grey/70 leading-relaxed\">\r\n                        Yes. While progressive disorders cannot be fully cured, ongoing physical, balance, and occupational therapies help patients manage motor symptoms, maintain optimal gait patterns, reduce the risk of falls, and sustain independence for much longer.\r\n                    </p>",
+                "category": "",
+                "category_id": "",
+                "id": "287bc4deac3a",
+                "order": 3,
+                "is_active": true
+            },
+            {
+                "question": "How long does a neuro-rehab program last?",
+                "answer": "<p class=\"text-xs text-dark-grey/70 leading-relaxed\">\r\n                        The duration is highly individualized, depending on the severity of the neurological deficit and the patient's recovery trajectory. A program might last from a few weeks to several months, with progress evaluations conducted periodically.\r\n                    </p>",
+                "category": "",
+                "category_id": "",
+                "id": "64652647614b",
+                "order": 4,
+                "is_active": true
+            },
+            {
+                "question": "What is the role of Phezee in physical therapy?",
+                "answer": "<p class=\"text-xs text-dark-grey/70 leading-relaxed\">\r\n                        Phezee is an advanced wearable biofeedback tool used to measure joint Range of Motion (ROM) and muscle electrical activity (EMG). It allows therapists to monitor recovery progress in real-time, customize exercise protocols, and provide patients with visual feedback on their improvement.\r\n                    </p>",
+                "category": "",
+                "category_id": "",
+                "id": "a96f0ca6b0fe",
+                "order": 5,
+                "is_active": true
+            }
+        ]
+    },
+    "neurocritical-acute-stroke-care": {
+        "badge": "Patient FAQ",
+        "title": "Frequently Asked Questions",
+        "description": "Common questions regarding Neurocritical Care and Acute Stroke therapies.",
+        "layout": "centered",
+        "items": [
+            {
+                "question": "What is the \"Golden Hour\" in stroke treatment?",
+                "answer": "<p class=\"text-xs text-dark-grey/70 leading-relaxed\">\r\n                        The Golden Hour represents the first 4.5 hours after the onset of stroke symptoms. Administering clot-busting medications (IV tPA) or initiating mechanical thrombectomy within this window drastically increases the chances of reversing paralysis and achieving full recovery.\r\n                    </p>",
+                "category": "",
+                "category_id": "",
+                "id": "f8563067330d",
+                "order": 1,
+                "is_active": true
+            },
+            {
+                "question": "What is mechanical thrombectomy?",
+                "answer": "<p class=\"text-xs text-dark-grey/70 leading-relaxed\">\r\n                        Mechanical thrombectomy is an advanced, catheter-based endovascular surgery. A specialist feeds a micro-catheter from the groin up to the brain to physically grab and remove the clot blocking blood flow, instantly re-oxygenating brain tissues.\r\n                    </p>",
+                "category": "",
+                "category_id": "",
+                "id": "7e7b4ed7139f",
+                "order": 2,
+                "is_active": true
+            },
+            {
+                "question": "How is a Neuro-ICU different from a regular ICU?",
+                "answer": "<p class=\"text-xs text-dark-grey/70 leading-relaxed\">\r\n                        A Neuro-ICU is dedicated exclusively to life-threatening brain and spine issues. It features specialized equipment like intracranial pressure (ICP) monitors, continuous bedside video-EEG, and is staffed by neurologists, neurointensivists, and nurses certified in advanced neurological life support.\r\n                    </p>",
+                "category": "",
+                "category_id": "",
+                "id": "b230691f7b56",
+                "order": 3,
+                "is_active": true
+            },
+            {
+                "question": "Can stroke paralysis be reversed?",
+                "answer": "<p class=\"text-xs text-dark-grey/70 leading-relaxed\">\r\n                        Yes, if emergency treatment (thrombolysis or thrombectomy) is initiated immediately. Even if some deficits remain after the acute phase, structured neurological physical rehabilitation can help retrain the brain to restore mobility and function.\r\n                    </p>",
+                "category": "",
+                "category_id": "",
+                "id": "b1cc203b7a79",
+                "order": 4,
+                "is_active": true
+            },
+            {
+                "question": "What are the risk factors for stroke?",
+                "answer": "<p class=\"text-xs text-dark-grey/70 leading-relaxed\">\r\n                        Common risk factors include chronic high blood pressure, diabetes, high cholesterol, smoking, physical inactivity, obesity, and heart conditions like atrial fibrillation. Managing these under neurological supervision drastically lowers stroke risk.\r\n                    </p>",
+                "category": "",
+                "category_id": "",
+                "id": "ecfc901a29c0",
+                "order": 5,
+                "is_active": true
+            }
+        ]
+    },
+    "neurology-consultation": {
+        "badge": "FAQ",
+        "title": "Frequently Asked Questions",
+        "description": "Answers to common queries about booking a consultation, what to bring, and diagnostic procedures.",
+        "layout": "split",
+        "items": [
+            {
+                "question": "Do I need a referral to book a neurology consultation?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                No, you do not need a formal referral to schedule an appointment with Dr. Praveen Gupta. However, if your insurance provider requires a referral for coverage, please obtain it before your visit.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "fb5669c9057c",
+                "order": 1,
+                "is_active": true
+            },
+            {
+                "question": "How long does a typical first consultation take?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                A comprehensive initial consultation usually takes between 30 to 45 minutes. This allows sufficient time to take a detailed medical history, perform a physical examination, and discuss the diagnostic plan.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "7d6afc775132",
+                "order": 2,
+                "is_active": true
+            },
+            {
+                "question": "Should I stop taking my current medications before the appointment?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                No, please continue to take your medications as prescribed unless specifically instructed otherwise. Simply bring a list or the original boxes of all medications you are currently taking.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "5f96a20dde45",
+                "order": 3,
+                "is_active": true
+            }
+        ]
+    },
+    "neurology-second-opinion": {
+        "badge": "FAQ",
+        "title": "Frequently Asked Questions",
+        "description": "Answers to common queries regarding second opinions, records sharing, and consultation formats.",
+        "layout": "split",
+        "items": [
+            {
+                "question": "Why should I seek a second opinion for a neurological condition?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                Neurological conditions are complex and often have multiple treatment pathways (such as choosing between surgery or medical management for tumors or spinal issues). A second opinion helps verify the diagnosis, explores alternative therapies, and provides peace of mind before starting major treatments.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "f0138a681a98",
+                "order": 1,
+                "is_active": true
+            },
+            {
+                "question": "What records should I provide for a second opinion?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                Please share all relevant medical documentation, including clinical notes, history profiles, recent laboratory tests, and complete high-resolution radiology scans (MRI/CT scans on a CD or digital folder).\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "3624b817262d",
+                "order": 2,
+                "is_active": true
+            },
+            {
+                "question": "Can I get a second opinion online?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                Yes. You can upload your medical reports securely through our online consultation portal and schedule a video consultation to discuss your case and receive a comprehensive second opinion report.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "3e10fcbec195",
+                "order": 3,
+                "is_active": true
+            }
+        ]
+    },
+    "patient-info": {
+        "badge": "FAQ",
+        "title": "Patient FAQ",
+        "description": "Find quick answers to registration, billing, and scheduling protocols.",
+        "layout": "split",
+        "items": [
+            {
+                "question": "How early should I arrive for my appointment?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                Please arrive at least 15-20 minutes before your scheduled appointment time. This gives the registration staff enough time to make your card and enter your vitals.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "189547b249f9",
+                "order": 1,
+                "is_active": true
+            },
+            {
+                "question": "Can I request cashless admission for a planned surgery?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                Yes. For planned procedures, visit the TPA Help Desk in the hospital lobby with your insurance card, e-card, doctor's prescription, and Aadhaar card at least 24-48 hours before admission.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "fd32e56aee7b",
+                "order": 2,
+                "is_active": true
+            }
+        ]
+    },
+    "online-neurologist-consultation": {
+        "badge": "FAQ",
+        "title": "Frequently Asked Questions",
+        "description": "Answers to common queries about online consultations, booking slots, and prescription downloads.",
+        "layout": "split",
+        "items": [
+            {
+                "question": "How do I book and connect to an online consultation?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                You can book an online consultation through our website booking portal. Once scheduled, you will receive a secure video link via email or SMS. Simply click the link at your appointment time to join the consultation on your phone or computer.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "b6c4410a1a99",
+                "order": 1,
+                "is_active": true
+            },
+            {
+                "question": "What conditions are suitable for online tele-consultation?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                Online consultations are highly suitable for routine follow-ups, reviewing laboratory or imaging results, managing ongoing medication adjustments, and seeking general second opinions. If you have sudden or emergency symptoms, please seek in-person emergency care.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "7c1e6dc1fbe4",
+                "order": 2,
+                "is_active": true
+            },
+            {
+                "question": "Can I get a digital prescription during the video call?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                Yes. After your consultation, Dr. Praveen Gupta will generate a digitally signed prescription and send it directly to your registered email or WhatsApp number, which you can use at any licensed pharmacy.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "35f31d7cb4dc",
+                "order": 3,
+                "is_active": true
+            }
+        ]
+    },
+    "parkinsons": {
+        "badge": "FAQ",
+        "title": "Frequently Asked Questions",
+        "description": "Answers to common questions regarding Parkinson's symptoms, therapies, and surgical options.",
+        "layout": "split",
+        "items": [
+            {
+                "question": "What are the earliest warning signs of Parkinson's?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                Early signs are often subtle and non-motor. They include loss of smell (anosmia), sleep disturbances, handwriting that becomes smaller (micrographia), a faint resting hand tremor, or a slight stiffness in shoulders and legs that is mistaken for normal aging.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "ccd0d7d66985",
+                "order": 1,
+                "is_active": true
+            },
+            {
+                "question": "What is Deep Brain Stimulation (DBS) and who is it for?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                DBS is a surgical treatment where electrodes are placed in specific brain centers to regulate abnormal electrical activity. It is indicated for patients with idiopathic Parkinson's who experience severe tremors, motor complications, or \"off\" fluctuations that are no longer managed by Levodopa alone.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "84e3c6721964",
+                "order": 2,
+                "is_active": true
+            },
+            {
+                "question": "Can physical therapy help Parkinson's progress?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                Yes. Regular, structured exercise and physical therapies (especially specialized programs like LSVT BIG) help retrain brain pathways, maintain muscle flexibility, improve balance, prevent falls, and significantly delay the onset of severe motor disabilities.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "375f2962e4bb",
+                "order": 3,
+                "is_active": true
+            }
+        ]
+    },
+    "neuropathy": {
+        "badge": "FAQ",
+        "title": "Frequently Asked Questions",
+        "description": "Answers to common questions regarding peripheral neuropathy, nerve healing, and diabetic care.",
+        "layout": "split",
+        "items": [
+            {
+                "question": "What is the most common cause of peripheral neuropathy?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                Diabetes is the leading cause of chronic peripheral neuropathy. Over time, high blood glucose levels damage the walls of the tiny blood vessels (capillaries) that supply oxygen and nutrients to nerves, especially in the feet, leading to nerve dysfunction and numbness.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "81a19643baa1",
+                "order": 1,
+                "is_active": true
+            },
+            {
+                "question": "Can damaged nerves regenerate or heal?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                Yes. Unlike nerves in the brain and spinal cord, peripheral nerves have the ability to slowly regenerate and heal. This is possible if the primary cause (e.g. vitamin B12 deficiency, toxins, or blood sugar spikes) is addressed and managed effectively under clinical supervision.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "5784184f581d",
+                "order": 2,
+                "is_active": true
+            },
+            {
+                "question": "How is neuropathy diagnosed?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                We diagnose neuropathy using Electrodiagnostic studies (NCV and EMG) to check nerve speed, combined with blood tests for metabolic or vitamin deficits. For small fiber neuropathies (affecting pain/temperature fibers), a simple 3mm punch skin biopsy is performed to measure epidermal nerve fiber density.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "519166f0cb87",
+                "order": 3,
+                "is_active": true
+            }
+        ]
+    },
+    "neurovascular-surgery": {
+        "badge": "FAQ",
+        "title": "Frequently Asked Questions",
+        "description": "Answers to common questions regarding brain aneurysms, endovascular coiling, and recovery timelines.",
+        "layout": "split",
+        "items": [
+            {
+                "question": "What is a cerebral aneurysm and how is it treated?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                A cerebral aneurysm is a weak, bulging spot in an artery wall in the brain. Treatment options include surgical clipping (placing a tiny clip across the neck of the aneurysm) or endovascular coiling (filling the aneurysm with platinum coils via a catheter).\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "7e929c5f0e42",
+                "order": 1,
+                "is_active": true
+            },
+            {
+                "question": "What are the symptoms of a ruptured brain aneurysm?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                A ruptured aneurysm is a life-threatening emergency. The primary symptom is a sudden, extremely severe headache, often described as the \"worst headache of your life\" (thunderclap headache), frequently accompanied by nausea, vomiting, stiff neck, and sensitivity to light.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "bee6d74fa22c",
+                "order": 2,
+                "is_active": true
+            },
+            {
+                "question": "What is a mechanical thrombectomy?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                Mechanical thrombectomy is an endovascular procedure to treat acute ischemic strokes. A specialist feeds a micro-catheter from the groin up to the blocked brain artery to physically capture and remove the blood clot, immediately restoring blood flow.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "8063407390e6",
+                "order": 3,
+                "is_active": true
+            }
+        ]
+    },
+    "spine-surgery": {
+        "badge": "FAQ",
+        "title": "Frequently Asked Questions",
+        "description": "Answers to common questions regarding minimally invasive spine surgeries, disc recovery, and diagnostic protocols.",
+        "layout": "split",
+        "items": [
+            {
+                "question": "How do I know if I need spine surgery or conservative management?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                Most spinal conditions are managed conservatively using physical therapy, medications, and lifestyle changes. Surgery is recommended if you have progressive nerve compression leading to weakness, loss of bladder control, or persistent pain that does not improve after 6-12 weeks of non-surgical treatment.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "90b35f506656",
+                "order": 1,
+                "is_active": true
+            },
+            {
+                "question": "What are the benefits of Minimally Invasive Spine Surgery (MISS)?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                MISS uses small incisions and muscle-splitting techniques rather than cutting through large muscle groups. Benefits include reduced postoperative pain, minimized blood loss, shorter hospital stays, and a much faster return to daily activities.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "1f5f3a713d09",
+                "order": 2,
+                "is_active": true
+            },
+            {
+                "question": "How long is the recovery after lumbar disc surgery?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                For minimally invasive microdiscectomies, patients can often walk the same day and return to light work within 2-4 weeks. Heavy lifting and sports are typically restricted for 6-8 weeks until the disc fully heals.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "67825f1c56bb",
+                "order": 3,
+                "is_active": true
+            }
+        ]
+    },
+    "rtms-therapy": {
+        "badge": "Patient FAQ",
+        "title": "Frequently Asked Questions",
+        "description": "Common questions regarding Transcranial Magnetic Stimulation (rTMS) therapies.",
+        "layout": "centered",
+        "items": [
+            {
+                "question": "What is rTMS therapy?",
+                "answer": "<p class=\"text-xs text-dark-grey/70 leading-relaxed\">\r\n                        Repetitive Transcranial Magnetic Stimulation (rTMS) is a non-invasive, drug-free therapy that utilizes targeted magnetic pulses to stimulate nerve cells in specific regions of the brain. It is primarily used for treatment-resistant depression, neuropathic pain, and post-stroke motor deficits.\r\n                    </p>",
+                "category": "",
+                "category_id": "",
+                "id": "daa9abb9ef03",
+                "order": 1,
+                "is_active": true
+            },
+            {
+                "question": "Is rTMS therapy safe?",
+                "answer": "<p class=\"text-xs text-dark-grey/70 leading-relaxed\">\r\n                        Yes, rTMS is FDA cleared and has a strong safety profile. Because it is completely non-invasive, it does not require anesthesia, sedation, or surgical incisions, and avoids the systemic side effects often associated with oral medications.\r\n                    </p>",
+                "category": "",
+                "category_id": "",
+                "id": "1e32c453bc71",
+                "order": 2,
+                "is_active": true
+            },
+            {
+                "question": "Are there any side effects of rTMS?",
+                "answer": "<p class=\"text-xs text-dark-grey/70 leading-relaxed\">\r\n                        Side effects are generally mild and temporary, most commonly including a slight tapping sensation on the scalp during treatment, minor scalp discomfort, or a mild headache immediately following a session. These symptoms usually resolve quickly.\r\n                    </p>",
+                "category": "",
+                "category_id": "",
+                "id": "4504ddcf5700",
+                "order": 3,
+                "is_active": true
+            },
+            {
+                "question": "How many rTMS sessions will I need?",
+                "answer": "<p class=\"text-xs text-dark-grey/70 leading-relaxed\">\r\n                        A standard course typically consists of daily outpatient sessions (Monday through Friday) lasting 20-30 minutes, conducted over a period of 4 to 6 weeks, depending on your clinical response and treatment plan.\r\n                    </p>",
+                "category": "",
+                "category_id": "",
+                "id": "9918fd8c4989",
+                "order": 4,
+                "is_active": true
+            },
+            {
+                "question": "Will I need to stop my current medications during rTMS?",
+                "answer": "<p class=\"text-xs text-dark-grey/70 leading-relaxed\">\r\n                        Generally, no. rTMS can be safely administered alongside your current medications. Dr. Praveen Gupta will review your complete medical history and current prescriptions during your initial consultation to ensure safety.\r\n                    </p>",
+                "category": "",
+                "category_id": "",
+                "id": "e0539b77d5cf",
+                "order": 5,
+                "is_active": true
+            }
+        ]
+    },
+    "stroke": {
+        "badge": "FAQ",
+        "title": "Frequently Asked Questions",
+        "description": "Answers to common questions regarding stroke prevention, recognition, and clinical rehabilitation.",
+        "layout": "split",
+        "items": [
+            {
+                "question": "What is the \"Golden Hour\" in stroke care?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                The \"Golden Hour\" refers to the first 60 minutes after stroke symptoms begin. Getting medical care during this window dramatically improves the chances of saving dying brain tissue, resolving clots with tPA, and achieving full functional recovery.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "12c286d5af68",
+                "order": 1,
+                "is_active": true
+            },
+            {
+                "question": "Can stroke damage be reversed?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                Yes, in many cases stroke damage can be prevented or significantly reversed if clot-dissolving treatment (tPA) or mechanical thrombectomy is administered within the first golden hours of onset. Long-term neuro-rehabilitation also helps retrain adjacent brain areas to recover lost functions.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "65ec217f12b3",
+                "order": 2,
+                "is_active": true
+            },
+            {
+                "question": "How do you prevent a second stroke?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                Preventing a secondary stroke involves daily antiplatelet/anticoagulant medications, aggressive management of hypertension, high cholesterol, and diabetes, stopping smoking, adopting a heart-healthy diet, and regular exercise monitoring.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "0ba55474a7e3",
+                "order": 3,
+                "is_active": true
+            }
+        ]
+    },
+    "vertigo": {
+        "badge": "FAQ",
+        "title": "Frequently Asked Questions",
+        "description": "Answers to common questions regarding vertigo, balance retraining, and treatments.",
+        "layout": "split",
+        "items": [
+            {
+                "question": "What is Benign Paroxysmal Positional Vertigo (BPPV)?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                BPPV is the most common cause of peripheral vertigo. It occurs when small calcium carbonate crystals (otoconia) in the inner ear detach from their normal positions and migrate into the fluid-filled semicircular canals, sending incorrect movement signals to the brain during head movements.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "c81d870cf5e0",
+                "order": 1,
+                "is_active": true
+            },
+            {
+                "question": "Can vertigo be treated without pills?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                Yes, positional vertigo like BPPV is best treated without pills. We use specialized canalith repositioning procedures (such as the Epley maneuver) to physically guide displaced crystals back to their proper place, which resolves symptoms rapidly in a vast majority of patients.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "0032a8723386",
+                "order": 2,
+                "is_active": true
+            },
+            {
+                "question": "How long does vertigo recovery take?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed\">\r\n                                BPPV can often be resolved in just one or two clinic sessions of repositioning maneuvers. For other vestibular nerve issues (like vestibular neuritis) or chronic imbalance, customized vestibular rehabilitation exercises can take from 2 to 6 weeks to retrain the brain and restore coordination.\r\n                            </p>",
+                "category": "",
+                "category_id": "",
+                "id": "613114c05c1b",
+                "order": 3,
+                "is_active": true
+            }
+        ]
+    },
+    "faqs-neurologist-near-me": {
+        "badge": "FAQ Categories",
+        "title": "Frequently Asked Questions",
+        "description": "",
+        "layout": "categories",
+        "items": [
+            {
+                "question": "How do I book an appointment with Dr. Praveen Gupta?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                You can book consultations directly online through our Contact page or call Marengo Asia Hospital's dedicated registration hotline at +91-87969-77903.\r\n                            </p>",
+                "category": "General Consultations",
+                "category_id": "general",
+                "id": "0ebd364fe183",
+                "order": 1,
+                "is_active": true
+            },
+            {
+                "question": "What documents should I carry for my first consultation?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                Please bring a list of current symptoms, all previous prescriptions, and recent radiological films (MRI/CT brain scans, EEGs).\r\n                            </p>",
+                "category": "General Consultations",
+                "category_id": "general",
+                "id": "4b493cd62f68",
+                "order": 2,
+                "is_active": true
+            },
+            {
+                "question": "What are the consultation timings for OPD patients?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                Dr. Praveen Gupta's OPD consultation hours at Marengo Asia Hospital, Gurgaon are from Monday to Saturday, between 9:00 AM and 5:00 PM. Prior booking helps reduce waiting times.\r\n                            </p>",
+                "category": "General Consultations",
+                "category_id": "general",
+                "id": "3f9292313caf",
+                "order": 3,
+                "is_active": true
+            },
+            {
+                "question": "Is online or teleconsultation available?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                Yes. Teleconsultations are available for follow-up patients and individuals seeking second opinions who cannot travel. You can schedule an online session by filling out our contact form.\r\n                            </p>",
+                "category": "General Consultations",
+                "category_id": "general",
+                "id": "f3891a3f2875",
+                "order": 4,
+                "is_active": true
+            },
+            {
+                "question": "Can I request a clinical coordinator call-back?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                Yes. Once you fill out the online message form on our Contact Us page, a clinical coordinator from our team will reach out to you within 24 business hours to address your query.\r\n                            </p>",
+                "category": "General Consultations",
+                "category_id": "general",
+                "id": "dd72385c77ee",
+                "order": 5,
+                "is_active": true
+            },
+            {
+                "question": "What clinical procedures are offered for chronic Parkinson's?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                Dr. Praveen Gupta is an expert in Deep Brain Stimulation (DBS) therapy. He also provides tailored motor rehabilitation courses and clinical check-ups for advanced Parkinson's disease.\r\n                            </p>",
+                "category": "Clinical Treatments",
+                "category_id": "treatments",
+                "id": "06b57533bde2",
+                "order": 6,
+                "is_active": true
+            },
+            {
+                "question": "What is the F.A.S.T. protocol for Stroke emergencies?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                F.A.S.T. stands for Face drooping, Arm weakness, Speech difficulty, and Time to call emergency. Restoring blood flow to the brain within the 4.5-hour \"golden hour\" window via IV thrombolysis is crucial.\r\n                            </p>",
+                "category": "Clinical Treatments",
+                "category_id": "treatments",
+                "id": "1e3266a939d2",
+                "order": 7,
+                "is_active": true
+            },
+            {
+                "question": "How does Botox help in managing chronic migraines?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                FDA-approved Botox injections are administered around pain pathways (31 specific sites) every 12 weeks to block pain transmission signals, reducing migraine frequency by up to 50% for chronic sufferers.\r\n                            </p>",
+                "category": "Clinical Treatments",
+                "category_id": "treatments",
+                "id": "50eb7bc84f01",
+                "order": 8,
+                "is_active": true
+            },
+            {
+                "question": "What treatments are available for drug-resistant epilepsy?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                Beyond anti-seizure drugs, options include vagal nerve stimulation (VNS), specialized ketogenic diets, and surgical removal of the seizure-generating brain tissue (following Video-EEG evaluation).\r\n                            </p>",
+                "category": "Clinical Treatments",
+                "category_id": "treatments",
+                "id": "55d603dd6131",
+                "order": 9,
+                "is_active": true
+            },
+            {
+                "question": "What is the recovery rate of Deep Brain Stimulation (DBS) surgery?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                DBS has a high success rate in carefully selected patients, showing up to 60-80% improvement in tremor control, reducing drug dosages, and significantly improving overall movement control and quality of life.\r\n                            </p>",
+                "category": "Clinical Treatments",
+                "category_id": "treatments",
+                "id": "bd551fceb870",
+                "order": 10,
+                "is_active": true
+            },
+            {
+                "question": "Does Marengo Hospital offer cashless TPA support?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                Yes. Cashless TPA support is available for major corporate and private insurance providers (e.g. Star Health, HDFC Ergo, Max Bupa, CGHS).\r\n                            </p>",
+                "category": "Billing & Insurance",
+                "category_id": "tpa",
+                "id": "a9eb01340892",
+                "order": 11,
+                "is_active": true
+            },
+            {
+                "question": "How do I request pre-authorization for planned surgeries?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                For planned admissions (like DBS or EEG monitoring), submit your doctor's estimate, policy details, and Aadhaar card to the hospital's TPA desk at least 48 hours in advance for processing.\r\n                            </p>",
+                "category": "Billing & Insurance",
+                "category_id": "tpa",
+                "id": "649aefdd7be6",
+                "order": 12,
+                "is_active": true
+            },
+            {
+                "question": "Which corporate health panels are accepted?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                We support corporate panels including CGHS, ECHS, DGEHS, Indian Oil, NTPC, BHEL, and major nationalized bank health insurance schemes.\r\n                            </p>",
+                "category": "Billing & Insurance",
+                "category_id": "tpa",
+                "id": "aaf333902f46",
+                "order": 13,
+                "is_active": true
+            },
+            {
+                "question": "Are CGHS and ECHS panel cards accepted for OPD consultations?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                Yes. Government health panels like CGHS and ECHS are fully supported for both outpatient department (OPD) consults and inpatient admissions, subject to standard referral letter protocols.\r\n                            </p>",
+                "category": "Billing & Insurance",
+                "category_id": "tpa",
+                "id": "c52e466686e6",
+                "order": 14,
+                "is_active": true
+            },
+            {
+                "question": "Can I pay consulting fees using digital wallets and credit cards?",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                Yes. The hospital reception and TPA desks accept credit cards, debit cards, UPI payments (GPay, PhonePe, Paytm), and net banking for all consultation fees and procedural deposits.\r\n                            </p>",
+                "category": "Billing & Insurance",
+                "category_id": "tpa",
+                "id": "907bc50d47fa",
+                "order": 15,
+                "is_active": true
+            }
+        ]
+    },
+    "neurology-faqs": {
+        "badge": "FAQ",
+        "title": "Frequently Asked Questions",
+        "description": "",
+        "layout": "details",
+        "items": [
+            {
+                "question": "How do I book a consultation with Dr. Praveen Gupta?",
+                "answer": "<p class=\"text-xs text-dark-grey/65 leading-relaxed mt-3 border-t border-slate-200/40 pt-3\">\r\n                        You can book an in-person appointment or a video teleconsultation by visiting our online appointment portal, calling our direct scheduling line at +91-87969-77903, or emailing us at contact@drpraveengupta.com.\r\n                    </p>",
+                "category": "Consultation & Appointments",
+                "category_id": "",
+                "id": "3047e67e167b",
+                "order": 1,
+                "is_active": true
+            },
+            {
+                "question": "What documents should I bring for my first consultation?",
+                "answer": "<p class=\"text-xs text-dark-grey/65 leading-relaxed mt-3 border-t border-slate-200/40 pt-3\">\r\n                        Please bring all past medical prescriptions, blood test reports, and imaging scans (MRI/CT films or CDs) related to your neurological condition. Additionally, keep a list of your current medications handy.\r\n                    </p>",
+                "category": "Consultation & Appointments",
+                "category_id": "",
+                "id": "827f72e67962",
+                "order": 2,
+                "is_active": true
+            },
+            {
+                "question": "Is any preparation required before undergoing an EEG test?",
+                "answer": "<p class=\"text-xs text-dark-grey/65 leading-relaxed mt-3 border-t border-slate-200/40 pt-3\">\r\n                        Yes. Please wash your hair the night before or the morning of the test, and do not apply hair oils, sprays, or gels. Avoid caffeine on the day of the test as it can interfere with results. Take your usual medications unless advised otherwise by your doctor.\r\n                    </p>",
+                "category": "Diagnostic Tests (EEG, EMG)",
+                "category_id": "",
+                "id": "bae5825ba302",
+                "order": 3,
+                "is_active": true
+            },
+            {
+                "question": "Are EMG and Nerve Conduction Studies painful?",
+                "answer": "<p class=\"text-xs text-dark-grey/65 leading-relaxed mt-3 border-t border-slate-200/40 pt-3\">\r\n                        Nerve conduction studies involve mild electrical stimulation, which feels like a sudden tapping sensation. Electromyography (EMG) involves inserting a tiny needle electrode into specific muscles, causing minor, temporary discomfort similar to an injection.\r\n                    </p>",
+                "category": "Diagnostic Tests (EEG, EMG)",
+                "category_id": "",
+                "id": "baef5cc9394f",
+                "order": 4,
+                "is_active": true
+            },
+            {
+                "question": "What is the \"Golden Hour\" for a brain stroke?",
+                "answer": "<p class=\"text-xs text-dark-grey/65 leading-relaxed mt-3 border-t border-slate-200/40 pt-3\">\r\n                        The golden hour refers to the first 4.5 hours after stroke symptoms begin. Administering clot-dissolving medications (thrombolysis) within this window significantly increases the chances of saving dying brain cells and achieving a full recovery.\r\n                    </p>",
+                "category": "Emergency Protocols",
+                "category_id": "",
+                "id": "0f045c325924",
+                "order": 5,
+                "is_active": true
+            }
+        ]
+    },
+    "index": {
+        "badge": "FAQ",
+        "title": "Frequently Asked Questions",
+        "description": "Clear answers regarding neurological consultations, diagnostic procedures, stroke emergency care, and treatment planning under Dr. Praveen Gupta.",
+        "layout": "home",
+        "items": [
+            {
+                "question": "How do I book an in-person or online video consultation with Dr. Praveen Gupta?",
+                "answer": "<div class=\"text-xs sm:text-sm text-dark-grey/75 leading-relaxed mt-4 pt-4 border-t border-slate-100 space-y-2\">\r\n                    <p>\r\n                        You can easily schedule an in-person consultation at <strong>Marengo Asia Hospitals, Sector 56, Gurugram</strong> or request a tele-consultation by clicking <a href=\"contact-us-top-neurologist-delhi-ncr\" class=\"text-electric-blue font-semibold hover:underline\">Book Appointment</a> on this website. You can also call our direct appointment desk at <strong>+91-87969-77903</strong>.\r\n                    </p>\r\n                </div>",
+                "category": "",
+                "category_id": "",
+                "id": "c4b9949150b7",
+                "order": 1,
+                "is_active": true
+            },
+            {
+                "question": "What neurological conditions does Dr. Praveen Gupta specialize in?",
+                "answer": "<div class=\"text-xs sm:text-sm text-dark-grey/75 leading-relaxed mt-4 pt-4 border-t border-slate-100 space-y-2\">\r\n                    <p>\r\n                        With 20+ years of clinical excellence and DM in Neurology from <strong>AIIMS, New Delhi</strong>, Dr. Praveen Gupta specializes in:\r\n                    </p>\r\n                    <ul class=\"list-disc pl-5 space-y-1 text-xs sm:text-sm text-dark-grey/75\">\r\n                        <li><strong>Acute Brain Stroke:</strong> 24/7 thrombolysis and mechanical thrombectomy.</li>\r\n                        <li><strong>Epilepsy &amp; Seizure Disorders:</strong> Digital video EEG and refractory epilepsy management.</li>\r\n                        <li><strong>Parkinson’s &amp; Movement Disorders:</strong> Deep Brain Stimulation (DBS) therapy.</li>\r\n                        <li><strong>Headache &amp; Migraine:</strong> Chronic migraine management and Botox therapy.</li>\r\n                        <li><strong>Multiple Sclerosis &amp; Autoimmune Neuro Disorders:</strong> Advanced immunotherapies.</li>\r\n                        <li><strong>Memory Loss &amp; Dementia:</strong> Comprehensive cognitive screening.</li>\r\n                        <li><strong>Spine &amp; Neuropathy:</strong> Nerve compression, radiculopathy, and sciatica care.</li>\r\n                    </ul>\r\n                </div>",
+                "category": "",
+                "category_id": "",
+                "id": "c4f521e8cff9",
+                "order": 2,
+                "is_active": true
+            },
+            {
+                "question": "What is the difference between a Neurologist and a Neurosurgeon?",
+                "answer": "<div class=\"text-xs sm:text-sm text-dark-grey/75 leading-relaxed mt-4 pt-4 border-t border-slate-100 space-y-2\">\r\n                    <p>\r\n                        A <strong>Neurologist</strong> is a medical doctor specialized in diagnosing, evaluating, and medically managing conditions of the brain, spinal cord, nerves, and muscles (such as stroke, migraine, Parkinson’s, seizures, and neuropathies) through advanced pharmacology, neuromodulation, and rehabilitation.\r\n                    </p>\r\n                    <p>\r\n                        A <strong>Neurosurgeon</strong> performs surgical interventions when physical correction is needed (such as removing a brain tumour, clipping an aneurysm, or spinal decompression surgery). At our institute, neurologists and neurosurgeons collaborate in unified tumor boards and spine panels to ensure optimal, conservative-first patient care.\r\n                    </p>\r\n                </div>",
+                "category": "",
+                "category_id": "",
+                "id": "07c1e94ce76e",
+                "order": 3,
+                "is_active": true
+            },
+            {
+                "question": "Can I get an expert Second Opinion on my MRI/CT scans and surgery advice?",
+                "answer": "<div class=\"text-xs sm:text-sm text-dark-grey/75 leading-relaxed mt-4 pt-4 border-t border-slate-100 space-y-2\">\r\n                    <p>\r\n                        <strong>Yes, absolutely.</strong> Many neurological conditions and spine surgery recommendations benefit greatly from a detailed second opinion. You can share your past prescriptions, MRI/CT scans, and medical history online via our <a href=\"neurology-second-opinion\" class=\"text-electric-blue font-semibold hover:underline\">Second Opinion Portal</a> or in person to receive an objective, evidence-based assessment.\r\n                    </p>\r\n                </div>",
+                "category": "",
+                "category_id": "",
+                "id": "e25703c1e49a",
+                "order": 4,
+                "is_active": true
+            },
+            {
+                "question": "What emergency care facilities are available for Acute Stroke patients?",
+                "answer": "<div class=\"text-xs sm:text-sm text-dark-grey/75 leading-relaxed mt-4 pt-4 border-t border-slate-100 space-y-2\">\r\n                    <p>\r\n                        Marengo Asia Hospital operates a <strong>24x7 Stroke-Ready Center</strong> with dedicated emergency triage, ultra-fast 3T MRI &amp; 128-slice CT imaging, round-the-clock IV thrombolysis, a state-of-the-art biplane Cath Lab for mechanical thrombectomy (clot retrieval), and a dedicated Neuro-Intensive Care Unit (NICU).\r\n                    </p>\r\n                    <p class=\"text-red-600 font-semibold\">\r\n                        In case of sudden stroke symptoms (Face drooping, Arm weakness, Speech difficulty), rush to our emergency or call our 24/7 Stroke Helpline: <a href=\"tel:18003090247\" class=\"underline\">1800-309-0247</a>.\r\n                    </p>\r\n                </div>",
+                "category": "",
+                "category_id": "",
+                "id": "2722d069504d",
+                "order": 5,
+                "is_active": true
+            },
+            {
+                "question": "What diagnostic tests (EEG, EMG, NCS, MRI) are available at the clinic?",
+                "answer": "<div class=\"text-xs sm:text-sm text-dark-grey/75 leading-relaxed mt-4 pt-4 border-t border-slate-100 space-y-2\">\r\n                    <p>\r\n                        Our institute provides comprehensive, hospital-grade neuro-diagnostic suites under one roof, including:\r\n                    </p>\r\n                    <ul class=\"list-disc pl-5 space-y-1 text-xs sm:text-sm text-dark-grey/75\">\r\n                        <li><strong>Digital Video EEG &amp; Sleep EEG:</strong> For precise epilepsy diagnosis and seizure monitoring.</li>\r\n                        <li><strong>Electromyography (EMG) &amp; Nerve Conduction Studies (NCS):</strong> For neuropathies, muscle diseases, and nerve compressions.</li>\r\n                        <li><strong>Repetitive Nerve Stimulation (RNST):</strong> For Myasthenia Gravis testing.</li>\r\n                        <li><strong>Visual &amp; Somatosensory Evoked Potentials (VEP/SSEP):</strong> For optic nerve and spinal sensory pathway assessment.</li>\r\n                        <li><strong>repetitive Transcranial Magnetic Stimulation (rTMS):</strong> Non-invasive therapy for depression, stroke rehab, and neuropathic pain.</li>\r\n                    </ul>\r\n                </div>",
+                "category": "",
+                "category_id": "",
+                "id": "67be56ec56fe",
+                "order": 6,
+                "is_active": true
+            }
+        ]
+    }
+}
