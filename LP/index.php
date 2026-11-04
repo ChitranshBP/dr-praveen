@@ -479,16 +479,16 @@ $videos = [
                 </nav>
                 <div class="h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent my-3 mx-4"></div>
                 <div class="flex items-center justify-center space-x-3 pb-1">
-                    <a href="https://www.instagram.com/neurodocpg?igsi=MzI5Y25hZDY2eDZw" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-9 h-9 rounded-full bg-white border border-slate-200 shadow-sm flex items-center justify-center text-deep-indigo hover:text-white hover:bg-gradient-to-br hover:from-electric-blue hover:to-cyan-accent hover:border-transparent transition-all duration-300">
+                    <a href="https://www.instagram.com/neurodocpg/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-9 h-9 rounded-full bg-white border border-slate-200 shadow-sm flex items-center justify-center text-deep-indigo hover:text-white hover:bg-gradient-to-br hover:from-electric-blue hover:to-cyan-accent hover:border-transparent transition-all duration-300">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="https://www.facebook.com/share/1DNxuR8Cqj/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-9 h-9 rounded-full bg-white border border-slate-200 shadow-sm flex items-center justify-center text-deep-indigo hover:text-white hover:bg-gradient-to-br hover:from-electric-blue hover:to-cyan-accent hover:border-transparent transition-all duration-300">
+                    <a href="https://www.facebook.com/share/19sqHsTVmK/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-9 h-9 rounded-full bg-white border border-slate-200 shadow-sm flex items-center justify-center text-deep-indigo hover:text-white hover:bg-gradient-to-br hover:from-electric-blue hover:to-cyan-accent hover:border-transparent transition-all duration-300">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="https://youtube.com/@neuro_doc?si=g5fPVsZLdMZjFALm" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="w-9 h-9 rounded-full bg-white border border-slate-200 shadow-sm flex items-center justify-center text-deep-indigo hover:text-white hover:bg-gradient-to-br hover:from-electric-blue hover:to-cyan-accent hover:border-transparent transition-all duration-300">
+                    <a href="https://youtube.com/@neuro_doc" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="w-9 h-9 rounded-full bg-white border border-slate-200 shadow-sm flex items-center justify-center text-deep-indigo hover:text-white hover:bg-gradient-to-br hover:from-electric-blue hover:to-cyan-accent hover:border-transparent transition-all duration-300">
                         <i class="fab fa-youtube"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/dr-praveen-gupta-635b9317?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-9 h-9 rounded-full bg-white border border-slate-200 shadow-sm flex items-center justify-center text-deep-indigo hover:text-white hover:bg-gradient-to-br hover:from-electric-blue hover:to-cyan-accent hover:border-transparent transition-all duration-300">
+                    <a href="https://www.linkedin.com/in/dr-praveen-gupta-635b9317" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-9 h-9 rounded-full bg-white border border-slate-200 shadow-sm flex items-center justify-center text-deep-indigo hover:text-white hover:bg-gradient-to-br hover:from-electric-blue hover:to-cyan-accent hover:border-transparent transition-all duration-300">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
                 </div>
@@ -1057,16 +1057,16 @@ $videos = [
                         Follow Us
                     </h3>
                     <div class="flex items-center space-x-3">
-                        <a href="https://www.instagram.com/neurodocpg?igsi=MzI5Y25hZDY2eDZw" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-gradient-to-br hover:from-electric-blue hover:to-cyan-accent hover:border-transparent hover:-translate-y-1 transition-all duration-300">
+                        <a href="https://www.instagram.com/neurodocpg/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-gradient-to-br hover:from-electric-blue hover:to-cyan-accent hover:border-transparent hover:-translate-y-1 transition-all duration-300">
                             <i class="fab fa-instagram text-lg"></i>
                         </a>
-                        <a href="https://www.facebook.com/share/1DNxuR8Cqj/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-gradient-to-br hover:from-electric-blue hover:to-cyan-accent hover:border-transparent hover:-translate-y-1 transition-all duration-300">
+                        <a href="https://www.facebook.com/share/19sqHsTVmK/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-gradient-to-br hover:from-electric-blue hover:to-cyan-accent hover:border-transparent hover:-translate-y-1 transition-all duration-300">
                             <i class="fab fa-facebook-f text-lg"></i>
                         </a>
-                        <a href="https://youtube.com/@neuro_doc?si=g5fPVsZLdMZjFALm" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-gradient-to-br hover:from-electric-blue hover:to-cyan-accent hover:border-transparent hover:-translate-y-1 transition-all duration-300">
+                        <a href="https://youtube.com/@neuro_doc" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-gradient-to-br hover:from-electric-blue hover:to-cyan-accent hover:border-transparent hover:-translate-y-1 transition-all duration-300">
                             <i class="fab fa-youtube text-lg"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/dr-praveen-gupta-635b9317?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-gradient-to-br hover:from-electric-blue hover:to-cyan-accent hover:border-transparent hover:-translate-y-1 transition-all duration-300">
+                        <a href="https://www.linkedin.com/in/dr-praveen-gupta-635b9317" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-gradient-to-br hover:from-electric-blue hover:to-cyan-accent hover:border-transparent hover:-translate-y-1 transition-all duration-300">
                             <i class="fab fa-linkedin-in text-lg"></i>
                         </a>
                     </div>

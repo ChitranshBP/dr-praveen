@@ -28,11 +28,11 @@ define('SITE_WHATSAPP', $cmsSettings['whatsapp'] ?? '918796977903');
 define('WHATSAPP_MESSAGE', $cmsSettings['whatsapp_message'] ?? 'Hello, I would like to book an appointment with Dr. Praveen Gupta.');
 
 // Social Media
-define('SOCIAL_FACEBOOK', $cmsSettings['social_facebook'] ?? 'https://facebook.com/drpraveengupta');
-define('SOCIAL_INSTAGRAM', $cmsSettings['social_instagram'] ?? 'https://instagram.com/neuro_doc1');
+define('SOCIAL_FACEBOOK', $cmsSettings['social_facebook'] ?? 'https://www.facebook.com/share/19sqHsTVmK/');
+define('SOCIAL_INSTAGRAM', $cmsSettings['social_instagram'] ?? 'https://www.instagram.com/neurodocpg/');
 define('SOCIAL_TWITTER', $cmsSettings['social_twitter'] ?? 'https://twitter.com/drpraveengupta');
-define('SOCIAL_YOUTUBE', $cmsSettings['social_youtube'] ?? 'https://youtube.com/c/DrPraveenGupta');
-define('SOCIAL_LINKEDIN', $cmsSettings['social_linkedin'] ?? 'https://linkedin.com/in/drpraveengupta');
+define('SOCIAL_YOUTUBE', $cmsSettings['social_youtube'] ?? 'https://youtube.com/@neuro_doc');
+define('SOCIAL_LINKEDIN', $cmsSettings['social_linkedin'] ?? 'https://www.linkedin.com/in/dr-praveen-gupta-635b9317');
 define('GTM_ID', $cmsSettings['gtm_id'] ?? 'GTM-TF2TXQLK');
 
 // Navigation
@@ -525,8 +525,8 @@ if ($cmsVideos !== null) {
 
 // Instagram Reels — shortcodes from the reel URL: instagram.com/reel/<shortcode>/
 // Add or reorder entries here; the homepage section renders them automatically.
-$instagramHandle  = 'neuro_doc1';
-$instagramProfile = 'https://www.instagram.com/neuro_doc1/';
+$instagramHandle  = 'neurodocpg';
+$instagramProfile = 'https://www.instagram.com/neurodocpg/';
 $instagramReels = [
     ['id' => 'DbYcwZOBfSK'],
     ['id' => 'DbPwCw0O5J8'],
