@@ -3,6 +3,7 @@ require_once __DIR__ . '/includes/auth.php';
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/functions.php';
 require_once dirname(__DIR__) . '/includes/page-blocks.php';
+require_once dirname(__DIR__) . '/includes/page-ctas.php';
 
 cms_require_auth();
 
@@ -115,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Editable page blocks (Techniques, What to Expect, ...). Defaults come
     // from data/page-blocks.json; the submitted values are stored here.
-    $blockDefaults = cms_page_blocks_defaults($slug);
+    $blockDefaults = cms_page_blocks($slug);
     $postedBlocks = $_POST['page_blocks'] ?? [];
     if (!empty($blockDefaults) && is_array($postedBlocks)) {
         $existingBlocks = (isset($pageData['blocks']) && is_array($pageData['blocks'])) ? $pageData['blocks'] : [];
@@ -128,14 +129,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (empty($pb['_present'])) {
                 continue;
             }
-            $bType = ($bDefault['type'] ?? 'cards') === 'steps' ? 'steps' : 'cards';
-            $block = [
-                'type'        => $bType,
-                'badge'       => trim($pb['badge'] ?? ''),
-                'title'       => trim($pb['title'] ?? ''),
-                'description' => trim($pb['description'] ?? ''),
-                'items'       => [],
-            ];
+            // Start from the stored (or default) definition so options,
+            // images and other presets survive the save.
+            $base = (isset($existingBlocks[$bKey]) && is_array($existingBlocks[$bKey])) ? $existingBlocks[$bKey] : $bDefault;
+            $bType = ($base['type'] ?? 'cards') === 'steps' ? 'steps' : ($base['type'] ?? 'cards');
+            $block = $base;
+            $block['type'] = $bType;
+            $block['badge'] = trim($pb['badge'] ?? '');
+            $block['title'] = trim($pb['title'] ?? '');
+            $block['description'] = trim($pb['description'] ?? '');
+
+            // Split-section images (symptoms / why-choose / doctor blocks).
+            if (!empty($pb['image']) || !empty($pb['image_alt'])) {
+                $block['image'] = trim($pb['image'] ?? '');
+                $block['image_alt'] = trim($pb['image_alt'] ?? '');
+            } elseif (isset($base['image'])) {
+                $block['image'] = $base['image'];
+                $block['image_alt'] = trim((string)($base['image_alt'] ?? ''));
+            }
+
+            // Pill row (symptoms blocks) and icon choice (notification rows).
+            if (isset($pb['tags_title'])) {
+                $block['tags_title'] = trim($pb['tags_title'] ?? '');
+                $tagsRaw = $pb['tags'] ?? '';
+                $tags = is_array($tagsRaw) ? $tagsRaw : preg_split('/\r\n|\r|\n|,(?![^(]*\))/', (string)$tagsRaw);
+                $block['tags'] = array_values(array_filter(array_map('trim', is_array($tags) ? $tags : [$tagsRaw]), function ($t) {
+                    return $t !== '';
+                }));
+            }
+            // Call-out note box (symptoms blocks).
+            if (isset($pb['note_title'])) {
+                $block['note_title'] = trim($pb['note_title'] ?? '');
+                $block['note_text'] = trim($pb['note_text'] ?? '');
+                // The icon lives with the note; only change it when a new icon
+                // was submitted, so a blank field keeps the preset.
+                if (trim($pb['note_icon'] ?? '') !== '') {
+                    $block['note_icon'] = trim($pb['note_icon']);
+                }
+            }
+
+            $block['items'] = [];
             foreach (($pb['items'] ?? []) as $item) {
                 if (!is_array($item)) {
                     continue;
@@ -144,6 +177,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     'title' => trim($item['title'] ?? ''),
                     'text'  => trim($item['text'] ?? ''),
                 ];
+                $extraTitle = trim($item['subtitle'] ?? '');
+                if ($extraTitle !== '') {
+                    $it['subtitle'] = $extraTitle;
+                }
+                $extraBadge = trim($item['badge'] ?? '');
+                if ($extraBadge !== '') {
+                    $it['badge'] = $extraBadge;
+                }
+                $extraUrl = trim($item['url'] ?? '');
+                if ($extraUrl !== '') {
+                    $it['url'] = $extraUrl;
+                }
                 $bulletsRaw = $item['bullets'] ?? '';
                 $bullets = is_array($bulletsRaw) ? $bulletsRaw : preg_split('/\r\n|\r|\n/', (string)$bulletsRaw);
                 $bullets = array_values(array_filter(array_map('trim', $bullets), function ($b) {
@@ -152,11 +197,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if (!empty($bullets)) {
                     $it['bullets'] = $bullets;
                 }
-                if ($bType === 'cards') {
+                if (array_key_exists('icon', $item)) {
                     $icon = trim($item['icon'] ?? '');
                     $it['icon'] = $icon !== '' ? $icon : 'fa-check';
                     $color = $item['color'] ?? 'electric-blue';
-                    if (!in_array($color, ['electric-blue', 'cyan-accent', 'deep-indigo'], true)) {
+                    if (!in_array($color, ['electric-blue', 'cyan-accent', 'deep-indigo', 'red', 'dark'], true)) {
                         $color = 'electric-blue';
                     }
                     $it['color'] = $color;
@@ -166,14 +211,77 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         return $t !== '';
                     }));
                 }
-                if ($it['title'] === '' && $it['text'] === '') {
+                // Keep an item that only carries a URL or bullets, and drop
+                // ones left completely blank by the editor.
+                if ($it['title'] === '' && $it['text'] === '' && empty($it['bullets']) && empty($it['url']) && empty($it['subtitle'])) {
                     continue;
                 }
                 $block['items'][] = $it;
             }
+
+            // Extra block-level fields.
+            if (isset($pb['panel_title'])) {
+                $block['panel_title'] = trim($pb['panel_title'] ?? '');
+                $block['panel_text'] = trim($pb['panel_text'] ?? '');
+            }
+            if (isset($pb['roles'])) {
+                $rolesRaw = is_array($pb['roles']) ? $pb['roles'] : preg_split('/\r\n|\r|\n/', (string)$pb['roles']);
+                $roles = array_values(array_filter(array_map('trim', $rolesRaw), function ($r) {
+                    return $r !== '';
+                }));
+                if (!empty($roles) || isset($block['roles'])) {
+                    $block['roles'] = $roles;
+                }
+            }
+
+            // Block-level photo upload (symptoms / why-choose / doctor splits).
+            $bUpload = cms_handle_upload('page_block_image_' . $bKey, 'services');
+            if (is_array($bUpload) && isset($bUpload['error'])) {
+                $uploadErrors[] = $bKey . ' section photo: ' . $bUpload['error'];
+            } elseif (is_array($bUpload) && !empty($bUpload['path'])) {
+                $block['image'] = $bUpload['path'];
+                if (empty($block['image_alt'])) {
+                    $block['image_alt'] = $block['title'] ?? '';
+                }
+            }
+
             $savedBlocks[$bKey] = $block;
         }
         $pageData['blocks'] = $savedBlocks;
+    }
+
+    // Editable call-to-action buttons. Defaults come from
+    // data/page-ctas.json; overrides are stored under "ctas".
+    if (function_exists('cms_page_cta_keys')) {
+        $postedCtas = $_POST['page_ctas'] ?? [];
+        if (is_array($postedCtas)) {
+            $existingCtas = (isset($pageData['ctas']) && is_array($pageData['ctas'])) ? $pageData['ctas'] : [];
+            $savedCtas = [];
+            foreach (cms_page_cta_keys($slug) as $ctaKey) {
+                if (!isset($postedCtas[$ctaKey]) || !is_array($postedCtas[$ctaKey]) || empty($postedCtas[$ctaKey]['_present'])) {
+                    if (isset($existingCtas[$ctaKey])) {
+                        $savedCtas[$ctaKey] = $existingCtas[$ctaKey];
+                    }
+                    continue;
+                }
+                $pc = $postedCtas[$ctaKey];
+                $tText = trim($pc['text'] ?? '');
+                $tUrl = trim($pc['url'] ?? '');
+                $tIntro = trim($pc['intro'] ?? '');
+                if ($tText === '' && $tUrl === '' && $tIntro === '') {
+                    // Left blank → restore the built-in default entirely.
+                    continue;
+                }
+                $savedCtas[$ctaKey] = [
+                    'text' => $tText,
+                    'url' => $tUrl,
+                    'intro' => $tIntro,
+                ];
+            }
+            if (!empty($savedCtas)) {
+                $pageData['ctas'] = $savedCtas;
+            }
+        }
     }
 
     $dataDir = dirname($pageDataFile);
@@ -357,6 +465,141 @@ require_once __DIR__ . '/includes/header.php';
         <!-- Editable Existing Page Sections -->
         <?php $editableBlocks = cms_page_blocks($slug); ?>
         <?php if (!empty($editableBlocks)): ?>
+        <?php
+        $blockTypeMeta = [
+            'cards'      => ['label' => 'Card grid', 'item_label' => 'Card'],
+            'steps'      => ['label' => 'Numbered steps', 'item_label' => 'Step'],
+            'facts'      => ['label' => 'Key facts grid', 'item_label' => 'Fact'],
+            'warning'    => ['label' => 'Warning / emergency panel', 'item_label' => 'Warning line'],
+            'symptoms'   => ['label' => 'Symptom groups (split section)', 'item_label' => 'Symptom group', 'block_image' => true, 'block_tags' => true],
+            'treatments' => ['label' => 'Treatment option cards', 'item_label' => 'Treatment'],
+            'why-choose' => ['label' => 'Why Choose section', 'item_label' => 'Feature', 'block_image' => true],
+            'related'    => ['label' => 'Related pages', 'item_label' => 'Link'],
+            'links'      => ['label' => 'Directory cards', 'item_label' => 'Card'],
+            'doctor'     => ['label' => 'Doctor profile', 'item_label' => 'Link', 'block_image' => true, 'block_roles' => true],
+            'cta'        => ['label' => 'Final CTA banner', 'item_label' => 'Button'],
+            'notice'     => ['label' => 'Alert panel', 'item_label' => 'Point', 'block_panel' => true],
+        ];
+        $blockItemFields = [
+            'cards'      => ['icon_color', 'title', 'text', 'bullets', 'tags'],
+            'steps'      => ['title', 'text', 'bullets'],
+            'facts'      => ['icon_color', 'title', 'text'],
+            'warning'    => ['text'],
+            'symptoms'   => ['icon_color', 'title', 'bullets'],
+            'treatments' => ['icon_color', 'title', 'subtitle', 'text', 'bullets'],
+            'why-choose' => ['icon_color', 'title', 'text'],
+            'related'    => ['title', 'text', 'url'],
+            'links'      => ['icon_color', 'imagepair', 'title', 'text', 'subtitle', 'url'],
+            'doctor'     => ['title', 'url'],
+            'cta'        => [],
+            'notice'     => ['text'],
+        ];
+
+        /**
+         * Print the editor fields for one repeater item of a block type.
+         * Echoed directly; used for saved items and for the "add item" templates.
+         */
+        $renderItemFields = function ($type, $key, $index, array $item = []) use ($blockItemFields) {
+            $fields = $blockItemFields[$type] ?? $blockItemFields['cards'];
+            $name = function ($field) use ($key, $index) {
+                return 'page_blocks[' . htmlspecialchars($key, ENT_QUOTES) . '][items][' . htmlspecialchars($index, ENT_QUOTES) . '][' . $field . ']';
+            };
+            $val = function ($field, $default = '') use ($item) {
+                $v = $item[$field] ?? $default;
+                if (is_array($v)) {
+                    $v = implode("\n", $v);
+                }
+                return htmlspecialchars((string)$v, ENT_QUOTES);
+            };
+            $inp = 'w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] font-semibold focus:ring-2 focus:ring-blue-500 focus:outline-none';
+            $inpMono = 'w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] font-mono focus:ring-2 focus:ring-blue-500 focus:outline-none';
+            $txt = 'w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] leading-relaxed focus:ring-2 focus:ring-blue-500 focus:outline-none';
+            $lbl = 'block text-[10px] font-bold text-slate-600 mb-1';
+            $textLabel = in_array($type, ['warning', 'notice'], true) ? 'Text (basic HTML like <strong> allowed)' : 'Description';
+
+            if (in_array('icon_color', $fields, true)) {
+                ?>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    <div>
+                        <label class="<?php echo $lbl; ?>">Font Awesome Icon (use "none" to hide)</label>
+                        <input type="text" name="<?php echo $name('icon'); ?>" value="<?php echo $val('icon', 'fa-check'); ?>" placeholder="fa-shield-alt" class="<?php echo $inpMono; ?>">
+                    </div>
+                    <div>
+                        <label class="<?php echo $lbl; ?>">Icon Colour</label>
+                        <select name="<?php echo $name('color'); ?>" class="<?php echo $inp; ?>">
+                            <?php foreach (['electric-blue' => 'Electric blue', 'cyan-accent' => 'Cyan', 'deep-indigo' => 'Deep indigo', 'red' => 'Red', 'dark' => 'Dark grey'] as $colorKey => $colorLabel): ?>
+                            <option value="<?php echo $colorKey; ?>" <?php echo ($item['color'] ?? 'electric-blue') === $colorKey ? 'selected' : ''; ?>><?php echo $colorLabel; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+                <?php
+            }
+            if (in_array('imagepair', $fields, true)) {
+                ?>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    <div>
+                        <label class="<?php echo $lbl; ?>">Photo path / URL (optional)</label>
+                        <input type="text" name="<?php echo $name('image'); ?>" value="<?php echo $val('image'); ?>" placeholder="assets/services/… or https://…" class="<?php echo $inpMono; ?>">
+                    </div>
+                    <div>
+                        <label class="<?php echo $lbl; ?>">Photo Alt Tag</label>
+                        <input type="text" name="<?php echo $name('image_alt'); ?>" value="<?php echo $val('image_alt'); ?>" class="<?php echo $inp; ?>">
+                    </div>
+                </div>
+                <?php
+            }
+            if (in_array('title', $fields, true)) {
+                ?>
+                <div>
+                    <label class="<?php echo $lbl; ?>">Title</label>
+                    <input type="text" name="<?php echo $name('title'); ?>" value="<?php echo $val('title'); ?>" class="<?php echo $inp; ?>">
+                </div>
+                <?php
+            }
+            if (in_array('subtitle', $fields, true)) {
+                ?>
+                <div>
+                    <label class="<?php echo $lbl; ?>">Small Sub-Label (optional)</label>
+                    <input type="text" name="<?php echo $name('subtitle'); ?>" value="<?php echo $val('subtitle'); ?>" placeholder="e.g. First-Line Therapy" class="<?php echo $inp; ?>">
+                </div>
+                <?php
+            }
+            if (in_array('text', $fields, true)) {
+                ?>
+                <div>
+                    <label class="<?php echo $lbl; ?>"><?php echo $textLabel; ?></label>
+                    <textarea name="<?php echo $name('text'); ?>" rows="2" class="<?php echo $txt; ?>"><?php echo $val('text'); ?></textarea>
+                </div>
+                <?php
+            }
+            if (in_array('bullets', $fields, true)) {
+                ?>
+                <div>
+                    <label class="<?php echo $lbl; ?>">Bullet Points (one per line, optional)</label>
+                    <textarea name="<?php echo $name('bullets'); ?>" rows="2" placeholder="One item per line" class="<?php echo $txt; ?>"><?php echo $val('bullets'); ?></textarea>
+                </div>
+                <?php
+            }
+            if (in_array('url', $fields, true)) {
+                ?>
+                <div>
+                    <label class="<?php echo $lbl; ?>">Destination URL (page link, #anchor, https://…, tel:…)</label>
+                    <input type="text" name="<?php echo $name('url'); ?>" value="<?php echo $val('url'); ?>" placeholder="contact-us-top-neurologist-delhi-ncr" class="<?php echo $inpMono; ?>">
+                </div>
+                <?php
+            }
+            if (in_array('tags', $fields, true)) {
+                ?>
+                <div>
+                    <label class="<?php echo $lbl; ?>">Tag Pills (comma-separated)</label>
+                    <input type="text" name="<?php echo $name('tags'); ?>" value="<?php echo htmlspecialchars(implode(', ', (array)($item['tags'] ?? [])), ENT_QUOTES); ?>" placeholder="Keyhole Access, Faster Recovery" class="<?php echo $inp; ?>">
+                </div>
+                <?php
+            }
+        };
+        ?>
+
         <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4">
             <div>
                 <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center">
@@ -367,7 +610,11 @@ require_once __DIR__ . '/includes/header.php';
 
             <?php foreach ($editableBlocks as $blockKey => $block): ?>
             <?php
-                $blockType = ($block['type'] ?? 'cards') === 'steps' ? 'steps' : 'cards';
+                $blockType = $block['type'] ?? 'cards';
+                if (!isset($blockTypeMeta[$blockType])) {
+                    $blockType = in_array($blockType, ['steps', 'cards'], true) ? $blockType : 'cards';
+                }
+                $meta = $blockTypeMeta[$blockType];
                 $blockItems = is_array($block['items'] ?? null) ? array_values($block['items']) : [];
             ?>
             <div class="page-block-card bg-white p-4 rounded-xl border border-slate-200 space-y-3"
@@ -377,7 +624,7 @@ require_once __DIR__ . '/includes/header.php';
                 <div class="flex items-center justify-between">
                     <h4 class="text-xs font-bold text-slate-800"><?php echo htmlspecialchars($block['label'] ?? $blockKey); ?></h4>
                     <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">
-                        <?php echo $blockType === 'steps' ? 'Numbered steps' : 'Card grid'; ?>
+                        <?php echo htmlspecialchars($meta['label']); ?>
                     </span>
                 </div>
 
@@ -397,14 +644,88 @@ require_once __DIR__ . '/includes/header.php';
                     <textarea name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][description]" rows="2" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs leading-relaxed focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($block['description'] ?? ''); ?></textarea>
                 </div>
 
+                <?php if (!empty($meta['block_image'])): ?>
+                <div class="bg-white p-3 rounded-xl border border-slate-200 space-y-2">
+                    <label class="block text-[10px] font-bold text-slate-600">
+                        <i class="fas fa-image text-brand-blue mr-1"></i> Section Photo
+                    </label>
+                    <?php if (!empty($block['image'])): ?>
+                    <div class="flex items-center space-x-3 py-1">
+                        <img src="../<?php echo htmlspecialchars($block['image']); ?>" class="w-16 h-12 object-cover rounded-lg border border-slate-200" alt="Section photo">
+                        <span class="text-[10px] text-slate-400 font-mono break-all"><?php echo htmlspecialchars($block['image']); ?></span>
+                    </div>
+                    <?php endif; ?>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-600 mb-1">Replace Photo (max 4MB)</label>
+                            <input type="file" name="page_block_image_<?php echo htmlspecialchars($blockKey); ?>" accept=".webp,.png,.jpg,.jpeg" class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[11px]">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-600 mb-1">Photo Alt Tag</label>
+                            <input type="text" name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][image_alt]" value="<?php echo htmlspecialchars($block['image_alt'] ?? ''); ?>" class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[11px] focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        </div>
+                    </div>
+                </div>
+                <?php endif; ?>
+
+                <?php if (!empty($meta['block_roles'])): ?>
+                <div>
+                    <label class="block text-[10px] font-bold text-slate-600 mb-1">Doctor Role Bullets (one per line)</label>
+                    <textarea name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][roles]" rows="2" placeholder="Chairman - Marengo Asia Neuro &amp; Spine" class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[11px] leading-relaxed focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars(implode("\n", (array)($block['roles'] ?? []))); ?></textarea>
+                </div>
+                <?php endif; ?>
+
+                <?php if (!empty($meta['block_panel'])): ?>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[10px] font-bold text-slate-600 mb-1">Emergency Card Title (optional)</label>
+                        <input type="text" name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][panel_title]" value="<?php echo htmlspecialchars($block['panel_title'] ?? ''); ?>" class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[11px] font-semibold focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold text-slate-600 mb-1">Emergency Card Text</label>
+                        <input type="text" name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][panel_text]" value="<?php echo htmlspecialchars($block['panel_text'] ?? ''); ?>" class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[11px] focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+                </div>
+                <?php endif; ?>
+
+                <?php if (!empty($meta['block_tags'])): ?>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[10px] font-bold text-slate-600 mb-1">Pill Row Title (optional)</label>
+                        <input type="text" name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][tags_title]" value="<?php echo htmlspecialchars($block['tags_title'] ?? ''); ?>" placeholder="Aura Signs" class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[11px] font-semibold focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold text-slate-600 mb-1">Pill Row Items (one per line or comma separated)</label>
+                        <textarea name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][tags]" rows="2" placeholder="Visual blind spots&#10;Flashing lights" class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[11px] leading-relaxed focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars(is_array($block['tags'] ?? null) ? implode("\n", $block['tags']) : (string)($block['tags'] ?? '')); ?></textarea>
+                    </div>
+                </div>
+                <?php endif; ?>
+
+                <?php if ($blockType === 'symptoms'): ?>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[10px] font-bold text-slate-600 mb-1">Call-out Box Title (optional)</label>
+                        <input type="text" name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][note_title]" value="<?php echo htmlspecialchars($block['note_title'] ?? ''); ?>" placeholder="The Golden Hour" class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[11px] font-semibold focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold text-slate-600 mb-1">Call-out Box Icon</label>
+                        <input type="text" name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][note_icon]" value="<?php echo htmlspecialchars($block['note_icon'] ?? ''); ?>" placeholder="fa-clock" class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[11px] font-mono focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-slate-600 mb-1">Call-out Box Text</label>
+                    <textarea name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][note_text]" rows="2" placeholder="Supporting sentence shown under the title" class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[11px] leading-relaxed focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($block['note_text'] ?? ''); ?></textarea>
+                </div>
+                <?php endif; ?>
+
                 <div class="pt-2 border-t border-slate-100">
                     <div class="flex items-center justify-between mb-2">
                         <label class="text-[11px] font-bold text-slate-700">
-                            <?php echo $blockType === 'steps' ? 'Steps' : 'Cards'; ?> (<?php echo count($blockItems); ?>)
+                            <?php echo htmlspecialchars($meta['item_label']); ?>s (<?php echo count($blockItems); ?>)
                         </label>
                         <button type="button" onclick="pageBlockAddItem(this)" class="px-2.5 py-1.5 bg-brand-blue hover:bg-blue-700 text-white text-[11px] font-bold rounded-lg transition-colors flex items-center space-x-1">
                             <i class="fas fa-plus text-[9px]"></i>
-                            <span>Add <?php echo $blockType === 'steps' ? 'Step' : 'Card'; ?></span>
+                            <span>Add <?php echo htmlspecialchars($meta['item_label']); ?></span>
                         </button>
                     </div>
 
@@ -412,114 +733,29 @@ require_once __DIR__ . '/includes/header.php';
                         <?php foreach ($blockItems as $ii => $item): ?>
                         <div class="page-block-item bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-2">
                             <div class="flex items-center justify-between">
-                                <span class="text-[10px] font-bold text-slate-500"><?php echo $blockType === 'steps' ? 'Step' : 'Card'; ?> <?php echo (int)$ii + 1; ?></span>
+                                <span class="text-[10px] font-bold text-slate-500"><?php echo htmlspecialchars($meta['item_label']); ?> <?php echo (int)$ii + 1; ?></span>
                                 <button type="button" onclick="pageBlockRemoveItem(this)" class="text-[10px] text-red-500 font-bold hover:underline">
                                     <i class="fas fa-trash text-[9px]"></i> Remove
                                 </button>
                             </div>
-
-                            <?php if ($blockType === 'cards'): ?>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-                                <div>
-                                    <label class="block text-[10px] font-bold text-slate-600 mb-1">Font Awesome Icon</label>
-                                    <input type="text" name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][items][<?php echo (int)$ii; ?>][icon]" value="<?php echo htmlspecialchars($item['icon'] ?? 'fa-check'); ?>" placeholder="fa-shield-alt" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] font-mono focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold text-slate-600 mb-1">Icon Colour</label>
-                                    <select name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][items][<?php echo (int)$ii; ?>][color]" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] font-semibold focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                                        <option value="electric-blue" <?php echo ($item['color'] ?? '') === 'electric-blue' ? 'selected' : ''; ?>>Electric blue</option>
-                                        <option value="cyan-accent" <?php echo ($item['color'] ?? '') === 'cyan-accent' ? 'selected' : ''; ?>>Cyan</option>
-                                        <option value="deep-indigo" <?php echo ($item['color'] ?? '') === 'deep-indigo' ? 'selected' : ''; ?>>Deep indigo</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <?php endif; ?>
-
-                            <div>
-                                <label class="block text-[10px] font-bold text-slate-600 mb-1">Title</label>
-                                <input type="text" name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][items][<?php echo (int)$ii; ?>][title]" value="<?php echo htmlspecialchars($item['title'] ?? ''); ?>" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] font-semibold focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                            </div>
-                            <div>
-                                <label class="block text-[10px] font-bold text-slate-600 mb-1">Description</label>
-                                <textarea name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][items][<?php echo (int)$ii; ?>][text]" rows="2" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] leading-relaxed focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($item['text'] ?? ''); ?></textarea>
-                            </div>
-                            <div>
-                                <label class="block text-[10px] font-bold text-slate-600 mb-1">Bullet Points (one per line, optional)</label>
-                                <textarea name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][items][<?php echo (int)$ii; ?>][bullets]" rows="2" placeholder="One item per line" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] leading-relaxed focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars(is_array($item['bullets'] ?? null) ? implode("\n", $item['bullets']) : (string)($item['bullets'] ?? '')); ?></textarea>
-                            </div>
-                            <?php if ($blockType === 'cards'): ?>
-                            <div>
-                                <label class="block text-[10px] font-bold text-slate-600 mb-1">Tag Pills (comma-separated)</label>
-                                <input type="text" name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][items][<?php echo (int)$ii; ?>][tags]" value="<?php echo htmlspecialchars(implode(', ', (array)($item['tags'] ?? []))); ?>" placeholder="Keyhole Access, Faster Recovery" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                            </div>
-                            <?php endif; ?>
+                            <?php $renderItemFields($blockType, $blockKey, (int)$ii, is_array($item) ? $item : []); ?>
                         </div>
                         <?php endforeach; ?>
                     </div>
+
+                    <template id="page-block-item-template-<?php echo htmlspecialchars($blockType); ?>">
+                        <div class="page-block-item bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-2">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-bold text-slate-500">New <?php echo htmlspecialchars($meta['item_label']); ?></span>
+                                <button type="button" onclick="pageBlockRemoveItem(this)" class="text-[10px] text-red-500 font-bold hover:underline"><i class="fas fa-trash text-[9px]"></i> Remove</button>
+                            </div>
+                            <?php $renderItemFields($blockType, '__KEY__', '__INDEX__', []); ?>
+                        </div>
+                    </template>
                 </div>
             </div>
             <?php endforeach; ?>
         </div>
-
-        <template id="page-block-card-template">
-            <div class="page-block-item bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-2">
-                <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-bold text-slate-500">Card</span>
-                    <button type="button" onclick="pageBlockRemoveItem(this)" class="text-[10px] text-red-500 font-bold hover:underline"><i class="fas fa-trash text-[9px]"></i> Remove</button>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-                    <div>
-                        <label class="block text-[10px] font-bold text-slate-600 mb-1">Font Awesome Icon</label>
-                        <input type="text" name="page_blocks[__KEY__][items][__INDEX__][icon]" value="fa-check" placeholder="fa-shield-alt" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] font-mono focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-[10px] font-bold text-slate-600 mb-1">Icon Colour</label>
-                        <select name="page_blocks[__KEY__][items][__INDEX__][color]" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] font-semibold focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                            <option value="electric-blue">Electric blue</option>
-                            <option value="cyan-accent">Cyan</option>
-                            <option value="deep-indigo">Deep indigo</option>
-                        </select>
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-[10px] font-bold text-slate-600 mb-1">Title</label>
-                    <input type="text" name="page_blocks[__KEY__][items][__INDEX__][title]" value="" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] font-semibold focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                </div>
-                <div>
-                    <label class="block text-[10px] font-bold text-slate-600 mb-1">Description</label>
-                    <textarea name="page_blocks[__KEY__][items][__INDEX__][text]" rows="2" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] leading-relaxed focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
-                </div>
-                <div>
-                    <label class="block text-[10px] font-bold text-slate-600 mb-1">Bullet Points (one per line, optional)</label>
-                    <textarea name="page_blocks[__KEY__][items][__INDEX__][bullets]" rows="2" placeholder="One item per line" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] leading-relaxed focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
-                </div>
-                <div>
-                    <label class="block text-[10px] font-bold text-slate-600 mb-1">Tag Pills (comma-separated)</label>
-                    <input type="text" name="page_blocks[__KEY__][items][__INDEX__][tags]" value="" placeholder="Keyhole Access, Faster Recovery" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                </div>
-            </div>
-        </template>
-
-        <template id="page-block-step-template">
-            <div class="page-block-item bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-2">
-                <div class="flex items-center justify-between">
-                    <span class="text-[10px] font-bold text-slate-500">Step</span>
-                    <button type="button" onclick="pageBlockRemoveItem(this)" class="text-[10px] text-red-500 font-bold hover:underline"><i class="fas fa-trash text-[9px]"></i> Remove</button>
-                </div>
-                <div>
-                    <label class="block text-[10px] font-bold text-slate-600 mb-1">Title</label>
-                    <input type="text" name="page_blocks[__KEY__][items][__INDEX__][title]" value="" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] font-semibold focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                </div>
-                <div>
-                    <label class="block text-[10px] font-bold text-slate-600 mb-1">Description</label>
-                    <textarea name="page_blocks[__KEY__][items][__INDEX__][text]" rows="2" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] leading-relaxed focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
-                </div>
-                <div>
-                    <label class="block text-[10px] font-bold text-slate-600 mb-1">Bullet Points (one per line, optional)</label>
-                    <textarea name="page_blocks[__KEY__][items][__INDEX__][bullets]" rows="2" placeholder="One item per line" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] leading-relaxed focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
-                </div>
-            </div>
-        </template>
 
         <script>
         function pageBlockAddItem(button) {
@@ -528,7 +764,7 @@ require_once __DIR__ . '/includes/header.php';
             var key = block.getAttribute('data-block-key');
             var type = block.getAttribute('data-block-type');
             var container = block.querySelector('.page-block-items');
-            var template = document.getElementById(type === 'steps' ? 'page-block-step-template' : 'page-block-card-template');
+            var template = document.getElementById('page-block-item-template-' + type) || document.getElementById('page-block-item-template-cards');
             if (!container || !template) return;
 
             var index = parseInt(container.getAttribute('data-next-index') || '0', 10);
@@ -546,6 +782,51 @@ require_once __DIR__ . '/includes/header.php';
             if (item) item.remove();
         }
         </script>
+        <?php endif; ?>
+
+        <!-- Editable Call-to-Action Buttons -->
+        <?php if (function_exists('cms_page_cta_keys') && ($pageCtaKeys = cms_page_cta_keys($slug)) !== []): ?>
+        <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4">
+            <div>
+                <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center">
+                    <i class="fas fa-hand-pointer text-brand-blue mr-2"></i> Call-to-Action Buttons
+                </h3>
+                <p class="text-[10px] text-slate-500 mt-1">Edit the text and destination of every button on this page (hero, diagnosis, final banner, emergency card…). Leave a field blank to restore its built-in default.</p>
+                <p class="text-[10px] text-slate-500 mt-1">URL tips: another page slug e.g. <code class="font-mono">contact-us-top-neurologist-delhi-ncr</code>, an anchor <code class="font-mono">#appointment</code>, <code class="font-mono">https://…</code>, <code class="font-mono">tel:…</code>, or the tokens <code class="font-mono">{phone}</code> / <code class="font-mono">{stroke-helpline}</code> which expand to the hospital numbers.</p>
+            </div>
+
+            <?php foreach ($pageCtaKeys as $ctaKey): ?>
+            <?php
+                $cta = cms_page_cta($slug, $ctaKey);
+                $showIntro = trim($cta['intro'] ?? '') !== '' || $ctaKey === 'diagnosis';
+            ?>
+            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-3">
+                <div class="flex items-center justify-between">
+                    <h4 class="text-xs font-bold text-slate-800"><?php echo htmlspecialchars($cta['label'] ?? ucfirst(str_replace('-', ' ', $ctaKey))); ?></h4>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800 font-mono"><?php echo htmlspecialchars($ctaKey); ?></span>
+                </div>
+                <input type="hidden" name="page_ctas[<?php echo htmlspecialchars($ctaKey); ?>][_present]" value="1">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Button Text</label>
+                        <input type="text" name="page_ctas[<?php echo htmlspecialchars($ctaKey); ?>][text]" value="<?php echo htmlspecialchars($cta['text'] ?? ''); ?>" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Button URL</label>
+                        <input type="text" name="page_ctas[<?php echo htmlspecialchars($ctaKey); ?>][url]" value="<?php echo htmlspecialchars($cta['url'] ?? ''); ?>" placeholder="contact (#) / #appointment / {phone} / https://…" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-mono focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+                </div>
+
+                <?php if ($showIntro): ?>
+                <div>
+                    <label class="block text-[11px] font-bold text-slate-700 mb-1">Line Above The Buttons (optional)</label>
+                    <input type="text" name="page_ctas[<?php echo htmlspecialchars($ctaKey); ?>][intro]" value="<?php echo htmlspecialchars($cta['intro'] ?? ''); ?>" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                </div>
+                <?php endif; ?>
+            </div>
+            <?php endforeach; ?>
+        </div>
         <?php endif; ?>
 
         <!-- Additional Custom Sections -->

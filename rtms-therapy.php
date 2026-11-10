@@ -64,14 +64,20 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
 
             <!-- CTA Buttons -->
             <div class="flex flex-wrap gap-3">
-                <a href="contact-us-top-neurologist-delhi-ncr" class="inline-flex items-center space-x-2.5 bg-white text-deep-indigo font-semibold px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-white/30 transition-all duration-300 transform hover:-translate-y-1 text-sm">
-                    <span>Book Appointment</span>
+                <?php $heroPrimary = cms_page_cta('rtms-therapy', 'hero-primary'); ?>
+                <?php if (trim($heroPrimary['text']) !== ''): ?>
+                <a href="<?php echo cms_cta_href($heroPrimary['url']); ?>" class="inline-flex items-center space-x-2.5 bg-white text-deep-indigo font-semibold px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-white/30 transition-all duration-300 transform hover:-translate-y-1 text-sm">
+                    <span><?php echo cms_cta_text('rtms-therapy', 'hero-primary'); ?></span>
                     <i class="fas fa-arrow-right text-xs"></i>
                 </a>
-                <a href="tel:<?php echo SITE_PHONE; ?>" class="inline-flex items-center space-x-2.5 bg-white/20 backdrop-blur-sm text-white font-semibold px-6 py-2.5 rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 text-sm">
+                <?php endif; ?>
+                <?php $heroSecondary = cms_page_cta('rtms-therapy', 'hero-secondary'); ?>
+                <?php if (trim($heroSecondary['text']) !== ''): ?>
+                <a href="<?php echo cms_cta_href($heroSecondary['url']); ?>" class="inline-flex items-center space-x-2.5 bg-white/20 backdrop-blur-sm text-white font-semibold px-6 py-2.5 rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 text-sm">
                     <i class="fas fa-phone text-xs"></i>
-                    <span>Call Now</span>
+                    <span><?php echo cms_cta_text('rtms-therapy', 'hero-secondary'); ?></span>
                 </a>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -86,34 +92,8 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
                 <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6"><?php echo htmlspecialchars($section['title']); ?></h2>
                 <?php echo cms_section_paragraphs($section['text']); ?>
 
-                <!-- Key Facts -->
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="flex items-start space-x-3">
-                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-electric-blue text-xs"></i>
-                        </div>
-                        <div>
-                            <div class="font-semibold text-dark-grey text-sm">Non-Invasive</div>
-                            <div class="text-xs text-dark-grey/60">No surgery or needles</div>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-electric-blue text-xs"></i>
-                        </div>
-                        <div>
-                            <div class="font-semibold text-dark-grey text-sm">No Anesthesia</div>
-                            <div class="text-xs text-dark-grey/60">No sedation or downtime</div>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-electric-blue text-xs"></i>
-                        </div>
-                        <div>
-                            <div class="font-semibold text-dark-grey text-sm">FDA Cleared</div>
-                            <div class="text-xs text-dark-grey/60">Proven safety profile</div>
-                        </div>
+                <!-- Key Facts (CMS block) -->
+                <?php cms_render_page_block('rtms-therapy', 'key-facts'); ?>
                     </div>
                     <div class="flex items-start space-x-3">
                         <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -151,58 +131,8 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
     </div>
 </section>
 
-<!-- About Doctor Section -->
-<section id="about-doctor" class="py-16 bg-white border-t border-silver-grey/40">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            <!-- Image Side -->
-            <div class="lg:col-span-5 relative observe">
-                <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-xl bg-gradient-to-br from-soft-cyan to-silver-grey">
-                    <img src="assets/dpg-1.webp" alt="Dr. Praveen Gupta" class="w-full h-full object-cover">
-                </div>
-            </div>
-
-            <!-- Content Side -->
-            <div class="lg:col-span-7 observe">
-                <span class="text-xs font-bold tracking-wider text-dark-grey/60 uppercase block mb-3 font-sans">
-                    About Dr. Praveen Gupta
-                </span>
-                <h2 class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo leading-tight mb-4">
-                    Dr. Praveen Gupta  Best Neurologist in India
-                </h2>
-
-                <!-- Prestigious Appointments -->
-                <div class="flex flex-col space-y-2.5 mb-6">
-                    <div class="flex items-center space-x-2.5 text-electric-blue font-medium text-xs md:text-sm">
-                        <i class="fa-solid fa-award text-cyan-accent flex-shrink-0 text-base"></i>
-                        <span>Chairman  Marengo Asia International Institute of Neuro and Spine</span>
-                    </div>
-                    <div class="flex items-center space-x-2.5 text-electric-blue font-medium text-xs md:text-sm">
-                        <i class="fa-solid fa-chart-line text-cyan-accent flex-shrink-0 text-base"></i>
-                        <span>Chief Clinical Strategy Growth and Innovation, North India</span>
-                    </div>
-                    <div class="flex items-center space-x-2.5 text-electric-blue font-medium text-xs md:text-sm">
-                        <i class="fa-solid fa-lightbulb text-cyan-accent flex-shrink-0 text-base"></i>
-                        <span>Chief Mentor for Start-ups</span>
-                    </div>
-                </div>
-
-                <p class="text-sm text-dark-grey/85 mb-4 leading-relaxed">
-                    With over 20 years of clinical experience, Dr. Praveen Gupta has emerged as a pioneering force in the diagnosis, treatment, and advancement of neurological sciences across India and beyond. He is responsible for several firsts in the country's neurology landscape, including establishing Gurugram's first stroke centre and conducting pioneering BMT procedures for autoimmune neuro-disorders.
-                </p>
-
-                <div>
-                    <a href="about" class="inline-flex items-center space-x-4 border-2 border-dark-grey px-6 py-2.5 rounded-full hover:bg-dark-grey hover:text-white transition-all duration-300 group">
-                        <span class="text-xs font-bold text-dark-grey group-hover:text-white transition-colors duration-300">More About Doctor</span>
-                        <div class="w-8 h-8 rounded-full bg-dark-grey text-white flex items-center justify-center text-xs group-hover:bg-white group-hover:text-dark-grey transition-colors duration-300 flex-shrink-0">
-                            <i class="fas fa-arrow-right -rotate-45 transition-transform duration-300"></i>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<!-- About Doctor Section (CMS block) -->
+                <?php cms_render_page_block('rtms-therapy', 'doctor'); ?>
 
 <!-- Video Testimonials (component: includes/video-testimonials.php) -->
 <?php require __DIR__ . "/includes/video-testimonials.php"; ?>

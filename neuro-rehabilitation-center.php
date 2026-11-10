@@ -62,15 +62,21 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
                 <?php echo cms_render_html($pageContent['hero_desc']); ?>
             </p>
 
-            <div class="flex flex-wrap items-center gap-3">
-                <a href="contact-us-top-neurologist-delhi-ncr" class="group inline-flex items-center space-x-2.5 bg-white text-deep-indigo font-semibold px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-white/30 transition-all duration-300 transform hover:-translate-y-1 text-sm">
-                    <span>Schedule Evaluation</span>
+            <div class="flex flex-wrap gap-3">
+                <?php $heroPrimary = cms_page_cta('neuro-rehabilitation-center', 'hero-primary'); ?>
+                <?php if (trim($heroPrimary['text']) !== ''): ?>
+                <a href="<?php echo cms_cta_href($heroPrimary['url']); ?>" class="group inline-flex items-center space-x-2.5 bg-white text-deep-indigo font-semibold px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-white/30 transition-all duration-300 transform hover:-translate-y-1 text-sm">
+                    <span><?php echo cms_cta_text('neuro-rehabilitation-center', 'hero-primary'); ?></span>
                     <i class="fas fa-arrow-right text-xs"></i>
                 </a>
-                <a href="tel:<?php echo SITE_PHONE; ?>" class="inline-flex items-center space-x-2.5 bg-white/20 backdrop-blur-sm text-white font-semibold px-6 py-2.5 rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 text-sm">
+                <?php endif; ?>
+                <?php $heroSecondary = cms_page_cta('neuro-rehabilitation-center', 'hero-secondary'); ?>
+                <?php if (trim($heroSecondary['text']) !== ''): ?>
+                <a href="<?php echo cms_cta_href($heroSecondary['url']); ?>" class="inline-flex items-center space-x-2.5 bg-white/20 backdrop-blur-sm text-white font-semibold px-6 py-2.5 rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 text-sm">
                     <i class="fas fa-phone text-xs"></i>
-                    <span>Call Now</span>
+                    <span><?php echo cms_cta_text('neuro-rehabilitation-center', 'hero-secondary'); ?></span>
                 </a>
+                <?php endif; ?>
             </div>
         </div>
     </div>

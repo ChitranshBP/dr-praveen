@@ -1,4 +1,265 @@
 {
+    "_shared": {
+        "why-choose": {
+            "type": "why-choose",
+            "label": "Why Choose Section",
+            "badge": "Why Choose Dr. Praveen Gupta?",
+            "title": "Providing Best Treatment",
+            "description": "With an unwavering commitment to clinical excellence, Dr. Praveen Gupta combines advanced technology and patient-centric therapies to deliver world-class neurological care.",
+            "items": [
+                {
+                    "icon": "fa-earth-americas",
+                    "title": "Global Standards of Care",
+                    "text": "Treatments backed by advanced technology and international guidelines."
+                },
+                {
+                    "icon": "fa-lightbulb",
+                    "title": "Innovative Procedures",
+                    "text": "Pioneer in stroke care, DBS, and epilepsy surgery in India."
+                },
+                {
+                    "icon": "fa-circle-check",
+                    "title": "Proven Results",
+                    "text": "Thousands of patients treated successfully with rapid recovery."
+                },
+                {
+                    "icon": "fa-hand-holding-heart",
+                    "title": "Compassionate Consultation",
+                    "text": "Empowering patients with knowledge, compassion, and personalized care."
+                }
+            ],
+            "image": "assets/full-image/dpg-award.webp",
+            "image_alt": "Compassionate Care Nurse",
+            "pages": [
+                "epilepsy",
+                "stroke",
+                "headache",
+                "migraine",
+                "vertigo",
+                "ms",
+                "movement",
+                "neuropathy",
+                "parkinsons"
+            ]
+        },
+        "doctor": {
+            "type": "doctor",
+            "layout": "profile",
+            "label": "Doctor Profile",
+            "badge": "Expert Leadership",
+            "title": "Meet the Specialist",
+            "role": "Chairman - Marengo Asia Neuro & Spine",
+            "name": "Dr. Praveen Gupta",
+            "text": "Dr. Praveen Gupta is a pioneering neurologist with 20+ years of clinical excellence. Renowned for introducing the first stroke mechanical thrombectomy services in Gurgaon and executing the region's first Deep Brain Stimulation (DBS) surgery, he leads Marengo Asia Neuro & Spine Institute with a commitment to state-of-the-art diagnostics and compassionate patient recovery.",
+            "image": "assets/dpg-1.webp",
+            "image_alt": "Dr. Praveen Gupta",
+            "items": [
+                {
+                    "title": "Full Biography",
+                    "url": "about"
+                },
+                {
+                    "title": "Why Choose Dr. Praveen",
+                    "url": "why-choose-dr-praveen-gupta"
+                }
+            ],
+            "pages": [
+                "brain-tumor-surgery",
+                "spine-surgery",
+                "neurovascular-surgery",
+                "functional-neurosurgery",
+                "memory-clinic",
+                "brain-health-center"
+            ]
+        }
+    },
+    "brain-health-center": {
+        "key-facts": {
+            "type": "facts",
+            "label": "Key Facts",
+            "items": [
+                {
+                    "icon": "fas fa-check",
+                    "title": "Vascular Risk Profile",
+                    "text": "BP, cholesterol, carotid health"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Cognitive Baseline",
+                    "text": "Benchmarks for future comparison"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "From Age 50",
+                    "text": "Earlier with family history"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Modifiable Risk",
+                    "text": "Most factors respond to change"
+                }
+            ]
+        },
+        "wellness-pillars": {
+            "type": "cards",
+            "label": "Wellness Pillars",
+            "badge": "Wellness Pillars",
+            "title": "Pillars of Brain Health",
+            "description": "Four scientifically proven habits that support neural connectivity and delay cognitive ageing.",
+            "items": [
+                {
+                    "icon": "fas fa-apple-whole",
+                    "color": "electric-blue",
+                    "title": "Nutrition",
+                    "text": "A diet rich in antioxidants, omega-3 fatty acids and green vegetables protects brain cells and supports micro-vascular circulation.",
+                    "tags": [
+                        "Omega-3",
+                        "Antioxidants"
+                    ]
+                },
+                {
+                    "icon": "fas fa-person-running",
+                    "color": "cyan-accent",
+                    "title": "Physical Activity",
+                    "text": "Regular aerobic exercise increases blood flow to the brain, encourages neuroplasticity and releases BDNF, which supports memory cells.",
+                    "tags": [
+                        "Aerobic",
+                        "Neuroplasticity"
+                    ]
+                },
+                {
+                    "icon": "fas fa-moon",
+                    "color": "deep-indigo",
+                    "title": "Restful Sleep",
+                    "text": "Deep sleep activates the brain's glymphatic system, clearing metabolic waste and proteins such as amyloid-beta that drive cognitive decline.",
+                    "tags": [
+                        "Glymphatic",
+                        "Waste Clearance"
+                    ]
+                },
+                {
+                    "icon": "fas fa-puzzle-piece",
+                    "color": "electric-blue",
+                    "title": "Mental Exercise",
+                    "text": "Learning new skills, reading, solving puzzles and staying socially active builds cognitive reserve that resists age-related memory loss.",
+                    "tags": [
+                        "Cognitive Reserve",
+                        "Social Activity"
+                    ]
+                }
+            ]
+        },
+        "screening-journey": {
+            "type": "steps",
+            "label": "Screening Journey",
+            "badge": "Experience",
+            "title": "What an Executive Screening Covers",
+            "description": "Prevention is the best cure. A full brain health screening takes a single appointment and sets a benchmark you can measure against for years.",
+            "items": [
+                {
+                    "number": 1,
+                    "title": "Risk History Review",
+                    "text": "Family history, lifestyle, medication and prior events are reviewed to establish which risks apply to you specifically."
+                },
+                {
+                    "number": 2,
+                    "title": "Vascular Screening",
+                    "text": "Blood pressure, cholesterol and carotid arterial health are checked — the three factors that most directly govern stroke risk."
+                },
+                {
+                    "number": 3,
+                    "title": "Cognitive Audit",
+                    "text": "A baseline cognitive screening detects early memory change and establishes benchmarks for future comparison."
+                },
+                {
+                    "number": 4,
+                    "title": "Personalised Plan",
+                    "text": "A written plan covering nutrition, activity, sleep and follow-up intervals, tailored to the risks the screening actually found."
+                }
+            ]
+        }
+    },
+    "brain-stroke-helpline": {
+        "fast-signs": {
+            "type": "cards",
+            "label": "FAST Warning Signs",
+            "badge": "Spot a Stroke",
+            "title": "Act F.A.S.T. - Learn the Signs",
+            "description": "If you observe any of these symptoms in yourself or someone else, call the emergency stroke helpline immediately.",
+            "items": [
+                {
+                    "icon": "none",
+                    "badge": "F",
+                    "color": "red",
+                    "title": "Face Drooping",
+                    "text": "Does one side of the face droop or is it numb? Ask the person to smile. Is the smile uneven?"
+                },
+                {
+                    "icon": "none",
+                    "badge": "A",
+                    "color": "red",
+                    "title": "Arm Weakness",
+                    "text": "Is one arm weak or numb? Ask the person to raise both arms. Does one arm drift downward?"
+                },
+                {
+                    "icon": "none",
+                    "badge": "S",
+                    "color": "red",
+                    "title": "Speech Difficulty",
+                    "text": "Is speech slurred? Is the person unable to speak or hard to understand? Ask them to repeat a simple sentence."
+                },
+                {
+                    "icon": "none",
+                    "badge": "T",
+                    "color": "red",
+                    "title": "Time to Call Help",
+                    "text": "If the person shows any of these signs, even if the symptoms go away, check the time and call us immediately."
+                }
+            ]
+        },
+        "golden-hour": {
+            "type": "notice",
+            "notice_label": "Golden Hour Window",
+            "label": "Golden Hour Protocol",
+            "badge": "Clinical Protocol",
+            "title": "Golden Hour Window",
+            "description": "When a stroke strikes, millions of brain cells die every minute. Reversing this damage is highly dependent on how quickly blood flow is restored.",
+            "items": [
+                {
+                    "icon": "fas fa-clock",
+                    "text": "<strong class=\"text-dark-grey font-bold\">Within 4.5 Hours:</strong> Clot-dissolving IV thrombolysis injection can be administered to open blocked arteries."
+                },
+                {
+                    "icon": "fas fa-brain",
+                    "text": "<strong class=\"text-dark-grey font-bold\">Within 24 Hours:</strong> Advanced mechanical thrombectomy (catheter-guided clot removal) can save patients with large blood vessel blockages."
+                }
+            ]
+        },
+        "while-waiting": {
+            "type": "notice",
+            "label": "While Waiting for the Ambulance",
+            "notice": "numbered",
+            "numbered": true,
+            "title": "What to Do While Waiting for the Ambulance",
+            "items": [
+                {
+                    "number": 1,
+                    "text": "Keep the patient calm and lay them down on their side (recovery position) if they are unconscious or vomiting."
+                },
+                {
+                    "number": 2,
+                    "text": "<strong class=\"text-red-600 font-bold\">DO NOT</strong> give any food, water, or aspirin. Swallowing reflexes are often impaired during a stroke, posing a severe choking hazard."
+                },
+                {
+                    "number": 3,
+                    "text": "Note down the exact time when you first observed symptoms. This is crucial for selecting the right treatment protocol."
+                }
+            ],
+            "options": {
+                "numbered": true
+            }
+        }
+    },
     "brain-tumor-surgery": {
         "techniques": {
             "label": "Surgical Techniques",
@@ -63,471 +324,32 @@
                     "text": "Focused physical, occupational and cognitive therapy to regain strength and coordination, with follow-up medical management throughout."
                 }
             ]
-        }
-    },
-    "spine-surgery": {
-        "conditions-we-treat": {
-            "label": "Conditions We Treat",
-            "type": "cards",
-            "badge": "Applications",
-            "title": "Conditions We Treat",
-            "description": "From nerve compression to structural instability, these are the spinal problems we see and correct most often.",
-            "items": [
-                {
-                    "title": "Herniated & Slip Discs",
-                    "text": "Relieving compressed sciatic nerves in the lumbar or cervical spine, restoring pain-free movement and sensation.",
-                    "icon": "fa-bone",
-                    "color": "electric-blue",
-                    "tags": [
-                        "Sciatica",
-                        "Nerve Relief"
-                    ]
-                },
-                {
-                    "title": "Spinal Canal Stenosis",
-                    "text": "Widening narrowed passages in the spinal canal to take pressure off the cord and restore walking capacity.",
-                    "icon": "fa-arrows-left-right",
-                    "color": "cyan-accent",
-                    "tags": [
-                        "Decompression",
-                        "Mobility"
-                    ]
-                },
-                {
-                    "title": "Spondylolisthesis",
-                    "text": "Stabilising slipped vertebrae using micro-fixation and fusion strategies that preserve as much natural motion as possible.",
-                    "icon": "fa-layer-group",
-                    "color": "deep-indigo",
-                    "tags": [
-                        "Micro-Fixation",
-                        "Stability"
-                    ]
-                }
-            ]
         },
-        "what-to-expect": {
-            "label": "What to Expect, Start to Finish",
-            "type": "steps",
-            "badge": "Experience",
-            "title": "What to Expect, Start to Finish",
-            "description": "Most spinal problems never reach an operating theatre. Here is the full pathway, from first assessment through rehabilitation.",
+        "key-facts": {
+            "type": "facts",
             "items": [
                 {
-                    "title": "Assessment & Imaging",
-                    "text": "Clinical examination alongside MRI or CT to identify exactly which structure is compressing which nerve, and how much."
+                    "icon": "fas fa-check",
+                    "title": "3D Surgical Microscopes",
+                    "text": "High-magnification stereoscopic views"
                 },
                 {
-                    "title": "Conservative Management",
-                    "text": "Physiotherapy, targeted injections and medical management are tried first — many patients recover fully without surgery."
+                    "icon": "fas fa-check",
+                    "title": "Awake Brain Mapping",
+                    "text": "Protects language and motor centres"
                 },
                 {
-                    "title": "Minimally Invasive Surgery",
-                    "text": "Where surgery is needed: laminectomy, microdiscectomy or keyhole fusion through tubular dilators with real-time neural mapping."
+                    "icon": "fas fa-check",
+                    "title": "Neuromonitoring",
+                    "text": "Neural signals tracked during resection"
                 },
                 {
-                    "title": "Rehabilitation",
-                    "text": "Core mobilisation to safely rebuild lumbar stabilisers, plus posture and ergonomic training to prevent recurring micro-stress on the joints."
-                }
-            ]
-        }
-    },
-    "neurovascular-surgery": {
-        "vascular-conditions": {
-            "label": "Vascular Conditions Managed",
-            "type": "cards",
-            "badge": "Applications",
-            "title": "Vascular Conditions Managed",
-            "description": "Each of these conditions carries a risk of sudden, catastrophic bleeding — which is why they are treated as time-critical.",
-            "items": [
-                {
-                    "title": "Cerebral Aneurysms",
-                    "text": "Preventing subarachnoid haemorrhage — bleeding around the brain — by securing the weak point through clipping or coiling.",
-                    "icon": "fa-circle-dot",
-                    "color": "electric-blue",
-                    "tags": [
-                        "Clipping",
-                        "Coiling"
-                    ]
-                },
-                {
-                    "title": "Arteriovenous Malformations",
-                    "text": "Resecting or embolising complex tangles of arteries and veins before they rupture and bleed into brain tissue.",
-                    "icon": "fa-diagram-project",
-                    "color": "cyan-accent",
-                    "tags": [
-                        "Resection",
-                        "Embolisation"
-                    ]
-                },
-                {
-                    "title": "Carotid Stenosis",
-                    "text": "Carotid endarterectomy or stenting to reopen the narrowed neck arteries that supply the brain, preventing acute stroke.",
-                    "icon": "fa-heart-pulse",
-                    "color": "deep-indigo",
-                    "tags": [
-                        "Endarterectomy",
-                        "Stenting"
-                    ]
-                }
-            ]
-        },
-        "what-to-expect": {
-            "label": "What to Expect, Start to Finish",
-            "type": "steps",
-            "badge": "Experience",
-            "title": "What to Expect, Start to Finish",
-            "description": "Vascular conditions demand hyper-acute responses. This is how a case moves from presentation to recovery.",
-            "items": [
-                {
-                    "title": "Urgent Imaging",
-                    "text": "CT, MRI and angiography establish where the vessel is weak or blocked, and how urgently it needs securing."
-                },
-                {
-                    "title": "Treatment Planning",
-                    "text": "The team decides between open microsurgery and an endovascular approach based on the location, size and shape of the lesion."
-                },
-                {
-                    "title": "Intervention",
-                    "text": "Surgical clipping under the microscope, or micro-catheters fed from the groin for coiling, stent-assisted reconstruction or flow diversion."
-                },
-                {
-                    "title": "Neuro-ICU & Follow-Up",
-                    "text": "Post-operative monitoring in the neuro-ICU to manage vascular spasm and intracranial pressure, then structured outpatient review."
-                }
-            ]
-        }
-    },
-    "functional-neurosurgery": {
-        "key-indications": {
-            "label": "Key Indications Treated",
-            "type": "cards",
-            "badge": "Applications",
-            "title": "Key Indications Treated",
-            "description": "Neuromodulation targets movement disorders where the underlying brain circuit, not the muscle, is the problem.",
-            "items": [
-                {
-                    "title": "DBS for Parkinson's",
-                    "text": "Reversing motor fluctuations and the severe medication side-effects that develop in advanced disease, restoring predictable daily function.",
-                    "icon": "fa-brain",
-                    "color": "electric-blue",
-                    "tags": [
-                        "Motor Control",
-                        "Fewer Side-Effects"
-                    ]
-                },
-                {
-                    "title": "Tremor Control",
-                    "text": "Suppressing severe essential tremor so patients can write, eat and hold objects with coordination they had lost.",
-                    "icon": "fa-hand-dots",
-                    "color": "cyan-accent",
-                    "tags": [
-                        "Essential Tremor",
-                        "Coordination"
-                    ]
-                },
-                {
-                    "title": "Dystonia Relief",
-                    "text": "Managing severe, painful muscle spasms by modulating the specific brain circuits driving the abnormal contraction.",
-                    "icon": "fa-person-walking",
-                    "color": "deep-indigo",
-                    "tags": [
-                        "Spasm Relief",
-                        "Pain Control"
-                    ]
-                }
-            ]
-        },
-        "what-to-expect": {
-            "label": "What to Expect, Start to Finish",
-            "type": "steps",
-            "badge": "Experience",
-            "title": "What to Expect, Start to Finish",
-            "description": "DBS is a dynamic therapy — the implant is the midpoint of the pathway, not the end of it.",
-            "items": [
-                {
-                    "title": "Candidate Selection",
-                    "text": "Detailed movement-disorder assessment establishes whether symptoms are likely to respond to stimulation, and which target is right."
-                },
-                {
-                    "title": "Stereotactic Planning",
-                    "text": "High-resolution imaging maps the precise brain co-ordinates for electrode placement, down to the millimetre."
-                },
-                {
-                    "title": "Electrode Implantation",
-                    "text": "Thin leads are placed in the movement-control regions, connected to a pacemaker-like generator implanted below the collarbone."
-                },
-                {
-                    "title": "Programming & Support",
-                    "text": "Wireless programming sessions tune pulse rate and voltage to the patient’s lifestyle, with caregiver guidance on charging and battery checks."
-                }
-            ]
-        }
-    },
-    "memory-clinic": {
-        "conditions-we-assess": {
-            "label": "Conditions We Assess",
-            "type": "cards",
-            "badge": "Applications",
-            "title": "Conditions We Assess",
-            "description": "Dementia affects the entire household, so our care plans cover the family alongside the patient.",
-            "items": [
-                {
-                    "title": "Alzheimer's & Dementia",
-                    "text": "Evaluating progressive cognitive decline, memory impairment, spatial disorientation and behavioural change through structured medical strategy.",
-                    "icon": "fa-brain",
-                    "color": "electric-blue",
-                    "tags": [
-                        "Early Diagnosis",
-                        "Progression Control"
-                    ]
-                },
-                {
-                    "title": "Mild Cognitive Impairment",
-                    "text": "Addressing early-stage memory change that exceeds normal ageing but does not yet interfere with daily living — the window where intervention matters most.",
-                    "icon": "fa-clock-rotate-left",
-                    "color": "cyan-accent",
-                    "tags": [
-                        "Early Window",
-                        "Monitoring"
-                    ]
-                },
-                {
-                    "title": "Caregiver Support",
-                    "text": "Behavioural strategies for confusion, mood change and disturbed sleep-wake cycles, plus home safety guidance to prevent falls and wandering.",
-                    "icon": "fa-people-roof",
-                    "color": "deep-indigo",
-                    "tags": [
-                        "Home Safety",
-                        "Family Training"
-                    ]
-                }
-            ]
-        },
-        "what-to-expect": {
-            "label": "What to Expect at Your Assessment",
-            "type": "steps",
-            "badge": "Experience",
-            "title": "What to Expect at Your Assessment",
-            "description": "A full memory assessment is methodical by design — the aim is to find every contributing factor, including the reversible ones.",
-            "items": [
-                {
-                    "title": "Cognitive Testing",
-                    "text": "Standardised memory, reasoning and speech assessments (MoCA, MMSE) establish an objective baseline to measure against."
-                },
-                {
-                    "title": "Advanced Brain Imaging",
-                    "text": "High-resolution brain MRI checks for tissue shrinkage, vascular damage and other structural causes of cognitive change."
-                },
-                {
-                    "title": "Laboratory Panels",
-                    "text": "Blood profiles rule out vitamin deficiencies, thyroid imbalance and other treatable contributors to memory loss."
-                },
-                {
-                    "title": "Care & Caregiver Plan",
-                    "text": "A combined plan covering medication, behavioural strategy, home safety and connection to respite services for the family."
-                }
-            ]
-        }
-    },
-    "rtms-therapy": {
-        "key-indications": {
-            "label": "Key Indications Treated",
-            "type": "cards",
-            "badge": "Applications",
-            "title": "Key Indications Treated",
-            "description": "rTMS is clinical neuromodulation that targets a variety of chronic, drug-resistant neurological conditions.",
-            "items": [
-                {
-                    "title": "Refractory Depression (TRD)",
-                    "text": "Stimulates the left dorsolateral prefrontal cortex (DLPFC), modulating neural activity to alleviate treatment-resistant mood disorders.",
-                    "icon": "fa-brain",
-                    "color": "electric-blue",
-                    "tags": [
-                        "Drug-Free",
-                        "Mood Support"
-                    ]
-                },
-                {
-                    "title": "Stroke Paralysis Recovery",
-                    "text": "Encourages neuroplasticity in damaged motor pathways to help patients recover arm/leg movement and coordination post-stroke.",
-                    "icon": "fa-hand-holding-hand",
-                    "color": "cyan-accent",
-                    "tags": [
-                        "Motor Skill",
-                        "Neuroplasticity"
-                    ]
-                },
-                {
-                    "title": "Chronic Pain & Migraine",
-                    "text": "Desensitizes pain pathways in the brain to reduce the frequency and intensity of chronic pain conditions and migraine attacks.",
-                    "icon": "fa-shield",
-                    "color": "deep-indigo",
-                    "tags": [
-                        "Pain Control",
-                        "Migraine Relief"
-                    ]
-                }
-            ]
-        },
-        "what-to-expect": {
-            "label": "What to Expect During rTMS Treatment",
-            "type": "steps",
-            "badge": "Experience",
-            "title": "What to Expect During rTMS Treatment",
-            "description": "Our protocol ensures patient comfort, clinical mapping accuracy, and tailored treatment parameters.",
-            "items": [
-                {
-                    "title": "Motor Thresholding",
-                    "text": "Mapping the patient's motor cortex to identify the exact threshold of stimulation and determine customized dosage guidelines."
-                },
-                {
-                    "title": "Coil Positioning",
-                    "text": "The treatment coil is positioned over the target brain region while the patient rests in a comfortable recliner chair."
-                },
-                {
-                    "title": "Magnetic Pulses",
-                    "text": "Magnetic pulses are delivered in patterns, producing a clicking sound. A tapping feeling on the scalp is felt."
-                },
-                {
-                    "title": "Immediate Discharge",
-                    "text": "Sessions last 20-30 minutes. Once complete, you can drive, work, and resume all activities immediately."
-                }
-            ]
-        }
-    },
-    "neuro-rehabilitation-center": {
-        "core-therapies": {
-            "label": "Core Rehabilitation Therapies",
-            "type": "cards",
-            "badge": "Our Services",
-            "title": "Core Rehabilitation Therapies",
-            "description": "We combine experienced clinical expertise with state-of-the-art diagnostic and recovery tracking tools to ensure precise treatments.",
-            "items": [
-                {
-                    "title": "Neuro-Physiotherapy",
-                    "text": "Focuses on rebuilding muscle strength, improving balance, training gait cycles, and recovering motor control following a stroke, spine injury, or onset of neuropathy.",
-                    "icon": "fa-walking",
-                    "color": "electric-blue",
-                    "tags": [
-                        "Gait Training",
-                        "Strength"
-                    ]
-                },
-                {
-                    "title": "Occupational Therapy",
-                    "text": "Aids patients in relearning daily living activities (bathing, dressing, writing). We provide cognitive adaptation, motor skills coordination, and assistive technology advice.",
-                    "icon": "fa-hands-holding",
-                    "color": "cyan-accent",
-                    "tags": [
-                        "Life Skills",
-                        "Fine Motor"
-                    ]
-                },
-                {
-                    "title": "Speech & Swallowing",
-                    "text": "Addresses dysphagia (swallowing difficulties) and speech clarity challenges (aphasia/dysarthria) caused by neurological damage, helping patients communicate safely.",
-                    "icon": "fa-volume-up",
-                    "color": "deep-indigo",
-                    "tags": [
-                        "Dysphagia",
-                        "Speech Clarity"
-                    ]
-                }
-            ]
-        },
-        "recovery-journey": {
-            "label": "Your Recovery Journey",
-            "type": "steps",
-            "badge": "Pathway",
-            "title": "Your Recovery Journey",
-            "description": "Our structured recovery protocol ensures patient progress is monitored continuously from admission to outpatient support.",
-            "items": [
-                {
-                    "title": "Baseline Assessment",
-                    "text": "Comprehensive clinical evaluation of motor control, cognitive functions, and sensory status to set realistic recovery targets."
-                },
-                {
-                    "title": "Custom Treatment",
-                    "text": "A personalized rehabilitation schedule combining physical therapy, speech pathology, and occupational exercises."
-                },
-                {
-                    "title": "Active Monitoring",
-                    "text": "We utilize advanced biofeedback tools (like Phezee) to monitor joint mobility and electromyography muscle recovery trends in real-time."
-                },
-                {
-                    "title": "Home Care Care",
-                    "text": "Preparing patients for discharge with customized home care guides, training caregivers, and setting up periodic checkups."
-                }
-            ]
-        }
-    },
-    "stroke": {
-        "types": {
-            "label": "Types of Stroke",
-            "type": "cards",
-            "badge": "Classification",
-            "title": "Types of Stroke",
-            "description": "Strokes are divided into categories based on whether they involve blood vessel blockage or rupture.",
-            "items": [
-                {
-                    "title": "Ischemic Stroke",
-                    "text": "The most common type (accounts for 87% of strokes). Caused by a blood clot blocking an artery that supplies blood to the brain, cutting off oxygen.",
-                    "icon": "fa-circle-minus",
-                    "color": "electric-blue",
-                    "tags": [
-                        "Clot Blockage",
-                        "Thrombolysis"
-                    ]
-                },
-                {
-                    "title": "Hemorrhagic Stroke",
-                    "text": "Occurs when a weakened blood vessel ruptures and leaks blood into the surrounding brain tissue, causing severe local pressure and damage.",
-                    "icon": "fa-droplet",
-                    "color": "cyan-accent",
-                    "tags": [
-                        "Vessel Rupture",
-                        "Bleeding Care"
-                    ]
-                },
-                {
-                    "title": "Transient Ischemic Attack (TIA)",
-                    "text": "Known as a \"mini-stroke.\" Blood flow is blocked temporarily (often resolving within minutes). Although symptoms fade quickly, a TIA is a warning sign of an impending major stroke.",
-                    "icon": "fa-triangle-exclamation",
-                    "color": "deep-indigo",
-                    "tags": [
-                        "Temporary Block",
-                        "Warning Indicator"
-                    ]
-                }
-            ]
-        },
-        "diagnosis": {
-            "label": "How We Diagnose Stroke",
-            "type": "steps",
-            "badge": "Diagnosis",
-            "title": "How We Diagnose Stroke",
-            "description": "Emergency diagnostics are completed within minutes of arrival to determine if a stroke is ischemic or hemorrhagic, guiding immediate intervention.",
-            "items": [
-                {
-                    "title": "Rapid Neuro Exam",
-                    "text": "Immediate clinical checking of sensory inputs, pupillary reflexes, speech clarity, and motor strengths to assess severity."
-                },
-                {
-                    "title": "Emergency Brain CT",
-                    "text": "Fast imaging to rule out brain bleeding (hemorrhage) before prescribing blood thinners or clot-busting medications."
-                },
-                {
-                    "title": "Brain MRI & MRA",
-                    "text": "Detailed imaging scan to trace exact brain tissue damage locations and map arterial blood flow pathways."
-                },
-                {
-                    "title": "Vascular Ultrasound",
-                    "text": "Carotid duplex ultrasound checks for narrow neck arteries or plaques that could spark subsequent strokes."
+                    "icon": "fas fa-check",
+                    "title": "Multidisciplinary",
+                    "text": "Planned with neuro-oncology"
                 }
             ],
-            "options": {
-                "card_bg": "bg-white"
-            }
+            "label": "Key Facts"
         }
     },
     "epilepsy": {
@@ -617,6 +439,275 @@
             "options": {
                 "card_bg": "bg-white"
             }
+        },
+        "key-facts": {
+            "type": "facts",
+            "items": [
+                {
+                    "icon": "fa-check",
+                    "title": "Neurological Disorder",
+                    "text": "Brain-based condition"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Treatable Condition",
+                    "text": "70% can be seizure-free"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "All Ages",
+                    "text": "Can affect anyone"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Not a Mental Illness",
+                    "text": "Separate from psychiatric"
+                }
+            ],
+            "label": "Key Facts"
+        },
+        "warning": {
+            "type": "warning",
+            "title": "When to Seek Emergency Care",
+            "description": "Call emergency services immediately if:",
+            "items": [
+                {
+                    "text": "Seizure lasts more than 5 minutes"
+                },
+                {
+                    "text": "Second seizure follows immediately"
+                },
+                {
+                    "text": "Person doesn't breathe normally after"
+                },
+                {
+                    "text": "Person is injured during seizure"
+                }
+            ],
+            "label": "Emergency Warning Signs"
+        },
+        "symptoms": {
+            "type": "symptoms",
+            "label": "Symptoms & Warning Signs",
+            "badge": "Recognition",
+            "title": "Symptoms & Warning Signs",
+            "description": "Recognizing seizure symptoms is the first step toward proper diagnosis and treatment. Symptoms vary widely depending on the type of seizure and the area of the brain affected.",
+            "image": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&h=600&q=80",
+            "image_alt": "Epilepsy Symptoms Recognition and Diagnosis",
+            "items": [
+                {
+                    "icon": "fa-hand-fist",
+                    "color": "electric-blue",
+                    "title": "Motor Symptoms",
+                    "bullets": [
+                        "Jerking movements",
+                        "Muscle weakness",
+                        "Twitching or spasms",
+                        "Rigid muscles"
+                    ]
+                },
+                {
+                    "icon": "fa-brain",
+                    "color": "cyan-accent",
+                    "title": "Non-Motor Symptoms",
+                    "bullets": [
+                        "Staring spells",
+                        "Confusion",
+                        "Fear or anxiety",
+                        "Strange smells/tastes"
+                    ]
+                }
+            ],
+            "tags_title": "Aura Signs (Early Warning)",
+            "tags": [
+                "Visual disturbances",
+                "Nausea",
+                "Déjà vu",
+                "Numbness",
+                "Speech difficulty"
+            ],
+            "tags_icon": "fa-eye"
+        },
+        "treatments": {
+            "type": "treatments",
+            "label": "Treatment Options",
+            "badge": "Treatment",
+            "title": "Comprehensive Treatment Options",
+            "description": "Every patient's journey with epilepsy is unique. We offer a range of evidence-based treatments tailored to your specific condition, seizure type, and lifestyle needs.",
+            "items": [
+                {
+                    "icon": "fa-pills",
+                    "color": "electric-blue",
+                    "title": "Anti-Seizure Medications (ASM)",
+                    "subtitle": "First-line treatment for most patients",
+                    "text": "Anti-seizure medications are the most common treatment for epilepsy. We carefully select and adjust medications based on your seizure type, age, other health conditions, and potential side effects.",
+                    "bullets": [
+                        "Over 20 FDA-approved medications available",
+                        "Personalized medication selection",
+                        "Regular monitoring and dose adjustment",
+                        "Side effect management"
+                    ]
+                },
+                {
+                    "icon": "fa-utensils",
+                    "color": "cyan-accent",
+                    "title": "Dietary Therapies",
+                    "subtitle": "Metabolic approaches to seizure control",
+                    "text": "Dietary modifications can be highly effective, especially for children and patients who don't respond well to medications. We offer guidance on specialized diets tailored to your needs.",
+                    "bullets": [
+                        "Ketogenic diet programs",
+                        "Modified Atkins diet",
+                        "Low glycemic index treatment",
+                        "Nutritional counseling"
+                    ]
+                },
+                {
+                    "icon": "fa-microscope",
+                    "color": "deep-indigo",
+                    "title": "Surgical Interventions",
+                    "subtitle": "For drug-resistant epilepsy",
+                    "text": "When medications don't control seizures, surgical options may be considered. We evaluate candidates thoroughly to determine the most appropriate surgical approach.",
+                    "bullets": [
+                        "Resective surgery",
+                        "Laser ablation",
+                        "Vagus Nerve Stimulation (VNS)",
+                        "Responsive Neurostimulation (RNS)"
+                    ]
+                },
+                {
+                    "icon": "fa-heart-pulse",
+                    "color": "dark",
+                    "title": "Lifestyle & Support",
+                    "subtitle": "Holistic approach to epilepsy management",
+                    "text": "Living well with epilepsy involves more than just medication. We provide comprehensive guidance on lifestyle modifications and support services.",
+                    "bullets": [
+                        "Sleep hygiene optimization",
+                        "Stress management techniques",
+                        "Seizure trigger identification",
+                        "Safety planning & first aid"
+                    ]
+                }
+            ]
+        },
+        "related": {
+            "type": "related",
+            "label": "Related Neurological Services",
+            "badge": "Explore More",
+            "title": "Related Neurological Services",
+            "items": [
+                {
+                    "url": "headache",
+                    "title": "Headache",
+                    "text": "Comprehensive headache and migraine diagnosis and treatment."
+                },
+                {
+                    "url": "stroke",
+                    "title": "Stroke",
+                    "text": "Prevention, treatment, and rehabilitation for stroke patients."
+                },
+                {
+                    "url": "movement",
+                    "title": "Movement Disorders",
+                    "text": "Expert care for tremors, dystonia, and other movement issues."
+                },
+                {
+                    "url": "services",
+                    "title": "All Services",
+                    "text": "View our complete range of neurological treatments."
+                }
+            ]
+        }
+    },
+    "functional-neurosurgery": {
+        "key-indications": {
+            "label": "Key Indications Treated",
+            "type": "cards",
+            "badge": "Applications",
+            "title": "Key Indications Treated",
+            "description": "Neuromodulation targets movement disorders where the underlying brain circuit, not the muscle, is the problem.",
+            "items": [
+                {
+                    "title": "DBS for Parkinson's",
+                    "text": "Reversing motor fluctuations and the severe medication side-effects that develop in advanced disease, restoring predictable daily function.",
+                    "icon": "fa-brain",
+                    "color": "electric-blue",
+                    "tags": [
+                        "Motor Control",
+                        "Fewer Side-Effects"
+                    ]
+                },
+                {
+                    "title": "Tremor Control",
+                    "text": "Suppressing severe essential tremor so patients can write, eat and hold objects with coordination they had lost.",
+                    "icon": "fa-hand-dots",
+                    "color": "cyan-accent",
+                    "tags": [
+                        "Essential Tremor",
+                        "Coordination"
+                    ]
+                },
+                {
+                    "title": "Dystonia Relief",
+                    "text": "Managing severe, painful muscle spasms by modulating the specific brain circuits driving the abnormal contraction.",
+                    "icon": "fa-person-walking",
+                    "color": "deep-indigo",
+                    "tags": [
+                        "Spasm Relief",
+                        "Pain Control"
+                    ]
+                }
+            ]
+        },
+        "what-to-expect": {
+            "label": "What to Expect, Start to Finish",
+            "type": "steps",
+            "badge": "Experience",
+            "title": "What to Expect, Start to Finish",
+            "description": "DBS is a dynamic therapy — the implant is the midpoint of the pathway, not the end of it.",
+            "items": [
+                {
+                    "title": "Candidate Selection",
+                    "text": "Detailed movement-disorder assessment establishes whether symptoms are likely to respond to stimulation, and which target is right."
+                },
+                {
+                    "title": "Stereotactic Planning",
+                    "text": "High-resolution imaging maps the precise brain co-ordinates for electrode placement, down to the millimetre."
+                },
+                {
+                    "title": "Electrode Implantation",
+                    "text": "Thin leads are placed in the movement-control regions, connected to a pacemaker-like generator implanted below the collarbone."
+                },
+                {
+                    "title": "Programming & Support",
+                    "text": "Wireless programming sessions tune pulse rate and voltage to the patient’s lifestyle, with caregiver guidance on charging and battery checks."
+                }
+            ]
+        },
+        "key-facts": {
+            "type": "facts",
+            "items": [
+                {
+                    "icon": "fas fa-check",
+                    "title": "First DBS in Gurgaon",
+                    "text": "Pioneered locally by our team"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Stereotactic Precision",
+                    "text": "Millimetre-accurate targeting"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Implanted Generator",
+                    "text": "Pacemaker-like device"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Drug-Resistant Cases",
+                    "text": "When medication stops working"
+                }
+            ],
+            "label": "Key Facts"
         }
     },
     "headache": {
@@ -686,6 +777,261 @@
             "options": {
                 "card_bg": "bg-white"
             }
+        },
+        "key-facts": {
+            "type": "facts",
+            "items": [
+                {
+                    "icon": "fa-check",
+                    "title": "Highly Common",
+                    "text": "Affects millions daily"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Various Types",
+                    "text": "Over 150 diagnostic categories"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Manageable Triggers",
+                    "text": "Lifestyle factors play a role"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Effective Treatment",
+                    "text": "Targeted therapies prevent attacks"
+                }
+            ],
+            "label": "Key Facts"
+        },
+        "warning": {
+            "type": "warning",
+            "title": "When to Seek Emergency Care",
+            "description": "Call emergency services immediately if a headache is:",
+            "items": [
+                {
+                    "text": "Sudden, explosive, and extremely severe"
+                },
+                {
+                    "text": "Accompanied by fever, stiff neck, or confusion"
+                },
+                {
+                    "text": "Linked to weakness, numbness, or speech difficulty"
+                },
+                {
+                    "text": "Occurs after a head injury or trauma"
+                }
+            ],
+            "label": "Emergency Warning Signs"
+        },
+        "symptoms": {
+            "type": "symptoms",
+            "label": "Symptoms & Warning Signs",
+            "badge": "Recognition",
+            "title": "Symptoms & Warning Signs",
+            "description": "Correctly identifying headache symptoms helps differentiate between primary tension headaches, cluster headaches, and secondary headache issues.",
+            "image": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&h=600&q=80",
+            "image_alt": "Headache Symptoms Recognition and Diagnosis",
+            "items": [
+                {
+                    "icon": "fa-user-injured",
+                    "color": "electric-blue",
+                    "title": "Physical Signs",
+                    "bullets": [
+                        "Constant dull ache",
+                        "Eye watering or redness",
+                        "Nasal congestion",
+                        "Neck muscle stiffness"
+                    ]
+                },
+                {
+                    "icon": "fa-brain",
+                    "color": "cyan-accent",
+                    "title": "Sensory & Mental",
+                    "bullets": [
+                        "Restlessness",
+                        "Light/sound sensitivity",
+                        "Concentration issues",
+                        "Irritability or fatigue"
+                    ]
+                }
+            ],
+            "note_icon": "fa-info-circle",
+            "note_title": "Headache Trigger Diary",
+            "note_text": "Keeping track of sleep patterns, stress levels, dietary habits, and atmospheric changes can provide invaluable information to help optimize your treatment plan."
+        },
+        "treatments": {
+            "type": "treatments",
+            "label": "Treatment Options",
+            "badge": "Treatment",
+            "title": "Comprehensive Headache Treatments",
+            "description": "We believe in personalized, multi-layered treatment plans that address immediate headache pain while preventing future occurrences.",
+            "items": [
+                {
+                    "icon": "fa-pills",
+                    "color": "electric-blue",
+                    "title": "Acute & Pain-Relief Therapies",
+                    "subtitle": "Immediate management of attacks",
+                    "text": "Taken at the very first sign of a headache, acute therapies block nerve signals and relieve pain, nausea, and sensory sensitivities.",
+                    "bullets": [
+                        "Targeted pain-relief medications",
+                        "Anti-nausea treatments"
+                    ]
+                },
+                {
+                    "icon": "fa-shield",
+                    "color": "cyan-accent",
+                    "title": "Preventive Therapies",
+                    "subtitle": "Reduce attack frequency and severity",
+                    "text": "For chronic headaches, daily medications or injections help desensitize nerve pathways, reducing the frequency, duration, and severity of attacks.",
+                    "bullets": [
+                        "Daily preventive medications",
+                        "Advanced neuromodulation options"
+                    ]
+                },
+                {
+                    "icon": "fa-syringe",
+                    "color": "deep-indigo",
+                    "title": "Interventional Procedures",
+                    "subtitle": "Nerve blocks and localized therapies",
+                    "text": "Occipital nerve blocks and trigger point injections can rapidly desensitize inflamed nerves, providing relief from severe headache cycles.",
+                    "bullets": [
+                        "Occipital nerve blocks",
+                        "Trigger point muscle injections"
+                    ]
+                },
+                {
+                    "icon": "fa-heart-pulse",
+                    "color": "dark",
+                    "title": "Lifestyle & Wellness Plan",
+                    "subtitle": "Holistic support & trigger mapping",
+                    "text": "Optimizing sleep, managing stress, eliminating dietary triggers, and staying hydrated form the foundation of long-term headache freedom.",
+                    "bullets": [
+                        "Sleep and stress hygiene guidance",
+                        "Dietary trigger identification"
+                    ]
+                }
+            ]
+        },
+        "related": {
+            "type": "related",
+            "label": "Related Neurological Services",
+            "badge": "Explore More",
+            "title": "Related Neurological Services",
+            "items": [
+                {
+                    "url": "migraine",
+                    "title": "Migraine",
+                    "text": "Specialized migraine relief and long-term preventive care plans."
+                },
+                {
+                    "url": "stroke",
+                    "title": "Stroke",
+                    "text": "Prevention, treatment, and rehabilitation for stroke patients."
+                },
+                {
+                    "url": "movement",
+                    "title": "Movement Disorders",
+                    "text": "Expert care for tremors, dystonia, and movement issues."
+                },
+                {
+                    "url": "services",
+                    "title": "All Services",
+                    "text": "View our complete range of neurological treatments."
+                }
+            ]
+        }
+    },
+    "memory-clinic": {
+        "conditions-we-assess": {
+            "label": "Conditions We Assess",
+            "type": "cards",
+            "badge": "Applications",
+            "title": "Conditions We Assess",
+            "description": "Dementia affects the entire household, so our care plans cover the family alongside the patient.",
+            "items": [
+                {
+                    "title": "Alzheimer's & Dementia",
+                    "text": "Evaluating progressive cognitive decline, memory impairment, spatial disorientation and behavioural change through structured medical strategy.",
+                    "icon": "fa-brain",
+                    "color": "electric-blue",
+                    "tags": [
+                        "Early Diagnosis",
+                        "Progression Control"
+                    ]
+                },
+                {
+                    "title": "Mild Cognitive Impairment",
+                    "text": "Addressing early-stage memory change that exceeds normal ageing but does not yet interfere with daily living — the window where intervention matters most.",
+                    "icon": "fa-clock-rotate-left",
+                    "color": "cyan-accent",
+                    "tags": [
+                        "Early Window",
+                        "Monitoring"
+                    ]
+                },
+                {
+                    "title": "Caregiver Support",
+                    "text": "Behavioural strategies for confusion, mood change and disturbed sleep-wake cycles, plus home safety guidance to prevent falls and wandering.",
+                    "icon": "fa-people-roof",
+                    "color": "deep-indigo",
+                    "tags": [
+                        "Home Safety",
+                        "Family Training"
+                    ]
+                }
+            ]
+        },
+        "what-to-expect": {
+            "label": "What to Expect at Your Assessment",
+            "type": "steps",
+            "badge": "Experience",
+            "title": "What to Expect at Your Assessment",
+            "description": "A full memory assessment is methodical by design — the aim is to find every contributing factor, including the reversible ones.",
+            "items": [
+                {
+                    "title": "Cognitive Testing",
+                    "text": "Standardised memory, reasoning and speech assessments (MoCA, MMSE) establish an objective baseline to measure against."
+                },
+                {
+                    "title": "Advanced Brain Imaging",
+                    "text": "High-resolution brain MRI checks for tissue shrinkage, vascular damage and other structural causes of cognitive change."
+                },
+                {
+                    "title": "Laboratory Panels",
+                    "text": "Blood profiles rule out vitamin deficiencies, thyroid imbalance and other treatable contributors to memory loss."
+                },
+                {
+                    "title": "Care & Caregiver Plan",
+                    "text": "A combined plan covering medication, behavioural strategy, home safety and connection to respite services for the family."
+                }
+            ]
+        },
+        "key-facts": {
+            "type": "facts",
+            "items": [
+                {
+                    "icon": "fas fa-check",
+                    "title": "Cognitive Testing",
+                    "text": "MoCA and MMSE assessments"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Brain Imaging",
+                    "text": "High-resolution MRI"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Lab Panels",
+                    "text": "Rules out reversible causes"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Caregiver Support",
+                    "text": "Training for the whole family"
+                }
+            ],
+            "label": "Key Facts"
         }
     },
     "migraine": {
@@ -755,75 +1101,175 @@
             "options": {
                 "card_bg": "bg-white"
             }
-        }
-    },
-    "parkinsons": {
-        "types": {
-            "label": "Parkinsonian Disorders",
-            "type": "cards",
-            "badge": "Recognition",
-            "title": "Parkinsonian Disorders",
-            "description": "Symptoms of slowness and tremors can be caused by idiopathic Parkinson's disease or other look-alike syndromes.",
+        },
+        "key-facts": {
+            "type": "facts",
             "items": [
                 {
-                    "title": "Idiopathic Parkinson's",
-                    "text": "The classic form of the disease. Responsive to levodopa therapy. Primary symptoms include resting tremors, muscle stiffness, and slowness.",
-                    "icon": "fa-brain",
+                    "icon": "fa-check",
+                    "title": "Neurological Basis",
+                    "text": "Involves brain chemicals & nerves"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Aura Phase",
+                    "text": "Visual cues in 25% of cases"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Hereditary Aspect",
+                    "text": "Family history is common"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Modern Therapies",
+                    "text": "CGRP inhibitors and Botox work"
+                }
+            ],
+            "label": "Key Facts"
+        },
+        "warning": {
+            "type": "warning",
+            "title": "When to Seek Emergency Care",
+            "description": "Seek immediate medical attention if your symptoms include:",
+            "items": [
+                {
+                    "text": "Sudden, explosive \"thunderclap\" headache"
+                },
+                {
+                    "text": "Headache with high fever and stiff neck"
+                },
+                {
+                    "text": "Numbness, paralysis, or weakness on one side"
+                },
+                {
+                    "text": "Double vision or difficulty speaking"
+                }
+            ],
+            "label": "Emergency Warning Signs"
+        },
+        "symptoms": {
+            "type": "symptoms",
+            "label": "Symptoms & Warning Signs",
+            "badge": "Recognition",
+            "title": "Symptoms & Warning Signs",
+            "description": "Migraine symptoms occur in stages, ranging from early fatigue (prodrome) to sensory aura, the painful attack, and post-attack exhaustion (postdrome).",
+            "image": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&h=600&q=80",
+            "image_alt": "Migraine Symptoms Recognition and Diagnosis",
+            "items": [
+                {
+                    "icon": "fa-heart-broken",
                     "color": "electric-blue",
-                    "tags": [
-                        "Levodopa Responsive",
-                        "Classic Type"
+                    "title": "Key Symptoms",
+                    "bullets": [
+                        "Throbbing, pulsing pain",
+                        "Severe nausea/vomiting",
+                        "Sensitivity to light & sound",
+                        "Worse with movement"
                     ]
                 },
                 {
-                    "title": "Parkinson-Plus",
-                    "text": "Syndromes like Multiple System Atrophy (MSA) or Progressive Supranuclear Palsy (PSP) that present with tremors but have additional symptoms and progress differently.",
-                    "icon": "fa-circle-nodes",
+                    "icon": "fa-eye",
                     "color": "cyan-accent",
-                    "tags": [
-                        "Atypical",
-                        "PSP & MSA"
+                    "title": "Sensory Disturbances",
+                    "bullets": [
+                        "Flashing lines in vision",
+                        "Blind spots/scotomas",
+                        "Numbness or tingling",
+                        "Temporary slurred speech"
+                    ]
+                }
+            ],
+            "note_icon": "fa-face-smile",
+            "note_title": "Postdrome \"Migraine Hangover\"",
+            "note_text": "After the severe pain subsides, patients often experience extreme fatigue, brain fog, and muscle aches lasting up to 24 hours."
+        },
+        "treatments": {
+            "type": "treatments",
+            "label": "Treatment Options",
+            "badge": "Treatment",
+            "title": "Comprehensive Migraine Treatments",
+            "description": "We combine modern rescue therapies with long-term prophylaxis to desensitize nerve pathways and reduce migraine burden.",
+            "items": [
+                {
+                    "icon": "fa-pills",
+                    "color": "electric-blue",
+                    "title": "Acute Rescue Medications",
+                    "subtitle": "Stop migraine attacks in progress",
+                    "text": "Taken immediately when an attack starts, these medications help stop the throbbing pain, sensory sensitivity, and nausea.",
+                    "bullets": [
+                        "Triptans and Ditans",
+                        "CGRP receptor antagonists (gepants)"
                     ]
                 },
                 {
-                    "title": "Drug-Induced",
-                    "text": "Reversible parkinsonism symptoms caused by certain medications (such as antipsychotics) that block dopamine receptors in the brain.",
-                    "icon": "fa-capsules",
+                    "icon": "fa-shield-halved",
+                    "color": "cyan-accent",
+                    "title": "Preventive Treatment",
+                    "subtitle": "Reduce attack frequency & severity",
+                    "text": "For patients with frequent attacks, daily oral medications or monthly injections help prevent the brain from launching a migraine episode.",
+                    "bullets": [
+                        "Beta-blockers, anticonvulsants, or antidepressants",
+                        "Monoclonal antibody CGRP blocker injections"
+                    ]
+                },
+                {
+                    "icon": "fa-syringe",
                     "color": "deep-indigo",
-                    "tags": [
-                        "Reversible",
-                        "Dopamine Block"
+                    "title": "Botox Injections",
+                    "subtitle": "FDA-approved chronic migraine relief",
+                    "text": "Botox injections administered every 12 weeks around the head and neck block pain transmitters, providing substantial relief for chronic migraine.",
+                    "bullets": [
+                        "Targeted muscle injections",
+                        "Blocks chronic pain pathway receptors"
+                    ]
+                },
+                {
+                    "icon": "fa-heart-pulse",
+                    "color": "dark",
+                    "title": "Lifestyle & Wellness",
+                    "subtitle": "Holistic support & trigger mapping",
+                    "text": "Proper hydration, consistent sleep schedules, stress reduction, and healthy nutrition are critical to reducing migraine triggers.",
+                    "bullets": [
+                        "Sleep hygiene & hydration tracking",
+                        "Dietary trigger identification"
                     ]
                 }
             ]
         },
-        "diagnosis": {
-            "label": "Diagnosing Parkinson's",
-            "type": "steps",
-            "badge": "Diagnosis",
-            "title": "Diagnosing Parkinson's",
-            "description": "Diagnosing Parkinson's relies primarily on expert clinical observation of motor patterns, reflexes, and response to specific dopaminergic drugs.",
+        "related": {
+            "type": "related",
+            "label": "Related Neurological Services",
+            "badge": "Explore More",
+            "title": "Related Neurological Services",
             "items": [
                 {
-                    "title": "Clinical Evaluation",
-                    "text": "Expert examination of resting tremors, motor rigidity, postural balance, and gait patterns."
+                    "url": "headache",
+                    "title": "Headache",
+                    "text": "Comprehensive headache diagnosis and targeted treatments."
                 },
                 {
-                    "title": "Drug Challenge",
-                    "text": "Assessing physical response to Levodopa medication. A significant improvement in motor speed supports a Parkinson's diagnosis."
+                    "url": "stroke",
+                    "title": "Stroke",
+                    "text": "Prevention, treatment, and rehabilitation for stroke patients."
                 },
                 {
-                    "title": "DaTscan Imaging",
-                    "text": "Dopamine Transporter SPECT scan tracing dopamine pathways in the brain to confirm neurodegenerative drop-offs."
+                    "url": "movement",
+                    "title": "Movement Disorders",
+                    "text": "Expert care for tremors, dystonia, and movement issues."
                 },
                 {
-                    "title": "Brain MRI",
-                    "text": "High-resolution imaging scans to rule out atypical parkinsonism, strokes, fluid blockages, or brain stem abnormalities."
+                    "url": "services",
+                    "title": "All Services",
+                    "text": "View our complete range of neurological treatments."
                 }
-            ],
-            "options": {
-                "card_bg": "bg-white"
-            }
+            ]
+        },
+        "final-cta": {
+            "type": "cta",
+            "label": "Final CTA Banner",
+            "title": "Let's Get In Touch.",
+            "description": "Ready to prioritize your health? Schedule a consultation with Dr. Praveen Gupta today and take the first step towards a healthier tomorrow."
         }
     },
     "movement": {
@@ -893,6 +1339,155 @@
             "options": {
                 "card_bg": "bg-white"
             }
+        },
+        "key-facts": {
+            "type": "facts",
+            "items": [
+                {
+                    "icon": "fa-check",
+                    "title": "Nerve Signal Basis",
+                    "text": "Brain pathway signal issues"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Diverse Syndromes",
+                    "text": "Includes tremors, dystonia, ataxia"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Botox Therapy",
+                    "text": "Relieves local muscle spasms"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Coordination Rehab",
+                    "text": "Helps retrain body balance"
+                }
+            ],
+            "label": "Key Facts"
+        },
+        "symptoms": {
+            "type": "symptoms",
+            "label": "Symptoms & Warning Signs",
+            "badge": "Recognition",
+            "title": "Symptoms & Signs",
+            "description": "Recognizing the specific patterns of shaking, rigidity, or coordination drop-offs is key to correct medical classification.",
+            "image": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&h=600&q=80",
+            "image_alt": "Movement Disorder Symptoms Recognition and Diagnosis",
+            "items": [
+                {
+                    "icon": "fa-hand-fist",
+                    "color": "electric-blue",
+                    "title": "Physical Motor",
+                    "bullets": [
+                        "Involuntary shaking / tremors",
+                        "Abnormal muscle posturing",
+                        "Repetitive twisting motions",
+                        "Muscle twitching or jerks"
+                    ]
+                },
+                {
+                    "icon": "fa-person-walking-lucida",
+                    "color": "cyan-accent",
+                    "title": "Coordination & Gait",
+                    "bullets": [
+                        "Unsteady gait / walking issues",
+                        "Loss of fine motor skills",
+                        "Uncoordinated balance",
+                        "Vocal cord muscle spasms"
+                    ]
+                }
+            ],
+            "note_icon": "fa-info-circle",
+            "note_title": "Tremor Trigger Factors",
+            "note_text": "Essential tremors often worsen during periods of stress, fatigue, temperature extremes, or heavy caffeine consumption."
+        },
+        "treatments": {
+            "type": "treatments",
+            "label": "Treatment Options",
+            "badge": "Treatment",
+            "title": "Movement Disorder Treatments",
+            "description": "We utilize specialized pharmaceutical drugs, Botox injections, and neuro-rehabilitation therapies to improve motor function.",
+            "items": [
+                {
+                    "icon": "fa-capsules",
+                    "color": "electric-blue",
+                    "title": "Pharmacological Management",
+                    "subtitle": "Targeted neurotransmitter drug therapies",
+                    "text": "Dopaminergic drugs, anticholinergics, or muscle relaxants help regulate the brain signals that control voluntary muscle movements.",
+                    "bullets": [
+                        "Beta-blockers or anticonvulsants for essential tremors",
+                        "Muscle relaxants (baclofen/clonazepam) for dystonia"
+                    ]
+                },
+                {
+                    "icon": "fa-syringe",
+                    "color": "cyan-accent",
+                    "title": "Botulinum Toxin (Botox) Injections",
+                    "subtitle": "Highly targeted spasm control",
+                    "text": "Botox injections temporarily block nerve signals to overactive muscles, relieving painful neck twists (cervical dystonia) or eye spasms (blepharospasm).",
+                    "bullets": [
+                        "Targeted localized muscle relaxation",
+                        "Effective relief lasting 3-4 months per session"
+                    ]
+                },
+                {
+                    "icon": "fa-walking",
+                    "color": "deep-indigo",
+                    "title": "Motor Rehab & Balance Therapy",
+                    "subtitle": "Stabilizing motor control and posture",
+                    "text": "Physical therapy programs help patients maintain muscle strength, correct walking gait, improve balance, and prevent fall-related injuries.",
+                    "bullets": [
+                        "Core strengthening and stability training",
+                        "Adaptive motor control exercise routines"
+                    ]
+                },
+                {
+                    "icon": "fa-bolt",
+                    "color": "dark",
+                    "title": "Deep Brain Stimulation (DBS) Referral",
+                    "subtitle": "Advanced neurosurgical options",
+                    "text": "For severe essential tremors or generalized dystonias that do not respond to medications, DBS neurosurgery can offer life-changing results.",
+                    "bullets": [
+                        "Suppresses severe, disabling tremors",
+                        "Comprehensive pre- and post-operative management"
+                    ]
+                }
+            ]
+        },
+        "related": {
+            "type": "related",
+            "label": "Related Neurological Services",
+            "badge": "Explore More",
+            "title": "Related Neurological Services",
+            "items": [
+                {
+                    "url": "parkinsons",
+                    "title": "Parkinson's Disease",
+                    "text": "Expert pharmacological care, motor therapy, and DBS guidance."
+                },
+                {
+                    "url": "ms",
+                    "title": "Multiple Sclerosis",
+                    "text": "Advanced immunomodulatory therapies and symptom management."
+                },
+                {
+                    "url": "neuropathy",
+                    "title": "Peripheral Neuropathy",
+                    "text": "Diagnosis and targeted treatment for chronic nerve pain."
+                },
+                {
+                    "url": "services",
+                    "title": "All Services",
+                    "text": "View our complete range of neurological treatments."
+                }
+            ]
+        },
+        "final-cta": {
+            "type": "cta",
+            "label": "Final CTA Banner",
+            "title": "Let's Get In Touch.",
+            "description": "Ready to prioritize your health? Schedule a consultation with Dr. Praveen Gupta today and take the first step towards a healthier tomorrow."
         }
     },
     "ms": {
@@ -962,6 +1557,543 @@
             "options": {
                 "card_bg": "bg-white"
             }
+        },
+        "key-facts": {
+            "type": "facts",
+            "items": [
+                {
+                    "icon": "fa-check",
+                    "title": "Autoimmune Origin",
+                    "text": "Immune system attacks myelin"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "DMT Availability",
+                    "text": "Modern drugs slow progression"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Variable Course",
+                    "text": "Relapsing and progressive types"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Active Rehabilitation",
+                    "text": "Physical therapy builds mobility"
+                }
+            ],
+            "label": "Key Facts"
+        },
+        "symptoms": {
+            "type": "symptoms",
+            "label": "Symptoms & Warning Signs",
+            "badge": "Recognition",
+            "title": "Symptoms & Warning Signs",
+            "description": "MS symptoms vary depending on the location of the myelin scarring in the brain, spinal cord, or optic nerves.",
+            "image": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&h=600&q=80",
+            "image_alt": "Multiple Sclerosis Symptoms Recognition and Diagnosis",
+            "items": [
+                {
+                    "icon": "fa-person-walking",
+                    "color": "electric-blue",
+                    "title": "Motor & Sensory",
+                    "bullets": [
+                        "Limb numbness or weakness",
+                        "Unsteady gait / balance loss",
+                        "Electric shock sensations",
+                        "Muscle spasms or rigidity"
+                    ]
+                },
+                {
+                    "icon": "fa-eye",
+                    "color": "cyan-accent",
+                    "title": "Vision & Cognitive",
+                    "bullets": [
+                        "Optic neuritis / vision loss",
+                        "Double or blurred vision",
+                        "Brain fog & memory issues",
+                        "Chronic fatigue & dizziness"
+                    ]
+                }
+            ],
+            "note_icon": "fa-sun",
+            "note_title": "Heat Sensitivity",
+            "note_text": "Many MS patients experience a temporary worsening of symptoms when their body temperature rises due to exercise, hot baths, or warm weather (Uhthoff's phenomenon)."
+        },
+        "treatments": {
+            "type": "treatments",
+            "label": "Treatment Options",
+            "badge": "Treatment",
+            "title": "Comprehensive Multiple Sclerosis Treatment",
+            "description": "Although MS cannot be cured completely, modern immunomodulatory treatments and supportive therapies allow patients to lead active lives.",
+            "items": [
+                {
+                    "icon": "fa-shield-halved",
+                    "color": "electric-blue",
+                    "title": "Disease-Modifying Therapies (DMTs)",
+                    "subtitle": "Targeting the immune system response",
+                    "text": "DMTs (oral drugs, self-injections, or IV infusions) suppress or modulate the immune system, reducing the number of relapses and slowing lesion formation.",
+                    "bullets": [
+                        "Oral, injectable, and monoclonal antibody infusions",
+                        "Slows down accumulation of motor disability"
+                    ]
+                },
+                {
+                    "icon": "fa-bolt-lightning",
+                    "color": "cyan-accent",
+                    "title": "Acute Relapse Management",
+                    "subtitle": "Rapidly resolve flare-ups",
+                    "text": "During active flares, high-dose intravenous corticosteroids are administered to quickly reduce nerve inflammation and speed up recovery times.",
+                    "bullets": [
+                        "High-dose IV methylprednisolone infusions",
+                        "Plasmapheresis (plasma exchange) for severe flares"
+                    ]
+                },
+                {
+                    "icon": "fa-person-walking",
+                    "color": "deep-indigo",
+                    "title": "Physical Rehabilitation",
+                    "subtitle": "Rebuilding mobility and balance",
+                    "text": "Physical and occupational therapies focus on balance drills, coordination training, core strengthening, and adapting activities to fit mobility constraints.",
+                    "bullets": [
+                        "Balance, coordination, and gait retraining",
+                        "Occupational adaptations & assistive devices"
+                    ]
+                },
+                {
+                    "icon": "fa-heart-pulse",
+                    "color": "dark",
+                    "title": "Symptomatic Management",
+                    "subtitle": "Relieving fatigue, pain, and spasticity",
+                    "text": "We prescribe targeted medications to manage chronic fatigue, nerve pain, muscle spasticity, and bladder dysfunction associated with MS.",
+                    "bullets": [
+                        "Muscle relaxants (baclofen/tizanidine) for spasms",
+                        "Medications for neuropathy pain and fatigue"
+                    ]
+                }
+            ]
+        },
+        "related": {
+            "type": "related",
+            "label": "Related Neurological Services",
+            "badge": "Explore More",
+            "title": "Related Neurological Services",
+            "items": [
+                {
+                    "url": "parkinsons",
+                    "title": "Parkinson's Disease",
+                    "text": "Expert pharmacological care, motor therapy, and DBS guidance."
+                },
+                {
+                    "url": "movement",
+                    "title": "Movement Disorders",
+                    "text": "Expert care for tremors, dystonia, and movement issues."
+                },
+                {
+                    "url": "neuropathy",
+                    "title": "Peripheral Neuropathy",
+                    "text": "Diagnosis and targeted treatment for chronic nerve pain."
+                },
+                {
+                    "url": "services",
+                    "title": "All Services",
+                    "text": "View our complete range of neurological treatments."
+                }
+            ]
+        },
+        "final-cta": {
+            "type": "cta",
+            "label": "Final CTA Banner",
+            "title": "Let's Get In Touch.",
+            "description": "Ready to prioritize your health? Schedule a consultation with Dr. Praveen Gupta today and take the first step towards a healthier tomorrow."
+        }
+    },
+    "neuro-rehabilitation-center": {
+        "core-therapies": {
+            "label": "Core Rehabilitation Therapies",
+            "type": "cards",
+            "badge": "Our Services",
+            "title": "Core Rehabilitation Therapies",
+            "description": "We combine experienced clinical expertise with state-of-the-art diagnostic and recovery tracking tools to ensure precise treatments.",
+            "items": [
+                {
+                    "title": "Neuro-Physiotherapy",
+                    "text": "Focuses on rebuilding muscle strength, improving balance, training gait cycles, and recovering motor control following a stroke, spine injury, or onset of neuropathy.",
+                    "icon": "fa-walking",
+                    "color": "electric-blue",
+                    "tags": [
+                        "Gait Training",
+                        "Strength"
+                    ]
+                },
+                {
+                    "title": "Occupational Therapy",
+                    "text": "Aids patients in relearning daily living activities (bathing, dressing, writing). We provide cognitive adaptation, motor skills coordination, and assistive technology advice.",
+                    "icon": "fa-hands-holding",
+                    "color": "cyan-accent",
+                    "tags": [
+                        "Life Skills",
+                        "Fine Motor"
+                    ]
+                },
+                {
+                    "title": "Speech & Swallowing",
+                    "text": "Addresses dysphagia (swallowing difficulties) and speech clarity challenges (aphasia/dysarthria) caused by neurological damage, helping patients communicate safely.",
+                    "icon": "fa-volume-up",
+                    "color": "deep-indigo",
+                    "tags": [
+                        "Dysphagia",
+                        "Speech Clarity"
+                    ]
+                }
+            ]
+        },
+        "recovery-journey": {
+            "label": "Your Recovery Journey",
+            "type": "steps",
+            "badge": "Pathway",
+            "title": "Your Recovery Journey",
+            "description": "Our structured recovery protocol ensures patient progress is monitored continuously from admission to outpatient support.",
+            "items": [
+                {
+                    "title": "Baseline Assessment",
+                    "text": "Comprehensive clinical evaluation of motor control, cognitive functions, and sensory status to set realistic recovery targets."
+                },
+                {
+                    "title": "Custom Treatment",
+                    "text": "A personalized rehabilitation schedule combining physical therapy, speech pathology, and occupational exercises."
+                },
+                {
+                    "title": "Active Monitoring",
+                    "text": "We utilize advanced biofeedback tools (like Phezee) to monitor joint mobility and electromyography muscle recovery trends in real-time."
+                },
+                {
+                    "title": "Home Care Care",
+                    "text": "Preparing patients for discharge with customized home care guides, training caregivers, and setting up periodic checkups."
+                }
+            ]
+        },
+        "key-facts": {
+            "type": "facts",
+            "items": [
+                {
+                    "icon": "fas fa-check",
+                    "title": "Physical Therapy",
+                    "text": "Gait and coordination"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Occupational Care",
+                    "text": "Daily living adjustments"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Speech Therapy",
+                    "text": "Dysphagia and clarity"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Tech Monitored",
+                    "text": "Real-time biofeedback"
+                }
+            ],
+            "label": "Key Facts"
+        },
+        "doctor": {
+            "type": "doctor",
+            "layout": "about",
+            "label": "Doctor About Section",
+            "badge": "About Dr. Praveen Gupta",
+            "title": "Dr. Praveen Gupta  Best Neurologist in India",
+            "roles": [
+                "Chairman  Marengo Asia International Institute of Neuro and Spine",
+                "Chief Clinical Strategy Growth and Innovation, North India",
+                "Chief Mentor for Start-ups"
+            ],
+            "text": "With over 20 years of clinical experience, Dr. Praveen Gupta has emerged as a pioneering force in the diagnosis, treatment, and advancement of neurological sciences across India and beyond. He is responsible for several firsts in the country's neurology landscape, including establishing Gurugram's first stroke centre and conducting pioneering BMT procedures for autoimmune neuro-disorders.",
+            "image": "assets/dpg-1.webp",
+            "image_alt": "Dr. Praveen Gupta"
+        }
+    },
+    "neurocritical-acute-stroke-care": {
+        "key-facts": {
+            "type": "facts",
+            "label": "Key Facts",
+            "items": [
+                {
+                    "icon": "fas fa-check",
+                    "title": "Clot Retrieval",
+                    "text": "Mechanical thrombectomy"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Golden Hour Care",
+                    "text": "Urgent clot-dissolving tPA"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Neuro ICU Monitoring",
+                    "text": "Continuous ICP & EEG tracking"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "ICU Nursing",
+                    "text": "1:1 neuro-certified care"
+                }
+            ]
+        },
+        "be-fast": {
+            "type": "cards",
+            "label": "BE-FAST Warning Signs",
+            "badge": "Recognition",
+            "title": "BE FAST: Stroke Recognition",
+            "description": "Use the BE FAST method to immediately identify stroke symptoms in others and coordinate care.",
+            "items": [
+                {
+                    "icon": "fas fa-sync",
+                    "color": "red",
+                    "title": "Balance & Eyes",
+                    "text": "Sudden loss of balance, trouble walking, or coordination difficulty, paired with abrupt vision changes like blurred or double vision.",
+                    "tags": [
+                        "Balance Loss",
+                        "Vision Blur"
+                    ]
+                },
+                {
+                    "icon": "fas fa-face-meh",
+                    "color": "red",
+                    "title": "Face & Arms",
+                    "text": "One side of the face droops or is numb when attempting to smile. When raising both arms, one arm drifts downward or feels weak.",
+                    "tags": [
+                        "Facial Droop",
+                        "Arm Drift"
+                    ]
+                },
+                {
+                    "icon": "fas fa-comments",
+                    "color": "red",
+                    "title": "Speech & Time",
+                    "text": "Speech is slurred, garbled, or difficult to understand, or the person cannot speak. Time is critical  call the emergency helpline immediately.",
+                    "tags": [
+                        "Slurred Speech",
+                        "Call Emergency"
+                    ]
+                }
+            ]
+        },
+        "emergency-protocol": {
+            "type": "steps",
+            "label": "Emergency Protocol",
+            "badge": "Clinical Steps",
+            "title": "Our Emergency Response Protocol",
+            "description": "Our emergency neurology protocol coordinates fast-tracked diagnostics and treatments to save brain tissue.",
+            "items": [
+                {
+                    "number": 1,
+                    "title": "Rapid Brain Imaging",
+                    "text": "Upon arrival at emergency, a non-contrast brain CT scan is performed within 25 minutes to verify the type of stroke."
+                },
+                {
+                    "number": 2,
+                    "title": "IV Thrombolysis",
+                    "text": "Clot-dissolving medication (tPA) is administered intravenously to break down blockages and restore blood circulation."
+                },
+                {
+                    "number": 3,
+                    "title": "Mechanical Retrieval",
+                    "text": "Catheter-based thrombectomy is performed in our Cath Lab to physically extract the blockage from the cerebral artery."
+                },
+                {
+                    "number": 4,
+                    "title": "ICU Care & Tracking",
+                    "text": "Transfer to the specialized Neuro-ICU for continuous intracranial pressure, blood pressure, and EEG monitoring."
+                }
+            ],
+            "options": {
+                "number_bg": "bg-red-600"
+            }
+        },
+        "doctor": {
+            "type": "doctor",
+            "layout": "about",
+            "label": "Doctor About Section",
+            "badge": "About Dr. Praveen Gupta",
+            "title": "Dr. Praveen Gupta  Best Neurologist in India",
+            "roles": [
+                "Chairman  Marengo Asia International Institute of Neuro and Spine",
+                "Chief Clinical Strategy Growth and Innovation, North India",
+                "Chief Mentor for Start-ups"
+            ],
+            "text": "With over 20 years of clinical experience, Dr. Praveen Gupta has emerged as a pioneering force in the diagnosis, treatment, and advancement of neurological sciences across India and beyond. He is responsible for several firsts in the country's neurology landscape, including establishing Gurugram's first stroke centre and conducting pioneering BMT procedures for autoimmune neuro-disorders.",
+            "image": "assets/dpg-2.webp",
+            "image_alt": "Dr. Praveen Gupta"
+        }
+    },
+    "neurological-conditions": {
+        "condition-cards": {
+            "type": "links",
+            "label": "Conditions Directory",
+            "card_image": true,
+            "badge": "Neurology Portal",
+            "title": "Explore Medical Conditions",
+            "description": "Click on any of the specialties below to read detailed resources on symptoms, diagnosis, and care plans.",
+            "items": [
+                {
+                    "image": "assets/services/stroke.png",
+                    "image_alt": "Brain Stroke treatment",
+                    "url": "stroke.php",
+                    "color": "electric-blue",
+                    "title": "Brain Stroke",
+                    "text": "Acute care, mechanical thrombectomy, and comprehensive neuro-rehabilitation protocols to treat and recover from strokes."
+                },
+                {
+                    "image": "assets/services/epilepsy.png",
+                    "image_alt": "Epilepsy & Seizures treatment",
+                    "url": "epilepsy.php",
+                    "color": "electric-blue",
+                    "title": "Epilepsy & Seizures",
+                    "text": "Personalized pharmacotherapy, long-term monitoring, and surgical evaluations for complex seizure disorders."
+                },
+                {
+                    "image": "assets/services/migraine.png",
+                    "image_alt": "Migraine treatment",
+                    "url": "migraine.php",
+                    "color": "electric-blue",
+                    "title": "Migraine",
+                    "text": "Advanced prevention therapies, lifestyle modification, and specialized neuro-modulators to manage chronic migraine."
+                },
+                {
+                    "image": "assets/services/headache.png",
+                    "image_alt": "Headache Disorders treatment",
+                    "url": "headache.php",
+                    "color": "electric-blue",
+                    "title": "Headache Disorders",
+                    "text": "Comprehensive workups for tension headaches, cluster headaches, and secondary headache symptoms."
+                },
+                {
+                    "image": "assets/services/parkinsons.png",
+                    "image_alt": "Parkinson's Disease treatment",
+                    "url": "parkinsons.php",
+                    "color": "electric-blue",
+                    "title": "Parkinson's Disease",
+                    "text": "Symptom control, advanced pharmacology, and Deep Brain Stimulation (DBS) therapies for Parkinson's disease."
+                },
+                {
+                    "image": "assets/services/ms.png",
+                    "image_alt": "Multiple Sclerosis treatment",
+                    "url": "ms.php",
+                    "color": "electric-blue",
+                    "title": "Multiple Sclerosis",
+                    "text": "Immunomodulatory therapies and tailored symptom management to improve mobility and reduce relapse frequency."
+                },
+                {
+                    "image": "assets/services/movement.png",
+                    "image_alt": "Movement Disorders treatment",
+                    "url": "movement.php",
+                    "color": "electric-blue",
+                    "title": "Movement Disorders",
+                    "text": "Specialized management of tremor, dystonia, chorea, and other complex involuntary movement issues."
+                },
+                {
+                    "image": "assets/services/neuropathy.png",
+                    "image_alt": "Peripheral Neuropathy treatment",
+                    "url": "neuropathy.php",
+                    "color": "electric-blue",
+                    "title": "Peripheral Neuropathy",
+                    "text": "Nerve testing, neuropathic pain management, and root-cause therapies for nerve damage and sensory loss."
+                },
+                {
+                    "image": "assets/services/vertigo.png",
+                    "image_alt": "Vertigo & Balance treatment",
+                    "url": "vertigo.php",
+                    "color": "electric-blue",
+                    "title": "Vertigo & Balance",
+                    "text": "Diagnostic balance assessments, vestibular testing, and physical rehabilitation programs to stop dizziness."
+                }
+            ],
+            "options": {
+                "card_image": true
+            }
+        }
+    },
+    "neurological-symptoms": {
+        "symptom-cards": {
+            "type": "links",
+            "label": "Symptoms Directory",
+            "badge": "Symptom Mapping",
+            "title": "Identify Your Symptoms",
+            "description": "Click on the symptom areas below to learn about potential underlying conditions and when to see a specialist.",
+            "items": [
+                {
+                    "icon": "fas fa-head-side-cough",
+                    "color": "electric-blue",
+                    "title": "Chronic / Severe Headaches",
+                    "text": "Recurrent throbbing, sharp headaches, or headaches accompanied by nausea, sensitivity to light/sound, or visual disturbances.",
+                    "subtitle": "<strong class=\"text-deep-indigo\">Potential Causes:</strong> <a href=\"migraine\" class=\"hover:text-electric-blue font-medium underline\">Migraine</a>, <a href=\"headache\" class=\"hover:text-electric-blue font-medium underline\">Tension Headache</a>, Cluster Headache."
+                },
+                {
+                    "icon": "fas fa-sync-alt",
+                    "color": "cyan-accent",
+                    "title": "Dizziness & Loss of Balance",
+                    "text": "Feeling lightheaded, unsteady, or experiencing a spinning sensation (vertigo) which affects coordination or walking.",
+                    "subtitle": "<strong class=\"text-deep-indigo\">Potential Causes:</strong> <a href=\"vertigo\" class=\"hover:text-cyan-accent font-medium underline\">Vestibular Vertigo</a>, Balance disorders, Inner-ear infection."
+                },
+                {
+                    "icon": "fas fa-compress-arrows-alt",
+                    "color": "deep-indigo",
+                    "title": "Numbness & Tingling",
+                    "text": "A \"pins and needles\" sensation, loss of feeling, or burning pain in the feet, legs, hands, or arms.",
+                    "subtitle": "<strong class=\"text-deep-indigo\">Potential Causes:</strong> <a href=\"neuropathy\" class=\"hover:text-electric-blue font-medium underline\">Peripheral Neuropathy</a>, Radiculopathy, Nerve entrapment."
+                },
+                {
+                    "icon": "fas fa-hand-paper",
+                    "color": "electric-blue",
+                    "title": "Tremors & Stiffness",
+                    "text": "Involuntary shaking of the hands or limbs, muscle stiffness, slowed movements, or difficulty with walking coordination.",
+                    "subtitle": "<strong class=\"text-deep-indigo\">Potential Causes:</strong> <a href=\"parkinsons\" class=\"hover:text-electric-blue font-medium underline\">Parkinson's Disease</a>, <a href=\"movement\" class=\"hover:text-electric-blue font-medium underline\">Essential Tremor</a>, Movement disorders."
+                },
+                {
+                    "icon": "fas fa-question",
+                    "color": "cyan-accent",
+                    "title": "Memory Loss & Confusion",
+                    "text": "Persistent forgetfulness, difficulty finding words, disorientation in familiar places, or sudden changes in cognitive behavior.",
+                    "subtitle": "<strong class=\"text-deep-indigo\">Potential Causes:</strong> Dementia, Early-onset Alzheimer's, Vitamin deficiencies, Neurodegeneration."
+                },
+                {
+                    "icon": "fas fa-dumbbell",
+                    "color": "deep-indigo",
+                    "title": "Muscle Weakness",
+                    "text": "Loss of muscle power, difficulty raising arms or legs, foot drop, or general weakness that worsens with activity.",
+                    "subtitle": "<strong class=\"text-deep-indigo\">Potential Causes:</strong> <a href=\"ms\" class=\"hover:text-electric-blue font-medium underline\">Multiple Sclerosis</a>, Myopathies, Motor neuron diseases."
+                }
+            ]
+        },
+        "red-flags": {
+            "type": "notice",
+            "label": "Red Flag Warnings",
+            "badge": "Red Flag Warning Symptoms",
+            "title": "When is it a Neurological Emergency?",
+            "description": "Some symptoms indicate acute damage or severe threat to the nervous system. If you notice any of these signs, seek emergency care immediately.",
+            "items": [
+                {
+                    "icon": "",
+                    "text": "<strong class=\"text-deep-indigo\">Sudden weakness or numbness</strong> in the face, arm, or leg, especially on one side of the body."
+                },
+                {
+                    "icon": "",
+                    "text": "<strong class=\"text-deep-indigo\">Sudden speech difficulty</strong>, slurring, confusion, or difficulty understanding others."
+                },
+                {
+                    "icon": "",
+                    "text": "<strong class=\"text-deep-indigo\">Worst headache of your life</strong> (sudden onset \"thunderclap\" headache)."
+                },
+                {
+                    "icon": "",
+                    "text": "<strong class=\"text-deep-indigo\">Loss of vision or double vision</strong> occurring suddenly."
+                }
+            ],
+            "panel_title": "24/7 Emergency Support",
+            "panel_text": "Under the clinical directorship of Dr. Praveen Gupta, Marengo Asia Hospital operates a dedicated 24/7 emergency stroke and seizure response protocol."
         }
     },
     "neuropathy": {
@@ -1031,6 +2163,902 @@
             "options": {
                 "card_bg": "bg-white"
             }
+        },
+        "key-facts": {
+            "type": "facts",
+            "items": [
+                {
+                    "icon": "fa-check",
+                    "title": "Peripheral Nerves",
+                    "text": "Connects spinal cord to limbs"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Diabetic Connection",
+                    "text": "Diabetes is the leading cause"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Nerve Regeneration",
+                    "text": "Nerves can heal with care"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Targeted Relief",
+                    "text": "Advanced treatments ease pain"
+                }
+            ],
+            "label": "Key Facts"
+        },
+        "symptoms": {
+            "type": "symptoms",
+            "label": "Symptoms & Warning Signs",
+            "badge": "Recognition",
+            "title": "Neuropathy Symptoms",
+            "description": "Neuropathy symptoms vary depending on whether sensory, motor, or autonomic nerves are damaged.",
+            "image": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&h=600&q=80",
+            "image_alt": "Neuropathy Symptoms Recognition and Diagnosis",
+            "items": [
+                {
+                    "icon": "fa-hand-dots",
+                    "color": "electric-blue",
+                    "title": "Sensory Symptoms",
+                    "bullets": [
+                        "Gradual numbness in feet/hands",
+                        "Tingling, buzzing, or pins & needles",
+                        "Burning, sharp, electric pain",
+                        "Extreme touch sensitivity"
+                    ]
+                },
+                {
+                    "icon": "fa-user-gear",
+                    "color": "cyan-accent",
+                    "title": "Motor & Autonomic",
+                    "bullets": [
+                        "Muscle weakness or atrophy",
+                        "Frequent tripping or foot drop",
+                        "Balance loss or unsteadiness",
+                        "Dizziness when standing up"
+                    ]
+                }
+            ],
+            "note_icon": "fa-triangle-exclamation",
+            "note_title": "Autonomic Risks",
+            "note_text": "Autonomic nerve damage can disrupt internal systems, causing heat intolerance, abnormal sweating, and fluctuations in blood pressure or heart rate."
+        },
+        "treatments": {
+            "type": "treatments",
+            "label": "Treatment Options",
+            "badge": "Treatment",
+            "title": "Peripheral Neuropathy Treatments",
+            "description": "Treating neuropathy involves a dual approach: managing the primary underlying cause to halt damage and using advanced therapies to relieve pain.",
+            "items": [
+                {
+                    "icon": "fa-pills",
+                    "color": "electric-blue",
+                    "title": "Neuropathic Pain Medications",
+                    "subtitle": "Calming overactive pain signals",
+                    "text": "Oral medications help desensitize hyper-irritable nerve fibers, reducing burning sensations and sharp shooting pains.",
+                    "bullets": [
+                        "Gabapentinoids (Pregabalin/Gabapentin)",
+                        "SNRIs (Duloxetine) or tricyclic antidepressants"
+                    ]
+                },
+                {
+                    "icon": "fa-circle-check",
+                    "color": "cyan-accent",
+                    "title": "Addressing Primary Causes",
+                    "subtitle": "Halt ongoing nerve damage",
+                    "text": "Stopping progression requires managing underlying metabolic issues, correcting deficits, or clearing toxins.",
+                    "bullets": [
+                        "Aggressive diabetes and HbA1c control",
+                        "High-dose vitamin B12 supplementation"
+                    ]
+                },
+                {
+                    "icon": "fa-walking",
+                    "color": "deep-indigo",
+                    "title": "Balance & Gait Rehabilitation",
+                    "subtitle": "Stability training for numb feet",
+                    "text": "Physical therapy focused on balance drills, coordination exercises, and gait retraining helps prevent falls in patients with significant numbness.",
+                    "bullets": [
+                        "Balance training and fall-avoidance strategies",
+                        "Specialized orthotic insert fittings"
+                    ]
+                },
+                {
+                    "icon": "fa-shield",
+                    "color": "dark",
+                    "title": "Immunotherapy (GBS & CIDP)",
+                    "subtitle": "Advanced therapies for autoimmune neuropathies",
+                    "text": "For inflammatory neuropathies, we administer advanced therapies to block autoimmune antibodies and halt active myelin damage.",
+                    "bullets": [
+                        "Intravenous Immunoglobulin (IVIg) infusions",
+                        "Plasmapheresis (plasma exchange)"
+                    ]
+                }
+            ]
+        },
+        "related": {
+            "type": "related",
+            "label": "Related Neurological Services",
+            "badge": "Explore More",
+            "title": "Related Neurological Services",
+            "items": [
+                {
+                    "url": "parkinsons",
+                    "title": "Parkinson's Disease",
+                    "text": "Expert pharmacological care, motor therapy, and DBS guidance."
+                },
+                {
+                    "url": "ms",
+                    "title": "Multiple Sclerosis",
+                    "text": "Advanced immunomodulatory therapies and symptom management."
+                },
+                {
+                    "url": "movement",
+                    "title": "Movement Disorders",
+                    "text": "Expert care for tremors, dystonia, and movement issues."
+                },
+                {
+                    "url": "services",
+                    "title": "All Services",
+                    "text": "View our complete range of neurological treatments."
+                }
+            ]
+        },
+        "final-cta": {
+            "type": "cta",
+            "label": "Final CTA Banner",
+            "title": "Let's Get In Touch.",
+            "description": "Ready to prioritize your health? Schedule a consultation with Dr. Praveen Gupta today and take the first step towards a healthier tomorrow."
+        }
+    },
+    "neurovascular-surgery": {
+        "vascular-conditions": {
+            "label": "Vascular Conditions Managed",
+            "type": "cards",
+            "badge": "Applications",
+            "title": "Vascular Conditions Managed",
+            "description": "Each of these conditions carries a risk of sudden, catastrophic bleeding — which is why they are treated as time-critical.",
+            "items": [
+                {
+                    "title": "Cerebral Aneurysms",
+                    "text": "Preventing subarachnoid haemorrhage — bleeding around the brain — by securing the weak point through clipping or coiling.",
+                    "icon": "fa-circle-dot",
+                    "color": "electric-blue",
+                    "tags": [
+                        "Clipping",
+                        "Coiling"
+                    ]
+                },
+                {
+                    "title": "Arteriovenous Malformations",
+                    "text": "Resecting or embolising complex tangles of arteries and veins before they rupture and bleed into brain tissue.",
+                    "icon": "fa-diagram-project",
+                    "color": "cyan-accent",
+                    "tags": [
+                        "Resection",
+                        "Embolisation"
+                    ]
+                },
+                {
+                    "title": "Carotid Stenosis",
+                    "text": "Carotid endarterectomy or stenting to reopen the narrowed neck arteries that supply the brain, preventing acute stroke.",
+                    "icon": "fa-heart-pulse",
+                    "color": "deep-indigo",
+                    "tags": [
+                        "Endarterectomy",
+                        "Stenting"
+                    ]
+                }
+            ]
+        },
+        "what-to-expect": {
+            "label": "What to Expect, Start to Finish",
+            "type": "steps",
+            "badge": "Experience",
+            "title": "What to Expect, Start to Finish",
+            "description": "Vascular conditions demand hyper-acute responses. This is how a case moves from presentation to recovery.",
+            "items": [
+                {
+                    "title": "Urgent Imaging",
+                    "text": "CT, MRI and angiography establish where the vessel is weak or blocked, and how urgently it needs securing."
+                },
+                {
+                    "title": "Treatment Planning",
+                    "text": "The team decides between open microsurgery and an endovascular approach based on the location, size and shape of the lesion."
+                },
+                {
+                    "title": "Intervention",
+                    "text": "Surgical clipping under the microscope, or micro-catheters fed from the groin for coiling, stent-assisted reconstruction or flow diversion."
+                },
+                {
+                    "title": "Neuro-ICU & Follow-Up",
+                    "text": "Post-operative monitoring in the neuro-ICU to manage vascular spasm and intracranial pressure, then structured outpatient review."
+                }
+            ]
+        },
+        "key-facts": {
+            "type": "facts",
+            "items": [
+                {
+                    "icon": "fas fa-check",
+                    "title": "Microsurgery",
+                    "text": "Open surgical clipping"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Endovascular",
+                    "text": "Catheter-based coiling"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "24/7 Stroke Response",
+                    "text": "Emergency thrombectomy"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Neuro-ICU",
+                    "text": "Post-op vascular monitoring"
+                }
+            ],
+            "label": "Key Facts"
+        }
+    },
+    "parkinsons": {
+        "types": {
+            "label": "Parkinsonian Disorders",
+            "type": "cards",
+            "badge": "Recognition",
+            "title": "Parkinsonian Disorders",
+            "description": "Symptoms of slowness and tremors can be caused by idiopathic Parkinson's disease or other look-alike syndromes.",
+            "items": [
+                {
+                    "title": "Idiopathic Parkinson's",
+                    "text": "The classic form of the disease. Responsive to levodopa therapy. Primary symptoms include resting tremors, muscle stiffness, and slowness.",
+                    "icon": "fa-brain",
+                    "color": "electric-blue",
+                    "tags": [
+                        "Levodopa Responsive",
+                        "Classic Type"
+                    ]
+                },
+                {
+                    "title": "Parkinson-Plus",
+                    "text": "Syndromes like Multiple System Atrophy (MSA) or Progressive Supranuclear Palsy (PSP) that present with tremors but have additional symptoms and progress differently.",
+                    "icon": "fa-circle-nodes",
+                    "color": "cyan-accent",
+                    "tags": [
+                        "Atypical",
+                        "PSP & MSA"
+                    ]
+                },
+                {
+                    "title": "Drug-Induced",
+                    "text": "Reversible parkinsonism symptoms caused by certain medications (such as antipsychotics) that block dopamine receptors in the brain.",
+                    "icon": "fa-capsules",
+                    "color": "deep-indigo",
+                    "tags": [
+                        "Reversible",
+                        "Dopamine Block"
+                    ]
+                }
+            ]
+        },
+        "diagnosis": {
+            "label": "Diagnosing Parkinson's",
+            "type": "steps",
+            "badge": "Diagnosis",
+            "title": "Diagnosing Parkinson's",
+            "description": "Diagnosing Parkinson's relies primarily on expert clinical observation of motor patterns, reflexes, and response to specific dopaminergic drugs.",
+            "items": [
+                {
+                    "title": "Clinical Evaluation",
+                    "text": "Expert examination of resting tremors, motor rigidity, postural balance, and gait patterns."
+                },
+                {
+                    "title": "Drug Challenge",
+                    "text": "Assessing physical response to Levodopa medication. A significant improvement in motor speed supports a Parkinson's diagnosis."
+                },
+                {
+                    "title": "DaTscan Imaging",
+                    "text": "Dopamine Transporter SPECT scan tracing dopamine pathways in the brain to confirm neurodegenerative drop-offs."
+                },
+                {
+                    "title": "Brain MRI",
+                    "text": "High-resolution imaging scans to rule out atypical parkinsonism, strokes, fluid blockages, or brain stem abnormalities."
+                }
+            ],
+            "options": {
+                "card_bg": "bg-white"
+            }
+        },
+        "key-facts": {
+            "type": "facts",
+            "items": [
+                {
+                    "icon": "fa-check",
+                    "title": "Neurodegenerative",
+                    "text": "Dopamine neuron loss in brain"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Gradual Progression",
+                    "text": "Develops slowly over years"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "DBS Option",
+                    "text": "Neurosurgery blocks motor tremors"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Physical Therapy",
+                    "text": "Helps maintain motor controls"
+                }
+            ],
+            "label": "Key Facts"
+        },
+        "symptoms": {
+            "type": "symptoms",
+            "label": "Symptoms & Warning Signs",
+            "badge": "Recognition",
+            "title": "Symptoms & Warning Signs",
+            "description": "Parkinson's symptoms are divided into motor symptoms (affecting physical movement) and non-motor symptoms (affecting sensory, mood, or sleep functions).",
+            "image": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&h=600&q=80",
+            "image_alt": "Parkinson's Symptoms Recognition and Diagnosis",
+            "items": [
+                {
+                    "icon": "fa-hand",
+                    "color": "electric-blue",
+                    "title": "Motor Symptoms",
+                    "bullets": [
+                        "Resting hand tremors",
+                        "Rigidity / muscle stiffness",
+                        "Slowness of movement",
+                        "Postural instability"
+                    ]
+                },
+                {
+                    "icon": "fa-moon",
+                    "color": "cyan-accent",
+                    "title": "Non-Motor Symptoms",
+                    "bullets": [
+                        "Loss of smell (anosmia)",
+                        "REM sleep disturbances",
+                        "Micrographia (small writing)",
+                        "Depression or anxiety"
+                    ]
+                }
+            ],
+            "note_icon": "fa-shield",
+            "note_title": "Early Diagnosis is Key",
+            "note_text": "Intervening early with dopamine agonists or levodopa can slow motor decline and preserve independent functioning for years."
+        },
+        "treatments": {
+            "type": "treatments",
+            "label": "Treatment Options",
+            "badge": "Treatment",
+            "title": "Comprehensive Parkinson's Treatments",
+            "description": "We design personalized treatment regimens combining pharmaceutical support, motor training, and advanced neurosurgical referrals.",
+            "items": [
+                {
+                    "icon": "fa-capsules",
+                    "color": "electric-blue",
+                    "title": "Pharmacological Therapies",
+                    "subtitle": "Replenishing brain dopamine",
+                    "text": "Carbidopa-levodopa (mainstay therapy) converts into dopamine in the brain, restoring signal transmission and motor control.",
+                    "bullets": [
+                        "Carbidopa-levodopa and dopamine agonists",
+                        "MAO-B and COMT enzyme inhibitors"
+                    ]
+                },
+                {
+                    "icon": "fa-bolt",
+                    "color": "cyan-accent",
+                    "title": "Deep Brain Stimulation (DBS)",
+                    "subtitle": "Advanced neurosurgical stimulation",
+                    "text": "Implated electrodes send electrical signals into deep brain structures, significantly reducing rigidity, slow movements, and severe medication-induced tremors.",
+                    "bullets": [
+                        "Reduces medication fluctuations (\"off\" times)",
+                        "FDA-approved surgical option"
+                    ]
+                },
+                {
+                    "icon": "fa-person-running",
+                    "color": "deep-indigo",
+                    "title": "Motor & Physical Therapy",
+                    "subtitle": "Retaining flexibility and balance",
+                    "text": "Structured exercises focus on gait patterns, stretching, fall avoidance, and preserving postural balance.",
+                    "bullets": [
+                        "LSVT BIG specialized gait training",
+                        "Balance drills & muscle stretching"
+                    ]
+                },
+                {
+                    "icon": "fa-microphone",
+                    "color": "dark",
+                    "title": "Speech & Daily Task Therapy",
+                    "subtitle": "Voice retraining & occupational habits",
+                    "text": "LSVT LOUD speech therapies strengthen vocal cords to address quiet speech, while occupational therapy adapts daily routines to preserve independence.",
+                    "bullets": [
+                        "LSVT LOUD voice coaching",
+                        "Occupational therapy modifications"
+                    ]
+                }
+            ]
+        },
+        "related": {
+            "type": "related",
+            "label": "Related Neurological Services",
+            "badge": "Explore More",
+            "title": "Related Neurological Services",
+            "items": [
+                {
+                    "url": "movement",
+                    "title": "Movement Disorders",
+                    "text": "Expert care for tremors, dystonia, and movement issues."
+                },
+                {
+                    "url": "ms",
+                    "title": "Multiple Sclerosis",
+                    "text": "Advanced immunomodulatory therapies and symptom management."
+                },
+                {
+                    "url": "neuropathy",
+                    "title": "Peripheral Neuropathy",
+                    "text": "Diagnosis and targeted treatment for chronic nerve pain."
+                },
+                {
+                    "url": "services",
+                    "title": "All Services",
+                    "text": "View our complete range of neurological treatments."
+                }
+            ]
+        },
+        "final-cta": {
+            "type": "cta",
+            "label": "Final CTA Banner",
+            "title": "Let's Get In Touch.",
+            "description": "Ready to prioritize your health? Schedule a consultation with Dr. Praveen Gupta today and take the first step towards a healthier tomorrow."
+        }
+    },
+    "rtms-therapy": {
+        "key-indications": {
+            "label": "Key Indications Treated",
+            "type": "cards",
+            "badge": "Applications",
+            "title": "Key Indications Treated",
+            "description": "rTMS is clinical neuromodulation that targets a variety of chronic, drug-resistant neurological conditions.",
+            "items": [
+                {
+                    "title": "Refractory Depression (TRD)",
+                    "text": "Stimulates the left dorsolateral prefrontal cortex (DLPFC), modulating neural activity to alleviate treatment-resistant mood disorders.",
+                    "icon": "fa-brain",
+                    "color": "electric-blue",
+                    "tags": [
+                        "Drug-Free",
+                        "Mood Support"
+                    ]
+                },
+                {
+                    "title": "Stroke Paralysis Recovery",
+                    "text": "Encourages neuroplasticity in damaged motor pathways to help patients recover arm/leg movement and coordination post-stroke.",
+                    "icon": "fa-hand-holding-hand",
+                    "color": "cyan-accent",
+                    "tags": [
+                        "Motor Skill",
+                        "Neuroplasticity"
+                    ]
+                },
+                {
+                    "title": "Chronic Pain & Migraine",
+                    "text": "Desensitizes pain pathways in the brain to reduce the frequency and intensity of chronic pain conditions and migraine attacks.",
+                    "icon": "fa-shield",
+                    "color": "deep-indigo",
+                    "tags": [
+                        "Pain Control",
+                        "Migraine Relief"
+                    ]
+                }
+            ]
+        },
+        "what-to-expect": {
+            "label": "What to Expect During rTMS Treatment",
+            "type": "steps",
+            "badge": "Experience",
+            "title": "What to Expect During rTMS Treatment",
+            "description": "Our protocol ensures patient comfort, clinical mapping accuracy, and tailored treatment parameters.",
+            "items": [
+                {
+                    "title": "Motor Thresholding",
+                    "text": "Mapping the patient's motor cortex to identify the exact threshold of stimulation and determine customized dosage guidelines."
+                },
+                {
+                    "title": "Coil Positioning",
+                    "text": "The treatment coil is positioned over the target brain region while the patient rests in a comfortable recliner chair."
+                },
+                {
+                    "title": "Magnetic Pulses",
+                    "text": "Magnetic pulses are delivered in patterns, producing a clicking sound. A tapping feeling on the scalp is felt."
+                },
+                {
+                    "title": "Immediate Discharge",
+                    "text": "Sessions last 20-30 minutes. Once complete, you can drive, work, and resume all activities immediately."
+                }
+            ]
+        },
+        "key-facts": {
+            "type": "facts",
+            "items": [
+                {
+                    "icon": "fas fa-check",
+                    "title": "Non-Invasive",
+                    "text": "No surgery or needles"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "No Anesthesia",
+                    "text": "No sedation or downtime"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "FDA Cleared",
+                    "text": "Proven safety profile"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Outpatient Care",
+                    "text": "Return home immediately"
+                }
+            ],
+            "label": "Key Facts"
+        },
+        "doctor": {
+            "type": "doctor",
+            "layout": "about",
+            "label": "Doctor About Section",
+            "badge": "About Dr. Praveen Gupta",
+            "title": "Dr. Praveen Gupta  Best Neurologist in India",
+            "roles": [
+                "Chairman  Marengo Asia International Institute of Neuro and Spine",
+                "Chief Clinical Strategy Growth and Innovation, North India",
+                "Chief Mentor for Start-ups"
+            ],
+            "text": "With over 20 years of clinical experience, Dr. Praveen Gupta has emerged as a pioneering force in the diagnosis, treatment, and advancement of neurological sciences across India and beyond. He is responsible for several firsts in the country's neurology landscape, including establishing Gurugram's first stroke centre and conducting pioneering BMT procedures for autoimmune neuro-disorders.",
+            "image": "assets/dpg-1.webp",
+            "image_alt": "Dr. Praveen Gupta"
+        }
+    },
+    "spine-surgery": {
+        "conditions-we-treat": {
+            "label": "Conditions We Treat",
+            "type": "cards",
+            "badge": "Applications",
+            "title": "Conditions We Treat",
+            "description": "From nerve compression to structural instability, these are the spinal problems we see and correct most often.",
+            "items": [
+                {
+                    "title": "Herniated & Slip Discs",
+                    "text": "Relieving compressed sciatic nerves in the lumbar or cervical spine, restoring pain-free movement and sensation.",
+                    "icon": "fa-bone",
+                    "color": "electric-blue",
+                    "tags": [
+                        "Sciatica",
+                        "Nerve Relief"
+                    ]
+                },
+                {
+                    "title": "Spinal Canal Stenosis",
+                    "text": "Widening narrowed passages in the spinal canal to take pressure off the cord and restore walking capacity.",
+                    "icon": "fa-arrows-left-right",
+                    "color": "cyan-accent",
+                    "tags": [
+                        "Decompression",
+                        "Mobility"
+                    ]
+                },
+                {
+                    "title": "Spondylolisthesis",
+                    "text": "Stabilising slipped vertebrae using micro-fixation and fusion strategies that preserve as much natural motion as possible.",
+                    "icon": "fa-layer-group",
+                    "color": "deep-indigo",
+                    "tags": [
+                        "Micro-Fixation",
+                        "Stability"
+                    ]
+                }
+            ]
+        },
+        "what-to-expect": {
+            "label": "What to Expect, Start to Finish",
+            "type": "steps",
+            "badge": "Experience",
+            "title": "What to Expect, Start to Finish",
+            "description": "Most spinal problems never reach an operating theatre. Here is the full pathway, from first assessment through rehabilitation.",
+            "items": [
+                {
+                    "title": "Assessment & Imaging",
+                    "text": "Clinical examination alongside MRI or CT to identify exactly which structure is compressing which nerve, and how much."
+                },
+                {
+                    "title": "Conservative Management",
+                    "text": "Physiotherapy, targeted injections and medical management are tried first — many patients recover fully without surgery."
+                },
+                {
+                    "title": "Minimally Invasive Surgery",
+                    "text": "Where surgery is needed: laminectomy, microdiscectomy or keyhole fusion through tubular dilators with real-time neural mapping."
+                },
+                {
+                    "title": "Rehabilitation",
+                    "text": "Core mobilisation to safely rebuild lumbar stabilisers, plus posture and ergonomic training to prevent recurring micro-stress on the joints."
+                }
+            ]
+        },
+        "key-facts": {
+            "type": "facts",
+            "items": [
+                {
+                    "icon": "fas fa-check",
+                    "title": "Conservative First",
+                    "text": "Surgery only where warranted"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Tubular Dilators",
+                    "text": "Smaller incisions, less pain"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Real-Time Mapping",
+                    "text": "Neural monitoring during fusion"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Shorter Stays",
+                    "text": "Minimised hospital time"
+                }
+            ],
+            "label": "Key Facts"
+        }
+    },
+    "stroke": {
+        "types": {
+            "label": "Types of Stroke",
+            "type": "cards",
+            "badge": "Classification",
+            "title": "Types of Stroke",
+            "description": "Strokes are divided into categories based on whether they involve blood vessel blockage or rupture.",
+            "items": [
+                {
+                    "title": "Ischemic Stroke",
+                    "text": "The most common type (accounts for 87% of strokes). Caused by a blood clot blocking an artery that supplies blood to the brain, cutting off oxygen.",
+                    "icon": "fa-circle-minus",
+                    "color": "electric-blue",
+                    "tags": [
+                        "Clot Blockage",
+                        "Thrombolysis"
+                    ]
+                },
+                {
+                    "title": "Hemorrhagic Stroke",
+                    "text": "Occurs when a weakened blood vessel ruptures and leaks blood into the surrounding brain tissue, causing severe local pressure and damage.",
+                    "icon": "fa-droplet",
+                    "color": "cyan-accent",
+                    "tags": [
+                        "Vessel Rupture",
+                        "Bleeding Care"
+                    ]
+                },
+                {
+                    "title": "Transient Ischemic Attack (TIA)",
+                    "text": "Known as a \"mini-stroke.\" Blood flow is blocked temporarily (often resolving within minutes). Although symptoms fade quickly, a TIA is a warning sign of an impending major stroke.",
+                    "icon": "fa-triangle-exclamation",
+                    "color": "deep-indigo",
+                    "tags": [
+                        "Temporary Block",
+                        "Warning Indicator"
+                    ]
+                }
+            ]
+        },
+        "diagnosis": {
+            "label": "How We Diagnose Stroke",
+            "type": "steps",
+            "badge": "Diagnosis",
+            "title": "How We Diagnose Stroke",
+            "description": "Emergency diagnostics are completed within minutes of arrival to determine if a stroke is ischemic or hemorrhagic, guiding immediate intervention.",
+            "items": [
+                {
+                    "title": "Rapid Neuro Exam",
+                    "text": "Immediate clinical checking of sensory inputs, pupillary reflexes, speech clarity, and motor strengths to assess severity."
+                },
+                {
+                    "title": "Emergency Brain CT",
+                    "text": "Fast imaging to rule out brain bleeding (hemorrhage) before prescribing blood thinners or clot-busting medications."
+                },
+                {
+                    "title": "Brain MRI & MRA",
+                    "text": "Detailed imaging scan to trace exact brain tissue damage locations and map arterial blood flow pathways."
+                },
+                {
+                    "title": "Vascular Ultrasound",
+                    "text": "Carotid duplex ultrasound checks for narrow neck arteries or plaques that could spark subsequent strokes."
+                }
+            ],
+            "options": {
+                "card_bg": "bg-white"
+            }
+        },
+        "key-facts": {
+            "type": "facts",
+            "items": [
+                {
+                    "icon": "fa-check",
+                    "title": "Brain Attack",
+                    "text": "Requires emergency response"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Time Sensitive",
+                    "text": "\"Time is Brain\" - act FAST"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Preventable",
+                    "text": "80% of strokes can be prevented"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Rehabilitation",
+                    "text": "Physical & motor recovery helps"
+                }
+            ],
+            "label": "Key Facts"
+        },
+        "warning": {
+            "type": "warning",
+            "title": "FAST Stroke Symptoms",
+            "description": "If you notice these signs, call emergency services immediately:",
+            "items": [
+                {
+                    "text": "<strong>F - Face Drooping:</strong> One side of the face droops or is numb"
+                },
+                {
+                    "text": "<strong>A - Arm Weakness:</strong> One arm feels weak, numb, or drifts downward"
+                },
+                {
+                    "text": "<strong>S - Speech Difficulty:</strong> Slurred speech or difficulty understanding"
+                },
+                {
+                    "text": "<strong>T - Time to Call:</strong> Time is critical, seek help immediately"
+                }
+            ],
+            "label": "Emergency Warning Signs"
+        },
+        "symptoms": {
+            "type": "symptoms",
+            "label": "Symptoms & Warning Signs",
+            "badge": "Recognition",
+            "title": "Stroke Symptoms & Indicators",
+            "description": "Understanding additional signs beyond the FAST guidelines can save lives and help healthcare providers target emergency care.",
+            "image": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&h=600&q=80",
+            "image_alt": "Stroke Symptoms Recognition and Diagnosis",
+            "items": [
+                {
+                    "icon": "fa-user-xmark",
+                    "color": "electric-blue",
+                    "title": "Motor & Balance",
+                    "bullets": [
+                        "Sudden loss of balance",
+                        "Difficulty walking or dizziness",
+                        "Numbness on one side",
+                        "Coordination problems"
+                    ]
+                },
+                {
+                    "icon": "fa-eye",
+                    "color": "cyan-accent",
+                    "title": "Sensory & Vision",
+                    "bullets": [
+                        "Double or blurred vision",
+                        "Sudden severe headache",
+                        "Confusion or brain fog",
+                        "Swallowing difficulties"
+                    ]
+                }
+            ],
+            "note_icon": "fa-clock",
+            "note_title": "The Golden Hour",
+            "note_text": "Reperfusion therapies like tPA must be administered within a 4.5-hour window from symptom onset to achieve the highest rate of recovery."
+        },
+        "treatments": {
+            "type": "treatments",
+            "label": "Treatment Options",
+            "badge": "Treatment",
+            "title": "Comprehensive Stroke Management",
+            "description": "From emergency thrombolysis to advanced long-term motor rehabilitation, we offer structured care at every phase of recovery.",
+            "items": [
+                {
+                    "icon": "fa-shield",
+                    "color": "electric-blue",
+                    "title": "Hyperacute Thrombolysis (tPA)",
+                    "subtitle": "Clot-busting medication within 4.5 hours",
+                    "text": "Intravenous tissue plasminogen activator (tPA) dissolves the blood clot causing an ischemic stroke, restoring vital blood flow.",
+                    "bullets": [
+                        "Emergency clot dissolution",
+                        "Minimizes permanent brain damage"
+                    ]
+                },
+                {
+                    "icon": "fa-compass",
+                    "color": "cyan-accent",
+                    "title": "Mechanical Thrombectomy",
+                    "subtitle": "Endovascular clot removal for large vessel blockages",
+                    "text": "Using specialized catheters, the clot is physically extracted from large brain arteries, providing excellent results even up to 24 hours in selected cases.",
+                    "bullets": [
+                        "Advanced catheter-based extraction",
+                        "High success in large artery blockages"
+                    ]
+                },
+                {
+                    "icon": "fa-user-shield",
+                    "color": "deep-indigo",
+                    "title": "Secondary Prevention",
+                    "subtitle": "Management of risk factors",
+                    "text": "Preventing recurrences through medications, anticoagulants, antiplatelets, blood pressure control, and managing diabetes or cholesterol.",
+                    "bullets": [
+                        "Blood pressure and cholesterol management",
+                        "Blood thinners & antiplatelet drug therapies"
+                    ]
+                },
+                {
+                    "icon": "fa-hand-holding-heart",
+                    "color": "dark",
+                    "title": "Neuro-Rehabilitation",
+                    "subtitle": "Physical, occupational, & speech therapy",
+                    "text": "Comprehensive rehabilitation programs to retrain brain pathways, restore motor function, rebuild speech, and return patients to independent living.",
+                    "bullets": [
+                        "Specialized motor skill exercises",
+                        "Speech therapy and swallowing retraining"
+                    ]
+                }
+            ]
+        },
+        "related": {
+            "type": "related",
+            "label": "Related Neurological Services",
+            "badge": "Explore More",
+            "title": "Related Neurological Services",
+            "items": [
+                {
+                    "url": "headache",
+                    "title": "Headache",
+                    "text": "Comprehensive headache diagnosis and targeted treatments."
+                },
+                {
+                    "url": "migraine",
+                    "title": "Migraine",
+                    "text": "Specialized migraine relief and long-term preventive care plans."
+                },
+                {
+                    "url": "movement",
+                    "title": "Movement Disorders",
+                    "text": "Expert care for tremors, dystonia, and movement issues."
+                },
+                {
+                    "url": "services",
+                    "title": "All Services",
+                    "text": "View our complete range of neurological treatments."
+                }
+            ]
+        },
+        "final-cta": {
+            "type": "cta",
+            "label": "Final CTA Banner",
+            "title": "Let's Get In Touch.",
+            "description": "Ready to prioritize your health? Schedule a consultation with Dr. Praveen Gupta today and take the first step towards a healthier tomorrow."
         }
     },
     "vertigo": {
@@ -1100,6 +3128,175 @@
             "options": {
                 "card_bg": "bg-white"
             }
+        },
+        "key-facts": {
+            "type": "facts",
+            "items": [
+                {
+                    "icon": "fa-check",
+                    "title": "Balance System",
+                    "text": "Linked to inner ear & brain"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Often Drug-Free",
+                    "text": "Relieved by body maneuvers"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Common Causes",
+                    "text": "BPPV is the main culprit"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Therapeutic Rehab",
+                    "text": "Vestibular retraining works"
+                }
+            ],
+            "label": "Key Facts"
+        },
+        "warning": {
+            "type": "warning",
+            "title": "When to Seek Emergency Care",
+            "description": "Seek immediate medical attention if vertigo is accompanied by:",
+            "items": [
+                {
+                    "text": "Double vision or blurred vision"
+                },
+                {
+                    "text": "Slurred speech or difficulty talking"
+                },
+                {
+                    "text": "Weakness or numbness in arms or legs"
+                },
+                {
+                    "text": "Difficulty walking or loss of coordination"
+                }
+            ],
+            "label": "Emergency Warning Signs"
+        },
+        "symptoms": {
+            "type": "symptoms",
+            "label": "Symptoms & Warning Signs",
+            "badge": "Recognition",
+            "title": "Vertigo Symptoms",
+            "description": "Vertigo presents with a spinning sensation that can trigger physical and sensory reflexes in the body.",
+            "image": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&h=600&q=80",
+            "image_alt": "Vertigo Symptoms Recognition and Diagnosis",
+            "items": [
+                {
+                    "icon": "fa-person-falling-burst",
+                    "color": "electric-blue",
+                    "title": "Key Signs",
+                    "bullets": [
+                        "Spinning or tilting sensation",
+                        "Loss of balance / unsteadiness",
+                        "Nausea and vomiting",
+                        "Sweating or pallor"
+                    ]
+                },
+                {
+                    "icon": "fa-ear-listen",
+                    "color": "cyan-accent",
+                    "title": "Ear & Eye Reflexes",
+                    "bullets": [
+                        "Abnormal eye movements",
+                        "Ringing in ears (tinnitus)",
+                        "Hearing loss (in one ear)",
+                        "Fullness feeling in ear canal"
+                    ]
+                }
+            ],
+            "note_icon": "fa-info-circle",
+            "note_title": "Movement Sensitivities",
+            "note_text": "Symptoms are typically exacerbated by head movements, rolling over in bed, tilting the head upward, or sudden posture shifts."
+        },
+        "treatments": {
+            "type": "treatments",
+            "label": "Treatment Options",
+            "badge": "Treatment",
+            "title": "Comprehensive Vertigo Treatment Options",
+            "description": "Many types of vertigo can be resolved without pills. We offer targeted maneuvers and custom physical rehabilitation therapies.",
+            "items": [
+                {
+                    "icon": "fa-arrows-spin",
+                    "color": "electric-blue",
+                    "title": "Canalith Repositioning (Epley Maneuver)",
+                    "subtitle": "Drug-free physical crystal resetting",
+                    "text": "For BPPV sufferers, a series of structured head movements guided by the doctor rolls floating ear crystals back into place, providing relief.",
+                    "bullets": [
+                        "Epley and Semont maneuvers",
+                        "Over 90% success rate in BPPV"
+                    ]
+                },
+                {
+                    "icon": "fa-walking",
+                    "color": "cyan-accent",
+                    "title": "Vestibular Rehabilitation Therapy (VRT)",
+                    "subtitle": "Retraining balance & stabilizing gaze",
+                    "text": "Custom exercises designed to help your brain compensate for inner ear abnormalities, improving stability and reducing fall risk.",
+                    "bullets": [
+                        "Gaze stabilization drills",
+                        "Balance training exercises"
+                    ]
+                },
+                {
+                    "icon": "fa-pills",
+                    "color": "deep-indigo",
+                    "title": "Pharmacological Therapies",
+                    "subtitle": "Vestibular suppressants & anti-emetics",
+                    "text": "Medications can help control severe acute symptoms of dizziness and nausea during flare-ups or viral infections of the vestibular nerve.",
+                    "bullets": [
+                        "Acute vestibular suppressants",
+                        "Preventive therapies for vestibular migraine"
+                    ]
+                },
+                {
+                    "icon": "fa-heart-pulse",
+                    "color": "dark",
+                    "title": "Diet & Safety Guidance",
+                    "subtitle": "Low-sodium dietary support & safety checks",
+                    "text": "For Meniere's disease, dietary fluid control (limiting salt and caffeine) helps manage pressure build-up in the inner ear canals.",
+                    "bullets": [
+                        "Low-salt, low-caffeine diet tracking",
+                        "Fall-prevention safety planning"
+                    ]
+                }
+            ]
+        },
+        "related": {
+            "type": "related",
+            "label": "Related Neurological Services",
+            "badge": "Explore More",
+            "title": "Related Neurological Services",
+            "items": [
+                {
+                    "url": "headache",
+                    "title": "Headache",
+                    "text": "Comprehensive headache diagnosis and targeted treatments."
+                },
+                {
+                    "url": "stroke",
+                    "title": "Stroke",
+                    "text": "Prevention, treatment, and rehabilitation for stroke patients."
+                },
+                {
+                    "url": "movement",
+                    "title": "Movement Disorders",
+                    "text": "Expert care for tremors, dystonia, and movement issues."
+                },
+                {
+                    "url": "services",
+                    "title": "All Services",
+                    "text": "View our complete range of neurological treatments."
+                }
+            ]
+        },
+        "final-cta": {
+            "type": "cta",
+            "label": "Final CTA Banner",
+            "title": "Let's Get In Touch.",
+            "description": "Ready to prioritize your health? Schedule a consultation with Dr. Praveen Gupta today and take the first step towards a healthier tomorrow."
         }
     }
 }

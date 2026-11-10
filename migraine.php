@@ -62,16 +62,22 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
                 <?php echo cms_render_html($pageContent['hero_desc']); ?>
             </p>
 
-            <!-- CTA Buttons -->
+            <!-- CTA Buttons (edited in CMS → Call-to-Action Buttons) -->
             <div class="flex flex-wrap gap-3">
-                <a href="contact" class="inline-flex items-center space-x-2.5 bg-white text-deep-indigo font-semibold px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-white/30 transition-all duration-300 transform hover:-translate-y-1 text-sm">
-                    <span>Book Appointment</span>
+                <?php $heroPrimary = cms_page_cta('migraine', 'hero-primary'); ?>
+                <?php if (trim($heroPrimary['text']) !== ''): ?>
+                <a href="<?php echo cms_cta_href($heroPrimary['url']); ?>" class="inline-flex items-center space-x-2.5 bg-white text-deep-indigo font-semibold px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-white/30 transition-all duration-300 transform hover:-translate-y-1 text-sm">
+                    <span><?php echo cms_cta_text('migraine', 'hero-primary'); ?></span>
                     <i class="fas fa-arrow-right text-xs"></i>
                 </a>
-                <a href="tel:<?php echo SITE_PHONE; ?>" class="inline-flex items-center space-x-2.5 bg-white/20 backdrop-blur-sm text-white font-semibold px-6 py-2.5 rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 text-sm">
+                <?php endif; ?>
+                <?php $heroSecondary = cms_page_cta('migraine', 'hero-secondary'); ?>
+                <?php if (trim($heroSecondary['text']) !== ''): ?>
+                <a href="<?php echo cms_cta_href($heroSecondary['url']); ?>" class="inline-flex items-center space-x-2.5 bg-white/20 backdrop-blur-sm text-white font-semibold px-6 py-2.5 rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 text-sm">
                     <i class="fas fa-phone text-xs"></i>
-                    <span>Call Now</span>
+                    <span><?php echo cms_cta_text('migraine', 'hero-secondary'); ?></span>
                 </a>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -86,45 +92,8 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
                 <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6"><?php echo htmlspecialchars($section['title']); ?></h2>
                 <?php echo cms_section_paragraphs($section['text']); ?>
 
-                <!-- Key Facts -->
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="flex items-start space-x-3">
-                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-electric-blue text-xs"></i>
-                        </div>
-                        <div>
-                            <div class="font-semibold text-dark-grey text-sm">Neurological Basis</div>
-                            <div class="text-xs text-dark-grey/60">Involves brain chemicals & nerves</div>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-electric-blue text-xs"></i>
-                        </div>
-                        <div>
-                            <div class="font-semibold text-dark-grey text-sm">Aura Phase</div>
-                            <div class="text-xs text-dark-grey/60">Visual cues in 25% of cases</div>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-electric-blue text-xs"></i>
-                        </div>
-                        <div>
-                            <div class="font-semibold text-dark-grey text-sm">Hereditary Aspect</div>
-                            <div class="text-xs text-dark-grey/60">Family history is common</div>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-electric-blue text-xs"></i>
-                        </div>
-                        <div>
-                            <div class="font-semibold text-dark-grey text-sm">Modern Therapies</div>
-                            <div class="text-xs text-dark-grey/60">CGRP inhibitors and Botox work</div>
-                        </div>
-                    </div>
-                </div>
+                <!-- Key Facts (CMS block) -->
+                <?php cms_render_page_block('migraine', 'key-facts'); ?>
             </div>
 
             <!-- Image Side -->
@@ -142,127 +111,15 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <?php cms_render_page_block('migraine', 'types'); ?>
 
-        <!-- Warning Signs -->
-        <div class="mt-12 bg-white rounded-2xl p-8 border border-silver-grey/20">
-            <div class="flex items-start space-x-4 mb-6">
-                <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <i class="fas fa-triangle-exclamation text-red-500 text-lg"></i>
-                </div>
-                <div>
-                    <h4 class="text-lg font-bold text-dark-grey">When to Seek Emergency Care</h4>
-                    <p class="text-sm text-dark-grey/60 mt-1">Seek immediate medical attention if your symptoms include:</p>
-                </div>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div class="flex items-center space-x-3 text-sm">
-                    <i class="fas fa-circle text-red-400 text-[6px]"></i>
-                    <span class="text-dark-grey/80">Sudden, explosive "thunderclap" headache</span>
-                </div>
-                <div class="flex items-center space-x-3 text-sm">
-                    <i class="fas fa-circle text-red-400 text-[6px]"></i>
-                    <span class="text-dark-grey/80">Headache with high fever and stiff neck</span>
-                </div>
-                <div class="flex items-center space-x-3 text-sm">
-                    <i class="fas fa-circle text-red-400 text-[6px]"></i>
-                    <span class="text-dark-grey/80">Numbness, paralysis, or weakness on one side</span>
-                </div>
-                <div class="flex items-center space-x-3 text-sm">
-                    <i class="fas fa-circle text-red-400 text-[6px]"></i>
-                    <span class="text-dark-grey/80">Double vision or difficulty speaking</span>
-                </div>
-            </div>
-        </div>
+        <!-- Warning Signs (CMS block) -->
+        <?php cms_render_page_block('migraine', 'warning'); ?>
     </div>
 </section>
 
 <!-- Symptoms Section -->
 <section class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-            <!-- Image -->
-            <div class="relative order-2 lg:order-1">
-                <div class="rounded-[32px] overflow-hidden shadow-xl">
-                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&h=600&q=80" alt="Migraine Symptoms Recognition and Diagnosis" class="w-full h-auto">
-                </div>
-                <div class="absolute -top-6 -left-6 w-32 h-32 bg-electric-blue/10 rounded-2xl -z-10"></div>
-                <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-cyan-accent/10 rounded-2xl -z-10"></div>
-            </div>
-
-            <!-- Content -->
-            <div class="order-1 lg:order-2">
-                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Recognition</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Symptoms & Warning Signs</h2>
-                <p class="text-dark-grey/70 leading-relaxed mb-8">
-                    Migraine symptoms occur in stages, ranging from early fatigue (prodrome) to sensory aura, the painful attack, and post-attack exhaustion (postdrome).
-                </p>
-
-                <!-- Symptoms Grid -->
-                <div class="grid grid-cols-2 gap-4 mb-8">
-                    <!-- Pain & Nausea -->
-                    <div class="bg-[#edf5f9] rounded-xl p-4">
-                        <div class="flex items-center space-x-3 mb-3">
-                            <i class="fas fa-heart-broken text-electric-blue"></i>
-                            <span class="font-semibold text-dark-grey text-sm">Key Symptoms</span>
-                        </div>
-                        <ul class="space-y-2 text-sm text-dark-grey/70">
-                            <li class="flex items-center space-x-2">
-                                <i class="fas fa-check text-electric-blue/60 text-[10px]"></i>
-                                <span>Throbbing, pulsing pain</span>
-                            </li>
-                            <li class="flex items-center space-x-2">
-                                <i class="fas fa-check text-electric-blue/60 text-[10px]"></i>
-                                <span>Severe nausea/vomiting</span>
-                            </li>
-                            <li class="flex items-center space-x-2">
-                                <i class="fas fa-check text-electric-blue/60 text-[10px]"></i>
-                                <span>Sensitivity to light & sound</span>
-                            </li>
-                            <li class="flex items-center space-x-2">
-                                <i class="fas fa-check text-electric-blue/60 text-[10px]"></i>
-                                <span>Worse with movement</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Sensory Aura -->
-                    <div class="bg-[#edf5f9] rounded-xl p-4">
-                        <div class="flex items-center space-x-3 mb-3">
-                            <i class="fas fa-eye text-cyan-accent"></i>
-                            <span class="font-semibold text-dark-grey text-sm">Sensory Disturbances</span>
-                        </div>
-                        <ul class="space-y-2 text-sm text-dark-grey/70">
-                            <li class="flex items-center space-x-2">
-                                <i class="fas fa-check text-cyan-accent/60 text-[10px]"></i>
-                                <span>Flashing lines in vision</span>
-                            </li>
-                            <li class="flex items-center space-x-2">
-                                <i class="fas fa-check text-cyan-accent/60 text-[10px]"></i>
-                                <span>Blind spots/scotomas</span>
-                            </li>
-                            <li class="flex items-center space-x-2">
-                                <i class="fas fa-check text-cyan-accent/60 text-[10px]"></i>
-                                <span>Numbness or tingling</span>
-                            </li>
-                            <li class="flex items-center space-x-2">
-                                <i class="fas fa-check text-cyan-accent/60 text-[10px]"></i>
-                                <span>Temporary slurred speech</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Warning Signs -->
-                <div class="bg-electric-blue/5 border border-electric-blue/20 rounded-xl p-4">
-                    <div class="flex items-center space-x-3 mb-3">
-                        <i class="fas fa-face-smile text-electric-blue"></i>
-                        <span class="font-semibold text-dark-grey text-sm">Postdrome "Migraine Hangover"</span>
-                    </div>
-                    <p class="text-xs text-dark-grey/65 leading-relaxed">
-                        After the severe pain subsides, patients often experience extreme fatigue, brain fog, and muscle aches lasting up to 24 hours.
-                    </p>
-                </div>
-            </div>
-        </div>
+        <?php cms_render_page_block('migraine', 'symptoms'); ?>
     </div>
 </section>
 
@@ -271,222 +128,33 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <?php cms_render_page_block('migraine', 'diagnosis'); ?>
 
+        <!-- CTA (text + destination edited in CMS) -->
+        <?php $diagnosisCta = cms_page_cta('migraine', 'diagnosis'); ?>
+        <?php if (trim($diagnosisCta['text']) !== ''): ?>
         <div class="text-center">
-            <p class="text-dark-grey/70 mb-6">Ready to get a proper diagnosis? Schedule a consultation today.</p>
-            <a href="contact" class="inline-flex items-center space-x-3 bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold px-8 py-4 rounded-full hover:shadow-xl hover:shadow-electric-blue/30 transition-all duration-300 transform hover:-translate-y-1">
-                <span>Schedule Diagnosis</span>
+            <?php if (trim($diagnosisCta['intro']) !== ''): ?>
+            <p class="text-dark-grey/70 mb-6"><?php echo $diagnosisCta['intro']; ?></p>
+            <?php endif; ?>
+            <a href="<?php echo cms_cta_href($diagnosisCta['url']); ?>" class="inline-flex items-center space-x-3 bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold px-8 py-4 rounded-full hover:shadow-xl hover:shadow-electric-blue/30 transition-all duration-300 transform hover:-translate-y-1">
+                <span><?php echo cms_cta_text('migraine', 'diagnosis'); ?></span>
                 <i class="fas fa-arrow-right text-sm"></i>
             </a>
         </div>
+        <?php endif; ?>
     </div>
 </section>
 
 <!-- Treatment Section -->
 <section class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Treatment</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Comprehensive Migraine Treatments</h2>
-            <p class="text-dark-grey/70 leading-relaxed">
-                We combine modern rescue therapies with long-term prophylaxis to desensitize nerve pathways and reduce migraine burden.
-            </p>
-        </div>
-
-        <!-- Treatment Cards -->
-        <div class="grid lg:grid-cols-2 gap-8 mb-16">
-            <!-- Rescue Therapy -->
-            <div class="bg-gradient-to-br from-electric-blue/5 to-cyan-accent/5 rounded-[24px] p-8 border border-electric-blue/10">
-                <div class="flex items-start space-x-5 mb-6">
-                    <div class="w-16 h-16 bg-electric-blue rounded-2xl flex items-center justify-center flex-shrink-0">
-                        <i class="fas fa-pills text-white text-2xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-dark-grey mb-2">Acute Rescue Medications</h3>
-                        <p class="text-sm text-dark-grey/60">Stop migraine attacks in progress</p>
-                    </div>
-                </div>
-                <p class="text-dark-grey/70 leading-relaxed mb-6">
-                    Taken immediately when an attack starts, these medications help stop the throbbing pain, sensory sensitivity, and nausea.
-                </p>
-                <ul class="space-y-3">
-                    <li class="flex items-start space-x-3">
-                        <div class="w-6 h-6 bg-electric-blue/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-electric-blue text-[10px]"></i>
-                        </div>
-                        <span class="text-sm text-dark-grey/80">Triptans and Ditans</span>
-                    </li>
-                    <li class="flex items-start space-x-3">
-                        <div class="w-6 h-6 bg-electric-blue/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-electric-blue text-[10px]"></i>
-                        </div>
-                        <span class="text-sm text-dark-grey/80">CGRP receptor antagonists (gepants)</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Prophylaxis -->
-            <div class="bg-gradient-to-br from-cyan-accent/5 to-electric-blue/5 rounded-[24px] p-8 border border-cyan-accent/10">
-                <div class="flex items-start space-x-5 mb-6">
-                    <div class="w-16 h-16 bg-cyan-accent rounded-2xl flex items-center justify-center flex-shrink-0">
-                        <i class="fas fa-shield-halved text-white text-2xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-dark-grey mb-2">Preventive Treatment</h3>
-                        <p class="text-sm text-dark-grey/60">Reduce attack frequency & severity</p>
-                    </div>
-                </div>
-                <p class="text-dark-grey/70 leading-relaxed mb-6">
-                    For patients with frequent attacks, daily oral medications or monthly injections help prevent the brain from launching a migraine episode.
-                </p>
-                <ul class="space-y-3">
-                    <li class="flex items-start space-x-3">
-                        <div class="w-6 h-6 bg-cyan-accent/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-cyan-accent text-[10px]"></i>
-                        </div>
-                        <span class="text-sm text-dark-grey/80">Beta-blockers, anticonvulsants, or antidepressants</span>
-                    </li>
-                    <li class="flex items-start space-x-3">
-                        <div class="w-6 h-6 bg-cyan-accent/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-cyan-accent text-[10px]"></i>
-                        </div>
-                        <span class="text-sm text-dark-grey/80">Monoclonal antibody CGRP blocker injections</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Botox -->
-            <div class="bg-gradient-to-br from-deep-indigo/5 to-electric-blue/5 rounded-[24px] p-8 border border-deep-indigo/10">
-                <div class="flex items-start space-x-5 mb-6">
-                    <div class="w-16 h-16 bg-deep-indigo rounded-2xl flex items-center justify-center flex-shrink-0">
-                        <i class="fas fa-syringe text-white text-2xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-dark-grey mb-2">Botox Injections</h3>
-                        <p class="text-sm text-dark-grey/60">FDA-approved chronic migraine relief</p>
-                    </div>
-                </div>
-                <p class="text-dark-grey/70 leading-relaxed mb-6">
-                    Botox injections administered every 12 weeks around the head and neck block pain transmitters, providing substantial relief for chronic migraine.
-                </p>
-                <ul class="space-y-3">
-                    <li class="flex items-start space-x-3">
-                        <div class="w-6 h-6 bg-deep-indigo/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-deep-indigo text-[10px]"></i>
-                        </div>
-                        <span class="text-sm text-dark-grey/80">Targeted muscle injections</span>
-                    </li>
-                    <li class="flex items-start space-x-3">
-                        <div class="w-6 h-6 bg-deep-indigo/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-deep-indigo text-[10px]"></i>
-                        </div>
-                        <span class="text-sm text-dark-grey/80">Blocks chronic pain pathway receptors</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Lifestyle Management -->
-            <div class="bg-gradient-to-br from-silver-grey/30 to-white rounded-[24px] p-8 border border-silver-grey/40">
-                <div class="flex items-start space-x-5 mb-6">
-                    <div class="w-16 h-16 bg-dark-grey rounded-2xl flex items-center justify-center flex-shrink-0">
-                        <i class="fas fa-heart-pulse text-white text-2xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-dark-grey mb-2">Lifestyle & Wellness</h3>
-                        <p class="text-sm text-dark-grey/60">Holistic support & trigger mapping</p>
-                    </div>
-                </div>
-                <p class="text-dark-grey/70 leading-relaxed mb-6">
-                    Proper hydration, consistent sleep schedules, stress reduction, and healthy nutrition are critical to reducing migraine triggers.
-                </p>
-                <ul class="space-y-3">
-                    <li class="flex items-start space-x-3">
-                        <div class="w-6 h-6 bg-dark-grey/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-dark-grey text-[10px]"></i>
-                        </div>
-                        <span class="text-sm text-dark-grey/80">Sleep hygiene & hydration tracking</span>
-                    </li>
-                    <li class="flex items-start space-x-3">
-                        <div class="w-6 h-6 bg-dark-grey/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-dark-grey text-[10px]"></i>
-                        </div>
-                        <span class="text-sm text-dark-grey/80">Dietary trigger identification</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        <?php cms_render_page_block('migraine', 'treatments'); ?>
     </div>
 </section>
 
 <!-- Why Choose Us Section -->
 <section class="py-12 bg-slate-50/50 relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            <!-- Content Side -->
-            <div class="lg:col-span-6 observe">
-                <span class="text-xs font-bold tracking-wider text-dark-grey/60 uppercase block mb-3 font-sans">
-                    Why Choose Dr. Praveen Gupta?
-                </span>
-                <h2 class="text-4xl md:text-5xl font-serif font-bold text-deep-indigo leading-tight mb-6">
-                    Providing Best Treatment
-                </h2>
-                <p class="text-base text-dark-grey/70 mb-10 leading-relaxed max-w-lg">
-                    With an unwavering commitment to clinical excellence, Dr. Praveen Gupta combines advanced technology and patient-centric therapies to deliver world-class neurological care.
-                </p>
-
-                <!-- Grid of 4 Items -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
-                    <div class="flex items-start space-x-4">
-                        <div class="w-12 h-12 rounded-xl bg-white border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
-                            <i class="fa-solid fa-earth-americas text-xl text-electric-blue"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Global Standards of Care</h4>
-                            <p class="text-xs text-dark-grey/65 leading-relaxed">Treatments backed by advanced technology and international guidelines.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="w-12 h-12 rounded-xl bg-white border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
-                            <i class="fa-solid fa-lightbulb text-xl text-electric-blue"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Innovative Procedures</h4>
-                            <p class="text-xs text-dark-grey/65 leading-relaxed">Pioneer in stroke care, DBS, and epilepsy surgery in India.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="w-12 h-12 rounded-xl bg-white border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
-                            <i class="fa-solid fa-circle-check text-xl text-electric-blue"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Proven Results</h4>
-                            <p class="text-xs text-dark-grey/65 leading-relaxed">Thousands of patients treated successfully with rapid recovery.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="w-12 h-12 rounded-xl bg-white border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
-                            <i class="fa-solid fa-hand-holding-heart text-xl text-electric-blue"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Compassionate Consultation</h4>
-                            <p class="text-xs text-dark-grey/65 leading-relaxed">Empowering patients with knowledge, compassion, and personalized care.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <a href="contact" class="inline-flex items-center px-8 py-3.5 bg-[#111827] text-white text-sm font-bold rounded-full hover:bg-electric-blue transition-colors duration-300 shadow-lg shadow-dark-grey/10">
-                        Get Started
-                    </a>
-                </div>
-            </div>
-
-            <!-- Image Side -->
-            <div class="lg:col-span-6 relative flex justify-center lg:justify-end observe">
-                <div class="relative w-full max-w-md lg:max-w-none aspect-[3:4] rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-soft-cyan to-silver-grey">
-                    <img src="assets\full-image\dpg-award.webp" alt="Compassionate Care" class="w-full h-full object-cover">
-                </div>
-            </div>
-        </div>
+        <?php cms_render_page_block('migraine', 'why-choose'); ?>
     </div>
 </section>
 
@@ -504,78 +172,11 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
 <!-- Related Services -->
 <section class="py-12 bg-[#edf5f9]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Explore More</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3">Related Neurological Services</h2>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <a href="headache" class="group bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300">
-                <h3 class="font-bold text-dark-grey mb-2 group-hover:text-electric-blue transition-colors">Headache</h3>
-                <p class="text-sm text-dark-grey/60">Comprehensive headache diagnosis and targeted treatments.</p>
-            </a>
-
-            <a href="stroke" class="group bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300">
-                <h3 class="font-bold text-dark-grey mb-2 group-hover:text-electric-blue transition-colors">Stroke</h3>
-                <p class="text-sm text-dark-grey/60">Prevention, treatment, and rehabilitation for stroke patients.</p>
-            </a>
-
-            <a href="movement" class="group bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300">
-                <h3 class="font-bold text-dark-grey mb-2 group-hover:text-electric-blue transition-colors">Movement Disorders</h3>
-                <p class="text-sm text-dark-grey/60">Expert care for tremors, dystonia, and movement issues.</p>
-            </a>
-
-            <a href="services" class="group bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300">
-                <h3 class="font-bold text-dark-grey mb-2 group-hover:text-electric-blue transition-colors">All Services</h3>
-                <p class="text-sm text-dark-grey/60">View our complete range of neurological treatments.</p>
-            </a>
-        </div>
+        <?php cms_render_page_block('migraine', 'related'); ?>
     </div>
 </section>
 
-<!-- CTA Section -->
-<section class="relative py-12 bg-white overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <!-- Main CTA Card -->
-        <div class="relative bg-gradient-to-r from-electric-blue to-cyan-accent rounded-[36px] overflow-hidden shadow-2xl p-8 md:p-14 lg:p-16">
-            <!-- Concentric Circles Pattern (Right Side) -->
-            <div class="absolute -right-64 top-1/2 -translate-y-1/2 w-[850px] h-[850px] flex items-center justify-center pointer-events-none z-0">
-                <div class="absolute w-[850px] h-[850px] bg-white/[0.03] rounded-full"></div>
-                <div class="absolute w-[720px] h-[720px] bg-white/[0.05] rounded-full"></div>
-                <div class="absolute w-[590px] h-[590px] bg-white/[0.07] rounded-full"></div>
-                <div class="absolute w-[460px] h-[460px] bg-white/[0.09] rounded-full"></div>
-                <div class="absolute w-[330px] h-[330px] bg-white/[0.11] rounded-full"></div>
-                <div class="absolute w-[200px] h-[200px] bg-white/[0.13] rounded-full"></div>
-                <div class="absolute w-[70px]  h-[70px]  bg-white/[0.15] rounded-full"></div>
-            </div>
-
-            <!-- Content (Left Aligned) -->
-            <div class="relative z-10 max-w-2xl text-left">
-                <h2 class="text-4xl md:text-5xl lg:text-6xl font-sans font-extrabold text-white mb-4 leading-tight tracking-tight">
-                    Let's Get In Touch.
-                </h2>
-                <p class="text-white/85 text-sm md:text-base mb-10 max-w-lg leading-relaxed">
-                    Ready to prioritize your health? Schedule a consultation with Dr. Praveen Gupta today and take the first step towards a healthier tomorrow.
-                </p>
-
-                <!-- Buttons Row -->
-                <div class="flex flex-wrap gap-4 items-center">
-                    <a href="contact" class="inline-flex items-center space-x-6 bg-[#111827] text-white text-xs md:text-sm font-semibold pl-6 pr-2.5 py-2.5 rounded-full hover:bg-black transition-all duration-300 shadow-lg hover:-translate-y-0.5 active:translate-y-0 group">
-                        <span>Book Appointment</span>
-                        <div class="w-7 h-7 rounded-full bg-gradient-to-b from-white via-slate-100 to-slate-400 shadow-[inset_0_1px_2px_rgba(255,255,255,0.8),0_2px_4px_rgba(0,0,0,0.3)] flex items-center justify-center text-[#111827] text-xs font-bold transition-transform duration-300 group-hover:scale-110 flex-shrink-0">
-                            <i class="fas fa-chevron-right text-[9px]"></i>
-                        </div>
-                    </a>
-                    <a href="tel:<?php echo SITE_PHONE; ?>" class="inline-flex items-center space-x-6 bg-[#111827] text-white text-xs md:text-sm font-semibold pl-6 pr-2.5 py-2.5 rounded-full hover:bg-black transition-all duration-300 shadow-lg hover:-translate-y-0.5 active:translate-y-0 group">
-                        <span>Call Now</span>
-                        <div class="w-7 h-7 rounded-full bg-gradient-to-b from-white via-slate-100 to-slate-400 shadow-[inset_0_1px_2px_rgba(255,255,255,0.8),0_2px_4px_rgba(0,0,0,0.3)] flex items-center justify-center text-[#111827] text-xs font-bold transition-transform duration-300 group-hover:scale-110 flex-shrink-0">
-                            <i class="fas fa-phone text-[9px]"></i>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<!-- Final CTA (CMS block) -->
+<?php cms_render_page_block('migraine', 'final-cta'); ?>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

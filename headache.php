@@ -62,16 +62,22 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
                 <?php echo cms_render_html($pageContent['hero_desc']); ?>
             </p>
 
-            <!-- CTA Buttons -->
+            <!-- CTA Buttons (edited in CMS → Call-to-Action Buttons) -->
             <div class="flex flex-wrap gap-3">
-                <a href="contact" class="inline-flex items-center space-x-2.5 bg-white text-deep-indigo font-semibold px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-white/30 transition-all duration-300 transform hover:-translate-y-1 text-sm">
-                    <span>Book Appointment</span>
+                <?php $heroPrimary = cms_page_cta('headache', 'hero-primary'); ?>
+                <?php if (trim($heroPrimary['text']) !== ''): ?>
+                <a href="<?php echo cms_cta_href($heroPrimary['url']); ?>" class="inline-flex items-center space-x-2.5 bg-white text-deep-indigo font-semibold px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-white/30 transition-all duration-300 transform hover:-translate-y-1 text-sm">
+                    <span><?php echo cms_cta_text('headache', 'hero-primary'); ?></span>
                     <i class="fas fa-arrow-right text-xs"></i>
                 </a>
-                <a href="tel:<?php echo SITE_PHONE; ?>" class="inline-flex items-center space-x-2.5 bg-white/20 backdrop-blur-sm text-white font-semibold px-6 py-2.5 rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 text-sm">
+                <?php endif; ?>
+                <?php $heroSecondary = cms_page_cta('headache', 'hero-secondary'); ?>
+                <?php if (trim($heroSecondary['text']) !== ''): ?>
+                <a href="<?php echo cms_cta_href($heroSecondary['url']); ?>" class="inline-flex items-center space-x-2.5 bg-white/20 backdrop-blur-sm text-white font-semibold px-6 py-2.5 rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 text-sm">
                     <i class="fas fa-phone text-xs"></i>
-                    <span>Call Now</span>
+                    <span><?php echo cms_cta_text('headache', 'hero-secondary'); ?></span>
                 </a>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -86,45 +92,8 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
                 <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6"><?php echo htmlspecialchars($section['title']); ?></h2>
                 <?php echo cms_section_paragraphs($section['text']); ?>
 
-                <!-- Key Facts -->
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="flex items-start space-x-3">
-                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-electric-blue text-xs"></i>
-                        </div>
-                        <div>
-                            <div class="font-semibold text-dark-grey text-sm">Highly Common</div>
-                            <div class="text-xs text-dark-grey/60">Affects millions daily</div>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-electric-blue text-xs"></i>
-                        </div>
-                        <div>
-                            <div class="font-semibold text-dark-grey text-sm">Various Types</div>
-                            <div class="text-xs text-dark-grey/60">Over 150 diagnostic categories</div>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-electric-blue text-xs"></i>
-                        </div>
-                        <div>
-                            <div class="font-semibold text-dark-grey text-sm">Manageable Triggers</div>
-                            <div class="text-xs text-dark-grey/60">Lifestyle factors play a role</div>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-electric-blue text-xs"></i>
-                        </div>
-                        <div>
-                            <div class="font-semibold text-dark-grey text-sm">Effective Treatment</div>
-                            <div class="text-xs text-dark-grey/60">Targeted therapies prevent attacks</div>
-                        </div>
-                    </div>
-                </div>
+                <!-- Key Facts (CMS block) -->
+                <?php cms_render_page_block('headache', 'key-facts'); ?>
             </div>
 
             <!-- Image Side -->
@@ -142,127 +111,15 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <?php cms_render_page_block('headache', 'types'); ?>
 
-        <!-- Warning Signs -->
-        <div class="mt-12 bg-white rounded-2xl p-8 border border-silver-grey/20">
-            <div class="flex items-start space-x-4 mb-6">
-                <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <i class="fas fa-triangle-exclamation text-red-500 text-lg"></i>
-                </div>
-                <div>
-                    <h4 class="text-lg font-bold text-dark-grey">When to Seek Emergency Care</h4>
-                    <p class="text-sm text-dark-grey/60 mt-1">Call emergency services immediately if a headache is:</p>
-                </div>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div class="flex items-center space-x-3 text-sm">
-                    <i class="fas fa-circle text-red-400 text-[6px]"></i>
-                    <span class="text-dark-grey/80">Sudden, explosive, and extremely severe</span>
-                </div>
-                <div class="flex items-center space-x-3 text-sm">
-                    <i class="fas fa-circle text-red-400 text-[6px]"></i>
-                    <span class="text-dark-grey/80">Accompanied by fever, stiff neck, or confusion</span>
-                </div>
-                <div class="flex items-center space-x-3 text-sm">
-                    <i class="fas fa-circle text-red-400 text-[6px]"></i>
-                    <span class="text-dark-grey/80">Linked to weakness, numbness, or speech difficulty</span>
-                </div>
-                <div class="flex items-center space-x-3 text-sm">
-                    <i class="fas fa-circle text-red-400 text-[6px]"></i>
-                    <span class="text-dark-grey/80">Occurs after a head injury or trauma</span>
-                </div>
-            </div>
-        </div>
+        <!-- Warning Signs (CMS block) -->
+        <?php cms_render_page_block('headache', 'warning'); ?>
     </div>
 </section>
 
 <!-- Symptoms Section -->
 <section class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-            <!-- Image -->
-            <div class="relative order-2 lg:order-1">
-                <div class="rounded-[32px] overflow-hidden shadow-xl">
-                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&h=600&q=80" alt="Headache Symptoms Recognition and Diagnosis" class="w-full h-auto">
-                </div>
-                <div class="absolute -top-6 -left-6 w-32 h-32 bg-electric-blue/10 rounded-2xl -z-10"></div>
-                <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-cyan-accent/10 rounded-2xl -z-10"></div>
-            </div>
-
-            <!-- Content -->
-            <div class="order-1 lg:order-2">
-                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Recognition</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Symptoms & Warning Signs</h2>
-                <p class="text-dark-grey/70 leading-relaxed mb-8">
-                    Correctly identifying headache symptoms helps differentiate between primary tension headaches, cluster headaches, and secondary headache issues.
-                </p>
-
-                <!-- Symptoms Grid -->
-                <div class="grid grid-cols-2 gap-4 mb-8">
-                    <!-- Physical Symptoms -->
-                    <div class="bg-[#edf5f9] rounded-xl p-4">
-                        <div class="flex items-center space-x-3 mb-3">
-                            <i class="fas fa-user-injured text-electric-blue"></i>
-                            <span class="font-semibold text-dark-grey text-sm">Physical Signs</span>
-                        </div>
-                        <ul class="space-y-2 text-sm text-dark-grey/70">
-                            <li class="flex items-center space-x-2">
-                                <i class="fas fa-check text-electric-blue/60 text-[10px]"></i>
-                                <span>Constant dull ache</span>
-                            </li>
-                            <li class="flex items-center space-x-2">
-                                <i class="fas fa-check text-electric-blue/60 text-[10px]"></i>
-                                <span>Eye watering or redness</span>
-                            </li>
-                            <li class="flex items-center space-x-2">
-                                <i class="fas fa-check text-electric-blue/60 text-[10px]"></i>
-                                <span>Nasal congestion</span>
-                            </li>
-                            <li class="flex items-center space-x-2">
-                                <i class="fas fa-check text-electric-blue/60 text-[10px]"></i>
-                                <span>Neck muscle stiffness</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Associated Symptoms -->
-                    <div class="bg-[#edf5f9] rounded-xl p-4">
-                        <div class="flex items-center space-x-3 mb-3">
-                            <i class="fas fa-brain text-cyan-accent"></i>
-                            <span class="font-semibold text-dark-grey text-sm">Sensory & Mental</span>
-                        </div>
-                        <ul class="space-y-2 text-sm text-dark-grey/70">
-                            <li class="flex items-center space-x-2">
-                                <i class="fas fa-check text-cyan-accent/60 text-[10px]"></i>
-                                <span>Restlessness</span>
-                            </li>
-                            <li class="flex items-center space-x-2">
-                                <i class="fas fa-check text-cyan-accent/60 text-[10px]"></i>
-                                <span>Light/sound sensitivity</span>
-                            </li>
-                            <li class="flex items-center space-x-2">
-                                <i class="fas fa-check text-cyan-accent/60 text-[10px]"></i>
-                                <span>Concentration issues</span>
-                            </li>
-                            <li class="flex items-center space-x-2">
-                                <i class="fas fa-check text-cyan-accent/60 text-[10px]"></i>
-                                <span>Irritability or fatigue</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Warning Signs -->
-                <div class="bg-electric-blue/5 border border-electric-blue/20 rounded-xl p-4">
-                    <div class="flex items-start space-x-3 mb-3">
-                        <i class="fas fa-info-circle text-electric-blue mt-0.5"></i>
-                        <span class="font-semibold text-dark-grey text-sm">Headache Trigger Diary</span>
-                    </div>
-                    <p class="text-xs text-dark-grey/60 leading-relaxed">
-                        Keeping track of sleep patterns, stress levels, dietary habits, and atmospheric changes can provide invaluable information to help optimize your treatment plan.
-                    </p>
-                </div>
-            </div>
-        </div>
+        <?php cms_render_page_block('headache', 'symptoms'); ?>
     </div>
 </section>
 
@@ -271,222 +128,33 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <?php cms_render_page_block('headache', 'diagnosis'); ?>
 
+        <!-- CTA (text + destination edited in CMS) -->
+        <?php $diagnosisCta = cms_page_cta('headache', 'diagnosis'); ?>
+        <?php if (trim($diagnosisCta['text']) !== ''): ?>
         <div class="text-center">
-            <p class="text-dark-grey/70 mb-6">Ready to get a proper diagnosis? Schedule a consultation today.</p>
-            <a href="contact" class="inline-flex items-center space-x-3 bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold px-8 py-4 rounded-full hover:shadow-xl hover:shadow-electric-blue/30 transition-all duration-300 transform hover:-translate-y-1">
-                <span>Schedule Diagnosis</span>
+            <?php if (trim($diagnosisCta['intro']) !== ''): ?>
+            <p class="text-dark-grey/70 mb-6"><?php echo $diagnosisCta['intro']; ?></p>
+            <?php endif; ?>
+            <a href="<?php echo cms_cta_href($diagnosisCta['url']); ?>" class="inline-flex items-center space-x-3 bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold px-8 py-4 rounded-full hover:shadow-xl hover:shadow-electric-blue/30 transition-all duration-300 transform hover:-translate-y-1">
+                <span><?php echo cms_cta_text('headache', 'diagnosis'); ?></span>
                 <i class="fas fa-arrow-right text-sm"></i>
             </a>
         </div>
+        <?php endif; ?>
     </div>
 </section>
 
 <!-- Treatment Section -->
 <section class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Treatment</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Comprehensive Headache Treatments</h2>
-            <p class="text-dark-grey/70 leading-relaxed">
-                We believe in personalized, multi-layered treatment plans that address immediate headache pain while preventing future occurrences.
-            </p>
-        </div>
-
-        <!-- Treatment Cards -->
-        <div class="grid lg:grid-cols-2 gap-8 mb-16">
-            <!-- Acute Medication -->
-            <div class="bg-gradient-to-br from-electric-blue/5 to-cyan-accent/5 rounded-[24px] p-8 border border-electric-blue/10">
-                <div class="flex items-start space-x-5 mb-6">
-                    <div class="w-16 h-16 bg-electric-blue rounded-2xl flex items-center justify-center flex-shrink-0">
-                        <i class="fas fa-pills text-white text-2xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-dark-grey mb-2">Acute & Pain-Relief Therapies</h3>
-                        <p class="text-sm text-dark-grey/60">Immediate management of attacks</p>
-                    </div>
-                </div>
-                <p class="text-dark-grey/70 leading-relaxed mb-6">
-                    Taken at the very first sign of a headache, acute therapies block nerve signals and relieve pain, nausea, and sensory sensitivities.
-                </p>
-                <ul class="space-y-3">
-                    <li class="flex items-start space-x-3">
-                        <div class="w-6 h-6 bg-electric-blue/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-electric-blue text-[10px]"></i>
-                        </div>
-                        <span class="text-sm text-dark-grey/80">Targeted pain-relief medications</span>
-                    </li>
-                    <li class="flex items-start space-x-3">
-                        <div class="w-6 h-6 bg-electric-blue/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-electric-blue text-[10px]"></i>
-                        </div>
-                        <span class="text-sm text-dark-grey/80">Anti-nausea treatments</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Preventive Medications -->
-            <div class="bg-gradient-to-br from-cyan-accent/5 to-electric-blue/5 rounded-[24px] p-8 border border-cyan-accent/10">
-                <div class="flex items-start space-x-5 mb-6">
-                    <div class="w-16 h-16 bg-cyan-accent rounded-2xl flex items-center justify-center flex-shrink-0">
-                        <i class="fas fa-shield text-white text-2xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-dark-grey mb-2">Preventive Therapies</h3>
-                        <p class="text-sm text-dark-grey/60">Reduce attack frequency and severity</p>
-                    </div>
-                </div>
-                <p class="text-dark-grey/70 leading-relaxed mb-6">
-                    For chronic headaches, daily medications or injections help desensitize nerve pathways, reducing the frequency, duration, and severity of attacks.
-                </p>
-                <ul class="space-y-3">
-                    <li class="flex items-start space-x-3">
-                        <div class="w-6 h-6 bg-cyan-accent/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-cyan-accent text-[10px]"></i>
-                        </div>
-                        <span class="text-sm text-dark-grey/80">Daily preventive medications</span>
-                    </li>
-                    <li class="flex items-start space-x-3">
-                        <div class="w-6 h-6 bg-cyan-accent/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-cyan-accent text-[10px]"></i>
-                        </div>
-                        <span class="text-sm text-dark-grey/80">Advanced neuromodulation options</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Nerve Blocks -->
-            <div class="bg-gradient-to-br from-deep-indigo/5 to-electric-blue/5 rounded-[24px] p-8 border border-deep-indigo/10">
-                <div class="flex items-start space-x-5 mb-6">
-                    <div class="w-16 h-16 bg-deep-indigo rounded-2xl flex items-center justify-center flex-shrink-0">
-                        <i class="fas fa-syringe text-white text-2xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-dark-grey mb-2">Interventional Procedures</h3>
-                        <p class="text-sm text-dark-grey/60">Nerve blocks and localized therapies</p>
-                    </div>
-                </div>
-                <p class="text-dark-grey/70 leading-relaxed mb-6">
-                    Occipital nerve blocks and trigger point injections can rapidly desensitize inflamed nerves, providing relief from severe headache cycles.
-                </p>
-                <ul class="space-y-3">
-                    <li class="flex items-start space-x-3">
-                        <div class="w-6 h-6 bg-deep-indigo/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-deep-indigo text-[10px]"></i>
-                        </div>
-                        <span class="text-sm text-dark-grey/80">Occipital nerve blocks</span>
-                    </li>
-                    <li class="flex items-start space-x-3">
-                        <div class="w-6 h-6 bg-deep-indigo/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-deep-indigo text-[10px]"></i>
-                        </div>
-                        <span class="text-sm text-dark-grey/80">Trigger point muscle injections</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Lifestyle Management -->
-            <div class="bg-gradient-to-br from-silver-grey/30 to-white rounded-[24px] p-8 border border-silver-grey/40">
-                <div class="flex items-start space-x-5 mb-6">
-                    <div class="w-16 h-16 bg-dark-grey rounded-2xl flex items-center justify-center flex-shrink-0">
-                        <i class="fas fa-heart-pulse text-white text-2xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-dark-grey mb-2">Lifestyle & Wellness Plan</h3>
-                        <p class="text-sm text-dark-grey/60">Holistic support & trigger mapping</p>
-                    </div>
-                </div>
-                <p class="text-dark-grey/70 leading-relaxed mb-6">
-                    Optimizing sleep, managing stress, eliminating dietary triggers, and staying hydrated form the foundation of long-term headache freedom.
-                </p>
-                <ul class="space-y-3">
-                    <li class="flex items-start space-x-3">
-                        <div class="w-6 h-6 bg-dark-grey/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-dark-grey text-[10px]"></i>
-                        </div>
-                        <span class="text-sm text-dark-grey/80">Sleep and stress hygiene guidance</span>
-                    </li>
-                    <li class="flex items-start space-x-3">
-                        <div class="w-6 h-6 bg-dark-grey/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-dark-grey text-[10px]"></i>
-                        </div>
-                        <span class="text-sm text-dark-grey/80">Dietary trigger identification</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        <?php cms_render_page_block('headache', 'treatments'); ?>
     </div>
 </section>
 
 <!-- Why Choose Us Section -->
 <section class="py-12 bg-slate-50/50 relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            <!-- Content Side -->
-            <div class="lg:col-span-6 observe">
-                <span class="text-xs font-bold tracking-wider text-dark-grey/60 uppercase block mb-3 font-sans">
-                    Why Choose Dr. Praveen Gupta?
-                </span>
-                <h2 class="text-4xl md:text-5xl font-serif font-bold text-deep-indigo leading-tight mb-6">
-                    Providing Best Treatment
-                </h2>
-                <p class="text-base text-dark-grey/70 mb-10 leading-relaxed max-w-lg">
-                    With an unwavering commitment to clinical excellence, Dr. Praveen Gupta combines advanced technology and patient-centric therapies to deliver world-class neurological care.
-                </p>
-
-                <!-- Grid of 4 Items -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
-                    <div class="flex items-start space-x-4">
-                        <div class="w-12 h-12 rounded-xl bg-white border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
-                            <i class="fa-solid fa-earth-americas text-xl text-electric-blue"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Global Standards of Care</h4>
-                            <p class="text-xs text-dark-grey/65 leading-relaxed">Treatments backed by advanced technology and international guidelines.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="w-12 h-12 rounded-xl bg-white border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
-                            <i class="fa-solid fa-lightbulb text-xl text-electric-blue"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Innovative Procedures</h4>
-                            <p class="text-xs text-dark-grey/65 leading-relaxed">Pioneer in stroke care, DBS, and epilepsy surgery in India.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="w-12 h-12 rounded-xl bg-white border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
-                            <i class="fa-solid fa-circle-check text-xl text-electric-blue"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Proven Results</h4>
-                            <p class="text-xs text-dark-grey/65 leading-relaxed">Thousands of patients treated successfully with rapid recovery.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-4">
-                        <div class="w-12 h-12 rounded-xl bg-white border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
-                            <i class="fa-solid fa-hand-holding-heart text-xl text-electric-blue"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif">Compassionate Consultation</h4>
-                            <p class="text-xs text-dark-grey/65 leading-relaxed">Empowering patients with knowledge, compassion, and personalized care.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <a href="contact" class="inline-flex items-center px-8 py-3.5 bg-[#111827] text-white text-sm font-bold rounded-full hover:bg-electric-blue transition-colors duration-300 shadow-lg shadow-dark-grey/10">
-                        Get Started
-                    </a>
-                </div>
-            </div>
-
-            <!-- Image Side -->
-            <div class="lg:col-span-6 relative flex justify-center lg:justify-end observe">
-                <div class="relative w-full max-w-md lg:max-w-none aspect-[3:4] rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-soft-cyan to-silver-grey">
-                    <img src="assets\full-image\dpg-award.webp" alt="Compassionate Care" class="w-full h-full object-cover">
-                </div>
-            </div>
-        </div>
+        <?php cms_render_page_block('headache', 'why-choose'); ?>
     </div>
 </section>
 
@@ -504,32 +172,7 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
 <!-- Related Services -->
 <section class="py-12 bg-[#edf5f9]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider">Explore More</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3">Related Neurological Services</h2>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <a href="migraine" class="group bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300">
-                <h3 class="font-bold text-dark-grey mb-2 group-hover:text-electric-blue transition-colors">Migraine</h3>
-                <p class="text-sm text-dark-grey/60">Specialized migraine relief and long-term preventive care plans.</p>
-            </a>
-
-            <a href="stroke" class="group bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300">
-                <h3 class="font-bold text-dark-grey mb-2 group-hover:text-electric-blue transition-colors">Stroke</h3>
-                <p class="text-sm text-dark-grey/60">Prevention, treatment, and rehabilitation for stroke patients.</p>
-            </a>
-
-            <a href="movement" class="group bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300">
-                <h3 class="font-bold text-dark-grey mb-2 group-hover:text-electric-blue transition-colors">Movement Disorders</h3>
-                <p class="text-sm text-dark-grey/60">Expert care for tremors, dystonia, and movement issues.</p>
-            </a>
-
-            <a href="services" class="group bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300">
-                <h3 class="font-bold text-dark-grey mb-2 group-hover:text-electric-blue transition-colors">All Services</h3>
-                <p class="text-sm text-dark-grey/60">View our complete range of neurological treatments.</p>
-            </a>
-        </div>
+        <?php cms_render_page_block('headache', 'related'); ?>
     </div>
 </section>
 

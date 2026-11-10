@@ -1,0 +1,134 @@
+{
+    "_comment": "Editable CTA buttons for the service & condition pages. 'defaults' hold the copy shared by most pages; 'pages' overrides text/url/intro for a specific page (slug). Saved per-page edits live in data/pages/{slug}.json under \"ctas\" and win over both. URL tokens: {phone} = tel:SITE_PHONE, {stroke-helpline} = tel:STROKE_HELPLINE. Text tokens: {phone} / {stroke-helpline} print the raw numbers.",
+    "defaults": {
+        "hero-primary": {
+            "label": "Hero banner — primary button",
+            "text": "Book Appointment",
+            "url": "contact"
+        },
+        "hero-secondary": {
+            "label": "Hero banner — secondary (call) button",
+            "text": "Call Now",
+            "url": "{phone}"
+        },
+        "diagnosis": {
+            "label": "Diagnosis section — button",
+            "intro": "Ready to get a proper diagnosis? Schedule a consultation today.",
+            "text": "Schedule Diagnosis",
+            "url": "contact"
+        },
+        "why-choose": {
+            "label": "Why Choose section — button",
+            "text": "Get Started",
+            "url": "contact"
+        },
+        "final-primary": {
+            "label": "Final CTA banner — primary button",
+            "text": "Book Appointment",
+            "url": "contact"
+        },
+        "final-secondary": {
+            "label": "Final CTA banner — call button",
+            "text": "Call Now",
+            "url": "{phone}"
+        },
+        "emergency": {
+            "label": "Emergency support card — button",
+            "text": "View Emergency Protocols",
+            "url": "emergency-neurology-care"
+        },
+        "doctor-more": {
+            "label": "Doctor about section — button",
+            "text": "More About Doctor",
+            "url": "about"
+        }
+    },
+    "pages": {
+        "spine-surgery": {
+            "hero-primary": {
+                "text": "Schedule Evaluation",
+                "url": "contact-us-top-neurologist-delhi-ncr"
+            }
+        },
+        "brain-tumor-surgery": {
+            "hero-primary": {
+                "text": "Schedule Consultation",
+                "url": "contact-us-top-neurologist-delhi-ncr"
+            }
+        },
+        "memory-clinic": {
+            "hero-primary": {
+                "text": "Schedule Evaluation",
+                "url": "contact-us-top-neurologist-delhi-ncr"
+            }
+        },
+        "functional-neurosurgery": {
+            "hero-primary": {
+                "text": "Schedule Evaluation",
+                "url": "contact-us-top-neurologist-delhi-ncr"
+            }
+        },
+        "neurovascular-surgery": {
+            "hero-primary": {
+                "text": "Schedule Consultation",
+                "url": "contact-us-top-neurologist-delhi-ncr"
+            }
+        },
+        "rtms-therapy": {
+            "hero-primary": {
+                "text": "Book Appointment",
+                "url": "contact-us-top-neurologist-delhi-ncr"
+            }
+        },
+        "neuro-rehabilitation-center": {
+            "hero-primary": {
+                "text": "Schedule Evaluation",
+                "url": "contact-us-top-neurologist-delhi-ncr"
+            }
+        },
+        "neurocritical-acute-stroke-care": {
+            "hero-primary": {
+                "text": "Emergency Helpline",
+                "url": "{phone}"
+            },
+            "hero-secondary": {
+                "text": "Book Consultation",
+                "url": "contact-us-top-neurologist-delhi-ncr"
+            }
+        },
+        "brain-stroke-helpline": {
+            "hero-primary": {
+                "text": "Call Emergency: {stroke-helpline}",
+                "url": "{stroke-helpline}"
+            }
+        },
+        "neurological-conditions": {
+            "hero-primary": {
+                "text": "Browse Conditions",
+                "url": "#directory"
+            }
+        },
+        "neurological-symptoms": {
+            "emergency": {
+                "text": "View Emergency Protocols",
+                "url": "emergency-neurology-care"
+            }
+        },
+        "brain-health-center": {
+            "hero-primary": {
+                "text": "",
+                "url": ""
+            },
+            "hero-secondary": {
+                "text": "",
+                "url": ""
+            }
+        },
+        "epilepsy": {
+            "why-choose": {
+                "text": "Get Started",
+                "url": "#appointment"
+            }
+        }
+    }
+}

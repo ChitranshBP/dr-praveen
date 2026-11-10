@@ -10,6 +10,9 @@ require_once __DIR__ . '/cms-load.php';
 // Editable page blocks (Techniques / What to Expect / etc.)
 require_once __DIR__ . '/page-blocks.php';
 
+// Editable CTA buttons (hero / diagnosis / final CTA / emergency …)
+require_once __DIR__ . '/page-ctas.php';
+
 // Load dynamic settings from CMS if present
 $cmsSettingsFile = dirname(__DIR__) . '/data/settings.json';
 $cmsSettings = [];

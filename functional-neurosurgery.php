@@ -68,12 +68,15 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
             </p>
 
             <div class="flex flex-wrap items-center gap-4">
-                <a href="contact-us-top-neurologist-delhi-ncr" class="group inline-flex items-center space-x-3 bg-white text-deep-indigo text-sm font-bold pl-6 pr-2 py-2.5 rounded-full hover:bg-soft-cyan transition-colors duration-300">
-                    <span>Schedule Evaluation</span>
+                <?php $heroPrimary = cms_page_cta('functional-neurosurgery', 'hero-primary'); ?>
+                <?php if (trim($heroPrimary['text']) !== ''): ?>
+                <a href="<?php echo cms_cta_href($heroPrimary['url']); ?>" class="group inline-flex items-center space-x-3 bg-white text-deep-indigo text-sm font-bold pl-6 pr-2 py-2.5 rounded-full hover:bg-soft-cyan transition-colors duration-300">
+                    <span><?php echo cms_cta_text('functional-neurosurgery', 'hero-primary'); ?></span>
                     <span class="w-7 h-7 rounded-full bg-deep-indigo text-white flex items-center justify-center transition-transform group-hover:rotate-45 duration-300">
                         <i class="fas fa-arrow-right text-[10px]"></i>
                     </span>
                 </a>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -90,43 +93,8 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
                     <?php echo cms_section_paragraphs($section['text'], 'text-dark-grey/70 leading-relaxed', 'mb-0'); ?>
                 </div>
 
-                <!-- Key Facts -->
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="flex items-start space-x-3">
-                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-electric-blue text-xs"></i>
-                        </div>
-                        <div>
-                            <div class="font-semibold text-dark-grey text-sm">First DBS in Gurgaon</div>
-                            <div class="text-xs text-dark-grey/60">Pioneered locally by our team</div>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-electric-blue text-xs"></i>
-                        </div>
-                        <div>
-                            <div class="font-semibold text-dark-grey text-sm">Stereotactic Precision</div>
-                            <div class="text-xs text-dark-grey/60">Millimetre-accurate targeting</div>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-electric-blue text-xs"></i>
-                        </div>
-                        <div>
-                            <div class="font-semibold text-dark-grey text-sm">Implanted Generator</div>
-                            <div class="text-xs text-dark-grey/60">Pacemaker-like device</div>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-electric-blue text-xs"></i>
-                        </div>
-                        <div>
-                            <div class="font-semibold text-dark-grey text-sm">Drug-Resistant Cases</div>
-                            <div class="text-xs text-dark-grey/60">When medication stops working</div>
-                        </div>
+                <!-- Key Facts (CMS block) -->
+                <?php cms_render_page_block('functional-neurosurgery', 'key-facts'); ?>
                     </div>
                 </div>
             </div>
