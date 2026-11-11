@@ -64,13 +64,19 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
 
             <!-- CTA Buttons -->
             <div class="flex flex-wrap gap-3">
-                <a href="tel:<?php echo SITE_PHONE; ?>" class="inline-flex items-center space-x-2.5 bg-white text-deep-indigo font-semibold px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-white/30 transition-all duration-300 transform hover:-translate-y-1 text-sm">
-                    <span>Emergency Helpline</span>
+                <?php $heroPrimary = cms_page_cta('neurocritical-acute-stroke-care', 'hero-primary'); ?>
+                <?php if (trim($heroPrimary['text']) !== ''): ?>
+                <a href="<?php echo cms_cta_href($heroPrimary['url']); ?>" class="inline-flex items-center space-x-2.5 bg-white text-deep-indigo font-semibold px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-white/30 transition-all duration-300 transform hover:-translate-y-1 text-sm">
+                    <span><?php echo cms_cta_text('neurocritical-acute-stroke-care', 'hero-primary'); ?></span>
                     <i class="fas fa-phone-alt text-xs text-red-500"></i>
                 </a>
-                <a href="contact-us-top-neurologist-delhi-ncr" class="inline-flex items-center space-x-2.5 bg-white/20 backdrop-blur-sm text-white font-semibold px-6 py-2.5 rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 text-sm">
-                    <span>Book Consultation</span>
+                <?php endif; ?>
+                <?php $heroSecondary = cms_page_cta('neurocritical-acute-stroke-care', 'hero-secondary'); ?>
+                <?php if (trim($heroSecondary['text']) !== ''): ?>
+                <a href="<?php echo cms_cta_href($heroSecondary['url']); ?>" class="inline-flex items-center space-x-2.5 bg-white/20 backdrop-blur-sm text-white font-semibold px-6 py-2.5 rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300 text-sm">
+                    <span><?php echo cms_cta_text('neurocritical-acute-stroke-care', 'hero-secondary'); ?></span>
                 </a>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -85,45 +91,8 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
                 <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6"><?php echo htmlspecialchars($section['title']); ?></h2>
                 <?php echo cms_section_paragraphs($section['text']); ?>
 
-                <!-- Key Facts -->
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="flex items-start space-x-3">
-                        <div class="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-red-650 text-xs"></i>
-                        </div>
-                        <div>
-                            <div class="font-semibold text-dark-grey text-sm">Clot Retrieval</div>
-                            <div class="text-xs text-dark-grey/60">Mechanical thrombectomy</div>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <div class="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-red-650 text-xs"></i>
-                        </div>
-                        <div>
-                            <div class="font-semibold text-dark-grey text-sm">Golden Hour Care</div>
-                            <div class="text-xs text-dark-grey/60">Urgent clot-dissolving tPA</div>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <div class="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-red-650 text-xs"></i>
-                        </div>
-                        <div>
-                            <div class="font-semibold text-dark-grey text-sm">Neuro ICU Monitoring</div>
-                            <div class="text-xs text-dark-grey/60">Continuous ICP & EEG tracking</div>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <div class="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-red-650 text-xs"></i>
-                        </div>
-                        <div>
-                            <div class="font-semibold text-dark-grey text-sm">ICU Nursing</div>
-                            <div class="text-xs text-dark-grey/60">1:1 neuro-certified care</div>
-                        </div>
-                    </div>
-                </div>
+                <!-- Key Facts (CMS block) -->
+                <?php cms_render_page_block('neurocritical-acute-stroke-care', 'key-facts'); ?>
             </div>
 
             <!-- Image Side -->
@@ -136,187 +105,22 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
     </div>
 </section>
 
-<!-- BE FAST Stroke Warning Signs -->
+<!-- BE FAST Stroke Warning Signs (CMS block) -->
 <section class="py-12 bg-[#edf5f9]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-red-650 font-semibold text-sm uppercase tracking-wider">Recognition</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">BE FAST: Stroke Recognition</h2>
-            <p class="text-dark-grey/70 leading-relaxed">
-                Use the BE FAST method to immediately identify stroke symptoms in others and coordinate care.
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Sign 1 -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-red-200/30 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-red-50 rounded-xl flex items-center justify-center mb-5 group-hover:bg-red-600 transition-all duration-300">
-                    <i class="fas fa-sync text-red-650 text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Balance & Eyes</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Sudden loss of balance, trouble walking, or coordination difficulty, paired with abrupt vision changes like blurred or double vision.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-red-50 text-red-650 px-3 py-1 rounded-full font-medium">Balance Loss</span>
-                    <span class="text-xs bg-red-50 text-red-650 px-3 py-1 rounded-full font-medium">Vision Blur</span>
-                </div>
-            </div>
-
-            <!-- Sign 2 -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-red-200/30 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-red-50 rounded-xl flex items-center justify-center mb-5 group-hover:bg-red-600 transition-all duration-300">
-                    <i class="fas fa-face-meh text-red-650 text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Face & Arms</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    One side of the face droops or is numb when attempting to smile. When raising both arms, one arm drifts downward or feels weak.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-red-50 text-red-650 px-3 py-1 rounded-full font-medium">Facial Droop</span>
-                    <span class="text-xs bg-red-50 text-red-650 px-3 py-1 rounded-full font-medium">Arm Drift</span>
-                </div>
-            </div>
-
-            <!-- Sign 3 -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-red-200/30 transition-all duration-300 group">
-                <div class="w-14 h-14 bg-red-50 rounded-xl flex items-center justify-center mb-5 group-hover:bg-red-600 transition-all duration-300">
-                    <i class="fas fa-comments text-red-650 text-xl group-hover:text-white transition-colors"></i>
-                </div>
-                <h3 class="text-lg font-bold text-dark-grey mb-3">Speech & Time</h3>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                    Speech is slurred, garbled, or difficult to understand, or the person cannot speak. Time is critical  call the emergency helpline immediately.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                    <span class="text-xs bg-red-50 text-red-650 px-3 py-1 rounded-full font-medium">Slurred Speech</span>
-                    <span class="text-xs bg-red-50 text-red-650 px-3 py-1 rounded-full font-medium">Call Emergency</span>
-                </div>
-            </div>
-        </div>
+        <?php cms_render_page_block('neurocritical-acute-stroke-care', 'be-fast'); ?>
     </div>
 </section>
 
-<!-- Clinical ICU Steps -->
+<!-- Clinical ICU Steps (CMS block) -->
 <section class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-red-650 font-semibold text-sm uppercase tracking-wider">Clinical Steps</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6">Our Emergency Response Protocol</h2>
-            <p class="text-dark-grey/70 leading-relaxed">
-                Our emergency neurology protocol coordinates fast-tracked diagnostics and treatments to save brain tissue.
-            </p>
-        </div>
-
-        <!-- ICU Steps -->
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            <!-- Step 1 -->
-            <div class="relative">
-                <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-red-650 text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">1</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Rapid Brain Imaging</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Upon arrival at emergency, a non-contrast brain CT scan is performed within 25 minutes to verify the type of stroke.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-red-650/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-
-            <!-- Step 2 -->
-            <div class="relative">
-                <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-red-650 text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">2</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">IV Thrombolysis</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Clot-dissolving medication (tPA) is administered intravenously to break down blockages and restore blood circulation.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-red-650/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-
-            <!-- Step 3 -->
-            <div class="relative">
-                <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-red-650 text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">3</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">Mechanical Retrieval</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Catheter-based thrombectomy is performed in our Cath Lab to physically extract the blockage from the cerebral artery.
-                    </p>
-                </div>
-                <div class="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-red-650/30">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </div>
-            </div>
-
-            <!-- Step 4 -->
-            <div class="relative">
-                <div class="bg-slate-50 rounded-2xl p-6 border border-silver-grey/20 h-full">
-                    <div class="w-12 h-12 bg-red-650 text-white rounded-xl flex items-center justify-center font-bold text-lg mb-5">4</div>
-                    <h3 class="text-lg font-bold text-dark-grey mb-3">ICU Care & Tracking</h3>
-                    <p class="text-sm text-dark-grey/60 leading-relaxed mb-4">
-                        Transfer to the specialized Neuro-ICU for continuous intracranial pressure, blood pressure, and EEG monitoring.
-                    </p>
-                </div>
-            </div>
-        </div>
+        <?php cms_render_page_block('neurocritical-acute-stroke-care', 'emergency-protocol'); ?>
     </div>
 </section>
 
-<!-- About Doctor Section -->
-<section id="about-doctor" class="py-16 bg-white border-t border-silver-grey/40">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            <!-- Image Side -->
-            <div class="lg:col-span-5 relative observe">
-                <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-xl bg-gradient-to-br from-soft-cyan to-silver-grey">
-                    <img src="assets/dpg-1.webp" alt="Dr. Praveen Gupta" class="w-full h-full object-cover">
-                </div>
-            </div>
-
-            <!-- Content Side -->
-            <div class="lg:col-span-7 observe">
-                <span class="text-xs font-bold tracking-wider text-dark-grey/60 uppercase block mb-3 font-sans">
-                    About Dr. Praveen Gupta
-                </span>
-                <h2 class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo leading-tight mb-4">
-                    Dr. Praveen Gupta  Best Neurologist in India
-                </h2>
-
-                <!-- Prestigious Appointments -->
-                <div class="flex flex-col space-y-2.5 mb-6">
-                    <div class="flex items-center space-x-2.5 text-electric-blue font-medium text-xs md:text-sm">
-                        <i class="fa-solid fa-award text-cyan-accent flex-shrink-0 text-base"></i>
-                        <span>Chairman  Marengo Asia International Institute of Neuro and Spine</span>
-                    </div>
-                    <div class="flex items-center space-x-2.5 text-electric-blue font-medium text-xs md:text-sm">
-                        <i class="fa-solid fa-chart-line text-cyan-accent flex-shrink-0 text-base"></i>
-                        <span>Chief Clinical Strategy Growth and Innovation, North India</span>
-                    </div>
-                    <div class="flex items-center space-x-2.5 text-electric-blue font-medium text-xs md:text-sm">
-                        <i class="fa-solid fa-lightbulb text-cyan-accent flex-shrink-0 text-base"></i>
-                        <span>Chief Mentor for Start-ups</span>
-                    </div>
-                </div>
-
-                <p class="text-sm text-dark-grey/85 mb-4 leading-relaxed">
-                    With over 20 years of clinical experience, Dr. Praveen Gupta has emerged as a pioneering force in the diagnosis, treatment, and advancement of neurological sciences across India and beyond. He is responsible for several firsts in the country's neurology landscape, including establishing Gurugram's first stroke centre and conducting pioneering BMT procedures for autoimmune neuro-disorders.
-                </p>
-
-                <div>
-                    <a href="about" class="inline-flex items-center space-x-4 border-2 border-dark-grey px-6 py-2.5 rounded-full hover:bg-dark-grey hover:text-white transition-all duration-300 group">
-                        <span class="text-xs font-bold text-dark-grey group-hover:text-white transition-colors duration-300">More About Doctor</span>
-                        <div class="w-8 h-8 rounded-full bg-dark-grey text-white flex items-center justify-center text-xs group-hover:bg-white group-hover:text-dark-grey transition-colors duration-300 flex-shrink-0">
-                            <i class="fas fa-arrow-right -rotate-45 transition-transform duration-300"></i>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<!-- About Doctor Section (CMS block) -->
+<?php cms_render_page_block('neurocritical-acute-stroke-care', 'doctor'); ?>
 
 <!-- Video Testimonials (component: includes/video-testimonials.php) -->
 <?php require __DIR__ . "/includes/video-testimonials.php"; ?>

@@ -60,10 +60,13 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
             </p>
 
             <div class="flex flex-wrap items-center gap-4">
-                <a href="#directory" class="group inline-flex items-center space-x-2 text-white font-medium text-sm hover:text-cyan-accent transition-colors">
-                    <span>Browse Conditions</span>
+                <?php $heroPrimary = cms_page_cta('neurological-conditions', 'hero-primary'); ?>
+                <?php if (trim($heroPrimary['text']) !== ''): ?>
+                <a href="<?php echo cms_cta_href($heroPrimary['url']); ?>" class="group inline-flex items-center space-x-2 text-white font-medium text-sm hover:text-cyan-accent transition-colors">
+                    <span><?php echo cms_cta_text('neurological-conditions', 'hero-primary'); ?></span>
                     <i class="fas fa-arrow-down text-xs group-hover:translate-y-1 transition-transform"></i>
                 </a>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -84,97 +87,8 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
         </div>
         <?php endif; ?>
 
-        <?php
-        // Condition directory — image, title, blurb and destination for each card
-        $conditionCards = [
-            [
-                'url'   => 'stroke.php',
-                'image' => 'assets/services/stroke.png',
-                'title' => 'Brain Stroke',
-                'desc'  => 'Acute care, mechanical thrombectomy, and comprehensive neuro-rehabilitation protocols to treat and recover from strokes.',
-            ],
-            [
-                'url'   => 'epilepsy.php',
-                'image' => 'assets/services/epilepsy.png',
-                'title' => 'Epilepsy & Seizures',
-                'desc'  => 'Personalized pharmacotherapy, long-term monitoring, and surgical evaluations for complex seizure disorders.',
-            ],
-            [
-                'url'   => 'migraine.php',
-                'image' => 'assets/services/migraine.png',
-                'title' => 'Migraine',
-                'desc'  => 'Advanced prevention therapies, lifestyle modification, and specialized neuro-modulators to manage chronic migraine.',
-            ],
-            [
-                'url'   => 'headache.php',
-                'image' => 'assets/services/headache.png',
-                'title' => 'Headache Disorders',
-                'desc'  => 'Comprehensive workups for tension headaches, cluster headaches, and secondary headache symptoms.',
-            ],
-            [
-                'url'   => 'parkinsons.php',
-                'image' => 'assets/services/parkinsons.png',
-                'title' => "Parkinson's Disease",
-                'desc'  => "Symptom control, advanced pharmacology, and Deep Brain Stimulation (DBS) therapies for Parkinson's disease.",
-            ],
-            [
-                'url'   => 'ms.php',
-                'image' => 'assets/services/ms.png',
-                'title' => 'Multiple Sclerosis',
-                'desc'  => 'Immunomodulatory therapies and tailored symptom management to improve mobility and reduce relapse frequency.',
-            ],
-            [
-                'url'   => 'movement.php',
-                'image' => 'assets/services/movement.png',
-                'title' => 'Movement Disorders',
-                'desc'  => 'Specialized management of tremor, dystonia, chorea, and other complex involuntary movement issues.',
-            ],
-            [
-                'url'   => 'neuropathy.php',
-                'image' => 'assets/services/neuropathy.png',
-                'title' => 'Peripheral Neuropathy',
-                'desc'  => 'Nerve testing, neuropathic pain management, and root-cause therapies for nerve damage and sensory loss.',
-            ],
-            [
-                'url'   => 'vertigo.php',
-                'image' => 'assets/services/vertigo.png',
-                'title' => 'Vertigo & Balance',
-                'desc'  => 'Diagnostic balance assessments, vestibular testing, and physical rehabilitation programs to stop dizziness.',
-            ],
-        ];
-        ?>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <?php foreach ($conditionCards as $index => $card): ?>
-                <a href="<?php echo $card['url']; ?>"
-                   class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col"
-                   style="animation-delay: <?php echo $index * 100; ?>ms;">
-
-                    <!-- Image -->
-                    <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-6 bg-gradient-to-br from-soft-cyan to-silver-grey">
-                        <img src="<?php echo $card['image']; ?>"
-                             alt="<?php echo htmlspecialchars($card['title']); ?> treatment"
-                             loading="lazy"
-                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-
-                    <!-- Title & Arrow -->
-                    <div class="flex justify-between items-start mb-3">
-                        <h3 class="text-xl font-bold text-deep-indigo group-hover:text-electric-blue transition-colors leading-tight">
-                            <?php echo $card['title']; ?>
-                        </h3>
-                        <div class="w-10 h-10 rounded-full border border-silver-grey flex items-center justify-center text-dark-grey group-hover:text-white group-hover:bg-gradient-to-r group-hover:from-electric-blue group-hover:to-cyan-accent group-hover:border-transparent transition-all duration-300 flex-shrink-0 ml-4">
-                            <i class="fas fa-arrow-right group-hover:-rotate-45 transition-transform duration-300"></i>
-                        </div>
-                    </div>
-
-                    <!-- Description -->
-                    <p class="text-dark-grey/70 leading-relaxed text-sm">
-                        <?php echo $card['desc']; ?>
-                    </p>
-                </a>
-            <?php endforeach; ?>
-        </div>
+        <!-- Condition directory cards (CMS block) -->
+        <?php cms_render_page_block('neurological-conditions', 'condition-cards'); ?>
     </div>
 </section>
 

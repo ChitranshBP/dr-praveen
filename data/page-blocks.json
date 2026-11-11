@@ -215,15 +215,24 @@
                     "title": "Time to Call Help",
                     "text": "If the person shows any of these signs, even if the symptoms go away, check the time and call us immediately."
                 }
-            ]
+            ],
+            "options": {
+                "grid": "sm:grid-cols-2 lg:grid-cols-4 gap-6",
+                "header_margin": "mb-10",
+                "badge_class": "text-red-600 font-bold text-xs uppercase tracking-wider",
+                "title_class": "text-3xl font-bold text-dark-grey mt-2",
+                "card_class": "bg-slate-50 border border-slate-200/50 p-6 rounded-3xl space-y-4 hover:shadow-lg transition-all duration-300",
+                "item_title_class": "font-bold text-dark-grey text-base",
+                "item_text_class": "text-xs text-dark-grey/65 leading-relaxed mt-1"
+            }
         },
         "golden-hour": {
             "type": "notice",
             "notice_label": "Golden Hour Window",
             "label": "Golden Hour Protocol",
-            "badge": "Clinical Protocol",
-            "title": "Golden Hour Window",
-            "description": "When a stroke strikes, millions of brain cells die every minute. Reversing this damage is highly dependent on how quickly blood flow is restored.",
+            "badge": "",
+            "title": "",
+            "description": "",
             "items": [
                 {
                     "icon": "fas fa-clock",
@@ -233,13 +242,17 @@
                     "icon": "fas fa-brain",
                     "text": "<strong class=\"text-dark-grey font-bold\">Within 24 Hours:</strong> Advanced mechanical thrombectomy (catheter-guided clot removal) can save patients with large blood vessel blockages."
                 }
-            ]
+            ],
+            "options": {
+                "layout": "items-only",
+                "items_grid": "space-y-4",
+                "item_icon_box": "w-6 h-6 bg-red-600/10 rounded-full flex items-center justify-center text-red-600 flex-shrink-0 mt-0.5",
+                "items_text_class": "text-xs text-dark-grey/70 leading-relaxed"
+            }
         },
         "while-waiting": {
             "type": "notice",
             "label": "While Waiting for the Ambulance",
-            "notice": "numbered",
-            "numbered": true,
             "title": "What to Do While Waiting for the Ambulance",
             "items": [
                 {
@@ -256,8 +269,15 @@
                 }
             ],
             "options": {
-                "numbered": true
-            }
+                "numbered": true,
+                "layout": "panel-only",
+                "title_class": "text-xl font-bold text-dark-grey",
+                "items_grid": "grid-cols-1 gap-4",
+                "items_text_class": "text-sm text-dark-grey/70",
+                "item_text_class": "text-xs",
+                "card_class": "lg:col-span-7 bg-white p-8 rounded-3xl border border-slate-200/50 space-y-6"
+            },
+            "description": ""
         }
     },
     "brain-tumor-surgery": {
@@ -1879,7 +1899,11 @@
                         "Call Emergency"
                     ]
                 }
-            ]
+            ],
+            "options": {
+                "hover_border": "hover:border-red-200/30",
+                "badge_class": "text-red-600 font-semibold text-sm uppercase tracking-wider"
+            }
         },
         "emergency-protocol": {
             "type": "steps",
@@ -1910,7 +1934,8 @@
                 }
             ],
             "options": {
-                "number_bg": "bg-red-600"
+                "number_bg": "bg-red-600",
+                "badge_class": "text-red-600 font-semibold text-sm uppercase tracking-wider"
             }
         },
         "doctor": {
@@ -1934,9 +1959,9 @@
             "type": "links",
             "label": "Conditions Directory",
             "card_image": true,
-            "badge": "Neurology Portal",
-            "title": "Explore Medical Conditions",
-            "description": "Click on any of the specialties below to read detailed resources on symptoms, diagnosis, and care plans.",
+            "badge": "",
+            "title": "",
+            "description": "",
             "items": [
                 {
                     "image": "assets/services/stroke.png",
@@ -2020,9 +2045,9 @@
         "symptom-cards": {
             "type": "links",
             "label": "Symptoms Directory",
-            "badge": "Symptom Mapping",
-            "title": "Identify Your Symptoms",
-            "description": "Click on the symptom areas below to learn about potential underlying conditions and when to see a specialist.",
+            "badge": "",
+            "title": "",
+            "description": "",
             "items": [
                 {
                     "icon": "fas fa-head-side-cough",
@@ -2093,7 +2118,13 @@
                 }
             ],
             "panel_title": "24/7 Emergency Support",
-            "panel_text": "Under the clinical directorship of Dr. Praveen Gupta, Marengo Asia Hospital operates a dedicated 24/7 emergency stroke and seizure response protocol."
+            "panel_text": "Under the clinical directorship of Dr. Praveen Gupta, Marengo Asia Hospital operates a dedicated 24/7 emergency stroke and seizure response protocol.",
+            "options": {
+                "badge_class": "inline-flex items-center space-x-2 bg-red-100 text-red-700 text-xs font-semibold px-3 py-1.5 rounded-full border border-red-200",
+                "badge_icon": "fa-exclamation-triangle animate-pulse",
+                "title_class": "text-3xl font-bold text-deep-indigo font-serif",
+                "header_align": "left"
+            }
         }
     },
     "neuropathy": {

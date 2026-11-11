@@ -60,10 +60,13 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
             </p>
 
             <div class="flex flex-wrap items-center gap-4">
-                <a href="#symptoms-list" class="group inline-flex items-center space-x-2 text-white font-medium text-sm hover:text-cyan-accent transition-colors">
-                    <span>Explore Symptoms</span>
+                <?php $heroPrimary = cms_page_cta('neurological-symptoms', 'hero-primary'); ?>
+                <?php if (trim($heroPrimary['text']) !== ''): ?>
+                <a href="<?php echo cms_cta_href($heroPrimary['url']); ?>" class="group inline-flex items-center space-x-2 text-white font-medium text-sm hover:text-cyan-accent transition-colors">
+                    <span><?php echo cms_cta_text('neurological-symptoms', 'hero-primary'); ?></span>
                     <i class="fas fa-arrow-down text-xs group-hover:translate-y-1 transition-transform"></i>
                 </a>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -84,142 +87,15 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
         </div>
         <?php endif; ?>
 
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Symptom 1 -->
-            <div class="bg-slate-50 border border-slate-200/50 p-8 rounded-3xl space-y-4 hover:shadow-md transition-shadow">
-                <div class="w-12 h-12 bg-electric-blue/10 rounded-2xl flex items-center justify-center text-electric-blue">
-                    <i class="fas fa-head-side-cough text-xl"></i>
-                </div>
-                <h3 class="text-lg font-bold text-deep-indigo">Chronic / Severe Headaches</h3>
-                <p class="text-xs text-dark-grey/65 leading-relaxed">
-                    Recurrent throbbing, sharp headaches, or headaches accompanied by nausea, sensitivity to light/sound, or visual disturbances.
-                </p>
-                <div class="pt-2 border-t border-slate-200/40 text-[11px] text-dark-grey/60">
-                    <strong class="text-deep-indigo">Potential Causes:</strong> <a href="migraine" class="hover:text-electric-blue font-medium underline">Migraine</a>, <a href="headache" class="hover:text-electric-blue font-medium underline">Tension Headache</a>, Cluster Headache.
-                </div>
-            </div>
-
-            <!-- Symptom 2 -->
-            <div class="bg-slate-50 border border-slate-200/50 p-8 rounded-3xl space-y-4 hover:shadow-md transition-shadow">
-                <div class="w-12 h-12 bg-cyan-accent/10 rounded-2xl flex items-center justify-center text-cyan-accent">
-                    <i class="fas fa-sync-alt text-xl"></i>
-                </div>
-                <h3 class="text-lg font-bold text-deep-indigo">Dizziness & Loss of Balance</h3>
-                <p class="text-xs text-dark-grey/65 leading-relaxed">
-                    Feeling lightheaded, unsteady, or experiencing a spinning sensation (vertigo) which affects coordination or walking.
-                </p>
-                <div class="pt-2 border-t border-slate-200/40 text-[11px] text-dark-grey/60">
-                    <strong class="text-deep-indigo">Potential Causes:</strong> <a href="vertigo" class="hover:text-cyan-accent font-medium underline">Vestibular Vertigo</a>, Balance disorders, Inner-ear infection.
-                </div>
-            </div>
-
-            <!-- Symptom 3 -->
-            <div class="bg-slate-50 border border-slate-200/50 p-8 rounded-3xl space-y-4 hover:shadow-md transition-shadow">
-                <div class="w-12 h-12 bg-deep-indigo/10 rounded-2xl flex items-center justify-center text-deep-indigo">
-                    <i class="fas fa-compress-arrows-alt text-xl"></i>
-                </div>
-                <h3 class="text-lg font-bold text-deep-indigo">Numbness & Tingling</h3>
-                <p class="text-xs text-dark-grey/65 leading-relaxed">
-                    A "pins and needles" sensation, loss of feeling, or burning pain in the feet, legs, hands, or arms.
-                </p>
-                <div class="pt-2 border-t border-slate-200/40 text-[11px] text-dark-grey/60">
-                    <strong class="text-deep-indigo">Potential Causes:</strong> <a href="neuropathy" class="hover:text-electric-blue font-medium underline">Peripheral Neuropathy</a>, Radiculopathy, Nerve entrapment.
-                </div>
-            </div>
-
-            <!-- Symptom 4 -->
-            <div class="bg-slate-50 border border-slate-200/50 p-8 rounded-3xl space-y-4 hover:shadow-md transition-shadow">
-                <div class="w-12 h-12 bg-electric-blue/10 rounded-2xl flex items-center justify-center text-electric-blue">
-                    <i class="fas fa-hand-paper text-xl"></i>
-                </div>
-                <h3 class="text-lg font-bold text-deep-indigo">Tremors & Stiffness</h3>
-                <p class="text-xs text-dark-grey/65 leading-relaxed">
-                    Involuntary shaking of the hands or limbs, muscle stiffness, slowed movements, or difficulty with walking coordination.
-                </p>
-                <div class="pt-2 border-t border-slate-200/40 text-[11px] text-dark-grey/60">
-                    <strong class="text-deep-indigo">Potential Causes:</strong> <a href="parkinsons" class="hover:text-electric-blue font-medium underline">Parkinson's Disease</a>, <a href="movement" class="hover:text-electric-blue font-medium underline">Essential Tremor</a>, Movement disorders.
-                </div>
-            </div>
-
-            <!-- Symptom 5 -->
-            <div class="bg-slate-50 border border-slate-200/50 p-8 rounded-3xl space-y-4 hover:shadow-md transition-shadow">
-                <div class="w-12 h-12 bg-cyan-accent/10 rounded-2xl flex items-center justify-center text-cyan-accent">
-                    <i class="fas fa-question text-xl"></i>
-                </div>
-                <h3 class="text-lg font-bold text-deep-indigo">Memory Loss & Confusion</h3>
-                <p class="text-xs text-dark-grey/65 leading-relaxed">
-                    Persistent forgetfulness, difficulty finding words, disorientation in familiar places, or sudden changes in cognitive behavior.
-                </p>
-                <div class="pt-2 border-t border-slate-200/40 text-[11px] text-dark-grey/60">
-                    <strong class="text-deep-indigo">Potential Causes:</strong> Dementia, Early-onset Alzheimer's, Vitamin deficiencies, Neurodegeneration.
-                </div>
-            </div>
-
-            <!-- Symptom 6 -->
-            <div class="bg-slate-50 border border-slate-200/50 p-8 rounded-3xl space-y-4 hover:shadow-md transition-shadow">
-                <div class="w-12 h-12 bg-deep-indigo/10 rounded-2xl flex items-center justify-center text-deep-indigo">
-                    <i class="fas fa-dumbbell text-xl"></i>
-                </div>
-                <h3 class="text-lg font-bold text-deep-indigo">Muscle Weakness</h3>
-                <p class="text-xs text-dark-grey/65 leading-relaxed">
-                    Loss of muscle power, difficulty raising arms or legs, foot drop, or general weakness that worsens with activity.
-                </p>
-                <div class="pt-2 border-t border-slate-200/40 text-[11px] text-dark-grey/60">
-                    <strong class="text-deep-indigo">Potential Causes:</strong> <a href="ms" class="hover:text-electric-blue font-medium underline">Multiple Sclerosis</a>, Myopathies, Motor neuron diseases.
-                </div>
-            </div>
-        </div>
+        <!-- Symptom directory cards (CMS block) -->
+        <?php cms_render_page_block('neurological-symptoms', 'symptom-cards'); ?>
     </div>
 </section>
 
-<!-- Red Flag Warnings Section -->
+<!-- Red Flag Warnings Section (CMS block) -->
 <section class="py-16 bg-red-50/30 border-t border-b border-red-200/35">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-12 gap-12 items-center">
-            <!-- Left content -->
-            <div class="lg:col-span-7 space-y-6">
-                <div class="inline-flex items-center space-x-2 bg-red-100 text-red-700 text-xs font-semibold px-3 py-1.5 rounded-full border border-red-200">
-                    <i class="fas fa-exclamation-triangle animate-pulse"></i>
-                    <span>Red Flag Warning Symptoms</span>
-                </div>
-                <h2 class="text-3xl font-bold text-deep-indigo font-serif">When is it a Neurological Emergency?</h2>
-                <p class="text-sm text-dark-grey/70 leading-relaxed">
-                    Some symptoms indicate acute damage or severe threat to the nervous system. If you notice any of these signs, seek emergency care immediately.
-                </p>
-
-                <div class="grid sm:grid-cols-2 gap-6 text-xs text-dark-grey/70">
-                    <div class="flex items-start space-x-3">
-                        <i class="fas fa-chevron-right text-red-650 text-red-650 mt-1 flex-shrink-0"></i>
-                        <p><strong class="text-deep-indigo">Sudden weakness or numbness</strong> in the face, arm, or leg, especially on one side of the body.</p>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <i class="fas fa-chevron-right text-red-650 mt-1 flex-shrink-0"></i>
-                        <p><strong class="text-deep-indigo">Sudden speech difficulty</strong>, slurring, confusion, or difficulty understanding others.</p>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <i class="fas fa-chevron-right text-red-650 mt-1 flex-shrink-0"></i>
-                        <p><strong class="text-deep-indigo">Worst headache of your life</strong> (sudden onset "thunderclap" headache).</p>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <i class="fas fa-chevron-right text-red-650 mt-1 flex-shrink-0"></i>
-                        <p><strong class="text-deep-indigo">Loss of vision or double vision</strong> occurring suddenly.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right card -->
-            <div class="lg:col-span-5 bg-gradient-to-br from-red-800 via-red-950 to-slate-950 text-white p-8 rounded-3xl shadow-xl space-y-6">
-                <h3 class="text-xl font-bold font-serif">24/7 Emergency Support</h3>
-                <p class="text-xs text-white/80 leading-relaxed">
-                    Under the clinical directorship of Dr. Praveen Gupta, Marengo Asia Hospital operates a dedicated 24/7 emergency stroke and seizure response protocol.
-                </p>
-                <div class="pt-4 border-t border-white/10">
-                    <a href="emergency-neurology-care" class="block w-full text-center bg-red-600 hover:bg-red-750 hover:bg-red-700 text-white font-bold py-3 rounded-2xl transition-colors text-sm">
-                        View Emergency Protocols
-                    </a>
-                </div>
-            </div>
-        </div>
+        <?php cms_render_page_block('neurological-symptoms', 'red-flags'); ?>
     </div>
 </section>
 

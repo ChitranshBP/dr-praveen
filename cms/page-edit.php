@@ -211,6 +211,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         return $t !== '';
                     }));
                 }
+                // Directory card photos (links blocks with card_image enabled).
+                if (array_key_exists('image', $item) || array_key_exists('image_alt', $item)) {
+                    $itemImage = trim($item['image'] ?? '');
+                    if ($itemImage !== '') {
+                        $it['image'] = $itemImage;
+                    }
+                    $itemImageAlt = trim($item['image_alt'] ?? '');
+                    if ($itemImageAlt !== '') {
+                        $it['image_alt'] = $itemImageAlt;
+                    }
+                }
                 // Keep an item that only carries a URL or bullets, and drop
                 // ones left completely blank by the editor.
                 if ($it['title'] === '' && $it['text'] === '' && empty($it['bullets']) && empty($it['url']) && empty($it['subtitle'])) {
@@ -416,55 +427,16 @@ require_once __DIR__ . '/includes/header.php';
             </div>
         </div>
 
-        <!-- Main Section Content Box -->
-        <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4">
-            <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center">
-                <i class="fas fa-align-left text-brand-blue mr-2"></i> Main Body Section Content
-            </h3>
-            <p class="text-[10px] text-slate-500 -mt-2">This content is rendered in the body of the page. Service and condition templates place it inside their own layout; every other page shows it just above the footer. Leave a field empty to keep the page's built-in copy.</p>
-            <p class="text-[10px] text-amber-600 -mt-1"><i class="fas fa-circle-info mr-1"></i> Catalog placeholder text (for example “Expert Clinical Approach to…”) is ignored on the live site — replace it with your own copy to make this section appear.</p>
+        <!-- Main Body Section Content is rendered inside the "Page Sections" flow
+             below, at the position where this intro section appears on the page. -->
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Section Sub-Badge</label>
-                    <input type="text" name="section1_badge" value="<?php echo htmlspecialchars($pageData['section1_badge'] ?? ''); ?>" class="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Section Heading (H2)</label>
-                    <input type="text" name="section1_title" value="<?php echo htmlspecialchars($pageData['section1_title'] ?? ''); ?>" class="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-bold focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                </div>
-            </div>
+        <!-- Page Sections (top → bottom, mirroring the live page) -->
+        <?php
+        $editableBlocks = cms_page_blocks($slug);
+        $orderedEntries = cms_page_editor_entries($slug, $pageMeta['file'] ?? null);
+        ?>
 
-            <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Section Content Paragraphs (Full Rich Text Editor)</label>
-                <textarea name="section1_text" rows="8" class="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-sm leading-relaxed focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($pageData['section1_text'] ?? ''); ?></textarea>
-            </div>
-
-            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-3">
-                <div class="flex items-center justify-between">
-                    <label class="block text-xs font-bold text-slate-800">
-                        <i class="fas fa-camera text-brand-blue mr-1"></i> Section Feature Photo
-                    </label>
-                    <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Recommended: 800 × 600 px</span>
-                </div>
-                <p class="text-[10px] text-slate-500">Standard 4:3 landscape photo. Supported: WebP, PNG, JPG (Max 4MB).</p>
-                <?php if (!empty($pageData['section1_image'])): ?>
-                <div class="w-32 aspect-[4/3] rounded-lg overflow-hidden border border-slate-200 py-1">
-                    <img src="../<?php echo htmlspecialchars($pageData['section1_image']); ?>" class="w-full h-full object-cover" alt="<?php echo htmlspecialchars($pageData['section1_img_alt'] ?? 'Section Image'); ?>">
-                </div>
-                <?php endif; ?>
-                <input type="file" name="section1_img_file" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
-
-                <div class="pt-2 border-t border-slate-100">
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Section Photo Alt Tag</label>
-                    <input type="text" name="section1_img_alt" value="<?php echo htmlspecialchars($pageData['section1_img_alt'] ?? ''); ?>" placeholder="e.g. <?php echo htmlspecialchars($pageMeta['title'] ?? 'Treatment'); ?> Clinical Procedure" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                </div>
-            </div>
-        </div>
-
-        <!-- Editable Existing Page Sections -->
-        <?php $editableBlocks = cms_page_blocks($slug); ?>
-        <?php if (!empty($editableBlocks)): ?>
+        <?php if (!empty($orderedEntries)): ?>
         <?php
         $blockTypeMeta = [
             'cards'      => ['label' => 'Card grid', 'item_label' => 'Card'],
@@ -492,7 +464,7 @@ require_once __DIR__ . '/includes/header.php';
             'links'      => ['icon_color', 'imagepair', 'title', 'text', 'subtitle', 'url'],
             'doctor'     => ['title', 'url'],
             'cta'        => [],
-            'notice'     => ['text'],
+            'notice'     => ['icon', 'text'],
         ];
 
         /**
@@ -603,12 +575,65 @@ require_once __DIR__ . '/includes/header.php';
         <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4">
             <div>
                 <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center">
-                    <i class="fas fa-pen-to-square text-brand-blue mr-2"></i> Existing Page Content Sections
+                    <i class="fas fa-pen-to-square text-brand-blue mr-2"></i> Page Sections (in live page order)
                 </h3>
-                <p class="text-[10px] text-slate-500 mt-1">Edit the sections that already appear on this page. Changes save with the rest of the page.</p>
+                <p class="text-[10px] text-slate-500 mt-1">Every card below matches one section of the live page, top to bottom. Buttons are listed inside the section where they appear. Leave a field empty to restore its built-in default.</p>
+                <p class="text-[10px] text-amber-600 -mt-1"><i class="fas fa-circle-info mr-1"></i> Catalog placeholder text (for example “Expert Clinical Approach to…”) is ignored on the live site — replace it with your own copy to make this section appear.</p>
+                <p class="text-[10px] text-slate-500 mt-1">URL tips: another page slug e.g. <code class="font-mono">contact-us-top-neurologist-delhi-ncr</code>, an anchor <code class="font-mono">#appointment</code>, <code class="font-mono">https://…</code>, <code class="font-mono">tel:…</code>, or the tokens <code class="font-mono">{phone}</code> / <code class="font-mono">{stroke-helpline}</code> which expand to the hospital numbers.</p>
             </div>
 
-            <?php foreach ($editableBlocks as $blockKey => $block): ?>
+            <?php foreach ($orderedEntries as $entry): ?>
+
+            <?php if ($entry['kind'] === 'section1'): ?>
+            <!-- Main Body Section Content Box -->
+            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-3">
+                <div class="flex items-center justify-between">
+                    <h4 class="text-xs font-bold text-slate-800">Main Body Section Content</h4>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Intro Section</span>
+                </div>
+                <p class="text-[10px] text-slate-500">This content is rendered in the body of the page. Leave a field empty to keep the page's built-in copy.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Section Sub-Badge</label>
+                        <input type="text" name="section1_badge" value="<?php echo htmlspecialchars($pageData['section1_badge'] ?? ''); ?>" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Section Heading (H2)</label>
+                        <input type="text" name="section1_title" value="<?php echo htmlspecialchars($pageData['section1_title'] ?? ''); ?>" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-[11px] font-bold text-slate-700 mb-1">Section Content Paragraphs (Full Rich Text Editor)</label>
+                    <textarea name="section1_text" rows="6" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs leading-relaxed focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($pageData['section1_text'] ?? ''); ?></textarea>
+                </div>
+
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <label class="block text-[10px] font-bold text-slate-600">
+                            <i class="fas fa-camera text-brand-blue mr-1"></i> Section Feature Photo
+                        </label>
+                        <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Recommended: 800 × 600 px</span>
+                    </div>
+                    <p class="text-[10px] text-slate-500">Standard 4:3 landscape photo. Supported: WebP, PNG, JPG (Max 4MB).</p>
+                    <?php if (!empty($pageData['section1_image'])): ?>
+                    <div class="flex items-center space-x-3 py-1">
+                        <img src="../<?php echo htmlspecialchars($pageData['section1_image']); ?>" class="w-16 h-12 object-cover rounded-lg border border-slate-200" alt="<?php echo htmlspecialchars($pageData['section1_img_alt'] ?? 'Section Image'); ?>">
+                        <span class="text-[10px] text-slate-400 font-mono break-all"><?php echo htmlspecialchars($pageData['section1_image']); ?></span>
+                    </div>
+                    <?php endif; ?>
+                    <input type="file" name="section1_img_file" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+
+                    <div class="pt-2 border-t border-slate-100">
+                        <label class="block text-[10px] font-bold text-slate-600 mb-1">Section Photo Alt Tag</label>
+                        <input type="text" name="section1_img_alt" value="<?php echo htmlspecialchars($pageData['section1_img_alt'] ?? ''); ?>" placeholder="e.g. <?php echo htmlspecialchars($pageMeta['title'] ?? 'Treatment'); ?> Clinical Procedure" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+                </div>
+            </div>
+
+            <?php elseif ($entry['kind'] === 'block'): ?>
+            <?php $blockKey = $entry['key']; $block = $editableBlocks[$blockKey]; ?>
             <?php
                 $blockType = $block['type'] ?? 'cards';
                 if (!isset($blockTypeMeta[$blockType])) {
@@ -754,6 +779,40 @@ require_once __DIR__ . '/includes/header.php';
                     </template>
                 </div>
             </div>
+
+            <?php else: ?>
+            <?php
+                $ctaKey = $entry['key'];
+                $cta = cms_page_cta($slug, $ctaKey);
+                $showIntro = trim($cta['intro'] ?? '') !== '' || $ctaKey === 'diagnosis';
+            ?>
+            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-3">
+                <div class="flex items-center justify-between">
+                    <h4 class="text-xs font-bold text-slate-800">Buttons — <?php echo htmlspecialchars($cta['label'] ?? ucfirst(str_replace('-', ' ', $ctaKey))); ?></h4>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800 font-mono"><?php echo htmlspecialchars($ctaKey); ?></span>
+                </div>
+                <input type="hidden" name="page_ctas[<?php echo htmlspecialchars($ctaKey); ?>][_present]" value="1">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Button Text</label>
+                        <input type="text" name="page_ctas[<?php echo htmlspecialchars($ctaKey); ?>][text]" value="<?php echo htmlspecialchars($cta['text'] ?? ''); ?>" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Button URL</label>
+                        <input type="text" name="page_ctas[<?php echo htmlspecialchars($ctaKey); ?>][url]" value="<?php echo htmlspecialchars($cta['url'] ?? ''); ?>" placeholder="contact (#) / #appointment / {phone} / https://…" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-mono focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+                </div>
+
+                <?php if ($showIntro): ?>
+                <div>
+                    <label class="block text-[11px] font-bold text-slate-700 mb-1">Line Above The Buttons (optional)</label>
+                    <input type="text" name="page_ctas[<?php echo htmlspecialchars($ctaKey); ?>][intro]" value="<?php echo htmlspecialchars($cta['intro'] ?? ''); ?>" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                </div>
+                <?php endif; ?>
+            </div>
+            <?php endif; ?>
+
             <?php endforeach; ?>
         </div>
 
@@ -782,51 +841,6 @@ require_once __DIR__ . '/includes/header.php';
             if (item) item.remove();
         }
         </script>
-        <?php endif; ?>
-
-        <!-- Editable Call-to-Action Buttons -->
-        <?php if (function_exists('cms_page_cta_keys') && ($pageCtaKeys = cms_page_cta_keys($slug)) !== []): ?>
-        <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4">
-            <div>
-                <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center">
-                    <i class="fas fa-hand-pointer text-brand-blue mr-2"></i> Call-to-Action Buttons
-                </h3>
-                <p class="text-[10px] text-slate-500 mt-1">Edit the text and destination of every button on this page (hero, diagnosis, final banner, emergency card…). Leave a field blank to restore its built-in default.</p>
-                <p class="text-[10px] text-slate-500 mt-1">URL tips: another page slug e.g. <code class="font-mono">contact-us-top-neurologist-delhi-ncr</code>, an anchor <code class="font-mono">#appointment</code>, <code class="font-mono">https://…</code>, <code class="font-mono">tel:…</code>, or the tokens <code class="font-mono">{phone}</code> / <code class="font-mono">{stroke-helpline}</code> which expand to the hospital numbers.</p>
-            </div>
-
-            <?php foreach ($pageCtaKeys as $ctaKey): ?>
-            <?php
-                $cta = cms_page_cta($slug, $ctaKey);
-                $showIntro = trim($cta['intro'] ?? '') !== '' || $ctaKey === 'diagnosis';
-            ?>
-            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-3">
-                <div class="flex items-center justify-between">
-                    <h4 class="text-xs font-bold text-slate-800"><?php echo htmlspecialchars($cta['label'] ?? ucfirst(str_replace('-', ' ', $ctaKey))); ?></h4>
-                    <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800 font-mono"><?php echo htmlspecialchars($ctaKey); ?></span>
-                </div>
-                <input type="hidden" name="page_ctas[<?php echo htmlspecialchars($ctaKey); ?>][_present]" value="1">
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Button Text</label>
-                        <input type="text" name="page_ctas[<?php echo htmlspecialchars($ctaKey); ?>][text]" value="<?php echo htmlspecialchars($cta['text'] ?? ''); ?>" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Button URL</label>
-                        <input type="text" name="page_ctas[<?php echo htmlspecialchars($ctaKey); ?>][url]" value="<?php echo htmlspecialchars($cta['url'] ?? ''); ?>" placeholder="contact (#) / #appointment / {phone} / https://…" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-mono focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    </div>
-                </div>
-
-                <?php if ($showIntro): ?>
-                <div>
-                    <label class="block text-[11px] font-bold text-slate-700 mb-1">Line Above The Buttons (optional)</label>
-                    <input type="text" name="page_ctas[<?php echo htmlspecialchars($ctaKey); ?>][intro]" value="<?php echo htmlspecialchars($cta['intro'] ?? ''); ?>" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                </div>
-                <?php endif; ?>
-            </div>
-            <?php endforeach; ?>
-        </div>
         <?php endif; ?>
 
         <!-- Additional Custom Sections -->

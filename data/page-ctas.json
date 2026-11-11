@@ -109,6 +109,10 @@
             }
         },
         "neurological-symptoms": {
+            "hero-primary": {
+                "text": "Explore Symptoms",
+                "url": "#symptoms-list"
+            },
             "emergency": {
                 "text": "View Emergency Protocols",
                 "url": "emergency-neurology-care"

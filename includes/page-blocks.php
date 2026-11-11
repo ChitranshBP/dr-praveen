@@ -112,6 +112,8 @@ if (!function_exists('cms_block_color')) {
                 return ['bg-deep-indigo/10', 'group-hover:bg-deep-indigo', 'text-deep-indigo'];
             case 'red':
                 return ['bg-red-50', 'group-hover:bg-red-600', 'text-red-600'];
+            case 'dark':
+                return ['bg-dark-grey/10', 'group-hover:bg-dark-grey', 'text-dark-grey'];
             case 'electric-blue':
             default:
                 return ['bg-electric-blue/10', 'group-hover:bg-electric-blue', 'text-electric-blue'];
@@ -131,7 +133,7 @@ if (!function_exists('cms_render_block_header')) {
         ?>
         <div class="<?php echo $align === 'left' ? '' : 'text-center max-w-3xl mx-auto '; echo htmlspecialchars($margin); ?>">
             <?php if ($badge !== ''): ?>
-            <span class="<?php echo htmlspecialchars($badgeClass); ?>"><?php echo htmlspecialchars($badge); ?></span>
+            <span class="<?php echo htmlspecialchars($badgeClass); ?>"><?php if (!empty($block['badge_icon'])): ?><i class="fas <?php echo htmlspecialchars(trim((string)$block['badge_icon'])); ?> mr-2"></i><?php endif; ?><?php echo htmlspecialchars($badge); ?></span>
             <?php endif; ?>
             <?php if ($title !== ''): ?>
             <h2 class="<?php echo htmlspecialchars($titleClass); ?>"><?php echo htmlspecialchars($title); ?></h2>
@@ -151,12 +153,25 @@ if (!function_exists('cms_render_block_cards')) {
      */
     function cms_render_block_cards(array $block, array $options = []) {
         $grid = $options['grid'] ?? 'grid md:grid-cols-2 lg:grid-cols-3 gap-6';
-        cms_render_block_header($block, $options['header_margin'] ?? 'mb-16');
+        cms_render_block_header(
+            $block,
+            $options['header_margin'] ?? 'mb-16',
+            $options['title_class'] ?? '',
+            $options['header_align'] ?? 'center',
+            $options['badge_class'] ?? 'text-electric-blue font-semibold text-sm uppercase tracking-wider'
+        );
 
         $items = is_array($block['items'] ?? null) ? $block['items'] : [];
         if (empty($items)) {
             return;
         }
+        $hoverBorder = $options['hover_border'] ?? 'hover:border-electric-blue/20';
+        $cardClass = trim((string)($options['card_class'] ?? ''));
+        if ($cardClass === '') {
+            $cardClass = 'bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg ' . $hoverBorder . ' transition-all duration-300 group';
+        }
+        $itemTitleClass = $options['item_title_class'] ?? 'text-lg font-bold text-dark-grey mb-3';
+        $itemTextClass = $options['item_text_class'] ?? 'text-sm text-dark-grey/60 leading-relaxed mb-4';
         ?>
         <div class="<?php echo htmlspecialchars($grid); ?>">
             <?php foreach ($items as $item): ?>
@@ -171,7 +186,7 @@ if (!function_exists('cms_render_block_cards')) {
                     $tags = array_filter(array_map('trim', explode(',', $tags)));
                 }
             ?>
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-silver-grey/20 hover:shadow-lg hover:border-electric-blue/20 transition-all duration-300 group">
+            <div class="<?php echo htmlspecialchars($cardClass); ?>">
                 <?php $itemBadge = trim((string)($item['badge'] ?? '')); ?>
                 <?php if ($itemBadge !== ''): ?>
                 <span class="block text-4xl font-black <?php echo $textClass; ?> mb-2"><?php echo htmlspecialchars($itemBadge); ?></span>
@@ -181,12 +196,12 @@ if (!function_exists('cms_render_block_cards')) {
                     <i class="fas <?php echo htmlspecialchars($icon); ?> <?php echo $textClass; ?> text-xl group-hover:text-white transition-colors"></i>
                 </div>
                 <?php endif; ?>
-                <h3 class="text-lg font-bold text-dark-grey mb-3"><?php echo htmlspecialchars($itemTitle); ?></h3>
+                <h3 class="<?php echo htmlspecialchars($itemTitleClass); ?>"><?php echo htmlspecialchars($itemTitle); ?></h3>
                 <?php $itemSub = trim((string)($item['subtitle'] ?? '')); ?>
                 <?php if ($itemSub !== ''): ?>
                 <p class="text-xs font-semibold uppercase tracking-wider <?php echo $textClass; ?>/70 mb-2"><?php echo htmlspecialchars($itemSub); ?></p>
                 <?php endif; ?>
-                <p class="text-sm text-dark-grey/60 leading-relaxed mb-4"><?php echo htmlspecialchars($itemText); ?></p>
+                <p class="<?php echo htmlspecialchars($itemTextClass); ?>"><?php echo htmlspecialchars($itemText); ?></p>
                 <?php
                     $cardBullets = $item['bullets'] ?? [];
                     if (is_string($cardBullets)) {
@@ -327,9 +342,10 @@ if (!function_exists('cms_render_block_facts')) {
         ?>
         <div class="<?php echo htmlspecialchars($grid); ?>">
             <?php foreach ($items as $item): $icon = trim((string)($item['icon'] ?? 'fa-check')); ?>
+            <?php list($factBg, , $factText) = cms_block_color($item['color'] ?? 'electric-blue'); ?>
             <div class="flex items-start space-x-3">
-                <div class="w-8 h-8<?php echo $icon !== '' ? ' bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5' : ' hidden'; ?>">
-                    <i class="fas <?php echo htmlspecialchars($icon !== '' ? $icon : 'fa-check'); ?> text-electric-blue text-xs"></i>
+                <div class="w-8 h-8<?php echo $icon !== '' ? ' ' . $factBg . ' rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5' : ' hidden'; ?>">
+                    <i class="fas <?php echo htmlspecialchars($icon !== '' ? $icon : 'fa-check'); ?> <?php echo $factText; ?> text-xs"></i>
                 </div>
                 <div>
                     <div class="font-semibold text-dark-grey text-sm"><?php echo htmlspecialchars(trim((string)($item['title'] ?? ''))); ?></div>
@@ -576,9 +592,10 @@ if (!function_exists('cms_render_block_why_choose')) {
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 <?php echo htmlspecialchars($options['features_margin'] ?? 'mb-12'); ?>">
                     <?php foreach ($items as $item): ?>
+                    <?php list(, , $whyText) = cms_block_color($item['color'] ?? 'electric-blue'); ?>
                     <div class="flex items-start space-x-4">
                         <div class="w-12 h-12 rounded-xl bg-white border border-silver-grey flex items-center justify-center flex-shrink-0 shadow-sm text-dark-grey">
-                            <i class="<?php echo preg_match('/^fa/', trim((string)($item['icon'] ?? 'fa-award'))) ? 'fa-solid' : 'fas'; ?> <?php echo htmlspecialchars(trim((string)($item['icon'] ?? 'fa-award'))); ?> text-xl text-electric-blue"></i>
+                            <i class="<?php echo preg_match('/^fa/', trim((string)($item['icon'] ?? 'fa-award'))) ? 'fa-solid' : 'fas'; ?> <?php echo htmlspecialchars(trim((string)($item['icon'] ?? 'fa-award'))); ?> text-xl <?php echo $whyText; ?>"></i>
                         </div>
                         <div>
                             <h4 class="text-base font-bold text-deep-indigo mb-1 font-serif"><?php echo htmlspecialchars(trim((string)($item['title'] ?? ''))); ?></h4>
@@ -830,27 +847,78 @@ if (!function_exists('cms_render_block_notice')) {
             return;
         }
         $numbered = !empty($options['numbered']);
+        $layout = $options['layout'] ?? 'full';
+
+        /**
+         * One alert point: numbered chip or icon, plus basic-HTML text.
+         */
+        $renderItem = function (array $item, $index) use ($numbered, $options) {
+            $itemTextClass = trim((string)($options['item_text_class'] ?? ''));
+            ?>
+            <div class="flex items-start <?php echo $numbered ? 'space-x-3 p-4 ' . htmlspecialchars($options['numbered_item_class'] ?? 'bg-slate-50 rounded-2xl') : 'space-x-3'; ?>">
+                <?php if ($numbered): ?>
+                <span class="<?php echo htmlspecialchars($options['number_bg'] ?? 'bg-red-600'); ?> text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5"><?php echo (int)$index + 1; ?></span>
+                <?php else: ?>
+                <?php $iconBox = trim((string)($options['item_icon_box'] ?? '')); ?>
+                <?php if ($iconBox !== ''): ?>
+                <div class="<?php echo htmlspecialchars($iconBox); ?>">
+                    <i class="fas <?php echo htmlspecialchars(trim((string)($item['icon'] ?? 'fa-chevron-right'))); ?> <?php echo htmlspecialchars($options['item_icon_class'] ?? ''); ?> text-xs"></i>
+                </div>
+                <?php else: ?>
+                <i class="fas <?php echo htmlspecialchars(trim((string)($item['icon'] ?? '')) !== '' ? $item['icon'] : 'fa-chevron-right'); ?> text-red-600 mt-1 flex-shrink-0"></i>
+                <?php endif; ?>
+                <?php endif; ?>
+                <p class="<?php echo htmlspecialchars($itemTextClass); ?>"><?php echo function_exists('cms_render_html') ? cms_render_html((string)($item['text'] ?? '')) : htmlspecialchars((string)($item['text'] ?? '')); ?></p>
+            </div>
+            <?php
+        };
+
+        // "items-only": just the point list, placed beside section copy.
+        if ($layout === 'items-only') {
+            ?>
+            <div class="grid <?php echo htmlspecialchars($options['items_grid'] ?? 'sm:grid-cols-2 gap-6'); ?> <?php echo htmlspecialchars($options['items_text_class'] ?? 'text-xs text-dark-grey/70'); ?>">
+                <?php foreach ($items as $i => $item) $renderItem(is_array($item) ? $item : [], $i); ?>
+            </div>
+            <?php
+            return;
+        }
+
+        // "panel-only": a standalone card with heading + numbered points.
+        if ($layout === 'panel-only') {
+            $panelTitle = trim((string)($block['title'] ?? ''));
+            if ($panelTitle === '' && empty($items)) {
+                return;
+            }
+            ?>
+            <div class="<?php echo htmlspecialchars($options['card_class'] ?? 'bg-white p-8 rounded-3xl border border-slate-200/50 space-y-6'); ?>">
+                <?php if ($panelTitle !== ''): ?>
+                <h3 class="<?php echo htmlspecialchars($options['title_class'] ?? 'text-xl font-bold text-dark-grey'); ?>"><?php echo htmlspecialchars($panelTitle); ?></h3>
+                <?php endif; ?>
+                <div class="grid <?php echo htmlspecialchars($options['items_grid'] ?? 'grid-cols-1 gap-4'); ?> <?php echo htmlspecialchars($options['items_text_class'] ?? 'text-sm text-dark-grey/70'); ?>">
+                    <?php foreach ($items as $i => $item) $renderItem(is_array($item) ? $item : [], $i); ?>
+                </div>
+            </div>
+            <?php
+            return;
+        }
         ?>
         <div class="grid lg:grid-cols-12 gap-12 items-center">
             <!-- Left content -->
             <div class="<?php echo htmlspecialchars($options['left_cols'] ?? 'lg:col-span-7 space-y-6'); ?>">
-                <?php cms_render_block_header($block, 'mb-0'); ?>
+                <?php cms_render_block_header(
+                    $block,
+                    'mb-0',
+                    $options['title_class'] ?? '',
+                    $options['header_align'] ?? 'left',
+                    $options['badge_class'] ?? 'text-electric-blue font-semibold text-sm uppercase tracking-wider'
+                ); ?>
                 <?php if ($text !== ''): ?>
                 <p class="<?php echo htmlspecialchars($options['text_class'] ?? 'text-sm text-dark-grey/70 leading-relaxed'); ?>">
                     <?php echo htmlspecialchars($text); ?>
                 </p>
                 <?php endif; ?>
-                <div class="grid <?php echo htmlspecialchars($options['items_grid'] ?? 'sm:grid-cols-2 gap-6'); ?> text-xs text-dark-grey/70">
-                    <?php foreach ($items as $i => $item): ?>
-                    <div class="flex items-start <?php echo $numbered ? 'space-x-3 p-4 bg-slate-50 rounded-2xl' : 'space-x-3'; ?>">
-                        <?php if ($numbered): ?>
-                        <span class="bg-red-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5"><?php echo (int)$i + 1; ?></span>
-                        <?php else: ?>
-                        <i class="fas <?php echo htmlspecialchars(trim((string)($item['icon'] ?? 'fa-chevron-right'))); ?> text-red-600 mt-1 flex-shrink-0"></i>
-                        <?php endif; ?>
-                        <p><?php echo function_exists('cms_render_html') ? cms_render_html((string)($item['text'] ?? '')) : htmlspecialchars((string)($item['text'] ?? '')); ?></p>
-                    </div>
-                    <?php endforeach; ?>
+                <div class="grid <?php echo htmlspecialchars($options['items_grid'] ?? 'sm:grid-cols-2 gap-6'); ?> <?php echo htmlspecialchars($options['items_text_class'] ?? 'text-xs text-dark-grey/70'); ?>">
+                    <?php foreach ($items as $i => $item) $renderItem(is_array($item) ? $item : [], $i); ?>
                 </div>
             </div>
 
@@ -939,6 +1007,123 @@ if (!function_exists('cms_render_block_links')) {
             <?php endforeach; ?>
         </div>
         <?php
+    }
+}
+
+if (!function_exists('cms_page_section_flow')) {
+    /**
+     * Scan the page's live template file and return the visual order of its
+     * editable blocks and CTA buttons (top → bottom), so the editor can
+     * mirror the page section by section instead of using storage order.
+     */
+    function cms_page_section_flow($slug, $templateFile = null) {
+        $flow = [];
+        if (!$templateFile) {
+            return $flow;
+        }
+        $path = dirname(__DIR__) . '/' . ltrim((string)$templateFile, '/');
+        if (!is_file($path)) {
+            return $flow;
+        }
+        $src = @file_get_contents($path);
+        if ($src === false) {
+            return $flow;
+        }
+        $slugPattern = preg_quote((string)$slug, '/');
+        if (!preg_match_all('/cms_(?:render_page_block|page_cta)\(\s*[\'"]' . $slugPattern . '[\'"]\s*,\s*[\'"]([a-zA-Z0-9_-]+)[\'"]/', $src, $m, PREG_OFFSET_CAPTURE)) {
+            return $flow;
+        }
+        $hits = $m[1];
+        usort($hits, function ($a, $b) {
+            return $a[1] - $b[1];
+        });
+        foreach ($hits as $hit) {
+            $flow[] = $hit[0];
+        }
+        return $flow;
+    }
+}
+
+if (!function_exists('cms_page_editor_entries')) {
+    /**
+     * Build the editor's card list for one page, mirroring the live page
+     * top → bottom. Returns a list of entries:
+     *   ['kind' => 'cta', 'key' => ...]      one editable button group
+     *   ['kind' => 'block', 'key' => ...]    one editable content block
+     *   ['kind' => 'section1']               the page's main body intro section
+     *
+     * The order comes from scanning the page's template file for
+     * cms_render_page_block() / cms_page_cta() calls. Buttons that a block
+     * renders internally (final banner, emergency card, doctor button…) are
+     * attached to that block. CTA keys the page never uses are omitted, and
+     * the "What is …" intro section is placed right before the first block,
+     * exactly where it renders on the page.
+     */
+    function cms_page_editor_entries($slug, $templateFile = null) {
+        $editableBlocks = cms_page_blocks($slug);
+        $allCtaKeys = function_exists('cms_page_cta_keys') ? cms_page_cta_keys($slug) : [];
+        $flowKeys = cms_page_section_flow($slug, $templateFile);
+
+        $blockCtaMap = [
+            'why-choose' => ['why-choose'],
+            'cta'        => ['final-primary', 'final-secondary'],
+            'notice'     => ['emergency'],
+            'doctor'     => ['doctor-more'],
+        ];
+
+        $orderedEntries = [];
+        $seenBlocks = [];
+        $usedCtas = [];
+        foreach ($flowKeys as $flowKey) {
+            if (isset($seenBlocks[$flowKey]) || isset($usedCtas[$flowKey])) {
+                continue;
+            }
+            if (isset($editableBlocks[$flowKey])) {
+                $orderedEntries[] = ['kind' => 'block', 'key' => $flowKey];
+                $seenBlocks[$flowKey] = true;
+                $flowBlockType = $editableBlocks[$flowKey]['type'] ?? 'cards';
+                foreach ($blockCtaMap[$flowBlockType] ?? [] as $mapCtaKey) {
+                    // The emergency button only exists on notice blocks that
+                    // render their dark panel (layout "full" with a panel title).
+                    if ($flowBlockType === 'notice') {
+                        $noticeOptions = (isset($editableBlocks[$flowKey]['options']) && is_array($editableBlocks[$flowKey]['options'])) ? $editableBlocks[$flowKey]['options'] : [];
+                        $noticeLayout = $noticeOptions['layout'] ?? 'full';
+                        if ($noticeLayout !== 'full' || trim((string)($editableBlocks[$flowKey]['panel_title'] ?? '')) === '') {
+                            continue;
+                        }
+                    }
+                    if (in_array($mapCtaKey, $allCtaKeys, true) && empty($usedCtas[$mapCtaKey])) {
+                        $orderedEntries[] = ['kind' => 'cta', 'key' => $mapCtaKey];
+                        $usedCtas[$mapCtaKey] = true;
+                    }
+                }
+            } elseif (in_array($flowKey, $allCtaKeys, true)) {
+                $orderedEntries[] = ['kind' => 'cta', 'key' => $flowKey];
+                $usedCtas[$flowKey] = true;
+            }
+        }
+        // Blocks the scan did not find (safety net) keep their storage order, last.
+        foreach ($editableBlocks as $blockKey => $block) {
+            if (empty($seenBlocks[$blockKey])) {
+                $orderedEntries[] = ['kind' => 'block', 'key' => $blockKey];
+                $seenBlocks[$blockKey] = true;
+            }
+        }
+        // The "What is …" intro section renders right before the first content
+        // block on the live page — mirror that position here.
+        $withSection1 = [];
+        $section1Placed = false;
+        foreach ($orderedEntries as $entry) {
+            if (!$section1Placed && $entry['kind'] === 'block') {
+                $withSection1[] = ['kind' => 'section1'];
+                $section1Placed = true;
+            }
+            $withSection1[] = $entry;
+        }
+        if (!$section1Placed) {
+            $withSection1[] = ['kind' => 'section1'];
+        }
+        return $withSection1;
     }
 }
 

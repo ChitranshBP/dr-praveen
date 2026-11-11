@@ -114,7 +114,7 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
 </section>
 
 <!-- About Doctor Section (CMS block) -->
-                <?php cms_render_page_block('memory-clinic', 'doctor', ['bg' => '#edf5f9']); ?>
+                <?php cms_render_page_block('memory-clinic', 'doctor', ['bg' => 'bg-[#edf5f9]', 'card_bg' => 'bg-white']); ?>
 
 <!-- Video Testimonials (component: includes/video-testimonials.php) -->
 <?php require __DIR__ . "/includes/video-testimonials.php"; ?>
