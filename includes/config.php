@@ -1233,45 +1233,14 @@ function get_page_section($pageContent, $defaults = [], $markUsed = true) {
         $GLOBALS['cms_page_section_used'] = true;
     }
 
-    $defaults = array_merge([
-        'badge' => '',
-        'title' => '',
-        'text' => '',
-        'image' => '',
-        'image_alt' => '',
-    ], is_array($defaults) ? $defaults : []);
-
-    $pageContent = is_array($pageContent) ? $pageContent : [];
-
-    $badge = trim((string)($pageContent['section1_badge'] ?? ''));
-    $title = trim((string)($pageContent['section1_title'] ?? ''));
-    $text  = trim((string)($pageContent['section1_text'] ?? ''));
-    $image = trim((string)($pageContent['section1_image'] ?? ''));
-    $imageAlt = trim((string)($pageContent['section1_img_alt'] ?? ''));
-
-    $titlePlain = trim(preg_replace('/\s+/u', ' ', html_entity_decode(strip_tags($title), ENT_QUOTES | ENT_HTML5, 'UTF-8')));
-    $textPlain  = trim(preg_replace('/\s+/u', ' ', html_entity_decode(strip_tags($text), ENT_QUOTES | ENT_HTML5, 'UTF-8')));
-
-    $titleIsPlaceholder = ($title === '' || strpos($titlePlain, 'Expert Clinical Approach to ') === 0);
-    $textIsPlaceholder  = ($text === '' || strpos($textPlain, 'Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for ') === 0);
-    // Breadcrumb banners are hero images, not 4:3 body photos.
-    $imageIsPlaceholder = ($image === '' || strpos($image, 'assets/breadcrumbs/') === 0);
-
-    if ($titleIsPlaceholder) $title = $defaults['title'];
-    if ($textIsPlaceholder)  $text  = $defaults['text'];
-    if ($imageIsPlaceholder) $image = $defaults['image'];
-    $genericBadges = ['Specialist Care', 'General Guide', 'Conditions Guide', 'Services Guide', 'Patient Info Guide'];
-    if ($badge === '' || in_array($badge, $genericBadges, true)) {
-        $badge = $defaults['badge'];
-    }
-    if ($imageAlt === '') $imageAlt = $defaults['image_alt'];
+    $resolved = cms_section_resolve(is_array($pageContent) ? $pageContent : [], $defaults);
 
     return [
-        'badge' => $badge,
-        'title' => $title,
-        'text' => $text,
-        'image' => cms_media_path($image, $defaults['image']),
-        'image_alt' => $imageAlt,
+        'badge' => $resolved['badge'],
+        'title' => $resolved['title'],
+        'text' => $resolved['text'],
+        'image' => cms_media_path($resolved['image'], $defaults['image'] ?? ''),
+        'image_alt' => $resolved['image_alt'],
     ];
 }
 

@@ -32,6 +32,94 @@ if (empty($pageData) && $pageMeta) {
 // section read the section1_* fields directly; the rest are printed by
 // includes/cms-sections.php before the footer.
 
+if (!function_exists('cms_template_section_defaults')) {
+    /**
+     * Extract the built-in "Main Body Section" copy a template falls back to
+     * when the CMS fields are empty or still hold catalog placeholder text.
+     * Reads the get_page_section($pageContent, [...]) call from the template
+     * so the editor can show exactly the copy that is live on the page.
+     */
+    function cms_template_section_defaults($templateFile) {
+        $empty = ['badge' => '', 'title' => '', 'text' => '', 'image' => '', 'image_alt' => ''];
+        if (!$templateFile) {
+            return $empty;
+        }
+        $path = dirname(__DIR__) . '/' . ltrim((string)$templateFile, '/');
+        if (!is_file($path)) {
+            return $empty;
+        }
+        $src = @file_get_contents($path);
+        if ($src === false) {
+            return $empty;
+        }
+        $tokens = @token_get_all($src);
+        $n = count($tokens);
+        for ($i = 0; $i < $n; $i++) {
+            $t = $tokens[$i];
+            if (!is_array($t) || $t[0] !== T_STRING || strtolower($t[1]) !== 'get_page_section') {
+                continue;
+            }
+            // Find the opening parenthesis.
+            $j = $i + 1;
+            while ($j < $n && is_array($tokens[$j]) && in_array($tokens[$j][0], [T_WHITESPACE, T_COMMENT], true)) {
+                $j++;
+            }
+            if ($j >= $n || $tokens[$j] !== '(') {
+                continue;
+            }
+            // Walk the argument list; capture the 2nd argument (the defaults array).
+            $depth = 0;
+            $argStart = null;
+            $argEnd = null;
+            $commaSeen = 0;
+            for ($k = $j; $k < $n; $k++) {
+                $tok = $tokens[$k];
+                if ($tok === '(' || $tok === '[') {
+                    $depth++;
+                    continue;
+                }
+                if ($tok === ')' || $tok === ']') {
+                    $depth--;
+                    if ($depth === 0) {
+                        $argEnd = $k - 1;
+                        break;
+                    }
+                    continue;
+                }
+                if ($depth === 1 && $tok === ',') {
+                    $commaSeen++;
+                    if ($commaSeen === 1) {
+                        $argStart = $k + 1;
+                    }
+                }
+            }
+            if ($argStart === null || $argEnd === null || $argEnd < $argStart) {
+                continue;
+            }
+            // Rebuild the array literal from the tokens (drops comments/whitespace noise is fine — eval needs valid PHP).
+            $literal = '';
+            for ($k = $argStart; $k <= $argEnd; $k++) {
+                $tok = $tokens[$k];
+                $literal .= is_array($tok) ? $tok[1] : $tok;
+            }
+            $literal = trim($literal);
+            if ($literal === '' || $literal[0] !== '[') {
+                continue;
+            }
+            $result = null;
+            try {
+                $result = eval("return {$literal};");
+            } catch (ParseError $e) {
+                $result = null;
+            }
+            if (is_array($result)) {
+                return array_merge($empty, $result);
+            }
+        }
+        return $empty;
+    }
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     cms_verify_csrf();
 
@@ -458,6 +546,10 @@ require_once __DIR__ . '/includes/header.php';
         <?php
         $editableBlocks = cms_page_blocks($slug);
         $orderedEntries = cms_page_editor_entries($slug, $pageMeta['file'] ?? null);
+        // The Main Body card shows the copy that is live right now: saved
+        // values, falling back to the template's built-in section copy when
+        // the saved value is empty or still catalog placeholder text.
+        $effectiveSection = cms_section_resolve($pageData, cms_template_section_defaults($pageMeta['file'] ?? null));
         ?>
 
         <?php if (!empty($orderedEntries)): ?>
@@ -610,35 +702,43 @@ require_once __DIR__ . '/includes/header.php';
                     <i class="fas fa-pen-to-square text-brand-blue mr-2"></i> Page Sections (in live page order)
                 </h3>
                 <p class="text-[10px] text-slate-500 mt-1">Every card below matches one section of the live page, top to bottom. Buttons are listed inside the section where they appear. Leave a field empty to restore its built-in default.</p>
-                <p class="text-[10px] text-amber-600 -mt-1"><i class="fas fa-circle-info mr-1"></i> Catalog placeholder text (for example “Expert Clinical Approach to…”) is ignored on the live site — replace it with your own copy to make this section appear.</p>
+                <p class="text-[10px] text-slate-500 mt-1"><i class="fas fa-circle-info mr-1"></i> Fields show the copy that is live on the website right now. Clearing a field restores the page's built-in default copy.</p>
                 <p class="text-[10px] text-slate-500 mt-1">URL tips: another page slug e.g. <code class="font-mono">contact-us-top-neurologist-delhi-ncr</code>, an anchor <code class="font-mono">#appointment</code>, <code class="font-mono">https://…</code>, <code class="font-mono">tel:…</code>, or the tokens <code class="font-mono">{phone}</code> / <code class="font-mono">{stroke-helpline}</code> which expand to the hospital numbers.</p>
             </div>
 
             <?php foreach ($orderedEntries as $entry): ?>
 
             <?php if ($entry['kind'] === 'section1'): ?>
+            <?php
+                // What the website prints right now for this intro section.
+                $effBadge = (string)($effectiveSection['badge'] ?? '');
+                $effTitle = (string)($effectiveSection['title'] ?? '');
+                $effText = (string)($effectiveSection['text'] ?? '');
+                $effImage = (string)($effectiveSection['image'] ?? '');
+                $effImageAlt = (string)($effectiveSection['image_alt'] ?? '');
+            ?>
             <!-- Main Body Section Content Box -->
             <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-3">
                 <div class="flex items-center justify-between">
                     <h4 class="text-xs font-bold text-slate-800">Main Body Section Content</h4>
                     <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Intro Section</span>
                 </div>
-                <p class="text-[10px] text-slate-500">This content is rendered in the body of the page. Leave a field empty to keep the page's built-in copy.</p>
+                <p class="text-[10px] text-slate-500">This content is rendered in the body of the page. The fields below show exactly what the website is displaying right now — edit to change it, or clear a field to restore the page's built-in copy.</p>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                     <div>
                         <label class="block text-[11px] font-bold text-slate-700 mb-1">Section Sub-Badge</label>
-                        <input type="text" name="section1_badge" value="<?php echo htmlspecialchars($pageData['section1_badge'] ?? ''); ?>" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <input type="text" name="section1_badge" value="<?php echo htmlspecialchars($effBadge); ?>" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
                     </div>
                     <div>
                         <label class="block text-[11px] font-bold text-slate-700 mb-1">Section Heading (H2)</label>
-                        <input type="text" name="section1_title" value="<?php echo htmlspecialchars($pageData['section1_title'] ?? ''); ?>" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <input type="text" name="section1_title" value="<?php echo htmlspecialchars($effTitle); ?>" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
                     </div>
                 </div>
 
                 <div>
                     <label class="block text-[11px] font-bold text-slate-700 mb-1">Section Content Paragraphs (Full Rich Text Editor)</label>
-                    <textarea name="section1_text" rows="6" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs leading-relaxed focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($pageData['section1_text'] ?? ''); ?></textarea>
+                    <textarea name="section1_text" rows="6" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs leading-relaxed focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($effText); ?></textarea>
                 </div>
 
                 <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-2">
@@ -649,17 +749,17 @@ require_once __DIR__ . '/includes/header.php';
                         <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Recommended: 800 × 600 px</span>
                     </div>
                     <p class="text-[10px] text-slate-500">Standard 4:3 landscape photo. Supported: WebP, PNG, JPG (Max 4MB).</p>
-                    <?php if (!empty($pageData['section1_image'])): ?>
+                    <?php if ($effImage !== ''): ?>
                     <div class="flex items-center space-x-3 py-1">
-                        <img src="../<?php echo htmlspecialchars($pageData['section1_image']); ?>" class="w-16 h-12 object-cover rounded-lg border border-slate-200" alt="<?php echo htmlspecialchars($pageData['section1_img_alt'] ?? 'Section Image'); ?>">
-                        <span class="text-[10px] text-slate-400 font-mono break-all"><?php echo htmlspecialchars($pageData['section1_image']); ?></span>
+                        <img src="../<?php echo htmlspecialchars($effImage); ?>" class="w-16 h-12 object-cover rounded-lg border border-slate-200" alt="<?php echo htmlspecialchars($effImageAlt !== '' ? $effImageAlt : 'Section Image'); ?>">
+                        <span class="text-[10px] text-slate-400 font-mono break-all"><?php echo htmlspecialchars($effImage); ?></span>
                     </div>
                     <?php endif; ?>
                     <input type="file" name="section1_img_file" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
 
                     <div class="pt-2 border-t border-slate-100">
                         <label class="block text-[10px] font-bold text-slate-600 mb-1">Section Photo Alt Tag</label>
-                        <input type="text" name="section1_img_alt" value="<?php echo htmlspecialchars($pageData['section1_img_alt'] ?? ''); ?>" placeholder="e.g. <?php echo htmlspecialchars($pageMeta['title'] ?? 'Treatment'); ?> Clinical Procedure" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <input type="text" name="section1_img_alt" value="<?php echo htmlspecialchars($effImageAlt); ?>" placeholder="e.g. <?php echo htmlspecialchars($pageMeta['title'] ?? 'Treatment'); ?> Clinical Procedure" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
                     </div>
                 </div>
             </div>
@@ -684,6 +784,12 @@ require_once __DIR__ . '/includes/header.php';
                         <?php echo htmlspecialchars($meta['label']); ?>
                     </span>
                 </div>
+
+                <?php if (trim((string)($block['badge'] ?? '')) === '' && trim((string)($block['title'] ?? '')) === '' && trim((string)($block['description'] ?? '')) === ''): ?>
+                <p class="text-[10px] text-blue-700 bg-blue-50 border border-blue-100 rounded-lg px-2.5 py-1.5">
+                    <i class="fas fa-circle-info mr-1"></i> This block prints no heading of its own on the website. The heading shown above it comes from the <strong>Main Body Section Content</strong> card — edit it there. (Anything typed into the fields below would add an extra heading inside this block.)
+                </p>
+                <?php endif; ?>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                     <div>

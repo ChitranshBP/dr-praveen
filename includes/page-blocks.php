@@ -121,6 +121,62 @@ if (!function_exists('cms_block_color')) {
     }
 }
 
+if (!function_exists('cms_section_resolve')) {
+    /**
+     * Resolve the effective "Main Body Section" copy for a page.
+     *
+     * The catalog generator seeded every page with placeholder copy such as
+     * "Expert Clinical Approach to ...". Those values must not replace the
+     * real section that is hard-coded in a template, otherwise every page
+     * turns into generic boilerplate. A saved field is used only once an
+     * editor has changed it; empty/placeholder fields fall back to the
+     * template's built-in defaults.
+     *
+     * Used by get_page_section() on the frontend and by the page editor so
+     * the CMS shows exactly the copy that is live.
+     */
+    function cms_section_resolve(array $saved, array $defaults = []) {
+        $defaults = array_merge([
+            'badge' => '',
+            'title' => '',
+            'text' => '',
+            'image' => '',
+            'image_alt' => '',
+        ], is_array($defaults) ? $defaults : []);
+
+        $badge = trim((string)($saved['section1_badge'] ?? ''));
+        $title = trim((string)($saved['section1_title'] ?? ''));
+        $text  = trim((string)($saved['section1_text'] ?? ''));
+        $image = trim((string)($saved['section1_image'] ?? ''));
+        $imageAlt = trim((string)($saved['section1_img_alt'] ?? ''));
+
+        $titlePlain = trim(preg_replace('/\s+/u', ' ', html_entity_decode(strip_tags($title), ENT_QUOTES | ENT_HTML5, 'UTF-8')));
+        $textPlain  = trim(preg_replace('/\s+/u', ' ', html_entity_decode(strip_tags($text), ENT_QUOTES | ENT_HTML5, 'UTF-8')));
+
+        $titleIsPlaceholder = ($title === '' || strpos($titlePlain, 'Expert Clinical Approach to ') === 0);
+        $textIsPlaceholder  = ($text === '' || strpos($textPlain, 'Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for ') === 0);
+        // Breadcrumb banners are hero images, not 4:3 body photos.
+        $imageIsPlaceholder = ($image === '' || strpos($image, 'assets/breadcrumbs/') === 0);
+
+        if ($titleIsPlaceholder) $title = $defaults['title'];
+        if ($textIsPlaceholder)  $text  = $defaults['text'];
+        if ($imageIsPlaceholder) $image = $defaults['image'];
+        $genericBadges = ['Specialist Care', 'General Guide', 'Conditions Guide', 'Services Guide', 'Patient Info Guide'];
+        if ($badge === '' || in_array($badge, $genericBadges, true)) {
+            $badge = $defaults['badge'];
+        }
+        if ($imageAlt === '') $imageAlt = $defaults['image_alt'];
+
+        return [
+            'badge' => $badge,
+            'title' => $title,
+            'text' => $text,
+            'image' => $image,
+            'image_alt' => $imageAlt,
+        ];
+    }
+}
+
 if (!function_exists('cms_render_block_header')) {
     function cms_render_block_header(array $block, $margin = 'mb-16', $titleClass = '', $align = 'center', $badgeClass = 'text-electric-blue font-semibold text-sm uppercase tracking-wider') {
         $badge = trim((string)($block['badge'] ?? ''));
