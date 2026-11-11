@@ -785,12 +785,14 @@ require_once __DIR__ . '/includes/header.php';
                     </span>
                 </div>
 
-                <?php if (trim((string)($block['badge'] ?? '')) === '' && trim((string)($block['title'] ?? '')) === '' && trim((string)($block['description'] ?? '')) === ''): ?>
+                <?php $blockHasOwnHeader = trim((string)($block['badge'] ?? '')) !== '' || trim((string)($block['title'] ?? '')) !== '' || trim((string)($block['description'] ?? '')) !== ''; ?>
+                <?php if (!$blockHasOwnHeader): ?>
                 <p class="text-[10px] text-blue-700 bg-blue-50 border border-blue-100 rounded-lg px-2.5 py-1.5">
-                    <i class="fas fa-circle-info mr-1"></i> This block prints no heading of its own on the website. The heading shown above it comes from the <strong>Main Body Section Content</strong> card — edit it there. (Anything typed into the fields below would add an extra heading inside this block.)
+                    <i class="fas fa-circle-info mr-1"></i> This block prints no heading of its own on the website. The heading shown above it comes from the <strong>Main Body Section Content</strong> card — edit it there.
                 </p>
                 <?php endif; ?>
 
+                <?php if ($blockHasOwnHeader): ?>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                     <div>
                         <label class="block text-[11px] font-bold text-slate-700 mb-1">Sub-Badge</label>
@@ -806,6 +808,7 @@ require_once __DIR__ . '/includes/header.php';
                     <label class="block text-[11px] font-bold text-slate-700 mb-1">Introductory Paragraph</label>
                     <textarea name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][description]" rows="2" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs leading-relaxed focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($block['description'] ?? ''); ?></textarea>
                 </div>
+                <?php endif; ?>
 
                 <?php if (!empty($meta['block_image'])): ?>
                 <div class="bg-white p-3 rounded-xl border border-slate-200 space-y-2">
