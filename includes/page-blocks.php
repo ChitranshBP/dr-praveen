@@ -1068,7 +1068,7 @@ if (!function_exists('cms_page_editor_entries')) {
             'why-choose' => ['why-choose'],
             'cta'        => ['final-primary', 'final-secondary'],
             'notice'     => ['emergency'],
-            'doctor'     => ['doctor-more'],
+            'doctor'     => ['doctor-more'], // attached only for the "about" layout below
         ];
 
         $orderedEntries = [];
@@ -1089,6 +1089,13 @@ if (!function_exists('cms_page_editor_entries')) {
                         $noticeOptions = (isset($editableBlocks[$flowKey]['options']) && is_array($editableBlocks[$flowKey]['options'])) ? $editableBlocks[$flowKey]['options'] : [];
                         $noticeLayout = $noticeOptions['layout'] ?? 'full';
                         if ($noticeLayout !== 'full' || trim((string)($editableBlocks[$flowKey]['panel_title'] ?? '')) === '') {
+                            continue;
+                        }
+                    }
+                    // The doctor-more button only exists on "about" layout
+                    // doctor sections; the profile layout uses items links.
+                    if ($flowBlockType === 'doctor' && $mapCtaKey === 'doctor-more') {
+                        if (($editableBlocks[$flowKey]['layout'] ?? 'profile') !== 'about') {
                             continue;
                         }
                     }

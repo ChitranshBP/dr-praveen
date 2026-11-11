@@ -169,23 +169,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             $block['items'] = [];
-            foreach (($pb['items'] ?? []) as $item) {
+            $baseItems = is_array($base['items'] ?? null) ? array_values($base['items']) : [];
+            foreach (($pb['items'] ?? []) as $ii => $item) {
                 if (!is_array($item)) {
                     continue;
                 }
+                // The base/default item at the same position carries fields the
+                // editor does not render for this block type (badge, subtitle,
+                // icon colour, photos…). They must survive the save untouched.
+                $baseItem = (isset($baseItems[$ii]) && is_array($baseItems[$ii])) ? $baseItems[$ii] : [];
                 $it = [
                     'title' => trim($item['title'] ?? ''),
                     'text'  => trim($item['text'] ?? ''),
                 ];
-                $extraTitle = trim($item['subtitle'] ?? '');
+                $extraTitle = trim($item['subtitle'] ?? ($baseItem['subtitle'] ?? ''));
                 if ($extraTitle !== '') {
                     $it['subtitle'] = $extraTitle;
                 }
-                $extraBadge = trim($item['badge'] ?? '');
+                $extraBadge = trim($item['badge'] ?? ($baseItem['badge'] ?? ''));
                 if ($extraBadge !== '') {
                     $it['badge'] = $extraBadge;
                 }
-                $extraUrl = trim($item['url'] ?? '');
+                $extraUrl = trim($item['url'] ?? ($baseItem['url'] ?? ''));
                 if ($extraUrl !== '') {
                     $it['url'] = $extraUrl;
                 }
@@ -196,10 +201,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }));
                 if (!empty($bullets)) {
                     $it['bullets'] = $bullets;
+                } elseif (isset($baseItem['bullets']) && is_array($baseItem['bullets']) && !isset($item['bullets'])) {
+                    $it['bullets'] = array_values($baseItem['bullets']);
                 }
                 if (array_key_exists('icon', $item)) {
                     $icon = trim($item['icon'] ?? '');
-                    $it['icon'] = $icon !== '' ? $icon : 'fa-check';
+                    $baseIcon = trim((string)($baseItem['icon'] ?? ''));
+                    // Empty field: keep the base icon when the base itself was
+                    // empty (e.g. chevron defaults), otherwise fall back to the
+                    // standard check icon.
+                    $it['icon'] = $icon !== '' ? $icon : ($baseIcon === '' && array_key_exists('icon', $baseItem) ? '' : 'fa-check');
                     $color = $item['color'] ?? 'electric-blue';
                     if (!in_array($color, ['electric-blue', 'cyan-accent', 'deep-indigo', 'red', 'dark'], true)) {
                         $color = 'electric-blue';
@@ -210,6 +221,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $it['tags'] = array_values(array_filter(array_map('trim', $tags), function ($t) {
                         return $t !== '';
                     }));
+                } elseif (isset($baseItem['icon']) && !isset($item['icon'])) {
+                    $it['icon'] = trim((string)$baseItem['icon']);
+                    if (isset($baseItem['color'])) {
+                        $it['color'] = $baseItem['color'];
+                    }
+                    if (isset($baseItem['tags']) && is_array($baseItem['tags'])) {
+                        $it['tags'] = array_values($baseItem['tags']);
+                    }
                 }
                 // Directory card photos (links blocks with card_image enabled).
                 if (array_key_exists('image', $item) || array_key_exists('image_alt', $item)) {
@@ -220,6 +239,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $itemImageAlt = trim($item['image_alt'] ?? '');
                     if ($itemImageAlt !== '') {
                         $it['image_alt'] = $itemImageAlt;
+                    }
+                } elseif (isset($baseItem['image']) && !isset($item['image'])) {
+                    $it['image'] = trim((string)$baseItem['image']);
+                    if (isset($baseItem['image_alt'])) {
+                        $it['image_alt'] = trim((string)$baseItem['image_alt']);
                     }
                 }
                 // Keep an item that only carries a URL or bullets, and drop
@@ -453,7 +477,7 @@ require_once __DIR__ . '/includes/header.php';
             'notice'     => ['label' => 'Alert panel', 'item_label' => 'Point', 'block_panel' => true],
         ];
         $blockItemFields = [
-            'cards'      => ['icon_color', 'title', 'text', 'bullets', 'tags'],
+            'cards'      => ['icon_color', 'badge', 'title', 'text', 'bullets', 'tags'],
             'steps'      => ['title', 'text', 'bullets'],
             'facts'      => ['icon_color', 'title', 'text'],
             'warning'    => ['text'],
@@ -518,6 +542,14 @@ require_once __DIR__ . '/includes/header.php';
                         <label class="<?php echo $lbl; ?>">Photo Alt Tag</label>
                         <input type="text" name="<?php echo $name('image_alt'); ?>" value="<?php echo $val('image_alt'); ?>" class="<?php echo $inp; ?>">
                     </div>
+                </div>
+                <?php
+            }
+            if (in_array('badge', $fields, true)) {
+                ?>
+                <div>
+                    <label class="<?php echo $lbl; ?>">Big Letter / Badge (optional, e.g. F.A.S.T. letters)</label>
+                    <input type="text" name="<?php echo $name('badge'); ?>" value="<?php echo $val('badge'); ?>" class="<?php echo $inp; ?>">
                 </div>
                 <?php
             }
