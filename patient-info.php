@@ -162,9 +162,9 @@ $pageContent = get_page_content('patient-info', [
                 </div>
                 <div class="md:col-span-4 text-left md:text-right space-y-4">
                     <span class="block text-xs text-white/60">24/7 EMERGENCY HELPLINE</span>
-                    <a href="tel:<?php echo SITE_PHONE; ?>" class="inline-flex items-center space-x-3 bg-red-600 hover:bg-red-700 text-white font-bold text-xl px-6 py-4 rounded-2xl shadow-lg hover:shadow-red-600/30 transition-all duration-300">
+                    <a href="tel:<?php echo STROKE_HELPLINE; ?>" class="inline-flex items-center space-x-3 bg-red-600 hover:bg-red-700 text-white font-bold text-xl px-6 py-4 rounded-2xl shadow-lg hover:shadow-red-600/30 transition-all duration-300">
                         <i class="fas fa-phone-alt animate-bounce"></i>
-                        <span><?php echo SITE_PHONE; ?></span>
+                        <span><?php echo STROKE_HELPLINE; ?></span>
                     </a>
                 </div>
             </div>

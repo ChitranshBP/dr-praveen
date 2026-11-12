@@ -6,6 +6,9 @@ $banners = CMS_DB::get('banners', []);
 $services = CMS_DB::get('services', []);
 $testimonials = CMS_DB::get('testimonials', []);
 $blogs = CMS_DB::get('blogs', []);
+$faqPages = CMS_DB::get('faqs', []);
+$leads = CMS_DB::get('leads', []);
+$pagesCount = count(CMS_DB::getPagesCatalog());
 $phone = CMS_DB::getSetting('phone', '+91-87969-77903');
 $helpline = CMS_DB::getSetting('stroke_helpline', '1800-309-0247');
 ?>
@@ -14,11 +17,11 @@ $helpline = CMS_DB::getSetting('stroke_helpline', '1800-309-0247');
     <div class="bg-gradient-to-r from-brand-indigo via-blue-950 to-brand-indigo text-white p-6 rounded-3xl shadow-lg border border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
             <h2 class="text-lg font-extrabold text-white">Welcome to the Website Content Manager</h2>
-            <p class="text-xs text-slate-300 mt-1">Easily update your banner images, text headlines, doctor bio, services, reviews, and phone numbers below.</p>
+            <p class="text-xs text-slate-300 mt-1">Easily update your banner images, text headlines, doctor bio, services, reviews, and phone numbers below. Every save goes live on the website immediately.</p>
         </div>
-        <a href="publish.php" class="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold shadow-lg transition-all flex items-center space-x-1.5 flex-shrink-0">
-            <i class="fas fa-check-circle"></i>
-            <span>Publish to Live Site</span>
+        <a href="../" target="_blank" class="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold shadow-lg transition-all flex items-center space-x-1.5 flex-shrink-0">
+            <i class="fas fa-external-link-alt"></i>
+            <span>Open Live Website</span>
         </a>
     </div>
 
@@ -109,7 +112,7 @@ $helpline = CMS_DB::getSetting('stroke_helpline', '1800-309-0247');
                 <p class="text-xs text-slate-500">Edit any page directly: Functional Neurosurgery, Stroke, Spine, Why Choose Us, etc.</p>
             </div>
             <div class="pt-3 border-t border-slate-100 mt-4 flex items-center justify-between text-xs text-brand-blue font-bold">
-                <span>All 20+ Pages</span>
+                <span>All <?php echo (int)$pagesCount; ?> Pages</span>
                 <span class="group-hover:translate-x-1 transition-transform">Edit &rarr;</span>
             </div>
         </a>
@@ -140,6 +143,51 @@ $helpline = CMS_DB::getSetting('stroke_helpline', '1800-309-0247');
             </div>
             <div class="pt-3 border-t border-slate-100 mt-4 flex items-center justify-between text-xs text-brand-blue font-bold">
                 <span><?php echo htmlspecialchars($phone); ?></span>
+                <span class="group-hover:translate-x-1 transition-transform">Edit &rarr;</span>
+            </div>
+        </a>
+
+        <!-- FAQs Card -->
+        <a href="faqs.php" class="bg-white p-5 rounded-2xl border border-slate-200 hover:border-brand-blue shadow-sm hover:shadow-md transition-all group flex flex-col justify-between">
+            <div>
+                <div class="w-10 h-10 rounded-xl bg-orange-50 text-orange-500 flex items-center justify-center text-lg mb-3 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-circle-question"></i>
+                </div>
+                <h3 class="text-sm font-bold text-slate-900 mb-1">Page FAQs</h3>
+                <p class="text-xs text-slate-500">Add, reorder or edit the questions &amp; answers shown on each page.</p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 mt-4 flex items-center justify-between text-xs text-brand-blue font-bold">
+                <span><?php echo count($faqPages); ?> Pages with FAQs</span>
+                <span class="group-hover:translate-x-1 transition-transform">Edit &rarr;</span>
+            </div>
+        </a>
+
+        <!-- Leads Card -->
+        <a href="leads.php" class="bg-white p-5 rounded-2xl border border-slate-200 hover:border-brand-blue shadow-sm hover:shadow-md transition-all group flex flex-col justify-between">
+            <div>
+                <div class="w-10 h-10 rounded-xl bg-lime-50 text-lime-600 flex items-center justify-center text-lg mb-3 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-inbox"></i>
+                </div>
+                <h3 class="text-sm font-bold text-slate-900 mb-1">Leads &amp; Enquiries</h3>
+                <p class="text-xs text-slate-500">Appointment requests and contact-form submissions received from the website.</p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 mt-4 flex items-center justify-between text-xs text-brand-blue font-bold">
+                <span><?php echo count($leads); ?> Leads</span>
+                <span class="group-hover:translate-x-1 transition-transform">View &rarr;</span>
+            </div>
+        </a>
+
+        <!-- Settings Card -->
+        <a href="settings.php" class="bg-white p-5 rounded-2xl border border-slate-200 hover:border-brand-blue shadow-sm hover:shadow-md transition-all group flex flex-col justify-between">
+            <div>
+                <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-600 flex items-center justify-center text-lg mb-3 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-cog"></i>
+                </div>
+                <h3 class="text-sm font-bold text-slate-900 mb-1">Settings, SEO &amp; Password</h3>
+                <p class="text-xs text-slate-500">Logo, favicon, social links, Google Tag Manager / Analytics, statistics and your admin password.</p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 mt-4 flex items-center justify-between text-xs text-brand-blue font-bold">
+                <span>Site-wide</span>
                 <span class="group-hover:translate-x-1 transition-transform">Edit &rarr;</span>
             </div>
         </a>

@@ -223,17 +223,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $bType = ($base['type'] ?? 'cards') === 'steps' ? 'steps' : ($base['type'] ?? 'cards');
             $block = $base;
             $block['type'] = $bType;
-            $block['badge'] = trim($pb['badge'] ?? '');
-            $block['title'] = trim($pb['title'] ?? '');
-            $block['description'] = trim($pb['description'] ?? '');
+            // Header copy: a cleared field falls back to the built-in default
+            // (the UI promises "clear to restore"), so drop the key instead of
+            // storing an empty string that would override the default.
+            foreach (['badge', 'title', 'description'] as $hf) {
+                if (!isset($pb[$hf])) {
+                    continue;
+                }
+                $hv = trim((string)$pb[$hf]);
+                if ($hv === '' || $hv === trim((string)($bDefault[$hf] ?? ''))) {
+                    unset($block[$hf]);
+                } else {
+                    $block[$hf] = $hv;
+                }
+            }
 
             // Split-section images (symptoms / why-choose / doctor blocks).
-            if (!empty($pb['image']) || !empty($pb['image_alt'])) {
-                $block['image'] = trim($pb['image'] ?? '');
-                $block['image_alt'] = trim($pb['image_alt'] ?? '');
-            } elseif (isset($base['image'])) {
+            // The stored photo survives unless the editor removed it, typed /
+            // picked a new path, or uploaded a file (handled further down).
+            if (isset($base['image'])) {
                 $block['image'] = $base['image'];
-                $block['image_alt'] = trim((string)($base['image_alt'] ?? ''));
+            }
+            if (!empty($pb['image_remove'])) {
+                $block['image'] = '';
+            } elseif (isset($pb['image']) && trim((string)$pb['image']) !== '') {
+                $block['image'] = trim((string)$pb['image']);
+            }
+            if (isset($pb['image_alt'])) {
+                $block['image_alt'] = trim((string)$pb['image_alt']);
+            } elseif (isset($base['image_alt'])) {
+                $block['image_alt'] = trim((string)$base['image_alt']);
             }
 
             // Pill row (symptoms blocks) and icon choice (notification rows).
@@ -267,9 +286,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // icon colour, photos…). They must survive the save untouched.
                 $baseItem = (isset($baseItems[$ii]) && is_array($baseItems[$ii])) ? $baseItems[$ii] : [];
                 $it = [
-                    'title' => trim($item['title'] ?? ''),
-                    'text'  => trim($item['text'] ?? ''),
+                    'title' => array_key_exists('title', $item) ? trim((string)$item['title']) : trim((string)($baseItem['title'] ?? '')),
+                    'text'  => array_key_exists('text', $item) ? trim((string)$item['text']) : trim((string)($baseItem['text'] ?? '')),
                 ];
+                if (isset($baseItem['number']) && !isset($item['number'])) {
+                    $it['number'] = $baseItem['number'];
+                }
                 $extraTitle = trim($item['subtitle'] ?? ($baseItem['subtitle'] ?? ''));
                 if ($extraTitle !== '') {
                     $it['subtitle'] = $extraTitle;
@@ -304,11 +326,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $color = 'electric-blue';
                     }
                     $it['color'] = $color;
-                    $tagsRaw = $item['tags'] ?? '';
-                    $tags = is_array($tagsRaw) ? $tagsRaw : explode(',', (string)$tagsRaw);
-                    $it['tags'] = array_values(array_filter(array_map('trim', $tags), function ($t) {
-                        return $t !== '';
-                    }));
+                    if (array_key_exists('tags', $item)) {
+                        $tagsRaw = $item['tags'];
+                        $tags = is_array($tagsRaw) ? $tagsRaw : explode(',', (string)$tagsRaw);
+                        $it['tags'] = array_values(array_filter(array_map('trim', $tags), function ($t) {
+                            return $t !== '';
+                        }));
+                    } elseif (isset($baseItem['tags']) && is_array($baseItem['tags'])) {
+                        $it['tags'] = array_values($baseItem['tags']);
+                    }
                 } elseif (isset($baseItem['icon']) && !isset($item['icon'])) {
                     $it['icon'] = trim((string)$baseItem['icon']);
                     if (isset($baseItem['color'])) {
@@ -401,9 +427,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     'intro' => $tIntro,
                 ];
             }
-            if (!empty($savedCtas)) {
-                $pageData['ctas'] = $savedCtas;
-            }
+            $pageData['ctas'] = $savedCtas;
         }
     }
 
@@ -413,7 +437,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $json = json_encode($pageData, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-    $saved = ($json !== false) && file_put_contents($pageDataFile, $json, LOCK_EX) !== false;
+    $saved = false;
+    if ($json !== false) {
+        $tmpFile = $pageDataFile . '.tmp.' . uniqid();
+        if (file_put_contents($tmpFile, $json, LOCK_EX) !== false) {
+            $saved = @rename($tmpFile, $pageDataFile);
+            if (!$saved) {
+                @unlink($tmpFile);
+            }
+        }
+    }
 
     if (!$saved) {
         cms_set_flash('error', 'Could not save this page. Please check that data/pages is writable on the server.');
@@ -823,8 +856,14 @@ require_once __DIR__ . '/includes/header.php';
                     <?php endif; ?>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
                         <div>
-                            <label class="block text-[10px] font-bold text-slate-600 mb-1">Replace Photo (max 4MB)</label>
+                            <label class="block text-[10px] font-bold text-slate-600 mb-1">Replace Photo (max 8MB)</label>
                             <input type="file" name="page_block_image_<?php echo htmlspecialchars($blockKey); ?>" accept=".webp,.png,.jpg,.jpeg" class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[11px]">
+                            <?php if (!empty($block['image'])): ?>
+                            <label class="inline-flex items-center space-x-1.5 mt-1.5 text-[10px] font-semibold text-red-600">
+                                <input type="checkbox" name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][image_remove]" value="1" class="w-3.5 h-3.5 rounded">
+                                <span>Remove this photo</span>
+                            </label>
+                            <?php endif; ?>
                         </div>
                         <div>
                             <label class="block text-[10px] font-bold text-slate-600 mb-1">Photo Alt Tag</label>

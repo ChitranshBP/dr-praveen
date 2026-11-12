@@ -33,7 +33,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // 2. Update Dr. Praveen profile
     $mainDoc['designation'] = trim($_POST['designation'] ?? '');
     $mainDoc['specialty'] = trim($_POST['specialty'] ?? 'Neurology, Neurosciences');
-    $mainDoc['image_alt'] = trim($_POST['image_alt'] ?? 'Dr. Praveen Gupta - Best Neurologist in Gurgaon & Delhi NCR');
+    if (array_key_exists('image_alt', $_POST)) {
+        $mainDoc['image_alt'] = trim((string)$_POST['image_alt']);
+        $mainDoc['alt'] = $mainDoc['image_alt'];
+    }
+    if (array_key_exists('experience', $_POST)) {
+        $mainDoc['experience'] = trim((string)$_POST['experience']);
+    }
     
     $aboutText = trim($_POST['about'] ?? '');
     if (!isset($mainDoc['modal'])) $mainDoc['modal'] = ['sections' => []];
@@ -43,15 +49,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $mainDoc['modal']['sections']['Areas of Expertise'] = cms_parse_multiline_items($_POST['expertise'] ?? '');
 
     // Handle photo upload
+    $uploadError = '';
     $imgUpload = cms_handle_upload('doctor_photo', 'doctors');
-    if ($imgUpload && !isset($imgUpload['error'])) {
+    if (is_array($imgUpload) && isset($imgUpload['error'])) {
+        $uploadError = $imgUpload['error'];
+    } elseif (is_array($imgUpload) && !empty($imgUpload['path'])) {
         $mainDoc['image'] = $imgUpload['path'];
     }
 
     $doctors[$mainDocIndex] = $mainDoc;
     CMS_DB::set('doctors', $doctors);
 
-    cms_set_flash('success', 'Doctor profile, biography, and statistics updated successfully!');
+    if ($uploadError !== '') {
+        cms_set_flash('error', 'Profile saved, but the photo upload failed: ' . $uploadError);
+    } else {
+        cms_set_flash('success', 'Doctor profile, biography, and statistics updated successfully!');
+    }
     header('Location: about-editor.php');
     exit;
 }
@@ -97,8 +110,31 @@ require_once __DIR__ . '/includes/header.php';
             </div>
         </div>
 
+        <!-- Doctor Photo -->
+        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
+            <div class="flex items-center space-x-3">
+                <?php if (!empty($mainDoc['image'])): ?>
+                <img src="../<?php echo htmlspecialchars($mainDoc['image']); ?>" alt="<?php echo htmlspecialchars($mainDoc['image_alt'] ?? ''); ?>" class="w-20 h-20 rounded-xl object-cover border border-slate-200 bg-white">
+                <?php endif; ?>
+                <div class="text-[10px] text-slate-500 font-mono break-all"><?php echo htmlspecialchars($mainDoc['image'] ?? 'No photo set'); ?></div>
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Replace Doctor Photo</label>
+                <input type="file" name="doctor_photo" accept=".png,.webp,.jpg,.jpeg" class="w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                <p class="text-[10px] text-slate-400 mt-1">Square or portrait, at least 600 px wide. Shown on the Team page.</p>
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Photo Alt Tag (SEO)</label>
+                <input type="text" name="image_alt" value="<?php echo htmlspecialchars($mainDoc['image_alt'] ?? ($mainDoc['alt'] ?? '')); ?>" class="w-full px-3.5 py-2 bg-white border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
+        </div>
+
         <!-- Doctor Details -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Experience</label>
+                <input type="text" name="experience" value="<?php echo htmlspecialchars($mainDoc['experience'] ?? ''); ?>" placeholder="20+ Years" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
             <div>
                 <label class="block text-xs font-bold text-slate-700 mb-1">Designation</label>
                 <input type="text" name="designation" value="<?php echo htmlspecialchars($mainDoc['designation'] ?? 'Chairman - Neurology'); ?>" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">

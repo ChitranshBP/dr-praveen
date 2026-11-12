@@ -94,17 +94,6 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
 
                 <!-- Key Facts (CMS block) -->
                 <?php cms_render_page_block('rtms-therapy', 'key-facts'); ?>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <div class="w-8 h-8 bg-electric-blue/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <i class="fas fa-check text-electric-blue text-xs"></i>
-                        </div>
-                        <div>
-                            <div class="font-semibold text-dark-grey text-sm">Outpatient Care</div>
-                            <div class="text-xs text-dark-grey/60">Return home immediately</div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- Image Side -->

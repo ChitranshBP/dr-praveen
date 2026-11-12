@@ -41,6 +41,10 @@ define('SOCIAL_YOUTUBE', $cmsSettings['social_youtube'] ?? 'https://youtube.com/
 define('SOCIAL_LINKEDIN', $cmsSettings['social_linkedin'] ?? 'https://www.linkedin.com/in/dr-praveen-gupta-635b9317');
 define('GTM_ID', $cmsSettings['gtm_id'] ?? 'GTM-TF2TXQLK');
 
+// Opening hours (CMS → Settings / Phone & Contact)
+define('WORKING_HOURS_WEEKDAYS', trim((string)($cmsSettings['working_hours_weekdays'] ?? '')) !== '' ? $cmsSettings['working_hours_weekdays'] : 'Mon - Sat: 9 AM - 7 PM');
+define('WORKING_HOURS_SUNDAY', trim((string)($cmsSettings['working_hours_sunday'] ?? '')) !== '' ? $cmsSettings['working_hours_sunday'] : 'Sunday: Closed');
+
 // Navigation
 $navItems = [
     ['name' => 'Home', 'url' => 'index'],
@@ -437,8 +441,21 @@ $fallbackTestimonials = [
 ];
 
 // Prefer CMS-managed testimonials; fall back to the built-in list above.
+// "Featured" reviews are listed first (stable: original order kept otherwise).
 $cmsTestimonials = cms_testimonials();
 $testimonials = $cmsTestimonials !== null ? $cmsTestimonials : $fallbackTestimonials;
+if (is_array($testimonials)) {
+    $featuredFirst = [];
+    $rest = [];
+    foreach ($testimonials as $t) {
+        if (!empty($t['featured'])) {
+            $featuredFirst[] = $t;
+        } else {
+            $rest[] = $t;
+        }
+    }
+    $testimonials = array_merge($featuredFirst, $rest);
+}
 
 // Blog posts — managed in CMS (/cms/blogs.php); the list below is only the fallback.
 $fallbackBlogs = [
@@ -517,7 +534,8 @@ $fallbackVideoTestimonials = [
     ]
 ];
 
-// Merge CMS video testimonials (from /cms/testimonials.php) in front of the fallback list.
+// CMS video testimonials (from /cms/testimonials.php) replace the fallback list
+// as soon as at least one review carries a YouTube id.
 $cmsVideos = cms_video_testimonials();
 if ($cmsVideos !== null) {
     $videoTestimonials = [];
@@ -527,6 +545,8 @@ if ($cmsVideos !== null) {
             'title' => trim($cv['name'] . ($cv['condition'] !== '' ? ' — ' . $cv['condition'] : '')),
         ];
     }
+} else {
+    $videoTestimonials = $fallbackVideoTestimonials;
 }
 
 // Instagram Reels — shortcodes from the reel URL: instagram.com/reel/<shortcode>/
@@ -1216,6 +1236,32 @@ function cms_media_path($path, $fallback = '') {
 
     $resolved = $resolve($path);
     return $resolved !== '' ? $resolved : $resolve($fallback);
+}
+
+/**
+ * Site logo chosen in CMS → Settings, with the built-in NeuroDoc logo as the
+ * fallback. Returns ['path' => ..., 'webp' => ...] where webp is '' when no
+ * matching .webp sibling exists next to the chosen file.
+ */
+function cms_site_logo() {
+    static $logo = null;
+    if ($logo !== null) {
+        return $logo;
+    }
+    global $cmsSettings;
+    $path = cms_media_path($cmsSettings['logo_path'] ?? '', 'assets/logo/NeuroDoc-final-logo.png');
+    if ($path === '') {
+        $path = 'assets/logo/NeuroDoc-final-logo.png';
+    }
+    $webp = '';
+    if (!preg_match('#^(https?:)?//#i', $path)) {
+        $candidate = preg_replace('/\.(png|jpe?g)$/i', '.webp', $path);
+        if ($candidate !== $path && is_file(dirname(__DIR__) . '/' . ltrim($candidate, '/'))) {
+            $webp = $candidate;
+        }
+    }
+    $logo = ['path' => $path, 'webp' => $webp];
+    return $logo;
 }
 
 /**

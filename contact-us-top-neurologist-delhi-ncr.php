@@ -73,7 +73,7 @@ $pageContent = get_page_content('contact-us-top-neurologist-delhi-ncr', [
                         <div>
                             <h4 class="font-bold text-dark-grey text-base">Call Us</h4>
                             <p class="text-sm text-dark-grey/65 mt-0.5"><?php echo SITE_PHONE; ?></p>
-                            <p class="text-xs text-dark-grey/50">Mon - Sat: 9:00 AM - 7:00 PM</p>
+                            <p class="text-xs text-dark-grey/50"><?php echo htmlspecialchars(WORKING_HOURS_WEEKDAYS); ?></p>
                         </div>
                     </div>
 

@@ -48,9 +48,9 @@ $pageContent = get_page_content('emergency-neurology-care', [
             </p>
 
             <div class="flex flex-wrap items-center gap-4">
-                <a href="tel:<?php echo SITE_PHONE; ?>" class="inline-flex items-center space-x-3 bg-red-600 hover:bg-red-700 text-white font-extrabold text-base px-8 py-3.5 rounded-2xl shadow-lg shadow-red-600/20 hover:shadow-red-600/40 transition-all duration-300 transform hover:-translate-y-0.5">
+                <a href="tel:<?php echo STROKE_HELPLINE; ?>" class="inline-flex items-center space-x-3 bg-red-600 hover:bg-red-700 text-white font-extrabold text-base px-8 py-3.5 rounded-2xl shadow-lg shadow-red-600/20 hover:shadow-red-600/40 transition-all duration-300 transform hover:-translate-y-0.5">
                     <i class="fas fa-phone-alt animate-bounce"></i>
-                    <span>Call Helpline: <?php echo SITE_PHONE; ?></span>
+                    <span>Call Helpline: <?php echo STROKE_HELPLINE; ?></span>
                 </a>
             </div>
         </div>

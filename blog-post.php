@@ -210,7 +210,7 @@ require_once __DIR__ . '/includes/header.php';
                             <i class="fas fa-calendar-check"></i>
                             <span>Book Consultation</span>
                         </a>
-                        <a href="tel:<?php echo defined('PRIMARY_PHONE') ? PRIMARY_PHONE : '+919811456789'; ?>" class="inline-flex items-center justify-center space-x-2 px-5 py-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-bold rounded-xl transition-all duration-300 whitespace-nowrap">
+                        <a href="tel:<?php echo SITE_PHONE; ?>" class="inline-flex items-center justify-center space-x-2 px-5 py-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-bold rounded-xl transition-all duration-300 whitespace-nowrap">
                             <i class="fas fa-phone-alt text-cyan-accent"></i>
                             <span>Call Clinic</span>
                         </a>

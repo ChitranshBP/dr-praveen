@@ -35,8 +35,12 @@ if ($isHomepage) {
 
 // 3. Absolute fallbacks
 $finalMetaTitle = !empty($pageTitle) ? $pageTitle : (SITE_NAME . ' - ' . SITE_TAGLINE);
-$finalMetaDesc  = !empty($pageDescription) ? $pageDescription : ($cmsSettings['homepage_meta_description'] ?? 'Dr. Praveen Gupta - Leading healthcare professional providing exceptional medical care with 20+ years of experience.');
+$finalMetaDesc  = !empty($pageDescription) ? $pageDescription : (!empty($cmsSettings['homepage_meta_description']) ? $cmsSettings['homepage_meta_description'] : 'Dr. Praveen Gupta - Leading healthcare professional providing exceptional medical care with 20+ years of experience.');
 $logoAltText    = !empty($cmsSettings['logo_alt']) ? $cmsSettings['logo_alt'] : 'Dr. Praveen Gupta - Top Neurologist Delhi NCR Logo';
+$siteLogo       = cms_site_logo();
+$siteFavicon    = cms_media_path($cmsSettings['favicon_path'] ?? '', 'assets/favicon/favicon.png');
+$ga4Id          = trim((string)($cmsSettings['ga4_id'] ?? ''));
+$metaPixelId    = trim((string)($cmsSettings['meta_pixel_id'] ?? ''));
 ?>
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
@@ -92,7 +96,7 @@ $logoAltText    = !empty($cmsSettings['logo_alt']) ? $cmsSettings['logo_alt'] : 
     <link rel="icon" type="image/x-icon" href="/assets/favicon/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
-    <link rel="icon" type="image/png" href="/assets/favicon/favicon.png">
+    <link rel="icon" type="image/png" href="/<?php echo htmlspecialchars(ltrim($siteFavicon, '/')); ?>">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
 
     <style>
@@ -279,10 +283,25 @@ $logoAltText    = !empty($cmsSettings['logo_alt']) ? $cmsSettings['logo_alt'] : 
 
     <!-- Schema.org JSON-LD Structured Data -->
     <?php require_once __DIR__ . '/schema.php'; ?>
+    <?php if ($ga4Id !== ''): ?>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo htmlspecialchars($ga4Id); ?>"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','<?php echo htmlspecialchars($ga4Id); ?>');</script>
+    <?php endif; ?>
+    <?php if ($metaPixelId !== ''): ?>
+    <!-- Meta Pixel -->
+    <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','<?php echo htmlspecialchars($metaPixelId); ?>');fbq('track','PageView');</script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=<?php echo htmlspecialchars($metaPixelId); ?>&ev=PageView&noscript=1" alt=""></noscript>
+    <?php endif; ?>
+    <?php if (!empty($cmsSettings['custom_head_scripts'])): ?>
+    <!-- Custom head scripts (CMS → Settings) -->
+    <?php echo $cmsSettings['custom_head_scripts']; ?>
+
+    <?php endif; ?>
 </head>
 <body class="bg-white text-dark-grey antialiased overflow-x-hidden">
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TF2TXQLK"
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<?php echo htmlspecialchars(GTM_ID); ?>"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
@@ -346,8 +365,8 @@ $logoAltText    = !empty($cmsSettings['logo_alt']) ? $cmsSettings['logo_alt'] : 
                 <!-- Logo -->
                 <a href="index" class="flex items-center group">
                     <picture>
-                        <source srcset="assets/logo/NeuroDoc-final-logo.webp" type="image/webp">
-                        <img id="header-logo" src="assets/logo/NeuroDoc-final-logo.png" alt="<?php echo htmlspecialchars($logoAltText); ?>" width="200" height="56" class="h-14 sm:h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 <?php echo $isHomepage || $isDarkHero ? 'invert brightness-0' : ''; ?>">
+                        <?php if ($siteLogo['webp'] !== ''): ?><source srcset="<?php echo htmlspecialchars($siteLogo['webp']); ?>" type="image/webp"><?php endif; ?>
+                        <img id="header-logo" src="<?php echo htmlspecialchars($siteLogo['path']); ?>" alt="<?php echo htmlspecialchars($logoAltText); ?>" width="200" height="56" class="h-14 sm:h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 <?php echo $isHomepage || $isDarkHero ? 'invert brightness-0' : ''; ?>">
                     </picture>
                 </a>
 

@@ -55,7 +55,7 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
 
             <!-- CTA Buttons -->
             <div class="flex flex-wrap gap-3">
-                <a href="contact" class="inline-flex items-center space-x-2.5 bg-white text-deep-indigo font-semibold px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-white/30 transition-all duration-300 transform hover:-translate-y-1 text-sm">
+                <a href="contact-us-top-neurologist-delhi-ncr" class="inline-flex items-center space-x-2.5 bg-white text-deep-indigo font-semibold px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-white/30 transition-all duration-300 transform hover:-translate-y-1 text-sm">
                     <span>Book Appointment</span>
                     <i class="fas fa-arrow-right text-xs"></i>
                 </a>

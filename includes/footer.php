@@ -102,9 +102,10 @@ foreach (array_slice($services, 0, 6) as $svc) {
                 <div class="lg:col-span-4">
                     <div class="mb-6">
                         <a href="index" class="inline-block group">
+                            <?php $footerLogo = cms_site_logo(); ?>
                             <picture>
-                                <source srcset="assets/logo/NeuroDoc-final-logo.webp" type="image/webp">
-                                <img src="assets/logo/NeuroDoc-final-logo.png" alt="<?php echo htmlspecialchars($cmsSettings['logo_alt'] ?? 'Dr. Praveen Gupta - NeuroDoc Logo'); ?>" width="200" height="56" class="h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 invert brightness-0">
+                                <?php if ($footerLogo['webp'] !== ''): ?><source srcset="<?php echo htmlspecialchars($footerLogo['webp']); ?>" type="image/webp"><?php endif; ?>
+                                <img src="<?php echo htmlspecialchars($footerLogo['path']); ?>" alt="<?php echo htmlspecialchars($cmsSettings['logo_alt'] ?? 'Dr. Praveen Gupta - NeuroDoc Logo'); ?>" width="200" height="56" class="h-16 w-auto object-contain block group-hover:scale-[1.02] transition-transform duration-300 invert brightness-0">
                             </picture>
                         </a>
                     </div>
@@ -275,8 +276,8 @@ foreach (array_slice($services, 0, 6) as $svc) {
                             </div>
                             <div class="pt-1">
                                 <p class="text-white/70 text-xs font-medium">Working Hours</p>
-                                <p class="text-white/90 text-sm font-semibold">Mon - Sat: 9 AM - 7 PM</p>
-                                <p class="text-white/60 text-xs">Sunday: Closed</p>
+                                <p class="text-white/90 text-sm font-semibold"><?php echo htmlspecialchars(WORKING_HOURS_WEEKDAYS); ?></p>
+                                <p class="text-white/60 text-xs"><?php echo htmlspecialchars(WORKING_HOURS_SUNDAY); ?></p>
                             </div>
                         </li>
                     </ul>
@@ -289,7 +290,7 @@ foreach (array_slice($services, 0, 6) as $svc) {
         <div class="relative border-t border-white/10">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
                 <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/60">
-                    <p>&copy; <?php echo $currentYear; ?> <span class="text-white font-semibold">Dr. Praveen Gupta</span>. All rights reserved.</p>
+                    <p>&copy; <?php echo $currentYear; ?> <span class="text-white font-semibold"><?php echo htmlspecialchars(SITE_NAME); ?></span>. All rights reserved.</p>
                     <div class="flex items-center space-x-1">
                         <a href="privacy-policy" class="px-3 py-1.5 rounded-full hover:bg-white/5 hover:text-cyan-accent transition-all">Privacy Policy</a>
                         <span class="text-white/20">&bull;</span>
@@ -406,5 +407,10 @@ foreach (array_slice($services, 0, 6) as $svc) {
             observer.observe(el);
         });
     </script>
+    <?php if (!empty($cmsSettings['custom_body_scripts'])): ?>
+    <!-- Custom body scripts (CMS → Settings) -->
+    <?php echo $cmsSettings['custom_body_scripts']; ?>
+
+    <?php endif; ?>
 </body>
 </html>

@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id = $_POST['id'] ?? '';
         $name = trim($_POST['name'] ?? '');
         $role = trim($_POST['role'] ?? 'Patient');
-        $rating = intval($_POST['rating'] ?? 5);
+        $rating = max(1, min(5, intval($_POST['rating'] ?? 5)));
         $condition = trim($_POST['condition'] ?? '');
         $message = trim($_POST['message'] ?? '');
         $video_id = trim($_POST['video_id'] ?? '');
@@ -138,14 +138,25 @@ if (isset($_GET['edit'])) {
                     <textarea name="message" rows="4" required class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($editT['message'] ?? ''); ?></textarea>
                 </div>
 
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">YouTube Video ID (Optional)</label>
-                    <input type="text" name="video_id" value="<?php echo htmlspecialchars($editT['video_id'] ?? ''); ?>" placeholder="e.g. kEwXD0aT_rQ" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">YouTube Video ID (Optional)</label>
+                        <input type="text" name="video_id" value="<?php echo htmlspecialchars($editT['video_id'] ?? ''); ?>" placeholder="e.g. kEwXD0aT_rQ" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Star Rating</label>
+                        <?php $curRating = (int)($editT['rating'] ?? 5); ?>
+                        <select name="rating" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            <?php for ($r = 5; $r >= 1; $r--): ?>
+                            <option value="<?php echo $r; ?>" <?php echo $curRating === $r ? 'selected' : ''; ?>><?php echo $r; ?> star<?php echo $r > 1 ? 's' : ''; ?></option>
+                            <?php endfor; ?>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="flex items-center space-x-2">
                     <input type="checkbox" id="featured" name="featured" <?php echo !empty($editT['featured']) ? 'checked' : ''; ?> class="w-4 h-4 text-blue-600 rounded">
-                    <label for="featured" class="text-xs font-bold text-slate-700">Feature on Homepage</label>
+                    <label for="featured" class="text-xs font-bold text-slate-700">Featured (shown first on the homepage &amp; about page)</label>
                 </div>
 
                 <div class="pt-2">

@@ -918,7 +918,7 @@ if (empty($activeBanners)) {
                     <picture>
                         <?php 
                         $awardWebp = 'assets/webp/awards/' . pathinfo(basename($award['image']), PATHINFO_FILENAME) . '.webp';
-                        if (file_exists(__DIR__ . '/../' . $awardWebp)): ?>
+                        if (file_exists(__DIR__ . '/' . $awardWebp)): ?>
                         <source srcset="<?php echo $awardWebp; ?>" type="image/webp">
                         <?php endif; ?>
                         <img src="<?php echo $award['image']; ?>" 

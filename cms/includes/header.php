@@ -254,7 +254,7 @@ $flash = cms_get_flash();
 
     <div class="min-h-full flex">
         <!-- Sidebar Navigation -->
-        <aside class="w-60 bg-brand-indigo text-white flex-shrink-0 flex flex-col justify-between hidden md:flex border-r border-indigo-950">
+        <aside id="cms-sidebar" class="w-60 bg-brand-indigo text-white flex-shrink-0 flex-col justify-between hidden md:flex border-r border-indigo-950 fixed md:static inset-y-0 left-0 z-40 overflow-y-auto">
             <div>
                 <!-- Brand Header -->
                 <div class="h-16 flex items-center px-6 border-b border-indigo-900/60">
@@ -311,6 +311,14 @@ $flash = cms_get_flash();
                         <i class="fas fa-phone-alt w-5 text-center mr-2.5"></i>
                         <span>Phone & Contact</span>
                     </a>
+                    <a href="leads.php" class="flex items-center px-3 py-2.5 rounded-xl transition-all <?php echo $currentPage === 'leads' ? 'bg-brand-blue text-white shadow-md' : 'text-slate-300 hover:bg-white/10 hover:text-white'; ?>">
+                        <i class="fas fa-inbox w-5 text-center mr-2.5"></i>
+                        <span>Leads &amp; Enquiries</span>
+                    </a>
+                    <a href="settings.php" class="flex items-center px-3 py-2.5 rounded-xl transition-all <?php echo $currentPage === 'settings' ? 'bg-brand-blue text-white shadow-md' : 'text-slate-300 hover:bg-white/10 hover:text-white'; ?>">
+                        <i class="fas fa-cog w-5 text-center mr-2.5"></i>
+                        <span>Settings, SEO &amp; Password</span>
+                    </a>
                 </nav>
             </div>
 
@@ -329,19 +337,34 @@ $flash = cms_get_flash();
         <!-- Main Content Area -->
         <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
             <!-- Topbar Header -->
-            <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 z-10">
-                <h1 class="text-base font-bold text-slate-800"><?php echo htmlspecialchars($pageTitle ?? 'Edit Content'); ?></h1>
-                <div class="flex items-center space-x-3">
+            <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-4 sm:px-6 z-10">
+                <div class="flex items-center space-x-3 min-w-0">
+                    <button type="button" id="cms-sidebar-toggle" class="md:hidden w-9 h-9 rounded-lg border border-slate-200 text-slate-600 flex items-center justify-center" aria-label="Open menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 class="text-base font-bold text-slate-800 truncate"><?php echo htmlspecialchars($pageTitle ?? 'Edit Content'); ?></h1>
+                </div>
+                <div class="flex items-center space-x-3 flex-shrink-0">
+                    <span class="hidden sm:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-emerald-50 border border-emerald-200 text-[11px] font-semibold text-emerald-700" title="Every save is published to the live website immediately.">
+                        <i class="fas fa-circle text-[6px] text-emerald-500"></i>
+                        <span>Changes go live on save</span>
+                    </span>
                     <a href="../" target="_blank" class="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition-colors">
                         <i class="fas fa-external-link-alt text-[10px]"></i>
                         <span>View Website</span>
                     </a>
-                    <a href="publish.php" class="inline-flex items-center space-x-1.5 px-4 py-1.5 rounded-xl bg-emerald-600 text-white text-xs font-bold hover:bg-emerald-700 shadow-sm transition-colors">
-                        <i class="fas fa-sync-alt text-[11px]"></i>
-                        <span>Publish Changes</span>
-                    </a>
                 </div>
             </header>
+            <div id="cms-sidebar-backdrop" class="fixed inset-0 bg-black/40 z-30 hidden md:hidden"></div>
+            <script>
+            (function () {
+                var sb = document.getElementById('cms-sidebar'), bt = document.getElementById('cms-sidebar-toggle'), bd = document.getElementById('cms-sidebar-backdrop');
+                if (!sb || !bt) return;
+                function close() { sb.classList.add('hidden'); sb.classList.remove('flex'); bd.classList.add('hidden'); }
+                bt.addEventListener('click', function () { var open = sb.classList.contains('hidden'); if (open) { sb.classList.remove('hidden'); sb.classList.add('flex'); bd.classList.remove('hidden'); } else { close(); } });
+                bd.addEventListener('click', close);
+            })();
+            </script>
 
             <!-- Flash Alert -->
             <?php if ($flash): ?>

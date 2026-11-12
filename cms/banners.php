@@ -115,9 +115,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             foreach ($banners as &$b) {
                 if ($b['id'] === $id) {
                     $b['title'] = $title;
-                    $b['subtitle'] = $subtitle;
-                    $b['cta_text'] = $ctaText;
-                    $b['cta_link'] = $ctaLink;
+                    // Only overwrite fields the form actually posted so a save
+                    // never blanks data the modal does not show.
+                    if (array_key_exists('subtitle', $_POST)) $b['subtitle'] = $subtitle;
+                    if (array_key_exists('cta_text', $_POST)) $b['cta_text'] = $ctaText;
+                    if (array_key_exists('cta_link', $_POST)) $b['cta_link'] = $ctaLink;
                     $b['alt_text'] = $altText ?: $title;
                     $b['order'] = $order;
                     $b['is_active'] = $isActive;

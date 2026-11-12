@@ -88,6 +88,7 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
 
                 <!-- Key Facts (CMS block) -->
                 <?php cms_render_page_block('brain-tumor-surgery', 'key-facts'); ?>
+            </div>
 
             <!-- Image Side -->
             <div class="relative flex justify-center lg:justify-end animate-slide-in-right">

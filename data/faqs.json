@@ -77,7 +77,7 @@
         "items": [
             {
                 "question": "Is the stroke helpline active 24/7?",
-                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                Yes, the dedicated helpline **1800-309-0247** is fully operational 24 hours a day, 7 days a week, connecting you directly to our stroke response team.\r\n                            </p>",
+                "answer": "<p class=\"text-dark-grey/70 leading-relaxed text-sm\">\r\n                                Yes, the dedicated helpline <strong>1800-309-0247</strong> is fully operational 24 hours a day, 7 days a week, connecting you directly to our stroke response team.\r\n                            </p>",
                 "category": "",
                 "category_id": "",
                 "id": "106a7a0ed3a2",

@@ -4,13 +4,13 @@
  * Lists all published articles managed in the CMS (/cms/blogs.php).
  */
 
+$pageTitle = 'Blog - Dr. Praveen Gupta, Neurologist';
+$pageDescription = 'Articles and health guides on stroke, epilepsy, migraine, Parkinson\'s disease and brain health by Dr. Praveen Gupta.';
+
 require_once __DIR__ . '/includes/header.php';
 
 // Published posts from the CMS (newest first)
 $posts = cms_blogs_published();
-
-$pageTitle = 'Blog - Dr. Praveen Gupta, Neurologist';
-$pageDescription = 'Articles and health guides on stroke, epilepsy, migraine, Parkinson\'s disease and brain health by Dr. Praveen Gupta.';
 ?>
 <!-- Blog Section -->
 <section class="py-10 md:py-14 bg-white relative overflow-hidden">

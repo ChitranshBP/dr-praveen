@@ -408,7 +408,7 @@ $pageContent = get_page_content('about', [
 
         <!-- View More Link -->
         <div class="text-center mt-10">
-            <a href="#" class="group inline-flex items-center space-x-2 text-sm font-medium text-deep-indigo hover:text-electric-blue transition-colors">
+            <a href="awards-and-recognition" class="group inline-flex items-center space-x-2 text-sm font-medium text-deep-indigo hover:text-electric-blue transition-colors">
                 <span>View All Recognitions</span>
                 <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
             </a>

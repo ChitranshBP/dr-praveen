@@ -46,6 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'chang
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     cms_verify_csrf();
 
+    // Every key listed here has a matching input in the form below. Keys that
+    // are NOT posted are left untouched so a save can never blank a setting
+    // the form does not show.
     $fields = [
         'site_name', 'site_tagline', 'site_url', 'logo_alt', 'phone', 'stroke_helpline',
         'email', 'address', 'whatsapp', 'whatsapp_message',
@@ -53,22 +56,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'social_facebook', 'social_instagram', 'social_twitter', 'social_youtube', 'social_linkedin',
         'gtm_id', 'ga4_id', 'meta_pixel_id', 'custom_head_scripts', 'custom_body_scripts',
         'working_hours_weekdays', 'working_hours_sunday',
-        'stats_patients', 'stats_awards', 'stats_rating', 'stats_experience'
+        'stats_patients', 'stats_success', 'stats_awards', 'stats_rating', 'stats_experience',
+        'formester_url', 'lead_notify_email',
     ];
 
     $updated = [];
     foreach ($fields as $f) {
-        $updated[$f] = trim($_POST[$f] ?? '');
+        if (array_key_exists($f, $_POST)) {
+            $updated[$f] = trim((string)$_POST[$f]);
+        }
+    }
+    if (isset($updated['whatsapp'])) {
+        $updated['whatsapp'] = preg_replace('/\D+/', '', $updated['whatsapp']);
     }
 
-    // Handle logo upload if provided
-    $logoUpload = cms_handle_upload('logo_file', 'logo');
-    if ($logoUpload && !isset($logoUpload['error'])) {
-        $updated['logo_path'] = $logoUpload['path'];
+    $uploadErrors = [];
+    foreach (['logo_file' => ['logo_path', 'logo'], 'favicon_file' => ['favicon_path', 'favicon'], 'og_image_file' => ['default_og_image', 'seo']] as $fileKey => [$settingKey, $folder]) {
+        $up = cms_handle_upload($fileKey, $folder);
+        if (is_array($up) && isset($up['error'])) {
+            $uploadErrors[] = $up['error'];
+        } elseif (is_array($up) && !empty($up['path'])) {
+            $updated[$settingKey] = $up['path'];
+        }
+    }
+    foreach (['logo_path', 'favicon_path', 'default_og_image'] as $pathKey) {
+        if (!empty($_POST[$pathKey . '_remove'])) {
+            $updated[$pathKey] = '';
+        }
     }
 
     CMS_DB::setMultipleSettings($updated);
-    cms_set_flash('success', 'Site settings and SEO metadata have been updated successfully!');
+    if (!empty($uploadErrors)) {
+        cms_set_flash('error', 'Settings saved, but an upload failed: ' . implode(' ', $uploadErrors));
+    } else {
+        cms_set_flash('success', 'Site settings and SEO metadata have been updated successfully!');
+    }
     header('Location: settings.php');
     exit;
 }
@@ -128,16 +150,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </label>
                     <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Recommended: 300 × 80 px</span>
                 </div>
-                <p class="text-[10px] text-slate-500">Transparent PNG, SVG, or WebP format (Max 2MB). Ideal aspect ratio ~4:1 or 3:1.</p>
+                <p class="text-[10px] text-slate-500">Transparent PNG or WebP format (Max 8MB). Ideal aspect ratio ~4:1 or 3:1. Leave empty to use the built-in logo.</p>
                 <?php if (!empty($settings['logo_path'])): ?>
                 <div class="flex items-center space-x-3 py-1">
                     <div class="bg-white p-2 rounded-lg border border-slate-200 inline-block">
                         <img src="../<?php echo htmlspecialchars($settings['logo_path']); ?>" class="h-8 max-w-xs object-contain" alt="Current Logo">
                     </div>
                     <span class="text-[10px] text-slate-400 font-mono"><?php echo htmlspecialchars($settings['logo_path']); ?></span>
+                    <label class="inline-flex items-center space-x-1 text-[10px] font-semibold text-red-600"><input type="checkbox" name="logo_path_remove" value="1" class="w-3.5 h-3.5 rounded"><span>Remove</span></label>
                 </div>
                 <?php endif; ?>
-                <input type="file" name="logo_file" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                <input type="file" name="logo_file" accept=".png,.webp,.jpg,.jpeg" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+
+                <div class="pt-2 border-t border-slate-200/60 grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1"><i class="fas fa-star text-brand-blue mr-1"></i> Favicon (browser tab icon)</label>
+                        <?php if (!empty($settings['favicon_path'])): ?>
+                        <div class="flex items-center space-x-2 py-1">
+                            <img src="../<?php echo htmlspecialchars($settings['favicon_path']); ?>" class="w-6 h-6 object-contain rounded border border-slate-200 bg-white" alt="Favicon">
+                            <span class="text-[10px] text-slate-400 font-mono break-all"><?php echo htmlspecialchars($settings['favicon_path']); ?></span>
+                            <label class="inline-flex items-center space-x-1 text-[10px] font-semibold text-red-600"><input type="checkbox" name="favicon_path_remove" value="1" class="w-3.5 h-3.5 rounded"><span>Remove</span></label>
+                        </div>
+                        <?php endif; ?>
+                        <input type="file" name="favicon_file" accept=".png,.webp,.jpg,.jpeg" class="w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                        <p class="text-[10px] text-slate-400 mt-1">Square PNG, 512 × 512 px recommended.</p>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1"><i class="fas fa-share-square text-brand-blue mr-1"></i> Default Social Share Image (Open Graph)</label>
+                        <?php if (!empty($settings['default_og_image'])): ?>
+                        <div class="flex items-center space-x-2 py-1">
+                            <img src="../<?php echo htmlspecialchars($settings['default_og_image']); ?>" class="w-16 h-9 object-cover rounded border border-slate-200 bg-white" alt="Share image">
+                            <span class="text-[10px] text-slate-400 font-mono break-all"><?php echo htmlspecialchars($settings['default_og_image']); ?></span>
+                            <label class="inline-flex items-center space-x-1 text-[10px] font-semibold text-red-600"><input type="checkbox" name="default_og_image_remove" value="1" class="w-3.5 h-3.5 rounded"><span>Remove</span></label>
+                        </div>
+                        <?php endif; ?>
+                        <input type="file" name="og_image_file" accept=".png,.webp,.jpg,.jpeg" class="w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                        <p class="text-[10px] text-slate-400 mt-1">Shown when a page is shared on WhatsApp / Facebook. 1200 × 630 px.</p>
+                    </div>
+                </div>
 
                 <div class="pt-2 border-t border-slate-200/60">
                     <label class="block text-xs font-bold text-slate-700 mb-1">Website Logo Alt Tag (SEO & Accessibility)</label>
@@ -193,10 +243,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <h2 class="text-sm font-bold text-slate-900 uppercase tracking-wider pb-3 border-b border-slate-100 flex items-center">
             <i class="fas fa-trophy text-brand-blue mr-2"></i> Key Achievements & Statistics
         </h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <p class="text-[11px] text-slate-500 -mt-1">These numbers appear in the homepage statistics strip, the footer and the testimonials page. Section headings around them are edited in <a href="pages.php" class="text-brand-blue font-semibold underline">All Pages</a>.</p>
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
             <div>
                 <label class="block text-xs font-bold text-slate-700 mb-1">Patients Count</label>
                 <input type="text" name="stats_patients" value="<?php echo htmlspecialchars($settings['stats_patients'] ?? '3,00,000+'); ?>" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Success Stories</label>
+                <input type="text" name="stats_success" value="<?php echo htmlspecialchars($settings['stats_success'] ?? '1,00,000+'); ?>" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
             </div>
             <div>
                 <label class="block text-xs font-bold text-slate-700 mb-1">Awards Count</label>
@@ -235,6 +290,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label class="block text-xs font-bold text-slate-700 mb-1"><i class="fab fa-youtube text-red-600 mr-1.5"></i> YouTube URL</label>
                 <input type="url" name="social_youtube" value="<?php echo htmlspecialchars($settings['social_youtube'] ?? ''); ?>" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
             </div>
+            <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1"><i class="fab fa-linkedin text-blue-700 mr-1.5"></i> LinkedIn URL</label>
+                <input type="url" name="social_linkedin" value="<?php echo htmlspecialchars($settings['social_linkedin'] ?? ''); ?>" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
+        </div>
+    </div>
+
+    <!-- Lead Forms -->
+    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+        <h2 class="text-sm font-bold text-slate-900 uppercase tracking-wider pb-3 border-b border-slate-100 flex items-center">
+            <i class="fas fa-paper-plane text-brand-blue mr-2"></i> Appointment &amp; Enquiry Forms
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Formester Form URL (forwarding)</label>
+                <input type="url" name="formester_url" value="<?php echo htmlspecialchars($settings['formester_url'] ?? ''); ?>" placeholder="https://app.formester.com/forms/XXXXXXXX/submissions" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                <p class="text-[10px] text-slate-400 mt-1">Every form submission is stored in CMS → Leads and also forwarded here. Leave blank to only store leads.</p>
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Lead Notification Email</label>
+                <input type="email" name="lead_notify_email" value="<?php echo htmlspecialchars($settings['lead_notify_email'] ?? ''); ?>" placeholder="appointments@example.com" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                <p class="text-[10px] text-slate-400 mt-1">Optional. New leads are emailed here if the server can send mail.</p>
+            </div>
         </div>
     </div>
 
@@ -251,6 +329,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div>
                 <label class="block text-xs font-bold text-slate-700 mb-1">Google Analytics 4 (GA4) ID</label>
                 <input type="text" name="ga4_id" value="<?php echo htmlspecialchars($settings['ga4_id'] ?? ''); ?>" placeholder="G-XXXXXXXXXX" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Meta (Facebook) Pixel ID</label>
+                <input type="text" name="meta_pixel_id" value="<?php echo htmlspecialchars($settings['meta_pixel_id'] ?? ''); ?>" placeholder="123456789012345" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
+            <div class="md:col-span-2">
+                <label class="block text-xs font-bold text-slate-700 mb-1">Custom &lt;head&gt; Scripts / Verification Tags</label>
+                <textarea name="custom_head_scripts" rows="3" placeholder="&lt;meta name=&quot;google-site-verification&quot; content=&quot;...&quot;&gt;" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-mono focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($settings['custom_head_scripts'] ?? ''); ?></textarea>
+                <p class="text-[10px] text-slate-400 mt-1">Printed as-is inside &lt;head&gt; on every page. Only paste code from providers you trust.</p>
+            </div>
+            <div class="md:col-span-2">
+                <label class="block text-xs font-bold text-slate-700 mb-1">Custom Scripts before &lt;/body&gt; (chat widgets, etc.)</label>
+                <textarea name="custom_body_scripts" rows="3" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-mono focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($settings['custom_body_scripts'] ?? ''); ?></textarea>
             </div>
         </div>
     </div>
@@ -271,7 +362,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php
     $usingDefaultPassword = false;
     foreach (CMS_DB::get('users', []) as $u) {
-        if (($u['id'] ?? '') === ($currentUser['id'] ?? '') && password_verify('admin123', $u['password'] ?? '')) {
+        if (($u['id'] ?? '') === ($currentUser['id'] ?? '') && (password_verify('admin123', $u['password'] ?? '') || password_verify('@Praveen@123', $u['password'] ?? ''))) {
             $usingDefaultPassword = true;
             break;
         }

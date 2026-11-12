@@ -4,13 +4,12 @@
  * Lists articles managed in the CMS (/cms/blogs.php).
  */
 $isDarkHero = true;
+$pageTitle = 'Neurology Blog - Dr. Praveen Gupta';
+$pageDescription = 'Expert guides, healthy lifestyle tips, and detailed neuro-health columns curated directly by Dr. Praveen Gupta.';
 require_once __DIR__ . '/includes/header.php';
 
 $posts = cms_blogs_published();
 $categoryCounts = cms_blog_categories();
-
-$pageTitle = 'Neurology Blog - Dr. Praveen Gupta';
-$pageDescription = 'Expert guides, healthy lifestyle tips, and detailed neuro-health columns curated directly by Dr. Praveen Gupta.';
 ?>
 
 <!-- Page Hero -->

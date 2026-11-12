@@ -89,7 +89,7 @@
         "neurocritical-acute-stroke-care": {
             "hero-primary": {
                 "text": "Emergency Helpline",
-                "url": "{phone}"
+                "url": "{stroke-helpline}"
             },
             "hero-secondary": {
                 "text": "Book Consultation",
