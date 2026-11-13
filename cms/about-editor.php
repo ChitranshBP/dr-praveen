@@ -1,178 +1,92 @@
 <?php
+/**
+ * "About Dr. Praveen" hub — everything about the doctor now lives in three
+ * dedicated screens; this page just points to them so nothing is edited in
+ * two places.
+ */
 require_once __DIR__ . '/includes/auth.php';
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/functions.php';
-require_once __DIR__ . '/includes/fields.php';
 
 cms_require_auth();
 
 $doctors = CMS_DB::get('doctors', []);
-$settings = CMS_DB::get('settings', []);
-
-// Find Dr. Praveen Gupta's entry
-$mainDocIndex = 0;
-foreach ($doctors as $idx => $d) {
-    if (stripos($d['name'] ?? '', 'Praveen') !== false) {
-        $mainDocIndex = $idx;
+$mainDoc = null;
+foreach ($doctors as $d) {
+    if (is_array($d) && stripos((string)($d['name'] ?? ''), 'Praveen') !== false) {
+        $mainDoc = $d;
         break;
     }
 }
-$mainDoc = $doctors[$mainDocIndex] ?? [];
+$settings = CMS_DB::get('settings', []);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    cms_verify_csrf();
-
-    // 1. Update Stats in settings
-    $stats = [
-        'stats_patients' => trim($_POST['stats_patients'] ?? '3,00,000+'),
-        'stats_awards' => trim($_POST['stats_awards'] ?? '50+'),
-        'stats_experience' => trim($_POST['stats_experience'] ?? '20+ Years'),
-        'stats_rating' => trim($_POST['stats_rating'] ?? '4.9')
-    ];
-    CMS_DB::setMultipleSettings($stats);
-
-    // 2. Update Dr. Praveen profile
-    $mainDoc['designation'] = trim($_POST['designation'] ?? '');
-    $mainDoc['specialty'] = trim($_POST['specialty'] ?? 'Neurology, Neurosciences');
-    if (array_key_exists('image_alt', $_POST)) {
-        $mainDoc['image_alt'] = trim((string)$_POST['image_alt']);
-        $mainDoc['alt'] = $mainDoc['image_alt'];
-    }
-    if (array_key_exists('experience', $_POST)) {
-        $mainDoc['experience'] = trim((string)$_POST['experience']);
-    }
-    
-    $aboutText = trim($_POST['about'] ?? '');
-    if (!isset($mainDoc['modal'])) $mainDoc['modal'] = ['sections' => []];
-    $mainDoc['modal']['sections']['About'] = [$aboutText];
-
-    $mainDoc['modal']['sections']['Qualifications'] = cms_parse_multiline_items($_POST['qualifications'] ?? '');
-    $mainDoc['modal']['sections']['Areas of Expertise'] = cms_parse_multiline_items($_POST['expertise'] ?? '');
-
-    // Photo (upload / library pick / remove)
-    $imgRes = cms_image_field_value('image', 'doctors', $mainDoc['image'] ?? '');
-    $uploadError = $imgRes['error'];
-    if ($imgRes['path'] !== '' || $imgRes['changed']) {
-        $mainDoc['image'] = $imgRes['path'];
-    }
-
-    $doctors[$mainDocIndex] = $mainDoc;
-    CMS_DB::set('doctors', $doctors);
-
-    if ($uploadError !== '') {
-        cms_set_flash('error', 'Profile saved, but the photo upload failed: ' . $uploadError);
-    } else {
-        cms_set_flash('success', 'Doctor profile, biography, and statistics updated successfully!');
-    }
-    header('Location: about-editor.php');
-    exit;
-}
-
-$pageTitle = 'Edit About Doctor & Bio';
+$pageTitle = 'About Dr. Praveen Gupta';
 require_once __DIR__ . '/includes/header.php';
+
+$cards = [
+    [
+        'icon' => 'fa-user-md', 'title' => 'Doctor profile & biography',
+        'text' => 'Photo, designation, experience, About text, qualifications, expertise and every popup section shown on the Team page and homepage.',
+        'url' => $mainDoc ? 'doctor-edit.php?id=' . urlencode((string)($mainDoc['id'] ?? '')) : 'doctors.php',
+        'cta' => 'Edit profile',
+    ],
+    [
+        'icon' => 'fa-file-alt', 'title' => 'About page sections',
+        'text' => 'Banner, designations, biography, highlights, stats strip, expertise cards, achievements, awards gallery, vision quote and testimonials slider — reorder, hide or rewrite any of them.',
+        'url' => 'page-edit.php?slug=about',
+        'cta' => 'Edit About page',
+    ],
+    [
+        'icon' => 'fa-home', 'title' => 'Homepage "About" section',
+        'text' => 'The About Dr. Praveen section on the homepage (photo, appointments, paragraphs, firsts and button) is a section of the Home page.',
+        'url' => 'page-edit.php?slug=index',
+        'cta' => 'Edit Home page',
+    ],
+    [
+        'icon' => 'fa-chart-line', 'title' => 'Key statistics',
+        'text' => 'Patients treated, awards, years of experience, rating and success stories. Used wherever a page prints {stats_patients}, {stats_awards}, {stats_experience}, {stats_rating} or {stats_success}.',
+        'url' => 'settings.php',
+        'cta' => 'Edit statistics',
+    ],
+    [
+        'icon' => 'fa-trophy', 'title' => 'Awards & honours photos',
+        'text' => 'The award images shown on the homepage, About page and Awards & Recognition page.',
+        'url' => 'collection.php?c=awards',
+        'cta' => 'Manage awards',
+    ],
+    [
+        'icon' => 'fa-star', 'title' => 'Why Choose Dr. Praveen page',
+        'text' => 'Leadership statistics, milestones and the patient-first philosophy section.',
+        'url' => 'page-edit.php?slug=why-choose-dr-praveen-gupta',
+        'cta' => 'Edit page',
+    ],
+];
 ?>
 
-<div class="max-w-4xl bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
-    <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+<div class="max-w-5xl space-y-6">
+    <div class="bg-gradient-to-r from-brand-indigo via-blue-950 to-brand-indigo text-white p-6 rounded-3xl shadow border border-white/10 flex flex-col md:flex-row md:items-center gap-5">
+        <?php if ($mainDoc && !empty($mainDoc['image'])): ?>
+        <img src="../<?php echo htmlspecialchars(ltrim((string)$mainDoc['image'], '/')); ?>" alt="" class="w-20 h-24 rounded-2xl object-cover object-top border-2 border-white/20 flex-shrink-0">
+        <?php endif; ?>
         <div>
-            <h2 class="text-lg font-bold text-slate-800">Edit Main Doctor Profile & Experience</h2>
-            <p class="text-xs text-slate-500">Update Dr. Praveen Gupta's statistics, bio, degrees, and areas of expertise with rich formatting.</p>
+            <h2 class="text-base font-extrabold"><?php echo htmlspecialchars($mainDoc['name'] ?? 'Dr. Praveen Gupta'); ?></h2>
+            <p class="text-xs text-slate-300 mt-1"><?php echo htmlspecialchars($mainDoc['designation'] ?? ''); ?></p>
+            <p class="text-xs text-slate-300 mt-2">Everything about the doctor is edited in the screens below. Statistics: <strong class="text-white"><?php echo htmlspecialchars($settings['stats_patients'] ?? '3,00,000+'); ?></strong> patients · <strong class="text-white"><?php echo htmlspecialchars($settings['stats_awards'] ?? '50+'); ?></strong> awards · <strong class="text-white"><?php echo htmlspecialchars($settings['stats_experience'] ?? '20+'); ?></strong> years · <strong class="text-white"><?php echo htmlspecialchars($settings['stats_rating'] ?? '4.9'); ?></strong> rating.</p>
         </div>
-        <a href="index.php" class="px-3.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl">Dashboard</a>
     </div>
 
-    <form method="POST" enctype="multipart/form-data" class="space-y-6">
-        <?php echo cms_csrf_field(); ?>
-
-        <!-- Key Website Statistics -->
-        <div class="p-5 bg-gradient-to-br from-slate-50 to-blue-50/30 rounded-2xl border border-slate-200/80 space-y-3">
-            <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center">
-                <i class="fas fa-chart-line text-brand-blue mr-2"></i> Key Verified Statistics
-            </h3>
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
-                <div>
-                    <label class="block text-[11px] font-bold text-slate-600 mb-1">Patients Treated</label>
-                    <input type="text" name="stats_patients" value="<?php echo htmlspecialchars($settings['stats_patients'] ?? '3,00,000+'); ?>" required class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-bold text-slate-800 focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                </div>
-                <div>
-                    <label class="block text-[11px] font-bold text-slate-600 mb-1">Awards / Honours</label>
-                    <input type="text" name="stats_awards" value="<?php echo htmlspecialchars($settings['stats_awards'] ?? '50+'); ?>" required class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-bold text-slate-800 focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                </div>
-                <div>
-                    <label class="block text-[11px] font-bold text-slate-600 mb-1">Years Experience</label>
-                    <input type="text" name="stats_experience" value="<?php echo htmlspecialchars($settings['stats_experience'] ?? '20+ Years'); ?>" required class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-bold text-slate-800 focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                </div>
-                <div>
-                    <label class="block text-[11px] font-bold text-slate-600 mb-1">Patient Rating</label>
-                    <input type="text" name="stats_rating" value="<?php echo htmlspecialchars($settings['stats_rating'] ?? '4.9'); ?>" required class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-bold text-slate-800 focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <?php foreach ($cards as $c): ?>
+        <a href="<?php echo htmlspecialchars($c['url']); ?>" class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-blue hover:shadow-md transition-all group flex flex-col">
+            <div class="flex items-center space-x-3 mb-2">
+                <span class="w-9 h-9 rounded-xl bg-blue-50 text-brand-blue flex items-center justify-center"><i class="fas <?php echo $c['icon']; ?>"></i></span>
+                <h3 class="text-sm font-bold text-slate-900 group-hover:text-brand-blue"><?php echo htmlspecialchars($c['title']); ?></h3>
             </div>
-        </div>
-
-        <!-- Doctor Photo -->
-        <?php cms_image_field('image', $mainDoc['image'] ?? '', [
-            'label' => 'Doctor Photo (Team page)', 'folder' => 'doctors', 'size' => 'Portrait, at least 600 px wide',
-            'preview_class' => 'w-20 h-24',
-            'alt_name' => 'image_alt', 'alt_value' => $mainDoc['image_alt'] ?? ($mainDoc['alt'] ?? ''),
-            'alt_label' => 'Photo alt tag (SEO), e.g. Dr. Praveen Gupta - Neurologist in Gurgaon',
-        ]); ?>
-
-        <!-- Doctor Details -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Experience</label>
-                <input type="text" name="experience" value="<?php echo htmlspecialchars($mainDoc['experience'] ?? ''); ?>" placeholder="20+ Years" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
-            </div>
-            <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Designation</label>
-                <input type="text" name="designation" value="<?php echo htmlspecialchars($mainDoc['designation'] ?? 'Chairman - Neurology'); ?>" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
-            </div>
-            <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Specialty</label>
-                <input type="text" name="specialty" value="<?php echo htmlspecialchars($mainDoc['specialty'] ?? 'Neurology, Neurosciences'); ?>" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
-            </div>
-        </div>
-
-        <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Doctor Biography / About Summary</label>
-            <textarea name="about" rows="5" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm leading-relaxed focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php 
-                $aboutP = $mainDoc['modal']['sections']['About'] ?? [];
-                echo htmlspecialchars(is_array($aboutP) ? implode("\n\n", $aboutP) : $aboutP);
-            ?></textarea>
-        </div>
-
-        <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Degrees & Qualifications</label>
-            <textarea name="qualifications" rows="4" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm leading-relaxed focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php 
-                $quals = $mainDoc['modal']['sections']['Qualifications'] ?? [];
-                if (is_array($quals)) {
-                    foreach ($quals as $q) {
-                        echo htmlspecialchars($q) . "\n";
-                    }
-                } else {
-                    echo htmlspecialchars($quals);
-                }
-            ?></textarea>
-        </div>
-
-        <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Areas of Clinical Expertise</label>
-            <textarea name="expertise" rows="4" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm leading-relaxed focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php 
-                $exp = $mainDoc['modal']['sections']['Areas of Expertise'] ?? [];
-                if (is_array($exp)) {
-                    foreach ($exp as $e) {
-                        echo htmlspecialchars($e) . "\n";
-                    }
-                } else {
-                    echo htmlspecialchars($exp);
-                }
-            ?></textarea>
-        </div>
-
-        <div class="flex items-center justify-end space-x-3 pt-4 border-t border-slate-100">
-            <button type="submit" class="px-6 py-2.5 bg-brand-blue hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-md transition-all">Save Profile Changes</button>
-        </div>
-    </form>
+            <p class="text-xs text-slate-500 leading-relaxed flex-1"><?php echo htmlspecialchars($c['text']); ?></p>
+            <span class="mt-3 text-xs font-bold text-brand-blue"><?php echo htmlspecialchars($c['cta']); ?> <i class="fas fa-arrow-right text-[9px] ml-1"></i></span>
+        </a>
+        <?php endforeach; ?>
+    </div>
 </div>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

@@ -20,6 +20,14 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+// Same CSRF token as every CMS form (sent as a form field by the editor toolbar).
+$token = (string)($_POST['csrf_token'] ?? ($_SERVER['HTTP_X_CSRF_TOKEN'] ?? ''));
+if ($token === '' || !hash_equals($_SESSION['csrf_token'] ?? '', $token)) {
+    http_response_code(403);
+    echo json_encode(['error' => 'Security token missing or expired. Please reload the page and try again.']);
+    exit;
+}
+
 $upload = cms_handle_upload('image', 'editor');
 if (!$upload) {
     echo json_encode(['error' => 'No image file provided or upload error.']);

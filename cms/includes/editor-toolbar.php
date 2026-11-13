@@ -167,6 +167,8 @@
             const file = this.files[0];
             const formData = new FormData();
             formData.append('image', file);
+            const csrfInput = document.querySelector('input[name="csrf_token"]');
+            if (csrfInput) formData.append('csrf_token', csrfInput.value);
 
             const range = activeQuillInstance.getSelection(true);
             

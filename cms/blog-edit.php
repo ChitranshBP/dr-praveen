@@ -24,11 +24,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $title = trim($_POST['title'] ?? '');
     $slug = trim($_POST['slug'] ?? '') ?: cms_slugify($title);
+    // URL-safe, lowercase, and unique among the other posts (-2, -3 … appended).
+    $slug = trim(preg_replace('/[^a-z0-9-]+/', '-', strtolower(cms_slugify($slug))), '-');
+    if ($slug === '') $slug = 'post-' . date('Ymd-His');
+    $taken = [];
+    foreach ($blogs as $other) {
+        if (is_array($other) && ($other['id'] ?? '') !== $id && !empty($other['slug'])) $taken[(string)$other['slug']] = true;
+    }
+    $baseSlug = $slug; $n = 2;
+    while (isset($taken[$slug])) { $slug = $baseSlug . '-' . $n++; }
     $category = trim($_POST['category'] ?? 'Neurology');
     $author = trim($_POST['author'] ?? 'Dr. Praveen Gupta');
     $excerpt = trim($_POST['excerpt'] ?? '');
     $content = trim($_POST['content'] ?? '');
-    $status = $_POST['status'] ?? 'published';
+    $status = in_array($_POST['status'] ?? '', ['published', 'draft'], true) ? $_POST['status'] : 'published';
     $date = trim($_POST['date'] ?? '') ?: date('Y-m-d');
     $imageAlt = trim($_POST['image_alt'] ?? '');
     $metaTitle = trim($_POST['meta_title'] ?? '');

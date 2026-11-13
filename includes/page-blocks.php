@@ -1407,7 +1407,8 @@ if (!function_exists('cms_render_block_links')) {
                 <?php $causes = trim((string)($item['subtitle'] ?? '')); ?>
                 <?php if ($causes !== ''): ?>
                 <div class="pt-2 border-t border-slate-200/40 text-[11px] text-dark-grey/60">
-                    <strong class="text-deep-indigo">Potential Causes:</strong>
+                    <?php $causesLabel = trim((string)($block['causes_label'] ?? '')); ?>
+                    <?php if ($causesLabel !== 'none'): ?><strong class="text-deep-indigo"><?php echo htmlspecialchars($causesLabel !== '' ? $causesLabel : 'Potential Causes:'); ?></strong><?php endif; ?>
                     <?php echo function_exists('cms_render_html') ? cms_render_html($causes) : htmlspecialchars($causes); ?>
                 </div>
                 <?php endif; ?>

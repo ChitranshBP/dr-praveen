@@ -38,6 +38,13 @@ DirectoryIndex index.php index.html
     RewriteCond %{REQUEST_FILENAME}.php -f
     RewriteRule ^(.*)$ $1.php [L]
 
+    # 5b. Pages created in the CMS (no .php file of their own) -> generic page.php
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}.php !-f
+    RewriteCond %{REQUEST_URI} !^/(cms|api|assets|data|includes|LP|scripts)(/|$) [NC]
+    RewriteRule ^([a-z0-9][a-z0-9-]*)/?$ /page.php?slug=$1 [L,QSA]
+
     # 6. Remove trailing slash for non-directories
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)/$ /$1 [L,R=301]

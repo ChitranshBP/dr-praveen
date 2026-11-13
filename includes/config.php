@@ -490,6 +490,22 @@ function cms_render_html($content) {
 }
 
 /**
+ * Inline rich text (excerpts, short bios): keeps bold/italic/links/line breaks,
+ * drops block tags so the text can sit inside a <p> or <span>.
+ */
+function cms_inline_html($content) {
+    $content = trim((string)$content);
+    if ($content === '') {
+        return '';
+    }
+    if (strpos($content, '<') === false) {
+        return nl2br(htmlspecialchars($content));
+    }
+    $content = preg_replace('#</(p|div|li|h[1-6]|blockquote)>\s*<\1[^>]*>#i', ' ', $content);
+    return trim(strip_tags($content, '<a><strong><b><em><i><u><br><span><mark><small>'));
+}
+
+/**
  * Resolve a public asset path, returning the fallback when the file is missing.
  * Handles URL-encoded paths (e.g. "My%20Image.png") without changing the URL
  * that is eventually printed into the page.

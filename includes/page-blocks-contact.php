@@ -279,7 +279,7 @@ if (!function_exists('cms_blog_grid_variant_all')) {
                     <img src="<?php echo htmlspecialchars($post['image'] ?? 'assets/services/migraine.png'); ?>" alt="<?php echo htmlspecialchars($post['image_alt'] ?? $post['title']); ?>" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                 </div>
                 <h3 class="text-xl font-bold text-deep-indigo leading-snug mb-3 group-hover:text-electric-blue transition-colors duration-300"><?php echo htmlspecialchars($post['title']); ?></h3>
-                <p class="text-sm text-dark-grey/70 leading-relaxed mb-5 flex-1"><?php echo htmlspecialchars($post['excerpt'] ?? ''); ?></p>
+                <p class="text-sm text-dark-grey/70 leading-relaxed mb-5 flex-1"><?php echo cms_inline_html($post['excerpt'] ?? ''); ?></p>
                 <div class="mt-auto pt-4 border-t border-silver-grey/60 flex items-center space-x-4">
                     <span class="inline-block bg-electric-blue/10 text-electric-blue text-xs font-bold px-3 py-1.5 rounded-full"><?php echo htmlspecialchars($post['category'] ?? 'Neurology'); ?></span>
                     <span class="text-xs text-dark-grey/45 font-medium"><?php echo htmlspecialchars($postDate); ?></span>
@@ -333,7 +333,7 @@ if (!function_exists('cms_blog_grid_variant_list')) {
                                 <span class="text-dark-grey/40"><?php echo htmlspecialchars($postDate); ?></span>
                             </div>
                             <h3 class="text-xl font-bold text-dark-grey leading-snug hover:text-electric-blue transition-colors duration-300"><a href="<?php echo $postUrl; ?>"><?php echo htmlspecialchars($post['title']); ?></a></h3>
-                            <p class="text-sm text-dark-grey/65 leading-relaxed line-clamp-3"><?php echo htmlspecialchars($post['excerpt'] ?? ''); ?></p>
+                            <p class="text-sm text-dark-grey/65 leading-relaxed line-clamp-3"><?php echo cms_inline_html($post['excerpt'] ?? ''); ?></p>
                         </div>
                         <div class="pt-4 flex items-center justify-between text-xs text-dark-grey/50">
                             <span><?php echo htmlspecialchars($byLabel . ' ' . ($post['author'] ?? 'Dr. Praveen Gupta')); ?></span>

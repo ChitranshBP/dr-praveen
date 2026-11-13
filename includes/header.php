@@ -3,7 +3,7 @@
  * Header Include
  */
 require_once __DIR__ . '/config.php';
-$currentPage = str_replace('.php', '', basename($_SERVER['PHP_SELF']));
+$currentPage = isset($currentPage) && $currentPage !== '' ? $currentPage : str_replace('.php', '', basename($_SERVER['PHP_SELF']));
 $isHomepage = ($currentPage === 'index' || $currentPage === '');
 $isDarkHero = isset($isDarkHero) ? $isDarkHero : false;
 

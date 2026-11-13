@@ -1206,7 +1206,7 @@ if (!function_exists('cms_render_block_team_grid')) {
                     <span class="text-cyan-accent font-bold text-xs uppercase tracking-widest"><?php echo htmlspecialchars($lead['designation'] ?? ''); ?></span>
                     <h3 class="text-2xl font-bold text-deep-indigo font-serif"><?php echo htmlspecialchars($lead['name'] ?? ''); ?></h3>
                     <p class="text-sm text-dark-grey/70 leading-relaxed">
-                        <?php echo htmlspecialchars($lead['modal']['sections']['About'][0] ?? ''); ?>
+                        <?php echo cms_inline_html($lead['modal']['sections']['About'][0] ?? ''); ?>
                     </p>
                     <div class="flex flex-wrap gap-4 pt-2">
                         <button onclick="event.stopPropagation(); openPraveenModal();" class="text-xs font-semibold text-electric-blue hover:underline"><?php echo htmlspecialchars($options['bio_label'] ?? 'Full Biography'); ?> <i class="fas fa-arrow-right text-[10px] ml-1"></i></button>
@@ -1718,7 +1718,7 @@ if (!function_exists('cms_render_block_blog_grid')) {
                         <?php echo $blog['title'] ?? ''; ?>
                     </h3>
                     <p class="text-xs sm:text-sm text-dark-grey/70 leading-relaxed mb-4 line-clamp-3 flex-1">
-                        <?php echo $blog['excerpt'] ?? ''; ?>
+                        <?php echo cms_inline_html($blog['excerpt'] ?? ''); ?>
                     </p>
                     <div class="mt-auto pt-3 border-t border-silver-grey/60 flex items-center justify-between text-xs">
                         <span class="inline-block bg-electric-blue/10 text-electric-blue font-bold px-2.5 py-1 rounded-full text-[11px]">

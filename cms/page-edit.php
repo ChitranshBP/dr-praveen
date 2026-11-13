@@ -432,7 +432,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Generic block-level fields used by the newer section types
             // (text-media, feature-split, strip, stats, collection grids…).
             // A cleared field is dropped so the built-in default returns.
-            foreach (['badge_icon', 'text', 'text_after', 'button_text', 'button_url', 'button2_text', 'button2_url', 'collection', 'variant'] as $gf) {
+            foreach (['badge_icon', 'text', 'text_after', 'button_text', 'button_url', 'button2_text', 'button2_url', 'collection', 'variant', 'name', 'role', 'causes_label'] as $gf) {
                 if (!array_key_exists($gf, $pb)) {
                     continue;
                 }
@@ -442,6 +442,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 } else {
                     $block[$gf] = $gv;
                 }
+            }
+            if (array_key_exists('layout', $pb) && ($base['type'] ?? '') === 'doctor') {
+                $block['layout'] = ($pb['layout'] === 'about') ? 'about' : 'profile';
             }
             if (array_key_exists('limit', $pb)) {
                 $gLimit = (int)$pb['limit'];
@@ -1174,6 +1177,30 @@ require_once __DIR__ . '/includes/header.php';
                 ]); ?>
                 <?php endif; ?>
 
+                <?php if ($blockType === 'doctor'): ?>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <div>
+                        <label class="block text-[10px] font-bold text-slate-600 mb-1">Doctor name (profile card)</label>
+                        <input type="text" name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][name]" value="<?php echo htmlspecialchars($block['name'] ?? ''); ?>" placeholder="Dr. Praveen Gupta" class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[11px] font-semibold focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold text-slate-600 mb-1">Role line (profile card)</label>
+                        <input type="text" name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][role]" value="<?php echo htmlspecialchars($block['role'] ?? ''); ?>" placeholder="Chairman – Neurology" class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[11px] font-semibold focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold text-slate-600 mb-1">Layout</label>
+                        <select name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][layout]" class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[11px] font-semibold focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            <option value="profile" <?php echo ($block['layout'] ?? 'profile') === 'profile' ? 'selected' : ''; ?>>Profile card (centered heading + card)</option>
+                            <option value="about" <?php echo ($block['layout'] ?? 'profile') === 'about' ? 'selected' : ''; ?>>About section (photo left, copy right)</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-slate-600 mb-1">Doctor paragraph(s) (blank line between paragraphs)</label>
+                    <textarea name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][text]" rows="4" class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[11px] leading-relaxed focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($block['text'] ?? ''); ?></textarea>
+                </div>
+                <?php endif; ?>
+
                 <?php if (!empty($meta['block_roles'])): ?>
                 <div>
                     <label class="block text-[10px] font-bold text-slate-600 mb-1">Doctor Role Bullets (one per line)</label>
@@ -1221,6 +1248,10 @@ require_once __DIR__ . '/includes/header.php';
                 <div>
                     <label class="block text-[10px] font-bold text-slate-600 mb-1">Call-out Box Text</label>
                     <textarea name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][note_text]" rows="2" placeholder="Supporting sentence shown under the title" class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[11px] leading-relaxed focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($block['note_text'] ?? ''); ?></textarea>
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-slate-600 mb-1">Label before each card's small-print line (default "Potential Causes:")</label>
+                    <input type="text" name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][causes_label]" value="<?php echo htmlspecialchars($block['causes_label'] ?? ''); ?>" placeholder="Potential Causes:" class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[11px] font-semibold focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
                 </div>
                 <?php endif; ?>
 

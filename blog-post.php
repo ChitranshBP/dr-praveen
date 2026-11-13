@@ -47,7 +47,7 @@ require_once __DIR__ . '/includes/header.php';
 
             <?php if (!empty($post['excerpt'])): ?>
             <p class="text-base md:text-lg text-dark-grey/75 italic mb-8 border-l-4 border-electric-blue pl-4 bg-slate-50 py-3 rounded-r-xl">
-                <?php echo htmlspecialchars($post['excerpt']); ?>
+                <?php echo cms_inline_html($post['excerpt']); ?>
             </p>
             <?php endif; ?>
 

@@ -78,6 +78,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sections['Qualifications'] = cms_parse_multiline_items($qualifications);
     $sections['Areas of Expertise'] = cms_parse_multiline_items($expertise);
 
+    // Popup header lines + any further biography sections (Awards, Memberships, …)
+    $modal['subtitle'] = trim((string)($_POST['modal_subtitle'] ?? '')) !== '' ? trim((string)$_POST['modal_subtitle']) : ($modal['subtitle'] ?? $specialty);
+    $modal['role'] = trim((string)($_POST['modal_role'] ?? '')) !== '' ? trim((string)$_POST['modal_role']) : ($modal['role'] ?? $designation);
+    if (isset($_POST['extra_sections']) && is_array($_POST['extra_sections'])) {
+        $standard = ['Designation', 'About', 'Qualifications', 'Areas of Expertise'];
+        $kept = array_intersect_key($sections, array_flip($standard));
+        $extraTitles = $_POST['extra_sections']['title'] ?? [];
+        $extraItems = $_POST['extra_sections']['items'] ?? [];
+        foreach ((array)$extraTitles as $i => $t) {
+            $t = trim((string)$t);
+            $list = cms_parse_multiline_items((string)($extraItems[$i] ?? ''));
+            if ($t === '' || empty($list) || isset($kept[$t])) continue;
+            $kept[$t] = $list;
+        }
+        $sections = $kept;
+    }
+
     $modal['sections'] = $sections;
     $docData['modal'] = $modal;
 
@@ -176,6 +193,58 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     echo htmlspecialchars($exps);
                 }
             ?></textarea>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-slate-100">
+            <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Popup subtitle (under the name)</label>
+                <input type="text" name="modal_subtitle" value="<?php echo htmlspecialchars($doc['modal']['subtitle'] ?? ''); ?>" placeholder="e.g. Neurology &amp; Neurosciences | Clinical Director" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Popup "Role" badge</label>
+                <input type="text" name="modal_role" value="<?php echo htmlspecialchars($doc['modal']['role'] ?? ''); ?>" placeholder="e.g. Clinical Director" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
+        </div>
+
+        <div class="space-y-3">
+            <div class="flex items-center justify-between">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700">More biography sections</label>
+                    <p class="text-[11px] text-slate-500">Awards &amp; Achievements, Memberships, Experience, Research… Each shows as its own heading in the doctor popup (one item per line).</p>
+                </div>
+                <button type="button" onclick="docAddSection()" class="px-3 py-1.5 bg-brand-blue hover:bg-blue-700 text-white text-[11px] font-bold rounded-lg"><i class="fas fa-plus text-[9px] mr-1"></i> Add section</button>
+            </div>
+            <div id="doc-extra-sections" class="space-y-3">
+                <?php
+                $standardSections = ['Designation', 'About', 'Qualifications', 'Areas of Expertise'];
+                foreach (($doc['modal']['sections'] ?? []) as $secTitle => $secItems):
+                    if (in_array($secTitle, $standardSections, true) || !is_array($secItems)) continue;
+                ?>
+                <div class="doc-extra-section bg-slate-50 border border-slate-200 rounded-xl p-3 space-y-2">
+                    <div class="flex items-center gap-2">
+                        <input type="text" name="extra_sections[title][]" value="<?php echo htmlspecialchars((string)$secTitle); ?>" placeholder="Section heading" class="flex-1 px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <button type="button" onclick="this.closest('.doc-extra-section').remove()" class="text-[11px] text-red-500 font-bold hover:underline"><i class="fas fa-trash text-[9px]"></i> Remove</button>
+                    </div>
+                    <textarea name="extra_sections[items][]" rows="3" placeholder="One item per line" class="w-full px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs leading-relaxed focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars(implode("\n", array_map('strval', $secItems))); ?></textarea>
+                </div>
+                <?php endforeach; ?>
+            </div>
+            <template id="doc-extra-section-template">
+                <div class="doc-extra-section bg-slate-50 border border-slate-200 rounded-xl p-3 space-y-2">
+                    <div class="flex items-center gap-2">
+                        <input type="text" name="extra_sections[title][]" value="" placeholder="Section heading, e.g. Awards &amp; Achievements" class="flex-1 px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-bold focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <button type="button" onclick="this.closest('.doc-extra-section').remove()" class="text-[11px] text-red-500 font-bold hover:underline"><i class="fas fa-trash text-[9px]"></i> Remove</button>
+                    </div>
+                    <textarea name="extra_sections[items][]" rows="3" placeholder="One item per line" class="w-full px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs leading-relaxed focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+                </div>
+            </template>
+            <input type="hidden" name="extra_sections[present]" value="1">
+            <script>
+            function docAddSection() {
+                const tpl = document.getElementById('doc-extra-section-template');
+                document.getElementById('doc-extra-sections').appendChild(tpl.content.cloneNode(true));
+            }
+            </script>
         </div>
 
         <div class="flex items-center justify-end space-x-3 pt-4 border-t border-slate-100">

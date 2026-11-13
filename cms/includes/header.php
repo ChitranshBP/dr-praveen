@@ -349,10 +349,13 @@ $flash = cms_get_flash();
             <div class="p-4 border-t border-indigo-900/60 bg-black/20">
                 <div class="flex items-center justify-between">
                     <span class="text-xs font-bold text-white"><?php echo htmlspecialchars($currentUser['username'] ?? 'admin'); ?></span>
-                    <a href="logout.php" title="Logout" class="text-xs text-red-400 hover:text-red-300 font-semibold flex items-center space-x-1">
-                        <span>Logout</span>
-                        <i class="fas fa-sign-out-alt"></i>
-                    </a>
+                    <form method="POST" action="logout.php" class="inline">
+                        <?php echo cms_csrf_field(); ?>
+                        <button type="submit" title="Logout" class="text-xs text-red-400 hover:text-red-300 font-semibold flex items-center space-x-1">
+                            <span>Logout</span>
+                            <i class="fas fa-sign-out-alt"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
         </aside>
