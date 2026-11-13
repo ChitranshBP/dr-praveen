@@ -13,6 +13,9 @@ require_once __DIR__ . '/page-blocks.php';
 // Editable CTA buttons (hero / diagnosis / final CTA / emergency …)
 require_once __DIR__ . '/page-ctas.php';
 
+// Hero breadcrumb trail (labels/parents from each page's SEO card)
+require_once __DIR__ . '/breadcrumb.php';
+
 // Load dynamic settings from CMS if present
 $cmsSettingsFile = dirname(__DIR__) . '/data/settings.json';
 $cmsSettings = [];

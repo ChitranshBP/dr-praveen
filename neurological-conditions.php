@@ -11,13 +11,6 @@ $pageContent = get_page_content('neurological-conditions', [
     'hero_desc'  => 'Explore comprehensive information, symptoms, and advanced diagnostic and treatment options for a wide spectrum of neurological disorders.'
 ]);
 
-$section = get_page_section($pageContent, [
-    'badge' => 'Neurology Portal',
-    'title' => 'Explore Medical Conditions',
-    'text' => 'Click on any of the specialties below to read detailed resources on symptoms, diagnosis, and care plans.',
-    'image' => '',
-    'image_alt' => '',
-]);
 $heroBg = cms_media_path($pageContent['hero_bg'] ?? '');
 $heroAlt = trim((string)($pageContent['hero_bg_alt'] ?? ''));
 if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'Dr. Praveen Gupta'));
@@ -38,15 +31,11 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl text-left animate-fade-in-up">
             <!-- Breadcrumb -->
-            <nav class="flex items-center space-x-2 text-white/80 text-sm mb-3">
-                <a href="index" class="hover:text-white transition-colors">Home</a>
-                <i class="fas fa-chevron-right text-[8px]"></i>
-                <span class="text-white font-medium">Neurological Conditions</span>
-            </nav>
+            <?php cms_breadcrumb_nav('neurological-conditions'); ?>
 
             <!-- Badge -->
             <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4 border border-white/20">
-                <i class="fas fa-brain text-cyan-accent text-[10px]"></i>
+                <i class="fas <?php echo htmlspecialchars(trim((string)($pageContent['hero_icon'] ?? '')) !== '' ? $pageContent['hero_icon'] : 'fa-brain'); ?> text-cyan-accent text-[10px]"></i>
                 <span><?php echo htmlspecialchars($pageContent['hero_badge']); ?></span>
             </div>
 
@@ -72,27 +61,8 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
     </div>
 </section>
 
-<!-- Conditions Grid Section -->
-<section id="directory" class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-12">
-            <span class="text-electric-blue font-bold text-xs uppercase tracking-wider"><?php echo htmlspecialchars($section['badge']); ?></span>
-            <h2 class="text-3xl font-bold text-deep-indigo font-serif mt-2"><?php echo htmlspecialchars($section['title']); ?></h2>
-            <?php echo cms_section_paragraphs($section['text'], 'text-sm text-dark-grey/65 mt-3 leading-relaxed', 'mb-0'); ?>
-        </div>
 
-        <?php if (!empty($section['image'])): ?>
-        <div class="max-w-3xl mx-auto -mt-4 mb-10 rounded-3xl overflow-hidden shadow-lg border border-slate-200/50">
-            <img src="<?php echo htmlspecialchars($section['image']); ?>" alt="<?php echo htmlspecialchars($section['image_alt']); ?>" class="w-full h-auto object-cover">
-        </div>
-        <?php endif; ?>
-
-        <!-- Condition directory cards (CMS block) -->
-        <?php cms_render_page_block('neurological-conditions', 'condition-cards'); ?>
-    </div>
-</section>
-
-<!-- Video Testimonials (component: includes/video-testimonials.php) -->
-<?php require __DIR__ . "/includes/video-testimonials.php"; ?>
+<!-- Page sections: order, visibility and content are managed in CMS → All Pages -->
+<?php cms_render_page_flow('neurological-conditions'); ?>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

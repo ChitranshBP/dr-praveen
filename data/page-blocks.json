@@ -74,6 +74,23 @@
         }
     },
     "brain-health-center": {
+        "_flow": true,
+        "intro": {
+            "type": "intro",
+            "label": "Main Body Section",
+            "badge": "Preventive Neurology",
+            "title": "Brain Health Starts Before Symptoms",
+            "text": "Most neurological decline is decades in the making. The habits and vascular risks that lead to stroke and dementia are measurable — and modifiable — long before anything goes wrong.\n\nDr. Praveen Gupta recommends regular neurological wellness checks for adults over 50, and earlier for anyone with a family history of stroke, dementia or vascular disease.",
+            "image": "assets/services/memory-clinic.png",
+            "image_alt": "Preventive brain health screening",
+            "options": {
+                "facts_key": "key-facts"
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
         "key-facts": {
             "type": "facts",
             "label": "Key Facts",
@@ -98,7 +115,8 @@
                     "title": "Modifiable Risk",
                     "text": "Most factors respond to change"
                 }
-            ]
+            ],
+            "nested": true
         },
         "wellness-pillars": {
             "type": "cards",
@@ -147,7 +165,11 @@
                         "Social Activity"
                     ]
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
+            }
         },
         "screening-journey": {
             "type": "steps",
@@ -176,10 +198,35 @@
                     "title": "Personalised Plan",
                     "text": "A written plan covering nutrition, activity, sleep and follow-up intervals, tailored to the risks the screening actually found."
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "doctor": {
+            "use": "_shared",
+            "wrap": false,
+            "options": {
+                "bg": "bg-[#edf5f9]",
+                "card_bg": "bg-white"
+            }
+        },
+        "video-testimonials": {
+            "type": "video-testimonials",
+            "label": "Video Testimonials"
+        },
+        "related-videos": {
+            "type": "related-videos",
+            "label": "Watch & Learn (related videos)"
+        },
+        "faq": {
+            "type": "faq",
+            "label": "FAQ Section"
         }
     },
     "brain-stroke-helpline": {
+        "_flow": true,
         "fast-signs": {
             "type": "cards",
             "label": "FAST Warning Signs",
@@ -224,6 +271,30 @@
                 "card_class": "bg-slate-50 border border-slate-200/50 p-6 rounded-3xl space-y-4 hover:shadow-lg transition-all duration-300",
                 "item_title_class": "font-bold text-dark-grey text-base",
                 "item_text_class": "text-xs text-dark-grey/65 leading-relaxed mt-1"
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "intro": {
+            "type": "intro",
+            "label": "Main Body Section",
+            "badge": "Clinical Protocol",
+            "title": "Golden Hour Window",
+            "text": "When a stroke strikes, millions of brain cells die every minute. Reversing this damage is highly dependent on how quickly blood flow is restored.",
+            "image": "",
+            "image_alt": "Emergency stroke protocol",
+            "options": {
+                "facts_key": "golden-hour",
+                "layout": "sidebar",
+                "aside_key": "while-waiting",
+                "badge_class": "text-red-600 font-bold text-xs uppercase tracking-wider"
+            },
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12",
+                "class": "border-y border-slate-200/60"
             }
         },
         "golden-hour": {
@@ -248,7 +319,8 @@
                 "items_grid": "space-y-4",
                 "item_icon_box": "w-6 h-6 bg-red-600/10 rounded-full flex items-center justify-center text-red-600 flex-shrink-0 mt-0.5",
                 "items_text_class": "text-xs text-dark-grey/70 leading-relaxed"
-            }
+            },
+            "nested": true
         },
         "while-waiting": {
             "type": "notice",
@@ -277,10 +349,67 @@
                 "item_text_class": "text-xs",
                 "card_class": "lg:col-span-7 bg-white p-8 rounded-3xl border border-slate-200/50 space-y-6"
             },
-            "description": ""
+            "description": "",
+            "nested": true
+        },
+        "video-testimonials": {
+            "type": "video-testimonials",
+            "label": "Video Testimonials"
+        },
+        "related-videos": {
+            "type": "related-videos",
+            "label": "Watch & Learn (related videos)"
+        },
+        "faq": {
+            "type": "faq",
+            "label": "FAQ Section"
         }
     },
     "brain-tumor-surgery": {
+        "_flow": true,
+        "intro": {
+            "type": "intro",
+            "label": "Main Body Section",
+            "badge": "Neurosurgical Excellence",
+            "title": "Comprehensive Brain Tumor Care",
+            "text": "Brain tumor treatment requires extreme precision and a multidisciplinary approach. Our clinic specializes in both benign and malignant brain tumors, using advanced imaging to map critical speech and motor pathways before a single incision is made.\n\nThe goal in every case is the same: remove as much of the tumor as safely possible while preserving the brain function that defines who you are. Surgery is planned jointly with neuro-oncology and radiation specialists so the whole pathway is agreed before treatment begins.",
+            "image": "assets/services/brain-tumor.png",
+            "image_alt": "Brain Tumor Surgery",
+            "options": {
+                "facts_key": "key-facts"
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "key-facts": {
+            "type": "facts",
+            "items": [
+                {
+                    "icon": "fas fa-check",
+                    "title": "3D Surgical Microscopes",
+                    "text": "High-magnification stereoscopic views"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Awake Brain Mapping",
+                    "text": "Protects language and motor centres"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Neuromonitoring",
+                    "text": "Neural signals tracked during resection"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Multidisciplinary",
+                    "text": "Planned with neuro-oncology"
+                }
+            ],
+            "label": "Key Facts",
+            "nested": true
+        },
         "techniques": {
             "label": "Surgical Techniques",
             "type": "cards",
@@ -318,7 +447,11 @@
                         "Motor Safety"
                     ]
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
+            }
         },
         "experience": {
             "label": "Treatment Journey",
@@ -343,36 +476,74 @@
                     "title": "Recovery & Rehab",
                     "text": "Focused physical, occupational and cognitive therapy to regain strength and coordination, with follow-up medical management throughout."
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "doctor": {
+            "use": "_shared",
+            "wrap": false
+        },
+        "video-testimonials": {
+            "type": "video-testimonials",
+            "label": "Video Testimonials"
+        },
+        "related-videos": {
+            "type": "related-videos",
+            "label": "Watch & Learn (related videos)"
+        },
+        "faq": {
+            "type": "faq",
+            "label": "FAQ Section"
+        }
+    },
+    "epilepsy": {
+        "_flow": true,
+        "intro": {
+            "type": "intro",
+            "label": "Main Body Section",
+            "badge": "Understanding",
+            "title": "What is Epilepsy?",
+            "text": "Epilepsy is a neurological disorder characterized by recurrent, unprovoked seizures. It affects over 50 million people worldwide, making it one of the most common neurological conditions. While epilepsy can develop at any age, it often begins in childhood or after age 60.\n\nAt our clinic, we understand that living with epilepsy affects every aspect of your life—from daily activities to personal relationships. Our comprehensive approach focuses not just on controlling seizures, but on improving your overall quality of life through evidence-based treatments and compassionate care.",
+            "image": "assets/services/epilepsy.png",
+            "image_alt": "Understanding Epilepsy",
+            "options": {
+                "facts_key": "key-facts"
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
         },
         "key-facts": {
             "type": "facts",
             "items": [
                 {
-                    "icon": "fas fa-check",
-                    "title": "3D Surgical Microscopes",
-                    "text": "High-magnification stereoscopic views"
+                    "icon": "fa-check",
+                    "title": "Neurological Disorder",
+                    "text": "Brain-based condition"
                 },
                 {
-                    "icon": "fas fa-check",
-                    "title": "Awake Brain Mapping",
-                    "text": "Protects language and motor centres"
+                    "icon": "fa-check",
+                    "title": "Treatable Condition",
+                    "text": "70% can be seizure-free"
                 },
                 {
-                    "icon": "fas fa-check",
-                    "title": "Neuromonitoring",
-                    "text": "Neural signals tracked during resection"
+                    "icon": "fa-check",
+                    "title": "All Ages",
+                    "text": "Can affect anyone"
                 },
                 {
-                    "icon": "fas fa-check",
-                    "title": "Multidisciplinary",
-                    "text": "Planned with neuro-oncology"
+                    "icon": "fa-check",
+                    "title": "Not a Mental Illness",
+                    "text": "Separate from psychiatric"
                 }
             ],
-            "label": "Key Facts"
-        }
-    },
-    "epilepsy": {
+            "label": "Key Facts",
+            "nested": true
+        },
         "types": {
             "label": "Types of Seizures",
             "type": "cards",
@@ -410,7 +581,81 @@
                         "Diagnostic"
                     ]
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "pt-12 pb-0"
+            }
+        },
+        "warning": {
+            "type": "warning",
+            "title": "When to Seek Emergency Care",
+            "description": "Call emergency services immediately if:",
+            "items": [
+                {
+                    "text": "Seizure lasts more than 5 minutes"
+                },
+                {
+                    "text": "Second seizure follows immediately"
+                },
+                {
+                    "text": "Person doesn't breathe normally after"
+                },
+                {
+                    "text": "Person is injured during seizure"
+                }
+            ],
+            "label": "Emergency Warning Signs",
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "pt-0 pb-12"
+            }
+        },
+        "symptoms": {
+            "type": "symptoms",
+            "label": "Symptoms & Warning Signs",
+            "badge": "Recognition",
+            "title": "Symptoms & Warning Signs",
+            "description": "Recognizing seizure symptoms is the first step toward proper diagnosis and treatment. Symptoms vary widely depending on the type of seizure and the area of the brain affected.",
+            "image": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&h=600&q=80",
+            "image_alt": "Epilepsy Symptoms Recognition and Diagnosis",
+            "items": [
+                {
+                    "icon": "fa-hand-fist",
+                    "color": "electric-blue",
+                    "title": "Motor Symptoms",
+                    "bullets": [
+                        "Jerking movements",
+                        "Muscle weakness",
+                        "Twitching or spasms",
+                        "Rigid muscles"
+                    ]
+                },
+                {
+                    "icon": "fa-brain",
+                    "color": "cyan-accent",
+                    "title": "Non-Motor Symptoms",
+                    "bullets": [
+                        "Staring spells",
+                        "Confusion",
+                        "Fear or anxiety",
+                        "Strange smells/tastes"
+                    ]
+                }
+            ],
+            "tags_title": "Aura Signs (Early Warning)",
+            "tags": [
+                "Visual disturbances",
+                "Nausea",
+                "Déjà vu",
+                "Numbness",
+                "Speech difficulty"
+            ],
+            "tags_icon": "fa-eye",
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
         },
         "diagnosis": {
             "label": "How We Diagnose Epilepsy",
@@ -457,96 +702,13 @@
                 }
             ],
             "options": {
-                "card_bg": "bg-white"
+                "card_bg": "bg-white",
+                "cta_key": "diagnosis"
+            },
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
             }
-        },
-        "key-facts": {
-            "type": "facts",
-            "items": [
-                {
-                    "icon": "fa-check",
-                    "title": "Neurological Disorder",
-                    "text": "Brain-based condition"
-                },
-                {
-                    "icon": "fa-check",
-                    "title": "Treatable Condition",
-                    "text": "70% can be seizure-free"
-                },
-                {
-                    "icon": "fa-check",
-                    "title": "All Ages",
-                    "text": "Can affect anyone"
-                },
-                {
-                    "icon": "fa-check",
-                    "title": "Not a Mental Illness",
-                    "text": "Separate from psychiatric"
-                }
-            ],
-            "label": "Key Facts"
-        },
-        "warning": {
-            "type": "warning",
-            "title": "When to Seek Emergency Care",
-            "description": "Call emergency services immediately if:",
-            "items": [
-                {
-                    "text": "Seizure lasts more than 5 minutes"
-                },
-                {
-                    "text": "Second seizure follows immediately"
-                },
-                {
-                    "text": "Person doesn't breathe normally after"
-                },
-                {
-                    "text": "Person is injured during seizure"
-                }
-            ],
-            "label": "Emergency Warning Signs"
-        },
-        "symptoms": {
-            "type": "symptoms",
-            "label": "Symptoms & Warning Signs",
-            "badge": "Recognition",
-            "title": "Symptoms & Warning Signs",
-            "description": "Recognizing seizure symptoms is the first step toward proper diagnosis and treatment. Symptoms vary widely depending on the type of seizure and the area of the brain affected.",
-            "image": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&h=600&q=80",
-            "image_alt": "Epilepsy Symptoms Recognition and Diagnosis",
-            "items": [
-                {
-                    "icon": "fa-hand-fist",
-                    "color": "electric-blue",
-                    "title": "Motor Symptoms",
-                    "bullets": [
-                        "Jerking movements",
-                        "Muscle weakness",
-                        "Twitching or spasms",
-                        "Rigid muscles"
-                    ]
-                },
-                {
-                    "icon": "fa-brain",
-                    "color": "cyan-accent",
-                    "title": "Non-Motor Symptoms",
-                    "bullets": [
-                        "Staring spells",
-                        "Confusion",
-                        "Fear or anxiety",
-                        "Strange smells/tastes"
-                    ]
-                }
-            ],
-            "tags_title": "Aura Signs (Early Warning)",
-            "tags": [
-                "Visual disturbances",
-                "Nausea",
-                "Déjà vu",
-                "Numbness",
-                "Speech difficulty"
-            ],
-            "tags_icon": "fa-eye"
         },
         "treatments": {
             "type": "treatments",
@@ -607,7 +769,31 @@
                         "Safety planning & first aid"
                     ]
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "why-choose": {
+            "use": "_shared",
+            "wrap": {
+                "bg": "bg-slate-50/50",
+                "padding": "py-12",
+                "class": "relative overflow-hidden"
+            }
+        },
+        "video-testimonials": {
+            "type": "video-testimonials",
+            "label": "Video Testimonials"
+        },
+        "related-videos": {
+            "type": "related-videos",
+            "label": "Watch & Learn (related videos)"
+        },
+        "faq": {
+            "type": "faq",
+            "label": "FAQ Section"
         },
         "related": {
             "type": "related",
@@ -635,10 +821,58 @@
                     "title": "All Services",
                     "text": "View our complete range of neurological treatments."
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
+            }
         }
     },
     "functional-neurosurgery": {
+        "_flow": true,
+        "intro": {
+            "type": "intro",
+            "label": "Main Body Section",
+            "badge": "Neuromodulation Excellence",
+            "title": "Restoring Motor Functions",
+            "text": "Functional neurosurgery restores neurological function and relieves motor deficits through direct electrical modulation of the brain circuits responsible — rather than through drugs that act on the whole body.\n\nDr. Praveen Gupta's team pioneered the first Deep Brain Stimulation surgeries in Gurgaon, and specialises in high-precision stereotactic procedures for patients whose symptoms no longer respond to conventional medication.",
+            "image": "assets/services/functional-neuro.png",
+            "image_alt": "Functional Neurosurgery",
+            "options": {
+                "facts_key": "key-facts"
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "key-facts": {
+            "type": "facts",
+            "items": [
+                {
+                    "icon": "fas fa-check",
+                    "title": "First DBS in Gurgaon",
+                    "text": "Pioneered locally by our team"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Stereotactic Precision",
+                    "text": "Millimetre-accurate targeting"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Implanted Generator",
+                    "text": "Pacemaker-like device"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Drug-Resistant Cases",
+                    "text": "When medication stops working"
+                }
+            ],
+            "label": "Key Facts",
+            "nested": true
+        },
         "key-indications": {
             "label": "Key Indications Treated",
             "type": "cards",
@@ -676,7 +910,11 @@
                         "Pain Control"
                     ]
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
+            }
         },
         "what-to-expect": {
             "label": "What to Expect, Start to Finish",
@@ -701,36 +939,74 @@
                     "title": "Programming & Support",
                     "text": "Wireless programming sessions tune pulse rate and voltage to the patient’s lifestyle, with caregiver guidance on charging and battery checks."
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "doctor": {
+            "use": "_shared",
+            "wrap": false
+        },
+        "video-testimonials": {
+            "type": "video-testimonials",
+            "label": "Video Testimonials"
+        },
+        "related-videos": {
+            "type": "related-videos",
+            "label": "Watch & Learn (related videos)"
+        },
+        "faq": {
+            "type": "faq",
+            "label": "FAQ Section"
+        }
+    },
+    "headache": {
+        "_flow": true,
+        "intro": {
+            "type": "intro",
+            "label": "Main Body Section",
+            "badge": "Understanding",
+            "title": "What is a Headache Disorder?",
+            "text": "A headache is pain or discomfort in the head or face area. While almost everyone experiences headaches occasionally, recurrent or persistent headaches can indicate an underlying disorder that requires expert medical evaluation and management.\n\nLiving with frequent headaches can significantly impact your work, relationships, and emotional well-being. Our clinic focuses on identifying your specific headache type and triggers, creating a customized plan combining preventive strategies and advanced treatments.",
+            "image": "assets/services/headache.png",
+            "image_alt": "Understanding Headache",
+            "options": {
+                "facts_key": "key-facts"
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
         },
         "key-facts": {
             "type": "facts",
             "items": [
                 {
-                    "icon": "fas fa-check",
-                    "title": "First DBS in Gurgaon",
-                    "text": "Pioneered locally by our team"
+                    "icon": "fa-check",
+                    "title": "Highly Common",
+                    "text": "Affects millions daily"
                 },
                 {
-                    "icon": "fas fa-check",
-                    "title": "Stereotactic Precision",
-                    "text": "Millimetre-accurate targeting"
+                    "icon": "fa-check",
+                    "title": "Various Types",
+                    "text": "Over 150 diagnostic categories"
                 },
                 {
-                    "icon": "fas fa-check",
-                    "title": "Implanted Generator",
-                    "text": "Pacemaker-like device"
+                    "icon": "fa-check",
+                    "title": "Manageable Triggers",
+                    "text": "Lifestyle factors play a role"
                 },
                 {
-                    "icon": "fas fa-check",
-                    "title": "Drug-Resistant Cases",
-                    "text": "When medication stops working"
+                    "icon": "fa-check",
+                    "title": "Effective Treatment",
+                    "text": "Targeted therapies prevent attacks"
                 }
             ],
-            "label": "Key Facts"
-        }
-    },
-    "headache": {
+            "label": "Key Facts",
+            "nested": true
+        },
         "types": {
             "label": "Common Headache Types",
             "type": "cards",
@@ -768,61 +1044,11 @@
                         "Diagnostic Needs"
                     ]
                 }
-            ]
-        },
-        "diagnosis": {
-            "label": "Diagnosing Headache Disorders",
-            "type": "steps",
-            "badge": "Diagnosis",
-            "title": "Diagnosing Headache Disorders",
-            "description": "Accurate classification is key. We run dedicated neurological evaluations to differentiate harmless primary headaches from complex secondary conditions.",
-            "items": [
-                {
-                    "title": "Medical History",
-                    "text": "In-depth evaluation of your headache patterns, severity, location, duration, family history, and possible lifestyle triggers."
-                },
-                {
-                    "title": "Neurological Exam",
-                    "text": "Testing motor skills, cranial nerve function, sensory responses, balance, and reflexes to verify neurological integrity."
-                },
-                {
-                    "title": "Brain MRI / CT",
-                    "text": "High-resolution imaging to rule out brain abnormalities, aneurysms, tumors, or internal structural issues."
-                },
-                {
-                    "title": "Lab Tests",
-                    "text": "Blood investigations to rule out toxic, endocrine, infectious, or systemic causes behind secondary headache symptoms."
-                }
             ],
-            "options": {
-                "card_bg": "bg-white"
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "pt-12 pb-0"
             }
-        },
-        "key-facts": {
-            "type": "facts",
-            "items": [
-                {
-                    "icon": "fa-check",
-                    "title": "Highly Common",
-                    "text": "Affects millions daily"
-                },
-                {
-                    "icon": "fa-check",
-                    "title": "Various Types",
-                    "text": "Over 150 diagnostic categories"
-                },
-                {
-                    "icon": "fa-check",
-                    "title": "Manageable Triggers",
-                    "text": "Lifestyle factors play a role"
-                },
-                {
-                    "icon": "fa-check",
-                    "title": "Effective Treatment",
-                    "text": "Targeted therapies prevent attacks"
-                }
-            ],
-            "label": "Key Facts"
         },
         "warning": {
             "type": "warning",
@@ -842,7 +1068,11 @@
                     "text": "Occurs after a head injury or trauma"
                 }
             ],
-            "label": "Emergency Warning Signs"
+            "label": "Emergency Warning Signs",
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "pt-0 pb-12"
+            }
         },
         "symptoms": {
             "type": "symptoms",
@@ -878,7 +1108,44 @@
             ],
             "note_icon": "fa-info-circle",
             "note_title": "Headache Trigger Diary",
-            "note_text": "Keeping track of sleep patterns, stress levels, dietary habits, and atmospheric changes can provide invaluable information to help optimize your treatment plan."
+            "note_text": "Keeping track of sleep patterns, stress levels, dietary habits, and atmospheric changes can provide invaluable information to help optimize your treatment plan.",
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "diagnosis": {
+            "label": "Diagnosing Headache Disorders",
+            "type": "steps",
+            "badge": "Diagnosis",
+            "title": "Diagnosing Headache Disorders",
+            "description": "Accurate classification is key. We run dedicated neurological evaluations to differentiate harmless primary headaches from complex secondary conditions.",
+            "items": [
+                {
+                    "title": "Medical History",
+                    "text": "In-depth evaluation of your headache patterns, severity, location, duration, family history, and possible lifestyle triggers."
+                },
+                {
+                    "title": "Neurological Exam",
+                    "text": "Testing motor skills, cranial nerve function, sensory responses, balance, and reflexes to verify neurological integrity."
+                },
+                {
+                    "title": "Brain MRI / CT",
+                    "text": "High-resolution imaging to rule out brain abnormalities, aneurysms, tumors, or internal structural issues."
+                },
+                {
+                    "title": "Lab Tests",
+                    "text": "Blood investigations to rule out toxic, endocrine, infectious, or systemic causes behind secondary headache symptoms."
+                }
+            ],
+            "options": {
+                "card_bg": "bg-white",
+                "cta_key": "diagnosis"
+            },
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
+            }
         },
         "treatments": {
             "type": "treatments",
@@ -931,7 +1198,31 @@
                         "Dietary trigger identification"
                     ]
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "why-choose": {
+            "use": "_shared",
+            "wrap": {
+                "bg": "bg-slate-50/50",
+                "padding": "py-12",
+                "class": "relative overflow-hidden"
+            }
+        },
+        "video-testimonials": {
+            "type": "video-testimonials",
+            "label": "Video Testimonials"
+        },
+        "related-videos": {
+            "type": "related-videos",
+            "label": "Watch & Learn (related videos)"
+        },
+        "faq": {
+            "type": "faq",
+            "label": "FAQ Section"
         },
         "related": {
             "type": "related",
@@ -959,10 +1250,58 @@
                     "title": "All Services",
                     "text": "View our complete range of neurological treatments."
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
+            }
         }
     },
     "memory-clinic": {
+        "_flow": true,
+        "intro": {
+            "type": "intro",
+            "label": "Main Body Section",
+            "badge": "Cognitive Care",
+            "title": "Understanding Memory Disorders",
+            "text": "Memory loss ranges from mild forgetfulness to progressive conditions such as dementia and Alzheimer's disease. Early detection is what makes the difference — it slows progression and buys quality of life for both patient and family.\n\nOur centre maps the root cause of cognitive symptoms rather than assuming one, because a meaningful proportion of memory complaints turn out to be treatable: a vitamin deficiency, a thyroid imbalance or a medication effect.",
+            "image": "assets/services/memory-clinic.png",
+            "image_alt": "Memory Clinic",
+            "options": {
+                "facts_key": "key-facts"
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "key-facts": {
+            "type": "facts",
+            "items": [
+                {
+                    "icon": "fas fa-check",
+                    "title": "Cognitive Testing",
+                    "text": "MoCA and MMSE assessments"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Brain Imaging",
+                    "text": "High-resolution MRI"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Lab Panels",
+                    "text": "Rules out reversible causes"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Caregiver Support",
+                    "text": "Training for the whole family"
+                }
+            ],
+            "label": "Key Facts",
+            "nested": true
+        },
         "conditions-we-assess": {
             "label": "Conditions We Assess",
             "type": "cards",
@@ -1000,7 +1339,11 @@
                         "Family Training"
                     ]
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
+            }
         },
         "what-to-expect": {
             "label": "What to Expect at Your Assessment",
@@ -1025,36 +1368,78 @@
                     "title": "Care & Caregiver Plan",
                     "text": "A combined plan covering medication, behavioural strategy, home safety and connection to respite services for the family."
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "doctor": {
+            "use": "_shared",
+            "wrap": false,
+            "options": {
+                "bg": "bg-[#edf5f9]",
+                "card_bg": "bg-white"
+            }
+        },
+        "video-testimonials": {
+            "type": "video-testimonials",
+            "label": "Video Testimonials"
+        },
+        "related-videos": {
+            "type": "related-videos",
+            "label": "Watch & Learn (related videos)"
+        },
+        "faq": {
+            "type": "faq",
+            "label": "FAQ Section"
+        }
+    },
+    "migraine": {
+        "_flow": true,
+        "intro": {
+            "type": "intro",
+            "label": "Main Body Section",
+            "badge": "Understanding",
+            "title": "What is a Migraine?",
+            "text": "A migraine is a neurological condition that causes intense, throbbing head pain, usually on one side. Unlike common tension headaches, migraines often present with associated symptoms like severe nausea, vomiting, and extreme sensitivity to light, sound, and smell.\n\nAn attack can last from several hours to days, making daily activities impossible. Our targeted diagnostic and therapy framework aims to reduce the severity and frequency of your migraine episodes using cutting-edge medical treatments.",
+            "image": "assets/services/migraine.png",
+            "image_alt": "Understanding Migraine",
+            "options": {
+                "facts_key": "key-facts"
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
         },
         "key-facts": {
             "type": "facts",
             "items": [
                 {
-                    "icon": "fas fa-check",
-                    "title": "Cognitive Testing",
-                    "text": "MoCA and MMSE assessments"
+                    "icon": "fa-check",
+                    "title": "Neurological Basis",
+                    "text": "Involves brain chemicals & nerves"
                 },
                 {
-                    "icon": "fas fa-check",
-                    "title": "Brain Imaging",
-                    "text": "High-resolution MRI"
+                    "icon": "fa-check",
+                    "title": "Aura Phase",
+                    "text": "Visual cues in 25% of cases"
                 },
                 {
-                    "icon": "fas fa-check",
-                    "title": "Lab Panels",
-                    "text": "Rules out reversible causes"
+                    "icon": "fa-check",
+                    "title": "Hereditary Aspect",
+                    "text": "Family history is common"
                 },
                 {
-                    "icon": "fas fa-check",
-                    "title": "Caregiver Support",
-                    "text": "Training for the whole family"
+                    "icon": "fa-check",
+                    "title": "Modern Therapies",
+                    "text": "CGRP inhibitors and Botox work"
                 }
             ],
-            "label": "Key Facts"
-        }
-    },
-    "migraine": {
+            "label": "Key Facts",
+            "nested": true
+        },
         "types": {
             "label": "Types of Migraines",
             "type": "cards",
@@ -1092,61 +1477,11 @@
                         "Daily Impact"
                     ]
                 }
-            ]
-        },
-        "diagnosis": {
-            "label": "Diagnosing Migraines",
-            "type": "steps",
-            "badge": "Diagnosis",
-            "title": "Diagnosing Migraines",
-            "description": "We combine historical symptom tracking with diagnostic imaging to identify the specific migraine type and formulate a tailored care plan.",
-            "items": [
-                {
-                    "title": "Detailed History",
-                    "text": "Mapping pain frequency, location, duration, family history, and associated triggers like stress or diet."
-                },
-                {
-                    "title": "Neurological Exam",
-                    "text": "Checking reflexes, eye movements, sensation, cranial nerve responses, and coordination."
-                },
-                {
-                    "title": "Brain MRI",
-                    "text": "Advanced imaging scans to rule out secondary headache causes, structural issues, or vascular abnormalities."
-                },
-                {
-                    "title": "Trigger Mapping",
-                    "text": "Creating a digital diary tracking lifestyle patterns, hormonal cycles, sleep quality, and diet to narrow triggers."
-                }
             ],
-            "options": {
-                "card_bg": "bg-white"
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "pt-12 pb-0"
             }
-        },
-        "key-facts": {
-            "type": "facts",
-            "items": [
-                {
-                    "icon": "fa-check",
-                    "title": "Neurological Basis",
-                    "text": "Involves brain chemicals & nerves"
-                },
-                {
-                    "icon": "fa-check",
-                    "title": "Aura Phase",
-                    "text": "Visual cues in 25% of cases"
-                },
-                {
-                    "icon": "fa-check",
-                    "title": "Hereditary Aspect",
-                    "text": "Family history is common"
-                },
-                {
-                    "icon": "fa-check",
-                    "title": "Modern Therapies",
-                    "text": "CGRP inhibitors and Botox work"
-                }
-            ],
-            "label": "Key Facts"
         },
         "warning": {
             "type": "warning",
@@ -1166,7 +1501,11 @@
                     "text": "Double vision or difficulty speaking"
                 }
             ],
-            "label": "Emergency Warning Signs"
+            "label": "Emergency Warning Signs",
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "pt-0 pb-12"
+            }
         },
         "symptoms": {
             "type": "symptoms",
@@ -1202,7 +1541,44 @@
             ],
             "note_icon": "fa-face-smile",
             "note_title": "Postdrome \"Migraine Hangover\"",
-            "note_text": "After the severe pain subsides, patients often experience extreme fatigue, brain fog, and muscle aches lasting up to 24 hours."
+            "note_text": "After the severe pain subsides, patients often experience extreme fatigue, brain fog, and muscle aches lasting up to 24 hours.",
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "diagnosis": {
+            "label": "Diagnosing Migraines",
+            "type": "steps",
+            "badge": "Diagnosis",
+            "title": "Diagnosing Migraines",
+            "description": "We combine historical symptom tracking with diagnostic imaging to identify the specific migraine type and formulate a tailored care plan.",
+            "items": [
+                {
+                    "title": "Detailed History",
+                    "text": "Mapping pain frequency, location, duration, family history, and associated triggers like stress or diet."
+                },
+                {
+                    "title": "Neurological Exam",
+                    "text": "Checking reflexes, eye movements, sensation, cranial nerve responses, and coordination."
+                },
+                {
+                    "title": "Brain MRI",
+                    "text": "Advanced imaging scans to rule out secondary headache causes, structural issues, or vascular abnormalities."
+                },
+                {
+                    "title": "Trigger Mapping",
+                    "text": "Creating a digital diary tracking lifestyle patterns, hormonal cycles, sleep quality, and diet to narrow triggers."
+                }
+            ],
+            "options": {
+                "card_bg": "bg-white",
+                "cta_key": "diagnosis"
+            },
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
+            }
         },
         "treatments": {
             "type": "treatments",
@@ -1255,7 +1631,31 @@
                         "Dietary trigger identification"
                     ]
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "why-choose": {
+            "use": "_shared",
+            "wrap": {
+                "bg": "bg-slate-50/50",
+                "padding": "py-12",
+                "class": "relative overflow-hidden"
+            }
+        },
+        "video-testimonials": {
+            "type": "video-testimonials",
+            "label": "Video Testimonials"
+        },
+        "related-videos": {
+            "type": "related-videos",
+            "label": "Watch & Learn (related videos)"
+        },
+        "faq": {
+            "type": "faq",
+            "label": "FAQ Section"
         },
         "related": {
             "type": "related",
@@ -1283,16 +1683,65 @@
                     "title": "All Services",
                     "text": "View our complete range of neurological treatments."
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
+            }
         },
         "final-cta": {
             "type": "cta",
             "label": "Final CTA Banner",
             "title": "Let's Get In Touch.",
-            "description": "Ready to prioritize your health? Schedule a consultation with Dr. Praveen Gupta today and take the first step towards a healthier tomorrow."
+            "description": "Ready to prioritize your health? Schedule a consultation with Dr. Praveen Gupta today and take the first step towards a healthier tomorrow.",
+            "wrap": false
         }
     },
     "movement": {
+        "_flow": true,
+        "intro": {
+            "type": "intro",
+            "label": "Main Body Section",
+            "badge": "Understanding",
+            "title": "What is a Movement Disorder?",
+            "text": "Movement disorders are neurological conditions that affect the speed, fluency, quality, and ease of movement. They are typically divided into hyperkinetic disorders (causing excessive, involuntary movements, such as tremors or spasms) and hypokinetic disorders (causing slow, stiff, or reduced movements).\n\nInvoluntary movements or balance issues can make eating, writing, or walking extremely difficult. Our comprehensive diagnostic approach identifies the specific nerve or brain center origin to customize targeted medication regimens and therapy programs.",
+            "image": "assets/services/movement.png",
+            "image_alt": "Understanding Movement Disorders",
+            "options": {
+                "facts_key": "key-facts"
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "key-facts": {
+            "type": "facts",
+            "items": [
+                {
+                    "icon": "fa-check",
+                    "title": "Nerve Signal Basis",
+                    "text": "Brain pathway signal issues"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Diverse Syndromes",
+                    "text": "Includes tremors, dystonia, ataxia"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Botox Therapy",
+                    "text": "Relieves local muscle spasms"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Coordination Rehab",
+                    "text": "Helps retrain body balance"
+                }
+            ],
+            "label": "Key Facts",
+            "nested": true
+        },
         "types": {
             "label": "Common Movement Disorders",
             "type": "cards",
@@ -1330,61 +1779,11 @@
                         "Balance Loss"
                     ]
                 }
-            ]
-        },
-        "diagnosis": {
-            "label": "Diagnosing Movement Disorders",
-            "type": "steps",
-            "badge": "Diagnosis",
-            "title": "Diagnosing Movement Disorders",
-            "description": "Diagnosing movement disorders combines expert motor skill tracking, nerve path conduction tests, and brain scans to map basal ganglia pathways.",
-            "items": [
-                {
-                    "title": "Motor Evaluation",
-                    "text": "In-depth testing of reflexes, gait patterns, tremor speed, range of motion, and fine motor skills."
-                },
-                {
-                    "title": "EMG & Nerve Studies",
-                    "text": "Electromyography (EMG) and Nerve Conduction Studies measure electrical pathways inside active muscles and peripheral nerves."
-                },
-                {
-                    "title": "Brain MRI",
-                    "text": "High-resolution imaging scans search for damage in the basal ganglia, cerebellum, or brainstem pathways."
-                },
-                {
-                    "title": "Genetic Screening",
-                    "text": "Investigating chromosomal factors for hereditary conditions like Huntington's disease, ataxia, or early-onset dystonia."
-                }
             ],
-            "options": {
-                "card_bg": "bg-white"
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
             }
-        },
-        "key-facts": {
-            "type": "facts",
-            "items": [
-                {
-                    "icon": "fa-check",
-                    "title": "Nerve Signal Basis",
-                    "text": "Brain pathway signal issues"
-                },
-                {
-                    "icon": "fa-check",
-                    "title": "Diverse Syndromes",
-                    "text": "Includes tremors, dystonia, ataxia"
-                },
-                {
-                    "icon": "fa-check",
-                    "title": "Botox Therapy",
-                    "text": "Relieves local muscle spasms"
-                },
-                {
-                    "icon": "fa-check",
-                    "title": "Coordination Rehab",
-                    "text": "Helps retrain body balance"
-                }
-            ],
-            "label": "Key Facts"
         },
         "symptoms": {
             "type": "symptoms",
@@ -1420,7 +1819,44 @@
             ],
             "note_icon": "fa-info-circle",
             "note_title": "Tremor Trigger Factors",
-            "note_text": "Essential tremors often worsen during periods of stress, fatigue, temperature extremes, or heavy caffeine consumption."
+            "note_text": "Essential tremors often worsen during periods of stress, fatigue, temperature extremes, or heavy caffeine consumption.",
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "diagnosis": {
+            "label": "Diagnosing Movement Disorders",
+            "type": "steps",
+            "badge": "Diagnosis",
+            "title": "Diagnosing Movement Disorders",
+            "description": "Diagnosing movement disorders combines expert motor skill tracking, nerve path conduction tests, and brain scans to map basal ganglia pathways.",
+            "items": [
+                {
+                    "title": "Motor Evaluation",
+                    "text": "In-depth testing of reflexes, gait patterns, tremor speed, range of motion, and fine motor skills."
+                },
+                {
+                    "title": "EMG & Nerve Studies",
+                    "text": "Electromyography (EMG) and Nerve Conduction Studies measure electrical pathways inside active muscles and peripheral nerves."
+                },
+                {
+                    "title": "Brain MRI",
+                    "text": "High-resolution imaging scans search for damage in the basal ganglia, cerebellum, or brainstem pathways."
+                },
+                {
+                    "title": "Genetic Screening",
+                    "text": "Investigating chromosomal factors for hereditary conditions like Huntington's disease, ataxia, or early-onset dystonia."
+                }
+            ],
+            "options": {
+                "card_bg": "bg-white",
+                "cta_key": "diagnosis"
+            },
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
+            }
         },
         "treatments": {
             "type": "treatments",
@@ -1473,7 +1909,31 @@
                         "Comprehensive pre- and post-operative management"
                     ]
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "why-choose": {
+            "use": "_shared",
+            "wrap": {
+                "bg": "bg-slate-50/50",
+                "padding": "py-12",
+                "class": "relative overflow-hidden"
+            }
+        },
+        "video-testimonials": {
+            "type": "video-testimonials",
+            "label": "Video Testimonials"
+        },
+        "related-videos": {
+            "type": "related-videos",
+            "label": "Watch & Learn (related videos)"
+        },
+        "faq": {
+            "type": "faq",
+            "label": "FAQ Section"
         },
         "related": {
             "type": "related",
@@ -1501,16 +1961,65 @@
                     "title": "All Services",
                     "text": "View our complete range of neurological treatments."
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
+            }
         },
         "final-cta": {
             "type": "cta",
             "label": "Final CTA Banner",
             "title": "Let's Get In Touch.",
-            "description": "Ready to prioritize your health? Schedule a consultation with Dr. Praveen Gupta today and take the first step towards a healthier tomorrow."
+            "description": "Ready to prioritize your health? Schedule a consultation with Dr. Praveen Gupta today and take the first step towards a healthier tomorrow.",
+            "wrap": false
         }
     },
     "ms": {
+        "_flow": true,
+        "intro": {
+            "type": "intro",
+            "label": "Main Body Section",
+            "badge": "Understanding",
+            "title": "What is Multiple Sclerosis?",
+            "text": "Multiple Sclerosis (MS) is a chronic, autoimmune disease of the central nervous system. In MS, the body's immune system mistakenly attacks myelin, the protective fatty sheath that covers nerve fibers in the brain and spinal cord. This causes inflammation and scarring (plaques), disrupting electrical signals.\n\nSymptoms can vary from temporary numbness to difficulty walking or visual impairments. While there is no cure, today's Disease-Modifying Therapies (DMTs) can suppress immune activity, significantly reducing relapse rates and slowing disability progression.",
+            "image": "assets/services/ms.png",
+            "image_alt": "Understanding Multiple Sclerosis",
+            "options": {
+                "facts_key": "key-facts"
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "key-facts": {
+            "type": "facts",
+            "items": [
+                {
+                    "icon": "fa-check",
+                    "title": "Autoimmune Origin",
+                    "text": "Immune system attacks myelin"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "DMT Availability",
+                    "text": "Modern drugs slow progression"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Variable Course",
+                    "text": "Relapsing and progressive types"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Active Rehabilitation",
+                    "text": "Physical therapy builds mobility"
+                }
+            ],
+            "label": "Key Facts",
+            "nested": true
+        },
         "types": {
             "label": "Types of Multiple Sclerosis",
             "type": "cards",
@@ -1548,61 +2057,11 @@
                         "Progressive Course"
                     ]
                 }
-            ]
-        },
-        "diagnosis": {
-            "label": "Diagnosing Multiple Sclerosis",
-            "type": "steps",
-            "badge": "Diagnosis",
-            "title": "Diagnosing Multiple Sclerosis",
-            "description": "Since there is no single test for MS, diagnosis requires proving \"dissemination in time and space\"—lesions in different brain areas occurring at different times.",
-            "items": [
-                {
-                    "title": "Clinical Evaluation",
-                    "text": "A detailed history of neurological symptoms, relapses, and physical exams tracking sensory and motor nerve deficits."
-                },
-                {
-                    "title": "Brain & Spine MRI",
-                    "text": "High-resolution scans using contrast dye to detect active and scarred lesions (plaques) within myelin structures."
-                },
-                {
-                    "title": "Lumbar Puncture",
-                    "text": "Analyzing spinal fluid to look for oligoclonal bands or specific immunoglobulins indicative of an active CNS immune response."
-                },
-                {
-                    "title": "Evoked Potentials",
-                    "text": "Testing the speed of electrical signals traveling through visual or sensory nerve pathways to detect myelin slowing."
-                }
             ],
-            "options": {
-                "card_bg": "bg-white"
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
             }
-        },
-        "key-facts": {
-            "type": "facts",
-            "items": [
-                {
-                    "icon": "fa-check",
-                    "title": "Autoimmune Origin",
-                    "text": "Immune system attacks myelin"
-                },
-                {
-                    "icon": "fa-check",
-                    "title": "DMT Availability",
-                    "text": "Modern drugs slow progression"
-                },
-                {
-                    "icon": "fa-check",
-                    "title": "Variable Course",
-                    "text": "Relapsing and progressive types"
-                },
-                {
-                    "icon": "fa-check",
-                    "title": "Active Rehabilitation",
-                    "text": "Physical therapy builds mobility"
-                }
-            ],
-            "label": "Key Facts"
         },
         "symptoms": {
             "type": "symptoms",
@@ -1638,7 +2097,44 @@
             ],
             "note_icon": "fa-sun",
             "note_title": "Heat Sensitivity",
-            "note_text": "Many MS patients experience a temporary worsening of symptoms when their body temperature rises due to exercise, hot baths, or warm weather (Uhthoff's phenomenon)."
+            "note_text": "Many MS patients experience a temporary worsening of symptoms when their body temperature rises due to exercise, hot baths, or warm weather (Uhthoff's phenomenon).",
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "diagnosis": {
+            "label": "Diagnosing Multiple Sclerosis",
+            "type": "steps",
+            "badge": "Diagnosis",
+            "title": "Diagnosing Multiple Sclerosis",
+            "description": "Since there is no single test for MS, diagnosis requires proving \"dissemination in time and space\"—lesions in different brain areas occurring at different times.",
+            "items": [
+                {
+                    "title": "Clinical Evaluation",
+                    "text": "A detailed history of neurological symptoms, relapses, and physical exams tracking sensory and motor nerve deficits."
+                },
+                {
+                    "title": "Brain & Spine MRI",
+                    "text": "High-resolution scans using contrast dye to detect active and scarred lesions (plaques) within myelin structures."
+                },
+                {
+                    "title": "Lumbar Puncture",
+                    "text": "Analyzing spinal fluid to look for oligoclonal bands or specific immunoglobulins indicative of an active CNS immune response."
+                },
+                {
+                    "title": "Evoked Potentials",
+                    "text": "Testing the speed of electrical signals traveling through visual or sensory nerve pathways to detect myelin slowing."
+                }
+            ],
+            "options": {
+                "card_bg": "bg-white",
+                "cta_key": "diagnosis"
+            },
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
+            }
         },
         "treatments": {
             "type": "treatments",
@@ -1691,7 +2187,31 @@
                         "Medications for neuropathy pain and fatigue"
                     ]
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "why-choose": {
+            "use": "_shared",
+            "wrap": {
+                "bg": "bg-slate-50/50",
+                "padding": "py-12",
+                "class": "relative overflow-hidden"
+            }
+        },
+        "video-testimonials": {
+            "type": "video-testimonials",
+            "label": "Video Testimonials"
+        },
+        "related-videos": {
+            "type": "related-videos",
+            "label": "Watch & Learn (related videos)"
+        },
+        "faq": {
+            "type": "faq",
+            "label": "FAQ Section"
         },
         "related": {
             "type": "related",
@@ -1719,16 +2239,65 @@
                     "title": "All Services",
                     "text": "View our complete range of neurological treatments."
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
+            }
         },
         "final-cta": {
             "type": "cta",
             "label": "Final CTA Banner",
             "title": "Let's Get In Touch.",
-            "description": "Ready to prioritize your health? Schedule a consultation with Dr. Praveen Gupta today and take the first step towards a healthier tomorrow."
+            "description": "Ready to prioritize your health? Schedule a consultation with Dr. Praveen Gupta today and take the first step towards a healthier tomorrow.",
+            "wrap": false
         }
     },
     "neuro-rehabilitation-center": {
+        "_flow": true,
+        "intro": {
+            "type": "intro",
+            "label": "Main Body Section",
+            "badge": "Recovery Focus",
+            "title": "Rebuilding Independent Living",
+            "text": "Following a stroke, brain trauma, or spinal cord injury, the nervous system requires specialized retraining. Our approach focuses on neuroplasticity — the brain's innate ability to reorganize and form new neural connections in response to therapeutic exercise.\n\nDr. Praveen Gupta coordinates the clinical team to ensure physical therapists, speech-language pathologists, and occupational therapists deliver unified therapy protocols tailored to your recovery targets.",
+            "image": "assets/services/rehab.png",
+            "image_alt": "Patient undergoing physical rehabilitation",
+            "options": {
+                "facts_key": "key-facts"
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "key-facts": {
+            "type": "facts",
+            "items": [
+                {
+                    "icon": "fas fa-check",
+                    "title": "Physical Therapy",
+                    "text": "Gait and coordination"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Occupational Care",
+                    "text": "Daily living adjustments"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Speech Therapy",
+                    "text": "Dysphagia and clarity"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Tech Monitored",
+                    "text": "Real-time biofeedback"
+                }
+            ],
+            "label": "Key Facts",
+            "nested": true
+        },
         "core-therapies": {
             "label": "Core Rehabilitation Therapies",
             "type": "cards",
@@ -1766,7 +2335,11 @@
                         "Speech Clarity"
                     ]
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
+            }
         },
         "recovery-journey": {
             "label": "Your Recovery Journey",
@@ -1791,33 +2364,11 @@
                     "title": "Home Care Care",
                     "text": "Preparing patients for discharge with customized home care guides, training caregivers, and setting up periodic checkups."
                 }
-            ]
-        },
-        "key-facts": {
-            "type": "facts",
-            "items": [
-                {
-                    "icon": "fas fa-check",
-                    "title": "Physical Therapy",
-                    "text": "Gait and coordination"
-                },
-                {
-                    "icon": "fas fa-check",
-                    "title": "Occupational Care",
-                    "text": "Daily living adjustments"
-                },
-                {
-                    "icon": "fas fa-check",
-                    "title": "Speech Therapy",
-                    "text": "Dysphagia and clarity"
-                },
-                {
-                    "icon": "fas fa-check",
-                    "title": "Tech Monitored",
-                    "text": "Real-time biofeedback"
-                }
             ],
-            "label": "Key Facts"
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
         },
         "doctor": {
             "type": "doctor",
@@ -1832,10 +2383,40 @@
             ],
             "text": "With over 20 years of clinical experience, Dr. Praveen Gupta has emerged as a pioneering force in the diagnosis, treatment, and advancement of neurological sciences across India and beyond. He is responsible for several firsts in the country's neurology landscape, including establishing Gurugram's first stroke centre and conducting pioneering BMT procedures for autoimmune neuro-disorders.",
             "image": "assets/dpg-1.webp",
-            "image_alt": "Dr. Praveen Gupta"
+            "image_alt": "Dr. Praveen Gupta",
+            "wrap": false
+        },
+        "video-testimonials": {
+            "type": "video-testimonials",
+            "label": "Video Testimonials"
+        },
+        "related-videos": {
+            "type": "related-videos",
+            "label": "Watch & Learn (related videos)"
+        },
+        "faq": {
+            "type": "faq",
+            "label": "FAQ Section"
         }
     },
     "neurocritical-acute-stroke-care": {
+        "_flow": true,
+        "intro": {
+            "type": "intro",
+            "label": "Main Body Section",
+            "badge": "Emergency Response",
+            "title": "Expert Acute Stroke & Neuro ICU",
+            "text": "A neurological emergency requires rapid diagnostics and immediate treatment. The \"Golden Hour\" represents the first few hours after stroke symptoms begin. Restoring blood flow to the brain via thrombolysis (clot-busting medication) or mechanical thrombectomy (catheter clot retrieval) can reverse paralysis and save lives.\n\nFollowing initial rescue, critically ill patients are monitored in our advanced Neuro-ICU. Here, we track intracranial pressure (ICP), brain oxygenation, and continuous electroencephalography (EEG) to detect non-convulsive seizures and protect tissue.",
+            "image": "assets/services/stroke-care.png",
+            "image_alt": "Neurocritical ICU room",
+            "options": {
+                "facts_key": "key-facts"
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
         "key-facts": {
             "type": "facts",
             "label": "Key Facts",
@@ -1860,7 +2441,8 @@
                     "title": "ICU Nursing",
                     "text": "1:1 neuro-certified care"
                 }
-            ]
+            ],
+            "nested": true
         },
         "be-fast": {
             "type": "cards",
@@ -1903,6 +2485,10 @@
             "options": {
                 "hover_border": "hover:border-red-200/30",
                 "badge_class": "text-red-600 font-semibold text-sm uppercase tracking-wider"
+            },
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
             }
         },
         "emergency-protocol": {
@@ -1936,6 +2522,10 @@
             "options": {
                 "number_bg": "bg-red-600",
                 "badge_class": "text-red-600 font-semibold text-sm uppercase tracking-wider"
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
             }
         },
         "doctor": {
@@ -1951,10 +2541,42 @@
             ],
             "text": "With over 20 years of clinical experience, Dr. Praveen Gupta has emerged as a pioneering force in the diagnosis, treatment, and advancement of neurological sciences across India and beyond. He is responsible for several firsts in the country's neurology landscape, including establishing Gurugram's first stroke centre and conducting pioneering BMT procedures for autoimmune neuro-disorders.",
             "image": "assets/dpg-2.webp",
-            "image_alt": "Dr. Praveen Gupta"
+            "image_alt": "Dr. Praveen Gupta",
+            "wrap": false
+        },
+        "video-testimonials": {
+            "type": "video-testimonials",
+            "label": "Video Testimonials"
+        },
+        "related-videos": {
+            "type": "related-videos",
+            "label": "Watch & Learn (related videos)"
+        },
+        "faq": {
+            "type": "faq",
+            "label": "FAQ Section"
         }
     },
     "neurological-conditions": {
+        "_flow": true,
+        "intro": {
+            "type": "intro",
+            "label": "Main Body Section",
+            "badge": "Neurology Portal",
+            "title": "Explore Medical Conditions",
+            "text": "Click on any of the specialties below to read detailed resources on symptoms, diagnosis, and care plans.",
+            "image": "",
+            "image_alt": "",
+            "options": {
+                "facts_key": "condition-cards",
+                "layout": "centered"
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-16",
+                "id": "directory"
+            }
+        },
         "condition-cards": {
             "type": "links",
             "label": "Conditions Directory",
@@ -2038,10 +2660,34 @@
             ],
             "options": {
                 "card_image": true
-            }
+            },
+            "nested": true
+        },
+        "video-testimonials": {
+            "type": "video-testimonials",
+            "label": "Video Testimonials"
         }
     },
     "neurological-symptoms": {
+        "_flow": true,
+        "intro": {
+            "type": "intro",
+            "label": "Main Body Section",
+            "badge": "Symptom Mapping",
+            "title": "Identify Your Symptoms",
+            "text": "Click on the symptom areas below to learn about potential underlying conditions and when to see a specialist.",
+            "image": "",
+            "image_alt": "",
+            "options": {
+                "facts_key": "symptom-cards",
+                "layout": "centered"
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-16",
+                "id": "symptoms-list"
+            }
+        },
         "symptom-cards": {
             "type": "links",
             "label": "Symptoms Directory",
@@ -2091,7 +2737,8 @@
                     "text": "Loss of muscle power, difficulty raising arms or legs, foot drop, or general weakness that worsens with activity.",
                     "subtitle": "<strong class=\"text-deep-indigo\">Potential Causes:</strong> <a href=\"ms\" class=\"hover:text-electric-blue font-medium underline\">Multiple Sclerosis</a>, Myopathies, Motor neuron diseases."
                 }
-            ]
+            ],
+            "nested": true
         },
         "red-flags": {
             "type": "notice",
@@ -2124,10 +2771,63 @@
                 "badge_icon": "fa-exclamation-triangle animate-pulse",
                 "title_class": "text-3xl font-bold text-deep-indigo font-serif",
                 "header_align": "left"
+            },
+            "wrap": {
+                "bg": "bg-red-50/30",
+                "padding": "py-16",
+                "class": "border-t border-b border-red-200/35"
             }
+        },
+        "video-testimonials": {
+            "type": "video-testimonials",
+            "label": "Video Testimonials"
         }
     },
     "neuropathy": {
+        "_flow": true,
+        "intro": {
+            "type": "intro",
+            "label": "Main Body Section",
+            "badge": "Understanding",
+            "title": "What is Peripheral Neuropathy?",
+            "text": "Peripheral neuropathy refers to damage or dysfunction of the peripheral nerves, which carry information between the brain, spinal cord, and the rest of the body. This condition often results in numbness, tingling, weakness, or sharp, burning pain, commonly starting in the feet and hands (known as a \"stocking-glove\" pattern).\n\nNerve damage can stem from diabetes, metabolic disorders, vitamin deficiencies, autoimmune diseases, or toxin exposures. Our clinical team focuses on identifying the root cause to halt nerve decline, relieve painful symptoms, and restore normal sensation.",
+            "image": "assets/services/neuropathy.png",
+            "image_alt": "Understanding Peripheral Neuropathy",
+            "options": {
+                "facts_key": "key-facts"
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "key-facts": {
+            "type": "facts",
+            "items": [
+                {
+                    "icon": "fa-check",
+                    "title": "Peripheral Nerves",
+                    "text": "Connects spinal cord to limbs"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Diabetic Connection",
+                    "text": "Diabetes is the leading cause"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Nerve Regeneration",
+                    "text": "Nerves can heal with care"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Targeted Relief",
+                    "text": "Advanced treatments ease pain"
+                }
+            ],
+            "label": "Key Facts",
+            "nested": true
+        },
         "types": {
             "label": "Neuropathy Categories",
             "type": "cards",
@@ -2165,61 +2865,11 @@
                         "Chemotherapy Linked"
                     ]
                 }
-            ]
-        },
-        "diagnosis": {
-            "label": "Diagnosing Neuropathy",
-            "type": "steps",
-            "badge": "Diagnosis",
-            "title": "Diagnosing Neuropathy",
-            "description": "Diagnosing peripheral neuropathy involves checking electrical conduction speed inside nerves, combined with lab screens to pinpoint root causes.",
-            "items": [
-                {
-                    "title": "EMG & NCV Studies",
-                    "text": "Nerve Conduction Velocity (NCV) tests and Electromyography (EMG) measure electrical activity in muscles to locate nerve compression or damage."
-                },
-                {
-                    "title": "Metabolic Lab Tests",
-                    "text": "Comprehensive blood screens checking HbA1c (diabetes), vitamin B12 levels, thyroid markers, renal functions, and autoantibodies."
-                },
-                {
-                    "title": "Quantitative Sensory",
-                    "text": "Sensory testing checking temperature shifts, touch thresholds, and vibration limits to identify large vs. small nerve fiber damage."
-                },
-                {
-                    "title": "Skin Biopsy",
-                    "text": "A minimally invasive, 3mm punch skin biopsy to check intraepidermal nerve fiber density, confirming small fiber neuropathy."
-                }
             ],
-            "options": {
-                "card_bg": "bg-white"
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
             }
-        },
-        "key-facts": {
-            "type": "facts",
-            "items": [
-                {
-                    "icon": "fa-check",
-                    "title": "Peripheral Nerves",
-                    "text": "Connects spinal cord to limbs"
-                },
-                {
-                    "icon": "fa-check",
-                    "title": "Diabetic Connection",
-                    "text": "Diabetes is the leading cause"
-                },
-                {
-                    "icon": "fa-check",
-                    "title": "Nerve Regeneration",
-                    "text": "Nerves can heal with care"
-                },
-                {
-                    "icon": "fa-check",
-                    "title": "Targeted Relief",
-                    "text": "Advanced treatments ease pain"
-                }
-            ],
-            "label": "Key Facts"
         },
         "symptoms": {
             "type": "symptoms",
@@ -2255,7 +2905,44 @@
             ],
             "note_icon": "fa-triangle-exclamation",
             "note_title": "Autonomic Risks",
-            "note_text": "Autonomic nerve damage can disrupt internal systems, causing heat intolerance, abnormal sweating, and fluctuations in blood pressure or heart rate."
+            "note_text": "Autonomic nerve damage can disrupt internal systems, causing heat intolerance, abnormal sweating, and fluctuations in blood pressure or heart rate.",
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "diagnosis": {
+            "label": "Diagnosing Neuropathy",
+            "type": "steps",
+            "badge": "Diagnosis",
+            "title": "Diagnosing Neuropathy",
+            "description": "Diagnosing peripheral neuropathy involves checking electrical conduction speed inside nerves, combined with lab screens to pinpoint root causes.",
+            "items": [
+                {
+                    "title": "EMG & NCV Studies",
+                    "text": "Nerve Conduction Velocity (NCV) tests and Electromyography (EMG) measure electrical activity in muscles to locate nerve compression or damage."
+                },
+                {
+                    "title": "Metabolic Lab Tests",
+                    "text": "Comprehensive blood screens checking HbA1c (diabetes), vitamin B12 levels, thyroid markers, renal functions, and autoantibodies."
+                },
+                {
+                    "title": "Quantitative Sensory",
+                    "text": "Sensory testing checking temperature shifts, touch thresholds, and vibration limits to identify large vs. small nerve fiber damage."
+                },
+                {
+                    "title": "Skin Biopsy",
+                    "text": "A minimally invasive, 3mm punch skin biopsy to check intraepidermal nerve fiber density, confirming small fiber neuropathy."
+                }
+            ],
+            "options": {
+                "card_bg": "bg-white",
+                "cta_key": "diagnosis"
+            },
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
+            }
         },
         "treatments": {
             "type": "treatments",
@@ -2308,7 +2995,31 @@
                         "Plasmapheresis (plasma exchange)"
                     ]
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "why-choose": {
+            "use": "_shared",
+            "wrap": {
+                "bg": "bg-slate-50/50",
+                "padding": "py-12",
+                "class": "relative overflow-hidden"
+            }
+        },
+        "video-testimonials": {
+            "type": "video-testimonials",
+            "label": "Video Testimonials"
+        },
+        "related-videos": {
+            "type": "related-videos",
+            "label": "Watch & Learn (related videos)"
+        },
+        "faq": {
+            "type": "faq",
+            "label": "FAQ Section"
         },
         "related": {
             "type": "related",
@@ -2336,16 +3047,65 @@
                     "title": "All Services",
                     "text": "View our complete range of neurological treatments."
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
+            }
         },
         "final-cta": {
             "type": "cta",
             "label": "Final CTA Banner",
             "title": "Let's Get In Touch.",
-            "description": "Ready to prioritize your health? Schedule a consultation with Dr. Praveen Gupta today and take the first step towards a healthier tomorrow."
+            "description": "Ready to prioritize your health? Schedule a consultation with Dr. Praveen Gupta today and take the first step towards a healthier tomorrow.",
+            "wrap": false
         }
     },
     "neurovascular-surgery": {
+        "_flow": true,
+        "intro": {
+            "type": "intro",
+            "label": "Main Body Section",
+            "badge": "Vascular Neurology",
+            "title": "Treating Complex Vascular Conditions",
+            "text": "Neurovascular disorders affect the delicate blood vessels supplying the brain and spinal cord. Our clinic integrates advanced neuro-interventional radiology with open microsurgery, so the right technique can be chosen for the vessel rather than the other way round.\n\nThat combination lets us perform life-saving interventions for strokes, haemorrhages and vascular abnormalities — including emergency cases arriving through our 24/7 stroke helpline and neuro-ICU.",
+            "image": "assets/services/neurovascular.png",
+            "image_alt": "Neurovascular Surgery",
+            "options": {
+                "facts_key": "key-facts"
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "key-facts": {
+            "type": "facts",
+            "items": [
+                {
+                    "icon": "fas fa-check",
+                    "title": "Microsurgery",
+                    "text": "Open surgical clipping"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Endovascular",
+                    "text": "Catheter-based coiling"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "24/7 Stroke Response",
+                    "text": "Emergency thrombectomy"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Neuro-ICU",
+                    "text": "Post-op vascular monitoring"
+                }
+            ],
+            "label": "Key Facts",
+            "nested": true
+        },
         "vascular-conditions": {
             "label": "Vascular Conditions Managed",
             "type": "cards",
@@ -2383,7 +3143,11 @@
                         "Stenting"
                     ]
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
+            }
         },
         "what-to-expect": {
             "label": "What to Expect, Start to Finish",
@@ -2408,36 +3172,74 @@
                     "title": "Neuro-ICU & Follow-Up",
                     "text": "Post-operative monitoring in the neuro-ICU to manage vascular spasm and intracranial pressure, then structured outpatient review."
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "doctor": {
+            "use": "_shared",
+            "wrap": false
+        },
+        "video-testimonials": {
+            "type": "video-testimonials",
+            "label": "Video Testimonials"
+        },
+        "related-videos": {
+            "type": "related-videos",
+            "label": "Watch & Learn (related videos)"
+        },
+        "faq": {
+            "type": "faq",
+            "label": "FAQ Section"
+        }
+    },
+    "parkinsons": {
+        "_flow": true,
+        "intro": {
+            "type": "intro",
+            "label": "Main Body Section",
+            "badge": "Understanding",
+            "title": "What is Parkinson's Disease?",
+            "text": "Parkinson's disease is a progressive neurodegenerative disorder that mainly affects dopamine-producing neurons in a specific area of the brain called the substantia nigra. Symptoms develop gradually over years, slowly impacting motor control, balance, and coordination.\n\nAlthough Parkinson's cannot be cured completely, modern pharmaceutical management and surgical interventions like Deep Brain Stimulation (DBS) can dramatically reduce symptoms and improve the patient's daily quality of life.",
+            "image": "assets/services/parkinsons.png",
+            "image_alt": "Understanding Parkinson's",
+            "options": {
+                "facts_key": "key-facts"
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
         },
         "key-facts": {
             "type": "facts",
             "items": [
                 {
-                    "icon": "fas fa-check",
-                    "title": "Microsurgery",
-                    "text": "Open surgical clipping"
+                    "icon": "fa-check",
+                    "title": "Neurodegenerative",
+                    "text": "Dopamine neuron loss in brain"
                 },
                 {
-                    "icon": "fas fa-check",
-                    "title": "Endovascular",
-                    "text": "Catheter-based coiling"
+                    "icon": "fa-check",
+                    "title": "Gradual Progression",
+                    "text": "Develops slowly over years"
                 },
                 {
-                    "icon": "fas fa-check",
-                    "title": "24/7 Stroke Response",
-                    "text": "Emergency thrombectomy"
+                    "icon": "fa-check",
+                    "title": "DBS Option",
+                    "text": "Neurosurgery blocks motor tremors"
                 },
                 {
-                    "icon": "fas fa-check",
-                    "title": "Neuro-ICU",
-                    "text": "Post-op vascular monitoring"
+                    "icon": "fa-check",
+                    "title": "Physical Therapy",
+                    "text": "Helps maintain motor controls"
                 }
             ],
-            "label": "Key Facts"
-        }
-    },
-    "parkinsons": {
+            "label": "Key Facts",
+            "nested": true
+        },
         "types": {
             "label": "Parkinsonian Disorders",
             "type": "cards",
@@ -2475,61 +3277,11 @@
                         "Dopamine Block"
                     ]
                 }
-            ]
-        },
-        "diagnosis": {
-            "label": "Diagnosing Parkinson's",
-            "type": "steps",
-            "badge": "Diagnosis",
-            "title": "Diagnosing Parkinson's",
-            "description": "Diagnosing Parkinson's relies primarily on expert clinical observation of motor patterns, reflexes, and response to specific dopaminergic drugs.",
-            "items": [
-                {
-                    "title": "Clinical Evaluation",
-                    "text": "Expert examination of resting tremors, motor rigidity, postural balance, and gait patterns."
-                },
-                {
-                    "title": "Drug Challenge",
-                    "text": "Assessing physical response to Levodopa medication. A significant improvement in motor speed supports a Parkinson's diagnosis."
-                },
-                {
-                    "title": "DaTscan Imaging",
-                    "text": "Dopamine Transporter SPECT scan tracing dopamine pathways in the brain to confirm neurodegenerative drop-offs."
-                },
-                {
-                    "title": "Brain MRI",
-                    "text": "High-resolution imaging scans to rule out atypical parkinsonism, strokes, fluid blockages, or brain stem abnormalities."
-                }
             ],
-            "options": {
-                "card_bg": "bg-white"
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
             }
-        },
-        "key-facts": {
-            "type": "facts",
-            "items": [
-                {
-                    "icon": "fa-check",
-                    "title": "Neurodegenerative",
-                    "text": "Dopamine neuron loss in brain"
-                },
-                {
-                    "icon": "fa-check",
-                    "title": "Gradual Progression",
-                    "text": "Develops slowly over years"
-                },
-                {
-                    "icon": "fa-check",
-                    "title": "DBS Option",
-                    "text": "Neurosurgery blocks motor tremors"
-                },
-                {
-                    "icon": "fa-check",
-                    "title": "Physical Therapy",
-                    "text": "Helps maintain motor controls"
-                }
-            ],
-            "label": "Key Facts"
         },
         "symptoms": {
             "type": "symptoms",
@@ -2565,7 +3317,44 @@
             ],
             "note_icon": "fa-shield",
             "note_title": "Early Diagnosis is Key",
-            "note_text": "Intervening early with dopamine agonists or levodopa can slow motor decline and preserve independent functioning for years."
+            "note_text": "Intervening early with dopamine agonists or levodopa can slow motor decline and preserve independent functioning for years.",
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "diagnosis": {
+            "label": "Diagnosing Parkinson's",
+            "type": "steps",
+            "badge": "Diagnosis",
+            "title": "Diagnosing Parkinson's",
+            "description": "Diagnosing Parkinson's relies primarily on expert clinical observation of motor patterns, reflexes, and response to specific dopaminergic drugs.",
+            "items": [
+                {
+                    "title": "Clinical Evaluation",
+                    "text": "Expert examination of resting tremors, motor rigidity, postural balance, and gait patterns."
+                },
+                {
+                    "title": "Drug Challenge",
+                    "text": "Assessing physical response to Levodopa medication. A significant improvement in motor speed supports a Parkinson's diagnosis."
+                },
+                {
+                    "title": "DaTscan Imaging",
+                    "text": "Dopamine Transporter SPECT scan tracing dopamine pathways in the brain to confirm neurodegenerative drop-offs."
+                },
+                {
+                    "title": "Brain MRI",
+                    "text": "High-resolution imaging scans to rule out atypical parkinsonism, strokes, fluid blockages, or brain stem abnormalities."
+                }
+            ],
+            "options": {
+                "card_bg": "bg-white",
+                "cta_key": "diagnosis"
+            },
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
+            }
         },
         "treatments": {
             "type": "treatments",
@@ -2618,7 +3407,31 @@
                         "Occupational therapy modifications"
                     ]
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "why-choose": {
+            "use": "_shared",
+            "wrap": {
+                "bg": "bg-slate-50/50",
+                "padding": "py-12",
+                "class": "relative overflow-hidden"
+            }
+        },
+        "video-testimonials": {
+            "type": "video-testimonials",
+            "label": "Video Testimonials"
+        },
+        "related-videos": {
+            "type": "related-videos",
+            "label": "Watch & Learn (related videos)"
+        },
+        "faq": {
+            "type": "faq",
+            "label": "FAQ Section"
         },
         "related": {
             "type": "related",
@@ -2646,16 +3459,65 @@
                     "title": "All Services",
                     "text": "View our complete range of neurological treatments."
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
+            }
         },
         "final-cta": {
             "type": "cta",
             "label": "Final CTA Banner",
             "title": "Let's Get In Touch.",
-            "description": "Ready to prioritize your health? Schedule a consultation with Dr. Praveen Gupta today and take the first step towards a healthier tomorrow."
+            "description": "Ready to prioritize your health? Schedule a consultation with Dr. Praveen Gupta today and take the first step towards a healthier tomorrow.",
+            "wrap": false
         }
     },
     "rtms-therapy": {
+        "_flow": true,
+        "intro": {
+            "type": "intro",
+            "label": "Main Body Section",
+            "badge": "Understanding",
+            "title": "What is Transcranial Magnetic Stimulation?",
+            "text": "rTMS is a state-of-the-art neurological neuromodulation therapy. Unlike systemic medications, which affect the entire body, rTMS targets specific areas of the brain to stimulate neurons and restore healthy communication pathways.\n\nAn electromagnetic coil is placed gently against the patient's scalp. It delivers brief, highly focused magnetic pulses that stimulate nerve cells safely. The procedure is entirely painless, and patients remain awake and active throughout.",
+            "image": "assets/services/rtms.png",
+            "image_alt": "rTMS Therapy Device",
+            "options": {
+                "facts_key": "key-facts"
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "key-facts": {
+            "type": "facts",
+            "items": [
+                {
+                    "icon": "fas fa-check",
+                    "title": "Non-Invasive",
+                    "text": "No surgery or needles"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "No Anesthesia",
+                    "text": "No sedation or downtime"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "FDA Cleared",
+                    "text": "Proven safety profile"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Outpatient Care",
+                    "text": "Return home immediately"
+                }
+            ],
+            "label": "Key Facts",
+            "nested": true
+        },
         "key-indications": {
             "label": "Key Indications Treated",
             "type": "cards",
@@ -2693,7 +3555,11 @@
                         "Migraine Relief"
                     ]
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
+            }
         },
         "what-to-expect": {
             "label": "What to Expect During rTMS Treatment",
@@ -2718,33 +3584,11 @@
                     "title": "Immediate Discharge",
                     "text": "Sessions last 20-30 minutes. Once complete, you can drive, work, and resume all activities immediately."
                 }
-            ]
-        },
-        "key-facts": {
-            "type": "facts",
-            "items": [
-                {
-                    "icon": "fas fa-check",
-                    "title": "Non-Invasive",
-                    "text": "No surgery or needles"
-                },
-                {
-                    "icon": "fas fa-check",
-                    "title": "No Anesthesia",
-                    "text": "No sedation or downtime"
-                },
-                {
-                    "icon": "fas fa-check",
-                    "title": "FDA Cleared",
-                    "text": "Proven safety profile"
-                },
-                {
-                    "icon": "fas fa-check",
-                    "title": "Outpatient Care",
-                    "text": "Return home immediately"
-                }
             ],
-            "label": "Key Facts"
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
         },
         "doctor": {
             "type": "doctor",
@@ -2759,10 +3603,67 @@
             ],
             "text": "With over 20 years of clinical experience, Dr. Praveen Gupta has emerged as a pioneering force in the diagnosis, treatment, and advancement of neurological sciences across India and beyond. He is responsible for several firsts in the country's neurology landscape, including establishing Gurugram's first stroke centre and conducting pioneering BMT procedures for autoimmune neuro-disorders.",
             "image": "assets/dpg-1.webp",
-            "image_alt": "Dr. Praveen Gupta"
+            "image_alt": "Dr. Praveen Gupta",
+            "wrap": false
+        },
+        "video-testimonials": {
+            "type": "video-testimonials",
+            "label": "Video Testimonials"
+        },
+        "related-videos": {
+            "type": "related-videos",
+            "label": "Watch & Learn (related videos)"
+        },
+        "faq": {
+            "type": "faq",
+            "label": "FAQ Section"
         }
     },
     "spine-surgery": {
+        "_flow": true,
+        "intro": {
+            "type": "intro",
+            "label": "Main Body Section",
+            "badge": "Spine Clinic",
+            "title": "Comprehensive Spinal Care",
+            "text": "Spinal health affects every facet of daily movement. Our clinic covers the full range of spine pathology, prioritising conservative management first and turning to advanced Minimally Invasive Spine Surgery (MISS) only where it is genuinely warranted.\n\nWhen surgery is the right answer, the goal is maximal decompression and stability with minimal disruption to the surrounding muscle — smaller incisions, less postoperative pain, and a shorter stay in hospital.",
+            "image": "assets/services/spine-surgery.png",
+            "image_alt": "Spine Surgery",
+            "options": {
+                "facts_key": "key-facts"
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "key-facts": {
+            "type": "facts",
+            "items": [
+                {
+                    "icon": "fas fa-check",
+                    "title": "Conservative First",
+                    "text": "Surgery only where warranted"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Tubular Dilators",
+                    "text": "Smaller incisions, less pain"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Real-Time Mapping",
+                    "text": "Neural monitoring during fusion"
+                },
+                {
+                    "icon": "fas fa-check",
+                    "title": "Shorter Stays",
+                    "text": "Minimised hospital time"
+                }
+            ],
+            "label": "Key Facts",
+            "nested": true
+        },
         "conditions-we-treat": {
             "label": "Conditions We Treat",
             "type": "cards",
@@ -2800,7 +3701,11 @@
                         "Stability"
                     ]
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
+            }
         },
         "what-to-expect": {
             "label": "What to Expect, Start to Finish",
@@ -2825,36 +3730,74 @@
                     "title": "Rehabilitation",
                     "text": "Core mobilisation to safely rebuild lumbar stabilisers, plus posture and ergonomic training to prevent recurring micro-stress on the joints."
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "doctor": {
+            "use": "_shared",
+            "wrap": false
+        },
+        "video-testimonials": {
+            "type": "video-testimonials",
+            "label": "Video Testimonials"
+        },
+        "related-videos": {
+            "type": "related-videos",
+            "label": "Watch & Learn (related videos)"
+        },
+        "faq": {
+            "type": "faq",
+            "label": "FAQ Section"
+        }
+    },
+    "stroke": {
+        "_flow": true,
+        "intro": {
+            "type": "intro",
+            "label": "Main Body Section",
+            "badge": "Understanding",
+            "title": "What is a Stroke?",
+            "text": "A stroke occurs when blood flow to an area of the brain is interrupted or reduced. This deprives brain cells of vital oxygen and nutrients, causing them to begin dying within minutes. A stroke is a critical emergency where rapid medical intervention can mean the difference between recovery and permanent disability.\n\nDr. Praveen Gupta is a pioneer in hyperacute stroke management in India, offering rapid thrombolytic therapies and mechanical thrombectomy. Beyond emergency care, our clinic specializes in stroke prevention and customized long-term neuro-rehabilitation.",
+            "image": "assets/services/stroke.png",
+            "image_alt": "Understanding Stroke",
+            "options": {
+                "facts_key": "key-facts"
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
         },
         "key-facts": {
             "type": "facts",
             "items": [
                 {
-                    "icon": "fas fa-check",
-                    "title": "Conservative First",
-                    "text": "Surgery only where warranted"
+                    "icon": "fa-check",
+                    "title": "Brain Attack",
+                    "text": "Requires emergency response"
                 },
                 {
-                    "icon": "fas fa-check",
-                    "title": "Tubular Dilators",
-                    "text": "Smaller incisions, less pain"
+                    "icon": "fa-check",
+                    "title": "Time Sensitive",
+                    "text": "\"Time is Brain\" - act FAST"
                 },
                 {
-                    "icon": "fas fa-check",
-                    "title": "Real-Time Mapping",
-                    "text": "Neural monitoring during fusion"
+                    "icon": "fa-check",
+                    "title": "Preventable",
+                    "text": "80% of strokes can be prevented"
                 },
                 {
-                    "icon": "fas fa-check",
-                    "title": "Shorter Stays",
-                    "text": "Minimised hospital time"
+                    "icon": "fa-check",
+                    "title": "Rehabilitation",
+                    "text": "Physical & motor recovery helps"
                 }
             ],
-            "label": "Key Facts"
-        }
-    },
-    "stroke": {
+            "label": "Key Facts",
+            "nested": true
+        },
         "types": {
             "label": "Types of Stroke",
             "type": "cards",
@@ -2892,61 +3835,11 @@
                         "Warning Indicator"
                     ]
                 }
-            ]
-        },
-        "diagnosis": {
-            "label": "How We Diagnose Stroke",
-            "type": "steps",
-            "badge": "Diagnosis",
-            "title": "How We Diagnose Stroke",
-            "description": "Emergency diagnostics are completed within minutes of arrival to determine if a stroke is ischemic or hemorrhagic, guiding immediate intervention.",
-            "items": [
-                {
-                    "title": "Rapid Neuro Exam",
-                    "text": "Immediate clinical checking of sensory inputs, pupillary reflexes, speech clarity, and motor strengths to assess severity."
-                },
-                {
-                    "title": "Emergency Brain CT",
-                    "text": "Fast imaging to rule out brain bleeding (hemorrhage) before prescribing blood thinners or clot-busting medications."
-                },
-                {
-                    "title": "Brain MRI & MRA",
-                    "text": "Detailed imaging scan to trace exact brain tissue damage locations and map arterial blood flow pathways."
-                },
-                {
-                    "title": "Vascular Ultrasound",
-                    "text": "Carotid duplex ultrasound checks for narrow neck arteries or plaques that could spark subsequent strokes."
-                }
             ],
-            "options": {
-                "card_bg": "bg-white"
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "pt-12 pb-0"
             }
-        },
-        "key-facts": {
-            "type": "facts",
-            "items": [
-                {
-                    "icon": "fa-check",
-                    "title": "Brain Attack",
-                    "text": "Requires emergency response"
-                },
-                {
-                    "icon": "fa-check",
-                    "title": "Time Sensitive",
-                    "text": "\"Time is Brain\" - act FAST"
-                },
-                {
-                    "icon": "fa-check",
-                    "title": "Preventable",
-                    "text": "80% of strokes can be prevented"
-                },
-                {
-                    "icon": "fa-check",
-                    "title": "Rehabilitation",
-                    "text": "Physical & motor recovery helps"
-                }
-            ],
-            "label": "Key Facts"
         },
         "warning": {
             "type": "warning",
@@ -2966,7 +3859,11 @@
                     "text": "<strong>T - Time to Call:</strong> Time is critical, seek help immediately"
                 }
             ],
-            "label": "Emergency Warning Signs"
+            "label": "Emergency Warning Signs",
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "pt-0 pb-12"
+            }
         },
         "symptoms": {
             "type": "symptoms",
@@ -3002,7 +3899,44 @@
             ],
             "note_icon": "fa-clock",
             "note_title": "The Golden Hour",
-            "note_text": "Reperfusion therapies like tPA must be administered within a 4.5-hour window from symptom onset to achieve the highest rate of recovery."
+            "note_text": "Reperfusion therapies like tPA must be administered within a 4.5-hour window from symptom onset to achieve the highest rate of recovery.",
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "diagnosis": {
+            "label": "How We Diagnose Stroke",
+            "type": "steps",
+            "badge": "Diagnosis",
+            "title": "How We Diagnose Stroke",
+            "description": "Emergency diagnostics are completed within minutes of arrival to determine if a stroke is ischemic or hemorrhagic, guiding immediate intervention.",
+            "items": [
+                {
+                    "title": "Rapid Neuro Exam",
+                    "text": "Immediate clinical checking of sensory inputs, pupillary reflexes, speech clarity, and motor strengths to assess severity."
+                },
+                {
+                    "title": "Emergency Brain CT",
+                    "text": "Fast imaging to rule out brain bleeding (hemorrhage) before prescribing blood thinners or clot-busting medications."
+                },
+                {
+                    "title": "Brain MRI & MRA",
+                    "text": "Detailed imaging scan to trace exact brain tissue damage locations and map arterial blood flow pathways."
+                },
+                {
+                    "title": "Vascular Ultrasound",
+                    "text": "Carotid duplex ultrasound checks for narrow neck arteries or plaques that could spark subsequent strokes."
+                }
+            ],
+            "options": {
+                "card_bg": "bg-white",
+                "cta_key": "diagnosis"
+            },
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
+            }
         },
         "treatments": {
             "type": "treatments",
@@ -3055,7 +3989,31 @@
                         "Speech therapy and swallowing retraining"
                     ]
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "why-choose": {
+            "use": "_shared",
+            "wrap": {
+                "bg": "bg-slate-50/50",
+                "padding": "py-12",
+                "class": "relative overflow-hidden"
+            }
+        },
+        "video-testimonials": {
+            "type": "video-testimonials",
+            "label": "Video Testimonials"
+        },
+        "related-videos": {
+            "type": "related-videos",
+            "label": "Watch & Learn (related videos)"
+        },
+        "faq": {
+            "type": "faq",
+            "label": "FAQ Section"
         },
         "related": {
             "type": "related",
@@ -3083,16 +4041,65 @@
                     "title": "All Services",
                     "text": "View our complete range of neurological treatments."
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
+            }
         },
         "final-cta": {
             "type": "cta",
             "label": "Final CTA Banner",
             "title": "Let's Get In Touch.",
-            "description": "Ready to prioritize your health? Schedule a consultation with Dr. Praveen Gupta today and take the first step towards a healthier tomorrow."
+            "description": "Ready to prioritize your health? Schedule a consultation with Dr. Praveen Gupta today and take the first step towards a healthier tomorrow.",
+            "wrap": false
         }
     },
     "vertigo": {
+        "_flow": true,
+        "intro": {
+            "type": "intro",
+            "label": "Main Body Section",
+            "badge": "Understanding",
+            "title": "What is Vertigo?",
+            "text": "Vertigo is a sensation of spinning or motion when you are perfectly still. Often described as dizziness, it makes you feel as if your surroundings are moving. Vertigo is typically a symptom of an underlying vestibular system issue in the inner ear or brain.\n\nLiving with recurrent vertigo can lead to fall risks, anxiety, and extreme nausea. Our clinic focuses on accurate diagnosis, pinpointing peripheral or central causes, and utilizing drug-free therapies to resolve balance issues successfully.",
+            "image": "assets/services/vertigo.png",
+            "image_alt": "Understanding Vertigo",
+            "options": {
+                "facts_key": "key-facts"
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "key-facts": {
+            "type": "facts",
+            "items": [
+                {
+                    "icon": "fa-check",
+                    "title": "Balance System",
+                    "text": "Linked to inner ear & brain"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Often Drug-Free",
+                    "text": "Relieved by body maneuvers"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Common Causes",
+                    "text": "BPPV is the main culprit"
+                },
+                {
+                    "icon": "fa-check",
+                    "title": "Therapeutic Rehab",
+                    "text": "Vestibular retraining works"
+                }
+            ],
+            "label": "Key Facts",
+            "nested": true
+        },
         "types": {
             "label": "Common Vertigo Types",
             "type": "cards",
@@ -3130,61 +4137,11 @@
                         "Central Origins"
                     ]
                 }
-            ]
-        },
-        "diagnosis": {
-            "label": "Diagnosing Vertigo",
-            "type": "steps",
-            "badge": "Diagnosis",
-            "title": "Diagnosing Vertigo",
-            "description": "Diagnosing vertigo involves checking both your balance systems and inner ear fluid pathways to identify positional triggers.",
-            "items": [
-                {
-                    "title": "Dix-Hallpike Maneuver",
-                    "text": "A clinical movement test to trigger positional nystagmus (involuntary eye movement) and verify BPPV in the canals."
-                },
-                {
-                    "title": "Vestibular Testing",
-                    "text": "Video-nystagmography (VNG) tests and caloric stimulation check inner ear balance responses."
-                },
-                {
-                    "title": "Brain MRI",
-                    "text": "High-resolution imaging to rule out brainstem strokes, multiple sclerosis plaques, acoustic neuromas, or tumors."
-                },
-                {
-                    "title": "Hearing Evaluation",
-                    "text": "Audiometry screening to rule out Meniere's disease or acoustic nerve issues that affect hearing pathways."
-                }
             ],
-            "options": {
-                "card_bg": "bg-white"
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "pt-12 pb-0"
             }
-        },
-        "key-facts": {
-            "type": "facts",
-            "items": [
-                {
-                    "icon": "fa-check",
-                    "title": "Balance System",
-                    "text": "Linked to inner ear & brain"
-                },
-                {
-                    "icon": "fa-check",
-                    "title": "Often Drug-Free",
-                    "text": "Relieved by body maneuvers"
-                },
-                {
-                    "icon": "fa-check",
-                    "title": "Common Causes",
-                    "text": "BPPV is the main culprit"
-                },
-                {
-                    "icon": "fa-check",
-                    "title": "Therapeutic Rehab",
-                    "text": "Vestibular retraining works"
-                }
-            ],
-            "label": "Key Facts"
         },
         "warning": {
             "type": "warning",
@@ -3204,7 +4161,11 @@
                     "text": "Difficulty walking or loss of coordination"
                 }
             ],
-            "label": "Emergency Warning Signs"
+            "label": "Emergency Warning Signs",
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "pt-0 pb-12"
+            }
         },
         "symptoms": {
             "type": "symptoms",
@@ -3240,7 +4201,44 @@
             ],
             "note_icon": "fa-info-circle",
             "note_title": "Movement Sensitivities",
-            "note_text": "Symptoms are typically exacerbated by head movements, rolling over in bed, tilting the head upward, or sudden posture shifts."
+            "note_text": "Symptoms are typically exacerbated by head movements, rolling over in bed, tilting the head upward, or sudden posture shifts.",
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "diagnosis": {
+            "label": "Diagnosing Vertigo",
+            "type": "steps",
+            "badge": "Diagnosis",
+            "title": "Diagnosing Vertigo",
+            "description": "Diagnosing vertigo involves checking both your balance systems and inner ear fluid pathways to identify positional triggers.",
+            "items": [
+                {
+                    "title": "Dix-Hallpike Maneuver",
+                    "text": "A clinical movement test to trigger positional nystagmus (involuntary eye movement) and verify BPPV in the canals."
+                },
+                {
+                    "title": "Vestibular Testing",
+                    "text": "Video-nystagmography (VNG) tests and caloric stimulation check inner ear balance responses."
+                },
+                {
+                    "title": "Brain MRI",
+                    "text": "High-resolution imaging to rule out brainstem strokes, multiple sclerosis plaques, acoustic neuromas, or tumors."
+                },
+                {
+                    "title": "Hearing Evaluation",
+                    "text": "Audiometry screening to rule out Meniere's disease or acoustic nerve issues that affect hearing pathways."
+                }
+            ],
+            "options": {
+                "card_bg": "bg-white",
+                "cta_key": "diagnosis"
+            },
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
+            }
         },
         "treatments": {
             "type": "treatments",
@@ -3293,7 +4291,31 @@
                         "Fall-prevention safety planning"
                     ]
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "why-choose": {
+            "use": "_shared",
+            "wrap": {
+                "bg": "bg-slate-50/50",
+                "padding": "py-12",
+                "class": "relative overflow-hidden"
+            }
+        },
+        "video-testimonials": {
+            "type": "video-testimonials",
+            "label": "Video Testimonials"
+        },
+        "related-videos": {
+            "type": "related-videos",
+            "label": "Watch & Learn (related videos)"
+        },
+        "faq": {
+            "type": "faq",
+            "label": "FAQ Section"
         },
         "related": {
             "type": "related",
@@ -3321,13 +4343,18 @@
                     "title": "All Services",
                     "text": "View our complete range of neurological treatments."
                 }
-            ]
+            ],
+            "wrap": {
+                "bg": "bg-[#edf5f9]",
+                "padding": "py-12"
+            }
         },
         "final-cta": {
             "type": "cta",
             "label": "Final CTA Banner",
             "title": "Let's Get In Touch.",
-            "description": "Ready to prioritize your health? Schedule a consultation with Dr. Praveen Gupta today and take the first step towards a healthier tomorrow."
+            "description": "Ready to prioritize your health? Schedule a consultation with Dr. Praveen Gupta today and take the first step towards a healthier tomorrow.",
+            "wrap": false
         }
     }
 }

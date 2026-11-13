@@ -12,13 +12,6 @@ $pageContent = get_page_content('rtms-therapy', [
     'hero_bg'    => 'assets/breadcrumbs/dr-parveen-services-breadcrumb/rtms.png',
 ]);
 
-$section = get_page_section($pageContent, [
-    'badge' => 'Understanding',
-    'title' => 'What is Transcranial Magnetic Stimulation?',
-    'text' => "rTMS is a state-of-the-art neurological neuromodulation therapy. Unlike systemic medications, which affect the entire body, rTMS targets specific areas of the brain to stimulate neurons and restore healthy communication pathways.\n\nAn electromagnetic coil is placed gently against the patient's scalp. It delivers brief, highly focused magnetic pulses that stimulate nerve cells safely. The procedure is entirely painless, and patients remain awake and active throughout.",
-    'image' => 'assets/services/rtms.png',
-    'image_alt' => 'rTMS Therapy Device',
-]);
 $heroBg = cms_media_path($pageContent['hero_bg'] ?? '');
 $heroAlt = trim((string)($pageContent['hero_bg_alt'] ?? ''));
 if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'Dr. Praveen Gupta'));
@@ -39,17 +32,11 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl text-left animate-fade-in-up">
             <!-- Breadcrumb -->
-            <nav class="flex items-center space-x-2 text-white/80 text-sm mb-3">
-                <a href="index" class="hover:text-white transition-colors">Home</a>
-                <i class="fas fa-chevron-right text-[8px]"></i>
-                <a href="services" class="hover:text-white transition-colors">Services</a>
-                <i class="fas fa-chevron-right text-[8px]"></i>
-                <span class="text-white font-medium">rTMS Therapy</span>
-            </nav>
+            <?php cms_breadcrumb_nav('rtms-therapy'); ?>
 
             <!-- Badge -->
             <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4">
-                <i class="fas fa-wave-square text-[10px]"></i>
+                <i class="fas <?php echo htmlspecialchars(trim((string)($pageContent['hero_icon'] ?? '')) !== '' ? $pageContent['hero_icon'] : 'fa-wave-square'); ?> text-[10px]"></i>
                 <span><?php echo htmlspecialchars($pageContent['hero_badge']); ?></span>
             </div>
 
@@ -83,55 +70,8 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
     </div>
 </section>
 
-<!-- What is rTMS Section -->
-<section class="py-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-            <div class="animate-slide-in-left">
-                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider"><?php echo htmlspecialchars($section['badge']); ?></span>
-                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6"><?php echo htmlspecialchars($section['title']); ?></h2>
-                <?php echo cms_section_paragraphs($section['text']); ?>
 
-                <!-- Key Facts (CMS block) -->
-                <?php cms_render_page_block('rtms-therapy', 'key-facts'); ?>
-            </div>
-
-            <!-- Image Side -->
-            <div class="relative flex justify-center lg:justify-end animate-slide-in-right">
-                <div class="relative w-full max-w-md lg:max-w-none aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-soft-cyan to-silver-grey border border-silver-grey/20">
-                    <img src="<?php echo htmlspecialchars($section['image']); ?>" alt="<?php echo htmlspecialchars($section['image_alt']); ?>" class="w-full h-full object-cover">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Indications / Treatable Conditions -->
-<section class="py-12 bg-[#edf5f9]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <?php cms_render_page_block('rtms-therapy', 'key-indications'); ?>
-    </div>
-</section>
-
-<!-- Diagnosis & Experience Steps -->
-<section class="py-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <?php cms_render_page_block('rtms-therapy', 'what-to-expect'); ?>
-    </div>
-</section>
-
-<!-- About Doctor Section (CMS block) -->
-                <?php cms_render_page_block('rtms-therapy', 'doctor'); ?>
-
-<!-- Video Testimonials (component: includes/video-testimonials.php) -->
-<?php require __DIR__ . "/includes/video-testimonials.php"; ?>
-
-<!-- Related Videos (topic-matched, see $pageVideos in includes/config.php) -->
-<?php require __DIR__ . "/includes/related-videos.php"; ?>
-
-<!-- FAQ Section (managed in CMS → FAQs) -->
-<?php $faqSlug = 'rtms-therapy'; require __DIR__ . '/includes/faq-section.php'; ?>
-
-
+<!-- Page sections: order, visibility and content are managed in CMS → All Pages -->
+<?php cms_render_page_flow('rtms-therapy'); ?>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

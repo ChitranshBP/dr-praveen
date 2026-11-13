@@ -12,13 +12,6 @@ $pageContent = get_page_content('brain-stroke-helpline', [
     'hero_bg'    => 'assets/breadcrumbs/patient.png'
 ]);
 
-$section = get_page_section($pageContent, [
-    'badge' => 'Clinical Protocol',
-    'title' => 'Golden Hour Window',
-    'text' => 'When a stroke strikes, millions of brain cells die every minute. Reversing this damage is highly dependent on how quickly blood flow is restored.',
-    'image' => '',
-    'image_alt' => 'Emergency stroke protocol',
-]);
 $heroBg = cms_media_path($pageContent['hero_bg'] ?? '');
 $heroAlt = trim((string)($pageContent['hero_bg_alt'] ?? ''));
 if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'Dr. Praveen Gupta'));
@@ -39,15 +32,11 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl text-left animate-fade-in-up">
             <!-- Breadcrumb -->
-            <nav class="flex items-center space-x-2 text-white/80 text-sm mb-3">
-                <a href="index" class="hover:text-white transition-colors">Home</a>
-                <i class="fas fa-chevron-right text-[8px]"></i>
-                <span class="text-white font-medium">Stroke Helpline</span>
-            </nav>
+            <?php cms_breadcrumb_nav('brain-stroke-helpline'); ?>
 
             <!-- Badge -->
             <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4 border border-white/20">
-                <i class="fas fa-exclamation-triangle text-red-400 text-[10px] animate-pulse"></i>
+                <i class="fas <?php echo htmlspecialchars(trim((string)($pageContent['hero_icon'] ?? '')) !== '' ? $pageContent['hero_icon'] : 'fa-exclamation-triangle'); ?> text-red-400 text-[10px] animate-pulse"></i>
                 <span><?php echo htmlspecialchars($pageContent['hero_badge']); ?></span>
             </div>
 
@@ -74,48 +63,8 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
     </div>
 </section>
 
-<!-- F.A.S.T. Signs Section (CMS block) -->
-<section class="py-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <?php cms_render_page_block('brain-stroke-helpline', 'fast-signs'); ?>
-    </div>
-</section>
 
-<!-- Stroke Protocols -->
-<section class="py-12 bg-[#edf5f9] border-y border-slate-200/60">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-12 gap-12 items-center">
-            <!-- Left Card: Urgent Care Timelines -->
-            <div class="lg:col-span-5 space-y-6">
-                <div>
-                    <span class="text-red-600 font-bold text-xs uppercase tracking-wider"><?php echo htmlspecialchars($section['badge']); ?></span>
-                    <h2 class="text-3xl font-bold text-dark-grey mt-2 mb-4"><?php echo htmlspecialchars($section['title']); ?></h2>
-                    <?php echo cms_section_paragraphs($section['text'], 'text-sm text-dark-grey/65 leading-relaxed', 'mb-0'); ?>
-                    <?php if (!empty($section['image'])): ?>
-                    <div class="mt-4 rounded-2xl overflow-hidden border border-slate-200/60">
-                        <img src="<?php echo htmlspecialchars($section['image']); ?>" alt="<?php echo htmlspecialchars($section['image_alt']); ?>" class="w-full h-auto object-cover">
-                    </div>
-                    <?php endif; ?>
-                </div>
-                <!-- Golden Hour timelines (CMS block) -->
-                <?php cms_render_page_block('brain-stroke-helpline', 'golden-hour'); ?>
-            </div>
-
-            <!-- Right Card: numbered steps while waiting (CMS block) -->
-            <?php cms_render_page_block('brain-stroke-helpline', 'while-waiting'); ?>
-        </div>
-    </div>
-</section>
-
-<!-- Video Testimonials (component: includes/video-testimonials.php) -->
-<?php require __DIR__ . "/includes/video-testimonials.php"; ?>
-
-<!-- Related Videos (topic-matched, see $pageVideos in includes/config.php) -->
-<?php require __DIR__ . "/includes/related-videos.php"; ?>
-
-<!-- FAQ Section (managed in CMS → FAQs) -->
-<?php $faqSlug = 'brain-stroke-helpline'; require __DIR__ . '/includes/faq-section.php'; ?>
-
-
+<!-- Page sections: order, visibility and content are managed in CMS → All Pages -->
+<?php cms_render_page_flow('brain-stroke-helpline'); ?>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

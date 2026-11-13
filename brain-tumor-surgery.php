@@ -12,13 +12,6 @@ $pageContent = get_page_content('brain-tumor-surgery', [
     'hero_bg'    => 'assets/breadcrumbs/dr-parveen-services-breadcrumb/Brain%20Tumor%20Surgery.png',
 ]);
 
-$section = get_page_section($pageContent, [
-    'badge' => 'Neurosurgical Excellence',
-    'title' => 'Comprehensive Brain Tumor Care',
-    'text' => "Brain tumor treatment requires extreme precision and a multidisciplinary approach. Our clinic specializes in both benign and malignant brain tumors, using advanced imaging to map critical speech and motor pathways before a single incision is made.\n\nThe goal in every case is the same: remove as much of the tumor as safely possible while preserving the brain function that defines who you are. Surgery is planned jointly with neuro-oncology and radiation specialists so the whole pathway is agreed before treatment begins.",
-    'image' => 'assets/services/brain-tumor.png',
-    'image_alt' => 'Brain Tumor Surgery',
-]);
 $heroBg = cms_media_path($pageContent['hero_bg'] ?? '');
 $heroAlt = trim((string)($pageContent['hero_bg_alt'] ?? ''));
 if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'Dr. Praveen Gupta'));
@@ -39,17 +32,11 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl text-left animate-fade-in-up">
             <!-- Breadcrumb -->
-            <nav class="flex items-center space-x-2 text-white/80 text-sm mb-3">
-                <a href="index" class="hover:text-white transition-colors">Home</a>
-                <i class="fas fa-chevron-right text-[8px]"></i>
-                <a href="services" class="hover:text-white transition-colors">Services</a>
-                <i class="fas fa-chevron-right text-[8px]"></i>
-                <span class="text-white font-medium">Brain Tumor Surgery</span>
-            </nav>
+            <?php cms_breadcrumb_nav('brain-tumor-surgery'); ?>
 
             <!-- Badge -->
             <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4 border border-white/20">
-                <i class="fas fa-brain text-cyan-accent text-[10px]"></i>
+                <i class="fas <?php echo htmlspecialchars(trim((string)($pageContent['hero_icon'] ?? '')) !== '' ? $pageContent['hero_icon'] : 'fa-brain'); ?> text-cyan-accent text-[10px]"></i>
                 <span><?php echo htmlspecialchars($pageContent['hero_badge']); ?></span>
             </div>
 
@@ -77,55 +64,8 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
     </div>
 </section>
 
-<!-- What is Brain Tumor Surgery Section -->
-<section class="py-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-            <div class="animate-slide-in-left">
-                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider"><?php echo htmlspecialchars($section['badge']); ?></span>
-                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6"><?php echo htmlspecialchars($section['title']); ?></h2>
-                <?php echo cms_section_paragraphs($section['text']); ?>
 
-                <!-- Key Facts (CMS block) -->
-                <?php cms_render_page_block('brain-tumor-surgery', 'key-facts'); ?>
-            </div>
-
-            <!-- Image Side -->
-            <div class="relative flex justify-center lg:justify-end animate-slide-in-right">
-                <div class="relative w-full max-w-md lg:max-w-none aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-soft-cyan to-silver-grey border border-silver-grey/20">
-                    <img src="<?php echo htmlspecialchars($section['image']); ?>" alt="<?php echo htmlspecialchars($section['image_alt']); ?>" class="w-full h-full object-cover">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Surgical Techniques (managed in CMS → All Pages) -->
-<section class="py-12 bg-[#edf5f9]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <?php cms_render_page_block('brain-tumor-surgery', 'techniques'); ?>
-    </div>
-</section>
-
-<!-- Treatment Journey Steps (managed in CMS → All Pages) -->
-<section class="py-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <?php cms_render_page_block('brain-tumor-surgery', 'experience'); ?>
-    </div>
-</section>
-
-<!-- About Doctor Section (CMS block) -->
-                <?php cms_render_page_block('brain-tumor-surgery', 'doctor'); ?>
-
-<!-- Video Testimonials (component: includes/video-testimonials.php) -->
-<?php require __DIR__ . "/includes/video-testimonials.php"; ?>
-
-<!-- Related Videos (topic-matched, see $pageVideos in includes/config.php) -->
-<?php require __DIR__ . "/includes/related-videos.php"; ?>
-
-<!-- FAQ Section (managed in CMS → FAQs) -->
-<?php $faqSlug = 'brain-tumor-surgery'; require __DIR__ . '/includes/faq-section.php'; ?>
-
-
+<!-- Page sections: order, visibility and content are managed in CMS → All Pages -->
+<?php cms_render_page_flow('brain-tumor-surgery'); ?>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

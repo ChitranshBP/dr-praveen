@@ -12,13 +12,6 @@ $pageContent = get_page_content('ms', [
     'hero_bg'    => 'assets/breadcrumbs/conditions/Multiple%20Sclerosis.png',
 ]);
 
-$section = get_page_section($pageContent, [
-    'badge' => 'Understanding',
-    'title' => 'What is Multiple Sclerosis?',
-    'text' => "Multiple Sclerosis (MS) is a chronic, autoimmune disease of the central nervous system. In MS, the body's immune system mistakenly attacks myelin, the protective fatty sheath that covers nerve fibers in the brain and spinal cord. This causes inflammation and scarring (plaques), disrupting electrical signals.\n\nSymptoms can vary from temporary numbness to difficulty walking or visual impairments. While there is no cure, today's Disease-Modifying Therapies (DMTs) can suppress immune activity, significantly reducing relapse rates and slowing disability progression.",
-    'image' => 'assets/services/ms.png',
-    'image_alt' => 'Understanding Multiple Sclerosis',
-]);
 $heroBg = cms_media_path($pageContent['hero_bg'] ?? '');
 $heroAlt = trim((string)($pageContent['hero_bg_alt'] ?? ''));
 if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'Dr. Praveen Gupta'));
@@ -39,17 +32,11 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl text-left animate-fade-in-up">
             <!-- Breadcrumb -->
-            <nav class="flex items-center space-x-2 text-white/80 text-sm mb-3">
-                <a href="index" class="hover:text-white transition-colors">Home</a>
-                <i class="fas fa-chevron-right text-[8px]"></i>
-                <a href="services" class="hover:text-white transition-colors">Services</a>
-                <i class="fas fa-chevron-right text-[8px]"></i>
-                <span class="text-white font-medium">Multiple Sclerosis</span>
-            </nav>
+            <?php cms_breadcrumb_nav('ms'); ?>
 
             <!-- Badge -->
             <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4">
-                <i class="fas fa-network-wired text-[10px]"></i>
+                <i class="fas <?php echo htmlspecialchars(trim((string)($pageContent['hero_icon'] ?? '')) !== '' ? $pageContent['hero_icon'] : 'fa-network-wired'); ?> text-[10px]"></i>
                 <span><?php echo htmlspecialchars($pageContent['hero_badge']); ?></span>
             </div>
 
@@ -83,97 +70,8 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
     </div>
 </section>
 
-<!-- What is MS Section -->
-<section class="py-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-            <div class="animate-slide-in-left">
-                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider"><?php echo htmlspecialchars($section['badge']); ?></span>
-                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6"><?php echo htmlspecialchars($section['title']); ?></h2>
-                <?php echo cms_section_paragraphs($section['text']); ?>
 
-                <!-- Key Facts (CMS block) -->
-                <?php cms_render_page_block('ms', 'key-facts'); ?>
-            </div>
-
-            <!-- Image Side -->
-            <div class="relative flex justify-center lg:justify-end animate-slide-in-right">
-                <div class="relative w-full max-w-md lg:max-w-none aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-soft-cyan to-silver-grey border border-silver-grey/20">
-                    <img src="<?php echo htmlspecialchars($section['image']); ?>" alt="<?php echo htmlspecialchars($section['image_alt']); ?>" class="w-full h-full object-cover">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Types of MS -->
-<section class="py-12 bg-[#edf5f9]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <?php cms_render_page_block('ms', 'types'); ?>
-    </div>
-</section>
-
-<!-- Symptoms Section -->
-<section class="py-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <?php cms_render_page_block('ms', 'symptoms'); ?>
-    </div>
-</section>
-
-<!-- Diagnosis Section -->
-<section class="py-12 bg-[#edf5f9]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <?php cms_render_page_block('ms', 'diagnosis'); ?>
-
-        <!-- CTA (text + destination edited in CMS) -->
-        <?php $diagnosisCta = cms_page_cta('ms', 'diagnosis'); ?>
-        <?php if (trim($diagnosisCta['text']) !== ''): ?>
-        <div class="text-center">
-            <?php if (trim($diagnosisCta['intro']) !== ''): ?>
-            <p class="text-dark-grey/70 mb-6"><?php echo $diagnosisCta['intro']; ?></p>
-            <?php endif; ?>
-            <a href="<?php echo cms_cta_href($diagnosisCta['url']); ?>" class="inline-flex items-center space-x-3 bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold px-8 py-4 rounded-full hover:shadow-xl hover:shadow-electric-blue/30 transition-all duration-300 transform hover:-translate-y-1">
-                <span><?php echo cms_cta_text('ms', 'diagnosis'); ?></span>
-                <i class="fas fa-arrow-right text-sm"></i>
-            </a>
-        </div>
-        <?php endif; ?>
-    </div>
-</section>
-
-<!-- Treatment Section -->
-<section class="py-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <?php cms_render_page_block('ms', 'treatments'); ?>
-    </div>
-</section>
-
-<!-- Why Choose Us Section -->
-<section class="py-12 bg-slate-50/50 relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <?php cms_render_page_block('ms', 'why-choose'); ?>
-    </div>
-</section>
-
-<!-- Video Testimonials (component: includes/video-testimonials.php) -->
-<?php require __DIR__ . "/includes/video-testimonials.php"; ?>
-
-<!-- Related Videos (topic-matched, see $pageVideos in includes/config.php) -->
-<?php require __DIR__ . "/includes/related-videos.php"; ?>
-
-<!-- FAQ Section (managed in CMS → FAQs) -->
-<?php $faqSlug = 'ms'; require __DIR__ . '/includes/faq-section.php'; ?>
-
-
-
-<!-- Related Services -->
-<section class="py-12 bg-[#edf5f9]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <?php cms_render_page_block('ms', 'related'); ?>
-    </div>
-</section>
-
-<!-- Final CTA (CMS block) -->
-<?php cms_render_page_block('ms', 'final-cta'); ?>
+<!-- Page sections: order, visibility and content are managed in CMS → All Pages -->
+<?php cms_render_page_flow('ms'); ?>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

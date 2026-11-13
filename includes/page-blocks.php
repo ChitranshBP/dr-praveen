@@ -76,20 +76,337 @@ if (!function_exists('cms_page_blocks')) {
         }
         $saved = (is_array($page) && isset($page['blocks']) && is_array($page['blocks'])) ? $page['blocks'] : [];
 
+        // A page entry may reference a shared block by position with
+        // {"use": "_shared"} (or {"use": "_shared", "key": "doctor"}).
+        foreach ($defaults as $key => $def) {
+            if (is_array($def) && isset($def['use']) && $def['use'] === '_shared') {
+                $sharedKey = $def['key'] ?? $key;
+                if (isset($shared[$sharedKey]) && is_array($shared[$sharedKey])) {
+                    $resolved = $shared[$sharedKey];
+                    unset($resolved['pages']);
+                    unset($def['use'], $def['key']);
+                    $defaults[$key] = array_merge($resolved, $def);
+                } else {
+                    unset($defaults[$key]);
+                }
+            }
+        }
+
         $blocks = [];
         foreach ($defaults as $key => $default) {
-            if (!is_array($default)) {
+            if (!is_array($default) || (is_string($key) && $key !== '' && $key[0] === '_')) {
                 continue;
             }
             $override = (isset($saved[$key]) && is_array($saved[$key])) ? $saved[$key] : [];
-            $block = array_merge($default, $override);
+            $block = array_merge($default, array_filter($override, function ($v) { return $v !== null; }));
             // Use the saved items only when the editor actually kept some.
             if (isset($override['items']) && is_array($override['items'])) {
                 $block['items'] = array_values(array_filter($override['items'], 'is_array'));
             }
             $blocks[$key] = $block;
         }
+        // Blocks the editor added to this page (not in the defaults) carry
+        // their own "type"; they join the list and are positioned by "layout".
+        foreach ($saved as $key => $sb) {
+            if (!isset($blocks[$key]) && is_array($sb) && !empty($sb['type'])) {
+                $sb['added'] = true;
+                $blocks[$key] = $sb;
+            }
+        }
         return $blocks;
+    }
+}
+
+if (!function_exists('cms_page_layout')) {
+    /**
+     * Ordered section list for a page: [['key' => ..., 'hidden' => bool], ...].
+     * Saved order lives in data/pages/{slug}.json → "layout"; otherwise the
+     * order of the block definitions. Blocks missing from a saved layout are
+     * appended so nothing silently disappears.
+     */
+    function cms_page_layout($slug, ?array $blocks = null) {
+        $slug = preg_replace('/[^a-zA-Z0-9_-]/', '', (string)$slug);
+        if ($blocks === null) {
+            $blocks = cms_page_blocks($slug);
+        }
+        $page = function_exists('get_page_content') ? get_page_content($slug, []) : [];
+        $saved = (isset($page['layout']) && is_array($page['layout'])) ? $page['layout'] : [];
+        $layout = [];
+        $seen = [];
+        foreach ($saved as $entry) {
+            $key = is_array($entry) ? (string)($entry['key'] ?? '') : (string)$entry;
+            if ($key === '' || !isset($blocks[$key]) || isset($seen[$key])) {
+                continue;
+            }
+            $layout[] = ['key' => $key, 'hidden' => is_array($entry) && !empty($entry['hidden'])];
+            $seen[$key] = true;
+        }
+        foreach ($blocks as $key => $b) {
+            // Nested blocks (e.g. key-facts inside the intro) are rendered by
+            // their parent, never as a top-level section.
+            if (!isset($seen[$key]) && empty($b['nested'])) {
+                $layout[] = ['key' => $key, 'hidden' => false];
+                $seen[$key] = true;
+            }
+        }
+        return $layout;
+    }
+}
+
+if (!function_exists('cms_page_uses_flow')) {
+    /**
+     * True when the page's block definitions were converted to the ordered
+     * flow (marker "_flow": true in data/page-blocks.json).
+     */
+    function cms_page_uses_flow($slug) {
+        $defs = cms_page_blocks_defaults($slug);
+        return !empty($defs['_flow']);
+    }
+}
+
+if (!function_exists('cms_block_wrap_open')) {
+    /**
+     * Section wrapper printed around a block by the flow renderer. Controlled
+     * by the block's "wrap" option: false/"none" = block prints its own
+     * <section>; otherwise ['bg' => 'bg-white', 'padding' => 'py-12',
+     * 'container' => 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8', 'class' => '',
+     * 'id' => ''].
+     */
+    function cms_block_wrap_open(array $block) {
+        $wrap = $block['wrap'] ?? [];
+        if ($wrap === false || $wrap === 'none') {
+            return false;
+        }
+        if (!is_array($wrap)) {
+            $wrap = [];
+        }
+        $bg = (string)($wrap['bg'] ?? 'bg-white');
+        $padding = (string)($wrap['padding'] ?? 'py-12');
+        $extra = (string)($wrap['class'] ?? '');
+        $container = array_key_exists('container', $wrap) ? $wrap['container'] : 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8';
+        $id = trim((string)($wrap['id'] ?? ''));
+        echo '<section' . ($id !== '' ? ' id="' . htmlspecialchars($id) . '"' : '') . ' class="' . htmlspecialchars(trim($padding . ' ' . $bg . ' ' . $extra)) . '">';
+        if ($container) {
+            echo '<div class="' . htmlspecialchars((string)$container) . '">';
+        }
+        return $container ? 2 : 1;
+    }
+}
+
+if (!function_exists('cms_block_wrap_close')) {
+    function cms_block_wrap_close($opened) {
+        if ($opened === false) {
+            return;
+        }
+        if ($opened === 2) {
+            echo '</div>';
+        }
+        echo '</section>';
+    }
+}
+
+if (!function_exists('cms_render_block_cta_key')) {
+    /**
+     * Centered intro line + gradient button for a block's "cta_key" option
+     * (e.g. the diagnosis section button).
+     */
+    function cms_render_block_cta_key($slug, $key, array $options = []) {
+        if (!$slug || !function_exists('cms_page_cta')) {
+            return;
+        }
+        $cta = cms_page_cta($slug, $key);
+        if (trim($cta['text']) === '') {
+            return;
+        }
+        ?>
+        <div class="<?php echo htmlspecialchars($options['cta_wrapper'] ?? 'text-center'); ?>">
+            <?php if (trim($cta['intro']) !== ''): ?>
+            <p class="text-dark-grey/70 mb-6"><?php echo $cta['intro']; ?></p>
+            <?php endif; ?>
+            <a href="<?php echo cms_cta_href($cta['url']); ?>" class="<?php echo htmlspecialchars($options['cta_class'] ?? 'inline-flex items-center space-x-3 bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold px-8 py-4 rounded-full hover:shadow-xl hover:shadow-electric-blue/30 transition-all duration-300 transform hover:-translate-y-1'); ?>">
+                <span><?php echo cms_cta_text($slug, $key); ?></span>
+                <i class="fas fa-arrow-right text-sm"></i>
+            </a>
+        </div>
+        <?php
+    }
+}
+
+if (!function_exists('cms_render_page_flow')) {
+    /**
+     * Render every visible section of a page in its saved order. Templates
+     * call this once between their hero and the footer include.
+     */
+    function cms_render_page_flow($slug, array $options = []) {
+        global $cmsCurrentPageSlug;
+        $slug = preg_replace('/[^a-zA-Z0-9_-]/', '', (string)$slug);
+        $blocks = cms_page_blocks($slug);
+        $layout = cms_page_layout($slug, $blocks);
+        $previous = $cmsCurrentPageSlug ?? null;
+        $cmsCurrentPageSlug = $slug;
+        try {
+            foreach ($layout as $entry) {
+                if (!empty($entry['hidden']) || !isset($blocks[$entry['key']])) {
+                    continue;
+                }
+                $block = $blocks[$entry['key']];
+                $type = $block['type'] ?? 'cards';
+                // Blocks that print their own <section>
+                $selfWrapped = in_array($type, ['doctor', 'cta', 'faq', 'video-testimonials', 'related-videos', 'banner-slider', 'richtext-page', 'collection-grid', 'testimonials', 'team-grid', 'blog-grid', 'services-grid', 'reels', 'video-player', 'form', 'map', 'stats', 'text-media', 'strip', 'quote', 'slideshow', 'contact-cards', 'hero-plain'], true)
+                    || (($block['wrap'] ?? null) === false) || (($block['wrap'] ?? null) === 'none');
+                $opened = $selfWrapped ? false : cms_block_wrap_open($block);
+                cms_render_page_block($slug, $entry['key']);
+                cms_block_wrap_close($opened);
+            }
+        } finally {
+            $cmsCurrentPageSlug = $previous;
+        }
+        if (empty($options['no_sections'])) {
+            // Legacy "Additional Page Sections" + automatic FAQ keep working.
+            $GLOBALS['cms_page_section_used'] = true;
+        }
+    }
+}
+
+if (!function_exists('cms_render_block_intro')) {
+    /**
+     * "What is X" split section: badge / heading / paragraphs (+ an optional
+     * nested facts block) beside a 4:3 photo. Copy comes from the page's
+     * section1_* fields (CMS → Main Body Section), falling back to the block's
+     * own defaults — exactly like the old get_page_section() templates.
+     */
+    function cms_render_block_intro(array $block, array $options = [], $slug = null) {
+        global $cmsCurrentPageSlug;
+        $slug = $slug ?: $cmsCurrentPageSlug;
+        $page = function_exists('get_page_content') ? get_page_content($slug, []) : [];
+        $section = cms_section_resolve(is_array($page) ? $page : [], [
+            'badge' => $block['badge'] ?? '',
+            'title' => $block['title'] ?? '',
+            'text' => $block['text'] ?? ($block['description'] ?? ''),
+            'image' => $block['image'] ?? '',
+            'image_alt' => $block['image_alt'] ?? '',
+        ]);
+        $GLOBALS['cms_page_section_used'] = true;
+        $image = cms_media_path($section['image'], $block['image'] ?? '');
+        $imageSide = $options['image_side'] ?? 'right';
+        $factsKey = trim((string)($options['facts_key'] ?? ''));
+        $layout = $options['layout'] ?? 'split';
+        $badgeClass = $options['badge_class'] ?? 'text-electric-blue font-semibold text-sm uppercase tracking-wider';
+
+        if ($layout === 'centered') {
+            // Centered header (+ optional wide image) with a nested block grid below.
+            ?>
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <?php if ($section['badge'] !== ''): ?>
+            <span class="<?php echo htmlspecialchars($options['badge_class'] ?? 'text-electric-blue font-bold text-xs uppercase tracking-wider'); ?>"><?php echo htmlspecialchars($section['badge']); ?></span>
+            <?php endif; ?>
+            <?php if ($section['title'] !== ''): ?>
+            <h2 class="<?php echo htmlspecialchars($options['title_class'] ?? 'text-3xl font-bold text-deep-indigo font-serif mt-2'); ?>"><?php echo htmlspecialchars($section['title']); ?></h2>
+            <?php endif; ?>
+            <?php echo cms_section_paragraphs($section['text'], $options['text_class'] ?? 'text-sm text-dark-grey/65 mt-3 leading-relaxed', 'mb-0'); ?>
+        </div>
+        <?php if ($image !== ''): ?>
+        <div class="max-w-3xl mx-auto -mt-4 mb-10 rounded-3xl overflow-hidden shadow-lg border border-slate-200/50">
+            <img src="<?php echo htmlspecialchars($image); ?>" alt="<?php echo htmlspecialchars($section['image_alt']); ?>" class="w-full h-auto object-cover" loading="lazy">
+        </div>
+        <?php endif; ?>
+        <?php if ($factsKey !== '' && $slug) cms_render_page_block($slug, $factsKey); ?>
+            <?php
+            return;
+        }
+
+        if ($layout === 'sidebar') {
+            // Narrow copy column (+ nested block) beside a wide side block.
+            $asideKey = trim((string)($options['aside_key'] ?? ''));
+            ?>
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-5 space-y-6">
+                <div>
+                    <?php if ($section['badge'] !== ''): ?>
+                    <span class="<?php echo htmlspecialchars($options['badge_class'] ?? 'text-red-600 font-bold text-xs uppercase tracking-wider'); ?>"><?php echo htmlspecialchars($section['badge']); ?></span>
+                    <?php endif; ?>
+                    <?php if ($section['title'] !== ''): ?>
+                    <h2 class="<?php echo htmlspecialchars($options['title_class'] ?? 'text-3xl font-bold text-dark-grey mt-2 mb-4'); ?>"><?php echo htmlspecialchars($section['title']); ?></h2>
+                    <?php endif; ?>
+                    <?php echo cms_section_paragraphs($section['text'], $options['text_class'] ?? 'text-sm text-dark-grey/65 leading-relaxed', 'mb-0'); ?>
+                    <?php if ($image !== ''): ?>
+                    <div class="mt-4 rounded-2xl overflow-hidden border border-slate-200/60">
+                        <img src="<?php echo htmlspecialchars($image); ?>" alt="<?php echo htmlspecialchars($section['image_alt']); ?>" class="w-full h-auto object-cover" loading="lazy">
+                    </div>
+                    <?php endif; ?>
+                </div>
+                <?php if ($factsKey !== '' && $slug) cms_render_page_block($slug, $factsKey); ?>
+            </div>
+            <?php if ($asideKey !== '' && $slug) cms_render_page_block($slug, $asideKey); ?>
+        </div>
+            <?php
+            return;
+        }
+
+        $textOrder = $imageSide === 'left' ? 'lg:order-2' : '';
+        $imgOrder = $imageSide === 'left' ? 'lg:order-1' : '';
+        ?>
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="animate-slide-in-left <?php echo $textOrder; ?>">
+                <?php if ($section['badge'] !== ''): ?>
+                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider"><?php echo htmlspecialchars($section['badge']); ?></span>
+                <?php endif; ?>
+                <?php if ($section['title'] !== ''): ?>
+                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6"><?php echo htmlspecialchars($section['title']); ?></h2>
+                <?php endif; ?>
+                <?php echo cms_section_paragraphs($section['text']); ?>
+                <?php if ($factsKey !== '' && $slug): ?>
+                <?php cms_render_page_block($slug, $factsKey); ?>
+                <?php endif; ?>
+            </div>
+            <?php if ($image !== ''): ?>
+            <div class="relative flex justify-center lg:justify-end animate-slide-in-right <?php echo $imgOrder; ?>">
+                <div class="relative w-full max-w-md lg:max-w-none aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-soft-cyan to-silver-grey border border-silver-grey/20">
+                    <img src="<?php echo htmlspecialchars($image); ?>" alt="<?php echo htmlspecialchars($section['image_alt']); ?>" class="w-full h-full object-cover" loading="lazy">
+                </div>
+            </div>
+            <?php endif; ?>
+        </div>
+        <?php
+    }
+}
+
+if (!function_exists('cms_render_block_include')) {
+    /**
+     * Virtual blocks that wrap the shared includes so they can be ordered /
+     * hidden like any other section: faq, video-testimonials, related-videos.
+     */
+    function cms_render_block_include(array $block, array $options = [], $slug = null) {
+        global $cmsCurrentPageSlug;
+        $slug = $slug ?: $cmsCurrentPageSlug;
+        $type = $block['type'] ?? '';
+        $root = dirname(__DIR__) . '/includes/';
+        // The shared includes were written for page scope: give them every
+        // global ($videoTestimonials, $cmsSettings, $services, ...).
+        extract($GLOBALS, EXTR_SKIP);
+        if ($type === 'faq') {
+            $faqSlug = trim((string)($block['faq_slug'] ?? '')) !== '' ? $block['faq_slug'] : $slug;
+            require $root . 'faq-section.php';
+            return;
+        }
+        if ($type === 'video-testimonials') {
+            if (trim((string)($block['badge'] ?? '')) !== '') $vtEyebrow = $block['badge'];
+            if (trim((string)($block['title'] ?? '')) !== '') $vtHeading = $block['title'];
+            if (trim((string)($block['description'] ?? '')) !== '') $vtIntro = $block['description'];
+            if (!empty($options['limit'])) $vtLimit = (int)$options['limit'];
+            if (array_key_exists('show_cta', $options)) $vtShowCta = (bool)$options['show_cta'];
+            if (!empty($options['theme'])) $vtTheme = $options['theme'];
+            require $root . 'video-testimonials.php';
+            return;
+        }
+        if ($type === 'related-videos') {
+            if (trim((string)($block['badge'] ?? '')) !== '') $relatedVideosEyebrow = $block['badge'];
+            if (trim((string)($block['title'] ?? '')) !== '') $relatedVideosHeading = $block['title'];
+            if (trim((string)($block['description'] ?? '')) !== '') $relatedVideosIntro = $block['description'];
+            $currentPage = $slug;
+            require $root . 'related-videos.php';
+            return;
+        }
     }
 }
 
@@ -1118,6 +1435,69 @@ if (!function_exists('cms_page_editor_entries')) {
     function cms_page_editor_entries($slug, $templateFile = null) {
         $editableBlocks = cms_page_blocks($slug);
         $allCtaKeys = function_exists('cms_page_cta_keys') ? cms_page_cta_keys($slug) : [];
+
+        // Pages converted to the ordered flow: the editor mirrors the saved
+        // layout exactly (one card per section, nested blocks right after
+        // their parent, buttons attached to the section that prints them).
+        if (cms_page_uses_flow($slug)) {
+            $entries = [];
+            $usedCtas = [];
+            $virtualTypes = ['faq', 'video-testimonials', 'related-videos'];
+            $blockCtaMap = [
+                'why-choose' => ['why-choose'],
+                'cta'        => ['final-primary', 'final-secondary'],
+                'notice'     => ['emergency'],
+                'doctor'     => ['doctor-more'],
+            ];
+            foreach (['hero-primary', 'hero-secondary'] as $heroKey) {
+                if (in_array($heroKey, $allCtaKeys, true)) {
+                    $entries[] = ['kind' => 'cta', 'key' => $heroKey, 'group' => 'hero'];
+                    $usedCtas[$heroKey] = true;
+                }
+            }
+            foreach (cms_page_layout($slug, $editableBlocks) as $le) {
+                $key = $le['key'];
+                $block = $editableBlocks[$key];
+                $type = $block['type'] ?? 'cards';
+                $opts = isset($block['options']) && is_array($block['options']) ? $block['options'] : [];
+                $base = ['key' => $key, 'hidden' => !empty($le['hidden']), 'added' => !empty($block['added']), 'flow' => true];
+                if ($type === 'intro') {
+                    $entries[] = $base + ['kind' => 'section1'];
+                    foreach (['facts_key', 'aside_key'] as $nk) {
+                        $nkey = trim((string)($opts[$nk] ?? ''));
+                        if ($nkey !== '' && isset($editableBlocks[$nkey])) {
+                            $entries[] = ['kind' => 'block', 'key' => $nkey, 'nested' => true];
+                        }
+                    }
+                } elseif (in_array($type, $virtualTypes, true)) {
+                    $entries[] = $base + ['kind' => 'virtual', 'type' => $type];
+                } else {
+                    $entries[] = $base + ['kind' => 'block'];
+                }
+                $attach = $blockCtaMap[$type] ?? [];
+                if (!empty($opts['cta_key'])) {
+                    $attach[] = $opts['cta_key'];
+                }
+                foreach ($attach as $ck) {
+                    if ($type === 'doctor' && $ck === 'doctor-more' && ($block['layout'] ?? 'profile') !== 'about') continue;
+                    if ($type === 'notice' && $ck === 'emergency' && (($opts['layout'] ?? 'full') !== 'full' || trim((string)($block['panel_title'] ?? '')) === '')) continue;
+                    if (in_array($ck, $allCtaKeys, true) && empty($usedCtas[$ck])) {
+                        $entries[] = ['kind' => 'cta', 'key' => $ck, 'attached' => true];
+                        $usedCtas[$ck] = true;
+                    }
+                }
+            }
+            // Page-specific buttons no section claimed (defined for this slug in page-ctas.json)
+            $registry = function_exists('cms_page_ctas_registry') ? cms_page_ctas_registry() : ['pages' => []];
+            foreach (array_keys((array)($registry['pages'][$slug] ?? [])) as $ck) {
+                if (empty($usedCtas[$ck])) {
+                    $entries[] = ['kind' => 'cta', 'key' => $ck, 'group' => 'loose'];
+                    $usedCtas[$ck] = true;
+                }
+            }
+            return $entries;
+        }
+
         $flowKeys = cms_page_section_flow($slug, $templateFile);
 
         $blockCtaMap = [
@@ -1190,6 +1570,97 @@ if (!function_exists('cms_page_editor_entries')) {
     }
 }
 
+if (!function_exists('cms_block_blank')) {
+    /**
+     * Starter definition for a section the editor adds to a page.
+     */
+    function cms_block_blank($type) {
+        $types = cms_block_type_catalog();
+        if (!isset($types[$type])) {
+            $type = 'cards';
+        }
+        $def = [
+            'type' => $type,
+            'label' => $types[$type]['label'],
+            'added' => true,
+            'badge' => '',
+            'title' => $types[$type]['label'],
+            'description' => '',
+            'items' => [],
+            'wrap' => ['bg' => 'bg-white', 'padding' => 'py-12'],
+        ];
+        switch ($type) {
+            case 'cards':
+            case 'facts':
+            case 'why-choose':
+            case 'treatments':
+                $def['items'] = [['icon' => 'fa-check', 'color' => 'electric-blue', 'title' => 'First point', 'text' => 'Describe this point in a sentence or two.']];
+                break;
+            case 'steps':
+                $def['items'] = [['title' => 'Step one', 'text' => 'What happens first.'], ['title' => 'Step two', 'text' => 'What happens next.']];
+                break;
+            case 'symptoms':
+                $def['items'] = [['icon' => 'fa-check', 'color' => 'electric-blue', 'title' => 'Group', 'bullets' => ['Symptom one', 'Symptom two']]];
+                break;
+            case 'warning':
+            case 'notice':
+                $def['items'] = [['text' => 'First point to highlight.']];
+                break;
+            case 'related':
+            case 'links':
+                $def['items'] = [['title' => 'Related page', 'text' => 'Short description', 'url' => 'services']];
+                break;
+            case 'cta':
+                $def['title'] = 'Need Personalized Advice?';
+                $def['description'] = 'Consult with Dr. Praveen Gupta for an accurate diagnosis and treatment plan.';
+                break;
+            case 'intro':
+                $def['text'] = 'Introductory paragraph.';
+                $def['image'] = '';
+                break;
+            case 'faq':
+            case 'video-testimonials':
+            case 'related-videos':
+                $def['title'] = '';
+                break;
+        }
+        if (function_exists('cms_block_blank_extra')) {
+            $def = cms_block_blank_extra($type, $def);
+        }
+        return $def;
+    }
+}
+
+if (!function_exists('cms_block_type_catalog')) {
+    /**
+     * Section types an editor can add to a page: key => [label, item label].
+     */
+    function cms_block_type_catalog() {
+        $catalog = [
+            'cards'      => ['label' => 'Card grid', 'item_label' => 'Card'],
+            'steps'      => ['label' => 'Numbered steps', 'item_label' => 'Step'],
+            'facts'      => ['label' => 'Key facts grid', 'item_label' => 'Fact'],
+            'warning'    => ['label' => 'Warning / emergency panel', 'item_label' => 'Warning line'],
+            'symptoms'   => ['label' => 'Symptom groups (split section)', 'item_label' => 'Symptom group', 'block_image' => true, 'block_tags' => true],
+            'treatments' => ['label' => 'Treatment option cards', 'item_label' => 'Treatment'],
+            'why-choose' => ['label' => 'Why Choose section', 'item_label' => 'Feature', 'block_image' => true],
+            'related'    => ['label' => 'Related pages', 'item_label' => 'Link'],
+            'links'      => ['label' => 'Directory cards', 'item_label' => 'Card'],
+            'doctor'     => ['label' => 'Doctor profile', 'item_label' => 'Link', 'block_image' => true, 'block_roles' => true],
+            'cta'        => ['label' => 'Call-to-action banner', 'item_label' => 'Button'],
+            'notice'     => ['label' => 'Alert panel', 'item_label' => 'Point', 'block_panel' => true],
+            'intro'      => ['label' => 'Intro / text + photo section', 'item_label' => 'Item'],
+            'faq'        => ['label' => 'FAQ section (from Page FAQs)', 'item_label' => 'Question'],
+            'video-testimonials' => ['label' => 'Video testimonials slider', 'item_label' => 'Video'],
+            'related-videos'     => ['label' => 'Watch & Learn (related videos)', 'item_label' => 'Video'],
+        ];
+        if (function_exists('cms_block_type_catalog_extra')) {
+            $catalog = array_merge($catalog, cms_block_type_catalog_extra());
+        }
+        return $catalog;
+    }
+}
+
 if (!function_exists('cms_render_page_block')) {
     /**
      * Echo one editable block by page slug + block key.
@@ -1207,7 +1678,16 @@ if (!function_exists('cms_render_page_block')) {
                 $options = array_merge($block['options'], $options);
             }
             $type = $block['type'] ?? 'cards';
+            $ctaKey = trim((string)($options['cta_key'] ?? ''));
             switch ($type) {
+                case 'intro':
+                    cms_render_block_intro($block, $options, $slug);
+                    break;
+                case 'faq':
+                case 'video-testimonials':
+                case 'related-videos':
+                    cms_render_block_include($block, $options, $slug);
+                    break;
                 case 'steps':
                     cms_render_block_steps($block, $options);
                     break;
@@ -1242,7 +1722,14 @@ if (!function_exists('cms_render_page_block')) {
                     cms_render_block_links($block, $options);
                     break;
                 default:
-                    cms_render_block_cards($block, $options);
+                    if (function_exists('cms_render_block_' . str_replace('-', '_', $type))) {
+                        call_user_func('cms_render_block_' . str_replace('-', '_', $type), $block, $options, $slug);
+                    } else {
+                        cms_render_block_cards($block, $options);
+                    }
+            }
+            if ($ctaKey !== '') {
+                cms_render_block_cta_key($slug, $ctaKey, $options);
             }
         } finally {
             $cmsCurrentPageSlug = $previousSlug;

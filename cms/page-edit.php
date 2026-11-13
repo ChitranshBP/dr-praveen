@@ -209,15 +209,56 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     $pageData['custom_sections'] = $customSections;
 
+    // ---- Section order / visibility / add / remove (flow pages) -------------
+    $isFlowPage = cms_page_uses_flow($slug);
+    if ($isFlowPage) {
+        $existingBlocksForLayout = (isset($pageData['blocks']) && is_array($pageData['blocks'])) ? $pageData['blocks'] : [];
+        $removeKey = preg_replace('/[^a-zA-Z0-9_-]/', '', (string)($_POST['remove_block'] ?? ''));
+        $addType = preg_replace('/[^a-z0-9-]/', '', (string)($_POST['add_block_type'] ?? ''));
+        $orderPosted = isset($_POST['layout_order']) && is_array($_POST['layout_order']) ? $_POST['layout_order'] : [];
+        $hiddenPosted = isset($_POST['layout_hidden']) && is_array($_POST['layout_hidden']) ? $_POST['layout_hidden'] : [];
+        $newLayout = [];
+        foreach ($orderPosted as $lk) {
+            $lk = preg_replace('/[^a-zA-Z0-9_-]/', '', (string)$lk);
+            if ($lk === '' || $lk === $removeKey) continue;
+            $newLayout[] = ['key' => $lk, 'hidden' => !empty($hiddenPosted[$lk])];
+        }
+        if ($removeKey !== '' && isset($existingBlocksForLayout[$removeKey]) && !empty($existingBlocksForLayout[$removeKey]['added'])) {
+            unset($existingBlocksForLayout[$removeKey]);
+            $pageData['blocks'] = $existingBlocksForLayout;
+        }
+        if ($addType !== '') {
+            $newKey = $addType . '-' . substr(bin2hex(random_bytes(3)), 0, 5);
+            $pageData['blocks'] = $existingBlocksForLayout;
+            $pageData['blocks'][$newKey] = cms_block_blank($addType);
+            $newLayout[] = ['key' => $newKey, 'hidden' => false];
+        }
+        if (!empty($newLayout)) {
+            $pageData['layout'] = $newLayout;
+        }
+    }
+
     // Editable page blocks (Techniques, What to Expect, ...). Defaults come
     // from data/page-blocks.json; the submitted values are stored here.
     $blockDefaults = cms_page_blocks($slug);
+    if ($isFlowPage && isset($pageData['blocks']) && is_array($pageData['blocks'])) {
+        // Blocks added in this very request are not in the cached defaults yet.
+        foreach ($pageData['blocks'] as $bk => $bv) {
+            if (!isset($blockDefaults[$bk]) && is_array($bv) && !empty($bv['type'])) {
+                $blockDefaults[$bk] = $bv;
+            }
+        }
+    }
     $postedBlocks = $_POST['page_blocks'] ?? [];
     if (!empty($blockDefaults) && is_array($postedBlocks)) {
         $existingBlocks = (isset($pageData['blocks']) && is_array($pageData['blocks'])) ? $pageData['blocks'] : [];
         $savedBlocks = $existingBlocks;
         foreach ($blockDefaults as $bKey => $bDefault) {
             if (!is_array($bDefault) || !isset($postedBlocks[$bKey]) || !is_array($postedBlocks[$bKey])) {
+                continue;
+            }
+            if ($isFlowPage && isset($removeKey) && $removeKey !== '' && $bKey === $removeKey) {
+                unset($savedBlocks[$bKey]);
                 continue;
             }
             $pb = $postedBlocks[$bKey];
@@ -507,7 +548,7 @@ require_once __DIR__ . '/includes/header.php';
         </div>
     </div>
 
-    <form method="POST" action="" enctype="multipart/form-data" class="space-y-6">
+    <form method="POST" action="" enctype="multipart/form-data" class="space-y-6" id="page-edit-form">
         <?php echo cms_csrf_field(); ?>
         <input type="hidden" name="slug" value="<?php echo htmlspecialchars($slug); ?>">
 
@@ -623,12 +664,23 @@ require_once __DIR__ . '/includes/header.php';
         // The Main Body card shows the copy that is live right now: saved
         // values, falling back to the template's built-in section copy when
         // the saved value is empty or still catalog placeholder text.
-        $effectiveSection = cms_section_resolve($pageData, cms_template_section_defaults($pageMeta['file'] ?? null));
+        $isFlowPage = cms_page_uses_flow($slug);
+        $introDefaults = null;
+        if ($isFlowPage) {
+            foreach ($editableBlocks as $ibKey => $ib) {
+                if (($ib['type'] ?? '') === 'intro') {
+                    $introDefaults = ['badge' => $ib['badge'] ?? '', 'title' => $ib['title'] ?? '', 'text' => $ib['text'] ?? ($ib['description'] ?? ''), 'image' => $ib['image'] ?? '', 'image_alt' => $ib['image_alt'] ?? ''];
+                    break;
+                }
+            }
+        }
+        $effectiveSection = cms_section_resolve($pageData, $introDefaults ?? cms_template_section_defaults($pageMeta['file'] ?? null));
+        $blockTypeCatalog = cms_block_type_catalog();
         ?>
 
         <?php if (!empty($orderedEntries)): ?>
         <?php
-        $blockTypeMeta = [
+        $blockTypeMeta = cms_block_type_catalog() + [
             'cards'      => ['label' => 'Card grid', 'item_label' => 'Card'],
             'steps'      => ['label' => 'Numbered steps', 'item_label' => 'Step'],
             'facts'      => ['label' => 'Key facts grid', 'item_label' => 'Fact'],
@@ -774,9 +826,75 @@ require_once __DIR__ . '/includes/header.php';
                 <p class="text-[10px] text-slate-500 mt-1">URL tips: another page slug e.g. <code class="font-mono">contact-us-top-neurologist-delhi-ncr</code>, an anchor <code class="font-mono">#appointment</code>, <code class="font-mono">https://…</code>, <code class="font-mono">tel:…</code>, or the tokens <code class="font-mono">{phone}</code> / <code class="font-mono">{stroke-helpline}</code> which expand to the hospital numbers.</p>
             </div>
 
+            <?php if ($isFlowPage): ?>
+            <div class="rounded-xl border border-dashed border-slate-300 bg-slate-100/60 px-3 py-2 text-[10px] text-slate-600 flex items-center gap-3 flex-wrap">
+                <span><i class="fas fa-grip-vertical text-slate-400 mr-1"></i> Drag a section to move it on the page.</span>
+                <span><i class="fas fa-eye-slash text-slate-400 mr-1"></i> Tick “Hide” to take a section off the page without deleting its content.</span>
+                <span><i class="fas fa-plus text-slate-400 mr-1"></i> Add new sections with the picker at the bottom.</span>
+            </div>
+            <input type="hidden" name="remove_block" id="remove-block-input" value="">
+            <input type="hidden" name="add_block_type" id="add-block-type-input" value="">
+            <div class="space-y-4" data-sortable="1" data-sortable-item=".flow-item" id="flow-list">
+            <?php endif; ?>
+            <?php $flowGroupOpen = false; ?>
             <?php foreach ($orderedEntries as $entry): ?>
 
-            <?php if ($entry['kind'] === 'section1'): ?>
+            <?php if ($isFlowPage && !empty($entry['flow'])): ?>
+                <?php if ($flowGroupOpen): ?></div><?php endif; $flowGroupOpen = true; ?>
+                <?php $fKey = $entry['key']; $fBlock = $editableBlocks[$fKey] ?? []; $fType = $fBlock['type'] ?? 'cards'; ?>
+                <div class="flow-item rounded-2xl border <?php echo !empty($entry['hidden']) ? 'border-amber-300 bg-amber-50/40' : 'border-slate-300 bg-slate-50'; ?> p-2 space-y-2" data-id="<?php echo htmlspecialchars($fKey); ?>">
+                    <input type="hidden" name="layout_order[]" value="<?php echo htmlspecialchars($fKey); ?>">
+                    <div class="flex items-center justify-between gap-2 px-1">
+                        <div class="flex items-center gap-2 min-w-0">
+                            <span class="drag-handle cursor-grab text-slate-400 hover:text-slate-600 px-1" title="Drag to reorder"><i class="fas fa-grip-vertical"></i></span>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500 truncate">Section <span class="sort-position"></span> · <?php echo htmlspecialchars($blockTypeCatalog[$fType]['label'] ?? $fType); ?></span>
+                            <?php if (!empty($entry['hidden'])): ?><span class="px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 text-[9px] font-bold uppercase">Hidden</span><?php endif; ?>
+                        </div>
+                        <div class="flex items-center gap-3 flex-shrink-0">
+                            <label class="inline-flex items-center gap-1.5 text-[10px] font-bold text-slate-600 cursor-pointer">
+                                <input type="checkbox" name="layout_hidden[<?php echo htmlspecialchars($fKey); ?>]" value="1" <?php echo !empty($entry['hidden']) ? 'checked' : ''; ?> class="w-3.5 h-3.5 rounded">
+                                <span>Hide</span>
+                            </label>
+                            <?php if (!empty($entry['added'])): ?>
+                            <button type="button" onclick="flowRemoveBlock('<?php echo htmlspecialchars($fKey); ?>')" class="text-[10px] font-bold text-red-600 hover:underline"><i class="fas fa-trash-alt mr-1"></i>Remove section</button>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+            <?php endif; ?>
+
+            <?php if ($entry['kind'] === 'virtual'): ?>
+            <?php $vKey = $entry['key']; $vBlock = $editableBlocks[$vKey] ?? []; $vType = $entry['type']; ?>
+            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-3">
+                <input type="hidden" name="page_blocks[<?php echo htmlspecialchars($vKey); ?>][_present]" value="1">
+                <div class="flex items-center justify-between">
+                    <h4 class="text-xs font-bold text-slate-800"><?php echo htmlspecialchars($vBlock['label'] ?? $blockTypeCatalog[$vType]['label'] ?? $vKey); ?></h4>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-600">Shared section</span>
+                </div>
+                <?php if ($vType === 'faq'): ?>
+                <p class="text-[10px] text-slate-500">Shows the questions managed in <a href="faq-edit.php?slug=<?php echo urlencode(trim((string)($vBlock['faq_slug'] ?? '')) !== '' ? $vBlock['faq_slug'] : $slug); ?>" class="text-brand-blue font-bold underline">Page FAQs → <?php echo htmlspecialchars($pageMeta['title'] ?? $slug); ?></a>. Heading and layout are edited there.</p>
+                <?php else: ?>
+                <p class="text-[10px] text-slate-500">Default wording comes from <a href="site-text.php" class="text-brand-blue font-bold underline">Header, Footer &amp; Shared Text</a>. Fill a field below to override it on this page only.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Eyebrow label</label>
+                        <input type="text" name="page_blocks[<?php echo htmlspecialchars($vKey); ?>][badge]" value="<?php echo htmlspecialchars($vBlock['badge'] ?? ''); ?>" placeholder="(site default)" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Heading (HTML allowed)</label>
+                        <input type="text" name="page_blocks[<?php echo htmlspecialchars($vKey); ?>][title]" value="<?php echo htmlspecialchars($vBlock['title'] ?? ''); ?>" placeholder="(site default)" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-[11px] font-bold text-slate-700 mb-1">Intro paragraph</label>
+                    <textarea name="page_blocks[<?php echo htmlspecialchars($vKey); ?>][description]" rows="2" placeholder="(site default)" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs leading-relaxed focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($vBlock['description'] ?? ''); ?></textarea>
+                </div>
+                <?php if ($vType === 'related-videos'): ?>
+                <p class="text-[10px] text-slate-500">Which videos appear here is chosen in <a href="collection.php?c=videos" class="text-brand-blue font-bold underline">Education Videos</a> (tag the video with this page).</p>
+                <?php endif; ?>
+                <?php endif; ?>
+            </div>
+
+            <?php elseif ($entry['kind'] === 'section1'): ?>
             <?php
                 // What the website prints right now for this intro section.
                 $effBadge = (string)($effectiveSection['badge'] ?? '');
@@ -994,6 +1112,36 @@ require_once __DIR__ . '/includes/header.php';
             <?php endif; ?>
 
             <?php endforeach; ?>
+            <?php if ($isFlowPage): ?>
+            <?php if ($flowGroupOpen): ?></div><?php endif; ?>
+            </div>
+            <div class="rounded-2xl border border-dashed border-brand-blue/40 bg-blue-50/40 p-4 flex flex-col sm:flex-row sm:items-center gap-3">
+                <div class="flex-1">
+                    <h4 class="text-xs font-bold text-slate-800"><i class="fas fa-plus-circle text-brand-blue mr-1.5"></i> Add a new section to this page</h4>
+                    <p class="text-[10px] text-slate-500 mt-0.5">The section is added at the bottom with sample content; drag it into place, edit its text, then save.</p>
+                </div>
+                <select id="add-block-type-select" class="px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-semibold">
+                    <?php foreach ($blockTypeCatalog as $tKey => $tMeta): if (in_array($tKey, ['intro'], true)) continue; ?>
+                    <option value="<?php echo htmlspecialchars($tKey); ?>"><?php echo htmlspecialchars($tMeta['label']); ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <button type="button" onclick="flowAddBlock()" class="px-4 py-2 bg-brand-blue hover:bg-blue-700 text-white text-xs font-bold rounded-xl shadow-sm"><i class="fas fa-plus mr-1"></i> Add section</button>
+            </div>
+            <script>
+            function flowAddBlock() {
+                document.getElementById('add-block-type-input').value = document.getElementById('add-block-type-select').value;
+                document.getElementById('page-edit-form').submit();
+            }
+            function flowRemoveBlock(key) {
+                if (!confirm('Remove this section and its content from the page?')) return;
+                document.getElementById('remove-block-input').value = key;
+                document.getElementById('page-edit-form').submit();
+            }
+            document.addEventListener('DOMContentLoaded', function () {
+                document.querySelectorAll('#flow-list .flow-item .sort-position').forEach(function (el, i) { el.textContent = i + 1; });
+            });
+            </script>
+            <?php endif; ?>
         </div>
 
         <script>

@@ -12,13 +12,6 @@ $pageContent = get_page_content('movement', [
     'hero_bg'    => 'assets/breadcrumbs/conditions/Movement%20Disorder.png',
 ]);
 
-$section = get_page_section($pageContent, [
-    'badge' => 'Understanding',
-    'title' => 'What is a Movement Disorder?',
-    'text' => "Movement disorders are neurological conditions that affect the speed, fluency, quality, and ease of movement. They are typically divided into hyperkinetic disorders (causing excessive, involuntary movements, such as tremors or spasms) and hypokinetic disorders (causing slow, stiff, or reduced movements).\n\nInvoluntary movements or balance issues can make eating, writing, or walking extremely difficult. Our comprehensive diagnostic approach identifies the specific nerve or brain center origin to customize targeted medication regimens and therapy programs.",
-    'image' => 'assets/services/movement.png',
-    'image_alt' => 'Understanding Movement Disorders',
-]);
 $heroBg = cms_media_path($pageContent['hero_bg'] ?? '');
 $heroAlt = trim((string)($pageContent['hero_bg_alt'] ?? ''));
 if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'Dr. Praveen Gupta'));
@@ -39,17 +32,11 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl text-left animate-fade-in-up">
             <!-- Breadcrumb -->
-            <nav class="flex items-center space-x-2 text-white/80 text-sm mb-3">
-                <a href="index" class="hover:text-white transition-colors">Home</a>
-                <i class="fas fa-chevron-right text-[8px]"></i>
-                <a href="services" class="hover:text-white transition-colors">Services</a>
-                <i class="fas fa-chevron-right text-[8px]"></i>
-                <span class="text-white font-medium">Movement Disorders</span>
-            </nav>
+            <?php cms_breadcrumb_nav('movement'); ?>
 
             <!-- Badge -->
             <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4">
-                <i class="fas fa-person-walking text-[10px]"></i>
+                <i class="fas <?php echo htmlspecialchars(trim((string)($pageContent['hero_icon'] ?? '')) !== '' ? $pageContent['hero_icon'] : 'fa-person-walking'); ?> text-[10px]"></i>
                 <span><?php echo htmlspecialchars($pageContent['hero_badge']); ?></span>
             </div>
 
@@ -83,96 +70,8 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
     </div>
 </section>
 
-<!-- What is Movement Disorder Section -->
-<section class="py-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-            <div class="animate-slide-in-left">
-                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider"><?php echo htmlspecialchars($section['badge']); ?></span>
-                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6"><?php echo htmlspecialchars($section['title']); ?></h2>
-                <?php echo cms_section_paragraphs($section['text']); ?>
 
-                <!-- Key Facts (CMS block) -->
-                <?php cms_render_page_block('movement', 'key-facts'); ?>
-            </div>
-
-            <!-- Image Side -->
-            <div class="relative flex justify-center lg:justify-end animate-slide-in-right">
-                <div class="relative w-full max-w-md lg:max-w-none aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-soft-cyan to-silver-grey border border-silver-grey/20">
-                    <img src="<?php echo htmlspecialchars($section['image']); ?>" alt="<?php echo htmlspecialchars($section['image_alt']); ?>" class="w-full h-full object-cover">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Types of Movement Disorders -->
-<section class="py-12 bg-[#edf5f9]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <?php cms_render_page_block('movement', 'types'); ?>
-    </div>
-</section>
-
-<!-- Symptoms Section -->
-<section class="py-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <?php cms_render_page_block('movement', 'symptoms'); ?>
-    </div>
-</section>
-
-<!-- Diagnosis Section -->
-<section class="py-12 bg-[#edf5f9]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <?php cms_render_page_block('movement', 'diagnosis'); ?>
-
-        <!-- CTA (text + destination edited in CMS) -->
-        <?php $diagnosisCta = cms_page_cta('movement', 'diagnosis'); ?>
-        <?php if (trim($diagnosisCta['text']) !== ''): ?>
-        <div class="text-center">
-            <?php if (trim($diagnosisCta['intro']) !== ''): ?>
-            <p class="text-dark-grey/70 mb-6"><?php echo $diagnosisCta['intro']; ?></p>
-            <?php endif; ?>
-            <a href="<?php echo cms_cta_href($diagnosisCta['url']); ?>" class="inline-flex items-center space-x-3 bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold px-8 py-4 rounded-full hover:shadow-xl hover:shadow-electric-blue/30 transition-all duration-300 transform hover:-translate-y-1">
-                <span><?php echo cms_cta_text('movement', 'diagnosis'); ?></span>
-                <i class="fas fa-arrow-right text-sm"></i>
-            </a>
-        </div>
-        <?php endif; ?>
-    </div>
-</section>
-
-<!-- Treatment Section -->
-<section class="py-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <?php cms_render_page_block('movement', 'treatments'); ?>
-    </div>
-</section>
-
-<!-- Why Choose Us Section -->
-<section class="py-12 bg-slate-50/50 relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <?php cms_render_page_block('movement', 'why-choose'); ?>
-    </div>
-</section>
-
-<!-- Video Testimonials (component: includes/video-testimonials.php) -->
-<?php require __DIR__ . "/includes/video-testimonials.php"; ?>
-
-<!-- Related Videos (topic-matched, see $pageVideos in includes/config.php) -->
-<?php require __DIR__ . "/includes/related-videos.php"; ?>
-
-<!-- FAQ Section (managed in CMS → FAQs) -->
-<?php $faqSlug = 'movement'; require __DIR__ . '/includes/faq-section.php'; ?>
-
-
-
-<!-- Related Services -->
-<section class="py-12 bg-[#edf5f9]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <?php cms_render_page_block('movement', 'related'); ?>
-    </div>
-</section>
-
-<?php cms_render_page_block('movement', 'final-cta'); ?>
+<!-- Page sections: order, visibility and content are managed in CMS → All Pages -->
+<?php cms_render_page_flow('movement'); ?>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

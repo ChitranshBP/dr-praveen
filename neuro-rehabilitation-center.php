@@ -12,13 +12,6 @@ $pageContent = get_page_content('neuro-rehabilitation-center', [
     'hero_bg'    => 'assets/breadcrumbs/dr-parveen-services-breadcrumb/rehab.png',
 ]);
 
-$section = get_page_section($pageContent, [
-    'badge' => 'Recovery Focus',
-    'title' => 'Rebuilding Independent Living',
-    'text' => "Following a stroke, brain trauma, or spinal cord injury, the nervous system requires specialized retraining. Our approach focuses on neuroplasticity — the brain's innate ability to reorganize and form new neural connections in response to therapeutic exercise.\n\nDr. Praveen Gupta coordinates the clinical team to ensure physical therapists, speech-language pathologists, and occupational therapists deliver unified therapy protocols tailored to your recovery targets.",
-    'image' => 'assets/services/rehab.png',
-    'image_alt' => 'Patient undergoing physical rehabilitation',
-]);
 $heroBg = cms_media_path($pageContent['hero_bg'] ?? '');
 $heroAlt = trim((string)($pageContent['hero_bg_alt'] ?? ''));
 if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'Dr. Praveen Gupta'));
@@ -39,17 +32,11 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl text-left animate-fade-in-up">
             <!-- Breadcrumb -->
-            <nav class="flex items-center space-x-2 text-white/80 text-sm mb-3">
-                <a href="index" class="hover:text-white transition-colors">Home</a>
-                <i class="fas fa-chevron-right text-[8px]"></i>
-                <a href="services" class="hover:text-white transition-colors">Services</a>
-                <i class="fas fa-chevron-right text-[8px]"></i>
-                <span class="text-white font-medium">Rehabilitation Hub</span>
-            </nav>
+            <?php cms_breadcrumb_nav('neuro-rehabilitation-center'); ?>
 
             <!-- Badge -->
             <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full mb-4 border border-white/20">
-                <i class="fas fa-child text-cyan-accent text-[10px]"></i>
+                <i class="fas <?php echo htmlspecialchars(trim((string)($pageContent['hero_icon'] ?? '')) !== '' ? $pageContent['hero_icon'] : 'fa-child'); ?> text-cyan-accent text-[10px]"></i>
                 <span><?php echo htmlspecialchars($pageContent['hero_badge']); ?></span>
             </div>
 
@@ -82,55 +69,8 @@ if ($heroAlt === '') $heroAlt = trim(strip_tags($pageContent['hero_title'] ?? 'D
     </div>
 </section>
 
-<!-- What is Rehabilitation Section -->
-<section class="py-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-            <div class="animate-slide-in-left">
-                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider"><?php echo htmlspecialchars($section['badge']); ?></span>
-                <h2 class="text-3xl md:text-4xl font-bold text-dark-grey mt-3 mb-6"><?php echo htmlspecialchars($section['title']); ?></h2>
-                <?php echo cms_section_paragraphs($section['text']); ?>
 
-                <!-- Key Facts (CMS block) -->
-                <?php cms_render_page_block('neuro-rehabilitation-center', 'key-facts'); ?>
-            </div>
-
-            <!-- Image Side -->
-            <div class="relative flex justify-center lg:justify-end animate-slide-in-right">
-                <div class="relative w-full max-w-md lg:max-w-none aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl bg-gradient-to-br from-soft-cyan to-silver-grey border border-silver-grey/20">
-                    <img src="<?php echo htmlspecialchars($section['image']); ?>" alt="<?php echo htmlspecialchars($section['image_alt']); ?>" class="w-full h-full object-cover">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Core Rehabilitation Programs -->
-<section class="py-12 bg-[#edf5f9]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <?php cms_render_page_block('neuro-rehabilitation-center', 'core-therapies'); ?>
-    </div>
-</section>
-
-<!-- Rehabilitation Steps -->
-<section class="py-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <?php cms_render_page_block('neuro-rehabilitation-center', 'recovery-journey'); ?>
-    </div>
-</section>
-
-<!-- About Doctor Section (CMS block) -->
-<?php cms_render_page_block('neuro-rehabilitation-center', 'doctor'); ?>
-
-<!-- Video Testimonials (component: includes/video-testimonials.php) -->
-<?php require __DIR__ . "/includes/video-testimonials.php"; ?>
-
-<!-- Related Videos (topic-matched, see $pageVideos in includes/config.php) -->
-<?php require __DIR__ . "/includes/related-videos.php"; ?>
-
-<!-- FAQ Section (managed in CMS → FAQs) -->
-<?php $faqSlug = 'neuro-rehabilitation-center'; require __DIR__ . '/includes/faq-section.php'; ?>
-
-
+<!-- Page sections: order, visibility and content are managed in CMS → All Pages -->
+<?php cms_render_page_flow('neuro-rehabilitation-center'); ?>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
