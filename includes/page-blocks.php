@@ -401,7 +401,10 @@ if (!function_exists('cms_render_block_include')) {
             require $root . 'faq-section.php';
             return;
         }
+        // Videos typed into this section (YouTube links) replace the shared list on this page.
+        $ownVideos = function_exists('cms_parse_video_lines') ? cms_parse_video_lines($block['videos'] ?? []) : [];
         if ($type === 'video-testimonials') {
+            if (!empty($ownVideos)) $videoTestimonials = $ownVideos;
             if (trim((string)($block['badge'] ?? '')) !== '') $vtEyebrow = $block['badge'];
             if (trim((string)($block['title'] ?? '')) !== '') $vtHeading = $block['title'];
             if (trim((string)($block['description'] ?? '')) !== '') $vtIntro = $block['description'];
@@ -412,6 +415,7 @@ if (!function_exists('cms_render_block_include')) {
             return;
         }
         if ($type === 'related-videos') {
+            if (!empty($ownVideos)) $relatedVideosItems = $ownVideos;
             if (trim((string)($block['badge'] ?? '')) !== '') $relatedVideosEyebrow = $block['badge'];
             if (trim((string)($block['title'] ?? '')) !== '') $relatedVideosHeading = $block['title'];
             if (trim((string)($block['description'] ?? '')) !== '') $relatedVideosIntro = $block['description'];

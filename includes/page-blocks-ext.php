@@ -265,6 +265,38 @@ if (!function_exists('cms_block_wrap_attrs')) {
     }
 }
 
+if (!function_exists('cms_parse_video_lines')) {
+    /**
+     * "YouTube link or ID | Title | Description" lines → video items usable by
+     * both the Video Testimonials slider (id/title) and Watch & Learn
+     * (youtube_id/title/description).
+     */
+    function cms_parse_video_lines($lines) {
+        if (is_string($lines)) $lines = preg_split('/\r\n|\r|\n/', $lines);
+        $out = [];
+        foreach ((array)$lines as $line) {
+            $parts = array_map('trim', explode('|', (string)$line));
+            $ref = $parts[0] ?? '';
+            if ($ref === '') continue;
+            $id = '';
+            if (preg_match('~(?:youtu\.be/|youtube\.com/(?:watch\?(?:.*&)?v=|embed/|shorts/|live/|v/))([A-Za-z0-9_-]{6,})~i', $ref, $m)) {
+                $id = $m[1];
+            } elseif (preg_match('/^[A-Za-z0-9_-]{6,}$/', $ref)) {
+                $id = $ref;
+            }
+            if ($id === '') continue;
+            $title = $parts[1] ?? '';
+            $out[] = [
+                'id' => $id, 'youtube_id' => $id,
+                'title' => $title !== '' ? $title : 'Video',
+                'description' => $parts[2] ?? '',
+                'category' => '',
+            ];
+        }
+        return $out;
+    }
+}
+
 if (!function_exists('cms_resolve_stat_tokens')) {
     /**
      * Live tokens inside block text: {stats_patients} … (Settings → Statistics),

@@ -454,6 +454,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     unset($block['limit']);
                 }
             }
+            if (array_key_exists('videos', $pb)) {
+                $gVideos = preg_split('/\r\n|\r|\n/', (string)$pb['videos']);
+                $gVideos = array_values(array_filter(array_map('trim', $gVideos), function ($v) {
+                    return $v !== '';
+                }));
+                if (!empty($gVideos)) {
+                    $block['videos'] = $gVideos;
+                } else {
+                    unset($block['videos']);
+                }
+            }
             if (array_key_exists('bullets', $pb)) {
                 $gBullets = preg_split('/\r\n|\r|\n/', (string)$pb['bullets']);
                 $gBullets = array_values(array_filter(array_map('trim', $gBullets), function ($b) {
@@ -973,9 +984,12 @@ require_once __DIR__ . '/includes/header.php';
                     <label class="block text-[11px] font-bold text-slate-700 mb-1">Intro paragraph</label>
                     <textarea name="page_blocks[<?php echo htmlspecialchars($vKey); ?>][description]" rows="2" placeholder="(site default)" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs leading-relaxed focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($vBlock['description'] ?? ''); ?></textarea>
                 </div>
-                <?php if ($vType === 'related-videos'): ?>
-                <p class="text-[10px] text-slate-500">Which videos appear here is chosen in <a href="collection.php?c=videos" class="text-brand-blue font-bold underline">Education Videos</a> (tag the video with this page).</p>
-                <?php endif; ?>
+                <div>
+                    <label class="block text-[11px] font-bold text-slate-700 mb-1">YouTube videos for this page (optional — one per line)</label>
+                    <textarea name="page_blocks[<?php echo htmlspecialchars($vKey); ?>][videos]" rows="4" placeholder="https://www.youtube.com/watch?v=XXXXXXXXXXX | Title shown under the video | Short description&#10;https://youtu.be/YYYYYYYYYYY | Another title" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-mono leading-relaxed focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars(implode("\n", (array)($vBlock['videos'] ?? []))); ?></textarea>
+                    <p class="text-[10px] text-slate-500 mt-1">Paste a YouTube link (watch, youtu.be or Shorts) or just the video ID; add <code class="font-mono">| Title | Description</code> after it. Videos listed here replace the shared list on this page only.
+                    <?php if ($vType === 'related-videos'): ?>Leave empty to show the videos tagged with this page in <a href="collection.php?c=videos" class="text-brand-blue font-bold underline">Education Videos</a>.<?php else: ?>Leave empty to show the video testimonials from <a href="testimonials.php" class="text-brand-blue font-bold underline">Testimonials</a>.<?php endif; ?></p>
+                </div>
                 <?php endif; ?>
             </div>
 

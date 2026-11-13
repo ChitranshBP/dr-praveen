@@ -17,7 +17,7 @@
  */
 
 $currentPageFile = $currentPage ?? str_replace('.php', '', basename($_SERVER['PHP_SELF'] ?? ''));
-$relatedVideos   = function_exists('cms_videos_for_page') ? cms_videos_for_page($currentPageFile) : [];
+$relatedVideos   = (isset($relatedVideosItems) && is_array($relatedVideosItems) && !empty($relatedVideosItems)) ? $relatedVideosItems : (function_exists('cms_videos_for_page') ? cms_videos_for_page($currentPageFile) : []);
 
 if (!empty($relatedVideos)):
     // Default copy is editable in CMS → Header, Footer & Shared Text
