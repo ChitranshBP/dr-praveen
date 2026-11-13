@@ -322,6 +322,14 @@ $flash = cms_get_flash();
                         <span><?php echo htmlspecialchars($colSchema['label']); ?></span>
                     </a>
                     <?php endforeach; ?>
+                    <a href="navigation.php" class="flex items-center px-3 py-2.5 rounded-xl transition-all <?php echo $currentPage === 'navigation' ? 'bg-brand-blue text-white shadow-md' : 'text-slate-300 hover:bg-white/10 hover:text-white'; ?>">
+                        <i class="fas fa-sitemap w-5 text-center mr-2.5"></i>
+                        <span>Navigation &amp; Menus</span>
+                    </a>
+                    <a href="site-text.php" class="flex items-center px-3 py-2.5 rounded-xl transition-all <?php echo $currentPage === 'site-text' ? 'bg-brand-blue text-white shadow-md' : 'text-slate-300 hover:bg-white/10 hover:text-white'; ?>">
+                        <i class="fas fa-font w-5 text-center mr-2.5"></i>
+                        <span>Header, Footer &amp; Shared Text</span>
+                    </a>
                     <a href="media.php" class="flex items-center px-3 py-2.5 rounded-xl transition-all <?php echo $currentPage === 'media' ? 'bg-brand-blue text-white shadow-md' : 'text-slate-300 hover:bg-white/10 hover:text-white'; ?>">
                         <i class="fas fa-photo-film w-5 text-center mr-2.5"></i>
                         <span>Media Library</span>

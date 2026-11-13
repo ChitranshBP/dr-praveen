@@ -227,7 +227,8 @@ $pageContent = get_page_content('contact-us-top-neurologist-delhi-ncr', [
         </div>
 
         <div class="bg-white rounded-[32px] overflow-hidden shadow-lg border border-slate-200/50 aspect-video md:aspect-[21/9] w-full">
-            <iframe class="w-full h-full border-0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3509.0274423192873!2d77.09722769999999!3d28.4184288!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d18db30f58d29%3A0x34e8f9f94a91b569!2sDr.%20Praveen%20Gupta!5e0!3m2!1sen!2sin!4v1786967899128!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <?php $mapEmbed = trim((string)($cmsSettings['maps_embed_url'] ?? '')) !== '' ? $cmsSettings['maps_embed_url'] : 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3509.0274423192873!2d77.09722769999999!3d28.4184288!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d18db30f58d29%3A0x34e8f9f94a91b569!2sDr.%20Praveen%20Gupta!5e0!3m2!1sen!2sin!4v1786967899128!5m2!1sen!2sin'; ?>
+            <iframe class="w-full h-full border-0" src="<?php echo htmlspecialchars($mapEmbed); ?>" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
         </div>
     </div>
 </section>

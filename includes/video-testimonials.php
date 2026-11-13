@@ -31,9 +31,10 @@ if (!empty($videoTestimonials)) {
         $vtNum  = $GLOBALS['vtInstanceCount'];
         $vtId   = 'video-testimonials-slider-' . $vtNum;
 
-        $vtEyebrow  = $vtEyebrow  ?? 'Video Testimonials';
-        $vtHeading  = $vtHeading  ?? 'Hear It From Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 to-cyan-accent">Patients</span>';
-        $vtIntro    = $vtIntro    ?? 'Watch patients share their recovery journeys with Dr. Praveen Gupta in their own words.';
+        // Default copy is editable in CMS → Header, Footer & Shared Text
+        $vtEyebrow  = $vtEyebrow  ?? cms_text('vt_eyebrow');
+        $vtHeading  = $vtHeading  ?? cms_text('vt_heading');
+        $vtIntro    = $vtIntro    ?? cms_text('vt_intro');
         $vtShowCta  = $vtShowCta  ?? true;
         $dark       = (($vtTheme ?? 'dark') === 'dark');
 
@@ -110,7 +111,7 @@ if (!empty($videoTestimonials)) {
                                 <!-- Caption -->
                                 <div class="absolute bottom-0 left-0 right-0 p-5 pointer-events-none">
                                     <p class="text-white font-bold text-sm leading-snug"><?php echo htmlspecialchars($video['title']); ?></p>
-                                    <p class="text-cyan-200 text-xs font-medium mt-1">Patient Testimonial</p>
+                                    <p class="text-cyan-200 text-xs font-medium mt-1"><?php echo htmlspecialchars(cms_text('vt_caption')); ?></p>
                                 </div>
                             </div>
                         </div>
@@ -135,9 +136,9 @@ if (!empty($videoTestimonials)) {
 
             <!-- CTA -->
             <div class="text-center mt-10 observe">
-                <a href="video-testimonials"
+                <a href="<?php echo htmlspecialchars(cms_nav_href(cms_text('vt_button_url'))); ?>"
                    class="inline-flex items-center space-x-2.5 <?php echo $ctaBtn; ?> font-bold px-7 py-3.5 rounded-full transition-all duration-300">
-                    <span>Watch All Video Testimonials</span>
+                    <span><?php echo htmlspecialchars(cms_text('vt_button_label')); ?></span>
                     <i class="fas fa-arrow-right text-xs"></i>
                 </a>
             </div>

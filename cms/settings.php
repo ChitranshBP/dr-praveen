@@ -59,6 +59,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'working_hours_weekdays', 'working_hours_sunday',
         'stats_patients', 'stats_success', 'stats_awards', 'stats_rating', 'stats_experience',
         'formester_url', 'lead_notify_email',
+        // Organisation & schema.org
+        'site_description', 'org_description', 'org_alternate_name', 'org_specialty', 'org_price_range',
+        'addr_street', 'addr_locality', 'addr_region', 'addr_postal', 'addr_country',
+        'geo_lat', 'geo_lng', 'maps_link', 'maps_embed_url', 'hours_days', 'hours_open', 'hours_close',
     ];
 
     $updated = [];
@@ -72,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $uploadErrors = [];
-    foreach (['logo_path' => 'logo', 'favicon_path' => 'favicon', 'default_og_image' => 'seo'] as $settingKey => $folder) {
+    foreach (['logo_path' => 'logo', 'favicon_path' => 'favicon', 'default_og_image' => 'seo', 'org_image' => 'seo'] as $settingKey => $folder) {
         if (!array_key_exists($settingKey, $_POST) && empty($_FILES[cms_image_file_key($settingKey)])) {
             continue;
         }
@@ -269,6 +273,98 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div>
                 <label class="block text-xs font-bold text-slate-700 mb-1"><i class="fab fa-linkedin text-blue-700 mr-1.5"></i> LinkedIn URL</label>
                 <input type="url" name="social_linkedin" value="<?php echo htmlspecialchars($settings['social_linkedin'] ?? ''); ?>" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
+        </div>
+    </div>
+
+    <!-- Organisation & Schema -->
+    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+        <h2 class="text-sm font-bold text-slate-900 uppercase tracking-wider pb-3 border-b border-slate-100 flex items-center">
+            <i class="fas fa-hospital text-brand-blue mr-2"></i> Organisation Details (Google structured data &amp; map)
+        </h2>
+        <p class="text-[11px] text-slate-500 -mt-1">Used in the schema.org data Google reads, the footer map link and the contact page map. Phone, email and the display address are in the Contact card above.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="md:col-span-2">
+                <label class="block text-xs font-bold text-slate-700 mb-1">Website description (schema.org WebSite)</label>
+                <input type="text" name="site_description" value="<?php echo htmlspecialchars($settings['site_description'] ?? ''); ?>" placeholder="Official website of Dr. Praveen Gupta, Principal Director &amp; Head of Neurology at Marengo Asia Hospitals." class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
+            <div class="md:col-span-2">
+                <label class="block text-xs font-bold text-slate-700 mb-1">Doctor / practice description (schema.org Physician)</label>
+                <textarea name="org_description" rows="2" placeholder="Dr. Praveen Gupta is a renowned Neurologist in Gurgaon &amp; Delhi NCR with 20+ years of experience…" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($settings['org_description'] ?? ''); ?></textarea>
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Alternate name</label>
+                <input type="text" name="org_alternate_name" value="<?php echo htmlspecialchars($settings['org_alternate_name'] ?? ''); ?>" placeholder="Dr Praveen Gupta Neurologist" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Medical specialty</label>
+                    <input type="text" name="org_specialty" value="<?php echo htmlspecialchars($settings['org_specialty'] ?? ''); ?>" placeholder="Neurology" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Price range</label>
+                    <input type="text" name="org_price_range" value="<?php echo htmlspecialchars($settings['org_price_range'] ?? ''); ?>" placeholder="$$" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                </div>
+            </div>
+            <div class="md:col-span-2 grid grid-cols-2 md:grid-cols-5 gap-3">
+                <div class="col-span-2">
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Street address</label>
+                    <input type="text" name="addr_street" value="<?php echo htmlspecialchars($settings['addr_street'] ?? ''); ?>" placeholder="Marengo Asia Hospitals, Shushant Lok 2, Sector 56" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">City</label>
+                    <input type="text" name="addr_locality" value="<?php echo htmlspecialchars($settings['addr_locality'] ?? ''); ?>" placeholder="Gurugram" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">State</label>
+                    <input type="text" name="addr_region" value="<?php echo htmlspecialchars($settings['addr_region'] ?? ''); ?>" placeholder="Haryana" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">PIN / Country</label>
+                    <div class="flex gap-1.5">
+                        <input type="text" name="addr_postal" value="<?php echo htmlspecialchars($settings['addr_postal'] ?? ''); ?>" placeholder="122011" class="w-2/3 px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <input type="text" name="addr_country" value="<?php echo htmlspecialchars($settings['addr_country'] ?? ''); ?>" placeholder="IN" class="w-1/3 px-2 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Latitude</label>
+                    <input type="text" name="geo_lat" value="<?php echo htmlspecialchars($settings['geo_lat'] ?? ''); ?>" placeholder="28.4287" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-mono focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Longitude</label>
+                    <input type="text" name="geo_lng" value="<?php echo htmlspecialchars($settings['geo_lng'] ?? ''); ?>" placeholder="77.0984" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-mono focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                </div>
+            </div>
+            <div class="grid grid-cols-3 gap-3">
+                <div class="col-span-1">
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Opens</label>
+                    <input type="text" name="hours_open" value="<?php echo htmlspecialchars($settings['hours_open'] ?? ''); ?>" placeholder="09:00" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-mono focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                </div>
+                <div class="col-span-1">
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Closes</label>
+                    <input type="text" name="hours_close" value="<?php echo htmlspecialchars($settings['hours_close'] ?? ''); ?>" placeholder="19:00" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-mono focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                </div>
+                <div class="col-span-1">
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Open days</label>
+                    <input type="text" name="hours_days" value="<?php echo htmlspecialchars($settings['hours_days'] ?? ''); ?>" placeholder="Monday,Tuesday,…,Saturday" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-mono focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                </div>
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Google Maps link (footer “View on Google Maps”)</label>
+                <input type="url" name="maps_link" value="<?php echo htmlspecialchars($settings['maps_link'] ?? ''); ?>" placeholder="https://maps.app.goo.gl/… (blank = search by address)" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Google Maps embed URL (contact page map)</label>
+                <input type="url" name="maps_embed_url" value="<?php echo htmlspecialchars($settings['maps_embed_url'] ?? ''); ?>" placeholder="https://www.google.com/maps/embed?pb=…" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                <p class="text-[10px] text-slate-400 mt-1">In Google Maps: Share → Embed a map → copy the <code>src="…"</code> URL only.</p>
+            </div>
+            <div class="md:col-span-2">
+                <?php cms_image_field('org_image', $settings['org_image'] ?? '', [
+                    'label' => 'Doctor / clinic photo for Google (schema.org image)', 'folder' => 'seo', 'size' => '1200 × 900 px',
+                    'preview_class' => 'w-24 h-16',
+                ]); ?>
             </div>
         </div>
     </div>

@@ -1,0 +1,84 @@
+{
+    "main": [
+        {"label": "Home", "url": "index", "children": []},
+        {"label": "About", "url": "#", "children": [
+            {"label": "About Dr Praveen", "url": "about"},
+            {"label": "Why Choose Us", "url": "why-choose-dr-praveen-gupta"},
+            {"label": "Our Team", "url": "team"},
+            {"label": "Awards & Honors", "url": "awards-and-recognition"}
+        ]},
+        {"label": "Services", "url": "#", "children": [
+            {"label": "Brain Tumor Surgery", "url": "brain-tumor-surgery"},
+            {"label": "Spine Surgery", "url": "spine-surgery"},
+            {"label": "Functional Neurosurgery", "url": "functional-neurosurgery"},
+            {"label": "Neurovascular Surgery", "url": "neurovascular-surgery"},
+            {"label": "Memory Clinic", "url": "memory-clinic"},
+            {"label": "Rehabilitation Hub", "url": "neuro-rehabilitation-center"},
+            {"label": "Brain Health Hub", "url": "brain-health-center"},
+            {"label": "Neurocritical Care", "url": "neurocritical-acute-stroke-care"},
+            {"label": "rTMS Therapy", "url": "rtms-therapy"},
+            {"label": "View All Services", "url": "services", "view_all": true}
+        ]},
+        {"label": "Conditions", "url": "#", "children": [
+            {"label": "Epilepsy", "url": "epilepsy"},
+            {"label": "Headache", "url": "headache"},
+            {"label": "Migraine", "url": "migraine"},
+            {"label": "Stroke", "url": "stroke"},
+            {"label": "Vertigo", "url": "vertigo"},
+            {"label": "Parkinson's Disease", "url": "parkinsons"},
+            {"label": "Multiple Sclerosis", "url": "ms"},
+            {"label": "Movement Disorders", "url": "movement"},
+            {"label": "Peripheral Neuropathy", "url": "neuropathy"},
+            {"label": "View All Conditions", "url": "neurological-conditions", "view_all": true}
+        ]},
+        {"label": "Patient Info", "url": "#", "children": [
+            {"label": "Patient Info", "url": "patient-info"},
+            {"label": "Consultation Guide", "url": "neurology-consultation"},
+            {"label": "Online Consultation", "url": "online-neurologist-consultation"},
+            {"label": "Second Opinion", "url": "neurology-second-opinion"},
+            {"label": "Emergency Care", "url": "emergency-neurology-care"},
+            {"label": "Stroke Helpline", "url": "brain-stroke-helpline"},
+            {"label": "Patient Testimonials", "url": "neurology-patient-testimonials"},
+            {"label": "Success Stories", "url": "patient-success-stories"},
+            {"label": "Case Studies", "url": "case-studies"},
+            {"label": "Google Reviews", "url": "patient-reviews"},
+            {"label": "FAQs", "url": "neurology-faqs"}
+        ]},
+        {"label": "Media", "url": "#", "children": [
+            {"label": "Videos Hub", "url": "videos"},
+            {"label": "Education Videos", "url": "neurology-video-library"},
+            {"label": "Video Testimonials", "url": "video-testimonials"},
+            {"label": "Media Coverage", "url": "media-coverage"},
+            {"label": "Photo Gallery", "url": "gallery"}
+        ]},
+        {"label": "Blog", "url": "dr-praveen-gupta-blog", "children": []}
+    ],
+    "header_cta": {"label": "Book Appointment", "url": "contact-us-top-neurologist-delhi-ncr"},
+    "footer_quick_links": [
+        {"label": "Home", "url": "index"},
+        {"label": "About Dr. Praveen", "url": "about"},
+        {"label": "Our Services", "url": "services"},
+        {"label": "Patient Information", "url": "patient-info"},
+        {"label": "Media & Videos", "url": "videos"},
+        {"label": "Photo Gallery", "url": "gallery"},
+        {"label": "Blog & Articles", "url": "dr-praveen-gupta-blog"}
+    ],
+    "footer_legal_links": [
+        {"label": "Privacy Policy", "url": "privacy-policy"},
+        {"label": "Terms of Service", "url": "terms-of-service"}
+    ],
+    "mobile_bar": [
+        {"label": "WhatsApp", "url": "{whatsapp}", "icon": "fab fa-whatsapp", "style": "whatsapp"},
+        {"label": "Online", "url": "online-neurologist-consultation", "icon": "fas fa-video", "style": "blue"},
+        {"label": "Book Clinic", "url": "contact-us-top-neurologist-delhi-ncr", "icon": "fas fa-calendar-check", "style": "primary"},
+        {"label": "Emergency", "url": "{stroke-helpline}", "icon": "fas fa-phone-alt", "style": "red"}
+    ],
+    "not_found_links": [
+        {"label": "About Dr. Praveen", "url": "about"},
+        {"label": "Our Services", "url": "services"},
+        {"label": "Epilepsy Care", "url": "epilepsy"},
+        {"label": "Stroke Care", "url": "stroke"},
+        {"label": "Parkinson's Care", "url": "parkinsons"},
+        {"label": "Neurology Blog", "url": "dr-praveen-gupta-blog"}
+    ]
+}

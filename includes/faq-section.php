@@ -24,8 +24,10 @@ if ($faqPage === null || empty($faqPage['items'])) {
 $GLOBALS['cms_faq_section_used'] = true;
 
 $faqLayout = $faqPage['layout'] ?? 'split';
-$faqBadge = trim((string)($faqPage['badge'] ?? 'FAQ'));
-$faqTitle = trim((string)($faqPage['title'] ?? 'Frequently Asked Questions'));
+$faqBadge = trim((string)($faqPage['badge'] ?? ''));
+$faqBadge = $faqBadge !== '' ? $faqBadge : cms_text('faq_default_badge');
+$faqTitle = trim((string)($faqPage['title'] ?? ''));
+$faqTitle = $faqTitle !== '' ? $faqTitle : cms_text('faq_default_title');
 $faqDescription = (string)($faqPage['description'] ?? '');
 $faqItems = $faqPage['items'];
 
@@ -40,7 +42,7 @@ $faqAnswer = function ($html) {
 $faqGroups = [];
 foreach ($faqItems as $item) {
     $category = trim((string)($item['category'] ?? ''));
-    $key = $category !== '' ? $category : 'General';
+    $key = $category !== '' ? $category : cms_text('faq_general_group');
     if (!isset($faqGroups[$key])) {
         $faqGroups[$key] = [
             'name' => $key,
@@ -76,7 +78,7 @@ unset($group);
         <div class="text-center max-w-3xl mx-auto mb-10 md:mb-14 observe">
             <div class="inline-flex items-center space-x-2 bg-electric-blue/10 px-4 py-2 rounded-full mb-4">
                 <i class="fas fa-question-circle text-electric-blue text-sm"></i>
-                <span class="text-electric-blue text-sm font-semibold"><?php echo htmlspecialchars($faqBadge ?: 'Common Queries'); ?></span>
+                <span class="text-electric-blue text-sm font-semibold"><?php echo htmlspecialchars($faqBadge); ?></span>
             </div>
             <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-deep-indigo mb-4">
                 <?php echo htmlspecialchars($faqTitle); ?>
@@ -106,14 +108,14 @@ unset($group);
         </div>
 
         <div class="text-center mt-10 md:mt-12 observe flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="neurology-faqs" class="inline-flex items-center space-x-2 text-electric-blue font-bold text-sm hover:text-deep-indigo transition-colors py-2 px-4 rounded-xl hover:bg-slate-100">
+            <a href="<?php echo htmlspecialchars(cms_nav_href(cms_text('faq_hub_url'))); ?>" class="inline-flex items-center space-x-2 text-electric-blue font-bold text-sm hover:text-deep-indigo transition-colors py-2 px-4 rounded-xl hover:bg-slate-100">
                 <i class="fas fa-book-open text-xs"></i>
-                <span>View Full FAQs Hub</span>
+                <span><?php echo htmlspecialchars(cms_text('faq_hub_label')); ?></span>
             </a>
             <span class="hidden sm:inline text-slate-300">&bull;</span>
-            <a href="contact-us-top-neurologist-delhi-ncr" class="inline-flex items-center space-x-2 text-dark-grey/70 font-semibold text-sm hover:text-electric-blue transition-colors py-2 px-4 rounded-xl hover:bg-slate-100">
+            <a href="<?php echo htmlspecialchars(cms_nav_href(cms_text('faq_contact_url'))); ?>" class="inline-flex items-center space-x-2 text-dark-grey/70 font-semibold text-sm hover:text-electric-blue transition-colors py-2 px-4 rounded-xl hover:bg-slate-100">
                 <i class="fas fa-headset text-xs"></i>
-                <span>Contact Our Patient Care Team</span>
+                <span><?php echo htmlspecialchars(cms_text('faq_contact_label')); ?></span>
             </a>
         </div>
     </div>
@@ -201,7 +203,7 @@ unset($group);
         <?php endif; ?>
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
             <div class="lg:col-span-4 lg:sticky lg:top-24 self-start space-y-4">
-                <span class="text-electric-blue font-bold text-xs uppercase tracking-wider">FAQ Categories</span>
+                <span class="text-electric-blue font-bold text-xs uppercase tracking-wider"><?php echo htmlspecialchars(cms_text('faq_categories_label')); ?></span>
                 <div class="flex flex-col space-y-2" id="faq-categories">
                     <?php $catIndex = 0; foreach ($faqGroups as $group): ?>
                     <button class="faq-cat-btn text-left px-5 py-3 rounded-2xl text-sm font-semibold transition-all duration-300 <?php echo $catIndex === 0 ? 'active bg-electric-blue text-white shadow-md' : 'bg-slate-50 text-dark-grey/70 hover:bg-slate-100'; ?>" data-category="<?php echo htmlspecialchars(strtolower(preg_replace('/[^a-zA-Z0-9]+/', '-', $group['name']))); ?>">
@@ -287,7 +289,7 @@ function toggleFaq(button) {
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <?php if ($isCentered): ?>
         <div class="text-center max-w-3xl mx-auto mb-12">
-            <span class="text-electric-blue font-bold text-xs uppercase tracking-wider font-sans"><?php echo htmlspecialchars($faqBadge ?: 'Patient FAQ'); ?></span>
+            <span class="text-electric-blue font-bold text-xs uppercase tracking-wider font-sans"><?php echo htmlspecialchars($faqBadge); ?></span>
             <h2 class="text-3xl font-bold text-deep-indigo font-serif mt-2"><?php echo htmlspecialchars($faqTitle); ?></h2>
             <?php if ($faqDescription !== ''): ?>
             <div class="text-sm text-dark-grey/65 mt-3 leading-relaxed"><?php echo $faqAnswer($faqDescription); ?></div>
@@ -297,7 +299,7 @@ function toggleFaq(button) {
         <?php else: ?>
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div class="lg:col-span-5 lg:sticky lg:top-24 self-start">
-                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider"><?php echo htmlspecialchars($faqBadge ?: 'FAQ'); ?></span>
+                <span class="text-electric-blue font-semibold text-sm uppercase tracking-wider"><?php echo htmlspecialchars($faqBadge); ?></span>
                 <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-dark-grey mt-3 mb-6"><?php echo htmlspecialchars($faqTitle); ?></h2>
                 <?php if ($faqDescription !== ''): ?>
                 <div class="text-dark-grey/70 leading-relaxed max-w-md"><?php echo $faqAnswer($faqDescription); ?></div>

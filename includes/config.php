@@ -45,63 +45,7 @@ define('GTM_ID', $cmsSettings['gtm_id'] ?? 'GTM-TF2TXQLK');
 define('WORKING_HOURS_WEEKDAYS', trim((string)($cmsSettings['working_hours_weekdays'] ?? '')) !== '' ? $cmsSettings['working_hours_weekdays'] : 'Mon - Sat: 9 AM - 7 PM');
 define('WORKING_HOURS_SUNDAY', trim((string)($cmsSettings['working_hours_sunday'] ?? '')) !== '' ? $cmsSettings['working_hours_sunday'] : 'Sunday: Closed');
 
-// Navigation
-$navItems = [
-    ['name' => 'Home', 'url' => 'index'],
-    ['name' => 'About', 'url' => '#', 'children' => [
-        ['name' => 'About Dr Praveen', 'url' => 'about'],
-        ['name' => 'Why Choose Us', 'url' => 'why-choose-dr-praveen-gupta'],
-        ['name' => 'Our Team', 'url' => 'team'],
-        ['name' => 'Awards & Honors', 'url' => 'awards-and-recognition'],
-    ]],
-    // 'viewAll' => true renders the item as a highlighted link pinned to the
-    // bottom of the dropdown, separated from the list above it.
-    ['name' => 'Services', 'url' => '#', 'children' => [
-        ['name' => 'Brain Tumor Surgery', 'url' => 'brain-tumor-surgery'],
-        ['name' => 'Spine Surgery', 'url' => 'spine-surgery'],
-        ['name' => 'Functional Neurosurgery', 'url' => 'functional-neurosurgery'],
-        ['name' => 'Neurovascular Surgery', 'url' => 'neurovascular-surgery'],
-        ['name' => 'Memory Clinic', 'url' => 'memory-clinic'],
-        ['name' => 'Rehabilitation Hub', 'url' => 'neuro-rehabilitation-center'],
-        ['name' => 'Brain Health Hub', 'url' => 'brain-health-center'],
-        ['name' => 'Neurocritical Care', 'url' => 'neurocritical-acute-stroke-care'],
-        ['name' => 'rTMS Therapy', 'url' => 'rtms-therapy'],
-        ['name' => 'View All Services', 'url' => 'services', 'viewAll' => true],
-    ]],
-    ['name' => 'Conditions', 'url' => '#', 'children' => [
-        ['name' => 'Epilepsy', 'url' => 'epilepsy'],
-        ['name' => 'Headache', 'url' => 'headache'],
-        ['name' => 'Migraine', 'url' => 'migraine'],
-        ['name' => 'Stroke', 'url' => 'stroke'],
-        ['name' => 'Vertigo', 'url' => 'vertigo'],
-        ['name' => 'Parkinson\'s Disease', 'url' => 'parkinsons'],
-        ['name' => 'Multiple Sclerosis', 'url' => 'ms'],
-        ['name' => 'Movement Disorders', 'url' => 'movement'],
-        ['name' => 'Peripheral Neuropathy', 'url' => 'neuropathy'],
-        ['name' => 'View All Conditions', 'url' => 'neurological-conditions', 'viewAll' => true],
-    ]],
-    ['name' => 'Patient Info', 'url' => '#', 'children' => [
-        ['name' => 'Patient Info', 'url' => 'patient-info'],
-        ['name' => 'Consultation Guide', 'url' => 'neurology-consultation'],
-        ['name' => 'Online Consultation', 'url' => 'online-neurologist-consultation'],
-        ['name' => 'Second Opinion', 'url' => 'neurology-second-opinion'],
-        ['name' => 'Emergency Care', 'url' => 'emergency-neurology-care'],
-        ['name' => 'Stroke Helpline', 'url' => 'brain-stroke-helpline'],
-        ['name' => 'Patient Testimonials', 'url' => 'neurology-patient-testimonials'],
-        ['name' => 'Success Stories', 'url' => 'patient-success-stories'],
-        ['name' => 'Case Studies', 'url' => 'case-studies'],
-        ['name' => 'Google Reviews', 'url' => 'patient-reviews'],
-        ['name' => 'FAQs', 'url' => 'neurology-faqs'],
-    ]],
-    ['name' => 'Media', 'url' => '#', 'children' => [
-        ['name' => 'Videos Hub', 'url' => 'videos'],
-        ['name' => 'Education Videos', 'url' => 'neurology-video-library'],
-        ['name' => 'Video Testimonials', 'url' => 'video-testimonials'],
-        ['name' => 'Media Coverage', 'url' => 'media-coverage'],
-        ['name' => 'Photo Gallery', 'url' => 'gallery'],
-    ]],
-    ['name' => 'Blog', 'url' => 'dr-praveen-gupta-blog'],
-];
+// Navigation menus live in data/navigation.json (CMS → Navigation); see cms_navigation().
 
 // Services - Loaded from CMS data if available
 $cmsServicesFile = dirname(__DIR__) . '/data/services.json';

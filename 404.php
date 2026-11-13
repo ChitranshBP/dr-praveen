@@ -21,7 +21,7 @@ require_once __DIR__ . '/includes/header.php';
         <!-- 404 Badge -->
         <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1.5 rounded-full mb-6">
             <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-            <span class="text-xs font-bold tracking-widest uppercase text-cyan-200">Error 404</span>
+            <span class="text-xs font-bold tracking-widest uppercase text-cyan-200"><?php echo htmlspecialchars(cms_text('nf_badge')); ?></span>
         </div>
 
         <!-- Big Number -->
@@ -31,11 +31,11 @@ require_once __DIR__ . '/includes/header.php';
 
         <!-- Subheading -->
         <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 font-serif">
-            Page Not Found
+            <?php echo htmlspecialchars(cms_text('nf_title')); ?>
         </h2>
 
         <p class="text-white/80 text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed">
-            The page you are looking for might have been relocated, renamed, or is temporarily unavailable. Let us help you get back on track.
+            <?php echo htmlspecialchars(cms_text('nf_text')); ?>
         </p>
 
         <!-- Quick Action Buttons -->
@@ -55,27 +55,14 @@ require_once __DIR__ . '/includes/header.php';
         <!-- Helpful Navigation Links -->
         <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-6 md:p-8 max-w-2xl mx-auto">
             <h3 class="text-sm font-semibold uppercase tracking-wider text-cyan-200 mb-4">
-                Popular Quick Links
+                <?php echo htmlspecialchars(cms_text('nf_links_heading')); ?>
             </h3>
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-sm">
-                <a href="about" class="px-3 py-2 rounded-xl bg-white/5 hover:bg-white/15 text-white/90 hover:text-white transition-colors flex items-center justify-center space-x-1.5">
-                    <span>About Dr. Praveen</span>
+                <?php foreach (cms_navigation()['not_found_links'] as $nfLink): ?>
+                <a href="<?php echo htmlspecialchars(cms_nav_href($nfLink['url'])); ?>" class="px-3 py-2 rounded-xl bg-white/5 hover:bg-white/15 text-white/90 hover:text-white transition-colors flex items-center justify-center space-x-1.5">
+                    <span><?php echo htmlspecialchars($nfLink['label']); ?></span>
                 </a>
-                <a href="services" class="px-3 py-2 rounded-xl bg-white/5 hover:bg-white/15 text-white/90 hover:text-white transition-colors flex items-center justify-center space-x-1.5">
-                    <span>Our Services</span>
-                </a>
-                <a href="epilepsy" class="px-3 py-2 rounded-xl bg-white/5 hover:bg-white/15 text-white/90 hover:text-white transition-colors flex items-center justify-center space-x-1.5">
-                    <span>Epilepsy Care</span>
-                </a>
-                <a href="stroke" class="px-3 py-2 rounded-xl bg-white/5 hover:bg-white/15 text-white/90 hover:text-white transition-colors flex items-center justify-center space-x-1.5">
-                    <span>Stroke Care</span>
-                </a>
-                <a href="parkinsons" class="px-3 py-2 rounded-xl bg-white/5 hover:bg-white/15 text-white/90 hover:text-white transition-colors flex items-center justify-center space-x-1.5">
-                    <span>Parkinson's Care</span>
-                </a>
-                <a href="dr-praveen-gupta-blog" class="px-3 py-2 rounded-xl bg-white/5 hover:bg-white/15 text-white/90 hover:text-white transition-colors flex items-center justify-center space-x-1.5">
-                    <span>Neurology Blog</span>
-                </a>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>

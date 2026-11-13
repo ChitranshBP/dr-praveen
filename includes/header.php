@@ -41,6 +41,20 @@ $siteLogo       = cms_site_logo();
 $siteFavicon    = cms_media_path($cmsSettings['favicon_path'] ?? '', 'assets/favicon/favicon.png');
 $ga4Id          = trim((string)($cmsSettings['ga4_id'] ?? ''));
 $metaPixelId    = trim((string)($cmsSettings['meta_pixel_id'] ?? ''));
+$siteNav        = cms_navigation();
+$navItems       = $siteNav['main'];
+
+// Per-page SEO extras (CMS → All Pages → SEO card)
+$metaKeywords   = trim((string)($cmsPageData['meta_keywords'] ?? '')) !== '' ? $cmsPageData['meta_keywords'] : cms_text('meta_keywords');
+$robotsMeta     = $robotsMeta ?? (!empty($cmsPageData['robots_noindex']) ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
+$ogImagePath    = cms_media_path($cmsPageData['og_image'] ?? '', cms_media_path($cmsPageData['hero_bg'] ?? '', $cmsSettings['default_og_image'] ?? ''));
+if ($ogImagePath === '' && !empty($cmsSettings['default_og_image'])) {
+    $ogImagePath = cms_media_path($cmsSettings['default_og_image']);
+}
+$ogImageUrl     = $ogImagePath !== '' ? (preg_match('#^(https?:)?//#i', $ogImagePath) ? $ogImagePath : rtrim(SITE_URL, '/') . '/' . ltrim($ogImagePath, '/')) : '';
+if (empty($canonicalPath) && trim((string)($cmsPageData['canonical'] ?? '')) !== '') {
+    $canonicalPath = preg_match('#^https?://#i', $cmsPageData['canonical']) ? $cmsPageData['canonical'] : ltrim($cmsPageData['canonical'], '/');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
@@ -55,29 +69,53 @@ $metaPixelId    = trim((string)($cmsSettings['meta_pixel_id'] ?? ''));
     <meta charset="UTF-8">
     <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="<?php echo htmlspecialchars($robotsMeta ?? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'); ?>">
+    <meta name="robots" content="<?php echo htmlspecialchars($robotsMeta); ?>">
     <meta name="description" content="<?php echo htmlspecialchars($finalMetaDesc); ?>">
-    <meta name="keywords" content="Dr Praveen Gupta, healthcare, medical services, doctor, clinic">
-    <meta name="author" content="Dr. Praveen Gupta">
+    <meta name="keywords" content="<?php echo htmlspecialchars($metaKeywords); ?>">
+    <meta name="author" content="<?php echo htmlspecialchars(cms_text('meta_author')); ?>">
     <title><?php echo htmlspecialchars($finalMetaTitle); ?></title>
 
     <?php if ($isHomepage): ?>
-    <!-- Preload Hero LCP Images -->
-    <link rel="preload" as="image" href="/assets/banner/dr-praveen-banner-mobile/stroke-care-mobile.jpeg" media="(max-width: 639px)" fetchpriority="high">
-    <link rel="preload" as="image" href="/assets/banner/dr-praveen-banner-desktop/stroke-care.jpeg" media="(min-width: 640px)" fetchpriority="high">
+    <!-- Preload Hero LCP Images (first active banner, CMS → Hero Banners) -->
+    <?php
+    $preloadBanners = cms_json_read(CMS_DATA_DIR . '/banners.json') ?: [];
+    usort($preloadBanners, function ($a, $b) { return ((int)($a['order'] ?? 99)) <=> ((int)($b['order'] ?? 99)); });
+    $firstBanner = null;
+    foreach ($preloadBanners as $pb) { if (!isset($pb['is_active']) || $pb['is_active']) { $firstBanner = $pb; break; } }
+    ?>
+    <?php if ($firstBanner): ?>
+    <?php if (!empty($firstBanner['mobile_image'])): ?><link rel="preload" as="image" href="/<?php echo htmlspecialchars(ltrim($firstBanner['mobile_image'], '/')); ?>" media="(max-width: 639px)" fetchpriority="high"><?php endif; ?>
+    <?php if (!empty($firstBanner['desktop_image'])): ?><link rel="preload" as="image" href="/<?php echo htmlspecialchars(ltrim($firstBanner['desktop_image'], '/')); ?>" media="(min-width: 640px)" fetchpriority="high"><?php endif; ?>
+    <?php endif; ?>
     <?php endif; ?>
 
     <!-- Canonical URL -->
     <?php
-    $canonicalUrl = rtrim(SITE_URL, '/') . '/';
-    if (!empty($canonicalPath)) {
-        // Pages can override the canonical path (e.g. blog-post.php?slug=...)
-        $canonicalUrl .= ltrim((string)$canonicalPath, '/');
-    } elseif (!$isHomepage && $currentPage !== '') {
-        $canonicalUrl .= $currentPage;
+    if (!empty($canonicalPath) && preg_match('#^https?://#i', (string)$canonicalPath)) {
+        $canonicalUrl = (string)$canonicalPath;
+    } else {
+        $canonicalUrl = rtrim(SITE_URL, '/') . '/';
+        if (!empty($canonicalPath)) {
+            // Pages can override the canonical path (e.g. blog-post.php?slug=...)
+            $canonicalUrl .= ltrim((string)$canonicalPath, '/');
+        } elseif (!$isHomepage && $currentPage !== '') {
+            $canonicalUrl .= $currentPage;
+        }
     }
     ?>
-    <link rel="canonical" href="<?php echo $canonicalUrl; ?>">
+    <link rel="canonical" href="<?php echo htmlspecialchars($canonicalUrl); ?>">
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="<?php echo htmlspecialchars(SITE_NAME); ?>">
+    <meta property="og:title" content="<?php echo htmlspecialchars($finalMetaTitle); ?>">
+    <meta property="og:description" content="<?php echo htmlspecialchars($finalMetaDesc); ?>">
+    <meta property="og:url" content="<?php echo htmlspecialchars($canonicalUrl); ?>">
+    <?php if ($ogImageUrl !== ''): ?><meta property="og:image" content="<?php echo htmlspecialchars($ogImageUrl); ?>"><?php endif; ?>
+    <meta name="twitter:card" content="<?php echo $ogImageUrl !== '' ? 'summary_large_image' : 'summary'; ?>">
+    <meta name="twitter:title" content="<?php echo htmlspecialchars($finalMetaTitle); ?>">
+    <meta name="twitter:description" content="<?php echo htmlspecialchars($finalMetaDesc); ?>">
+    <?php if ($ogImageUrl !== ''): ?><meta name="twitter:image" content="<?php echo htmlspecialchars($ogImageUrl); ?>"><?php endif; ?>
 
     <!-- Compiled Tailwind CSS -->
     <link rel="stylesheet" href="/assets/css/style.css">
@@ -373,26 +411,26 @@ $metaPixelId    = trim((string)($cmsSettings['meta_pixel_id'] ?? ''));
                 <!-- Desktop Navigation -->
                 <div class="hidden lg:flex items-center space-x-1 bg-white/5 backdrop-blur-sm rounded-full px-2 py-1.5 border border-white/10 nav-glass-el">
                     <?php foreach ($navItems as $item): ?>
-                        <?php if (isset($item['children'])): ?>
+                        <?php if (!empty($item['children'])): ?>
                             <div class="relative group">
                                 <button class="nav-link flex items-center space-x-1 px-5 py-2 text-sm font-semibold text-dark-grey hover:bg-white/5 rounded-full focus:outline-none">
-                                    <span><?php echo $item['name']; ?></span>
+                                    <span><?php echo htmlspecialchars($item['label']); ?></span>
                                     <i class="fas fa-chevron-down text-[10px] transition-transform duration-300 group-hover:rotate-180"></i>
                                 </button>
                                 <div class="absolute left-0 mt-2 w-64 rounded-3xl bg-white/95 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.12)] border border-slate-200/40 p-2.5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform scale-95 origin-top-left group-hover:scale-100 z-50">
                                     <div class="space-y-1">
                                         <?php foreach ($item['children'] as $child): ?>
-                                            <?php if (!empty($child['viewAll'])): ?>
+                                            <?php if (!empty($child['view_all'])): ?>
                                                 <!-- Pinned "view all" link, separated from the list above -->
-                                                <a href="<?php echo $child['url']; ?>"
+                                                <a href="<?php echo htmlspecialchars(cms_nav_href($child['url'])); ?>"
                                                    class="flex items-center justify-between px-4 py-2.5 mt-2 pt-3 border-t border-slate-200/70 text-xs font-bold rounded-2xl text-electric-blue hover:bg-gradient-to-r hover:from-electric-blue/10 hover:to-cyan-accent/10 transition-all duration-300 group/item">
-                                                    <span><?php echo $child['name']; ?></span>
+                                                    <span><?php echo htmlspecialchars($child['label']); ?></span>
                                                     <i class="fas fa-arrow-right text-[9px] text-cyan-accent group-hover/item:translate-x-0.5 transition-transform duration-300"></i>
                                                 </a>
                                             <?php else: ?>
-                                                <a href="<?php echo $child['url']; ?>"
+                                                <a href="<?php echo htmlspecialchars(cms_nav_href($child['url'])); ?>"
                                                    class="flex items-center justify-between px-4 py-2.5 text-xs font-semibold rounded-2xl text-dark-grey/75 hover:bg-gradient-to-r hover:from-electric-blue/5 hover:to-cyan-accent/5 hover:text-electric-blue transition-all duration-305 group/item transform hover:translate-x-1">
-                                                    <span><?php echo $child['name']; ?></span>
+                                                    <span><?php echo htmlspecialchars($child['label']); ?></span>
                                                     <i class="fas fa-chevron-right text-[9px] opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300 text-cyan-accent"></i>
                                                 </a>
                                             <?php endif; ?>
@@ -401,9 +439,9 @@ $metaPixelId    = trim((string)($cmsSettings['meta_pixel_id'] ?? ''));
                                 </div>
                             </div>
                         <?php else: ?>
-                            <a href="<?php echo $item['url']; ?>"
+                            <a href="<?php echo htmlspecialchars(cms_nav_href($item['url'])); ?>"
                                class="nav-link-anim relative px-5 py-2 text-sm font-semibold transition-colors duration-300 nav-link rounded-full <?php echo $currentPage === $item['url'] ? 'active bg-white/10' : 'text-dark-grey hover:bg-white/5'; ?>">
-                                <?php echo $item['name']; ?>
+                                <?php echo htmlspecialchars($item['label']); ?>
                             </a>
                         <?php endif; ?>
                     <?php endforeach; ?>
@@ -417,8 +455,8 @@ $metaPixelId    = trim((string)($cmsSettings['meta_pixel_id'] ?? ''));
                     </button> -->
 
                     <!-- CTA Button - Premium Style -->
-                    <a href="contact-us-top-neurologist-delhi-ncr" class="btn-shimmer group relative inline-flex items-center space-x-2 bg-gradient-to-r from-electric-blue to-cyan-accent text-white text-sm font-semibold pl-5 pr-2 py-2 rounded-full hover:shadow-xl hover:shadow-electric-blue/40 transition-all duration-300 transform hover:-translate-y-0.5">
-                        <span>Book Appointment</span>
+                    <a href="<?php echo htmlspecialchars(cms_nav_href($siteNav['header_cta']['url'] ?? 'contact-us-top-neurologist-delhi-ncr')); ?>" class="btn-shimmer group relative inline-flex items-center space-x-2 bg-gradient-to-r from-electric-blue to-cyan-accent text-white text-sm font-semibold pl-5 pr-2 py-2 rounded-full hover:shadow-xl hover:shadow-electric-blue/40 transition-all duration-300 transform hover:-translate-y-0.5">
+                        <span><?php echo htmlspecialchars($siteNav['header_cta']['label'] ?? 'Book Appointment'); ?></span>
                         <span class="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center group-hover:rotate-45 transition-transform duration-300">
                             <i class="fas fa-arrow-right text-[10px]"></i>
                         </span>
@@ -436,40 +474,40 @@ $metaPixelId    = trim((string)($cmsSettings['meta_pixel_id'] ?? ''));
         <div id="mobile-menu" class="mobile-menu-anim lg:hidden bg-white/95 backdrop-blur-xl border-t border-silver-grey/50">
             <div class="max-w-7xl mx-auto px-4 py-4 space-y-1">
                 <?php foreach ($navItems as $item): ?>
-                    <?php if (isset($item['children'])): ?>
+                    <?php if (!empty($item['children'])): ?>
                         <div class="mobile-dropdown">
                             <button onclick="toggleMobileDropdown(this)" class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold text-dark-grey hover:bg-soft-cyan hover:text-electric-blue focus:outline-none">
                                 <span class="flex items-center space-x-3">
                                     <span class="w-1.5 h-1.5 rounded-full bg-silver-grey"></span>
-                                    <span><?php echo $item['name']; ?></span>
+                                    <span><?php echo htmlspecialchars($item['label']); ?></span>
                                 </span>
                                 <i class="fas fa-chevron-down text-xs transition-transform duration-300"></i>
                             </button>
                             <div class="hidden pl-6 py-1.5 space-y-1 bg-slate-50/40 rounded-2xl mt-1.5 border border-slate-100/50">
                                 <?php foreach ($item['children'] as $child): ?>
-                                    <a href="<?php echo $child['url']; ?>"
-                                       class="flex items-center justify-between px-4 py-3 rounded-xl text-xs transition-colors <?php echo !empty($child['viewAll'])
+                                    <a href="<?php echo htmlspecialchars(cms_nav_href($child['url'])); ?>"
+                                       class="flex items-center justify-between px-4 py-3 rounded-xl text-xs transition-colors <?php echo !empty($child['view_all'])
                                             ? 'mt-1.5 pt-3 border-t border-slate-200/70 font-bold text-electric-blue hover:bg-electric-blue/5'
                                             : 'font-semibold text-dark-grey/70 hover:bg-electric-blue/5 hover:text-electric-blue'; ?>">
-                                        <span><?php echo $child['name']; ?></span>
+                                        <span><?php echo htmlspecialchars($child['label']); ?></span>
                                         <i class="fas fa-arrow-right text-[9px] text-cyan-accent"></i>
                                     </a>
                                 <?php endforeach; ?>
                             </div>
                         </div>
                     <?php else: ?>
-                        <a href="<?php echo $item['url']; ?>"
+                        <a href="<?php echo htmlspecialchars(cms_nav_href($item['url'])); ?>"
                            class="flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold transition-all <?php echo $currentPage === $item['url'] ? 'bg-gradient-to-r from-electric-blue/10 to-cyan-accent/10 text-electric-blue border border-electric-blue/20' : 'text-dark-grey hover:bg-soft-cyan hover:text-electric-blue'; ?>">
                             <span class="flex items-center space-x-3">
                                 <span class="w-1.5 h-1.5 rounded-full <?php echo $currentPage === $item['url'] ? 'bg-cyan-accent' : 'bg-silver-grey'; ?>"></span>
-                                <span><?php echo $item['name']; ?></span>
+                                <span><?php echo htmlspecialchars($item['label']); ?></span>
                             </span>
                             <i class="fas fa-chevron-right text-xs text-cyan-accent"></i>
                         </a>
                     <?php endif; ?>
                 <?php endforeach; ?>
-                <a href="contact-us-top-neurologist-delhi-ncr" class="block mt-3 px-4 py-3 text-center bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold rounded-xl shadow-lg shadow-electric-blue/20">
-                    Book Appointment
+                <a href="<?php echo htmlspecialchars(cms_nav_href($siteNav['header_cta']['url'] ?? 'contact-us-top-neurologist-delhi-ncr')); ?>" class="block mt-3 px-4 py-3 text-center bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold rounded-xl shadow-lg shadow-electric-blue/20">
+                    <?php echo htmlspecialchars($siteNav['header_cta']['label'] ?? 'Book Appointment'); ?>
                 </a>
             </div>
         </div>

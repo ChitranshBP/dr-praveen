@@ -20,9 +20,10 @@ $currentPageFile = $currentPage ?? str_replace('.php', '', basename($_SERVER['PH
 $relatedVideos   = function_exists('cms_videos_for_page') ? cms_videos_for_page($currentPageFile) : [];
 
 if (!empty($relatedVideos)):
-    $eyebrow = $relatedVideosEyebrow ?? 'Video Guides';
-    $heading = $relatedVideosHeading ?? 'Watch & <span class="gradient-text">Learn</span>';
-    $intro   = $relatedVideosIntro   ?? 'Dr. Praveen Gupta explains the essentials in plain language — what to look out for, the treatment options available, and what to expect.';
+    // Default copy is editable in CMS → Header, Footer & Shared Text
+    $eyebrow = $relatedVideosEyebrow ?? cms_text('rv_eyebrow');
+    $heading = $relatedVideosHeading ?? cms_text('rv_heading');
+    $intro   = $relatedVideosIntro   ?? cms_text('rv_intro');
 ?>
 
 <!-- ════════ Related Videos ════════ -->
@@ -174,9 +175,9 @@ if (!empty($relatedVideos)):
 
         <!-- CTA -->
         <div class="text-center mt-10 observe">
-            <a href="neurology-video-library"
+            <a href="<?php echo htmlspecialchars(cms_nav_href(cms_text('rv_button_url'))); ?>"
                class="inline-flex items-center space-x-2.5 bg-gradient-to-r from-electric-blue to-cyan-accent hover:from-deep-indigo hover:to-electric-blue text-white font-bold px-7 py-3.5 rounded-full shadow-lg shadow-electric-blue/25 hover:shadow-xl hover:shadow-electric-blue/40 hover:-translate-y-0.5 transition-all duration-300">
-                <span>Browse the Full Video Library</span>
+                <span><?php echo htmlspecialchars(cms_text('rv_button_label')); ?></span>
                 <i class="fas fa-arrow-right text-xs"></i>
             </a>
         </div>

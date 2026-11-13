@@ -1,12 +1,15 @@
 <?php
 /**
  * XML Sitemap Generator - Dr. Praveen Gupta
- * Generates a fully compliant, W3C/Sitemaps.org standard sitemap.xml
- * Includes all core pages, services, conditions, patient resources, landing pages, and published blogs.
+ * Builds sitemap.xml from the CMS page catalog (data/pages_catalog.json) plus
+ * every published blog post. Pages marked "noindex" in CMS → All Pages are
+ * left out. Regenerated automatically when a page or blog post is saved.
  */
 
 if (!defined('SITE_URL')) {
-    define('SITE_URL', 'https://drpraveengupta.com');
+    $settingsFile = dirname(__DIR__) . '/data/settings.json';
+    $siteSettings = is_file($settingsFile) ? (json_decode((string)file_get_contents($settingsFile), true) ?: []) : [];
+    define('SITE_URL', trim((string)($siteSettings['site_url'] ?? '')) !== '' ? $siteSettings['site_url'] : 'https://drpraveengupta.com');
 }
 
 function generate_sitemap_xml() {
@@ -14,142 +17,81 @@ function generate_sitemap_xml() {
     $dataDir = $rootDir . '/data';
     $sitemapFile = $rootDir . '/sitemap.xml';
 
-    // Base URL
     $baseUrl = rtrim(SITE_URL, '/');
     $today = date('Y-m-d');
 
-    // Static core pages with priorities and change frequencies
-    $staticPages = [
-        // Homepage
-        ['path' => '', 'priority' => '1.0', 'changefreq' => 'daily', 'lastmod' => $today],
-
-        // Landing Page
-        ['path' => 'enquire', 'priority' => '0.9', 'changefreq' => 'weekly', 'lastmod' => $today],
-
-        // Core About & Doctor Profile
-        ['path' => 'about', 'priority' => '0.9', 'changefreq' => 'weekly', 'lastmod' => $today],
-        ['path' => 'why-choose-dr-praveen-gupta', 'priority' => '0.8', 'changefreq' => 'monthly', 'lastmod' => $today],
-        ['path' => 'team', 'priority' => '0.8', 'changefreq' => 'monthly', 'lastmod' => $today],
-        ['path' => 'awards-and-recognition', 'priority' => '0.8', 'changefreq' => 'monthly', 'lastmod' => $today],
-        ['path' => 'contact-us-top-neurologist-delhi-ncr', 'priority' => '0.8', 'changefreq' => 'monthly', 'lastmod' => $today],
-
-        // Services Hub & Procedures
-        ['path' => 'services', 'priority' => '0.9', 'changefreq' => 'weekly', 'lastmod' => $today],
-        ['path' => 'brain-tumor-surgery', 'priority' => '0.9', 'changefreq' => 'monthly', 'lastmod' => $today],
-        ['path' => 'spine-surgery', 'priority' => '0.9', 'changefreq' => 'monthly', 'lastmod' => $today],
-        ['path' => 'functional-neurosurgery', 'priority' => '0.9', 'changefreq' => 'monthly', 'lastmod' => $today],
-        ['path' => 'neurovascular-surgery', 'priority' => '0.9', 'changefreq' => 'monthly', 'lastmod' => $today],
-        ['path' => 'memory-clinic', 'priority' => '0.8', 'changefreq' => 'monthly', 'lastmod' => $today],
-        ['path' => 'neuro-rehabilitation-center', 'priority' => '0.8', 'changefreq' => 'monthly', 'lastmod' => $today],
-        ['path' => 'brain-health-center', 'priority' => '0.8', 'changefreq' => 'monthly', 'lastmod' => $today],
-        ['path' => 'neurocritical-acute-stroke-care', 'priority' => '0.8', 'changefreq' => 'monthly', 'lastmod' => $today],
-        ['path' => 'rtms-therapy', 'priority' => '0.8', 'changefreq' => 'monthly', 'lastmod' => $today],
-        ['path' => 'neurology-procedures', 'priority' => '0.8', 'changefreq' => 'monthly', 'lastmod' => $today],
-
-        // Conditions Hub & Specific Conditions
-        ['path' => 'neurological-conditions', 'priority' => '0.9', 'changefreq' => 'weekly', 'lastmod' => $today],
-        ['path' => 'epilepsy', 'priority' => '0.9', 'changefreq' => 'weekly', 'lastmod' => $today],
-        ['path' => 'headache', 'priority' => '0.9', 'changefreq' => 'weekly', 'lastmod' => $today],
-        ['path' => 'migraine', 'priority' => '0.9', 'changefreq' => 'weekly', 'lastmod' => $today],
-        ['path' => 'stroke', 'priority' => '0.9', 'changefreq' => 'weekly', 'lastmod' => $today],
-        ['path' => 'vertigo', 'priority' => '0.9', 'changefreq' => 'weekly', 'lastmod' => $today],
-        ['path' => 'parkinsons', 'priority' => '0.9', 'changefreq' => 'weekly', 'lastmod' => $today],
-        ['path' => 'ms', 'priority' => '0.8', 'changefreq' => 'weekly', 'lastmod' => $today],
-        ['path' => 'movement', 'priority' => '0.8', 'changefreq' => 'weekly', 'lastmod' => $today],
-        ['path' => 'neuropathy', 'priority' => '0.8', 'changefreq' => 'weekly', 'lastmod' => $today],
-        ['path' => 'neurological-symptoms', 'priority' => '0.8', 'changefreq' => 'monthly', 'lastmod' => $today],
-
-        // Patient Care & Consultations
-        ['path' => 'patient-info', 'priority' => '0.8', 'changefreq' => 'monthly', 'lastmod' => $today],
-        ['path' => 'neurology-consultation', 'priority' => '0.8', 'changefreq' => 'monthly', 'lastmod' => $today],
-        ['path' => 'online-neurologist-consultation', 'priority' => '0.9', 'changefreq' => 'weekly', 'lastmod' => $today],
-        ['path' => 'neurology-second-opinion', 'priority' => '0.8', 'changefreq' => 'monthly', 'lastmod' => $today],
-        ['path' => 'emergency-neurology-care', 'priority' => '0.8', 'changefreq' => 'monthly', 'lastmod' => $today],
-        ['path' => 'brain-stroke-helpline', 'priority' => '0.8', 'changefreq' => 'monthly', 'lastmod' => $today],
-
-        // Testimonials, Reviews & FAQs
-        ['path' => 'neurology-patient-testimonials', 'priority' => '0.8', 'changefreq' => 'weekly', 'lastmod' => $today],
-        ['path' => 'patient-success-stories', 'priority' => '0.8', 'changefreq' => 'weekly', 'lastmod' => $today],
-        ['path' => 'case-studies', 'priority' => '0.8', 'changefreq' => 'monthly', 'lastmod' => $today],
-        ['path' => 'patient-reviews', 'priority' => '0.8', 'changefreq' => 'weekly', 'lastmod' => $today],
-        ['path' => 'neurology-faqs', 'priority' => '0.8', 'changefreq' => 'monthly', 'lastmod' => $today],
-        ['path' => 'faqs-neurologist-near-me', 'priority' => '0.8', 'changefreq' => 'monthly', 'lastmod' => $today],
-
-        // Media & Videos
-        ['path' => 'videos', 'priority' => '0.8', 'changefreq' => 'weekly', 'lastmod' => $today],
-        ['path' => 'neurology-video-library', 'priority' => '0.8', 'changefreq' => 'weekly', 'lastmod' => $today],
-        ['path' => 'video-testimonials', 'priority' => '0.8', 'changefreq' => 'weekly', 'lastmod' => $today],
-        ['path' => 'media-coverage', 'priority' => '0.8', 'changefreq' => 'monthly', 'lastmod' => $today],
-        ['path' => 'gallery', 'priority' => '0.7', 'changefreq' => 'monthly', 'lastmod' => $today],
-
-        // Blog Hub
-        ['path' => 'dr-praveen-gupta-blog', 'priority' => '0.8', 'changefreq' => 'weekly', 'lastmod' => $today],
-        ['path' => 'blog', 'priority' => '0.8', 'changefreq' => 'weekly', 'lastmod' => $today],
-
-        // Legal
-        ['path' => 'privacy-policy', 'priority' => '0.5', 'changefreq' => 'yearly', 'lastmod' => $today],
-        ['path' => 'terms-of-service', 'priority' => '0.5', 'changefreq' => 'yearly', 'lastmod' => $today],
+    // Category → default priority / change frequency
+    $categoryDefaults = [
+        'Services'       => ['0.9', 'monthly'],
+        'Conditions'     => ['0.9', 'weekly'],
+        'About Doctor'   => ['0.8', 'monthly'],
+        'Patient Info'   => ['0.8', 'monthly'],
+        'Media & Blog'   => ['0.8', 'weekly'],
+        'Contact & Legal'=> ['0.6', 'monthly'],
+        'General'        => ['0.5', 'monthly'],
     ];
+    // Pages that must never be listed
+    $skipSlugs = ['thank-you', 'blog-post', '404'];
+    $legalSlugs = ['privacy-policy', 'terms-of-service'];
 
-    // Load blogs from data/blogs.json
-    $blogs = [];
-    $blogsFile = $dataDir . '/blogs.json';
-    if (file_exists($blogsFile)) {
-        $raw = file_get_contents($blogsFile);
-        $decoded = json_decode($raw, true);
-        if (is_array($decoded)) {
-            $blogs = $decoded;
-        }
+    $readJson = function ($file) {
+        if (!is_file($file)) return null;
+        $d = json_decode((string)file_get_contents($file), true);
+        return is_array($d) ? $d : null;
+    };
+
+    $catalog = $readJson($dataDir . '/pages_catalog.json') ?: [];
+    $entries = [];
+
+    // Homepage first
+    $entries[] = ['loc' => $baseUrl . '/', 'lastmod' => $today, 'changefreq' => 'daily', 'priority' => '1.0'];
+    // Landing page (served from /LP via .htaccess)
+    if (is_file($rootDir . '/LP/index.php')) {
+        $entries[] = ['loc' => $baseUrl . '/enquire', 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => '0.9'];
     }
 
-    // Build XML string
+    foreach ($catalog as $page) {
+        $slug = trim((string)($page['slug'] ?? ''));
+        if ($slug === '' || $slug === 'index' || in_array($slug, $skipSlugs, true)) continue;
+        $pageData = $readJson($dataDir . '/pages/' . preg_replace('/[^a-zA-Z0-9_-]/', '', $slug) . '.json') ?: [];
+        if (!empty($pageData['robots_noindex'])) continue;
+        [$priority, $freq] = $categoryDefaults[$page['category'] ?? ''] ?? ['0.7', 'monthly'];
+        if (in_array($slug, $legalSlugs, true)) { $priority = '0.5'; $freq = 'yearly'; }
+        if (!empty($pageData['sitemap_priority']) && is_numeric($pageData['sitemap_priority'])) {
+            $priority = number_format(max(0, min(1, (float)$pageData['sitemap_priority'])), 1);
+        }
+        $lastmod = $today;
+        $pf = $dataDir . '/pages/' . $slug . '.json';
+        if (is_file($pf)) $lastmod = date('Y-m-d', filemtime($pf));
+        $entries[] = ['loc' => $baseUrl . '/' . $slug, 'lastmod' => $lastmod, 'changefreq' => $freq, 'priority' => $priority];
+    }
+
+    // Published blog articles → /blog/<slug>
+    foreach ($readJson($dataDir . '/blogs.json') ?: [] as $b) {
+        if (($b['status'] ?? 'published') !== 'published') continue;
+        $slug = trim((string)($b['slug'] ?? ''));
+        if ($slug === '') continue;
+        $date = !empty($b['date']) ? date('Y-m-d', strtotime($b['date'])) : $today;
+        $entries[] = ['loc' => $baseUrl . '/blog/' . $slug, 'lastmod' => $date, 'changefreq' => 'weekly', 'priority' => '0.8'];
+    }
+
     $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
     $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"' . "\n";
     $xml .= '        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"' . "\n";
     $xml .= '        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">' . "\n";
-
-    // Track added URLs to prevent any accidental duplicates
-    $addedUrls = [];
-
-    // Add static pages
-    foreach ($staticPages as $page) {
-        $path = trim($page['path'], '/');
-        $loc = $path === '' ? $baseUrl . '/' : $baseUrl . '/' . $path;
-
-        if (isset($addedUrls[$loc])) continue;
-        $addedUrls[$loc] = true;
-
+    $added = [];
+    foreach ($entries as $e) {
+        if (isset($added[$e['loc']])) continue;
+        $added[$e['loc']] = true;
         $xml .= "    <url>\n";
-        $xml .= "        <loc>" . htmlspecialchars($loc, ENT_XML1) . "</loc>\n";
-        $xml .= "        <lastmod>" . htmlspecialchars($page['lastmod'], ENT_XML1) . "</lastmod>\n";
-        $xml .= "        <changefreq>" . htmlspecialchars($page['changefreq'], ENT_XML1) . "</changefreq>\n";
-        $xml .= "        <priority>" . htmlspecialchars($page['priority'], ENT_XML1) . "</priority>\n";
+        $xml .= "        <loc>" . htmlspecialchars($e['loc'], ENT_XML1) . "</loc>\n";
+        $xml .= "        <lastmod>" . htmlspecialchars($e['lastmod'], ENT_XML1) . "</lastmod>\n";
+        $xml .= "        <changefreq>" . htmlspecialchars($e['changefreq'], ENT_XML1) . "</changefreq>\n";
+        $xml .= "        <priority>" . htmlspecialchars($e['priority'], ENT_XML1) . "</priority>\n";
         $xml .= "    </url>\n";
     }
-
-    // Add published blog articles with clean static URL structure /blog/<slug>
-    foreach ($blogs as $b) {
-        if (($b['status'] ?? 'published') !== 'published') continue;
-        $slug = trim($b['slug'] ?? '');
-        if ($slug === '') continue;
-
-        $loc = $baseUrl . '/blog/' . $slug;
-        if (isset($addedUrls[$loc])) continue;
-        $addedUrls[$loc] = true;
-
-        $date = !empty($b['date']) ? date('Y-m-d', strtotime($b['date'])) : $today;
-
-        $xml .= "    <url>\n";
-        $xml .= "        <loc>" . htmlspecialchars($loc, ENT_XML1) . "</loc>\n";
-        $xml .= "        <lastmod>" . htmlspecialchars($date, ENT_XML1) . "</lastmod>\n";
-        $xml .= "        <changefreq>weekly</changefreq>\n";
-        $xml .= "        <priority>0.8</priority>\n";
-        $xml .= "    </url>\n";
-    }
-
     $xml .= '</urlset>' . "\n";
 
-    // Save to sitemap.xml
     $written = @file_put_contents($sitemapFile, $xml, LOCK_EX);
     return ($written !== false);
 }

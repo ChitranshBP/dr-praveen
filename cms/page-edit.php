@@ -134,11 +134,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pageData['section1_text'] = trim($_POST['section1_text'] ?? '');
     $pageData['section1_img_alt'] = trim($_POST['section1_img_alt'] ?? '');
 
-    // SEO Meta Title & Meta Description
+    // SEO Meta Title & Meta Description + extras
     $pageData['meta_title'] = trim($_POST['meta_title'] ?? '');
     $pageData['meta_description'] = trim($_POST['meta_description'] ?? '');
+    $pageData['meta_keywords'] = trim($_POST['meta_keywords'] ?? '');
+    $pageData['canonical'] = trim($_POST['canonical'] ?? '');
+    $pageData['robots_noindex'] = !empty($_POST['robots_noindex']);
+    $pageData['breadcrumb_label'] = trim($_POST['breadcrumb_label'] ?? '');
+    $pageData['breadcrumb_parent'] = preg_replace('/[^a-zA-Z0-9_-]/', '', (string)($_POST['breadcrumb_parent'] ?? ''));
+    $pageData['hero_icon'] = trim($_POST['hero_icon'] ?? '');
 
     $uploadErrors = [];
+
+    // Social share image (Open Graph)
+    $ogImg = cms_image_field_value('og_image', 'seo', (string)($pageData['og_image'] ?? ''));
+    if ($ogImg['error'] !== '') {
+        $uploadErrors[] = 'Share image: ' . $ogImg['error'];
+    }
+    $pageData['og_image'] = $ogImg['path'];
 
     // Hero banner image (upload / library pick / remove)
     $heroImg = cms_image_field_value('hero_bg', 'breadcrumbs', (string)($pageData['hero_bg'] ?? ''));
@@ -446,6 +459,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         cms_set_flash('success', 'Page content, SEO metadata, and images saved successfully!');
     }
+    // Keep sitemap.xml in sync (noindex pages are excluded).
+    $sitemapGen = dirname(__DIR__) . '/includes/generate-sitemap.php';
+    if ($saved && file_exists($sitemapGen)) {
+        require_once $sitemapGen;
+        if (function_exists('generate_sitemap_xml')) {
+            @generate_sitemap_xml();
+        }
+    }
+
     header('Location: page-edit.php?slug=' . urlencode($slug));
     exit;
 }
@@ -514,6 +536,48 @@ require_once __DIR__ . '/includes/header.php';
                     </div>
                     <textarea name="meta_description" rows="2" placeholder="Brief summary of this page that appears under the title in Google search results..." class="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-xs font-medium text-slate-800 leading-relaxed focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($pageData['meta_description'] ?? ''); ?></textarea>
                 </div>
+
+                <details class="group">
+                    <summary class="cursor-pointer text-[11px] font-bold text-brand-blue select-none"><i class="fas fa-chevron-right text-[9px] mr-1 group-open:rotate-90 transition-transform"></i> Advanced SEO: keywords, share image, canonical, breadcrumb, indexing</summary>
+                    <div class="mt-3 space-y-3">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <div>
+                                <label class="block font-bold text-slate-800 mb-1">Meta keywords (comma separated)</label>
+                                <input type="text" name="meta_keywords" value="<?php echo htmlspecialchars($pageData['meta_keywords'] ?? ''); ?>" placeholder="Leave blank to use the site default" class="w-full px-3.5 py-2 bg-white border border-slate-200 rounded-xl text-xs font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block font-bold text-slate-800 mb-1">Canonical URL (only if this page duplicates another)</label>
+                                <input type="text" name="canonical" value="<?php echo htmlspecialchars($pageData['canonical'] ?? ''); ?>" placeholder="other-page-slug or https://…" class="w-full px-3.5 py-2 bg-white border border-slate-200 rounded-xl text-xs font-mono focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block font-bold text-slate-800 mb-1">Breadcrumb label (shown in the hero trail &amp; Google)</label>
+                                <input type="text" name="breadcrumb_label" value="<?php echo htmlspecialchars($pageData['breadcrumb_label'] ?? ''); ?>" placeholder="<?php echo htmlspecialchars($pageMeta['title'] ?? 'Page name'); ?>" class="w-full px-3.5 py-2 bg-white border border-slate-200 rounded-xl text-xs font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block font-bold text-slate-800 mb-1">Breadcrumb parent page</label>
+                                <select name="breadcrumb_parent" class="w-full px-3.5 py-2 bg-white border border-slate-200 rounded-xl text-xs font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                                    <option value="">Home only</option>
+                                    <?php foreach ($pagesCatalog as $pc): if (empty($pc['slug']) || $pc['slug'] === $slug || $pc['slug'] === 'index') continue; ?>
+                                    <option value="<?php echo htmlspecialchars($pc['slug']); ?>" <?php echo ($pageData['breadcrumb_parent'] ?? '') === $pc['slug'] ? 'selected' : ''; ?>><?php echo htmlspecialchars($pc['title'] ?? $pc['slug']); ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block font-bold text-slate-800 mb-1">Hero badge icon (Font Awesome, e.g. fa-brain)</label>
+                                <input type="text" name="hero_icon" value="<?php echo htmlspecialchars($pageData['hero_icon'] ?? ''); ?>" placeholder="fa-brain" class="w-full px-3.5 py-2 bg-white border border-slate-200 rounded-xl text-xs font-mono focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            </div>
+                            <label class="flex items-center space-x-2 pt-5 text-xs font-bold text-slate-700">
+                                <input type="checkbox" name="robots_noindex" value="1" <?php echo !empty($pageData['robots_noindex']) ? 'checked' : ''; ?> class="w-4 h-4 rounded">
+                                <span>Hide from Google (noindex) and leave out of the sitemap</span>
+                            </label>
+                        </div>
+                        <?php cms_image_field('og_image', $pageData['og_image'] ?? '', [
+                            'label' => 'Social share image (WhatsApp / Facebook preview)', 'folder' => 'seo', 'size' => '1200 × 630 px',
+                            'hint' => 'Falls back to the hero banner, then to the default share image from Settings.',
+                            'preview_class' => 'w-28 h-16',
+                        ]); ?>
+                    </div>
+                </details>
             </div>
         </div>
 
