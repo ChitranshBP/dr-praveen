@@ -40,6 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $message = trim($_POST['message'] ?? '');
         $video_id = trim($_POST['video_id'] ?? '');
         $featured = isset($_POST['featured']);
+        $type = ($_POST['type'] ?? 'review') === 'story' ? 'story' : 'review';
+        $title = trim($_POST['title'] ?? '');
+        $city = trim($_POST['city'] ?? '');
 
         if ($id) {
             foreach ($testimonials as &$t) {
@@ -51,6 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $t['message'] = $message;
                     $t['video_id'] = $video_id;
                     $t['featured'] = $featured;
+                    $t['type'] = $type;
+                    $t['title'] = $title;
+                    $t['city'] = $city;
                     break;
                 }
             }
@@ -65,6 +71,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'video_id' => $video_id,
                 'featured' => $featured,
                 'date' => date('Y-m-d'),
+                'type' => $type,
+                'title' => $title,
+                'city' => $city,
                 'order' => count($testimonials) + 1
             ];
         }
@@ -101,6 +110,7 @@ require_once __DIR__ . '/includes/header.php';
                 <div class="flex items-center justify-between mb-2">
                     <div class="flex items-center space-x-2">
                         <span class="drag-handle cursor-grab text-slate-300 hover:text-slate-500" title="Drag to reorder"><i class="fas fa-grip-vertical"></i></span>
+                        <?php if (($t['type'] ?? 'review') === 'story'): ?><span class="px-1.5 py-0.5 rounded bg-violet-100 text-violet-700 text-[9px] font-bold uppercase">Story</span><?php endif; ?>
                         <span class="font-bold text-xs text-slate-900"><?php echo htmlspecialchars($t['name']); ?></span>
                         <span class="text-[11px] text-slate-400">&bull; <?php echo htmlspecialchars($t['role']); ?></span>
                     </div>
@@ -140,6 +150,26 @@ require_once __DIR__ . '/includes/header.php';
                 <div>
                     <label class="block text-xs font-bold text-slate-700 mb-1">Patient Name</label>
                     <input type="text" name="name" value="<?php echo htmlspecialchars($editT['name'] ?? ''); ?>" required class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Type</label>
+                    <?php $curType = $editT['type'] ?? 'review'; ?>
+                    <select name="type" id="testimonial-type" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none" onchange="document.getElementById('story-fields').classList.toggle('hidden', this.value !== 'story')">
+                        <option value="review" <?php echo $curType !== 'story' ? 'selected' : ''; ?>>Short review (homepage, About, reviews pages)</option>
+                        <option value="story" <?php echo $curType === 'story' ? 'selected' : ''; ?>>Success story (long form, Patient Success Stories page)</option>
+                    </select>
+                </div>
+
+                <div id="story-fields" class="grid grid-cols-2 gap-3 <?php echo $curType === 'story' ? '' : 'hidden'; ?>">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Story Title</label>
+                        <input type="text" name="title" value="<?php echo htmlspecialchars($editT['title'] ?? ''); ?>" placeholder="e.g. Back on My Feet After a Stroke" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">City</label>
+                        <input type="text" name="city" value="<?php echo htmlspecialchars($editT['city'] ?? ''); ?>" placeholder="e.g. Gurgaon" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">

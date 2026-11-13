@@ -77,68 +77,37 @@ $pageContent = get_page_content('neurology-patient-testimonials', [
 <section class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Testimonial 1 -->
+            <?php
+            // Reviews are managed in CMS → Testimonials
+            $reviewPalette = ['electric-blue', 'cyan-accent', 'deep-indigo'];
+            $reviews = cms_testimonials() ?? [];
+            foreach ($reviews as $rvIdx => $rv):
+                $accent = $reviewPalette[$rvIdx % count($reviewPalette)];
+                $initial = function_exists('mb_substr') ? mb_substr(trim((string)$rv['name']), 0, 1) : substr(trim((string)$rv['name']), 0, 1);
+            ?>
             <div class="bg-slate-50 border border-slate-200/50 rounded-3xl p-6 md:p-8 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
                 <div class="space-y-4">
                     <div class="flex items-center space-x-1 text-amber-400">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <?php for ($s = 0; $s < (int)$rv['rating']; $s++): ?><i class="fas fa-star"></i><?php endfor; ?>
                     </div>
                     <p class="text-sm text-dark-grey/75 italic leading-relaxed">
-                        "My father was admitted under Dr. Praveen Gupta after a sudden brain stroke. His quick decision-making and mechanical thrombectomy procedure saved my father's life. Today, he is walking and talking normally. We are forever grateful to Dr. Praveen."
+                        "<?php echo cms_render_html($rv['message']); ?>"
                     </p>
                 </div>
                 <div class="flex items-center space-x-3 pt-6 border-t border-slate-200/60 mt-6">
-                    <div class="w-10 h-10 bg-electric-blue/10 rounded-full flex items-center justify-center text-electric-blue font-bold text-sm">
-                        R
+                    <div class="w-10 h-10 bg-<?php echo $accent; ?>/10 rounded-full flex items-center justify-center text-<?php echo $accent; ?> font-bold text-sm">
+                        <?php echo htmlspecialchars(strtoupper((string)$initial)); ?>
                     </div>
                     <div>
-                        <h4 class="font-bold text-dark-grey text-sm">Rajesh Kumar</h4>
-                        <span class="text-xs text-electric-blue font-semibold">Brain Stroke Survivor's Son</span>
+                        <h4 class="font-bold text-dark-grey text-sm"><?php echo htmlspecialchars($rv['name']); ?></h4>
+                        <span class="text-xs text-<?php echo $accent; ?> font-semibold"><?php echo htmlspecialchars($rv['role'] . ($rv['condition'] !== '' && stripos($rv['role'], $rv['condition']) === false ? ' · ' . $rv['condition'] : '')); ?></span>
                     </div>
                 </div>
             </div>
-
-            <!-- Testimonial 2 -->
-            <div class="bg-slate-50 border border-slate-200/50 rounded-3xl p-6 md:p-8 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
-                <div class="space-y-4">
-                    <div class="flex items-center space-x-1 text-amber-400">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="text-sm text-dark-grey/75 italic leading-relaxed">
-                        "I suffered from chronic migraine for over 7 years. I consulted many doctors but got no relief. After consulting Dr. Praveen Gupta, my migraine frequency has dropped from daily to almost zero. His treatment plan has changed my life."
-                    </p>
-                </div>
-                <div class="flex items-center space-x-3 pt-6 border-t border-slate-200/60 mt-6">
-                    <div class="w-10 h-10 bg-cyan-accent/10 rounded-full flex items-center justify-center text-cyan-accent font-bold text-sm">
-                        S
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-dark-grey text-sm">Sneha Sharma</h4>
-                        <span class="text-xs text-cyan-accent font-semibold">Chronic Migraine Patient</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Testimonial 3 -->
-            <div class="bg-slate-50 border border-slate-200/50 rounded-3xl p-6 md:p-8 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
-                <div class="space-y-4">
-                    <div class="flex items-center space-x-1 text-amber-400">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p class="text-sm text-dark-grey/75 italic leading-relaxed">
-                        "Dr. Praveen Gupta successfully managed my daughter's drug-resistant epilepsy. Her seizures are now completely controlled, and she has started attending school regularly. Thank you so much for the care and support!"
-                    </p>
-                </div>
-                <div class="flex items-center space-x-3 pt-6 border-t border-slate-200/60 mt-6">
-                    <div class="w-10 h-10 bg-deep-indigo/10 rounded-full flex items-center justify-center text-deep-indigo font-bold text-sm">
-                        P
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-dark-grey text-sm">Pooja Verma</h4>
-                        <span class="text-xs text-deep-indigo font-semibold">Parent of Epilepsy Patient</span>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach; ?>
+            <?php if (empty($reviews)): ?>
+            <p class="col-span-full text-center text-sm text-dark-grey/55">Patient reviews will appear here once they are added in the CMS.</p>
+            <?php endif; ?>
         </div>
     </div>
 </section>

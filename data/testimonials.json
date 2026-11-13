@@ -8,7 +8,9 @@
         "message": "I would like to express my heartfelt gratitude to Dr. Praveen Gupta and his outstanding team for the exceptional care during my mother's treatment for acute neuropathy. Dr. Gupta's clinical expertise, calm approach, and ability to explain every aspect of the treatment gave our family immense confidence.",
         "video_id": "",
         "featured": true,
-        "date": "2026-08-25"
+        "date": "2026-08-25",
+        "order": 1,
+        "type": "review"
     },
     {
         "id": "fcdcf6b589c82d2c",
@@ -19,7 +21,9 @@
         "message": "We are extremely grateful to Dr. Praveen Gupta for the exceptional care and treatment provided to my father during his brain stroke surgery. From the very beginning, Dr. Gupta guided us with confidence, clarity, and compassion during a very difficult time for our family.",
         "video_id": "kEwXD0aT_rQ",
         "featured": true,
-        "date": "2026-08-25"
+        "date": "2026-08-25",
+        "order": 2,
+        "type": "review"
     },
     {
         "id": "9d18641bc4b434bc",
@@ -30,7 +34,9 @@
         "message": "Really good experience at Dr. Praveen Gupta's clinic. My vertigo and dizziness improved a lot. My condition was explained in a way I could easily understand. I felt much better after following the treatment. Highly recommended.",
         "video_id": "",
         "featured": true,
-        "date": "2026-08-25"
+        "date": "2026-08-25",
+        "order": 3,
+        "type": "review"
     },
     {
         "id": "5c000ce3ea63da45",
@@ -41,6 +47,92 @@
         "message": "Dr. Praveen Gupta is a brilliant, empathetic, and very supportive physician. I struggled with a neurological disorder for a decade, but under his care, I was completely cured in 10 days. He is genuinely an embodiment of compassion and healing.",
         "video_id": "jg4e8bjYl-A",
         "featured": true,
-        "date": "2026-08-25"
+        "date": "2026-08-25",
+        "order": 4,
+        "type": "review"
+    },
+    {
+        "id": "89ee957c5ec95f99",
+        "name": "Ramesh Chandra",
+        "role": "Patient",
+        "rating": 5,
+        "condition": "Parkinson's Disease",
+        "message": "My hand tremors had gotten so severe that I could no longer hold a pen, sign checks, or even drink tea without spilling. It was frustrating and humiliating. Dr. Praveen Gupta recommended DBS. The surgery went smoothly, and once the stimulator was programmed, my tremors stopped almost completely. Today, I can write again and enjoy independent living.",
+        "video_id": "",
+        "featured": false,
+        "date": "2026-11-13",
+        "type": "story",
+        "title": "Regaining My Independence After DBS",
+        "city": "Gurgaon",
+        "order": 5
+    },
+    {
+        "id": "fbc3849c04c0f9c9",
+        "name": "Priya Verma",
+        "role": "Patient",
+        "rating": 5,
+        "condition": "Acute Stroke Care",
+        "message": "When my husband suddenly couldn't raise his left arm and his speech was slurred, we panicked. We called the emergency stroke helpline and reached Marengo Asia Hospital. The stroke team was ready, and Dr. Praveen Gupta guided his mechanical thrombectomy. Within 2 days, he was walking and speaking normally. We are forever grateful for the rapid, professional response.",
+        "video_id": "",
+        "featured": false,
+        "date": "2026-11-13",
+        "type": "story",
+        "title": "Back on My Feet After a Stroke",
+        "city": "Delhi",
+        "order": 6
+    },
+    {
+        "id": "3120bf8743fcbb13",
+        "name": "Mrs. Kapoor (Parent)",
+        "role": "Patient",
+        "rating": 5,
+        "condition": "Epilepsy Care",
+        "message": "Our teenage daughter suffered from recurrent seizures that multiple medications failed to control. Dr. Gupta set up prolonged video-EEG monitoring to identify the focus. By adjusting her dosage and introducing advanced anti-seizure medication, her seizures have stopped entirely for over two years. She is back in school and thriving.",
+        "video_id": "",
+        "featured": false,
+        "date": "2026-11-13",
+        "type": "story",
+        "title": "Seizure-Free After Years of Struggle",
+        "city": "Noida",
+        "order": 7
+    },
+    {
+        "id": "da5fab8a128c4ec7",
+        "name": "Rajesh Kumar",
+        "role": "Brain Stroke Survivor's Son",
+        "rating": 5,
+        "condition": "",
+        "message": "My father was admitted under Dr. Praveen Gupta after a sudden brain stroke. His quick decision-making and mechanical thrombectomy procedure saved my father's life. Today, he is walking and talking normally. We are forever grateful to Dr. Praveen.",
+        "video_id": "",
+        "featured": false,
+        "date": "2026-11-13",
+        "type": "review",
+        "order": 8
+    },
+    {
+        "id": "826f5793e464bdd2",
+        "name": "Sneha Sharma",
+        "role": "Chronic Migraine Patient",
+        "rating": 5,
+        "condition": "",
+        "message": "I suffered from chronic migraine for over 7 years. I consulted many doctors but got no relief. After consulting Dr. Praveen Gupta, my migraine frequency has dropped from daily to almost zero. His treatment plan has changed my life.",
+        "video_id": "",
+        "featured": false,
+        "date": "2026-11-13",
+        "type": "review",
+        "order": 9
+    },
+    {
+        "id": "8a547bd5c7f59c57",
+        "name": "Pooja Verma",
+        "role": "Parent of Epilepsy Patient",
+        "rating": 5,
+        "condition": "",
+        "message": "Dr. Praveen Gupta successfully managed my daughter's drug-resistant epilepsy. Her seizures are now completely controlled, and she has started attending school regularly. Thank you so much for the care and support!",
+        "video_id": "",
+        "featured": false,
+        "date": "2026-11-13",
+        "type": "review",
+        "order": 10
     }
 ]

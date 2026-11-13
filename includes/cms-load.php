@@ -140,10 +140,18 @@ function cms_blog_categories() {
  *
  * Normalized keys: name, role, message, rating, condition, video_id, featured, date
  */
-function cms_testimonials() {
+function cms_testimonials($type = 'review') {
     $raw = cms_json_read(CMS_DATA_DIR . '/testimonials.json');
     if (!is_array($raw) || empty($raw)) {
         return null;
+    }
+    // "review" (default) = short quotes used in sliders and review grids;
+    // "story" = long-form success stories with a title and city; "all" = both.
+    if ($type !== 'all') {
+        $raw = array_filter($raw, function ($t) use ($type) {
+            $tt = is_array($t) ? (string)($t['type'] ?? 'review') : '';
+            return $tt === $type;
+        });
     }
     // Honour the display order chosen in CMS → Testimonials.
     $raw = array_values(array_filter($raw, 'is_array'));
@@ -168,9 +176,79 @@ function cms_testimonials() {
             'video_id'  => trim((string)($t['video_id'] ?? '')),
             'featured'  => !empty($t['featured']),
             'date'      => (string)($t['date'] ?? ''),
+            'type'      => (string)($t['type'] ?? 'review'),
+            'title'     => trim((string)($t['title'] ?? '')),
+            'city'      => trim((string)($t['city'] ?? '')),
         ];
     }
     return empty($out) ? null : $out;
+}
+
+/**
+ * Parse a "key|Label" per-line list setting into [key => label], falling
+ * back to $defaults when the setting is empty. Used for gallery / video
+ * filter chips (CMS → Settings → Lists & Categories).
+ */
+function cms_setting_options($key, array $defaults = []) {
+    global $cmsSettings;
+    $raw = trim((string)($cmsSettings[$key] ?? ''));
+    if ($raw === '') {
+        return $defaults;
+    }
+    $opts = [];
+    foreach (preg_split('/\r\n|\r|\n/', $raw) as $line) {
+        $line = trim($line);
+        if ($line === '') {
+            continue;
+        }
+        if (strpos($line, '|') !== false) {
+            [$k, $l] = array_map('trim', explode('|', $line, 2));
+        } else {
+            $l = $line;
+            $k = trim(strtolower(preg_replace('/[^a-z0-9]+/i', '-', $line)), '-');
+        }
+        if ($k !== '') {
+            $opts[$k] = $l;
+        }
+    }
+    return $opts ?: $defaults;
+}
+
+/**
+ * Education videos for a page's "Watch & Learn" section.
+ * Uses the explicit list saved on the page (data/pages/{slug}.json →
+ * related_videos, in order) and otherwise every video tagged with the page
+ * in CMS → Education Videos.
+ */
+function cms_videos_for_page($slug) {
+    $slug = preg_replace('/[^a-zA-Z0-9_-]/', '', (string)$slug);
+    $videos = cms_collection('videos');
+    if ($slug === '' || empty($videos)) {
+        return [];
+    }
+    $byId = [];
+    foreach ($videos as $v) {
+        if (!empty($v['youtube_id'])) {
+            $byId[$v['youtube_id']] = $v;
+        }
+    }
+    $page = function_exists('get_page_content') ? get_page_content($slug, []) : [];
+    $explicit = isset($page['related_videos']) && is_array($page['related_videos']) ? $page['related_videos'] : null;
+    $out = [];
+    if ($explicit !== null) {
+        foreach ($explicit as $vid) {
+            if (isset($byId[$vid])) {
+                $out[] = $byId[$vid];
+            }
+        }
+        return $out;
+    }
+    foreach ($videos as $v) {
+        if (!empty($v['related_pages']) && is_array($v['related_pages']) && in_array($slug, $v['related_pages'], true)) {
+            $out[] = $v;
+        }
+    }
+    return $out;
 }
 
 /**

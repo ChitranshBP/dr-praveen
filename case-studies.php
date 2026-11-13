@@ -62,113 +62,66 @@ $pageContent = get_page_content('case-studies', [
         </div>
 
         <div class="space-y-12">
-            <!-- Case 1: Stroke (Text + Video) -->
+            <?php
+            // Case studies are managed in CMS → Case Studies (data/collections/case_studies.json)
+            $caseBadgeClasses = [
+                'red' => 'bg-red-100 text-red-700', 'electric-blue' => 'bg-electric-blue/10 text-electric-blue',
+                'cyan-accent' => 'bg-cyan-accent/15 text-cyan-800', 'deep-indigo' => 'bg-deep-indigo/10 text-deep-indigo',
+                'dark' => 'bg-dark-grey/10 text-dark-grey', 'emerald' => 'bg-emerald-100 text-emerald-700', 'amber' => 'bg-amber-100 text-amber-700',
+            ];
+            foreach (cms_collection('case_studies') as $csIdx => $cs):
+                $mediaFirst = ($csIdx % 2 === 1);
+                $csYt = trim((string)($cs['youtube_id'] ?? ''));
+                $csImg = $csYt === '' ? cms_media_path($cs['image'] ?? '') : '';
+                $badgeCls = $caseBadgeClasses[$cs['badge_color'] ?? 'electric-blue'] ?? $caseBadgeClasses['electric-blue'];
+                $badgeIcon = trim((string)($cs['badge_icon'] ?? 'fa-brain'));
+                $hasMedia = $csYt !== '' || $csImg !== '';
+            ?>
             <div class="bg-slate-50 border border-slate-200/50 rounded-[32px] overflow-hidden hover:shadow-xl transition-all duration-500 grid grid-cols-1 lg:grid-cols-12 items-center gap-6 lg:gap-0 observe">
-                <!-- Text Content (7 cols) -->
-                <div class="lg:col-span-7 p-8 md:p-10 space-y-4">
-                    <div class="inline-flex items-center space-x-2 bg-red-100 text-red-700 text-xs font-bold px-3 py-1 rounded-full">
-                        <i class="fas fa-heartbeat animate-pulse"></i>
-                        <span>Acute Ischemic Stroke</span>
-                    </div>
-                    <h3 class="text-2xl font-bold text-deep-indigo font-serif">Thrombectomy During Golden Hour</h3>
-                    <p class="text-sm text-dark-grey/70 leading-relaxed">
-                        A 62-year-old patient arrived with sudden-onset left-sided paralysis and speech slurring. Activase (tPA) thrombolysis was administered within 40 minutes, followed by successful mechanical thrombectomy to clear a right MCA clot. The patient regained motor control in 48 hours.
-                    </p>
-                    <div class="pt-2 flex items-center space-x-4 text-xs font-semibold text-dark-grey/60">
-                        <span><i class="far fa-clock mr-1.5 text-electric-blue"></i>Door-to-Needle: 40 mins</span>
-                        <span><i class="fas fa-user-check mr-1.5 text-electric-blue"></i>Outcome: Full Recovery</span>
-                    </div>
+                <?php if ($hasMedia && $mediaFirst): ?>
+                <?php if ($csYt !== ''): ?>
+                <div class="lg:col-span-5 order-2 lg:order-1 relative aspect-video lg:h-full bg-black flex items-center justify-center overflow-hidden">
+                    <iframe class="w-full h-full lg:absolute lg:inset-0" src="https://www.youtube.com/embed/<?php echo htmlspecialchars($csYt); ?>?rel=0&modestbranding=1" title="<?php echo htmlspecialchars($cs['title'] ?? 'Patient story'); ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                 </div>
-                <!-- Video Embed (5 cols) -->
-                <div class="lg:col-span-5 relative aspect-video lg:h-full bg-black flex items-center justify-center overflow-hidden">
-                    <iframe class="w-full h-full lg:absolute lg:inset-0" 
-                            src="https://www.youtube.com/embed/QhoPKOgHrwY?rel=0&modestbranding=1" 
-                            title="Patient Stroke Recovery Story" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                    </iframe>
-                </div>
-            </div>
-
-            <!-- Case 2: Parkinson's DBS (Image + Text) -->
-            <div class="bg-slate-50 border border-slate-200/50 rounded-[32px] overflow-hidden hover:shadow-xl transition-all duration-500 grid grid-cols-1 lg:grid-cols-12 items-center gap-6 lg:gap-0 observe">
-                <!-- Image Slot (5 cols - comes first on desktop for alternating layout) -->
+                <?php else: ?>
                 <div class="lg:col-span-5 order-2 lg:order-1 relative aspect-[4/3] lg:h-full overflow-hidden bg-gradient-to-br from-soft-cyan to-silver-grey">
-                    <img src="assets/ggn-nuro-images/dr-praveen-gupta.webp" 
-                         alt="Dr. Praveen Gupta providing neurology consultation" 
-                         class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700">
+                    <img src="<?php echo htmlspecialchars($csImg); ?>" alt="<?php echo htmlspecialchars($cs['alt'] ?? $cs['title'] ?? ''); ?>" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700" loading="lazy">
                 </div>
-                <!-- Text Content (7 cols - comes second) -->
-                <div class="lg:col-span-7 order-1 lg:order-2 p-8 md:p-10 space-y-4">
-                    <div class="inline-flex items-center space-x-2 bg-electric-blue/10 text-electric-blue text-xs font-bold px-3 py-1 rounded-full">
-                        <i class="fas fa-brain"></i>
-                        <span>Parkinson's Disease</span>
-                    </div>
-                    <h3 class="text-2xl font-bold text-deep-indigo font-serif">DBS for Tremor Control</h3>
-                    <p class="text-sm text-dark-grey/70 leading-relaxed">
-                        A 55-year-old patient experienced severe rigidity and tremors that resisted oral medications. Following a detailed cognitive and MRI screen, the patient underwent bilateral subthalamic nucleus Deep Brain Stimulation (STN-DBS) led by Dr. Praveen Gupta's team. Hand tremors decreased by 85%, allowing writing function.
-                    </p>
-                    <div class="pt-2 flex items-center space-x-4 text-xs font-semibold text-dark-grey/60">
-                        <span><i class="fas fa-microchip mr-1.5 text-electric-blue"></i>STN-DBS Stimulation</span>
-                        <span><i class="fas fa-check-circle mr-1.5 text-electric-blue"></i>Outcome: 85% Tremor Reduction</span>
-                    </div>
-                </div>
-            </div>
+                <?php endif; ?>
+                <?php endif; ?>
 
-            <!-- Case 3: Refractory Epilepsy (Text + Video) -->
-            <div class="bg-slate-50 border border-slate-200/50 rounded-[32px] overflow-hidden hover:shadow-xl transition-all duration-500 grid grid-cols-1 lg:grid-cols-12 items-center gap-6 lg:gap-0 observe">
-                <!-- Text Content (7 cols) -->
-                <div class="lg:col-span-7 p-8 md:p-10 space-y-4">
-                    <div class="inline-flex items-center space-x-2 bg-cyan-accent/15 text-cyan-800 text-xs font-bold px-3 py-1 rounded-full">
-                        <i class="fas fa-wave-square"></i>
-                        <span>Refractory Epilepsy</span>
+                <div class="<?php echo $hasMedia ? 'lg:col-span-7' : 'lg:col-span-12'; ?> <?php echo ($hasMedia && $mediaFirst) ? 'order-1 lg:order-2 ' : ''; ?>p-8 md:p-10 space-y-4">
+                    <?php if (trim((string)($cs['badge_label'] ?? '')) !== ''): ?>
+                    <div class="inline-flex items-center space-x-2 <?php echo $badgeCls; ?> text-xs font-bold px-3 py-1 rounded-full">
+                        <?php if ($badgeIcon !== '' && $badgeIcon !== 'none'): ?><i class="fas <?php echo htmlspecialchars($badgeIcon); ?><?php echo $badgeIcon === 'fa-heartbeat' ? ' animate-pulse' : ''; ?>"></i><?php endif; ?>
+                        <span><?php echo htmlspecialchars($cs['badge_label']); ?></span>
                     </div>
-                    <h3 class="text-2xl font-bold text-deep-indigo font-serif">Anti-Seizure Customization</h3>
-                    <p class="text-sm text-dark-grey/70 leading-relaxed">
-                        A 24-year-old student had recurrent, generalized seizures despite taking three separate anti-epileptic medications. Video-EEG monitoring mapped focus points. Dr. Praveen Gupta customized a tailored medical dosage and drug combination, achieving seizure-free status for 3+ years.
-                    </p>
+                    <?php endif; ?>
+                    <h3 class="text-2xl font-bold text-deep-indigo font-serif"><?php echo htmlspecialchars($cs['title'] ?? ''); ?></h3>
+                    <div class="text-sm text-dark-grey/70 leading-relaxed">
+                        <?php echo cms_render_html($cs['narrative'] ?? ''); ?>
+                    </div>
+                    <?php if (trim((string)($cs['metric1_text'] ?? '')) !== '' || trim((string)($cs['metric2_text'] ?? '')) !== ''): ?>
                     <div class="pt-2 flex items-center space-x-4 text-xs font-semibold text-dark-grey/60">
-                        <span><i class="fas fa-video mr-1.5 text-electric-blue"></i>Video-EEG Mapping</span>
-                        <span><i class="fas fa-shield-alt mr-1.5 text-electric-blue"></i>Outcome: Seizure-free 3+ Years</span>
+                        <?php if (trim((string)($cs['metric1_text'] ?? '')) !== ''): ?><span><i class="<?php echo htmlspecialchars(trim((string)($cs['metric1_icon'] ?? 'fa-clock')) === 'fa-clock' ? 'far fa-clock' : 'fas ' . trim((string)($cs['metric1_icon'] ?? 'fa-clock'))); ?> mr-1.5 text-electric-blue"></i><?php echo htmlspecialchars($cs['metric1_text']); ?></span><?php endif; ?>
+                        <?php if (trim((string)($cs['metric2_text'] ?? '')) !== ''): ?><span><i class="fas <?php echo htmlspecialchars(trim((string)($cs['metric2_icon'] ?? 'fa-check-circle'))); ?> mr-1.5 text-electric-blue"></i><?php echo htmlspecialchars($cs['metric2_text']); ?></span><?php endif; ?>
                     </div>
+                    <?php endif; ?>
                 </div>
-                <!-- Video Embed (5 cols) -->
+
+                <?php if ($hasMedia && !$mediaFirst): ?>
+                <?php if ($csYt !== ''): ?>
                 <div class="lg:col-span-5 relative aspect-video lg:h-full bg-black flex items-center justify-center overflow-hidden">
-                    <iframe class="w-full h-full lg:absolute lg:inset-0" 
-                            src="https://www.youtube.com/embed/kEwXD0aT_rQ?rel=0&modestbranding=1" 
-                            title="Patient Epilepsy Recovery Story" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                    </iframe>
+                    <iframe class="w-full h-full lg:absolute lg:inset-0" src="https://www.youtube.com/embed/<?php echo htmlspecialchars($csYt); ?>?rel=0&modestbranding=1" title="<?php echo htmlspecialchars($cs['title'] ?? 'Patient story'); ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                 </div>
+                <?php else: ?>
+                <div class="lg:col-span-5 relative aspect-[4/3] lg:h-full overflow-hidden bg-gradient-to-br from-soft-cyan to-silver-grey">
+                    <img src="<?php echo htmlspecialchars($csImg); ?>" alt="<?php echo htmlspecialchars($cs['alt'] ?? $cs['title'] ?? ''); ?>" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy">
+                </div>
+                <?php endif; ?>
+                <?php endif; ?>
             </div>
-
-            <!-- Case 4: Chronic Migraine (Image + Text) -->
-            <div class="bg-slate-50 border border-slate-200/50 rounded-[32px] overflow-hidden hover:shadow-xl transition-all duration-500 grid grid-cols-1 lg:grid-cols-12 items-center gap-6 lg:gap-0 observe">
-                <!-- Image Slot (5 cols - comes first for alternating layout) -->
-                <div class="lg:col-span-5 order-2 lg:order-1 relative aspect-[4/3] lg:h-full overflow-hidden bg-gradient-to-br from-soft-cyan to-silver-grey">
-                    <img src="assets/full-image/dpg-award.webp" 
-                         alt="Dr. Praveen Gupta Award Recognition" 
-                         class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                </div>
-                <!-- Text Content (7 cols - comes second) -->
-                <div class="lg:col-span-7 order-1 lg:order-2 p-8 md:p-10 space-y-4">
-                    <div class="inline-flex items-center space-x-2 bg-deep-indigo/10 text-deep-indigo text-xs font-bold px-3 py-1 rounded-full">
-                        <i class="fas fa-syringe"></i>
-                        <span>Chronic Migraine</span>
-                    </div>
-                    <h3 class="text-2xl font-bold text-deep-indigo font-serif">Botox Injection Therapy</h3>
-                    <p class="text-sm text-dark-grey/70 leading-relaxed">
-                        A 40-year-old professional had 18 headache days per month, severely impacting their work. Therapeutic botulinum toxin (Botox) injections were administered in a structured clinical session. Headache frequency dropped to 3 days per month.
-                    </p>
-                    <div class="pt-2 flex items-center space-x-4 text-xs font-semibold text-dark-grey/60">
-                        <span><i class="fas fa-calendar-alt mr-1.5 text-electric-blue"></i>Botox Protocol</span>
-                        <span><i class="fas fa-smile mr-1.5 text-electric-blue"></i>Outcome: 3 Headache Days/Month</span>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>

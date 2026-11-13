@@ -48,126 +48,40 @@ $pageContent = get_page_content('gallery', [
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Filter Tabs -->
         <div class="flex flex-wrap items-center justify-center gap-3 mb-10" id="gallery-filters">
+            <?php
+            // Photos + categories are managed in CMS → Photo Gallery (categories: Settings → Lists & Categories)
+            $galleryItems = cms_collection('gallery');
+            $galleryCategories = cms_setting_options('gallery_categories', ['awards' => 'Awards & Recognition', 'clinical' => 'Clinical Events']);
+            $usedCategories = [];
+            foreach ($galleryItems as $gi) { $usedCategories[(string)($gi['category'] ?? '')] = true; }
+            ?>
             <button class="filter-btn active px-5 py-2.5 rounded-full text-sm font-semibold border transition-all duration-300 bg-electric-blue text-white border-electric-blue shadow-md" data-filter="all">
                 All Photos
             </button>
-            <button class="filter-btn px-5 py-2.5 rounded-full text-sm font-semibold border transition-all duration-300 bg-white text-dark-grey/70 border-slate-200 hover:border-electric-blue" data-filter="awards">
-                Awards & Recognition
+            <?php foreach ($galleryCategories as $catKey => $catLabel): if (empty($usedCategories[$catKey])) continue; ?>
+            <button class="filter-btn px-5 py-2.5 rounded-full text-sm font-semibold border transition-all duration-300 bg-white text-dark-grey/70 border-slate-200 hover:border-electric-blue" data-filter="<?php echo htmlspecialchars($catKey); ?>">
+                <?php echo htmlspecialchars($catLabel); ?>
             </button>
-            <button class="filter-btn px-5 py-2.5 rounded-full text-sm font-semibold border transition-all duration-300 bg-white text-dark-grey/70 border-slate-200 hover:border-electric-blue" data-filter="clinical">
-                Clinical Events
-            </button>
+            <?php endforeach; ?>
         </div>
 
         <!-- Photos Grid -->
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" id="gallery-grid">
-            <!-- Award 1 -->
-            <div class="gallery-item awards relative group overflow-hidden rounded-[24px] bg-slate-50 border border-slate-200/50 aspect-square shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openLightbox('assets/awards/AWARD-PRAVEEN.webp', 'Dr. Praveen Gupta receiving national neurology award.')">
-                <img src="assets/awards/AWARD-PRAVEEN.webp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Award Ceremony" loading="lazy">
+            <?php foreach ($galleryItems as $gi):
+                $giImage = cms_media_path($gi['image'] ?? '');
+                if ($giImage === '') continue;
+                $giCat = (string)($gi['category'] ?? '');
+                $giCatLabel = $galleryCategories[$giCat] ?? $giCat;
+                $giCaption = trim((string)($gi['caption'] ?? '')) !== '' ? $gi['caption'] : ($gi['title'] ?? '');
+            ?>
+            <div class="gallery-item <?php echo htmlspecialchars($giCat); ?> relative group overflow-hidden rounded-[24px] bg-slate-50 border border-slate-200/50 aspect-square shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openLightbox(<?php echo htmlspecialchars(json_encode($giImage, JSON_UNESCAPED_SLASHES), ENT_QUOTES); ?>, <?php echo htmlspecialchars(json_encode((string)$giCaption, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE), ENT_QUOTES); ?>)">
+                <img src="<?php echo htmlspecialchars($giImage); ?>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="<?php echo htmlspecialchars($gi['alt'] ?? $gi['title'] ?? ''); ?>" loading="lazy">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                    <span class="text-xs text-cyan-accent font-bold uppercase tracking-wider">Award & Recognition</span>
-                    <h4 class="text-white font-bold text-base mt-1">Academic Excellence Award</h4>
+                    <span class="text-xs text-cyan-accent font-bold uppercase tracking-wider"><?php echo htmlspecialchars($giCatLabel); ?></span>
+                    <h4 class="text-white font-bold text-base mt-1"><?php echo htmlspecialchars($gi['title'] ?? ''); ?></h4>
                 </div>
             </div>
-
-            <!-- Award 2 -->
-            <div class="gallery-item awards relative group overflow-hidden rounded-[24px] bg-slate-50 border border-slate-200/50 aspect-square shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openLightbox('assets/awards/1.jpg', 'Award presentation ceremony.')">
-                <img src="assets/awards/1.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Award 1" loading="lazy">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                    <span class="text-xs text-cyan-accent font-bold uppercase tracking-wider">Award & Recognition</span>
-                    <h4 class="text-white font-bold text-base mt-1">Outstanding Contribution in Neurology</h4>
-                </div>
-            </div>
-
-            <!-- Award 3 -->
-            <div class="gallery-item awards relative group overflow-hidden rounded-[24px] bg-slate-50 border border-slate-200/50 aspect-square shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openLightbox('assets/awards/2.jpg', 'Dr. Praveen Gupta receiving certification of honor.')">
-                <img src="assets/awards/2.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Award 2" loading="lazy">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                    <span class="text-xs text-cyan-accent font-bold uppercase tracking-wider">Award & Recognition</span>
-                    <h4 class="text-white font-bold text-base mt-1">Neurology Leadership Award</h4>
-                </div>
-            </div>
-
-            <!-- Award 4 -->
-            <div class="gallery-item awards relative group overflow-hidden rounded-[24px] bg-slate-50 border border-slate-200/50 aspect-square shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openLightbox('assets/awards/3.jpg', 'Conference Keynote Award.')">
-                <img src="assets/awards/3.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Award 3" loading="lazy">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                    <span class="text-xs text-cyan-accent font-bold uppercase tracking-wider">Award & Recognition</span>
-                    <h4 class="text-white font-bold text-base mt-1">Stroke Awareness Champion</h4>
-                </div>
-            </div>
-
-            <!-- Clinical 1 -->
-            <div class="gallery-item clinical relative group overflow-hidden rounded-[24px] bg-slate-50 border border-slate-200/50 aspect-square shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openLightbox('assets/awards/4.jpg', 'Patient support group meeting.')">
-                <img src="assets/awards/4.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Clinical Event 1" loading="lazy">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                    <span class="text-xs text-cyan-accent font-bold uppercase tracking-wider">Clinical Event</span>
-                    <h4 class="text-white font-bold text-base mt-1">Brain Stroke Support Group</h4>
-                </div>
-            </div>
-
-            <!-- Clinical 2 -->
-            <div class="gallery-item clinical relative group overflow-hidden rounded-[24px] bg-slate-50 border border-slate-200/50 aspect-square shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openLightbox('assets/awards/5.jpg', 'Neurology awareness seminar.')">
-                <img src="assets/awards/5.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Clinical Event 2" loading="lazy">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                    <span class="text-xs text-cyan-accent font-bold uppercase tracking-wider">Clinical Event</span>
-                    <h4 class="text-white font-bold text-base mt-1">Gurgaon Neurology Seminar</h4>
-                </div>
-            </div>
-
-            <!-- Clinical 3: New Gallery 1 -->
-            <div class="gallery-item clinical relative group overflow-hidden rounded-[24px] bg-slate-50 border border-slate-200/50 aspect-square shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openLightbox('assets/awards/gallery_1.jpg', 'Clinical consultations and patient assessments.')">
-                <img src="assets/awards/gallery_1.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Clinical consultation" loading="lazy">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                    <span class="text-xs text-cyan-accent font-bold uppercase tracking-wider">Clinical Event</span>
-                    <h4 class="text-white font-bold text-base mt-1">Clinical Consultations</h4>
-                </div>
-            </div>
-
-            <!-- Clinical 4: New Gallery 2 -->
-            <div class="gallery-item clinical relative group overflow-hidden rounded-[24px] bg-slate-50 border border-slate-200/50 aspect-square shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openLightbox('assets/awards/gallery_2.jpg', 'Scientific talk on neurological advancements.')">
-                <img src="assets/awards/gallery_2.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Neurology seminar" loading="lazy">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                    <span class="text-xs text-cyan-accent font-bold uppercase tracking-wider">Clinical Event</span>
-                    <h4 class="text-white font-bold text-base mt-1">Advanced Neurology Seminar</h4>
-                </div>
-            </div>
-
-            <!-- Clinical 5: New Gallery 3 -->
-            <div class="gallery-item clinical relative group overflow-hidden rounded-[24px] bg-slate-50 border border-slate-200/50 aspect-square shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openLightbox('assets/awards/gallery_3.jpg', 'Medical conference address on brain wellness.')">
-                <img src="assets/awards/gallery_3.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Medical address" loading="lazy">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                    <span class="text-xs text-cyan-accent font-bold uppercase tracking-wider">Clinical Event</span>
-                    <h4 class="text-white font-bold text-base mt-1">Brain Wellness Address</h4>
-                </div>
-            </div>
-
-            <!-- Clinical 6: New Gallery 4 -->
-            <div class="gallery-item clinical relative group overflow-hidden rounded-[24px] bg-slate-50 border border-slate-200/50 aspect-square shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openLightbox('assets/awards/gallery_4.jpg', 'Community outreach for stroke awareness.')">
-                <img src="assets/awards/gallery_4.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Community outreach" loading="lazy">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                    <span class="text-xs text-cyan-accent font-bold uppercase tracking-wider">Clinical Event</span>
-                    <h4 class="text-white font-bold text-base mt-1">Community Stroke Program</h4>
-                </div>
-            </div>
-
-            <!-- Award 5: New Gallery 5 -->
-            <div class="gallery-item awards relative group overflow-hidden rounded-[24px] bg-slate-50 border border-slate-200/50 aspect-square shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openLightbox('assets/awards/gallery_5.jpg', 'Recognition for excellent healthcare services.')">
-                <img src="assets/awards/gallery_5.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Healthcare award" loading="lazy">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                    <span class="text-xs text-cyan-accent font-bold uppercase tracking-wider">Award & Recognition</span>
-                    <h4 class="text-white font-bold text-base mt-1">Healthcare Excellence Honor</h4>
-                </div>
-            </div>
-
-            <!-- Award 6: New Gallery 6 -->
-            <div class="gallery-item awards relative group overflow-hidden rounded-[24px] bg-slate-50 border border-slate-200/50 aspect-square shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openLightbox('assets/awards/gallery_6.jpg', 'Dr. Praveen Gupta receiving specialized research award.')">
-                <img src="assets/awards/gallery_6.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Research award ceremony" loading="lazy">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                    <span class="text-xs text-cyan-accent font-bold uppercase tracking-wider">Award & Recognition</span>
-                    <h4 class="text-white font-bold text-base mt-1">Advanced Neuro-Research Award</h4>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>

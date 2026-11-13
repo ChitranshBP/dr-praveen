@@ -5,6 +5,10 @@
 $isDarkHero = true;
 require_once __DIR__ . '/includes/header.php';
 
+// Videos + filter categories come from CMS → Education Videos / Settings → Lists & Categories
+$libraryVideos = cms_collection('videos');
+$videoCategories = cms_setting_options('video_categories', ['stroke' => 'Stroke', 'epilepsy' => 'Epilepsy', 'headache' => 'Headache', 'dementia' => 'Dementia', 'spine' => 'Spine/Nerve', 'rehab' => 'Rehab', 'wellness' => 'Wellness']);
+
 // Categories come from getVideoCategory() in includes/config.php
 
 $pageContent = get_page_content('neurology-video-library', [
@@ -62,27 +66,24 @@ $pageContent = get_page_content('neurology-video-library', [
                 <!-- Filter Buttons (7 columns) -->
                 <div class="md:col-span-7 flex flex-wrap gap-2 justify-start md:justify-end" id="category-filters">
                     <button class="filter-btn active px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-electric-blue text-white border-electric-blue" onclick="setCategory('all', this)">All</button>
-                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-slate-50 text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('stroke', this)">Stroke</button>
-                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-slate-50 text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('epilepsy', this)">Epilepsy</button>
-                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-slate-50 text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('headache', this)">Headache</button>
-                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-slate-50 text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('dementia', this)">Dementia</button>
-                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-slate-50 text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('spine', this)">Spine/Nerve</button>
-                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-slate-50 text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('rehab', this)">Rehab</button>
-                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-slate-50 text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('wellness', this)">Wellness</button>
+                    <?php foreach ($videoCategories as $vcKey => $vcLabel): ?>
+                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-slate-50 text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('<?php echo htmlspecialchars($vcKey); ?>', this)"><?php echo htmlspecialchars($vcLabel); ?></button>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
 
-        <?php if (isset($educationVideos) && !empty($educationVideos)): ?>
+        <?php if (!empty($libraryVideos)): ?>
             <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto" id="video-grid">
-                <?php foreach ($educationVideos as $vid): 
-                    $cat = getVideoCategory($vid['title']);
+                <?php foreach ($libraryVideos as $vid):
+                    $cat = (string)($vid['category'] ?? 'other');
+                    $catLabel = $videoCategories[$cat] ?? ucfirst($cat);
                 ?>
                     <div class="video-card bg-slate-50 border border-slate-200/50 rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300" data-category="<?php echo $cat; ?>" data-title="<?php echo htmlspecialchars(strtolower($vid['title'])); ?>">
                         <!-- Dynamic Iframe Loader Wrapper (Performance Optimized) -->
-                        <div class="relative aspect-video bg-black cursor-pointer group" onclick="loadPlayer(this, '<?php echo $vid['id']; ?>')">
+                        <div class="relative aspect-video bg-black cursor-pointer group" onclick="loadPlayer(this, <?php echo htmlspecialchars(json_encode($vid['youtube_id']), ENT_QUOTES); ?>)">
                             <!-- Thumbnail -->
-                            <img src="https://img.youtube.com/vi/<?php echo $vid['id']; ?>/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102" alt="<?php echo htmlspecialchars($vid['title']); ?>" loading="lazy">
+                            <img src="https://img.youtube.com/vi/<?php echo htmlspecialchars($vid['youtube_id']); ?>/hqdefault.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102" alt="<?php echo htmlspecialchars($vid['title']); ?>" loading="lazy">
                             <!-- Play Overlay -->
                             <div class="absolute inset-0 bg-black/25 group-hover:bg-black/45 transition-colors duration-300 flex items-center justify-center">
                                 <div class="w-14 h-14 bg-white/95 group-hover:bg-electric-blue rounded-full flex items-center justify-center text-electric-blue group-hover:text-white shadow-xl transition-all duration-300 transform scale-95 group-hover:scale-100">
@@ -92,13 +93,13 @@ $pageContent = get_page_content('neurology-video-library', [
                         </div>
                         <div class="p-6 space-y-2">
                             <span class="inline-block text-[10px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md">
-                                <?php echo ucfirst($cat); ?>
+                                <?php echo htmlspecialchars($catLabel); ?>
                             </span>
                             <h3 class="text-base font-bold text-deep-indigo leading-snug">
-                                <?php echo $vid['title']; ?>
+                                <?php echo htmlspecialchars($vid['title']); ?>
                             </h3>
                             <p class="text-xs text-dark-grey/65 leading-relaxed">
-                                <?php echo $vid['desc']; ?>
+                                <?php echo htmlspecialchars($vid['description'] ?? ''); ?>
                             </p>
                         </div>
                     </div>
@@ -115,7 +116,7 @@ $pageContent = get_page_content('neurology-video-library', [
                 <p class="text-xs text-dark-grey/55">Try adjusting your search keywords or choosing a different category filter above.</p>
             </div>
         <?php else: ?>
-            <p class="text-center text-xs text-dark-grey/55">No educational videos available in site configuration.</p>
+            <p class="text-center text-xs text-dark-grey/55">No videos yet. Add them in CMS → Education Videos.</p>
         <?php endif; ?>
     </div>
 </section>

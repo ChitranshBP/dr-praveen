@@ -1,40 +1,31 @@
 <?php
 /**
- * Related Videos Section
+ * Related Videos Section ("Watch & Learn")
  *
- * Renders the education videos that match the current page, using the
- * $pageVideos topic map in config.php. Pages with no mapping render nothing.
+ * Renders the education videos chosen for the current page. The list comes
+ * from CMS → Education Videos: either the explicit, ordered list saved on the
+ * page (data/pages/{slug}.json → related_videos) or every video tagged with
+ * this page. Pages with no videos render nothing.
  *
  * Usage — drop this line in just above the footer include:
  *     <?php require __DIR__ . '/includes/related-videos.php'; ?>
  *
  * Optional overrides, set before the require:
  *     $relatedVideosEyebrow  — badge label   (default "Video Guides")
- *     $relatedVideosHeading  — h2 HTML       (default "Watch & <spanâ€¦>Learn</span>")
+ *     $relatedVideosHeading  — h2 HTML       (default "Watch & <span…>Learn</span>")
  *     $relatedVideosIntro    — subtitle copy
  */
 
-$currentPageFile = str_replace('.php', '', basename($_SERVER['PHP_SELF'] ?? ''));
-$relatedIds      = $pageVideos[$currentPageFile] ?? [];
+$currentPageFile = $currentPage ?? str_replace('.php', '', basename($_SERVER['PHP_SELF'] ?? ''));
+$relatedVideos   = function_exists('cms_videos_for_page') ? cms_videos_for_page($currentPageFile) : [];
 
-if (!empty($relatedIds) && !empty($educationVideos)) {
-
-    // Resolve IDs to the full video records, preserving the order in the map
-    $videosById    = array_column($educationVideos, null, 'id');
-    $relatedVideos = [];
-    foreach ($relatedIds as $relatedId) {
-        if (isset($videosById[$relatedId])) {
-            $relatedVideos[] = $videosById[$relatedId];
-        }
-    }
-
-    if (!empty($relatedVideos)):
-        $eyebrow = $relatedVideosEyebrow ?? 'Video Guides';
-        $heading = $relatedVideosHeading ?? 'Watch & <span class="gradient-text">Learn</span>';
-        $intro   = $relatedVideosIntro   ?? 'Dr. Praveen Gupta explains the essentials in plain language — what to look out for, the treatment options available, and what to expect.';
+if (!empty($relatedVideos)):
+    $eyebrow = $relatedVideosEyebrow ?? 'Video Guides';
+    $heading = $relatedVideosHeading ?? 'Watch & <span class="gradient-text">Learn</span>';
+    $intro   = $relatedVideosIntro   ?? 'Dr. Praveen Gupta explains the essentials in plain language — what to look out for, the treatment options available, and what to expect.';
 ?>
 
-<!-- â•â•â•â•â•â•â•â• Related Videos â•â•â•â•â•â•â•â• -->
+<!-- ════════ Related Videos ════════ -->
 <section class="py-10 md:py-14 bg-[#edf5f9] relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -64,8 +55,8 @@ if (!empty($relatedIds) && !empty($educationVideos)) {
                                 <div class="relative w-full aspect-video bg-dark-grey">
                                     <iframe
                                         class="w-full h-full"
-                                        src="https://www.youtube.com/embed/<?php echo $video['id']; ?>?rel=0&modestbranding=1"
-                                        title="<?php echo htmlspecialchars($video['title']); ?>"
+                                        src="https://www.youtube.com/embed/<?php echo htmlspecialchars($video['youtube_id']); ?>?rel=0&modestbranding=1"
+                                        title="<?php echo htmlspecialchars($video['title'] ?? ''); ?>"
                                         frameborder="0"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                         allowfullscreen
@@ -76,10 +67,10 @@ if (!empty($relatedIds) && !empty($educationVideos)) {
                                 <!-- Card footer -->
                                 <div class="p-5">
                                     <h3 class="font-bold text-deep-indigo text-base leading-snug mb-1.5 group-hover:text-electric-blue transition-colors duration-300">
-                                        <?php echo $video['title']; ?>
+                                        <?php echo htmlspecialchars($video['title'] ?? ''); ?>
                                     </h3>
                                     <p class="text-sm text-dark-grey/60 leading-relaxed line-clamp-2">
-                                        <?php echo $video['desc']; ?>
+                                        <?php echo htmlspecialchars($video['description'] ?? ''); ?>
                                     </p>
                                 </div>
                             </div>
@@ -193,6 +184,4 @@ if (!empty($relatedIds) && !empty($educationVideos)) {
     </div>
 </section>
 
-<?php
-    endif;
-}
+<?php endif; ?>

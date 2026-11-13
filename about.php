@@ -5,6 +5,9 @@
 $isDarkHero = true;
 require_once __DIR__ . '/includes/header.php';
 
+// Award images come from CMS → Awards & Honours
+$awards = cms_collection('awards');
+
 $pageContent = get_page_content('about', [
     'hero_badge' => '',
     'hero_title' => '<span class="text-cyan-accent">Dr. Praveen Gupta</span>',

@@ -5,6 +5,9 @@
 $isDarkHero = true;
 require_once __DIR__ . '/includes/header.php';
 
+// Award images come from CMS → Awards & Honours
+$awards = cms_collection('awards');
+
 $pageContent = get_page_content('awards-and-recognition', [
     'hero_badge' => 'Honors & Certifications',
     'hero_title' => 'Awards & <span class="text-cyan-accent">Recognition</span>',
@@ -63,19 +66,19 @@ $pageContent = get_page_content('awards-and-recognition', [
                     <div class="group bg-slate-50 border border-slate-200/50 rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300">
                         <div class="relative overflow-hidden aspect-[4/3] bg-gradient-to-br from-deep-indigo/10 to-cyan-accent/10">
                             <!-- Image -->
-                            <img src="<?php echo $award['image']; ?>" alt="<?php echo $award['title']; ?>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <img src="<?php echo htmlspecialchars($award['image']); ?>" alt="<?php echo htmlspecialchars($award['alt'] ?? $award['title']); ?>" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-deep-indigo/40 via-transparent to-transparent"></div>
                         </div>
                         <div class="p-6">
                             <h3 class="text-sm font-bold text-deep-indigo leading-snug group-hover:text-electric-blue transition-colors">
-                                <?php echo $award['title']; ?>
+                                <?php echo htmlspecialchars($award['title']); ?>
                             </h3>
                         </div>
                     </div>
                 <?php endforeach; ?>
             </div>
         <?php else: ?>
-            <p class="text-center text-xs text-dark-grey/55">No awards data available in site configuration.</p>
+            <p class="text-center text-xs text-dark-grey/55">No awards yet. Add them in CMS → Awards & Honours.</p>
         <?php endif; ?>
     </div>
 </section>

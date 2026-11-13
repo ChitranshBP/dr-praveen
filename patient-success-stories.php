@@ -53,41 +53,33 @@ $pageContent = get_page_content('patient-success-stories', [
 <!-- Success Stories List -->
 <section class="py-16 bg-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        <!-- Story 1 -->
+        <?php
+        // Written success stories are testimonials of type "story" (CMS → Testimonials)
+        $storyPalette = [
+            ['text-cyan-accent bg-cyan-50 border-cyan-100'],
+            ['text-red-650 bg-red-50 border-red-100'],
+        ];
+        $stories = cms_testimonials('story') ?? [];
+        foreach ($stories as $stIdx => $st):
+            $pill = $storyPalette[$stIdx % count($storyPalette)][0];
+            $byline = trim((string)$st['name']) . (trim((string)($st['city'] ?? '')) !== '' ? ', ' . $st['city'] : '');
+        ?>
         <div class="bg-slate-50 border border-slate-200/50 p-8 rounded-3xl space-y-4 hover:shadow-md transition-shadow">
             <div class="flex items-center justify-between">
-                <h3 class="text-xl font-bold text-deep-indigo font-serif">Regaining My Independence After DBS</h3>
-                <span class="text-xs font-semibold text-cyan-accent bg-cyan-50 px-3 py-1 rounded-full border border-cyan-100">Parkinson's Disease</span>
+                <h3 class="text-xl font-bold text-deep-indigo font-serif"><?php echo htmlspecialchars(trim((string)($st['title'] ?? '')) !== '' ? $st['title'] : $st['condition']); ?></h3>
+                <?php if (trim((string)$st['condition']) !== ''): ?>
+                <span class="text-xs font-semibold <?php echo $pill; ?> px-3 py-1 rounded-full border"><?php echo htmlspecialchars($st['condition']); ?></span>
+                <?php endif; ?>
             </div>
             <p class="text-xs text-dark-grey/70 leading-relaxed italic">
-                "My hand tremors had gotten so severe that I could no longer hold a pen, sign checks, or even drink tea without spilling. It was frustrating and humiliating. Dr. Praveen Gupta recommended DBS. The surgery went smoothly, and once the stimulator was programmed, my tremors stopped almost completely. Today, I can write again and enjoy independent living."
+                "<?php echo cms_render_html($st['message']); ?>"
             </p>
-            <p class="text-[11px] font-bold text-deep-indigo text-right">— Ramesh Chandra, Gurgaon</p>
+            <p class="text-[11px] font-bold text-deep-indigo text-right">— <?php echo htmlspecialchars($byline); ?></p>
         </div>
-
-        <!-- Story 2 -->
-        <div class="bg-slate-50 border border-slate-200/50 p-8 rounded-3xl space-y-4 hover:shadow-md transition-shadow">
-            <div class="flex items-center justify-between">
-                <h3 class="text-xl font-bold text-deep-indigo font-serif">Back on My Feet After a Stroke</h3>
-                <span class="text-xs font-semibold text-red-650 bg-red-50 px-3 py-1 rounded-full border border-red-100">Acute Stroke Care</span>
-            </div>
-            <p class="text-xs text-dark-grey/70 leading-relaxed italic">
-                "When my husband suddenly couldn't raise his left arm and his speech was slurred, we panicked. We called the emergency stroke helpline and reached Marengo Asia Hospital. The stroke team was ready, and Dr. Praveen Gupta guided his mechanical thrombectomy. Within 2 days, he was walking and speaking normally. We are forever grateful for the rapid, professional response."
-            </p>
-            <p class="text-[11px] font-bold text-deep-indigo text-right">— Priya Verma, Delhi</p>
-        </div>
-
-        <!-- Story 3 -->
-        <div class="bg-slate-50 border border-slate-200/50 p-8 rounded-3xl space-y-4 hover:shadow-md transition-shadow">
-            <div class="flex items-center justify-between">
-                <h3 class="text-xl font-bold text-deep-indigo font-serif">Seizure-Free After Years of Struggle</h3>
-                <span class="text-xs font-semibold text-cyan-accent bg-cyan-50 px-3 py-1 rounded-full border border-cyan-100">Epilepsy Care</span>
-            </div>
-            <p class="text-xs text-dark-grey/70 leading-relaxed italic">
-                "Our teenage daughter suffered from recurrent seizures that multiple medications failed to control. Dr. Gupta set up prolonged video-EEG monitoring to identify the focus. By adjusting her dosage and introducing advanced anti-seizure medication, her seizures have stopped entirely for over two years. She is back in school and thriving."
-            </p>
-            <p class="text-[11px] font-bold text-deep-indigo text-right">— Mrs. Kapoor (Parent), Noida</p>
-        </div>
+        <?php endforeach; ?>
+        <?php if (empty($stories)): ?>
+        <p class="text-center text-sm text-dark-grey/55">Patient stories will appear here once they are added in the CMS.</p>
+        <?php endif; ?>
     </div>
 </section>
 

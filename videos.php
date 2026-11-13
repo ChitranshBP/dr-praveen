@@ -12,8 +12,11 @@ $pageContent = get_page_content('videos', [
     'hero_bg'    => 'assets/breadcrumbs/media.png'
 ]);
 
+// Videos + filter categories come from CMS → Education Videos / Settings → Lists & Categories
+$libraryVideos = cms_collection('videos');
+$videoCategories = cms_setting_options('video_categories', ['stroke' => 'Stroke', 'epilepsy' => 'Epilepsy', 'headache' => 'Headache', 'dementia' => 'Dementia', 'spine' => 'Spine/Nerve', 'rehab' => 'Rehab', 'wellness' => 'Wellness']);
 // Default featured video is the first one in the list
-$featuredVideo = $educationVideos[0];
+$featuredVideo = $libraryVideos[0] ?? ['youtube_id' => '', 'title' => '', 'description' => ''];
 ?>
 
 <!-- Page Hero -->
@@ -53,7 +56,7 @@ $featuredVideo = $educationVideos[0];
             <!-- Left Side: Interactive Video Player (7 columns) -->
             <div class="lg:col-span-8 bg-black rounded-[32px] overflow-hidden shadow-2xl border border-slate-200/40 aspect-video relative group">
                 <iframe id="main-video-player" class="w-full h-full border-0" 
-                        src="https://www.youtube.com/embed/<?php echo $featuredVideo['id']; ?>?rel=0&modestbranding=1" 
+                        src="https://www.youtube.com/embed/<?php echo htmlspecialchars($featuredVideo['youtube_id']); ?>?rel=0&modestbranding=1" 
                         title="<?php echo htmlspecialchars($featuredVideo['title']); ?>" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen 
@@ -66,10 +69,10 @@ $featuredVideo = $educationVideos[0];
                 <div>
                     <span class="text-electric-blue font-bold text-xs uppercase tracking-wider">Now Playing</span>
                     <h2 id="main-video-title" class="text-2xl md:text-3xl font-bold text-dark-grey mt-2 mb-3">
-                        <?php echo $featuredVideo['title']; ?>
+                        <?php echo htmlspecialchars($featuredVideo['title']); ?>
                     </h2>
                     <p id="main-video-desc" class="text-sm text-dark-grey/65 leading-relaxed">
-                        <?php echo $featuredVideo['desc']; ?>
+                        <?php echo htmlspecialchars($featuredVideo['description']); ?>
                     </p>
                 </div>
 
@@ -104,29 +107,25 @@ $featuredVideo = $educationVideos[0];
                 <!-- Filter Buttons (7 columns) -->
                 <div class="md:col-span-7 flex flex-wrap gap-2 justify-start md:justify-end" id="category-filters">
                     <button class="filter-btn active px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-electric-blue text-white border-electric-blue" onclick="setCategory('all', this)">All</button>
-                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-white text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('stroke', this)">Stroke</button>
-                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-white text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('epilepsy', this)">Epilepsy</button>
-                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-white text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('headache', this)">Headache</button>
-                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-white text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('dementia', this)">Dementia</button>
-                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-white text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('spine', this)">Spine/Nerve</button>
-                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-white text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('rehab', this)">Rehab</button>
-                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-white text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('wellness', this)">Wellness</button>
+                    <?php foreach ($videoCategories as $vcKey => $vcLabel): ?>
+                    <button class="filter-btn px-4 py-2 rounded-xl text-xs font-semibold border transition-all duration-300 bg-white text-dark-grey/70 border-slate-200 hover:border-electric-blue" onclick="setCategory('<?php echo htmlspecialchars($vcKey); ?>', this)"><?php echo htmlspecialchars($vcLabel); ?></button>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" id="video-grid">
-            <?php foreach ($educationVideos as $video):
-                // Categories come from getVideoCategory() in includes/config.php
-                $cat = getVideoCategory($video['title']);
+            <?php foreach ($libraryVideos as $video):
+                $cat = (string)($video['category'] ?? 'other');
+                $catLabel = $videoCategories[$cat] ?? ucfirst($cat);
             ?>
                 <div class="video-card group bg-white rounded-2xl overflow-hidden border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-400 cursor-pointer" 
                      data-category="<?php echo $cat; ?>" data-title="<?php echo htmlspecialchars(strtolower($video['title'])); ?>"
-                     onclick="playVideo('<?php echo $video['id']; ?>', '<?php echo addslashes($video['title']); ?>', '<?php echo addslashes($video['desc']); ?>')">
+                     onclick="playVideo(<?php echo htmlspecialchars(json_encode($video['youtube_id']), ENT_QUOTES); ?>, <?php echo htmlspecialchars(json_encode($video['title'], JSON_UNESCAPED_UNICODE), ENT_QUOTES); ?>, <?php echo htmlspecialchars(json_encode((string)($video['description'] ?? ''), JSON_UNESCAPED_UNICODE), ENT_QUOTES); ?>)">
                     
                     <!-- Video Thumbnail Cover -->
                     <div class="relative w-full aspect-video bg-dark-grey overflow-hidden">
-                        <img src="https://img.youtube.com/vi/<?php echo $video['id']; ?>/hqdefault.jpg" 
+                        <img src="https://img.youtube.com/vi/<?php echo htmlspecialchars($video['youtube_id']); ?>/hqdefault.jpg" 
                              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                              alt="<?php echo htmlspecialchars($video['title']); ?>" 
                              loading="lazy">
@@ -141,13 +140,13 @@ $featuredVideo = $educationVideos[0];
                     <!-- Footer Content -->
                     <div class="p-4">
                         <span class="inline-block text-[9px] font-bold uppercase tracking-wider text-electric-blue px-2 py-0.5 bg-electric-blue/5 rounded-md mb-1.5">
-                            <?php echo ucfirst($cat); ?>
+                            <?php echo htmlspecialchars($catLabel); ?>
                         </span>
                         <h3 class="font-bold text-deep-indigo text-sm leading-snug group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
-                            <?php echo $video['title']; ?>
+                            <?php echo htmlspecialchars($video['title']); ?>
                         </h3>
                         <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2 mt-1">
-                            <?php echo $video['desc']; ?>
+                            <?php echo htmlspecialchars($video['description'] ?? ''); ?>
                         </p>
                     </div>
                 </div>

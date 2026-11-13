@@ -4,6 +4,12 @@
  */
 require_once __DIR__ . '/includes/header.php';
 
+// Homepage collections (CMS → Awards & Honours / Education Videos / Instagram Reels)
+$homeAwards = array_values(array_filter(cms_collection('awards'), function ($a) { return !empty($a['featured']); }));
+$homeVideos = array_values(array_filter(cms_collection('videos'), function ($v) { return !empty($v['featured']); }));
+$homeReels  = cms_collection('reels');
+$instagramHandle = trim((string)basename(rtrim((string)parse_url(SOCIAL_INSTAGRAM, PHP_URL_PATH), '/')), '/@') ?: 'instagram';
+
 // Load doctor data from the CMS-managed file (data/doctors.json), falling back
 // to the original static export so the homepage team always matches the Team page.
 $specialtyTeam = [];
@@ -913,7 +919,7 @@ if (empty($activeBanners)) {
 
         <!-- Grid of award/honour images only -->
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
-            <?php foreach ($awards as $award): ?>
+            <?php foreach ($homeAwards as $award): ?>
                 <div class="group overflow-hidden rounded-3xl bg-white border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 aspect-[2/3] observe">
                     <picture>
                         <?php 
@@ -954,11 +960,11 @@ if (empty($activeBanners)) {
 
         <!-- Mobile Swipe View (Visible on Mobile only: hidden sm:flex) -->
         <div class="sm:hidden flex overflow-x-auto snap-x snap-mandatory scrollbar-none gap-6 -mx-4 px-4 pb-4">
-            <?php foreach (array_slice($educationVideos, 0, 6) as $video): ?>
+            <?php foreach (array_slice($homeVideos, 0, 6) as $video): ?>
                 <div class="flex-shrink-0 w-[80vw] snap-start bg-white rounded-3xl overflow-hidden border border-silver-grey/50 shadow-lg">
                     <!-- Embed -->
-                    <div class="relative w-full aspect-video bg-dark-grey video-facade cursor-pointer group" data-embed="https://www.youtube.com/embed/<?php echo $video['id']; ?>?rel=0&modestbranding=1&autoplay=1">
-                        <img src="https://img.youtube.com/vi/<?php echo $video['id']; ?>/hqdefault.jpg" alt="<?php echo htmlspecialchars($video['title']); ?>" loading="lazy" class="w-full h-full object-cover">
+                    <div class="relative w-full aspect-video bg-dark-grey video-facade cursor-pointer group" data-embed="https://www.youtube.com/embed/<?php echo htmlspecialchars($video['youtube_id']); ?>?rel=0&modestbranding=1&autoplay=1">
+                        <img src="https://img.youtube.com/vi/<?php echo htmlspecialchars($video['youtube_id']); ?>/hqdefault.jpg" alt="<?php echo htmlspecialchars($video['title']); ?>" loading="lazy" class="w-full h-full object-cover">
                         <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/10 transition-colors">
                             <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                                 <i class="fas fa-play text-white ml-1"></i>
@@ -969,10 +975,10 @@ if (empty($activeBanners)) {
                     <!-- Card footer -->
                     <div class="p-4">
                         <h3 class="font-bold text-deep-indigo text-sm leading-snug mb-1 line-clamp-1">
-                            <?php echo $video['title']; ?>
+                            <?php echo htmlspecialchars($video['title']); ?>
                         </h3>
                         <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2">
-                            <?php echo $video['desc']; ?>
+                            <?php echo htmlspecialchars($video['description'] ?? ''); ?>
                         </p>
                     </div>
                 </div>
@@ -983,7 +989,7 @@ if (empty($activeBanners)) {
         <div class="hidden sm:block overflow-hidden">
             <div id="edu-track" class="flex transition-transform duration-500 ease-in-out">
                 <?php
-                $eduPages = array_chunk(array_slice($educationVideos, 0, 6), 3);
+                $eduPages = array_chunk(array_slice($homeVideos, 0, 6), 3);
                 foreach ($eduPages as $epIdx => $epPage):
                 ?>
                     <div class="min-w-full grid grid-cols-2 lg:grid-cols-3 gap-8">
@@ -991,8 +997,8 @@ if (empty($activeBanners)) {
                             <div class="group bg-white rounded-3xl overflow-hidden border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 observe">
 
                                 <!-- Embed -->
-                                <div class="relative w-full aspect-video bg-dark-grey video-facade cursor-pointer group" data-embed="https://www.youtube.com/embed/<?php echo $video['id']; ?>?rel=0&modestbranding=1&autoplay=1">
-                                    <img src="https://img.youtube.com/vi/<?php echo $video['id']; ?>/hqdefault.jpg" alt="<?php echo htmlspecialchars($video['title']); ?>" loading="lazy" class="w-full h-full object-cover">
+                                <div class="relative w-full aspect-video bg-dark-grey video-facade cursor-pointer group" data-embed="https://www.youtube.com/embed/<?php echo htmlspecialchars($video['youtube_id']); ?>?rel=0&modestbranding=1&autoplay=1">
+                                    <img src="https://img.youtube.com/vi/<?php echo htmlspecialchars($video['youtube_id']); ?>/hqdefault.jpg" alt="<?php echo htmlspecialchars($video['title']); ?>" loading="lazy" class="w-full h-full object-cover">
                                     <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/10 transition-colors">
                                         <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                                             <i class="fas fa-play text-white ml-1"></i>
@@ -1003,10 +1009,10 @@ if (empty($activeBanners)) {
                                 <!-- Card footer -->
                                 <div class="p-4">
                                     <h3 class="font-bold text-deep-indigo text-sm md:text-base leading-snug mb-1 group-hover:text-electric-blue transition-colors duration-300 line-clamp-1">
-                                        <?php echo $video['title']; ?>
+                                        <?php echo htmlspecialchars($video['title']); ?>
                                     </h3>
                                     <p class="text-xs text-dark-grey/55 leading-relaxed line-clamp-2">
-                                        <?php echo $video['desc']; ?>
+                                        <?php echo htmlspecialchars($video['description'] ?? ''); ?>
                                     </p>
                                 </div>
                             </div>
@@ -1092,21 +1098,21 @@ if (empty($activeBanners)) {
             </p>
 
             <!-- Profile chip -->
-            <a href="<?php echo $instagramProfile; ?>" target="_blank" rel="noopener noreferrer"
+            <a href="<?php echo htmlspecialchars(SOCIAL_INSTAGRAM); ?>" target="_blank" rel="noopener noreferrer"
                class="inline-flex items-center gap-3 bg-white pl-2 pr-5 py-2 rounded-full border border-silver-grey/50 shadow-sm hover:shadow-lg transition-all duration-300 group">
                 <span class="block p-[2px] rounded-full bg-gradient-to-tr from-cyan-accent via-electric-blue to-deep-indigo">
                     <img src="assets/dpg-1.webp" alt="Dr. Praveen Gupta on Instagram"
                          loading="lazy"
                          class="w-10 h-10 rounded-full object-cover object-top border-2 border-white">
                 </span>
-                <span class="text-sm font-bold text-deep-indigo group-hover:text-electric-blue transition-colors duration-300">@<?php echo $instagramHandle; ?></span>
+                <span class="text-sm font-bold text-deep-indigo group-hover:text-electric-blue transition-colors duration-300">@<?php echo htmlspecialchars($instagramHandle); ?></span>
             </a>
         </div>
 
         <!-- Reels layout: Swipe Carousel on Mobile, Grid on Desktop -->
         <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-none gap-6 -mx-4 px-4 pb-4 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:px-0 md:mx-0">
-            <?php foreach ($instagramReels as $reelIdx => $reel):
-                $reelUrl = 'https://www.instagram.com/reel/' . $reel['id'] . '/';
+            <?php foreach ($homeReels as $reelIdx => $reel):
+                $reelUrl = 'https://www.instagram.com/reel/' . rawurlencode((string)$reel['shortcode']) . '/';
             ?>
                 <div class="flex-shrink-0 w-[80vw] snap-start md:w-auto observe" style="animation-delay: <?php echo $reelIdx * 120; ?>ms;">
                     <!-- Gradient border shell -->
@@ -1122,7 +1128,7 @@ if (empty($activeBanners)) {
                                     <span class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-electric-blue to-cyan-accent text-white flex items-center justify-center text-2xl shadow-lg mb-4">
                                         <i class="fab fa-instagram"></i>
                                     </span>
-                                    <p class="text-sm font-semibold text-deep-indigo mb-1">Reel by @<?php echo $instagramHandle; ?></p>
+                                    <p class="text-sm font-semibold text-deep-indigo mb-1">Reel by @<?php echo htmlspecialchars($instagramHandle); ?></p>
                                     <a href="<?php echo $reelUrl; ?>" target="_blank" rel="noopener noreferrer"
                                        class="text-sm font-bold text-electric-blue hover:underline">View this reel on Instagram</a>
                                 </div>
@@ -1135,7 +1141,7 @@ if (empty($activeBanners)) {
 
         <!-- Footer CTA -->
         <div class="text-center mt-10 observe">
-            <a href="<?php echo $instagramProfile; ?>" target="_blank" rel="noopener noreferrer"
+            <a href="<?php echo htmlspecialchars(SOCIAL_INSTAGRAM); ?>" target="_blank" rel="noopener noreferrer"
                class="inline-flex items-center space-x-2.5 bg-gradient-to-r from-electric-blue to-cyan-accent hover:from-deep-indigo hover:to-electric-blue text-white font-bold px-7 py-3.5 rounded-full shadow-lg shadow-electric-blue/25 hover:shadow-xl hover:shadow-electric-blue/40 hover:-translate-y-0.5 transition-all duration-300">
                 <span>Follow on Instagram</span>
                 <i class="fas fa-arrow-right text-xs"></i>
