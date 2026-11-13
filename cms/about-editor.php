@@ -2,6 +2,7 @@
 require_once __DIR__ . '/includes/auth.php';
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/functions.php';
+require_once __DIR__ . '/includes/fields.php';
 
 cms_require_auth();
 
@@ -48,13 +49,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $mainDoc['modal']['sections']['Qualifications'] = cms_parse_multiline_items($_POST['qualifications'] ?? '');
     $mainDoc['modal']['sections']['Areas of Expertise'] = cms_parse_multiline_items($_POST['expertise'] ?? '');
 
-    // Handle photo upload
-    $uploadError = '';
-    $imgUpload = cms_handle_upload('doctor_photo', 'doctors');
-    if (is_array($imgUpload) && isset($imgUpload['error'])) {
-        $uploadError = $imgUpload['error'];
-    } elseif (is_array($imgUpload) && !empty($imgUpload['path'])) {
-        $mainDoc['image'] = $imgUpload['path'];
+    // Photo (upload / library pick / remove)
+    $imgRes = cms_image_field_value('image', 'doctors', $mainDoc['image'] ?? '');
+    $uploadError = $imgRes['error'];
+    if ($imgRes['path'] !== '' || $imgRes['changed']) {
+        $mainDoc['image'] = $imgRes['path'];
     }
 
     $doctors[$mainDocIndex] = $mainDoc;
@@ -111,23 +110,12 @@ require_once __DIR__ . '/includes/header.php';
         </div>
 
         <!-- Doctor Photo -->
-        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
-            <div class="flex items-center space-x-3">
-                <?php if (!empty($mainDoc['image'])): ?>
-                <img src="../<?php echo htmlspecialchars($mainDoc['image']); ?>" alt="<?php echo htmlspecialchars($mainDoc['image_alt'] ?? ''); ?>" class="w-20 h-20 rounded-xl object-cover border border-slate-200 bg-white">
-                <?php endif; ?>
-                <div class="text-[10px] text-slate-500 font-mono break-all"><?php echo htmlspecialchars($mainDoc['image'] ?? 'No photo set'); ?></div>
-            </div>
-            <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Replace Doctor Photo</label>
-                <input type="file" name="doctor_photo" accept=".png,.webp,.jpg,.jpeg" class="w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
-                <p class="text-[10px] text-slate-400 mt-1">Square or portrait, at least 600 px wide. Shown on the Team page.</p>
-            </div>
-            <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Photo Alt Tag (SEO)</label>
-                <input type="text" name="image_alt" value="<?php echo htmlspecialchars($mainDoc['image_alt'] ?? ($mainDoc['alt'] ?? '')); ?>" class="w-full px-3.5 py-2 bg-white border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none">
-            </div>
-        </div>
+        <?php cms_image_field('image', $mainDoc['image'] ?? '', [
+            'label' => 'Doctor Photo (Team page)', 'folder' => 'doctors', 'size' => 'Portrait, at least 600 px wide',
+            'preview_class' => 'w-20 h-24',
+            'alt_name' => 'image_alt', 'alt_value' => $mainDoc['image_alt'] ?? ($mainDoc['alt'] ?? ''),
+            'alt_label' => 'Photo alt tag (SEO), e.g. Dr. Praveen Gupta - Neurologist in Gurgaon',
+        ]); ?>
 
         <!-- Doctor Details -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">

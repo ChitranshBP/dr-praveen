@@ -32,7 +32,7 @@ if (isset($upload['error'])) {
 }
 
 // Return uploaded image URL
-$url = '/' . ltrim($upload['path'], '/');
+$url = ltrim($upload['path'], '/'); // site-relative (works with <base href="/"> and sub-folder installs)
 echo json_encode([
     'success' => true,
     'url' => $url,

@@ -311,6 +311,21 @@ $flash = cms_get_flash();
                         <i class="fas fa-phone-alt w-5 text-center mr-2.5"></i>
                         <span>Phone & Contact</span>
                     </a>
+                    <?php
+                    require_once __DIR__ . '/collections.php';
+                    $navCollection = preg_replace('/[^a-z0-9_]/', '', (string)($_GET['c'] ?? ''));
+                    foreach (cms_collection_schemas() as $colKey => $colSchema):
+                        $isActiveCol = in_array($currentPage, ['collection', 'collection-edit'], true) && $navCollection === $colKey;
+                    ?>
+                    <a href="collection.php?c=<?php echo urlencode($colKey); ?>" class="flex items-center px-3 py-2.5 rounded-xl transition-all <?php echo $isActiveCol ? 'bg-brand-blue text-white shadow-md' : 'text-slate-300 hover:bg-white/10 hover:text-white'; ?>">
+                        <i class="fas <?php echo htmlspecialchars($colSchema['icon'] ?? 'fa-list'); ?> w-5 text-center mr-2.5"></i>
+                        <span><?php echo htmlspecialchars($colSchema['label']); ?></span>
+                    </a>
+                    <?php endforeach; ?>
+                    <a href="media.php" class="flex items-center px-3 py-2.5 rounded-xl transition-all <?php echo $currentPage === 'media' ? 'bg-brand-blue text-white shadow-md' : 'text-slate-300 hover:bg-white/10 hover:text-white'; ?>">
+                        <i class="fas fa-photo-film w-5 text-center mr-2.5"></i>
+                        <span>Media Library</span>
+                    </a>
                     <a href="leads.php" class="flex items-center px-3 py-2.5 rounded-xl transition-all <?php echo $currentPage === 'leads' ? 'bg-brand-blue text-white shadow-md' : 'text-slate-300 hover:bg-white/10 hover:text-white'; ?>">
                         <i class="fas fa-inbox w-5 text-center mr-2.5"></i>
                         <span>Leads &amp; Enquiries</span>

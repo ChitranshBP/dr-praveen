@@ -2,3 +2,4 @@ dist/
 test_output.html
 node_modules/
 data/leads.json
+data/lead-uploads/

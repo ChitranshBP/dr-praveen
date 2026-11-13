@@ -408,13 +408,21 @@
             const toolbar = quill.getModule('toolbar');
             toolbar.addHandler('image', function() {
                 activeQuillInstance = quill;
+                const range = quill.getSelection(true);
+                if (typeof window.cmsPickImage === 'function') {
+                    // Media library picker (upload inside it, or pick an existing image).
+                    window.cmsPickImage(function (path) {
+                        quill.insertEmbed(range.index, 'image', path.replace(/^\/+/, ''), Quill.sources.USER);
+                        quill.setSelection(range.index + 1, Quill.sources.SILENT);
+                    }, 'editor');
+                    return;
+                }
                 const choice = confirm("Click 'OK' to Upload an Image from your computer (Recommended: 800×600 px).\nClick 'Cancel' to insert an Image URL directly.");
                 if (choice) {
                     if (imageInput) imageInput.click();
                 } else {
                     const url = prompt('Enter Image URL:');
                     if (url) {
-                        const range = quill.getSelection(true);
                         quill.insertEmbed(range.index, 'image', url, Quill.sources.USER);
                         quill.setSelection(range.index + 1, Quill.sources.SILENT);
                     }

@@ -1,12 +1,26 @@
 <?php
-$pageTitle = 'Testimonials & Reviews';
-require_once __DIR__ . '/includes/header.php';
+require_once __DIR__ . '/includes/auth.php';
+require_once __DIR__ . '/includes/db.php';
+require_once __DIR__ . '/includes/functions.php';
+require_once __DIR__ . '/includes/fields.php';
+
+cms_require_auth();
 
 $testimonials = CMS_DB::get('testimonials', []);
+usort($testimonials, function ($a, $b) { return ((int)($a['order'] ?? 999)) <=> ((int)($b['order'] ?? 999)); });
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     cms_verify_csrf();
     $action = $_POST['action'] ?? '';
+
+    if ($action === 'reorder') {
+        $testimonials = cms_apply_reorder($testimonials, is_array($_POST['ids'] ?? null) ? $_POST['ids'] : []);
+        $ok = CMS_DB::set('testimonials', $testimonials);
+        if (!empty($_SERVER['HTTP_X_REQUESTED_WITH'])) { header('Content-Type: application/json'); echo json_encode(['success' => $ok]); exit; }
+        cms_set_flash($ok ? 'success' : 'error', $ok ? 'Order saved.' : 'Could not save the order.');
+        header('Location: testimonials.php');
+        exit;
+    }
 
     if ($action === 'delete') {
         $id = $_POST['id'] ?? '';
@@ -50,7 +64,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'message' => $message,
                 'video_id' => $video_id,
                 'featured' => $featured,
-                'date' => date('Y-m-d')
+                'date' => date('Y-m-d'),
+                'order' => count($testimonials) + 1
             ];
         }
 
@@ -70,17 +85,22 @@ if (isset($_GET['edit'])) {
         }
     }
 }
+
+$pageTitle = 'Testimonials & Reviews';
+require_once __DIR__ . '/includes/header.php';
 ?>
 
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-7xl">
     <div class="lg:col-span-7 space-y-4">
         <h2 class="text-sm font-bold text-slate-800 uppercase tracking-wider">Patient Testimonials (<?php echo count($testimonials); ?>)</h2>
+        <p class="text-[11px] text-slate-500 -mt-2">Drag the <i class="fas fa-grip-vertical"></i> handle to change the order shown on the website (featured reviews are always listed first).</p>
 
-        <div class="space-y-3">
+        <div class="space-y-3" <?php echo cms_sortable_list_attrs('testimonials.php'); ?>>
             <?php foreach ($testimonials as $t): ?>
-            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm" data-id="<?php echo htmlspecialchars($t['id']); ?>">
                 <div class="flex items-center justify-between mb-2">
                     <div class="flex items-center space-x-2">
+                        <span class="drag-handle cursor-grab text-slate-300 hover:text-slate-500" title="Drag to reorder"><i class="fas fa-grip-vertical"></i></span>
                         <span class="font-bold text-xs text-slate-900"><?php echo htmlspecialchars($t['name']); ?></span>
                         <span class="text-[11px] text-slate-400">&bull; <?php echo htmlspecialchars($t['role']); ?></span>
                     </div>

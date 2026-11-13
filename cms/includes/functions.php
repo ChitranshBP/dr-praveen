@@ -92,11 +92,64 @@ function cms_handle_upload($fileKey, $subfolder = '') {
     $targetPath = $targetDir . '/' . $filename;
 
     if (move_uploaded_file($file['tmp_name'], $targetPath)) {
+        if ($ext !== 'pdf' && $ext !== 'gif') {
+            cms_optimize_uploaded_image($targetPath);
+        }
         $relPath = 'assets/uploads/' . ($subfolder ? trim($subfolder, '/') . '/' : '') . $filename;
         return ['path' => $relPath];
     }
 
     return ['error' => 'Failed to save uploaded file.'];
+}
+
+/**
+ * Shrink oversized uploads (longest side > 2000px) in place and write a .webp
+ * sibling, when the GD extension is available. Silently does nothing otherwise.
+ */
+function cms_optimize_uploaded_image($absPath, $maxSide = 2000) {
+    if (!function_exists('imagecreatefromstring') || !is_file($absPath)) {
+        return;
+    }
+    $info = @getimagesize($absPath);
+    if (!$info) {
+        return;
+    }
+    [$w, $h] = $info;
+    $needsResize = max($w, $h) > $maxSide;
+    $canWebp = function_exists('imagewebp');
+    if (!$needsResize && !$canWebp) {
+        return;
+    }
+    $raw = @file_get_contents($absPath);
+    $img = $raw !== false ? @imagecreatefromstring($raw) : false;
+    if (!$img) {
+        return;
+    }
+    if ($needsResize) {
+        $scale = $maxSide / max($w, $h);
+        $nw = (int)round($w * $scale);
+        $nh = (int)round($h * $scale);
+        $dst = imagecreatetruecolor($nw, $nh);
+        imagealphablending($dst, false);
+        imagesavealpha($dst, true);
+        $transparent = imagecolorallocatealpha($dst, 0, 0, 0, 127);
+        imagefill($dst, 0, 0, $transparent);
+        imagecopyresampled($dst, $img, 0, 0, 0, 0, $nw, $nh, $w, $h);
+        imagedestroy($img);
+        $img = $dst;
+        $ext = strtolower(pathinfo($absPath, PATHINFO_EXTENSION));
+        if ($ext === 'png') {
+            @imagepng($img, $absPath, 7);
+        } elseif ($ext === 'webp' && $canWebp) {
+            @imagewebp($img, $absPath, 82);
+        } else {
+            @imagejpeg($img, $absPath, 85);
+        }
+    }
+    if ($canWebp && !preg_match('/\.webp$/i', $absPath)) {
+        @imagewebp($img, preg_replace('/\.[a-z0-9]+$/i', '.webp', $absPath), 82);
+    }
+    imagedestroy($img);
 }
 
 // Text Helpers

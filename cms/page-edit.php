@@ -2,6 +2,7 @@
 require_once __DIR__ . '/includes/auth.php';
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/functions.php';
+require_once __DIR__ . '/includes/fields.php';
 require_once dirname(__DIR__) . '/includes/page-blocks.php';
 require_once dirname(__DIR__) . '/includes/page-ctas.php';
 
@@ -139,25 +140,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $uploadErrors = [];
 
-    // Handle Hero Banner image upload
-    $heroUpload = cms_handle_upload('hero_bg_file', 'breadcrumbs');
-    if (is_array($heroUpload) && isset($heroUpload['error'])) {
-        $uploadErrors[] = 'Hero banner: ' . $heroUpload['error'];
-    } elseif (is_array($heroUpload) && !empty($heroUpload['path'])) {
-        $pageData['hero_bg'] = $heroUpload['path'];
+    // Hero banner image (upload / library pick / remove)
+    $heroImg = cms_image_field_value('hero_bg', 'breadcrumbs', (string)($pageData['hero_bg'] ?? ''));
+    if ($heroImg['error'] !== '') {
+        $uploadErrors[] = 'Hero banner: ' . $heroImg['error'];
     }
+    $pageData['hero_bg'] = $heroImg['path'];
 
-    // Handle Section Image upload
-    $secUpload = cms_handle_upload('section1_img_file', 'services');
-    if (is_array($secUpload) && isset($secUpload['error'])) {
-        $uploadErrors[] = 'Section photo: ' . $secUpload['error'];
-    } elseif (is_array($secUpload) && !empty($secUpload['path'])) {
-        $pageData['section1_image'] = $secUpload['path'];
-        // A new photo invalidates any old alt-text placeholder, but keep a
-        // real alt tag the editor already wrote.
-        if (empty($pageData['section1_img_alt'])) {
-            $pageData['section1_img_alt'] = $pageData['section1_title'] ?? '';
-        }
+    // Main body section image
+    $secImg = cms_image_field_value('section1_image', 'services', (string)($pageData['section1_image'] ?? ''));
+    if ($secImg['error'] !== '') {
+        $uploadErrors[] = 'Section photo: ' . $secImg['error'];
+    }
+    $pageData['section1_image'] = $secImg['path'];
+    if ($secImg['changed'] && $secImg['path'] !== '' && empty($pageData['section1_img_alt'])) {
+        $pageData['section1_img_alt'] = $pageData['section1_title'] ?? '';
     }
 
     // Additional custom page sections (optional repeater).
@@ -168,14 +165,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (!is_array($sec)) {
                 continue;
             }
-            $cImage = trim($sec['image'] ?? '');
-            $uploadKey = 'custom_section_image_' . $i;
-            $cUpload = cms_handle_upload($uploadKey, 'pages');
-            if (is_array($cUpload) && isset($cUpload['error'])) {
-                $uploadErrors[] = 'Custom section ' . ((int)$i + 1) . ' photo: ' . $cUpload['error'];
-            } elseif (is_array($cUpload) && !empty($cUpload['path'])) {
-                $cImage = $cUpload['path'];
+            $cImg = cms_image_field_value('custom_sections[' . $i . '][image]', 'pages', '');
+            if ($cImg['error'] !== '') {
+                $uploadErrors[] = 'Custom section ' . ((int)$i + 1) . ' photo: ' . $cImg['error'];
             }
+            $cImage = $cImg['path'];
 
             $cTitle = trim($sec['title'] ?? '');
             $cText = trim($sec['text'] ?? '');
@@ -239,15 +233,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             // Split-section images (symptoms / why-choose / doctor blocks).
-            // The stored photo survives unless the editor removed it, typed /
-            // picked a new path, or uploaded a file (handled further down).
+            // Split-section photo: the stored photo survives unless the editor
+            // removed it, picked another from the library, or uploaded a file.
             if (isset($base['image'])) {
                 $block['image'] = $base['image'];
             }
-            if (!empty($pb['image_remove'])) {
-                $block['image'] = '';
-            } elseif (isset($pb['image']) && trim((string)$pb['image']) !== '') {
-                $block['image'] = trim((string)$pb['image']);
+            if (isset($pb['image']) || !empty($_FILES[cms_image_file_key('page_blocks[' . $bKey . '][image]')])) {
+                $bImg = cms_image_field_value('page_blocks[' . $bKey . '][image]', 'services', (string)($base['image'] ?? ''));
+                if ($bImg['error'] !== '') {
+                    $uploadErrors[] = $bKey . ' section photo: ' . $bImg['error'];
+                }
+                $block['image'] = $bImg['path'];
+                if ($bImg['changed'] && $bImg['path'] !== '' && trim((string)($pb['image_alt'] ?? '')) === '') {
+                    $pb['image_alt'] = $block['title'] ?? ($base['title'] ?? '');
+                }
             }
             if (isset($pb['image_alt'])) {
                 $block['image_alt'] = trim((string)$pb['image_alt']);
@@ -346,9 +345,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
                 // Directory card photos (links blocks with card_image enabled).
                 if (array_key_exists('image', $item) || array_key_exists('image_alt', $item)) {
-                    $itemImage = trim($item['image'] ?? '');
-                    if ($itemImage !== '') {
-                        $it['image'] = $itemImage;
+                    $itemImg = cms_image_field_value('page_blocks[' . $bKey . '][items][' . $ii . '][image]', 'pages', (string)($baseItem['image'] ?? ''));
+                    if ($itemImg['error'] !== '') {
+                        $uploadErrors[] = $bKey . ' card photo: ' . $itemImg['error'];
+                    }
+                    if ($itemImg['path'] !== '') {
+                        $it['image'] = $itemImg['path'];
                     }
                     $itemImageAlt = trim($item['image_alt'] ?? '');
                     if ($itemImageAlt !== '') {
@@ -380,17 +382,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }));
                 if (!empty($roles) || isset($block['roles'])) {
                     $block['roles'] = $roles;
-                }
-            }
-
-            // Block-level photo upload (symptoms / why-choose / doctor splits).
-            $bUpload = cms_handle_upload('page_block_image_' . $bKey, 'services');
-            if (is_array($bUpload) && isset($bUpload['error'])) {
-                $uploadErrors[] = $bKey . ' section photo: ' . $bUpload['error'];
-            } elseif (is_array($bUpload) && !empty($bUpload['path'])) {
-                $block['image'] = $bUpload['path'];
-                if (empty($block['image_alt'])) {
-                    $block['image_alt'] = $block['title'] ?? '';
                 }
             }
 
@@ -549,27 +540,13 @@ require_once __DIR__ . '/includes/header.php';
                 <textarea name="hero_desc" rows="3" class="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-sm leading-relaxed focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($pageData['hero_desc'] ?? ''); ?></textarea>
             </div>
 
-            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-3">
-                <div class="flex items-center justify-between">
-                    <label class="block text-xs font-bold text-slate-800">
-                        <i class="fas fa-image text-brand-blue mr-1"></i> Hero Background Banner
-                    </label>
-                    <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Recommended: 1920 × 600 px</span>
-                </div>
-                <p class="text-[10px] text-slate-500">Wide header backdrop (Aspect ratio ~16:5). Supported: WebP, PNG, JPG (Max 4MB).</p>
-                <?php if (!empty($pageData['hero_bg'])): ?>
-                <div class="flex items-center space-x-3 py-1">
-                    <img src="../<?php echo htmlspecialchars($pageData['hero_bg']); ?>" class="w-24 h-12 object-cover rounded-lg border border-slate-200" alt="Hero bg">
-                    <span class="text-[11px] text-slate-400 font-mono"><?php echo htmlspecialchars($pageData['hero_bg']); ?></span>
-                </div>
-                <?php endif; ?>
-                <input type="file" name="hero_bg_file" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
-
-                <div class="pt-2 border-t border-slate-100">
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Hero Banner Image Alt Tag</label>
-                    <input type="text" name="hero_bg_alt" value="<?php echo htmlspecialchars($pageData['hero_bg_alt'] ?? ''); ?>" placeholder="e.g. <?php echo htmlspecialchars($pageMeta['title'] ?? 'Neurology Service'); ?> Banner - Dr. Praveen Gupta" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                </div>
-            </div>
+            <?php cms_image_field('hero_bg', $pageData['hero_bg'] ?? '', [
+                'label' => 'Hero Background Banner', 'folder' => 'breadcrumbs', 'size' => 'Recommended: 1920 × 600 px',
+                'hint' => 'Wide header backdrop (aspect ratio ~16:5). WebP, PNG or JPG (max 8MB). Remove it to show the gradient only.',
+                'preview_class' => 'w-40 h-14',
+                'alt_name' => 'hero_bg_alt', 'alt_value' => $pageData['hero_bg_alt'] ?? '',
+                'alt_label' => 'Hero banner alt tag, e.g. ' . ($pageMeta['title'] ?? 'Neurology Service') . ' Banner - Dr. Praveen Gupta',
+            ]); ?>
         </div>
 
         <!-- Main Body Section Content is rendered inside the "Page Sections" flow
@@ -657,18 +634,12 @@ require_once __DIR__ . '/includes/header.php';
                 <?php
             }
             if (in_array('imagepair', $fields, true)) {
-                ?>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-                    <div>
-                        <label class="<?php echo $lbl; ?>">Photo path / URL (optional)</label>
-                        <input type="text" name="<?php echo $name('image'); ?>" value="<?php echo $val('image'); ?>" placeholder="assets/services/… or https://…" class="<?php echo $inpMono; ?>">
-                    </div>
-                    <div>
-                        <label class="<?php echo $lbl; ?>">Photo Alt Tag</label>
-                        <input type="text" name="<?php echo $name('image_alt'); ?>" value="<?php echo $val('image_alt'); ?>" class="<?php echo $inp; ?>">
-                    </div>
-                </div>
-                <?php
+                cms_image_field('page_blocks[' . $key . '][items][' . $index . '][image]', (string)($item['image'] ?? ''), [
+                    'label' => 'Card photo (optional)', 'folder' => 'pages', 'compact' => true,
+                    'preview_class' => 'w-20 h-14',
+                    'alt_name' => 'page_blocks[' . $key . '][items][' . $index . '][image_alt]', 'alt_value' => (string)($item['image_alt'] ?? ''),
+                    'alt_label' => 'Photo alt tag',
+                ]);
             }
             if (in_array('badge', $fields, true)) {
                 ?>
@@ -774,27 +745,13 @@ require_once __DIR__ . '/includes/header.php';
                     <textarea name="section1_text" rows="6" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs leading-relaxed focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($effText); ?></textarea>
                 </div>
 
-                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-2">
-                    <div class="flex items-center justify-between">
-                        <label class="block text-[10px] font-bold text-slate-600">
-                            <i class="fas fa-camera text-brand-blue mr-1"></i> Section Feature Photo
-                        </label>
-                        <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Recommended: 800 × 600 px</span>
-                    </div>
-                    <p class="text-[10px] text-slate-500">Standard 4:3 landscape photo. Supported: WebP, PNG, JPG (Max 4MB).</p>
-                    <?php if ($effImage !== ''): ?>
-                    <div class="flex items-center space-x-3 py-1">
-                        <img src="../<?php echo htmlspecialchars($effImage); ?>" class="w-16 h-12 object-cover rounded-lg border border-slate-200" alt="<?php echo htmlspecialchars($effImageAlt !== '' ? $effImageAlt : 'Section Image'); ?>">
-                        <span class="text-[10px] text-slate-400 font-mono break-all"><?php echo htmlspecialchars($effImage); ?></span>
-                    </div>
-                    <?php endif; ?>
-                    <input type="file" name="section1_img_file" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
-
-                    <div class="pt-2 border-t border-slate-100">
-                        <label class="block text-[10px] font-bold text-slate-600 mb-1">Section Photo Alt Tag</label>
-                        <input type="text" name="section1_img_alt" value="<?php echo htmlspecialchars($effImageAlt); ?>" placeholder="e.g. <?php echo htmlspecialchars($pageMeta['title'] ?? 'Treatment'); ?> Clinical Procedure" class="w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    </div>
-                </div>
+                <?php cms_image_field('section1_image', $effImage, [
+                    'label' => 'Section Feature Photo', 'folder' => 'services', 'size' => 'Recommended: 800 × 600 px',
+                    'hint' => 'Standard 4:3 landscape photo. WebP, PNG or JPG (max 8MB).',
+                    'preview_class' => 'w-28 h-20',
+                    'alt_name' => 'section1_img_alt', 'alt_value' => $effImageAlt,
+                    'alt_label' => 'Section photo alt tag, e.g. ' . ($pageMeta['title'] ?? 'Treatment') . ' Clinical Procedure',
+                ]); ?>
             </div>
 
             <?php elseif ($entry['kind'] === 'block'): ?>
@@ -844,33 +801,12 @@ require_once __DIR__ . '/includes/header.php';
                 <?php endif; ?>
 
                 <?php if (!empty($meta['block_image'])): ?>
-                <div class="bg-white p-3 rounded-xl border border-slate-200 space-y-2">
-                    <label class="block text-[10px] font-bold text-slate-600">
-                        <i class="fas fa-image text-brand-blue mr-1"></i> Section Photo
-                    </label>
-                    <?php if (!empty($block['image'])): ?>
-                    <div class="flex items-center space-x-3 py-1">
-                        <img src="../<?php echo htmlspecialchars($block['image']); ?>" class="w-16 h-12 object-cover rounded-lg border border-slate-200" alt="Section photo">
-                        <span class="text-[10px] text-slate-400 font-mono break-all"><?php echo htmlspecialchars($block['image']); ?></span>
-                    </div>
-                    <?php endif; ?>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-                        <div>
-                            <label class="block text-[10px] font-bold text-slate-600 mb-1">Replace Photo (max 8MB)</label>
-                            <input type="file" name="page_block_image_<?php echo htmlspecialchars($blockKey); ?>" accept=".webp,.png,.jpg,.jpeg" class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[11px]">
-                            <?php if (!empty($block['image'])): ?>
-                            <label class="inline-flex items-center space-x-1.5 mt-1.5 text-[10px] font-semibold text-red-600">
-                                <input type="checkbox" name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][image_remove]" value="1" class="w-3.5 h-3.5 rounded">
-                                <span>Remove this photo</span>
-                            </label>
-                            <?php endif; ?>
-                        </div>
-                        <div>
-                            <label class="block text-[10px] font-bold text-slate-600 mb-1">Photo Alt Tag</label>
-                            <input type="text" name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][image_alt]" value="<?php echo htmlspecialchars($block['image_alt'] ?? ''); ?>" class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[11px] focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                        </div>
-                    </div>
-                </div>
+                <?php cms_image_field('page_blocks[' . $blockKey . '][image]', $block['image'] ?? '', [
+                    'label' => 'Section Photo', 'folder' => 'services', 'size' => '800 × 600 px',
+                    'preview_class' => 'w-28 h-20',
+                    'alt_name' => 'page_blocks[' . $blockKey . '][image_alt]', 'alt_value' => $block['image_alt'] ?? '',
+                    'alt_label' => 'Photo alt tag (describe the image)',
+                ]); ?>
                 <?php endif; ?>
 
                 <?php if (!empty($meta['block_roles'])): ?>
@@ -934,11 +870,11 @@ require_once __DIR__ . '/includes/header.php';
                         </button>
                     </div>
 
-                    <div class="page-block-items space-y-3" data-next-index="<?php echo count($blockItems); ?>">
+                    <div class="page-block-items space-y-3" data-next-index="<?php echo count($blockItems); ?>" data-sortable="1" data-sortable-item=".page-block-item">
                         <?php foreach ($blockItems as $ii => $item): ?>
                         <div class="page-block-item bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-2">
                             <div class="flex items-center justify-between">
-                                <span class="text-[10px] font-bold text-slate-500"><?php echo htmlspecialchars($meta['item_label']); ?> <?php echo (int)$ii + 1; ?></span>
+                                <span class="text-[10px] font-bold text-slate-500"><span class="drag-handle cursor-grab text-slate-300 hover:text-slate-500 mr-1.5" title="Drag to reorder"><i class="fas fa-grip-vertical"></i></span><?php echo htmlspecialchars($meta['item_label']); ?> <span class="sort-position"><?php echo (int)$ii + 1; ?></span></span>
                                 <button type="button" onclick="pageBlockRemoveItem(this)" class="text-[10px] text-red-500 font-bold hover:underline">
                                     <i class="fas fa-trash text-[9px]"></i> Remove
                                 </button>
@@ -951,7 +887,7 @@ require_once __DIR__ . '/includes/header.php';
                     <template id="page-block-item-template-<?php echo htmlspecialchars($blockType); ?>">
                         <div class="page-block-item bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-2">
                             <div class="flex items-center justify-between">
-                                <span class="text-[10px] font-bold text-slate-500">New <?php echo htmlspecialchars($meta['item_label']); ?></span>
+                                <span class="text-[10px] font-bold text-slate-500"><span class="drag-handle cursor-grab text-slate-300 hover:text-slate-500 mr-1.5" title="Drag to reorder"><i class="fas fa-grip-vertical"></i></span>New <?php echo htmlspecialchars($meta['item_label']); ?></span>
                                 <button type="button" onclick="pageBlockRemoveItem(this)" class="text-[10px] text-red-500 font-bold hover:underline"><i class="fas fa-trash text-[9px]"></i> Remove</button>
                             </div>
                             <?php $renderItemFields($blockType, '__KEY__', '__INDEX__', []); ?>
@@ -1014,6 +950,8 @@ require_once __DIR__ . '/includes/header.php';
             if (!item) return;
             container.appendChild(item);
             container.setAttribute('data-next-index', String(index + 1));
+            if (typeof window.cmsWireImageFields === 'function') window.cmsWireImageFields(item);
+            if (typeof window.cmsInitRichEditors === 'function') window.cmsInitRichEditors(item);
         }
 
         function pageBlockRemoveItem(button) {
@@ -1039,11 +977,11 @@ require_once __DIR__ . '/includes/header.php';
                 </button>
             </div>
 
-            <div id="custom-sections-container" class="space-y-4" data-next-index="<?php echo count($existingCustomSections); ?>">
+            <div id="custom-sections-container" class="space-y-4" data-next-index="<?php echo count($existingCustomSections); ?>" data-sortable="1" data-sortable-item=".custom-section-card">
                 <?php foreach ($existingCustomSections as $ci => $cs): ?>
                 <div class="custom-section-card bg-white p-4 rounded-xl border border-slate-200 space-y-3" data-index="<?php echo (int)$ci; ?>">
                     <div class="flex items-center justify-between">
-                        <h4 class="text-xs font-bold text-slate-800 custom-section-number">Section <?php echo (int)$ci + 1; ?></h4>
+                        <h4 class="text-xs font-bold text-slate-800 custom-section-number"><span class="drag-handle cursor-grab text-slate-300 hover:text-slate-500 mr-1.5" title="Drag to reorder"><i class="fas fa-grip-vertical"></i></span><span class="custom-section-label">Section <?php echo (int)$ci + 1; ?></span></h4>
                         <button type="button" onclick="removeCustomSection(this)" class="text-[11px] text-red-500 font-bold hover:underline flex items-center space-x-1">
                             <i class="fas fa-trash text-[9px]"></i>
                             <span>Remove</span>
@@ -1061,19 +999,13 @@ require_once __DIR__ . '/includes/header.php';
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <div>
-                            <label class="block text-[11px] font-bold text-slate-700 mb-1">Layout</label>
-                            <select name="custom_sections[<?php echo (int)$ci; ?>][layout]" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                                <option value="image-right" <?php echo ($cs['layout'] ?? '') === 'image-right' ? 'selected' : ''; ?>>Image on right</option>
-                                <option value="image-left" <?php echo ($cs['layout'] ?? '') === 'image-left' ? 'selected' : ''; ?>>Image on left</option>
-                                <option value="text-only" <?php echo ($cs['layout'] ?? '') === 'text-only' ? 'selected' : ''; ?>>Text only</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-[11px] font-bold text-slate-700 mb-1">Photo Alt Tag</label>
-                            <input type="text" name="custom_sections[<?php echo (int)$ci; ?>][image_alt]" value="<?php echo htmlspecialchars($cs['image_alt'] ?? ''); ?>" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                        </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Layout</label>
+                        <select name="custom_sections[<?php echo (int)$ci; ?>][layout]" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            <option value="image-right" <?php echo ($cs['layout'] ?? '') === 'image-right' ? 'selected' : ''; ?>>Image on right</option>
+                            <option value="image-left" <?php echo ($cs['layout'] ?? '') === 'image-left' ? 'selected' : ''; ?>>Image on left</option>
+                            <option value="text-only" <?php echo ($cs['layout'] ?? '') === 'text-only' ? 'selected' : ''; ?>>Text only</option>
+                        </select>
                     </div>
 
                     <div>
@@ -1081,22 +1013,11 @@ require_once __DIR__ . '/includes/header.php';
                         <textarea name="custom_sections[<?php echo (int)$ci; ?>][text]" rows="6" class="wysiwyg-editor w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs leading-relaxed focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($cs['text'] ?? ''); ?></textarea>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <div>
-                            <label class="block text-[11px] font-bold text-slate-700 mb-1">Photo Path or URL</label>
-                            <input type="text" name="custom_sections[<?php echo (int)$ci; ?>][image]" value="<?php echo htmlspecialchars($cs['image'] ?? ''); ?>" placeholder="assets/... or https://..." class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-mono focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                        </div>
-                        <div>
-                            <label class="block text-[11px] font-bold text-slate-700 mb-1">Upload Photo</label>
-                            <input type="file" name="custom_section_image_<?php echo (int)$ci; ?>" accept="image/*" class="w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-[11px] file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
-                        </div>
-                    </div>
-
-                    <?php if (!empty($cs['image'])): ?>
-                    <div class="w-28 aspect-[4/3] rounded-lg overflow-hidden border border-slate-200">
-                        <img src="../<?php echo htmlspecialchars($cs['image']); ?>" class="w-full h-full object-cover" alt="<?php echo htmlspecialchars($cs['image_alt'] ?? 'Custom section image'); ?>">
-                    </div>
-                    <?php endif; ?>
+                    <?php cms_image_field('custom_sections[' . (int)$ci . '][image]', $cs['image'] ?? '', [
+                        'label' => 'Section Photo', 'folder' => 'pages', 'size' => '800 × 600 px', 'preview_class' => 'w-28 h-20',
+                        'alt_name' => 'custom_sections[' . (int)$ci . '][image_alt]', 'alt_value' => $cs['image_alt'] ?? '',
+                        'alt_label' => 'Photo alt tag',
+                    ]); ?>
                 </div>
                 <?php endforeach; ?>
             </div>
@@ -1107,7 +1028,7 @@ require_once __DIR__ . '/includes/header.php';
         <template id="custom-section-template">
             <div class="custom-section-card bg-white p-4 rounded-xl border border-slate-200 space-y-3" data-index="__INDEX__">
                 <div class="flex items-center justify-between">
-                    <h4 class="text-xs font-bold text-slate-800 custom-section-number">Section</h4>
+                    <h4 class="text-xs font-bold text-slate-800 custom-section-number"><span class="drag-handle cursor-grab text-slate-300 hover:text-slate-500 mr-1.5" title="Drag to reorder"><i class="fas fa-grip-vertical"></i></span><span class="custom-section-label">Section</span></h4>
                     <button type="button" onclick="removeCustomSection(this)" class="text-[11px] text-red-500 font-bold hover:underline flex items-center space-x-1">
                         <i class="fas fa-trash text-[9px]"></i>
                         <span>Remove</span>
@@ -1125,19 +1046,13 @@ require_once __DIR__ . '/includes/header.php';
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Layout</label>
-                        <select name="custom_sections[__INDEX__][layout]" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                            <option value="image-right">Image on right</option>
-                            <option value="image-left">Image on left</option>
-                            <option value="text-only">Text only</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Photo Alt Tag</label>
-                        <input type="text" name="custom_sections[__INDEX__][image_alt]" value="" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    </div>
+                <div>
+                    <label class="block text-[11px] font-bold text-slate-700 mb-1">Layout</label>
+                    <select name="custom_sections[__INDEX__][layout]" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <option value="image-right">Image on right</option>
+                        <option value="image-left">Image on left</option>
+                        <option value="text-only">Text only</option>
+                    </select>
                 </div>
 
                 <div>
@@ -1145,23 +1060,18 @@ require_once __DIR__ . '/includes/header.php';
                     <textarea name="custom_sections[__INDEX__][text]" rows="6" class="wysiwyg-editor w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs leading-relaxed focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Photo Path or URL</label>
-                        <input type="text" name="custom_sections[__INDEX__][image]" value="" placeholder="assets/... or https://..." class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-mono focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Upload Photo</label>
-                        <input type="file" name="custom_section_image___INDEX__" accept="image/*" class="w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-[11px] file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
-                    </div>
-                </div>
+                <?php cms_image_field('custom_sections[__INDEX__][image]', '', [
+                    'label' => 'Section Photo', 'folder' => 'pages', 'size' => '800 × 600 px', 'preview_class' => 'w-28 h-20',
+                    'alt_name' => 'custom_sections[__INDEX__][image_alt]', 'alt_value' => '',
+                    'alt_label' => 'Photo alt tag',
+                ]); ?>
             </div>
         </template>
 
         <script>
         function renumberCustomSections() {
             document.querySelectorAll('#custom-sections-container .custom-section-card').forEach(function (card, i) {
-                var label = card.querySelector('.custom-section-number');
+                var label = card.querySelector(".custom-section-label");
                 if (label) label.textContent = 'Section ' + (i + 1);
             });
         }
@@ -1184,6 +1094,9 @@ require_once __DIR__ . '/includes/header.php';
 
             if (typeof window.cmsInitRichEditors === 'function') {
                 window.cmsInitRichEditors(card);
+            }
+            if (typeof window.cmsWireImageFields === 'function') {
+                window.cmsWireImageFields(card);
             }
         }
 

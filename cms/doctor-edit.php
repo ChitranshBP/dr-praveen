@@ -2,6 +2,7 @@
 require_once __DIR__ . '/includes/auth.php';
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/functions.php';
+require_once __DIR__ . '/includes/fields.php';
 
 $pageTitle = 'Edit Doctor Profile';
 require_once __DIR__ . '/includes/header.php';
@@ -31,11 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $expertise = trim($_POST['expertise'] ?? '');
     $imageAlt = trim($_POST['image_alt'] ?? '');
 
-    $imagePath = $_POST['existing_image'] ?? '';
-    $imgUpload = cms_handle_upload('doctor_photo', 'doctors');
-    if ($imgUpload && !isset($imgUpload['error'])) {
-        $imagePath = $imgUpload['path'];
-    }
+    $imgRes = cms_image_field_value('image', 'doctors', $doc['image'] ?? '');
+    $imagePath = $imgRes['path'];
+    $uploadError = $imgRes['error'];
 
     $docData = $doc;
     if (!is_array($docData)) {
@@ -94,7 +93,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     CMS_DB::set('doctors', $doctors);
-    cms_set_flash('success', 'Doctor profile updated successfully.');
+    if ($uploadError !== '') {
+        cms_set_flash('error', 'Profile saved, but the photo upload failed: ' . $uploadError);
+    } else {
+        cms_set_flash('success', 'Doctor profile updated successfully.');
+    }
     header('Location: doctors.php');
     exit;
 }
@@ -111,7 +114,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <form method="POST" enctype="multipart/form-data" class="space-y-5">
         <?php echo cms_csrf_field(); ?>
-        <input type="hidden" name="existing_image" value="<?php echo htmlspecialchars($doc['image'] ?? ''); ?>">
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
@@ -132,29 +134,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
 
-        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200/80 space-y-3">
-            <div>
-                <div class="flex items-center justify-between mb-1">
-                    <label class="block text-xs font-bold text-slate-700">
-                        <i class="fas fa-camera text-brand-blue mr-1"></i> Doctor Profile Photo
-                    </label>
-                    <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Recommended: 600 × 750 px</span>
-                </div>
-                <p class="text-[10px] text-slate-500">Portrait format (Aspect ratio ~4:5). Supported: WebP, PNG, JPG (Max 4MB).</p>
-                <?php if (!empty($doc['image'])): ?>
-                <div class="flex items-center space-x-3 py-2">
-                    <img src="../<?php echo htmlspecialchars($doc['image']); ?>" class="h-14 w-12 object-cover rounded-lg border border-slate-200" alt="Doctor photo">
-                    <span class="text-[10px] text-slate-400 font-mono"><?php echo htmlspecialchars($doc['image']); ?></span>
-                </div>
-                <?php endif; ?>
-                <input type="file" name="doctor_photo" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
-
-                <div class="pt-2 border-t border-slate-200/60">
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Doctor Photo Alt Tag (SEO & Accessibility)</label>
-                    <input type="text" name="image_alt" value="<?php echo htmlspecialchars($doc['image_alt'] ?? $doc['alt'] ?? ''); ?>" placeholder="e.g. <?php echo htmlspecialchars($doc['name'] ?? 'Doctor'); ?> - Artemis Hospital" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                </div>
-            </div>
-        </div>
+        <?php cms_image_field('image', $doc['image'] ?? '', [
+            'label' => 'Doctor Profile Photo', 'folder' => 'doctors', 'size' => 'Recommended: 600 × 750 px',
+            'hint' => 'Portrait format (aspect ratio ~4:5). WebP, PNG or JPG (max 8MB).',
+            'preview_class' => 'w-20 h-24',
+            'alt_name' => 'image_alt', 'alt_value' => $doc['image_alt'] ?? $doc['alt'] ?? '',
+            'alt_label' => 'Photo alt tag, e.g. ' . ($doc['name'] ?? 'Doctor') . ' - Neurologist',
+        ]); ?>
 
         <div>
             <label class="block text-xs font-bold text-slate-700 mb-1">About / Biography</label>

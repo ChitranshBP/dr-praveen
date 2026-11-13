@@ -2,6 +2,7 @@
 require_once __DIR__ . '/includes/auth.php';
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/functions.php';
+require_once __DIR__ . '/includes/fields.php';
 
 cms_require_auth();
 
@@ -21,6 +22,15 @@ unset($b);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     cms_verify_csrf();
     $action = $_POST['action'] ?? '';
+
+    if ($action === 'reorder') {
+        $banners = cms_apply_reorder($banners, is_array($_POST['ids'] ?? null) ? $_POST['ids'] : []);
+        $ok = CMS_DB::set('banners', $banners);
+        if (!empty($_SERVER['HTTP_X_REQUESTED_WITH'])) { header('Content-Type: application/json'); echo json_encode(['success' => $ok]); exit; }
+        cms_set_flash($ok ? 'success' : 'error', $ok ? 'Banner order saved.' : 'Could not save the order.');
+        header('Location: banners.php');
+        exit;
+    }
 
     if ($action === 'move_up' || $action === 'move_down') {
         $id = $_POST['banner_id'] ?? '';
@@ -84,17 +94,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $order = (int)($_POST['order'] ?? (count($banners) + 1));
         $isActive = isset($_POST['is_active']);
 
-        $desktopImg = $_POST['existing_desktop_image'] ?? '';
-        $deskUpload = cms_handle_upload('desktop_image', 'banner');
-        if ($deskUpload && !isset($deskUpload['error'])) {
-            $desktopImg = $deskUpload['path'];
+        $current = null;
+        foreach ($banners as $cb) {
+            if (($cb['id'] ?? '') === $id) { $current = $cb; break; }
         }
-
-        $mobileImg = $_POST['existing_mobile_image'] ?? '';
-        $mobUpload = cms_handle_upload('mobile_image', 'banner');
-        if ($mobUpload && !isset($mobUpload['error'])) {
-            $mobileImg = $mobUpload['path'];
+        $uploadErrors = [];
+        $deskRes = cms_image_field_value('desktop_image', 'banner', $current['desktop_image'] ?? '');
+        $mobRes = cms_image_field_value('mobile_image', 'banner', $current['mobile_image'] ?? '');
+        foreach ([$deskRes, $mobRes] as $r) {
+            if ($r['error'] !== '') $uploadErrors[] = $r['error'];
         }
+        $desktopImg = $deskRes['path'];
+        $mobileImg = $mobRes['path'];
 
         if ($action === 'create') {
             $newBanner = [
@@ -129,6 +140,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             }
             cms_set_flash('success', 'Banner updated successfully.');
+        }
+        if (!empty($uploadErrors)) {
+            cms_set_flash('error', 'Banner saved, but an image upload failed: ' . implode(' ', $uploadErrors));
         }
 
         // Re-sort
@@ -178,7 +192,7 @@ if ($editId) {
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-200">
         <div>
             <h2 class="text-base font-bold text-slate-900">Hero Slider Banners</h2>
-            <p class="text-xs text-slate-500 mt-0.5">Manage, reorder, and update banners displayed at the top of your homepage.</p>
+            <p class="text-xs text-slate-500 mt-0.5">Manage, reorder, and update banners displayed at the top of your homepage. Drag a slide by its <i class="fas fa-grip-vertical"></i> handle to change the order.</p>
         </div>
         <button onclick="document.getElementById('bannerFormModal').classList.toggle('hidden');" class="px-4 py-2 bg-brand-blue hover:bg-blue-700 text-white text-xs font-bold rounded-xl shadow-sm transition-all flex items-center space-x-1.5 self-start sm:self-auto">
             <i class="fas fa-plus"></i>
@@ -187,16 +201,16 @@ if ($editId) {
     </div>
 
     <!-- Active Banners List -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5" <?php echo cms_sortable_list_attrs('banners.php'); ?>>
         <?php foreach ($banners as $index => $b): ?>
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow" data-id="<?php echo htmlspecialchars($b['id']); ?>">
             <div>
                 <!-- Image Preview -->
                 <div class="relative w-full aspect-[1440/500] bg-slate-100 overflow-hidden border-b border-slate-100">
                     <img src="../<?php echo htmlspecialchars($b['desktop_image']); ?>" class="w-full h-full object-cover" alt="<?php echo htmlspecialchars($b['alt_text'] ?? $b['title'] ?? 'Banner'); ?>">
-                    <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg text-[11px] font-extrabold shadow-sm bg-slate-900/85 text-white backdrop-blur-sm flex items-center space-x-1">
-                        <i class="fas fa-sort-numeric-down text-cyan-400"></i>
-                        <span>Order #<?php echo (int)($b['order'] ?? ($index + 1)); ?></span>
+                    <span class="drag-handle absolute top-3 left-3 px-2.5 py-1 rounded-lg text-[11px] font-extrabold shadow-sm bg-slate-900/85 text-white backdrop-blur-sm flex items-center space-x-1.5 cursor-grab" title="Drag to reorder">
+                        <i class="fas fa-grip-vertical text-cyan-400"></i>
+                        <span>Slide #<span class="sort-position"><?php echo (int)($b['order'] ?? ($index + 1)); ?></span></span>
                     </span>
                     <span class="absolute top-3 right-3 px-2 py-0.5 rounded-full text-[10px] font-bold shadow-sm <?php echo !empty($b['is_active']) ? 'bg-emerald-500 text-white' : 'bg-slate-800 text-slate-200'; ?>">
                         <?php echo !empty($b['is_active']) ? 'Active' : 'Disabled'; ?>
@@ -217,25 +231,7 @@ if ($editId) {
             </div>
 
             <div class="p-3 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs">
-                <!-- Reorder Buttons -->
-                <div class="flex items-center space-x-1">
-                    <form method="POST" action="" class="inline">
-                        <?php echo cms_csrf_field(); ?>
-                        <input type="hidden" name="action" value="move_up">
-                        <input type="hidden" name="banner_id" value="<?php echo htmlspecialchars($b['id']); ?>">
-                        <button type="submit" <?php echo $index === 0 ? 'disabled' : ''; ?> title="Move Up" class="p-1.5 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-blue-50 hover:text-blue-600 disabled:opacity-30 disabled:cursor-not-allowed transition-all">
-                            <i class="fas fa-arrow-up text-xs"></i>
-                        </button>
-                    </form>
-                    <form method="POST" action="" class="inline">
-                        <?php echo cms_csrf_field(); ?>
-                        <input type="hidden" name="action" value="move_down">
-                        <input type="hidden" name="banner_id" value="<?php echo htmlspecialchars($b['id']); ?>">
-                        <button type="submit" <?php echo $index === count($banners) - 1 ? 'disabled' : ''; ?> title="Move Down" class="p-1.5 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-blue-50 hover:text-blue-600 disabled:opacity-30 disabled:cursor-not-allowed transition-all">
-                            <i class="fas fa-arrow-down text-xs"></i>
-                        </button>
-                    </form>
-                </div>
+                <span class="text-[11px] text-slate-400 font-semibold"><i class="fas fa-mobile-alt mr-1"></i><?php echo !empty($b['mobile_image']) ? 'Mobile artwork set' : 'No mobile artwork'; ?></span>
 
                 <div class="flex items-center space-x-2">
                     <a href="banners.php?edit=<?php echo urlencode($b['id']); ?>" class="px-3 py-1.5 bg-brand-blue hover:bg-blue-700 text-white font-bold rounded-lg transition-colors flex items-center space-x-1">
@@ -268,18 +264,12 @@ if ($editId) {
                 <?php echo cms_csrf_field(); ?>
                 <input type="hidden" name="action" value="<?php echo $editBanner ? 'edit' : 'create'; ?>">
                 <input type="hidden" name="banner_id" value="<?php echo htmlspecialchars($editBanner['id'] ?? ''); ?>">
-                <input type="hidden" name="existing_desktop_image" value="<?php echo htmlspecialchars($editBanner['desktop_image'] ?? ''); ?>">
-                <input type="hidden" name="existing_mobile_image" value="<?php echo htmlspecialchars($editBanner['mobile_image'] ?? ''); ?>">
+                <input type="hidden" name="order" value="<?php echo htmlspecialchars($editBanner['order'] ?? (count($banners) + 1)); ?>">
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                    <div class="md:col-span-2">
-                        <label class="block font-bold text-slate-700 mb-1">Banner Title / Name</label>
-                        <input type="text" name="title" value="<?php echo htmlspecialchars($editBanner['title'] ?? ''); ?>" placeholder="e.g. Transforming Brain & Spine Care" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    </div>
-                    <div>
-                        <label class="block font-bold text-slate-700 mb-1">Display Order #</label>
-                        <input type="number" min="1" name="order" value="<?php echo htmlspecialchars($editBanner['order'] ?? (count($banners) + 1)); ?>" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-900 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    </div>
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">Banner Title / Name</label>
+                    <input type="text" name="title" value="<?php echo htmlspecialchars($editBanner['title'] ?? ''); ?>" placeholder="e.g. Transforming Brain & Spine Care" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    <p class="text-[10px] text-slate-400 mt-1">Internal name for this slide (the artwork carries the visible headline). Reorder slides by dragging them in the list.</p>
                 </div>
 
                 <div>
@@ -288,39 +278,16 @@ if ($editId) {
                     <p class="text-[10px] text-slate-400 mt-1">Brief descriptive text used by Google Image Search and screen readers.</p>
                 </div>
 
-                <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-2">
-                    <div class="flex items-center justify-between">
-                        <label class="block font-bold text-slate-800">
-                            <i class="fas fa-desktop text-brand-blue mr-1"></i> Desktop Banner Artwork
-                        </label>
-                        <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Recommended: 1920 × 670 px (or 1440 × 500 px)</span>
-                    </div>
-                    <p class="text-[10px] text-slate-500">Wide landscape format (Aspect ratio ~16:5). Supported: WebP, PNG, JPG (Max 4MB).</p>
-                    <?php if (!empty($editBanner['desktop_image'])): ?>
-                    <div class="flex items-center space-x-2 py-1">
-                        <img src="../<?php echo htmlspecialchars($editBanner['desktop_image']); ?>" class="h-10 w-28 object-cover rounded border border-slate-200" alt="Current Desktop Banner">
-                        <span class="text-[10px] text-slate-400 font-mono"><?php echo htmlspecialchars($editBanner['desktop_image']); ?></span>
-                    </div>
-                    <?php endif; ?>
-                    <input type="file" name="desktop_image" accept="image/*" class="w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
-                </div>
-
-                <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-2">
-                    <div class="flex items-center justify-between">
-                        <label class="block font-bold text-slate-800">
-                            <i class="fas fa-mobile-alt text-brand-blue mr-1"></i> Mobile Banner Artwork (Portrait)
-                        </label>
-                        <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-100 text-purple-800">Recommended: 750 × 900 px (or 1080 × 1300 px)</span>
-                    </div>
-                    <p class="text-[10px] text-slate-500">Optimized portrait format for phones (Aspect ratio ~4:5 / 5:6). Supported: WebP, PNG, JPG (Max 4MB).</p>
-                    <?php if (!empty($editBanner['mobile_image'])): ?>
-                    <div class="flex items-center space-x-2 py-1">
-                        <img src="../<?php echo htmlspecialchars($editBanner['mobile_image']); ?>" class="h-10 w-10 object-cover rounded border border-slate-200" alt="Current Mobile Banner">
-                        <span class="text-[10px] text-slate-400 font-mono"><?php echo htmlspecialchars($editBanner['mobile_image']); ?></span>
-                    </div>
-                    <?php endif; ?>
-                    <input type="file" name="mobile_image" accept="image/*" class="w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
-                </div>
+                <?php cms_image_field('desktop_image', $editBanner['desktop_image'] ?? '', [
+                    'label' => 'Desktop Banner Artwork', 'folder' => 'banner', 'size' => '1920 × 670 px (or 1440 × 500 px)',
+                    'hint' => 'Wide landscape format (aspect ratio ~16:5). WebP, PNG or JPG (max 8MB).',
+                    'preview_class' => 'w-40 h-14',
+                ]); ?>
+                <?php cms_image_field('mobile_image', $editBanner['mobile_image'] ?? '', [
+                    'label' => 'Mobile Banner Artwork (Portrait)', 'folder' => 'banner', 'size' => '750 × 900 px (or 1080 × 1300 px)',
+                    'hint' => 'Portrait format for phones (aspect ratio ~4:5 / 5:6). WebP, PNG or JPG (max 8MB).',
+                    'preview_class' => 'w-16 h-20',
+                ]); ?>
 
                 <div class="flex items-center space-x-2 pt-2">
                     <input type="checkbox" id="is_active" name="is_active" <?php echo !isset($editBanner) || !empty($editBanner['is_active']) ? 'checked' : ''; ?> class="w-4 h-4 text-blue-600 rounded">

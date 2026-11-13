@@ -1,6 +1,7 @@
 <?php
 $pageTitle = 'Site Settings & Branding';
 require_once __DIR__ . '/includes/header.php';
+require_once __DIR__ . '/includes/fields.php';
 
 $settings = CMS_DB::get('settings', []);
 $currentUser = cms_current_user();
@@ -71,17 +72,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $uploadErrors = [];
-    foreach (['logo_file' => ['logo_path', 'logo'], 'favicon_file' => ['favicon_path', 'favicon'], 'og_image_file' => ['default_og_image', 'seo']] as $fileKey => [$settingKey, $folder]) {
-        $up = cms_handle_upload($fileKey, $folder);
-        if (is_array($up) && isset($up['error'])) {
-            $uploadErrors[] = $up['error'];
-        } elseif (is_array($up) && !empty($up['path'])) {
-            $updated[$settingKey] = $up['path'];
+    foreach (['logo_path' => 'logo', 'favicon_path' => 'favicon', 'default_og_image' => 'seo'] as $settingKey => $folder) {
+        if (!array_key_exists($settingKey, $_POST) && empty($_FILES[cms_image_file_key($settingKey)])) {
+            continue;
         }
+        $res = cms_image_field_value($settingKey, $folder, (string)($settings[$settingKey] ?? ''));
+        if ($res['error'] !== '') {
+            $uploadErrors[] = $res['error'];
+        }
+        $updated[$settingKey] = $res['path'];
     }
-    foreach (['logo_path', 'favicon_path', 'default_og_image'] as $pathKey) {
-        if (!empty($_POST[$pathKey . '_remove'])) {
-            $updated[$pathKey] = '';
+    // Lists & categories used by collections (one option per line)
+    foreach (['gallery_categories', 'video_categories'] as $listKey) {
+        if (array_key_exists($listKey, $_POST)) {
+            $updated[$listKey] = trim((string)$_POST[$listKey]);
         }
     }
 
@@ -143,50 +147,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label class="block text-xs font-bold text-slate-700 mb-1">Site URL</label>
                 <input type="url" name="site_url" value="<?php echo htmlspecialchars($settings['site_url'] ?? ''); ?>" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
             </div>
-            <div class="md:col-span-2 bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
-                <div class="flex items-center justify-between">
-                    <label class="block text-xs font-bold text-slate-800">
-                        <i class="fas fa-image text-brand-blue mr-1"></i> Website Header & Footer Logo
-                    </label>
-                    <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Recommended: 300 × 80 px</span>
-                </div>
-                <p class="text-[10px] text-slate-500">Transparent PNG or WebP format (Max 8MB). Ideal aspect ratio ~4:1 or 3:1. Leave empty to use the built-in logo.</p>
-                <?php if (!empty($settings['logo_path'])): ?>
-                <div class="flex items-center space-x-3 py-1">
-                    <div class="bg-white p-2 rounded-lg border border-slate-200 inline-block">
-                        <img src="../<?php echo htmlspecialchars($settings['logo_path']); ?>" class="h-8 max-w-xs object-contain" alt="Current Logo">
-                    </div>
-                    <span class="text-[10px] text-slate-400 font-mono"><?php echo htmlspecialchars($settings['logo_path']); ?></span>
-                    <label class="inline-flex items-center space-x-1 text-[10px] font-semibold text-red-600"><input type="checkbox" name="logo_path_remove" value="1" class="w-3.5 h-3.5 rounded"><span>Remove</span></label>
-                </div>
-                <?php endif; ?>
-                <input type="file" name="logo_file" accept=".png,.webp,.jpg,.jpeg" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
-
-                <div class="pt-2 border-t border-slate-200/60 grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-1"><i class="fas fa-star text-brand-blue mr-1"></i> Favicon (browser tab icon)</label>
-                        <?php if (!empty($settings['favicon_path'])): ?>
-                        <div class="flex items-center space-x-2 py-1">
-                            <img src="../<?php echo htmlspecialchars($settings['favicon_path']); ?>" class="w-6 h-6 object-contain rounded border border-slate-200 bg-white" alt="Favicon">
-                            <span class="text-[10px] text-slate-400 font-mono break-all"><?php echo htmlspecialchars($settings['favicon_path']); ?></span>
-                            <label class="inline-flex items-center space-x-1 text-[10px] font-semibold text-red-600"><input type="checkbox" name="favicon_path_remove" value="1" class="w-3.5 h-3.5 rounded"><span>Remove</span></label>
-                        </div>
-                        <?php endif; ?>
-                        <input type="file" name="favicon_file" accept=".png,.webp,.jpg,.jpeg" class="w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
-                        <p class="text-[10px] text-slate-400 mt-1">Square PNG, 512 × 512 px recommended.</p>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-1"><i class="fas fa-share-square text-brand-blue mr-1"></i> Default Social Share Image (Open Graph)</label>
-                        <?php if (!empty($settings['default_og_image'])): ?>
-                        <div class="flex items-center space-x-2 py-1">
-                            <img src="../<?php echo htmlspecialchars($settings['default_og_image']); ?>" class="w-16 h-9 object-cover rounded border border-slate-200 bg-white" alt="Share image">
-                            <span class="text-[10px] text-slate-400 font-mono break-all"><?php echo htmlspecialchars($settings['default_og_image']); ?></span>
-                            <label class="inline-flex items-center space-x-1 text-[10px] font-semibold text-red-600"><input type="checkbox" name="default_og_image_remove" value="1" class="w-3.5 h-3.5 rounded"><span>Remove</span></label>
-                        </div>
-                        <?php endif; ?>
-                        <input type="file" name="og_image_file" accept=".png,.webp,.jpg,.jpeg" class="w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
-                        <p class="text-[10px] text-slate-400 mt-1">Shown when a page is shared on WhatsApp / Facebook. 1200 × 630 px.</p>
-                    </div>
+            <div class="md:col-span-2 space-y-3">
+                <?php cms_image_field('logo_path', $settings['logo_path'] ?? '', [
+                    'label' => 'Website Header & Footer Logo', 'folder' => 'logo', 'size' => 'Recommended: 300 × 80 px',
+                    'hint' => 'Transparent PNG or WebP, aspect ratio ~4:1. Remove to fall back to the built-in NeuroDoc logo.',
+                    'preview_class' => 'w-36 h-14',
+                ]); ?>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <?php cms_image_field('favicon_path', $settings['favicon_path'] ?? '', [
+                        'label' => 'Favicon (browser tab icon)', 'folder' => 'favicon', 'size' => '512 × 512 px',
+                        'preview_class' => 'w-14 h-14',
+                    ]); ?>
+                    <?php cms_image_field('default_og_image', $settings['default_og_image'] ?? '', [
+                        'label' => 'Default Social Share Image', 'folder' => 'seo', 'size' => '1200 × 630 px',
+                        'hint' => 'Shown when a page is shared on WhatsApp / Facebook and no page-specific image is set.',
+                        'preview_class' => 'w-24 h-14',
+                    ]); ?>
                 </div>
 
                 <div class="pt-2 border-t border-slate-200/60">
@@ -293,6 +269,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div>
                 <label class="block text-xs font-bold text-slate-700 mb-1"><i class="fab fa-linkedin text-blue-700 mr-1.5"></i> LinkedIn URL</label>
                 <input type="url" name="social_linkedin" value="<?php echo htmlspecialchars($settings['social_linkedin'] ?? ''); ?>" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
+        </div>
+    </div>
+
+    <!-- Lists & Categories -->
+    <div id="collections" class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+        <h2 class="text-sm font-bold text-slate-900 uppercase tracking-wider pb-3 border-b border-slate-100 flex items-center">
+            <i class="fas fa-tags text-brand-blue mr-2"></i> Lists &amp; Categories
+        </h2>
+        <p class="text-[11px] text-slate-500 -mt-1">One option per line as <code class="bg-slate-100 px-1 rounded">key|Label</code> (the key is stored, the label is shown). Leave blank for the built-in defaults.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Gallery categories (filter chips)</label>
+                <textarea name="gallery_categories" rows="4" placeholder="awards|Awards &amp; Recognition&#10;clinical|Clinical Events" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-mono focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($settings['gallery_categories'] ?? ''); ?></textarea>
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Video library categories (filter chips)</label>
+                <textarea name="video_categories" rows="4" placeholder="stroke|Stroke&#10;epilepsy|Epilepsy&#10;headache|Headache" class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-mono focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($settings['video_categories'] ?? ''); ?></textarea>
             </div>
         </div>
     </div>

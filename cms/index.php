@@ -177,6 +177,37 @@ $helpline = CMS_DB::getSetting('stroke_helpline', '1800-309-0247');
             </div>
         </a>
 
+        <?php require_once __DIR__ . '/includes/collections.php'; foreach (cms_collection_schemas() as $colKey => $colSchema): $colCount = count(cms_collection_load($colKey)); ?>
+        <a href="collection.php?c=<?php echo urlencode($colKey); ?>" class="bg-white p-5 rounded-2xl border border-slate-200 hover:border-brand-blue shadow-sm hover:shadow-md transition-all group flex flex-col justify-between">
+            <div>
+                <div class="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-lg mb-3 group-hover:scale-110 transition-transform">
+                    <i class="fas <?php echo htmlspecialchars($colSchema['icon'] ?? 'fa-list'); ?>"></i>
+                </div>
+                <h3 class="text-sm font-bold text-slate-900 mb-1"><?php echo htmlspecialchars($colSchema['label']); ?></h3>
+                <p class="text-xs text-slate-500"><?php echo htmlspecialchars($colSchema['description'] ?? ''); ?></p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 mt-4 flex items-center justify-between text-xs text-brand-blue font-bold">
+                <span><?php echo $colCount; ?> <?php echo htmlspecialchars($colCount === 1 ? $colSchema['singular'] : $colSchema['label']); ?></span>
+                <span class="group-hover:translate-x-1 transition-transform">Edit &rarr;</span>
+            </div>
+        </a>
+        <?php endforeach; ?>
+
+        <!-- Media Library Card -->
+        <a href="media.php" class="bg-white p-5 rounded-2xl border border-slate-200 hover:border-brand-blue shadow-sm hover:shadow-md transition-all group flex flex-col justify-between">
+            <div>
+                <div class="w-10 h-10 rounded-xl bg-violet-50 text-violet-600 flex items-center justify-center text-lg mb-3 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-photo-film"></i>
+                </div>
+                <h3 class="text-sm font-bold text-slate-900 mb-1">Media Library</h3>
+                <p class="text-xs text-slate-500">Upload images once and reuse them anywhere. Delete unused uploads.</p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 mt-4 flex items-center justify-between text-xs text-brand-blue font-bold">
+                <span>All images</span>
+                <span class="group-hover:translate-x-1 transition-transform">Open &rarr;</span>
+            </div>
+        </a>
+
         <!-- Settings Card -->
         <a href="settings.php" class="bg-white p-5 rounded-2xl border border-slate-200 hover:border-brand-blue shadow-sm hover:shadow-md transition-all group flex flex-col justify-between">
             <div>

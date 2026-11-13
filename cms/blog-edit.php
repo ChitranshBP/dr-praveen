@@ -2,6 +2,7 @@
 require_once __DIR__ . '/includes/auth.php';
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/functions.php';
+require_once __DIR__ . '/includes/fields.php';
 
 cms_require_auth();
 
@@ -33,11 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $metaTitle = trim($_POST['meta_title'] ?? '');
     $metaDescription = trim($_POST['meta_description'] ?? '');
 
-    $imagePath = $_POST['existing_image'] ?? '';
-    $imgUpload = cms_handle_upload('blog_image', 'blogs');
-    if ($imgUpload && !isset($imgUpload['error'])) {
-        $imagePath = $imgUpload['path'];
-    }
+    $imgRes = cms_image_field_value('image', 'blogs', $blog['image'] ?? '');
+    $imagePath = $imgRes['path'];
+    $uploadError = $imgRes['error'];
 
     if ($id && $blog) {
         foreach ($blogs as &$b) {
@@ -53,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $b['image_alt'] = $imageAlt ?: $title;
                 $b['meta_title'] = $metaTitle;
                 $b['meta_description'] = $metaDescription;
-                if ($imagePath) $b['image'] = $imagePath;
+                $b['image'] = $imagePath;
                 break;
             }
         }
@@ -87,7 +86,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    cms_set_flash('success', 'Article saved successfully and sitemap updated.');
+    if ($uploadError !== '') {
+        cms_set_flash('error', 'Article saved, but the image upload failed: ' . $uploadError);
+    } else {
+        cms_set_flash('success', 'Article saved successfully and sitemap updated.');
+    }
     header('Location: blogs.php');
     exit;
 }
@@ -112,7 +115,6 @@ require_once __DIR__ . '/includes/header.php';
 
     <form method="POST" action="" enctype="multipart/form-data" class="space-y-5">
         <?php echo cms_csrf_field(); ?>
-        <input type="hidden" name="existing_image" value="<?php echo htmlspecialchars($blog['image'] ?? ''); ?>">
 
         <!-- SEO Meta Box -->
         <div class="bg-gradient-to-br from-slate-50 to-blue-50/30 p-5 rounded-2xl border border-blue-100 space-y-3">
@@ -169,27 +171,13 @@ require_once __DIR__ . '/includes/header.php';
             </div>
         </div>
 
-        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
-            <div class="flex items-center justify-between">
-                <label class="block text-xs font-bold text-slate-800">
-                    <i class="fas fa-image text-brand-blue mr-1"></i> Featured Banner Image
-                </label>
-                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Recommended: 1200 × 630 px</span>
-            </div>
-            <p class="text-[10px] text-slate-500">Wide landscape format (Aspect ratio 16:9 or 1.91:1 standard social card). Supported: WebP, PNG, JPG (Max 5MB).</p>
-            <?php if (!empty($blog['image'])): ?>
-            <div class="flex items-center space-x-3 py-1">
-                <img src="../<?php echo htmlspecialchars($blog['image']); ?>" class="h-14 w-24 object-cover rounded-lg border border-slate-200" alt="<?php echo htmlspecialchars($blog['image_alt'] ?? 'Blog Image'); ?>">
-                <span class="text-[10px] text-slate-400 font-mono"><?php echo htmlspecialchars($blog['image']); ?></span>
-            </div>
-            <?php endif; ?>
-            <input type="file" name="blog_image" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
-
-            <div class="pt-2 border-t border-slate-200/60">
-                <label class="block text-xs font-bold text-slate-700 mb-1">Featured Image Alt Tag (SEO & Accessibility)</label>
-                <input type="text" name="image_alt" value="<?php echo htmlspecialchars($blog['image_alt'] ?? ''); ?>" placeholder="e.g. <?php echo htmlspecialchars($blog['title'] ?? 'Blog Article'); ?> Banner - Dr. Praveen Gupta" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none">
-            </div>
-        </div>
+        <?php cms_image_field('image', $blog['image'] ?? '', [
+            'label' => 'Featured Banner Image', 'folder' => 'blogs', 'size' => 'Recommended: 1200 × 630 px',
+            'hint' => 'Wide landscape format (16:9 or 1.91:1 social card). WebP, PNG or JPG (max 8MB).',
+            'preview_class' => 'w-40 h-[84px]',
+            'alt_name' => 'image_alt', 'alt_value' => $blog['image_alt'] ?? '',
+            'alt_label' => 'Featured image alt tag, e.g. ' . ($blog['title'] ?? 'Blog Article') . ' - Dr. Praveen Gupta',
+        ]); ?>
 
         <div>
             <label class="block text-xs font-bold text-slate-700 mb-1">Short Excerpt</label>

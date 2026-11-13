@@ -3,7 +3,8 @@
  * Public Lead Capture Endpoint
  * - Stores every submission in /data/leads.json (visible in CMS -> Leads & Inquiries)
  * - Forwards the same fields to Formester so existing automations keep working
- * - Optionally saves uploaded reports under /assets/uploads/leads/
+ * - Optionally saves uploaded reports under /data/lead-uploads/ (not web-accessible;
+ *   downloaded through the CMS)
  * - Supports both AJAX/JSON responses and direct HTTP 302 redirects
  */
 
@@ -31,11 +32,15 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 $dataDir   = dirname(__DIR__) . '/data';
 $leadsFile = $dataDir . '/leads.json';
-$uploadDir = dirname(__DIR__) . '/assets/uploads/leads';
+$uploadDir = $dataDir . '/lead-uploads';
 
-// Allowlisted Formester endpoints
+// Formester endpoints: the main form URL is editable in CMS → Settings.
+$siteSettings = [];
+if (is_file($dataDir . '/settings.json')) {
+    $siteSettings = json_decode((string)file_get_contents($dataDir . '/settings.json'), true) ?: [];
+}
 $FORMESTER_URLS = [
-    'main' => 'https://app.formester.com/forms/MUVNkRKYA/submissions',
+    'main' => trim((string)($siteSettings['formester_url'] ?? '')) !== '' ? trim((string)$siteSettings['formester_url']) : 'https://app.formester.com/forms/MUVNkRKYA/submissions',
     'lp'   => 'https://app.formester.com/forms/4a08Yw78e/submissions',
 ];
 $formKey       = ($_POST['form_key'] ?? '') === 'lp' ? 'lp' : 'main';
@@ -116,14 +121,53 @@ if (isset($_FILES['report']) && $_FILES['report']['error'] === UPLOAD_ERR_OK) {
         if (!is_dir($uploadDir)) {
             @mkdir($uploadDir, 0755, true);
         }
-        $safeName = date('Ymd_His') . '_' . preg_replace('/[^a-zA-Z0-9._-]/', '', $_FILES['report']['name']);
+        if (!is_file($uploadDir . '/.htaccess')) {
+            @file_put_contents($uploadDir . '/.htaccess', "<IfModule mod_authz_core.c>\n    Require all denied\n</IfModule>\n<IfModule !mod_authz_core.c>\n    Order allow,deny\n    Deny from all\n</IfModule>\n");
+        }
+        $safeName = date('Ymd_His') . '_' . bin2hex(random_bytes(4)) . '_' . preg_replace('/[^a-zA-Z0-9._-]/', '', $_FILES['report']['name']);
         if (move_uploaded_file($_FILES['report']['tmp_name'], $uploadDir . '/' . $safeName)) {
-            $savedFile = 'assets/uploads/leads/' . $safeName;
+            $savedFile = $safeName;
         }
     }
 }
+
+// ---- Store the lead for CMS → Leads --------------------------------------------
+$leads = [];
+if (is_file($leadsFile)) {
+    $leads = json_decode((string)file_get_contents($leadsFile), true) ?: [];
+}
+$leads[] = [
+    'id'         => bin2hex(random_bytes(8)),
+    'created_at' => date('Y-m-d H:i:s'),
+    'name'       => $name,
+    'phone'      => $phone,
+    'email'      => $email,
+    'subject'    => $subject,
+    'message'    => $message,
+    'source'     => $formType,
+    'page'       => substr((string)($_SERVER['HTTP_REFERER'] ?? ''), 0, 300),
+    'report'     => $savedFile,
+    'status'     => 'new',
+    'ip'         => $ip,
+];
+$leadsJson = json_encode($leads, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+if ($leadsJson !== false) {
+    $tmp = $leadsFile . '.tmp.' . uniqid();
+    if (@file_put_contents($tmp, $leadsJson, LOCK_EX) !== false) {
+        if (!@rename($tmp, $leadsFile)) {
+            @unlink($tmp);
+        }
+    }
+}
+
+// ---- Optional email notification ---------------------------------------------------
+$notify = trim((string)($siteSettings['lead_notify_email'] ?? ''));
+if ($notify !== '' && filter_var($notify, FILTER_VALIDATE_EMAIL) && function_exists('mail')) {
+    $body = "New website enquiry ({$formType})\n\nName: {$name}\nPhone: {$phone}\nEmail: {$email}\nSubject: {$subject}\n\n{$message}\n" . ($savedFile !== '' ? "\nReport uploaded: see CMS → Leads\n" : '');
+    @mail($notify, 'New enquiry: ' . ($name !== '' ? $name : $phone), $body, 'From: no-reply@' . preg_replace('/^www\./', '', (string)($_SERVER['HTTP_HOST'] ?? 'localhost')));
+}
 if ($savedFile !== '') {
-    $message .= "\n[Uploaded report: " . $savedFile . "]";
+    $message .= "\n[Report uploaded - download it from the CMS Leads screen]";
 }
 
 // ---- Forward to Formester ---------------------------------------------------

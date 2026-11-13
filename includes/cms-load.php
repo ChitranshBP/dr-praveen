@@ -145,6 +145,11 @@ function cms_testimonials() {
     if (!is_array($raw) || empty($raw)) {
         return null;
     }
+    // Honour the display order chosen in CMS → Testimonials.
+    $raw = array_values(array_filter($raw, 'is_array'));
+    usort($raw, function ($a, $b) {
+        return ((int)($a['order'] ?? 999)) <=> ((int)($b['order'] ?? 999));
+    });
     $out = [];
     foreach ($raw as $t) {
         if (!is_array($t) || trim((string)($t['name'] ?? '')) === '') {
@@ -194,6 +199,33 @@ function cms_doctors() {
     }
     $fallback = cms_json_read(dirname(__DIR__) . '/assets/doctors_full.json');
     return is_array($fallback) ? $fallback : [];
+}
+
+/**
+ * Generic CMS collection (data/collections/{name}.json), sorted by "order".
+ * Items flagged inactive are dropped unless $onlyActive is false.
+ * Managed in CMS → the collection's own screen (cms/collection.php?c=name).
+ */
+function cms_collection($name, $onlyActive = true) {
+    static $cache = [];
+    $name = preg_replace('/[^a-z0-9_]/', '', (string)$name);
+    if ($name === '') {
+        return [];
+    }
+    if (!isset($cache[$name])) {
+        $items = cms_json_read(CMS_DATA_DIR . '/collections/' . $name . '.json');
+        $items = is_array($items) ? array_values(array_filter($items, 'is_array')) : [];
+        usort($items, function ($a, $b) {
+            return ((int)($a['order'] ?? 0)) <=> ((int)($b['order'] ?? 0));
+        });
+        $cache[$name] = $items;
+    }
+    if (!$onlyActive) {
+        return $cache[$name];
+    }
+    return array_values(array_filter($cache[$name], function ($it) {
+        return !array_key_exists('active', $it) || !empty($it['active']);
+    }));
 }
 
 /**

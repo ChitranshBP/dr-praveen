@@ -108,6 +108,10 @@ $cmsServicesFile = dirname(__DIR__) . '/data/services.json';
 if (file_exists($cmsServicesFile)) {
     $rawServices = json_decode(file_get_contents($cmsServicesFile), true);
     if (!empty($rawServices) && is_array($rawServices)) {
+        // Honour the display order chosen in CMS → Brain & Spine Cards.
+        usort($rawServices, function ($a, $b) {
+            return ((int)($a['order'] ?? 999)) <=> ((int)($b['order'] ?? 999));
+        });
         $services = [];
         foreach ($rawServices as $s) {
             if (isset($s['is_active']) && !$s['is_active']) continue;

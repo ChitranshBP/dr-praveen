@@ -2,6 +2,7 @@
 require_once __DIR__ . '/includes/auth.php';
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/functions.php';
+require_once __DIR__ . '/includes/fields.php';
 
 cms_require_auth();
 
@@ -37,16 +38,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }));
     $is_active = isset($_POST['is_active']);
 
-    $imagePath = $_POST['existing_image'] ?? '';
-    $imageChanged = false;
-    $uploadError = '';
-    $imgUpload = cms_handle_upload('service_image', 'services');
-    if (is_array($imgUpload) && isset($imgUpload['error'])) {
-        $uploadError = $imgUpload['error'];
-    } elseif (is_array($imgUpload) && !empty($imgUpload['path'])) {
-        $imagePath = $imgUpload['path'];
-        $imageChanged = true;
-    }
+    $imgRes = cms_image_field_value('image', 'services', $service['image'] ?? '');
+    $imagePath = $imgRes['path'];
+    $imageChanged = $imgRes['changed'];
+    $uploadError = $imgRes['error'];
 
     if ($id && $service) {
         foreach ($services as &$s) {
@@ -58,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $s['features'] = $features;
                 $s['image_alt'] = $imageAlt ?: $title;
                 $s['is_active'] = $is_active;
-                if ($imagePath) $s['image'] = $imagePath;
+                $s['image'] = $imagePath;
                 // The old WebP derivative no longer matches a newly uploaded
                 // photo, so drop it instead of serving a stale image.
                 if ($imageChanged) $s['webp'] = '';
@@ -109,7 +104,6 @@ require_once __DIR__ . '/includes/header.php';
     <form method="POST" enctype="multipart/form-data" class="space-y-5">
         <?php echo cms_csrf_field(); ?>
         <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
-        <input type="hidden" name="existing_image" value="<?php echo htmlspecialchars($service['image'] ?? ''); ?>">
 
         <div>
             <label class="block text-xs font-bold text-slate-700 mb-1">Service Title / Brain Condition</label>
@@ -135,29 +129,13 @@ require_once __DIR__ . '/includes/header.php';
             ?></textarea>
         </div>
 
-        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
-            <div class="flex items-center justify-between">
-                <label class="block text-xs font-bold text-slate-800">
-                    <i class="fas fa-image text-brand-blue mr-1"></i> Condition Card Photo
-                </label>
-                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Recommended: 800 × 600 px</span>
-            </div>
-            <p class="text-[10px] text-slate-500">Standard 4:3 landscape photo. Supported: WebP, PNG, JPG (Max 4MB).</p>
-            <?php if (!empty($service['image'])): ?>
-            <div class="flex items-center space-x-3 py-1">
-                <div class="w-36 aspect-[4/3] rounded-xl overflow-hidden border border-slate-200 bg-slate-100">
-                    <img src="../<?php echo htmlspecialchars($service['image']); ?>" class="w-full h-full object-cover" alt="Card preview">
-                </div>
-                <span class="text-[10px] text-slate-400 font-mono"><?php echo htmlspecialchars($service['image']); ?></span>
-            </div>
-            <?php endif; ?>
-            <input type="file" name="service_image" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
-
-            <div class="pt-2 border-t border-slate-200/60">
-                <label class="block text-xs font-bold text-slate-700 mb-1">Card Image Alt Tag (SEO & Accessibility)</label>
-                <input type="text" name="image_alt" value="<?php echo htmlspecialchars($service['image_alt'] ?? ''); ?>" placeholder="e.g. <?php echo htmlspecialchars($service['title'] ?? 'Treatment'); ?> - Dr. Praveen Gupta" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-medium focus:ring-2 focus:ring-blue-500 focus:outline-none">
-            </div>
-        </div>
+        <?php cms_image_field('image', $service['image'] ?? '', [
+            'label' => 'Condition Card Photo', 'folder' => 'services', 'size' => 'Recommended: 800 × 600 px',
+            'hint' => 'Standard 4:3 landscape photo. WebP, PNG or JPG (max 8MB).',
+            'preview_class' => 'w-36 aspect-[4/3]',
+            'alt_name' => 'image_alt', 'alt_value' => $service['image_alt'] ?? '',
+            'alt_label' => 'Card image alt tag, e.g. ' . ($service['title'] ?? 'Treatment') . ' - Dr. Praveen Gupta',
+        ]); ?>
 
         <div>
             <label class="block text-xs font-bold text-slate-700 mb-1">Bottom Highlight Bullet (Shown at card bottom)</label>
