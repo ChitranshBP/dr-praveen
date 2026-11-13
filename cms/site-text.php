@@ -7,6 +7,7 @@
 require_once __DIR__ . '/includes/auth.php';
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/functions.php';
+require_once __DIR__ . '/includes/fields.php';
 require_once dirname(__DIR__) . '/includes/cms-load.php';
 
 cms_require_auth();
@@ -18,6 +19,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     cms_verify_csrf();
     $updated = [];
     foreach ($fields as $key => $def) {
+        if (($def[3] ?? 'text') === 'image') {
+            // Photo fields: library pick / upload / remove via the image picker.
+            if (!array_key_exists($key, $_POST) && empty($_FILES[cms_image_file_key($key)])) continue;
+            $img = cms_image_field_value($key, 'pages', (string)($settings[$key] ?? ''));
+            $updated[$key] = ($img['path'] === (string)$def[2]) ? '' : $img['path'];
+            continue;
+        }
         if (!array_key_exists($key, $_POST)) continue;
         $v = trim((string)$_POST[$key]);
         // Saving the default (or nothing) stores '' so future default changes still apply.
@@ -36,7 +44,7 @@ foreach ($fields as $key => $def) {
 $groupIcons = [
     'Footer CTA band' => 'fa-bullhorn', 'Footer' => 'fa-shoe-prints', 'Floating buttons' => 'fa-comment-dots',
     'Video testimonials section' => 'fa-video', 'Watch & Learn section' => 'fa-play-circle', 'FAQ sections' => 'fa-circle-question',
-    '404 page' => 'fa-unlink', 'SEO defaults' => 'fa-search',
+    '404 page' => 'fa-unlink', 'SEO defaults' => 'fa-search', 'Blog article page' => 'fa-newspaper',
 ];
 
 $pageTitle = 'Header, Footer & Shared Text';
@@ -44,7 +52,7 @@ require_once __DIR__ . '/includes/header.php';
 $inp = 'w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none';
 ?>
 
-<form method="POST" class="space-y-6 max-w-5xl">
+<form method="POST" enctype="multipart/form-data" class="space-y-6 max-w-5xl">
     <?php echo cms_csrf_field(); ?>
     <div class="bg-gradient-to-r from-brand-indigo via-blue-950 to-brand-indigo text-white p-5 rounded-2xl shadow border border-white/10">
         <h2 class="text-sm font-extrabold">Text that appears on every page</h2>
@@ -63,7 +71,9 @@ $inp = 'w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-s
             ?>
             <div class="<?php echo $type === 'textarea' ? 'md:col-span-2' : ''; ?>">
                 <label class="block text-xs font-bold text-slate-700 mb-1"><?php echo htmlspecialchars($label); ?></label>
-                <?php if ($type === 'textarea'): ?>
+                <?php if ($type === 'image'): ?>
+                <?php cms_image_field($key, $shown, ['label' => '', 'folder' => 'pages', 'compact' => true, 'preview_class' => 'w-20 h-14']); ?>
+                <?php elseif ($type === 'textarea'): ?>
                 <textarea name="<?php echo $key; ?>" rows="2" class="<?php echo $inp; ?>"><?php echo htmlspecialchars($shown); ?></textarea>
                 <?php else: ?>
                 <input type="text" name="<?php echo $key; ?>" value="<?php echo htmlspecialchars($shown); ?>" class="<?php echo $inp; ?> <?php echo $type === 'url' ? 'font-mono' : ''; ?>">

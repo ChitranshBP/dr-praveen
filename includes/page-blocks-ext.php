@@ -24,13 +24,21 @@ if (!function_exists('cms_block_type_catalog_extra')) {
             'stats'           => ['label' => 'Statistics', 'item_label' => 'Statistic', 'fields' => ['badge', 'badge_icon', 'title', 'description', 'bullets', 'variant'], 'help' => 'Variants: home (icon cards), tiles, strip (thin divided row), split (tiles left + heading/points right), plain.', 'item_fields' => ['icon_color', 'title', 'subtitle', 'text'], 'item_hints' => ['title' => 'Number — type a value or a token such as {stats_patients}, {stats_awards}, {stats_experience}, {stats_rating}, {stats_success}', 'subtitle' => 'Label under the number', 'text' => 'Short description (optional)']],
             'text-media'      => ['label' => 'Text + photo section', 'item_label' => 'Highlight', 'fields' => ['badge', 'badge_icon', 'title', 'text', 'text_after', 'bullets', 'button_text', 'button_url'], 'block_image' => true, 'item_fields' => ['icon_color', 'title', 'text'], 'item_hints' => ['title' => 'Highlight title (leave empty for a plain icon + text line)', 'text' => 'Highlight text']],
             'hero-list'       => ['label' => 'Banner designation lines', 'item_label' => 'Line', 'fields' => [], 'item_fields' => ['icon_color', 'text'], 'item_hints' => ['text' => 'Line text'], 'help' => 'Shown inside the dark page banner under the heading.'],
-            'split-panel'     => ['label' => 'Text + side card (phone / email / button)', 'item_label' => 'Point', 'fields' => ['badge', 'title', 'text', 'button_text', 'button_url'], 'block_panel' => true, 'item_fields' => ['title', 'text'], 'help' => 'Left: heading, paragraph and points. Right: dark card with the title/text below, the hospital phone/email (options show_phone / show_email) and the button.'],
+            'split-panel'     => ['label' => 'Text + side card', 'item_label' => 'Point', 'fields' => ['badge', 'title', 'text', 'bullets', 'button_text', 'button_url'], 'block_panel' => true, 'item_fields' => ['icon_color', 'title', 'text'], 'item_hints' => ['title' => 'Point title', 'text' => 'Point text'], 'help' => 'Left: heading, paragraph, check-points (bullets: "fa-icon|text", basic HTML allowed) and points. Right: either the dark contact card (side card title/text, options show_phone / show_email, button) or another section of this page (options aside_key).'],
+            'checklist'       => ['label' => 'Checklist card (optional quick form)', 'item_label' => 'Item', 'fields' => ['title', 'text', 'button_text'], 'item_fields' => ['icon_color', 'title', 'text'], 'item_hints' => ['title' => 'Bold lead-in (e.g. Medical Documents:)', 'text' => 'Text after it'], 'help' => 'A card with a title, intro, icon list and — when the button text is filled — a short name/phone form that lands in CMS → Leads. Options: theme light|dark|white, style list|steps, form_fields, form_label, form_type.'],
+            'form-card'       => ['label' => 'Enquiry form card (name, phone, message)', 'no_items' => true, 'fields' => ['badge', 'title', 'description', 'button_text'], 'help' => 'Dark gradient card with a short form. Options: theme indigo|red, fields (name, phone, email, inquiry|diagnosis|message), form_type, labels. Submissions land in CMS → Leads.'],
+            'alert-banner'    => ['label' => 'Emergency banner (F.A.S.T. style)', 'no_items' => true, 'fields' => ['badge', 'title', 'text', 'bullets', 'description', 'button_text', 'button_url'], 'help' => 'Dark banner: red badge, heading, paragraph, pills from the bullets ("F|Face Drooping"), small label (intro field) and a big phone button ({stroke-helpline}).'],
+            'richtext'        => ['label' => 'Rich text (legal / long copy)', 'no_items' => true, 'fields' => ['text'], 'help' => 'Full HTML body (headings, paragraphs, lists, links). Tokens: {site}, {email}, {phone}, {stroke-helpline}, {address}.'],
             'quote'           => ['label' => 'Quote / vision statement', 'no_items' => true, 'fields' => ['badge', 'title', 'text', 'description'], 'help' => 'The paragraph field is the large italic quote; the intro field prints under it.'],
+            'cta-simple'      => ['label' => 'Centered call-to-action (heading, text, buttons)', 'no_items' => true, 'fields' => ['title', 'description', 'button_text', 'button_url', 'button2_text', 'button2_url'], 'help' => 'URL tokens: a page slug, #anchor, https://…, {phone}, {whatsapp}, {email}, {youtube}, {instagram}.'],
+            'contact-form'    => ['label' => 'Contact details + enquiry form', 'item_label' => 'Contact card', 'fields' => ['badge', 'title', 'text', 'bullets', 'button_text'], 'block_panel' => true, 'item_fields' => ['icon_color', 'title', 'text', 'subtitle'], 'item_hints' => ['title' => 'Card title (e.g. Call Us)', 'text' => 'Main line — tokens allowed: {phone} {email} {address} {hours_weekdays} {hours_sunday}', 'subtitle' => 'Small line under it (optional, tokens allowed)'], 'help' => 'Bullets = the subject dropdown options (one per line, "value|Label" or just the label). Side card title/text = the form heading and intro. Button text = submit label. Submissions land in CMS → Leads.'],
+            'map'             => ['label' => 'Google Map embed', 'no_items' => true, 'fields' => ['badge', 'title', 'description'], 'help' => 'The map URL comes from Settings → Organisation (maps_embed_url); add "embed_url" in advanced options to override it on this page.'],
+            'message-hero'    => ['label' => 'Full-screen message (thank-you style)', 'item_label' => 'Link card', 'fields' => ['badge_icon', 'title', 'description', 'text', 'button_text', 'button_url'], 'item_fields' => ['icon_color', 'title', 'text', 'url'], 'help' => 'Badge icon = the big circle icon. Heading, sub-heading (intro field), paragraph, link cards and a back link.'],
             'feature-split'   => ['label' => 'Feature list + photo', 'item_label' => 'Feature', 'fields' => ['badge', 'badge_icon', 'title', 'description', 'button_text', 'button_url'], 'block_image' => true, 'item_fields' => ['icon_color', 'title', 'text']],
             'strip'           => ['label' => 'Highlight strip (gradient banner with buttons)', 'no_items' => true, 'fields' => ['badge', 'badge_icon', 'title', 'description', 'button_text', 'button_url', 'button2_text', 'button2_url']],
             'team-grid'       => ['label' => 'Team cards', 'no_items' => true, 'fields' => ['badge', 'badge_icon', 'title', 'description', 'limit', 'button_text', 'button_url'], 'help' => 'Doctors are managed in CMS → Our Medical Team.'],
-            'testimonials'    => ['label' => 'Written testimonials', 'no_items' => true, 'fields' => ['badge', 'badge_icon', 'title', 'description', 'variant', 'limit', 'button_text', 'button_url'], 'help' => 'Reviews are managed in CMS → Testimonials. Variants: marquee, slider, grid, cards, stories, video-grid.'],
-            'blog-grid'       => ['label' => 'Blog article cards', 'no_items' => true, 'fields' => ['badge', 'badge_icon', 'title', 'description', 'variant', 'limit', 'button_text', 'button_url'], 'help' => 'Articles are managed in CMS → Blog Posts. Variants: teaser, all.'],
+            'testimonials'    => ['label' => 'Testimonials', 'no_items' => true, 'fields' => ['badge', 'badge_icon', 'title', 'description', 'variant', 'limit', 'button_text', 'button_url'], 'help' => 'Reviews are managed in CMS → Testimonials. Variants: marquee, slider, grid, cards, stories (type "story" entries), video-grid (video testimonials).'],
+            'blog-grid'       => ['label' => 'Blog articles', 'no_items' => true, 'fields' => ['badge', 'badge_icon', 'title', 'description', 'variant', 'limit', 'button_text', 'button_url'], 'block_panel' => true, 'help' => 'Articles are managed in CMS → Blog Posts. Variants: teaser (homepage cards), all (3-column grid of every article), list (article list + categories sidebar + newsletter box: side card title/text and button text).'],
             'collection-grid' => ['label' => 'Collection grid (awards / gallery / videos / press / cases)', 'no_items' => true, 'fields' => ['badge', 'badge_icon', 'title', 'description', 'collection', 'variant', 'limit', 'button_text', 'button_url'], 'help' => 'Items come from the chosen collection screen in the CMS.'],
             'reels'           => ['label' => 'Instagram reels', 'no_items' => true, 'fields' => ['badge', 'badge_icon', 'title', 'description', 'button_text', 'button_url'], 'help' => 'Reels are managed in CMS → Instagram Reels; the handle comes from the Instagram URL in Settings.'],
         ];
@@ -65,6 +73,58 @@ if (!function_exists('cms_block_blank_extra')) {
                 break;
             case 'quote':
                 $def['text'] = 'The quotation goes here.';
+                break;
+            case 'contact-form':
+                $def['badge'] = 'Contact Details';
+                $def['title'] = 'How to Reach Us';
+                $def['text'] = 'For regular consultations, please fill out the form or use our direct clinic lines.';
+                $def['items'] = [
+                    ['icon' => 'fa-phone-alt', 'color' => 'electric-blue', 'title' => 'Call Us', 'text' => '{phone}', 'subtitle' => '{hours_weekdays}'],
+                    ['icon' => 'fa-envelope', 'color' => 'cyan-accent', 'title' => 'Email Us', 'text' => '{email}', 'subtitle' => 'We reply within 24 business hours'],
+                    ['icon' => 'fa-map-marker-alt', 'color' => 'deep-indigo', 'title' => 'Clinic Location', 'text' => '', 'subtitle' => '{address}'],
+                ];
+                $def['panel_title'] = 'Send Us a Message';
+                $def['panel_text'] = 'Fill out the form below, and our coordinator will connect with you shortly.';
+                $def['bullets'] = ['Appointment|Schedule Appointment', 'General Query|General Inquiry'];
+                $def['button_text'] = 'Send Message';
+                break;
+            case 'map':
+                $def['badge'] = 'Hospital Location';
+                $def['title'] = 'Find Us on the Map';
+                break;
+            case 'checklist':
+                $def['title'] = 'How to Prepare';
+                $def['text'] = 'A short introduction for the list.';
+                $def['items'] = [['icon' => 'fa-file-medical', 'color' => 'cyan-accent', 'title' => 'Medical Documents:', 'text' => 'Bring all past reports and scans.']];
+                break;
+            case 'form-card':
+                $def['badge'] = 'Request a Call-Back';
+                $def['title'] = 'Talk to Our Team';
+                $def['description'] = 'Leave your details and our coordinator will call you back.';
+                $def['button_text'] = 'Request Call-Back';
+                $def['options'] = ['theme' => 'indigo', 'fields' => ['name', 'phone', 'message'], 'form_type' => 'Callback Request'];
+                break;
+            case 'alert-banner':
+                $def['badge'] = 'Emergency Stroke Info';
+                $def['title'] = 'Suspecting a Brain Stroke? Act F.A.S.T.';
+                $def['text'] = 'Time is brain. Call our emergency helpline instantly.';
+                $def['bullets'] = ['F|Face Drooping', 'A|Arm Weakness', 'S|Speech Difficulty', 'T|Time to call Help'];
+                $def['description'] = '24/7 EMERGENCY HELPLINE';
+                $def['button_text'] = '{stroke-helpline}';
+                $def['button_url'] = '{stroke-helpline}';
+                break;
+            case 'richtext':
+                $def['text'] = "<div class=\"space-y-3\">\n<h2 class=\"text-2xl font-bold text-deep-indigo font-serif\">Heading</h2>\n<p>Write the content here.</p>\n</div>";
+                break;
+            case 'message-hero':
+                $def['badge_icon'] = 'fa-check';
+                $def['title'] = 'Thank <span class="text-cyan-accent">You!</span>';
+                $def['description'] = 'Your Submission has been Received';
+                $def['text'] = 'We will get back to you shortly.';
+                $def['options'] = ['title_html' => true];
+                $def['items'] = [['icon' => 'fa-home', 'color' => 'cyan-accent', 'title' => 'Return Home', 'text' => 'Go back to the homepage.', 'url' => '/']];
+                $def['button_text'] = 'Back to main website';
+                $def['button_url'] = '/';
                 break;
             case 'feature-split':
                 $def['items'] = [['icon' => 'fa-solid fa-circle-check', 'color' => 'electric-blue', 'title' => 'Feature', 'text' => 'One sentence about it.']];
@@ -206,11 +266,23 @@ if (!function_exists('cms_block_wrap_attrs')) {
 }
 
 if (!function_exists('cms_resolve_stat_tokens')) {
-    /** {stats_patients} → settings value. */
+    /**
+     * Live tokens inside block text: {stats_patients} … (Settings → Statistics),
+     * {phone}, {email}, {address}, {hours_weekdays}, {hours_sunday},
+     * {stroke-helpline}, {site}, {year}.
+     */
     function cms_resolve_stat_tokens($value) {
         global $cmsSettings;
-        return preg_replace_callback('/\{([a-z0-9_]+)\}/i', function ($m) use ($cmsSettings) {
-            $k = $m[1];
+        if (strpos((string)$value, '{') === false) return (string)$value;
+        return preg_replace_callback('/\{([a-z0-9_-]+)\}/i', function ($m) use ($cmsSettings) {
+            $k = strtolower($m[1]);
+            $live = [
+                'phone' => defined('SITE_PHONE') ? SITE_PHONE : '', 'email' => defined('SITE_EMAIL') ? SITE_EMAIL : '',
+                'address' => defined('SITE_ADDRESS') ? SITE_ADDRESS : '', 'stroke-helpline' => defined('STROKE_HELPLINE') ? STROKE_HELPLINE : '',
+                'hours_weekdays' => defined('WORKING_HOURS_WEEKDAYS') ? WORKING_HOURS_WEEKDAYS : '', 'hours_sunday' => defined('WORKING_HOURS_SUNDAY') ? WORKING_HOURS_SUNDAY : '',
+                'site' => defined('SITE_NAME') ? SITE_NAME : '', 'year' => date('Y'),
+            ];
+            if (isset($live[$k])) return $live[$k];
             if (isset($cmsSettings[$k]) && trim((string)$cmsSettings[$k]) !== '') return (string)$cmsSettings[$k];
             $fallbacks = ['stats_patients' => '3,00,000+', 'stats_success' => '1,00,000+', 'stats_awards' => '50+', 'stats_experience' => '20+', 'stats_rating' => '4.9'];
             return $fallbacks[$k] ?? $m[0];
@@ -368,12 +440,14 @@ if (!function_exists('cms_render_block_services_grid')) {
     function cms_render_block_services_grid(array $block, array $options = [], $slug = null) {
         global $services;
         $list = is_array($services) ? $services : [];
-        cms_block_section_open($block, 'bg-soft-cyan/30');
+        $layout = $options['layout'] ?? 'carousel'; // carousel (homepage: swipe on mobile) | grid (services page)
+        $cardExtra = $layout === 'grid' ? '' : ' w-[80vw] md:w-auto flex-shrink-0 snap-start';
+        cms_block_section_open($block, $layout === 'grid' ? 'bg-soft-cyan/10' : 'bg-soft-cyan/30', $layout === 'grid' ? 'py-12' : 'py-10 md:py-14', $layout === 'grid' ? 'relative' : 'relative overflow-hidden');
         ?>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <?php cms_render_pill_header($block); ?>
 
-        <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-none gap-6 pb-6 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:pb-0">
+        <div class="<?php echo $layout === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8' : 'flex overflow-x-auto snap-x snap-mandatory scrollbar-none gap-6 pb-6 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:pb-0'; ?>">
             <?php foreach ($list as $index => $service):
                 $storedLink = trim((string)($service['link'] ?? ''));
                 $link = ($storedLink !== '' && $storedLink !== 'services') ? $storedLink : (function_exists('getServicePageLink') ? getServicePageLink($service['title']) : 'services');
@@ -386,7 +460,7 @@ if (!function_exists('cms_render_block_services_grid')) {
                 if ($cardAlt === '') $cardAlt = trim((string)($service['title'] ?? ''));
                 if ($cardAlt === '') $cardAlt = 'Neurology Service Card';
             ?>
-                <a href="<?php echo htmlspecialchars($link); ?>" class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe w-[80vw] md:w-auto flex-shrink-0 snap-start"
+                <a href="<?php echo htmlspecialchars($link); ?>" class="group bg-white rounded-3xl p-5 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-silver-grey/50 flex flex-col justify-between observe<?php echo $cardExtra; ?>"
                     style="animation-delay: <?php echo $index * 100; ?>ms;">
                     <div>
                         <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-6 bg-gradient-to-br from-soft-cyan to-silver-grey">
@@ -600,12 +674,26 @@ if (!function_exists('cms_render_block_stats')) {
             </div>
             <?php endforeach; ?>
         </div>
+        <?php elseif ($variant === 'box'): ?>
+        <div class="max-w-4xl mx-auto grid grid-cols-<?php echo min(3, max(1, count($items))); ?> gap-6 bg-slate-50 border border-slate-200/50 p-8 rounded-3xl text-center">
+            <?php foreach ($items as $si => $stat): $isStars = trim((string)($stat['icon'] ?? '')) === 'stars'; ?>
+            <div class="<?php echo ($si > 0 && $si < count($items) - 1) ? 'border-l border-r border-slate-200' : ''; ?>">
+                <span class="text-3xl md:text-4xl font-extrabold text-deep-indigo"><?php echo htmlspecialchars(cms_resolve_stat_tokens($stat['title'] ?? '')); ?></span>
+                <?php if ($isStars): ?>
+                <div class="flex justify-center text-yellow-400 text-xs my-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <?php endif; ?>
+                <p class="text-[10px] text-dark-grey/60 uppercase<?php echo $isStars ? '' : ' mt-2'; ?>"><?php echo htmlspecialchars($stat['subtitle'] ?? ''); ?></p>
+            </div>
+            <?php endforeach; ?>
+        </div>
         <?php else: ?>
-        <div class="grid grid-cols-2 <?php echo $gridCols; ?> gap-8 text-center">
-            <?php foreach ($items as $stat): ?>
-            <div>
-                <div class="text-4xl md:text-5xl font-extrabold text-deep-indigo font-serif"><?php echo htmlspecialchars(cms_resolve_stat_tokens($stat['title'] ?? '')); ?></div>
-                <div class="text-sm font-semibold text-dark-grey/70 mt-2"><?php echo htmlspecialchars($stat['subtitle'] ?? ''); ?></div>
+        <div class="grid grid-cols-2 md:grid-cols-<?php echo $cols; ?> gap-6 text-center">
+            <?php foreach ($items as $stat):
+                $numColor = ['electric-blue' => 'text-electric-blue', 'cyan-accent' => 'text-cyan-accent', 'deep-indigo' => 'text-deep-indigo', 'red' => 'text-red-600', 'dark' => 'text-dark-grey', 'emerald' => 'text-[#00a86b]'][$stat['color'] ?? 'deep-indigo'] ?? 'text-deep-indigo';
+            ?>
+            <div class="p-4">
+                <span class="block text-3xl md:text-4xl font-extrabold <?php echo $numColor; ?>"><?php echo htmlspecialchars(cms_resolve_stat_tokens($stat['title'] ?? '')); ?></span>
+                <span class="text-xs md:text-sm text-dark-grey/60 font-medium mt-1 block"><?php echo htmlspecialchars($stat['subtitle'] ?? ''); ?></span>
                 <?php if (trim((string)($stat['text'] ?? '')) !== ''): ?><p class="text-xs text-dark-grey/55 mt-1"><?php echo htmlspecialchars(cms_resolve_stat_tokens($stat['text'])); ?></p><?php endif; ?>
             </div>
             <?php endforeach; ?>
@@ -792,24 +880,53 @@ if (!function_exists('cms_render_block_split_panel')) {
         $pTitle = trim((string)($block['panel_title'] ?? ''));
         $pText = trim((string)($block['panel_text'] ?? ''));
         $bText = trim((string)($block['button_text'] ?? ''));
-        $pointStyle = $options['point_style'] ?? 'dot'; // dot | check
+        $pointStyle = $options['point_style'] ?? 'dot'; // dot | check (2-col grid) | card (stacked cards with icon in the title)
+        $accent = preg_replace('/[^a-z-]/', '', (string)($options['accent'] ?? 'electric-blue'));
+        list($accBg, , $accText) = cms_block_color($accent);
+        $bullets = cms_block_bullets($block['bullets'] ?? []); // "fa-icon|html" check points under the paragraph
+        $asideKey = trim((string)($options['aside_key'] ?? ''));  // nested block printed in the right column (checklist / form-card …)
         $showPhone = !empty($options['show_phone']);
         $showEmail = !empty($options['show_email']);
-        $hasPanel = $pTitle !== '' || $pText !== '' || $bText !== '' || $showPhone || $showEmail;
+        $hasPanel = $asideKey !== '' || $pTitle !== '' || $pText !== '' || $bText !== '' || $showPhone || $showEmail;
+        $leftSpan = (int)($options['left_span'] ?? 7);
+        $leftSpan = in_array($leftSpan, [5, 6, 7, 8], true) ? $leftSpan : 7;
+        $rightSpan = 12 - $leftSpan;
         cms_block_section_open($block, 'bg-white', 'py-16', '');
         ?>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-12 gap-12 items-center">
-            <div class="<?php echo $hasPanel ? 'lg:col-span-7' : 'lg:col-span-12'; ?> space-y-6">
-                <?php if ($badge !== ''): ?><span class="text-electric-blue font-bold text-xs uppercase tracking-widest font-sans"><?php echo htmlspecialchars($badge); ?></span><?php endif; ?>
-                <?php if ($title !== ''): ?><h2 class="text-3xl md:text-4xl font-bold text-deep-indigo font-serif"><?php echo cms_block_title_html($block); ?></h2><?php endif; ?>
+            <div class="<?php echo $hasPanel ? 'lg:col-span-' . $leftSpan : 'lg:col-span-12'; ?> space-y-6">
+                <?php if ($badge !== ''): ?><span class="<?php echo htmlspecialchars($options['badge_class'] ?? ($accText . ' font-bold text-xs uppercase tracking-widest font-sans')); ?>"><?php echo htmlspecialchars($badge); ?></span><?php endif; ?>
+                <?php if ($title !== ''): ?><h2 class="<?php echo htmlspecialchars($options['title_class'] ?? 'text-3xl md:text-4xl font-bold text-deep-indigo font-serif'); ?>"><?php echo cms_block_title_html($block); ?></h2><?php endif; ?>
                 <?php echo cms_section_paragraphs($block['text'] ?? '', 'text-sm text-dark-grey/70 leading-relaxed', ''); ?>
-                <?php if (!empty($items)): ?>
+                <?php if (!empty($bullets)): ?>
+                <div class="space-y-4">
+                    <?php foreach ($bullets as $b): $bIcon = 'fa-check'; if (preg_match('/^(fa[a-z-]*)\|(.*)$/s', $b, $bm)) { $bIcon = $bm[1]; $b = $bm[2]; } ?>
+                    <div class="flex items-start space-x-3.5">
+                        <div class="w-6 h-6 <?php echo $accBg; ?> rounded-full flex items-center justify-center <?php echo $accText; ?> flex-shrink-0 mt-0.5"><i class="<?php echo htmlspecialchars(cms_block_icon_class($bIcon)); ?> text-xs"></i></div>
+                        <p class="text-xs text-dark-grey/70 leading-relaxed"><?php echo cms_render_html(cms_resolve_stat_tokens($b)); ?></p>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+                <?php endif; ?>
+                <?php if (!empty($items) && $pointStyle === 'card'): ?>
+                <div class="space-y-4">
+                    <?php foreach ($items as $it): ?>
+                    <div class="p-6 bg-slate-50 border border-slate-200/50 rounded-3xl space-y-2">
+                        <h3 class="font-bold text-deep-indigo text-base flex items-center space-x-2">
+                            <span class="w-6 h-6 <?php echo $accBg; ?> rounded-full flex items-center justify-center <?php echo $accText; ?> text-xs"><i class="<?php echo htmlspecialchars(cms_block_icon_class($it['icon'] ?? '', 'fas fa-check')); ?>"></i></span>
+                            <span><?php echo htmlspecialchars(trim((string)($it['title'] ?? ''))); ?></span>
+                        </h3>
+                        <p class="text-xs text-dark-grey/65 leading-relaxed"><?php echo htmlspecialchars(trim((string)($it['text'] ?? ''))); ?></p>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+                <?php elseif (!empty($items)): ?>
                 <div class="grid sm:grid-cols-2 gap-6<?php echo $pointStyle === 'check' ? ' text-xs text-dark-grey/70' : ''; ?>">
                     <?php foreach ($items as $it): $iTitle = trim((string)($it['title'] ?? '')); $iText = trim((string)($it['text'] ?? '')); ?>
                     <?php if ($pointStyle === 'check'): ?>
                     <div class="flex items-start space-x-3">
-                        <div class="w-5 h-5 bg-electric-blue/10 rounded-full flex items-center justify-center text-electric-blue flex-shrink-0 mt-0.5"><i class="fas fa-check text-[10px]"></i></div>
+                        <div class="w-5 h-5 <?php echo $accBg; ?> rounded-full flex items-center justify-center <?php echo $accText; ?> flex-shrink-0 mt-0.5"><i class="fas fa-check text-[10px]"></i></div>
                         <div><?php if ($iTitle !== ''): ?><strong class="text-deep-indigo"><?php echo htmlspecialchars($iTitle); ?></strong> <?php endif; ?><?php echo htmlspecialchars($iText); ?></div>
                     </div>
                     <?php else: ?>
@@ -826,8 +943,12 @@ if (!function_exists('cms_render_block_split_panel')) {
                 <?php endif; ?>
             </div>
 
-            <?php if ($hasPanel): ?>
-            <div class="lg:col-span-5 bg-gradient-to-br from-deep-indigo via-indigo-950 to-slate-900 text-white p-8 rounded-3xl shadow-xl space-y-6">
+            <?php if ($asideKey !== ''): ?>
+            <div class="lg:col-span-<?php echo $rightSpan; ?>">
+                <?php cms_render_page_block($slug ?: ($GLOBALS['cmsCurrentPageSlug'] ?? ''), $asideKey); ?>
+            </div>
+            <?php elseif ($hasPanel): ?>
+            <div class="lg:col-span-<?php echo $rightSpan; ?> bg-gradient-to-br from-deep-indigo via-indigo-950 to-slate-900 text-white p-8 rounded-3xl shadow-xl space-y-6">
                 <?php if ($pTitle !== ''): ?><h3 class="text-xl font-bold font-serif"><?php echo htmlspecialchars($pTitle); ?></h3><?php endif; ?>
                 <?php if ($pText !== ''): ?><p class="text-xs text-white/80 leading-relaxed"><?php echo htmlspecialchars($pText); ?></p><?php endif; ?>
                 <?php if ($showPhone || $showEmail): ?>
@@ -1513,24 +1634,41 @@ if (!function_exists('cms_render_block_testimonials')) {
             <?php
             return;
         }
-        // Simple grid fallback (other variants are added with their pages)
-        cms_block_section_open($block, 'bg-white');
+        // Page-specific variants (cards, stories, video-grid…) live in page-blocks-media.php
+        $variantFn = 'cms_testimonials_variant_' . str_replace('-', '_', (string)$variant);
+        if (function_exists($variantFn)) {
+            $variantFn($block, $options, $list);
+            return;
+        }
+        // Default: 3-up grid with initial avatars (neurology-patient-testimonials page)
+        $reviewPalette = ['electric-blue', 'cyan-accent', 'deep-indigo'];
+        cms_block_section_open($block, 'bg-white', 'py-12', '');
         ?>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <?php cms_render_pill_header($block); ?>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <?php foreach ($list as $t): ?>
+            <?php foreach ($list as $rvIdx => $rv):
+                $accent = $reviewPalette[$rvIdx % count($reviewPalette)];
+                $initial = function_exists('mb_substr') ? mb_substr(trim((string)$rv['name']), 0, 1) : substr(trim((string)$rv['name']), 0, 1);
+                $cond = trim((string)($rv['condition'] ?? ''));
+            ?>
             <div class="bg-slate-50 border border-slate-200/50 rounded-3xl p-6 md:p-8 hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
                 <div class="space-y-4">
-                    <div class="flex items-center space-x-1 text-amber-400"><?php for ($s = 0; $s < (int)($t['rating'] ?? 5); $s++): ?><i class="fas fa-star"></i><?php endfor; ?></div>
-                    <p class="text-sm text-dark-grey/75 italic leading-relaxed">"<?php echo cms_render_html($t['message']); ?>"</p>
+                    <div class="flex items-center space-x-1 text-amber-400"><?php for ($s = 0; $s < (int)($rv['rating'] ?? 5); $s++): ?><i class="fas fa-star"></i><?php endfor; ?></div>
+                    <p class="text-sm text-dark-grey/75 italic leading-relaxed">"<?php echo cms_render_html($rv['message']); ?>"</p>
                 </div>
-                <div class="pt-6 border-t border-slate-200/60 mt-6">
-                    <h4 class="font-bold text-dark-grey text-sm"><?php echo htmlspecialchars($t['name']); ?></h4>
-                    <span class="text-xs text-electric-blue font-semibold"><?php echo htmlspecialchars($t['role']); ?></span>
+                <div class="flex items-center space-x-3 pt-6 border-t border-slate-200/60 mt-6">
+                    <div class="w-10 h-10 bg-<?php echo $accent; ?>/10 rounded-full flex items-center justify-center text-<?php echo $accent; ?> font-bold text-sm"><?php echo htmlspecialchars(strtoupper((string)$initial)); ?></div>
+                    <div>
+                        <h4 class="font-bold text-dark-grey text-sm"><?php echo htmlspecialchars($rv['name']); ?></h4>
+                        <span class="text-xs text-<?php echo $accent; ?> font-semibold"><?php echo htmlspecialchars($rv['role'] . ($cond !== '' && stripos((string)$rv['role'], $cond) === false ? ' · ' . $cond : '')); ?></span>
+                    </div>
                 </div>
             </div>
             <?php endforeach; ?>
+            <?php if (empty($list)): ?>
+            <p class="col-span-full text-center text-sm text-dark-grey/55">Patient reviews will appear here once they are added in the CMS.</p>
+            <?php endif; ?>
         </div>
         <?php cms_block_button($block); ?>
     </div>
@@ -1545,6 +1683,12 @@ if (!function_exists('cms_render_block_testimonials')) {
 if (!function_exists('cms_render_block_blog_grid')) {
     function cms_render_block_blog_grid(array $block, array $options = [], $slug = null) {
         global $blogs;
+        $variant = (string)($block['variant'] ?? ($options['variant'] ?? 'teaser'));
+        $variantFn = 'cms_blog_grid_variant_' . str_replace('-', '_', $variant);
+        if ($variant !== 'teaser' && function_exists($variantFn)) {
+            $variantFn($block, $options);
+            return;
+        }
         $list = is_array($blogs) ? $blogs : [];
         $limit = (int)($block['limit'] ?? 4);
         if ($limit > 0) $list = array_slice($list, 0, $limit);

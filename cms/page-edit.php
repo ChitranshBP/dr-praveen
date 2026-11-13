@@ -358,6 +358,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($extraUrl !== '') {
                     $it['url'] = $extraUrl;
                 }
+                $extraNote = trim((string)($item['note'] ?? ($baseItem['note'] ?? '')));
+                if ($extraNote !== '') {
+                    $it['note'] = $extraNote;
+                }
                 $bulletsRaw = $item['bullets'] ?? '';
                 $bullets = is_array($bulletsRaw) ? $bulletsRaw : preg_split('/\r\n|\r|\n/', (string)$bulletsRaw);
                 $bullets = array_values(array_filter(array_map('trim', $bullets), function ($b) {
@@ -748,7 +752,7 @@ require_once __DIR__ . '/includes/header.php';
             'notice'     => ['label' => 'Alert panel', 'item_label' => 'Point', 'block_panel' => true],
         ];
         $blockItemFields = [
-            'cards'      => ['icon_color', 'badge', 'title', 'text', 'bullets', 'tags'],
+            'cards'      => ['icon_color', 'badge', 'title', 'text', 'bullets', 'tags', 'note'],
             'steps'      => ['title', 'text', 'bullets'],
             'facts'      => ['icon_color', 'title', 'text'],
             'warning'    => ['text'],
@@ -863,6 +867,14 @@ require_once __DIR__ . '/includes/header.php';
                 <div>
                     <label class="<?php echo $lbl; ?>">Bullet Points (one per line, optional)</label>
                     <textarea name="<?php echo $name('bullets'); ?>" rows="2" placeholder="One item per line" class="<?php echo $txt; ?>"><?php echo $val('bullets'); ?></textarea>
+                </div>
+                <?php
+            }
+            if (in_array('note', $fields, true)) {
+                ?>
+                <div>
+                    <label class="<?php echo $lbl; ?>"><?php echo htmlspecialchars($hints['note'] ?? 'Small note under the card (optional, basic HTML like <strong> allowed)'); ?></label>
+                    <textarea name="<?php echo $name('note'); ?>" rows="2" class="<?php echo $txt; ?>"><?php echo $val('note'); ?></textarea>
                 </div>
                 <?php
             }

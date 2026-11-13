@@ -294,6 +294,11 @@ if (!function_exists('cms_render_block_intro')) {
             'image_alt' => $block['image_alt'] ?? '',
         ]);
         $GLOBALS['cms_page_section_used'] = true;
+        // Nothing to say (e.g. only catalog placeholder copy, or everything
+        // cleared in the editor): print nothing rather than an image alone.
+        if (trim((string)$section['title']) === '' && trim(strip_tags((string)$section['text'])) === '' && trim((string)($options['facts_key'] ?? '')) === '' && trim((string)($options['aside_key'] ?? '')) === '') {
+            return;
+        }
         $image = cms_media_path($section['image'], $block['image'] ?? '');
         $imageSide = $options['image_side'] ?? 'right';
         $factsKey = trim((string)($options['facts_key'] ?? ''));
@@ -603,13 +608,23 @@ if (!function_exists('cms_render_block_cards')) {
                 ?>
                 <?php if (!empty($cardBullets)): ?>
                 <ul class="space-y-2 text-sm text-dark-grey/70 mb-4">
-                    <?php foreach ($cardBullets as $bullet): ?>
-                    <li class="flex items-center space-x-2">
-                        <i class="fas fa-check text-electric-blue/60 text-xs"></i>
-                        <span><?php echo htmlspecialchars(trim((string)$bullet)); ?></span>
+                    <?php foreach ($cardBullets as $bullet): $bullet = trim((string)$bullet); ?>
+                    <?php if (strpos($bullet, '|') !== false): list($rowLabel, $rowValue) = array_map('trim', explode('|', $bullet, 2)); ?>
+                    <li class="flex justify-between border-b border-slate-200/60 pb-2">
+                        <span class="font-medium"><?php echo htmlspecialchars($rowLabel); ?></span>
+                        <span class="<?php echo stripos($rowValue, 'closed') !== false ? 'text-amber-600 font-semibold' : ''; ?>"><?php echo htmlspecialchars($rowValue); ?></span>
                     </li>
+                    <?php else: ?>
+                    <li class="flex items-start space-x-2">
+                        <i class="<?php echo htmlspecialchars($options['bullet_icon'] ?? 'fas fa-check'); ?> text-electric-blue/60 text-xs mt-1"></i>
+                        <span><?php echo htmlspecialchars($bullet); ?></span>
+                    </li>
+                    <?php endif; ?>
                     <?php endforeach; ?>
                 </ul>
+                <?php endif; ?>
+                <?php if (trim((string)($item['note'] ?? '')) !== ''): ?>
+                <div class="pt-2 text-xs text-dark-grey/60 leading-relaxed"><?php echo cms_render_html(cms_resolve_stat_tokens(trim((string)$item['note']))); ?></div>
                 <?php endif; ?>
                 <?php if (!empty($tags)): ?>
                 <div class="flex flex-wrap gap-2">
@@ -1760,3 +1775,12 @@ if (!function_exists('cms_render_page_block')) {
 
 // Additional block types (homepage & content-page sections)
 require_once __DIR__ . '/page-blocks-ext.php';
+
+// Media / testimonial / case-study blocks, shared page hero, simple CTA
+require_once __DIR__ . '/page-blocks-media.php';
+
+// Contact form, map, thank-you message and blog listing blocks
+require_once __DIR__ . '/page-blocks-contact.php';
+
+// Patient-information blocks: checklist, form card, emergency banner, rich text
+require_once __DIR__ . '/page-blocks-patient.php';

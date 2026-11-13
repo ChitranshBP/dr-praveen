@@ -35,9 +35,9 @@ require_once __DIR__ . '/includes/header.php';
         <div class="text-center max-w-3xl mx-auto mb-12 observe">
             <div class="inline-flex items-center space-x-2 bg-electric-blue/10 px-4 py-2 rounded-full mb-4">
                 <i class="fas fa-newspaper text-electric-blue text-xs"></i>
-                <span class="text-xs font-bold text-electric-blue uppercase tracking-wider">Health Articles</span>
+                <span class="text-xs font-bold text-electric-blue uppercase tracking-wider"><?php echo htmlspecialchars(cms_text('bp_badge')); ?></span>
             </div>
-            <p class="text-xs text-dark-grey/60 font-medium">Published on <?php echo htmlspecialchars($postDate); ?> &bull; By <?php echo htmlspecialchars($post['author'] ?? 'Dr. Praveen Gupta'); ?></p>
+            <p class="text-xs text-dark-grey/60 font-medium"><?php echo htmlspecialchars(cms_text('bp_published_label')); ?> <?php echo htmlspecialchars($postDate); ?> &bull; <?php echo htmlspecialchars(cms_text('bp_by_label')); ?> <?php echo htmlspecialchars($post['author'] ?? 'Dr. Praveen Gupta'); ?></p>
         </div>
 
         <article class="mx-auto max-w-3xl lg:max-w-4xl">
@@ -129,35 +129,44 @@ require_once __DIR__ . '/includes/header.php';
                         <?php echo htmlspecialchars($post['category'] ?? 'Neurology'); ?>
                     </span>
                     <?php if (!empty($post['author'])): ?>
-                    <span class="text-xs text-dark-grey/60 font-medium">By <?php echo htmlspecialchars($post['author']); ?></span>
+                    <span class="text-xs text-dark-grey/60 font-medium"><?php echo htmlspecialchars(cms_text('bp_by_label')); ?> <?php echo htmlspecialchars($post['author']); ?></span>
                     <?php endif; ?>
                 </div>
                 <span class="text-xs text-dark-grey/50 font-medium"><?php echo htmlspecialchars($postDate); ?></span>
             </div>
 
-            <!-- Doctor Bio & Consultation CTA Card -->
+            <!-- Doctor Bio & Consultation CTA Card (copy: CMS → Header, Footer & Shared Text → Blog article page) -->
+            <?php $bpCtaTitle = trim(cms_text('bp_cta_title')); $bpCtaImage = cms_media_path(cms_text('bp_cta_image'), 'assets/banner/1.png'); ?>
+            <?php if ($bpCtaTitle !== ''): ?>
             <div class="mt-12 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-deep-indigo via-slate-900 to-electric-blue text-white shadow-xl relative overflow-hidden">
                 <div class="relative z-10 flex flex-col md:flex-row items-center gap-6">
+                    <?php if ($bpCtaImage !== ''): ?>
                     <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-white/20 flex-shrink-0 bg-white/10">
-                        <img src="assets/banner/1.png" alt="Dr. Praveen Gupta" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='assets/logo/NeuroDoc-final-logo.png';">
+                        <img src="<?php echo htmlspecialchars($bpCtaImage); ?>" alt="<?php echo htmlspecialchars($bpCtaTitle); ?>" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='assets/logo/NeuroDoc-final-logo.png';">
                     </div>
+                    <?php endif; ?>
                     <div class="flex-1 text-center md:text-left space-y-2">
-                        <span class="text-[10px] uppercase font-bold tracking-widest text-cyan-accent bg-cyan-accent/10 px-2.5 py-1 rounded-full inline-block">Expert Care</span>
-                        <h3 class="text-xl sm:text-2xl font-bold font-serif text-white">Consult Dr. Praveen Gupta</h3>
-                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">Chairman – Marengo Asia International Institute of Neuro & Spine &bull; 20+ Years Experience &bull; DM (AIIMS, New Delhi)</p>
+                        <?php if (trim(cms_text('bp_cta_badge')) !== ''): ?><span class="text-[10px] uppercase font-bold tracking-widest text-cyan-accent bg-cyan-accent/10 px-2.5 py-1 rounded-full inline-block"><?php echo htmlspecialchars(cms_text('bp_cta_badge')); ?></span><?php endif; ?>
+                        <h3 class="text-xl sm:text-2xl font-bold font-serif text-white"><?php echo htmlspecialchars($bpCtaTitle); ?></h3>
+                        <?php if (trim(cms_text('bp_cta_text')) !== ''): ?><p class="text-xs sm:text-sm text-slate-300 leading-relaxed"><?php echo htmlspecialchars(cms_text('bp_cta_text')); ?></p><?php endif; ?>
                     </div>
                     <div class="flex flex-col sm:flex-row md:flex-col gap-3 w-full md:w-auto">
-                        <a href="contact-us-top-neurologist-delhi-ncr" class="inline-flex items-center justify-center space-x-2 px-5 py-3 bg-gradient-to-r from-electric-blue to-cyan-accent hover:from-cyan-accent hover:to-electric-blue text-white text-xs font-bold rounded-xl shadow-lg transition-all duration-300 whitespace-nowrap">
+                        <?php if (trim(cms_text('bp_cta_primary_label')) !== ''): ?>
+                        <a href="<?php echo htmlspecialchars(cms_nav_href(cms_text('bp_cta_primary_url'))); ?>" class="inline-flex items-center justify-center space-x-2 px-5 py-3 bg-gradient-to-r from-electric-blue to-cyan-accent hover:from-cyan-accent hover:to-electric-blue text-white text-xs font-bold rounded-xl shadow-lg transition-all duration-300 whitespace-nowrap">
                             <i class="fas fa-calendar-check"></i>
-                            <span>Book Consultation</span>
+                            <span><?php echo htmlspecialchars(cms_text('bp_cta_primary_label')); ?></span>
                         </a>
-                        <a href="tel:<?php echo SITE_PHONE; ?>" class="inline-flex items-center justify-center space-x-2 px-5 py-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-bold rounded-xl transition-all duration-300 whitespace-nowrap">
+                        <?php endif; ?>
+                        <?php if (trim(cms_text('bp_cta_secondary_label')) !== ''): ?>
+                        <a href="<?php echo htmlspecialchars(cms_nav_href(cms_text('bp_cta_secondary_url'))); ?>" class="inline-flex items-center justify-center space-x-2 px-5 py-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-bold rounded-xl transition-all duration-300 whitespace-nowrap">
                             <i class="fas fa-phone-alt text-cyan-accent"></i>
-                            <span>Call Clinic</span>
+                            <span><?php echo htmlspecialchars(cms_text('bp_cta_secondary_label')); ?></span>
                         </a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
+            <?php endif; ?>
 
             <!-- Related Articles -->
             <?php
@@ -169,7 +178,7 @@ require_once __DIR__ . '/includes/header.php';
                 $related = array_slice($related, 0, 3);
             ?>
             <div class="mt-16 pt-10 border-t border-slate-200">
-                <h3 class="text-2xl font-serif font-bold text-deep-indigo mb-6">More Health Articles</h3>
+                <h3 class="text-2xl font-serif font-bold text-deep-indigo mb-6"><?php echo htmlspecialchars(cms_text('bp_related_heading')); ?></h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <?php foreach ($related as $rel):
                         $relUrl = 'blog/' . urlencode($rel['slug'] ?? '');
@@ -185,7 +194,7 @@ require_once __DIR__ . '/includes/header.php';
                         </div>
                         <span class="text-[11px] text-slate-400 mt-3 flex items-center justify-between">
                             <span><?php echo $relDate; ?></span>
-                            <span class="font-bold text-electric-blue group-hover:underline">Read &rarr;</span>
+                            <span class="font-bold text-electric-blue group-hover:underline"><?php echo htmlspecialchars(cms_text('bp_read_label')); ?> &rarr;</span>
                         </span>
                     </a>
                     <?php endforeach; ?>
@@ -196,7 +205,7 @@ require_once __DIR__ . '/includes/header.php';
             <div class="pt-10 text-center">
                 <a href="dr-praveen-gupta-blog" class="inline-flex items-center space-x-2 text-electric-blue font-bold text-sm hover:underline">
                     <i class="fas fa-arrow-left text-xs"></i>
-                    <span>Back to All Articles</span>
+                    <span><?php echo htmlspecialchars(cms_text('bp_back_label')); ?></span>
                 </a>
             </div>
         </article>

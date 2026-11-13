@@ -139,6 +139,266 @@
                 "text": "Book a Consultation",
                 "url": "contact-us-top-neurologist-delhi-ncr"
             }
+        },
+        "services": {
+            "hero-primary": {
+                "text": "Book Appointment",
+                "url": "contact-us-top-neurologist-delhi-ncr"
+            },
+            "hero-secondary": {
+                "text": "Call Now",
+                "url": "{phone}"
+            }
+        },
+        "about": {
+            "hero-primary": {
+                "text": "",
+                "url": ""
+            },
+            "hero-secondary": {
+                "text": "",
+                "url": ""
+            }
+        },
+        "team": {
+            "hero-primary": {
+                "text": "",
+                "url": ""
+            },
+            "hero-secondary": {
+                "text": "",
+                "url": ""
+            }
+        },
+        "awards-and-recognition": {
+            "hero-primary": {
+                "text": "",
+                "url": ""
+            },
+            "hero-secondary": {
+                "text": "",
+                "url": ""
+            }
+        },
+        "gallery": {
+            "hero-primary": {
+                "text": "",
+                "url": ""
+            },
+            "hero-secondary": {
+                "text": "",
+                "url": ""
+            }
+        },
+        "media-coverage": {
+            "hero-primary": {
+                "text": "",
+                "url": ""
+            },
+            "hero-secondary": {
+                "text": "",
+                "url": ""
+            }
+        },
+        "videos": {
+            "hero-primary": {
+                "text": "",
+                "url": ""
+            },
+            "hero-secondary": {
+                "text": "",
+                "url": ""
+            }
+        },
+        "neurology-video-library": {
+            "hero-primary": {
+                "text": "",
+                "url": ""
+            },
+            "hero-secondary": {
+                "text": "",
+                "url": ""
+            }
+        },
+        "video-testimonials": {
+            "hero-primary": {
+                "text": "",
+                "url": ""
+            },
+            "hero-secondary": {
+                "text": "",
+                "url": ""
+            }
+        },
+        "patient-reviews": {
+            "hero-primary": {
+                "text": "",
+                "url": ""
+            },
+            "hero-secondary": {
+                "text": "",
+                "url": ""
+            }
+        },
+        "neurology-patient-testimonials": {
+            "hero-primary": {
+                "text": "",
+                "url": ""
+            },
+            "hero-secondary": {
+                "text": "",
+                "url": ""
+            }
+        },
+        "patient-success-stories": {
+            "hero-primary": {
+                "text": "",
+                "url": ""
+            },
+            "hero-secondary": {
+                "text": "",
+                "url": ""
+            }
+        },
+        "case-studies": {
+            "hero-primary": {
+                "text": "",
+                "url": ""
+            },
+            "hero-secondary": {
+                "text": "",
+                "url": ""
+            }
+        },
+        "contact-us-top-neurologist-delhi-ncr": {
+            "hero-primary": {
+                "text": "",
+                "url": ""
+            },
+            "hero-secondary": {
+                "text": "",
+                "url": ""
+            }
+        },
+        "dr-praveen-gupta-blog": {
+            "hero-primary": {
+                "text": "",
+                "url": ""
+            },
+            "hero-secondary": {
+                "text": "",
+                "url": ""
+            }
+        },
+        "blog": {
+            "hero-primary": {
+                "text": "",
+                "url": ""
+            },
+            "hero-secondary": {
+                "text": "",
+                "url": ""
+            }
+        },
+        "thank-you": {
+            "hero-primary": {
+                "text": "",
+                "url": ""
+            },
+            "hero-secondary": {
+                "text": "",
+                "url": ""
+            }
+        },
+        "emergency-neurology-care": {
+            "hero-primary": {
+                "text": "Call Helpline: {stroke-helpline}",
+                "url": "{stroke-helpline}"
+            },
+            "hero-secondary": {
+                "text": "",
+                "url": ""
+            }
+        },
+        "neurology-consultation": {
+            "hero-primary": {
+                "text": "Schedule Consultation",
+                "url": "contact-us-top-neurologist-delhi-ncr"
+            },
+            "hero-secondary": {
+                "text": "",
+                "url": ""
+            }
+        },
+        "neurology-second-opinion": {
+            "hero-primary": {
+                "text": "Request Second Opinion",
+                "url": "contact-us-top-neurologist-delhi-ncr"
+            },
+            "hero-secondary": {
+                "text": "",
+                "url": ""
+            }
+        },
+        "online-neurologist-consultation": {
+            "hero-primary": {
+                "text": "Book Teleconsultation",
+                "url": "contact-us-top-neurologist-delhi-ncr"
+            },
+            "hero-secondary": {
+                "text": "",
+                "url": ""
+            }
+        },
+        "neurology-procedures": {
+            "hero-primary": {
+                "text": "Explore Procedures",
+                "url": "#diagnostics"
+            },
+            "hero-secondary": {
+                "text": "",
+                "url": ""
+            }
+        },
+        "patient-info": {
+            "hero-primary": {
+                "text": "",
+                "url": ""
+            },
+            "hero-secondary": {
+                "text": "",
+                "url": ""
+            }
+        },
+        "neurology-faqs": {
+            "hero-primary": {
+                "text": "",
+                "url": ""
+            },
+            "hero-secondary": {
+                "text": "",
+                "url": ""
+            }
+        },
+        "privacy-policy": {
+            "hero-primary": {
+                "text": "",
+                "url": ""
+            },
+            "hero-secondary": {
+                "text": "",
+                "url": ""
+            }
+        },
+        "terms-of-service": {
+            "hero-primary": {
+                "text": "",
+                "url": ""
+            },
+            "hero-secondary": {
+                "text": "",
+                "url": ""
+            }
         }
     }
 }

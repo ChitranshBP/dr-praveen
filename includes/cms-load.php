@@ -360,6 +360,15 @@ function cms_nav_href($url) {
     if (stripos($url, '{whatsapp}') !== false) {
         return 'https://wa.me/' . (defined('SITE_WHATSAPP') ? SITE_WHATSAPP : '') . '?text=' . rawurlencode(defined('WHATSAPP_MESSAGE') ? WHATSAPP_MESSAGE : '');
     }
+    if (stripos($url, '{email}') !== false) {
+        return 'mailto:' . (defined('SITE_EMAIL') ? SITE_EMAIL : '');
+    }
+    // Social profile tokens → the URLs saved in CMS → Settings.
+    foreach (['youtube' => 'SOCIAL_YOUTUBE', 'instagram' => 'SOCIAL_INSTAGRAM', 'facebook' => 'SOCIAL_FACEBOOK', 'linkedin' => 'SOCIAL_LINKEDIN', 'twitter' => 'SOCIAL_TWITTER'] as $token => $const) {
+        if (stripos($url, '{' . $token . '}') !== false) {
+            return defined($const) && constant($const) !== '' ? constant($const) : '#';
+        }
+    }
     return $url;
 }
 
@@ -430,6 +439,21 @@ function cms_site_text_fields() {
         // Global SEO
         'meta_keywords'          => ['SEO defaults', 'Default meta keywords (comma separated)', 'Dr Praveen Gupta, healthcare, medical services, doctor, clinic', 'text'],
         'meta_author'            => ['SEO defaults', 'Meta author', 'Dr. Praveen Gupta', 'text'],
+        // Blog article page (blog-post.php)
+        'bp_badge'               => ['Blog article page', 'Badge above the article', 'Health Articles', 'text'],
+        'bp_published_label'     => ['Blog article page', '"Published on" label', 'Published on', 'text'],
+        'bp_by_label'            => ['Blog article page', '"By" label (before the author)', 'By', 'text'],
+        'bp_cta_badge'           => ['Blog article page', 'Doctor card — small badge', 'Expert Care', 'text'],
+        'bp_cta_title'           => ['Blog article page', 'Doctor card — heading', 'Consult Dr. Praveen Gupta', 'text'],
+        'bp_cta_text'            => ['Blog article page', 'Doctor card — credentials line', 'Chairman – Marengo Asia International Institute of Neuro & Spine • 20+ Years Experience • DM (AIIMS, New Delhi)', 'textarea'],
+        'bp_cta_image'           => ['Blog article page', 'Doctor card — photo', 'assets/banner/1.png', 'image'],
+        'bp_cta_primary_label'   => ['Blog article page', 'Doctor card — primary button text', 'Book Consultation', 'text'],
+        'bp_cta_primary_url'     => ['Blog article page', 'Doctor card — primary button link', 'contact-us-top-neurologist-delhi-ncr', 'url'],
+        'bp_cta_secondary_label' => ['Blog article page', 'Doctor card — call button text', 'Call Clinic', 'text'],
+        'bp_cta_secondary_url'   => ['Blog article page', 'Doctor card — call button link ({phone} dials the clinic)', '{phone}', 'url'],
+        'bp_related_heading'     => ['Blog article page', 'Related articles heading', 'More Health Articles', 'text'],
+        'bp_read_label'          => ['Blog article page', 'Related card link text', 'Read', 'text'],
+        'bp_back_label'          => ['Blog article page', 'Back link text', 'Back to All Articles', 'text'],
     ];
     return $fields;
 }

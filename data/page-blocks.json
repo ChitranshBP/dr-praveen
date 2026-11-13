@@ -5186,5 +5186,1134 @@
                 "class": "border-t border-b border-silver-grey/40"
             }
         }
+    },
+    "gallery": {
+        "_flow": true,
+        "photos": {
+            "type": "collection-grid",
+            "label": "Photo gallery (filterable)",
+            "collection": "gallery",
+            "variant": "gallery-filter",
+            "options": {
+                "all_label": "All Photos"
+            }
+        },
+        "main-body": {
+            "type": "intro",
+            "label": "Main Body Section Content",
+            "options": {
+                "layout": "split"
+            }
+        }
+    },
+    "media-coverage": {
+        "_flow": true,
+        "press": {
+            "type": "collection-grid",
+            "label": "Press & TV coverage cards",
+            "collection": "media_coverage",
+            "variant": "press"
+        },
+        "main-body": {
+            "type": "intro",
+            "label": "Main Body Section Content",
+            "options": {
+                "layout": "split"
+            }
+        }
+    },
+    "videos": {
+        "_flow": true,
+        "player": {
+            "type": "collection-grid",
+            "label": "Featured video player",
+            "collection": "videos",
+            "variant": "video-player",
+            "badge": "Now Playing",
+            "button_text": "Subscribe on YouTube",
+            "button_url": "{youtube}"
+        },
+        "library": {
+            "type": "collection-grid",
+            "label": "Video library (search, filters, pages)",
+            "collection": "videos",
+            "variant": "video-library",
+            "badge": "Video Library",
+            "title": "All Patient Awareness Videos",
+            "options": {
+                "mode": "player",
+                "per_page": 12,
+                "columns": 4
+            }
+        },
+        "main-body": {
+            "type": "intro",
+            "label": "Main Body Section Content",
+            "options": {
+                "layout": "split"
+            }
+        }
+    },
+    "neurology-video-library": {
+        "_flow": true,
+        "library": {
+            "type": "collection-grid",
+            "label": "Video library (search, filters, pages)",
+            "collection": "videos",
+            "variant": "video-library",
+            "options": {
+                "mode": "inline",
+                "per_page": 8,
+                "columns": 2
+            }
+        },
+        "main-body": {
+            "type": "intro",
+            "label": "Main Body Section Content",
+            "options": {
+                "layout": "split"
+            }
+        }
+    },
+    "video-testimonials": {
+        "_flow": true,
+        "videos": {
+            "type": "testimonials",
+            "label": "Video testimonials grid",
+            "variant": "video-grid",
+            "badge": "Patient Recovery Clips",
+            "title": "Verified Patient Video Stories",
+            "description": "Click play to watch their experiences and health transformations."
+        },
+        "main-body": {
+            "type": "intro",
+            "label": "Main Body Section Content",
+            "options": {
+                "layout": "split"
+            }
+        }
+    },
+    "patient-reviews": {
+        "_flow": true,
+        "rating": {
+            "type": "stats",
+            "label": "Rating box",
+            "variant": "box",
+            "items": [
+                {
+                    "icon": "stars",
+                    "title": "{stats_rating}",
+                    "subtitle": "Average Rating"
+                },
+                {
+                    "icon": "none",
+                    "title": "1K+",
+                    "subtitle": "Verified Reviews"
+                },
+                {
+                    "icon": "none",
+                    "title": "100%",
+                    "subtitle": "Patient Care Guarantee"
+                }
+            ],
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12",
+                "class": ""
+            }
+        },
+        "reviews": {
+            "type": "testimonials",
+            "label": "Review cards",
+            "variant": "cards"
+        },
+        "cta": {
+            "type": "cta-simple",
+            "label": "Call to action",
+            "title": "Consult with Dr. Praveen Gupta",
+            "description": "Experience the standard of clinical excellence and patient care praised by thousands of families.",
+            "button_text": "Request Appointment",
+            "button_url": "contact-us-top-neurologist-delhi-ncr",
+            "wrap": {
+                "class": "border-t border-b border-silver-grey/40 mt-12"
+            }
+        },
+        "main-body": {
+            "type": "intro",
+            "label": "Main Body Section Content",
+            "options": {
+                "layout": "split"
+            }
+        }
+    },
+    "neurology-patient-testimonials": {
+        "_flow": true,
+        "stats": {
+            "type": "stats",
+            "label": "Numbers strip",
+            "variant": "plain",
+            "items": [
+                {
+                    "icon": "none",
+                    "color": "electric-blue",
+                    "title": "{stats_experience}",
+                    "subtitle": "Years of Excellence"
+                },
+                {
+                    "icon": "none",
+                    "color": "cyan-accent",
+                    "title": "{stats_patients}",
+                    "subtitle": "Patients Treated"
+                },
+                {
+                    "icon": "none",
+                    "color": "deep-indigo",
+                    "title": "{stats_rating}/5",
+                    "subtitle": "Google Rating"
+                },
+                {
+                    "icon": "none",
+                    "color": "emerald",
+                    "title": "98%",
+                    "subtitle": "Stroke Recovery Rate"
+                }
+            ],
+            "wrap": {
+                "bg": "bg-slate-50",
+                "padding": "py-6",
+                "class": "border-b border-slate-200/50"
+            }
+        },
+        "reviews": {
+            "type": "testimonials",
+            "label": "Review grid",
+            "variant": "grid"
+        },
+        "cta": {
+            "type": "cta-simple",
+            "label": "Share your story",
+            "title": "Share Your Recovery Story",
+            "description": "Your journey can inspire others going through similar neurological challenges. If you have been treated by Dr. Praveen Gupta, we would love to hear your feedback.",
+            "button_text": "Submit Feedback",
+            "button_url": "contact-us-top-neurologist-delhi-ncr",
+            "button2_text": "Review on Google",
+            "button2_url": "https://g.page/r/dr-praveen-gupta-neurologist/review",
+            "options": {
+                "style": "gradient",
+                "button2_icon": "fab fa-google text-red-500"
+            }
+        },
+        "main-body": {
+            "type": "intro",
+            "label": "Main Body Section Content",
+            "options": {
+                "layout": "split"
+            }
+        }
+    },
+    "patient-success-stories": {
+        "_flow": true,
+        "stories": {
+            "type": "testimonials",
+            "label": "Success stories",
+            "variant": "stories"
+        },
+        "video-testimonials": {
+            "type": "video-testimonials",
+            "label": "Video Testimonials",
+            "badge": "Video Stories",
+            "title": "Recovery Stories on <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 to-cyan-accent\">Video</span>",
+            "description": "Hear these journeys first hand — patients describing their diagnosis, treatment and recovery in their own words."
+        },
+        "cta": {
+            "type": "cta-simple",
+            "label": "Share your story",
+            "title": "Share Your Recovery Story",
+            "description": "Your recovery path can inspire others undergoing difficult diagnoses. Let us know how your health has improved.",
+            "button_text": "Book a Consultation",
+            "button_url": "contact-us-top-neurologist-delhi-ncr"
+        },
+        "main-body": {
+            "type": "intro",
+            "label": "Main Body Section Content",
+            "options": {
+                "layout": "split"
+            }
+        }
+    },
+    "case-studies": {
+        "_flow": true,
+        "cases": {
+            "type": "collection-grid",
+            "label": "Clinical case reports",
+            "collection": "case_studies",
+            "variant": "case-studies",
+            "badge": "Clinical Portals",
+            "title": "Clinical Recovery Reports",
+            "description": "Detailed reviews of patient cases, clinical decisions, and outcomes under Dr. Praveen Gupta."
+        },
+        "cta": {
+            "type": "cta-simple",
+            "label": "Call to action",
+            "title": "Have a Complex Neurological Case?",
+            "description": "Get an expert clinical evaluation, record review, or second opinion of your diagnosis and current treatments.",
+            "button_text": "Book a Consultation",
+            "button_url": "contact-us-top-neurologist-delhi-ncr"
+        },
+        "main-body": {
+            "type": "intro",
+            "label": "Main Body Section Content",
+            "options": {
+                "layout": "split"
+            }
+        }
+    },
+    "services": {
+        "_flow": true,
+        "services": {
+            "type": "services-grid",
+            "label": "Services card grid",
+            "options": {
+                "layout": "grid"
+            }
+        },
+        "video-testimonials": {
+            "type": "video-testimonials",
+            "label": "Video Testimonials"
+        },
+        "main-body": {
+            "type": "intro",
+            "label": "Main Body Section Content",
+            "options": {
+                "layout": "split"
+            }
+        }
+    },
+    "contact-us-top-neurologist-delhi-ncr": {
+        "_flow": true,
+        "contact": {
+            "type": "contact-form",
+            "label": "Contact details + enquiry form",
+            "badge": "Contact Details",
+            "title": "How to Reach Us",
+            "text": "For emergencies, please call our 24/7 helpline immediately. For regular consultations, please fill out the form or use our direct clinic lines.",
+            "items": [
+                {
+                    "icon": "fa-phone-alt",
+                    "color": "electric-blue",
+                    "title": "Call Us",
+                    "text": "{phone}",
+                    "subtitle": "{hours_weekdays}"
+                },
+                {
+                    "icon": "fa-envelope",
+                    "color": "cyan-accent",
+                    "title": "Email Us",
+                    "text": "{email}",
+                    "subtitle": "We reply within 24 business hours"
+                },
+                {
+                    "icon": "fa-map-marker-alt",
+                    "color": "deep-indigo",
+                    "title": "OPD Clinic Location",
+                    "text": "",
+                    "subtitle": "{address}"
+                }
+            ],
+            "panel_title": "Send Us a Message",
+            "panel_text": "Fill out the form below, and our coordinator will connect with you shortly.",
+            "bullets": [
+                "Appointment|Schedule Appointment",
+                "Second Opinion|Second Opinion Consultation",
+                "General Query|General Inquiry",
+                "Feedback|Feedback / Testimonials"
+            ],
+            "button_text": "Send Message",
+            "options": {
+                "form_type": "Main Contact Form",
+                "show_upload": true
+            }
+        },
+        "map": {
+            "type": "map",
+            "label": "Google Map",
+            "badge": "Hospital Location",
+            "title": "Find Us on the Map"
+        },
+        "faq": {
+            "type": "faq",
+            "label": "FAQ Section"
+        },
+        "main-body": {
+            "type": "intro",
+            "label": "Main Body Section Content",
+            "options": {
+                "layout": "split"
+            }
+        }
+    },
+    "thank-you": {
+        "_flow": true,
+        "message": {
+            "type": "message-hero",
+            "label": "Thank-you message",
+            "badge_icon": "fa-check",
+            "title": "Thank <span class=\"text-cyan-accent\">You!</span>",
+            "description": "Your Submission has been Received",
+            "text": "Thank you for contacting Dr. Praveen Gupta's clinical team. We have successfully received your inquiry and our patient coordinator will review the details and reach back to you shortly.",
+            "items": [
+                {
+                    "icon": "fa-home",
+                    "color": "cyan-accent",
+                    "title": "Return Home",
+                    "text": "Go back to the homepage to read about services.",
+                    "url": "/"
+                },
+                {
+                    "icon": "fa-phone-alt",
+                    "color": "red",
+                    "title": "Emergency Desk",
+                    "text": "Call 24x7 helpline for urgent medical help.",
+                    "url": "{stroke-helpline}"
+                }
+            ],
+            "button_text": "Back to main website",
+            "button_url": "/",
+            "options": {
+                "title_html": true
+            }
+        },
+        "main-body": {
+            "type": "intro",
+            "label": "Main Body Section Content",
+            "options": {
+                "layout": "split"
+            }
+        }
+    },
+    "blog": {
+        "_flow": true,
+        "articles": {
+            "type": "blog-grid",
+            "label": "All articles",
+            "variant": "all",
+            "badge": "Blogs",
+            "badge_icon": "fa-newspaper",
+            "title": "Latest <span class=\"gradient-text\">Articles</span>",
+            "description": "Guidance on neurological conditions, treatments and recovery — written for patients and their families.",
+            "options": {
+                "title_html": true
+            }
+        },
+        "main-body": {
+            "type": "intro",
+            "label": "Main Body Section Content",
+            "options": {
+                "layout": "split"
+            }
+        }
+    },
+    "dr-praveen-gupta-blog": {
+        "_flow": true,
+        "articles": {
+            "type": "blog-grid",
+            "label": "Article list + sidebar",
+            "variant": "list",
+            "panel_title": "Subscribe to Newsletter",
+            "panel_text": "Stay updated with healthy brain guidelines and latest clinical updates.",
+            "button_text": "Subscribe",
+            "options": {
+                "categories_heading": "Blog Categories",
+                "form_type": "Blog Newsletter Subscription"
+            }
+        },
+        "main-body": {
+            "type": "intro",
+            "label": "Main Body Section Content",
+            "options": {
+                "layout": "split"
+            }
+        }
+    },
+    "emergency-neurology-care": {
+        "_flow": true,
+        "signs": {
+            "type": "cards",
+            "label": "Emergency signs",
+            "badge": "Emergency Signs",
+            "title": "When to Seek Immediate Emergency Neurology Care",
+            "description": "If you or a loved one experiences any of the following symptoms, call our emergency hotline or go to the nearest emergency room immediately.",
+            "items": [
+                {
+                    "icon": "fa-bolt",
+                    "color": "red",
+                    "title": "Acute Stroke Symptoms",
+                    "text": "Sudden weakness or numbness in the face, arm, or leg (especially on one side of the body), difficulty speaking, slurred speech, or sudden vision loss."
+                },
+                {
+                    "icon": "fa-wave-square",
+                    "color": "red",
+                    "title": "Status Epilepticus / Seizures",
+                    "text": "Continuous seizures lasting more than 5 minutes, or multiple seizures in close succession without the person fully regaining consciousness in between."
+                },
+                {
+                    "icon": "fa-tint",
+                    "color": "red",
+                    "title": "Thunderclap Headache",
+                    "text": "A sudden, extremely severe headache that peaks within 60 seconds. Often described as the \"worst headache of your life,\" possibly indicating brain hemorrhage."
+                },
+                {
+                    "icon": "fa-user-injured",
+                    "color": "red",
+                    "title": "Head Trauma & Concussion",
+                    "text": "Severe head injury accompanied by loss of consciousness, persistent confusion, repeated vomiting, unequal pupil sizes, or fluid leaking from the nose/ears."
+                },
+                {
+                    "icon": "fa-wheelchair",
+                    "color": "red",
+                    "title": "Sudden Paralysis / Weakness",
+                    "text": "Rapid onset of paralysis or loss of motor control in the legs or arms, which may indicate spinal cord compression, transverse myelitis, or Guillain-Barré syndrome."
+                },
+                {
+                    "icon": "fa-dizzy",
+                    "color": "red",
+                    "title": "Altered Mental Status",
+                    "text": "Sudden onset of severe confusion, delirium, hallucination, or unresponsiveness (stupor/coma), possibly due to brain infections (encephalitis/meningitis)."
+                }
+            ],
+            "options": {
+                "header_margin": "mb-12",
+                "badge_class": "text-red-600 font-bold text-xs uppercase tracking-wider font-sans",
+                "grid": "grid sm:grid-cols-2 lg:grid-cols-3 gap-8",
+                "card_class": "bg-slate-50 border border-slate-200/50 p-8 rounded-3xl space-y-4 hover:shadow-md transition-shadow",
+                "item_icon_class": "w-12 h-12 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center text-xl",
+                "item_title_class": "text-lg font-bold text-deep-indigo",
+                "item_text_class": "text-xs text-dark-grey/65 leading-relaxed"
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-16"
+            }
+        },
+        "protocols": {
+            "type": "split-panel",
+            "label": "Rapid Response Protocols + critical steps",
+            "badge": "Our Action Code",
+            "title": "Rapid Response Protocols",
+            "text": "Under the clinical leadership of Dr. Praveen Gupta, Marengo Asia Hospital runs structured neurological emergency response channels. Our stroke code and neuro-ICU procedures prioritize rapid triage, diagnosis, and treatment to minimize brain injury.",
+            "bullets": [
+                "fa-clock|<strong class=\"text-deep-indigo\">Door-to-Needle Time:</strong> Aiming to deliver thrombolytic (clot-dissolving) therapy within minutes of emergency arrival.",
+                "fa-x-ray|<strong class=\"text-deep-indigo\">24/7 Advanced Imaging:</strong> Immediate access to high-speed MRI and CT angiography to locate vessel blockages and bleeding.",
+                "fa-procedures|<strong class=\"text-deep-indigo\">Dedicated Neuro-ICU:</strong> Specialized intensive care unit equipped with intracranial pressure monitoring and specialized support systems."
+            ],
+            "options": {
+                "accent": "red",
+                "badge_class": "text-red-600 font-bold text-xs uppercase tracking-wider",
+                "title_class": "text-3xl font-bold text-deep-indigo font-serif",
+                "left_span": 6,
+                "aside_key": "critical-steps"
+            },
+            "wrap": {
+                "bg": "bg-slate-50",
+                "class": "border-t border-b border-silver-grey/40"
+            }
+        },
+        "critical-steps": {
+            "type": "checklist",
+            "label": "Critical steps card",
+            "nested": true,
+            "title": "Critical Steps in an Emergency",
+            "items": [
+                {
+                    "icon": "none",
+                    "title": "Call our emergency line immediately:",
+                    "text": "Do not wait to see if the symptoms will go away."
+                },
+                {
+                    "icon": "none",
+                    "title": "Do not administer oral medication:",
+                    "text": "Choking risks are high due to impaired swallowing reflexes."
+                },
+                {
+                    "icon": "none",
+                    "title": "Keep the airway clear:",
+                    "text": "Lay the patient on their side if they are unconscious or semi-conscious."
+                }
+            ],
+            "options": {
+                "theme": "white",
+                "style": "steps"
+            }
+        },
+        "callback": {
+            "type": "form-card",
+            "label": "Call-back request form",
+            "badge": "General Query or Callback",
+            "title": "Request a Call-Back",
+            "description": "For non-life-threatening clinical inquiries, leave your details below and our triage coordinator will call you.",
+            "button_text": "Request Call-Back",
+            "options": {
+                "theme": "red",
+                "fields": [
+                    "name",
+                    "phone",
+                    "inquiry"
+                ],
+                "form_type": "Emergency Callback Request"
+            }
+        },
+        "video-testimonials": {
+            "type": "video-testimonials",
+            "label": "Video Testimonials"
+        },
+        "related-videos": {
+            "type": "related-videos",
+            "label": "Related Videos"
+        },
+        "faq": {
+            "type": "faq",
+            "label": "FAQ Section"
+        }
+    },
+    "neurology-consultation": {
+        "_flow": true,
+        "expect": {
+            "type": "split-panel",
+            "label": "What to Expect + How to Prepare card",
+            "badge": "The Clinical Experience",
+            "title": "What to Expect During Your Appointment",
+            "text": "A thorough neurological evaluation is essential for diagnosing conditions affecting the brain, spinal cord, nerves, and muscles. During your session, Dr. Praveen Gupta will guide you through a comprehensive checkup:",
+            "items": [
+                {
+                    "icon": "fa-comments",
+                    "color": "electric-blue",
+                    "title": "Detailed Medical History",
+                    "text": "We will discuss your symptoms in detail—when they started, their pattern, triggers, severity, and any past treatments or family history."
+                },
+                {
+                    "icon": "fa-running",
+                    "color": "electric-blue",
+                    "title": "Neurological Examination",
+                    "text": "A hands-on physical exam checking your reflexes, muscle strength, sensory perceptions, coordination, gait, balance, and cranial nerve functions (vision, hearing, facial movement)."
+                },
+                {
+                    "icon": "fa-notes-medical",
+                    "color": "electric-blue",
+                    "title": "Diagnostic & Treatment Plan",
+                    "text": "If required, diagnostic tests (e.g., MRI, CT, EEG, EMG) will be recommended. We will formulate a tailored care and medical management plan immediately."
+                }
+            ],
+            "options": {
+                "point_style": "card",
+                "title_class": "text-3xl font-bold text-deep-indigo font-serif",
+                "aside_key": "prepare"
+            }
+        },
+        "prepare": {
+            "type": "checklist",
+            "label": "How to Prepare card",
+            "nested": true,
+            "title": "How to Prepare",
+            "text": "Make the most of your consultation by taking a few steps to prepare before you arrive at our clinic:",
+            "items": [
+                {
+                    "icon": "fa-file-medical",
+                    "color": "cyan-accent",
+                    "title": "Medical Documents:",
+                    "text": "Bring all past reports, imaging films/CDs (MRI, CT scans), and blood test results."
+                },
+                {
+                    "icon": "fa-pills",
+                    "color": "cyan-accent",
+                    "title": "Medication List:",
+                    "text": "Bring current prescriptions or the actual packaging of all medicines you are currently taking."
+                },
+                {
+                    "icon": "fa-pen",
+                    "color": "cyan-accent",
+                    "title": "Symptom Log:",
+                    "text": "Jot down when your symptoms occur, how long they last, and what triggers or relieves them."
+                },
+                {
+                    "icon": "fa-user-friends",
+                    "color": "cyan-accent",
+                    "title": "Bring a Companion:",
+                    "text": "Family members can help recall details and listen to recommendations."
+                }
+            ],
+            "button_text": "Submit Request",
+            "options": {
+                "theme": "light",
+                "form_label": "Quick Request",
+                "form_fields": [
+                    "name",
+                    "phone"
+                ],
+                "form_type": "Neurology Consultation Request"
+            }
+        },
+        "channels": {
+            "type": "cards",
+            "label": "Consultation options",
+            "badge": "Appointment Modes",
+            "title": "Consultation Options",
+            "description": "Choose the consulting channel that best matches your location, health status, and convenience.",
+            "items": [
+                {
+                    "icon": "fa-building",
+                    "color": "electric-blue",
+                    "title": "In-Person Clinic Visit",
+                    "text": "Consult directly at Marengo Asia Hospital. Best for initial assessments, evaluations requiring physical examination reflexes, and diagnostic testing.",
+                    "note": "<span class=\"text-xs font-semibold text-electric-blue\"><i class=\"far fa-clock mr-1\"></i> Mon - Sat: By Appointment</span>"
+                },
+                {
+                    "icon": "fa-video",
+                    "color": "cyan-accent",
+                    "title": "Online Tele-Consultation",
+                    "text": "Connect via secure video consultation from the comfort of your home. Ideal for second opinions, routine follow-ups, and reviewing laboratory results.",
+                    "note": "<span class=\"text-xs font-semibold text-cyan-accent\"><i class=\"fas fa-laptop-medical mr-1\"></i> Global Video Access</span>"
+                }
+            ],
+            "options": {
+                "header_margin": "mb-12",
+                "badge_class": "text-electric-blue font-bold text-xs uppercase tracking-wider",
+                "grid": "grid md:grid-cols-2 gap-8 max-w-4xl mx-auto",
+                "card_class": "bg-white p-8 rounded-3xl border border-silver-grey/30 space-y-4 hover:shadow-md transition-shadow",
+                "item_title_class": "text-lg font-bold text-deep-indigo",
+                "item_text_class": "text-xs text-dark-grey/65 leading-relaxed"
+            },
+            "wrap": {
+                "bg": "bg-slate-50",
+                "padding": "py-16",
+                "class": "border-t border-b border-silver-grey/40"
+            }
+        },
+        "faq": {
+            "type": "faq",
+            "label": "FAQ Section"
+        },
+        "video-testimonials": {
+            "type": "video-testimonials",
+            "label": "Video Testimonials"
+        }
+    },
+    "neurology-second-opinion": {
+        "_flow": true,
+        "value": {
+            "type": "split-panel",
+            "label": "Why seek a review + records card",
+            "badge": "Why Seek a Review?",
+            "title": "Ensure Diagnostic Accuracy & Explore Alternatives",
+            "text": "Neurological conditions are complex and require high diagnostic precision. Seeking a second opinion is a common and vital step in ensuring you receive the correct treatment pathway:",
+            "bullets": [
+                "<strong class=\"text-deep-indigo\">Confirm Complex Diagnoses:</strong> Double-check diagnoses for conditions like multiple sclerosis, motor neuron diseases, or rare tremors.",
+                "<strong class=\"text-deep-indigo\">Evaluate Surgical Options:</strong> Discuss alternative medical management routes before committing to procedures like Deep Brain Stimulation (DBS) or epilepsy surgery.",
+                "<strong class=\"text-deep-indigo\">Optimise Recovery Pathways:</strong> Review stroke rehabilitation timelines, speech therapy modules, and cognitive training plans."
+            ],
+            "options": {
+                "title_class": "text-3xl font-bold text-deep-indigo font-serif",
+                "aside_key": "records"
+            }
+        },
+        "records": {
+            "type": "checklist",
+            "label": "What We Need card",
+            "nested": true,
+            "title": "What We Need",
+            "text": "To conduct a detailed medical and diagnostic review, please prepare the following records:",
+            "items": [
+                {
+                    "icon": "fa-compact-disc",
+                    "color": "cyan-accent",
+                    "title": "Imaging Materials:",
+                    "text": "Complete MRI, CT, PET scans, including both the printed reports and the original image files (on CD or digital upload)."
+                },
+                {
+                    "icon": "fa-file-invoice-dollar",
+                    "color": "cyan-accent",
+                    "title": "Test Results:",
+                    "text": "EEG logs, EMG studies, nerve conduction recordings, and blood panel results."
+                },
+                {
+                    "icon": "fa-scroll",
+                    "color": "cyan-accent",
+                    "title": "Medical History:",
+                    "text": "Current prescription charts, past treatment logs, and notes from your prior consulting physicians."
+                }
+            ],
+            "options": {
+                "theme": "light"
+            }
+        },
+        "process": {
+            "type": "cards",
+            "label": "Review process",
+            "badge": "Our Methodology",
+            "title": "The Opinion Review Process",
+            "description": "How Dr. Praveen Gupta evaluates second opinion submissions.",
+            "items": [
+                {
+                    "icon": "fa-glasses",
+                    "color": "electric-blue",
+                    "title": "Record Review",
+                    "text": "A clinical review of all submitted reports, imaging films, medication charts, and symptoms logs to build a baseline profile."
+                },
+                {
+                    "icon": "fa-stethoscope",
+                    "color": "cyan-accent",
+                    "title": "Clinical Re-Assessment",
+                    "text": "An in-person or video evaluation session to verify reflexes, motor pathways, cognitive status, and explore secondary symptoms."
+                },
+                {
+                    "icon": "fa-file-medical-alt",
+                    "color": "deep-indigo",
+                    "title": "Detailed Report",
+                    "text": "Delivery of a formal second opinion report, outlining diagnostic confirmation, recommended next steps, and potential care modifications."
+                }
+            ],
+            "options": {
+                "header_margin": "mb-12",
+                "badge_class": "text-electric-blue font-bold text-xs uppercase tracking-wider",
+                "grid": "grid md:grid-cols-3 gap-8",
+                "card_class": "bg-white p-8 rounded-3xl border border-silver-grey/30 space-y-4 hover:shadow-md transition-shadow",
+                "item_title_class": "text-lg font-bold text-deep-indigo",
+                "item_text_class": "text-xs text-dark-grey/65 leading-relaxed"
+            },
+            "wrap": {
+                "bg": "bg-slate-50",
+                "padding": "py-16",
+                "class": "border-t border-b border-silver-grey/40"
+            }
+        },
+        "request": {
+            "type": "form-card",
+            "label": "Second opinion request form",
+            "badge": "Submit Case Details",
+            "title": "Request Your Second Opinion",
+            "description": "Fill in the quick details below. Our medical team will guide you on uploading records.",
+            "button_text": "Submit Case Review Request",
+            "options": {
+                "theme": "indigo",
+                "fields": [
+                    "name",
+                    "phone",
+                    "diagnosis"
+                ],
+                "form_type": "Second Opinion Request"
+            }
+        },
+        "faq": {
+            "type": "faq",
+            "label": "FAQ Section"
+        },
+        "video-testimonials": {
+            "type": "video-testimonials",
+            "label": "Video Testimonials"
+        }
+    },
+    "online-neurologist-consultation": {
+        "_flow": true,
+        "steps": {
+            "type": "cards",
+            "label": "How it works",
+            "badge": "Process Flow",
+            "title": "How Online Consultation Works",
+            "description": "A simple 4-step process designed to give you world-class neurological assessment online.",
+            "items": [
+                {
+                    "icon": "fa-calendar-alt",
+                    "color": "electric-blue",
+                    "badge": "01",
+                    "title": "Book Slot",
+                    "text": "Select your preferred date and time on our booking portal and complete the registration."
+                },
+                {
+                    "icon": "fa-file-upload",
+                    "color": "cyan-accent",
+                    "badge": "02",
+                    "title": "Upload Records",
+                    "text": "Securely upload past prescriptions, blood test results, and imaging studies (MRI/CT reports)."
+                },
+                {
+                    "icon": "fa-video",
+                    "color": "deep-indigo",
+                    "badge": "03",
+                    "title": "Video Consultation",
+                    "text": "Connect with Dr. Praveen Gupta via a secure high-definition video link at your scheduled time."
+                },
+                {
+                    "icon": "fa-file-prescription",
+                    "color": "electric-blue",
+                    "badge": "04",
+                    "title": "Get Prescription",
+                    "text": "Receive your digital medical advice, diagnostic recommendations, and prescription copy."
+                }
+            ],
+            "options": {
+                "header_margin": "mb-12",
+                "badge_class": "text-electric-blue font-bold text-xs uppercase tracking-wider font-sans",
+                "grid": "grid md:grid-cols-4 gap-8",
+                "card_class": "bg-slate-50 border border-slate-200/50 p-6 rounded-3xl space-y-4 hover:shadow-md transition-shadow relative",
+                "item_icon_class": "w-10 h-10 bg-electric-blue/10 rounded-2xl flex items-center justify-center",
+                "item_icon_size": "text-base",
+                "item_title_class": "font-bold text-deep-indigo text-base pt-2",
+                "item_text_class": "text-xs text-dark-grey/65 leading-relaxed"
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-16"
+            }
+        },
+        "suitability": {
+            "type": "split-panel",
+            "label": "Suitability + fast booking card",
+            "badge": "Suitability",
+            "title": "Is Online Consultation Right for You?",
+            "text": "While acute medical emergencies and tests require clinic visits, many patients benefit enormously from online consulting:",
+            "bullets": [
+                "<strong class=\"text-deep-indigo\">Outstation & Global Patients:</strong> Seek clinical advice from anywhere in the world without travel overhead.",
+                "<strong class=\"text-deep-indigo\">Routine Follow-ups:</strong> Ideal for reviewing treatment responses, discussing medication dosages, or reviewing lab tests.",
+                "<strong class=\"text-deep-indigo\">Diagnostic Review:</strong> Share records to receive an expert diagnostic opinion."
+            ],
+            "options": {
+                "title_class": "text-3xl font-bold text-deep-indigo font-serif",
+                "aside_key": "booking"
+            },
+            "wrap": {
+                "bg": "bg-slate-50",
+                "class": "border-t border-b border-silver-grey/40"
+            }
+        },
+        "booking": {
+            "type": "checklist",
+            "label": "Fast Booking card",
+            "nested": true,
+            "title": "Fast Booking",
+            "text": "Have your medical history and imaging scans ready before scheduling a slot. For urgent cases, please call the emergency desk directly.",
+            "button_text": "Book Online Slot",
+            "options": {
+                "theme": "dark",
+                "form_fields": [
+                    "name",
+                    "phone"
+                ],
+                "form_type": "Online Consultation Request"
+            }
+        },
+        "faq": {
+            "type": "faq",
+            "label": "FAQ Section"
+        },
+        "video-testimonials": {
+            "type": "video-testimonials",
+            "label": "Video Testimonials"
+        }
+    },
+    "patient-info": {
+        "_flow": true,
+        "info": {
+            "type": "cards",
+            "label": "Patient information cards",
+            "items": [
+                {
+                    "icon": "fa-clipboard-list",
+                    "color": "electric-blue",
+                    "title": "First Appointment Checklist",
+                    "text": "To help Dr. Praveen Gupta understand your history clearly, please prepare the following for your consultation:",
+                    "bullets": [
+                        "All previous prescriptions & medications",
+                        "Recent MRI, CT scans, and EEG reports",
+                        "Discharge summaries (if hospitalized before)",
+                        "List of current symptoms & when they started"
+                    ]
+                },
+                {
+                    "icon": "fa-calendar-alt",
+                    "color": "cyan-accent",
+                    "title": "OPD timings & Registration",
+                    "text": "Marengo Asia Hospital (Gurgaon Sector 56) offers general and premium neurology OPD slots:",
+                    "bullets": [
+                        "Monday - Saturday|09:00 AM - 05:00 PM",
+                        "Sunday|Closed"
+                    ],
+                    "note": "*Please report to the OPD reception counter at least 15 minutes before your scheduled appointment slot to complete registration."
+                },
+                {
+                    "icon": "fa-shield-alt",
+                    "color": "deep-indigo",
+                    "title": "Insurance & Cashless TPA",
+                    "text": "We accept all major health insurance policies and cashless TPA partnerships:",
+                    "tags": [
+                        "Cigna TTK",
+                        "Star Health",
+                        "HDFC Ergo",
+                        "Max Bupa",
+                        "CGHS / ECHS",
+                        "ICICI Lombard"
+                    ],
+                    "note": "*For cashless approvals, visit the TPA Help Desk in the main lobby at least 24 hours prior to planned procedures."
+                }
+            ],
+            "options": {
+                "grid": "grid lg:grid-cols-3 gap-8",
+                "card_class": "bg-slate-50 border border-slate-200/50 p-8 rounded-3xl space-y-6 hover:shadow-xl transition-all duration-300",
+                "item_title_class": "text-xl font-bold text-dark-grey mb-2",
+                "item_text_class": "text-sm text-dark-grey/65 leading-relaxed",
+                "bullet_icon": "fas fa-check-circle"
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-12"
+            }
+        },
+        "fast": {
+            "type": "alert-banner",
+            "label": "Emergency F.A.S.T. banner",
+            "badge": "Emergency Stroke Info",
+            "title": "Suspecting a Brain Stroke? Act F.A.S.T.",
+            "text": "Time is brain. In case of sudden loss of speech, facial dropping, weakness in arms, or balance issues, do not wait. Call our emergency helpline instantly.",
+            "bullets": [
+                "F|Face Drooping",
+                "A|Arm Weakness",
+                "S|Speech Difficulty",
+                "T|Time to call Help"
+            ],
+            "description": "24/7 EMERGENCY HELPLINE",
+            "button_text": "{stroke-helpline}",
+            "button_url": "{stroke-helpline}"
+        },
+        "faq": {
+            "type": "faq",
+            "label": "FAQ Section"
+        }
+    },
+    "neurology-procedures": {
+        "_flow": true,
+        "diagnostics": {
+            "type": "cards",
+            "label": "Diagnostic tests",
+            "badge": "Diagnostic Excellence",
+            "title": "Advanced Diagnostic Testing",
+            "description": "State-of-the-art neurological mapping to precisely evaluate brain, spinal cord, muscle, and nerve health.",
+            "items": [
+                {
+                    "icon": "fa-wave-square",
+                    "color": "electric-blue",
+                    "title": "EEG & Video EEG Monitoring",
+                    "text": "Electroencephalogram (EEG) records the electrical activity of the brain. Continuous Video EEG allows prolonged tracking to monitor, classify, and identify precise focus areas for epilepsy or seizure events.",
+                    "note": "<strong class=\"text-deep-indigo\">Common Indications:</strong> Seizures, blackouts, unexplained fainting, memory confusion."
+                },
+                {
+                    "icon": "fa-compress-alt",
+                    "color": "cyan-accent",
+                    "title": "EMG & Nerve Conduction Study (NCS)",
+                    "text": "Nerve Conduction Studies track the speed and strength of signals passing through peripheral nerves. Electromyography (EMG) evaluates electrical muscle activity to detect damage or neuromuscular diseases.",
+                    "note": "<strong class=\"text-deep-indigo\">Common Indications:</strong> Numbness, limb pain, muscle weakness, neuropathy, carpal tunnel syndrome."
+                },
+                {
+                    "icon": "fa-wifi",
+                    "color": "deep-indigo",
+                    "title": "Evoked Potentials (VEP, SSEP, BERA)",
+                    "text": "These non-invasive tests measure electrical signals in the brain in response to sight, sound, or touch stimulation. They evaluate sensory nerve pathways across the central nervous system.",
+                    "note": "<strong class=\"text-deep-indigo\">Common Indications:</strong> Multiple sclerosis screening, optic nerve injuries, hearing loss pathways."
+                },
+                {
+                    "icon": "fa-bed",
+                    "color": "electric-blue",
+                    "title": "Sleep Study (Polysomnography)",
+                    "text": "An overnight recording of sleep patterns, brain activity, blood oxygen levels, heart rate, and breathing. Used to diagnose complex sleep disorders.",
+                    "note": "<strong class=\"text-deep-indigo\">Common Indications:</strong> Sleep apnea, severe insomnia, narcolepsy, restless leg syndrome."
+                }
+            ],
+            "options": {
+                "header_margin": "mb-12",
+                "badge_class": "text-electric-blue font-bold text-xs uppercase tracking-wider font-sans",
+                "grid": "grid md:grid-cols-2 gap-8",
+                "card_class": "bg-slate-50 border border-slate-200/50 p-8 rounded-3xl space-y-4 hover:shadow-md transition-shadow",
+                "item_icon_size": "text-lg",
+                "item_title_class": "text-lg font-bold text-deep-indigo",
+                "item_text_class": "text-xs text-dark-grey/65 leading-relaxed"
+            },
+            "wrap": {
+                "id": "diagnostics",
+                "bg": "bg-white",
+                "padding": "py-16"
+            }
+        },
+        "therapeutics": {
+            "type": "cards",
+            "label": "Therapeutic procedures",
+            "badge": "Therapeutic Innovations",
+            "title": "Specialized Treatments & Interventions",
+            "description": "Advanced surgical and non-surgical procedures targeting root causes of complex neurological conditions.",
+            "items": [
+                {
+                    "icon": "fa-brain",
+                    "color": "electric-blue",
+                    "title": "Deep Brain Stimulation (DBS)",
+                    "text": "Clinical management of implantable stimulators targeting deep brain structures. Offers significant symptomatic control for Parkinson's disease and dystonia when medications are no longer fully effective."
+                },
+                {
+                    "icon": "fa-syringe",
+                    "color": "cyan-accent",
+                    "title": "Therapeutic Botox Injections",
+                    "text": "Highly targeted injections of botulinum toxin to relieve chronic migraines, treat muscle spasticity following strokes, and manage hemifacial spasms or blepharospasm."
+                },
+                {
+                    "icon": "fa-clock",
+                    "color": "deep-indigo",
+                    "title": "Stroke Thrombolysis & Thrombectomy",
+                    "text": "Emergency administration of clot-dissolving tissue plasminogen activator (tPA) or referral for endovascular mechanical clot extraction (thrombectomy) to restore brain blood flow."
+                }
+            ],
+            "options": {
+                "header_margin": "mb-12",
+                "badge_class": "text-cyan-accent font-bold text-xs uppercase tracking-wider font-sans",
+                "grid": "grid md:grid-cols-3 gap-8",
+                "card_class": "bg-white p-8 rounded-3xl border border-silver-grey/30 space-y-4 hover:shadow-md transition-shadow",
+                "item_title_class": "text-lg font-bold text-deep-indigo",
+                "item_text_class": "text-xs text-dark-grey/65 leading-relaxed"
+            },
+            "wrap": {
+                "bg": "bg-slate-50",
+                "padding": "py-16",
+                "class": "border-t border-b border-silver-grey/40"
+            }
+        },
+        "video-testimonials": {
+            "type": "video-testimonials",
+            "label": "Video Testimonials"
+        }
+    },
+    "neurology-faqs": {
+        "_flow": true,
+        "faq": {
+            "type": "faq",
+            "label": "FAQ Section"
+        },
+        "cta": {
+            "type": "cta-simple",
+            "label": "Call to action",
+            "title": "Still Have Questions?",
+            "description": "Our medical coordination help desk is available to answer any clinical or procedural queries.",
+            "button_text": "Contact Us",
+            "button_url": "contact-us-top-neurologist-delhi-ncr"
+        }
+    },
+    "privacy-policy": {
+        "_flow": true,
+        "body": {
+            "type": "richtext",
+            "label": "Policy text",
+            "text": "<div class=\"space-y-3\">\n<h2 class=\"text-2xl font-bold text-deep-indigo font-serif\">1. Introduction</h2>\n<p>Welcome to the official portal of {site}. Your privacy and the confidentiality of your personal and medical information are of paramount importance to us. This Privacy Policy details how we handle the information collected from visitors and patients who use this website.</p>\n</div>\n<div class=\"space-y-3\">\n<h2 class=\"text-2xl font-bold text-deep-indigo font-serif\">2. Information We Collect</h2>\n<p>We collect information from you when you submit a consultation request, book an appointment, request a second opinion, or upload medical records. The types of personal data we may collect include:</p>\n<ul class=\"list-disc pl-5 space-y-1\">\n<li>Contact details such as name, email address, and phone number.</li>\n<li>Clinical history, diagnosis logs, and uploaded medical reports/scans.</li>\n<li>Technical data such as IP address and browsing behavior collected via standard cookies.</li>\n</ul>\n</div>\n<div class=\"space-y-3\">\n<h2 class=\"text-2xl font-bold text-deep-indigo font-serif\">3. How We Use Your Information</h2>\n<p>The collected information is used solely to facilitate healthcare services, including:</p>\n<ul class=\"list-disc pl-5 space-y-1\">\n<li>Scheduling and managing clinic appointments or online video consultations.</li>\n<li>Reviewing medical records to provide accurate diagnostic second opinions.</li>\n<li>Routing inquiry submissions to our secure clinic management systems.</li>\n</ul>\n</div>\n<div class=\"space-y-3\">\n<h2 class=\"text-2xl font-bold text-deep-indigo font-serif\">4. Data Security &amp; Storage</h2>\n<p>We implement standard physical, electronic, and administrative safeguards to protect your personal and medical data against unauthorized access, loss, or modification. Medical uploads are transferred securely and stored within secure systems. However, please be aware that no data transmission over the Internet is completely risk-free.</p>\n</div>\n<div class=\"space-y-3\">\n<h2 class=\"text-2xl font-bold text-deep-indigo font-serif\">5. Sharing of Data</h2>\n<p>We do not sell, trade, or transfer patient data to external marketing companies. Your information is only shared with authorized medical staff, clinical coordinators, and hospital team members involved in administering your treatment plan.</p>\n</div>\n<div class=\"space-y-3\">\n<h2 class=\"text-2xl font-bold text-deep-indigo font-serif\">6. Patient Rights</h2>\n<p>You have the right to request access to the personal data we hold about you, request corrections to incomplete information, or request the deletion of non-medical records (subject to local legal requirements regarding medical records retention).</p>\n</div>\n<div class=\"space-y-3\">\n<h2 class=\"text-2xl font-bold text-deep-indigo font-serif\">7. Contact Details</h2>\n<p>For questions regarding this policy or to request data removal, please contact us at <a href=\"mailto:{email}\" class=\"text-electric-blue hover:underline\">{email}</a> or call the OPD helpline.</p>\n</div>"
+        }
+    },
+    "terms-of-service": {
+        "_flow": true,
+        "body": {
+            "type": "richtext",
+            "label": "Terms text",
+            "text": "<div class=\"space-y-3\">\n<h2 class=\"text-2xl font-bold text-deep-indigo font-serif\">1. Acceptance of Terms</h2>\n<p>By accessing and using this website, you agree to comply with and be bound by the following Terms of Service and clinical disclaimers. If you do not agree to these terms, please do not use this portal or submit online inquiries.</p>\n</div>\n<div class=\"space-y-3\">\n<h2 class=\"text-2xl font-bold text-deep-indigo font-serif\">2. Medical Disclaimer (Not for Emergencies)</h2>\n<div class=\"bg-red-50 border-l-4 border-red-500 p-4 text-xs text-red-900 rounded-r-xl\">\n<p class=\"font-bold uppercase tracking-wider mb-1\"><i class=\"fas fa-exclamation-triangle mr-1\"></i> Medical Emergency Warning</p>\n<p>The contents of this website, including clinical articles, case files, video explanations, and second-opinion responses, are for educational/information purposes only. <strong>This website does not provide emergency medical diagnosis or treatment.</strong></p>\n<p class=\"mt-2\">If you or a family member are experiencing sudden stroke symptoms (loss of balance, face drooping, arm weakness, speech difficulty), please call our 24/7 Stroke Helpline at <a href=\"tel:{stroke-helpline}\" class=\"font-bold underline\">{stroke-helpline}</a> or visit the nearest emergency department immediately.</p>\n</div>\n</div>\n<div class=\"space-y-3\">\n<h2 class=\"text-2xl font-bold text-deep-indigo font-serif\">3. Online Consultations</h2>\n<p>Video consultations booked via this site serve as virtual advisory sessions. A complete diagnosis may require physical examinations, lab evaluations, or imaging checks at our clinic location. Any prescription issued during video sessions is subject to the doctor's clinical judgement and local regulations.</p>\n</div>\n<div class=\"space-y-3\">\n<h2 class=\"text-2xl font-bold text-deep-indigo font-serif\">4. Submission of Clinical Records</h2>\n<p>When submitting form messages or uploading file records (PDF, Word, or images), you warrant that you are authorized to share these files and that the information is accurate. Uploads of illegal or malicious files are strictly prohibited and will result in IP blocking.</p>\n</div>\n<div class=\"space-y-3\">\n<h2 class=\"text-2xl font-bold text-deep-indigo font-serif\">5. Intellectual Property</h2>\n<p>The layout, design details, medical articles, logos, graphics, and clinical videos on this site are protected by copyright. Unauthorized replication, redistribution, or commercial copying of materials from this portal without written consent is prohibited.</p>\n</div>\n<div class=\"space-y-3\">\n<h2 class=\"text-2xl font-bold text-deep-indigo font-serif\">6. Limitation of Liability</h2>\n<p>While we take reasonable care to keep the medical guidelines on this website accurate and updated, {site} and the administrative team make no guarantees about the completeness or absolute accuracy of information published, and shall not be held liable for any damages arising out of the use of this website.</p>\n</div>\n<div class=\"space-y-3\">\n<h2 class=\"text-2xl font-bold text-deep-indigo font-serif\">7. Revisions to Terms</h2>\n<p>We reserve the right to revise these Terms of Service at any time without prior notice. Any modifications will be active immediately upon publishing to this page.</p>\n</div>"
+        }
     }
 }
