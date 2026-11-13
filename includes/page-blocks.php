@@ -244,15 +244,22 @@ if (!function_exists('cms_render_page_flow')) {
         $layout = cms_page_layout($slug, $blocks);
         $previous = $cmsCurrentPageSlug ?? null;
         $cmsCurrentPageSlug = $slug;
+        // Blocks with "placement": "hero" are printed inside the page banner by
+        // the template (cms_render_page_flow($slug, ['placement' => 'hero']))
+        // and skipped by the normal body run.
+        $placement = (string)($options['placement'] ?? '');
         try {
             foreach ($layout as $entry) {
                 if (!empty($entry['hidden']) || !isset($blocks[$entry['key']])) {
                     continue;
                 }
                 $block = $blocks[$entry['key']];
+                if ((string)($block['placement'] ?? '') !== $placement) {
+                    continue;
+                }
                 $type = $block['type'] ?? 'cards';
                 // Blocks that print their own <section>
-                $selfWrapped = in_array($type, ['doctor', 'cta', 'faq', 'video-testimonials', 'related-videos', 'banner-slider', 'richtext-page', 'collection-grid', 'testimonials', 'team-grid', 'blog-grid', 'services-grid', 'reels', 'video-player', 'form', 'map', 'stats', 'text-media', 'strip', 'quote', 'slideshow', 'contact-cards', 'hero-plain'], true)
+                $selfWrapped = in_array($type, ['doctor', 'cta', 'faq', 'video-testimonials', 'related-videos', 'banner-slider', 'richtext-page', 'collection-grid', 'testimonials', 'team-grid', 'blog-grid', 'services-grid', 'reels', 'video-player', 'form', 'map', 'stats', 'text-media', 'strip', 'quote', 'slideshow', 'contact-cards', 'hero-plain', 'feature-split'], true)
                     || (($block['wrap'] ?? null) === false) || (($block['wrap'] ?? null) === 'none');
                 $opened = $selfWrapped ? false : cms_block_wrap_open($block);
                 cms_render_page_block($slug, $entry['key']);
@@ -261,7 +268,7 @@ if (!function_exists('cms_render_page_flow')) {
         } finally {
             $cmsCurrentPageSlug = $previous;
         }
-        if (empty($options['no_sections'])) {
+        if (empty($options['no_sections']) && $placement === '') {
             // Legacy "Additional Page Sections" + automatic FAQ keep working.
             $GLOBALS['cms_page_section_used'] = true;
         }
@@ -496,6 +503,11 @@ if (!function_exists('cms_section_resolve')) {
 
 if (!function_exists('cms_render_block_header')) {
     function cms_render_block_header(array $block, $margin = 'mb-16', $titleClass = '', $align = 'center', $badgeClass = 'text-electric-blue font-semibold text-sm uppercase tracking-wider') {
+        $hdrOpts = isset($block['options']) && is_array($block['options']) ? $block['options'] : [];
+        if (in_array($hdrOpts['header_style'] ?? '', ['pill', 'line', 'plain'], true) && function_exists('cms_render_pill_header')) {
+            cms_render_pill_header($block, 'text-center max-w-3xl mx-auto ' . ($margin ?: 'mb-10 md:mb-12') . ' observe', $hdrOpts['header_style']);
+            return;
+        }
         $badge = trim((string)($block['badge'] ?? ''));
         $title = trim((string)($block['title'] ?? ''));
         $desc  = trim((string)($block['description'] ?? ''));
@@ -560,13 +572,21 @@ if (!function_exists('cms_render_block_cards')) {
                 }
             ?>
             <div class="<?php echo htmlspecialchars($cardClass); ?>">
+                <?php $itemImg = function_exists('cms_media_path') ? cms_media_path($item['image'] ?? '', '') : ''; ?>
+                <?php if ($itemImg !== ''): ?>
+                <div class="<?php echo htmlspecialchars($options['item_image_class'] ?? 'relative w-full aspect-video rounded-2xl overflow-hidden bg-silver-grey mb-4'); ?>">
+                    <img src="<?php echo htmlspecialchars($itemImg); ?>" alt="<?php echo htmlspecialchars(trim((string)($item['image_alt'] ?? $itemTitle))); ?>" class="w-full h-full object-cover" loading="lazy" width="640" height="480">
+                </div>
+                <?php endif; ?>
+                <?php $itemBodyClass = trim((string)($options['item_body_class'] ?? '')); ?>
+                <?php if ($itemBodyClass !== ''): ?><div class="<?php echo htmlspecialchars($itemBodyClass); ?>"><?php endif; ?>
                 <?php $itemBadge = trim((string)($item['badge'] ?? '')); ?>
                 <?php if ($itemBadge !== ''): ?>
                 <span class="block text-4xl font-black <?php echo $textClass; ?> mb-2"><?php echo htmlspecialchars($itemBadge); ?></span>
                 <?php endif; ?>
                 <?php if ($icon !== 'none'): ?>
-                <div class="w-14 h-14 <?php echo $bgClass; ?> rounded-xl flex items-center justify-center mb-5 <?php echo $hoverBg; ?> transition-all duration-300">
-                    <i class="fas <?php echo htmlspecialchars($icon); ?> <?php echo $textClass; ?> text-xl group-hover:text-white transition-colors"></i>
+                <div class="<?php echo htmlspecialchars($options['item_icon_class'] ?? ('w-14 h-14 ' . $bgClass . ' rounded-xl flex items-center justify-center mb-5 ' . $hoverBg . ' transition-all duration-300')); ?>">
+                    <i class="fas <?php echo htmlspecialchars($icon); ?> <?php echo $textClass; ?> <?php echo htmlspecialchars($options['item_icon_size'] ?? 'text-xl'); ?> group-hover:text-white transition-colors"></i>
                 </div>
                 <?php endif; ?>
                 <h3 class="<?php echo htmlspecialchars($itemTitleClass); ?>"><?php echo htmlspecialchars($itemTitle); ?></h3>
@@ -598,6 +618,7 @@ if (!function_exists('cms_render_block_cards')) {
                     <?php endforeach; ?>
                 </div>
                 <?php endif; ?>
+                <?php if ($itemBodyClass !== ''): ?></div><?php endif; ?>
             </div>
             <?php endforeach; ?>
         </div>
@@ -1460,7 +1481,7 @@ if (!function_exists('cms_page_editor_entries')) {
                 $block = $editableBlocks[$key];
                 $type = $block['type'] ?? 'cards';
                 $opts = isset($block['options']) && is_array($block['options']) ? $block['options'] : [];
-                $base = ['key' => $key, 'hidden' => !empty($le['hidden']), 'added' => !empty($block['added']), 'flow' => true];
+                $base = ['key' => $key, 'hidden' => !empty($le['hidden']), 'added' => !empty($block['added']), 'flow' => true, 'placement' => (string)($block['placement'] ?? '')];
                 if ($type === 'intro') {
                     $entries[] = $base + ['kind' => 'section1'];
                     foreach (['facts_key', 'aside_key'] as $nk) {
@@ -1736,3 +1757,6 @@ if (!function_exists('cms_render_page_block')) {
         }
     }
 }
+
+// Additional block types (homepage & content-page sections)
+require_once __DIR__ . '/page-blocks-ext.php';

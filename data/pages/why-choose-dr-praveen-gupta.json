@@ -10,5 +10,7 @@
     "section1_badge": "Clinical Excellence",
     "section1_title": "Unrivaled Experience & Trust",
     "section1_text": "Over 300,000 satisfied patients, 50+ national and international awards, and pioneer of groundbreaking neurological procedures in India.",
-    "section1_image": "assets/services/stroke-care.png"
+    "section1_image": "assets/services/stroke-care.png",
+    "breadcrumb_label": "Why Choose Us",
+    "hero_icon": "fa-award"
 }

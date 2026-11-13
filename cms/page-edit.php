@@ -3,6 +3,7 @@ require_once __DIR__ . '/includes/auth.php';
 require_once __DIR__ . '/includes/db.php';
 require_once __DIR__ . '/includes/functions.php';
 require_once __DIR__ . '/includes/fields.php';
+require_once __DIR__ . '/includes/collections.php';
 require_once dirname(__DIR__) . '/includes/page-blocks.php';
 require_once dirname(__DIR__) . '/includes/page-ctas.php';
 
@@ -416,12 +417,64 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $it['image_alt'] = trim((string)$baseItem['image_alt']);
                     }
                 }
-                // Keep an item that only carries a URL or bullets, and drop
-                // ones left completely blank by the editor.
-                if ($it['title'] === '' && $it['text'] === '' && empty($it['bullets']) && empty($it['url']) && empty($it['subtitle'])) {
+                // Keep an item that only carries a URL, bullets or a photo, and
+                // drop ones left completely blank by the editor.
+                if ($it['title'] === '' && $it['text'] === '' && empty($it['bullets']) && empty($it['url']) && empty($it['subtitle']) && empty($it['image'])) {
                     continue;
                 }
                 $block['items'][] = $it;
+            }
+
+            // Generic block-level fields used by the newer section types
+            // (text-media, feature-split, strip, stats, collection grids…).
+            // A cleared field is dropped so the built-in default returns.
+            foreach (['badge_icon', 'text', 'text_after', 'button_text', 'button_url', 'button2_text', 'button2_url', 'collection', 'variant'] as $gf) {
+                if (!array_key_exists($gf, $pb)) {
+                    continue;
+                }
+                $gv = trim((string)$pb[$gf]);
+                if ($gv === '') {
+                    unset($block[$gf]);
+                } else {
+                    $block[$gf] = $gv;
+                }
+            }
+            if (array_key_exists('limit', $pb)) {
+                $gLimit = (int)$pb['limit'];
+                if ($gLimit > 0) {
+                    $block['limit'] = $gLimit;
+                } else {
+                    unset($block['limit']);
+                }
+            }
+            if (array_key_exists('bullets', $pb)) {
+                $gBullets = preg_split('/\r\n|\r|\n/', (string)$pb['bullets']);
+                $gBullets = array_values(array_filter(array_map('trim', $gBullets), function ($b) {
+                    return $b !== '';
+                }));
+                if (!empty($gBullets)) {
+                    $block['bullets'] = $gBullets;
+                } else {
+                    unset($block['bullets']);
+                }
+            }
+
+            // Advanced layout options edited as JSON (flow pages). Invalid JSON
+            // keeps the stored options and reports an error.
+            if (isset($pb['options_json'])) {
+                $optRaw = trim((string)$pb['options_json']);
+                if ($optRaw !== '') {
+                    $optDecoded = json_decode($optRaw, true);
+                    if (is_array($optDecoded)) {
+                        if (empty($optDecoded)) {
+                            unset($block['options']);
+                        } else {
+                            $block['options'] = $optDecoded;
+                        }
+                    } else {
+                        $uploadErrors[] = ($block['label'] ?? $bKey) . ': advanced options were not valid JSON and were left unchanged.';
+                    }
+                }
             }
 
             // Extra block-level fields.
@@ -708,13 +761,24 @@ require_once __DIR__ . '/includes/header.php';
             'cta'        => [],
             'notice'     => ['icon', 'text'],
         ];
+        $blockItemHints = [];
+        foreach ($blockTypeCatalog as $catType => $catDef) {
+            if (isset($catDef['item_fields']) && is_array($catDef['item_fields'])) {
+                $blockItemFields[$catType] = $catDef['item_fields'];
+            }
+            if (isset($catDef['item_hints']) && is_array($catDef['item_hints'])) {
+                $blockItemHints[$catType] = $catDef['item_hints'];
+            }
+        }
+        $collectionChoices = function_exists('cms_collection_schemas') ? cms_collection_schemas() : [];
 
         /**
          * Print the editor fields for one repeater item of a block type.
          * Echoed directly; used for saved items and for the "add item" templates.
          */
-        $renderItemFields = function ($type, $key, $index, array $item = []) use ($blockItemFields) {
+        $renderItemFields = function ($type, $key, $index, array $item = []) use ($blockItemFields, $blockItemHints) {
             $fields = $blockItemFields[$type] ?? $blockItemFields['cards'];
+            $hints = $blockItemHints[$type] ?? [];
             $name = function ($field) use ($key, $index) {
                 return 'page_blocks[' . htmlspecialchars($key, ENT_QUOTES) . '][items][' . htmlspecialchars($index, ENT_QUOTES) . '][' . $field . ']';
             };
@@ -730,6 +794,11 @@ require_once __DIR__ . '/includes/header.php';
             $txt = 'w-full px-2.5 py-1.5 bg-white border border-slate-200 rounded-lg text-[11px] leading-relaxed focus:ring-2 focus:ring-blue-500 focus:outline-none';
             $lbl = 'block text-[10px] font-bold text-slate-600 mb-1';
             $textLabel = in_array($type, ['warning', 'notice'], true) ? 'Text (basic HTML like <strong> allowed)' : 'Description';
+            if (isset($hints['text'])) {
+                $textLabel = $hints['text'];
+            }
+            $titleLabel = $hints['title'] ?? 'Title';
+            $subtitleLabel = $hints['subtitle'] ?? 'Small Sub-Label (optional)';
 
             if (in_array('icon_color', $fields, true)) {
                 ?>
@@ -768,7 +837,7 @@ require_once __DIR__ . '/includes/header.php';
             if (in_array('title', $fields, true)) {
                 ?>
                 <div>
-                    <label class="<?php echo $lbl; ?>">Title</label>
+                    <label class="<?php echo $lbl; ?>"><?php echo htmlspecialchars($titleLabel); ?></label>
                     <input type="text" name="<?php echo $name('title'); ?>" value="<?php echo $val('title'); ?>" class="<?php echo $inp; ?>">
                 </div>
                 <?php
@@ -776,7 +845,7 @@ require_once __DIR__ . '/includes/header.php';
             if (in_array('subtitle', $fields, true)) {
                 ?>
                 <div>
-                    <label class="<?php echo $lbl; ?>">Small Sub-Label (optional)</label>
+                    <label class="<?php echo $lbl; ?>"><?php echo htmlspecialchars($subtitleLabel); ?></label>
                     <input type="text" name="<?php echo $name('subtitle'); ?>" value="<?php echo $val('subtitle'); ?>" placeholder="e.g. First-Line Therapy" class="<?php echo $inp; ?>">
                 </div>
                 <?php
@@ -849,6 +918,7 @@ require_once __DIR__ . '/includes/header.php';
                             <span class="drag-handle cursor-grab text-slate-400 hover:text-slate-600 px-1" title="Drag to reorder"><i class="fas fa-grip-vertical"></i></span>
                             <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500 truncate">Section <span class="sort-position"></span> · <?php echo htmlspecialchars($blockTypeCatalog[$fType]['label'] ?? $fType); ?></span>
                             <?php if (!empty($entry['hidden'])): ?><span class="px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 text-[9px] font-bold uppercase">Hidden</span><?php endif; ?>
+                            <?php if (!empty($entry['placement'])): ?><span class="px-1.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-[9px] font-bold uppercase" title="Printed inside the page banner; its position in this list does not matter">Inside banner</span><?php endif; ?>
                         </div>
                         <div class="flex items-center gap-3 flex-shrink-0">
                             <label class="inline-flex items-center gap-1.5 text-[10px] font-bold text-slate-600 cursor-pointer">
@@ -957,8 +1027,26 @@ require_once __DIR__ . '/includes/header.php';
                     </span>
                 </div>
 
-                <?php $blockHasOwnHeader = trim((string)($block['badge'] ?? '')) !== '' || trim((string)($block['title'] ?? '')) !== '' || trim((string)($block['description'] ?? '')) !== ''; ?>
-                <?php if (!$blockHasOwnHeader): ?>
+                <?php
+                    // Newer section types declare their fields in the catalog;
+                    // legacy service-page types show header fields only when
+                    // the block already prints a heading.
+                    $metaFields = isset($meta['fields']) && is_array($meta['fields']) ? $meta['fields'] : null;
+                    $hasField = function ($f) use ($metaFields) { return $metaFields === null || in_array($f, $metaFields, true); };
+                    $blockHasOwnHeader = $metaFields !== null
+                        ? (bool)array_intersect($metaFields, ['badge', 'title', 'description'])
+                        : (trim((string)($block['badge'] ?? '')) !== '' || trim((string)($block['title'] ?? '')) !== '' || trim((string)($block['description'] ?? '')) !== '');
+                    $fInp = 'w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none';
+                    $fMono = 'w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-mono focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none';
+                    $fTxt = 'w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs leading-relaxed focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none';
+                    $fLbl = 'block text-[11px] font-bold text-slate-700 mb-1';
+                    $bn = function ($f) use ($blockKey) { return 'page_blocks[' . htmlspecialchars($blockKey) . '][' . $f . ']'; };
+                    $bv = function ($f) use ($block) { $v = $block[$f] ?? ''; return htmlspecialchars(is_array($v) ? implode("\n", $v) : (string)$v); };
+                ?>
+                <?php if (!empty($meta['help'])): ?>
+                <p class="text-[10px] text-slate-600 bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5"><i class="fas fa-circle-info mr-1 text-brand-blue"></i> <?php echo htmlspecialchars($meta['help']); ?></p>
+                <?php endif; ?>
+                <?php if (!$blockHasOwnHeader && $metaFields === null): ?>
                 <p class="text-[10px] text-blue-700 bg-blue-50 border border-blue-100 rounded-lg px-2.5 py-1.5">
                     <i class="fas fa-circle-info mr-1"></i> This block prints no heading of its own on the website. The heading shown above it comes from the <strong>Main Body Section Content</strong> card — edit it there.
                 </p>
@@ -966,20 +1054,103 @@ require_once __DIR__ . '/includes/header.php';
 
                 <?php if ($blockHasOwnHeader): ?>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <?php if ($hasField('badge')): ?>
                     <div>
-                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Sub-Badge</label>
-                        <input type="text" name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][badge]" value="<?php echo htmlspecialchars($block['badge'] ?? ''); ?>" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <label class="<?php echo $fLbl; ?>">Sub-Badge</label>
+                        <input type="text" name="<?php echo $bn('badge'); ?>" value="<?php echo $bv('badge'); ?>" class="<?php echo $fInp; ?>">
                     </div>
+                    <?php endif; ?>
+                    <?php if ($hasField('title')): ?>
                     <div>
-                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Heading (H2)</label>
-                        <input type="text" name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][title]" value="<?php echo htmlspecialchars($block['title'] ?? ''); ?>" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <label class="<?php echo $fLbl; ?>">Heading (H2)<?php echo !empty($block['options']['title_html']) ? ' — wrap words in <span class="gradient-text">…</span> for the blue highlight' : ''; ?></label>
+                        <input type="text" name="<?php echo $bn('title'); ?>" value="<?php echo $bv('title'); ?>" class="<?php echo $fInp; ?> font-bold">
                     </div>
+                    <?php endif; ?>
+                    <?php if ($metaFields !== null && $hasField('badge_icon')): ?>
+                    <div>
+                        <label class="<?php echo $fLbl; ?>">Badge Icon (Font Awesome, e.g. fa-heart)</label>
+                        <input type="text" name="<?php echo $bn('badge_icon'); ?>" value="<?php echo $bv('badge_icon'); ?>" class="<?php echo $fMono; ?>">
+                    </div>
+                    <?php endif; ?>
                 </div>
 
+                <?php if ($hasField('description')): ?>
                 <div>
-                    <label class="block text-[11px] font-bold text-slate-700 mb-1">Introductory Paragraph</label>
-                    <textarea name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][description]" rows="2" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs leading-relaxed focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars($block['description'] ?? ''); ?></textarea>
+                    <label class="<?php echo $fLbl; ?>">Introductory Paragraph</label>
+                    <textarea name="<?php echo $bn('description'); ?>" rows="2" class="<?php echo $fTxt; ?>"><?php echo $bv('description'); ?></textarea>
                 </div>
+                <?php endif; ?>
+                <?php endif; ?>
+
+                <?php if ($metaFields !== null): ?>
+                <?php if ($hasField('text')): ?>
+                <div>
+                    <label class="<?php echo $fLbl; ?>">Paragraphs (blank line between paragraphs; basic HTML like &lt;strong&gt; allowed)</label>
+                    <textarea name="<?php echo $bn('text'); ?>" rows="5" class="<?php echo $fTxt; ?>"><?php echo $bv('text'); ?></textarea>
+                </div>
+                <?php endif; ?>
+                <?php if ($hasField('bullets')): ?>
+                <div>
+                    <label class="<?php echo $fLbl; ?>">Bullet Points (one per line)</label>
+                    <textarea name="<?php echo $bn('bullets'); ?>" rows="3" class="<?php echo $fTxt; ?>"><?php echo $bv('bullets'); ?></textarea>
+                </div>
+                <?php endif; ?>
+                <?php if ($hasField('text_after')): ?>
+                <div>
+                    <label class="<?php echo $fLbl; ?>">Closing Paragraph(s) (shown after the bullets)</label>
+                    <textarea name="<?php echo $bn('text_after'); ?>" rows="2" class="<?php echo $fTxt; ?>"><?php echo $bv('text_after'); ?></textarea>
+                </div>
+                <?php endif; ?>
+                <?php if ($hasField('collection') || $hasField('variant') || $hasField('limit')): ?>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <?php if ($hasField('collection')): ?>
+                    <div>
+                        <label class="<?php echo $fLbl; ?>">Collection</label>
+                        <select name="<?php echo $bn('collection'); ?>" class="<?php echo $fInp; ?>">
+                            <?php foreach ($collectionChoices as $cKey => $cDef): ?>
+                            <option value="<?php echo htmlspecialchars($cKey); ?>" <?php echo ($block['collection'] ?? '') === $cKey ? 'selected' : ''; ?>><?php echo htmlspecialchars($cDef['label'] ?? $cKey); ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <?php endif; ?>
+                    <?php if ($hasField('variant')): ?>
+                    <div>
+                        <label class="<?php echo $fLbl; ?>">Layout variant</label>
+                        <input type="text" name="<?php echo $bn('variant'); ?>" value="<?php echo $bv('variant'); ?>" class="<?php echo $fMono; ?>">
+                    </div>
+                    <?php endif; ?>
+                    <?php if ($hasField('limit')): ?>
+                    <div>
+                        <label class="<?php echo $fLbl; ?>">Max items (0 = all)</label>
+                        <input type="number" min="0" name="<?php echo $bn('limit'); ?>" value="<?php echo (int)($block['limit'] ?? 0); ?>" class="<?php echo $fInp; ?>">
+                    </div>
+                    <?php endif; ?>
+                </div>
+                <?php endif; ?>
+                <?php if ($hasField('button_text')): ?>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div>
+                        <label class="<?php echo $fLbl; ?>">Button Text (leave empty for no button)</label>
+                        <input type="text" name="<?php echo $bn('button_text'); ?>" value="<?php echo $bv('button_text'); ?>" class="<?php echo $fInp; ?>">
+                    </div>
+                    <div>
+                        <label class="<?php echo $fLbl; ?>">Button URL</label>
+                        <input type="text" name="<?php echo $bn('button_url'); ?>" value="<?php echo $bv('button_url'); ?>" placeholder="about / #anchor / {phone} / https://…" class="<?php echo $fMono; ?>">
+                    </div>
+                </div>
+                <?php endif; ?>
+                <?php if ($hasField('button2_text')): ?>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div>
+                        <label class="<?php echo $fLbl; ?>">Second Button Text ({phone} prints the hospital number)</label>
+                        <input type="text" name="<?php echo $bn('button2_text'); ?>" value="<?php echo $bv('button2_text'); ?>" class="<?php echo $fInp; ?>">
+                    </div>
+                    <div>
+                        <label class="<?php echo $fLbl; ?>">Second Button URL</label>
+                        <input type="text" name="<?php echo $bn('button2_url'); ?>" value="<?php echo $bv('button2_url'); ?>" placeholder="{phone}" class="<?php echo $fMono; ?>">
+                    </div>
+                </div>
+                <?php endif; ?>
                 <?php endif; ?>
 
                 <?php if (!empty($meta['block_image'])): ?>
@@ -1001,11 +1172,11 @@ require_once __DIR__ . '/includes/header.php';
                 <?php if (!empty($meta['block_panel'])): ?>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                     <div>
-                        <label class="block text-[10px] font-bold text-slate-600 mb-1">Emergency Card Title (optional)</label>
+                        <label class="block text-[10px] font-bold text-slate-600 mb-1"><?php echo $blockType === 'notice' ? 'Emergency Card Title (optional)' : 'Side Card Title (optional)'; ?></label>
                         <input type="text" name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][panel_title]" value="<?php echo htmlspecialchars($block['panel_title'] ?? ''); ?>" class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[11px] font-semibold focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
                     </div>
                     <div>
-                        <label class="block text-[10px] font-bold text-slate-600 mb-1">Emergency Card Text</label>
+                        <label class="block text-[10px] font-bold text-slate-600 mb-1"><?php echo $blockType === 'notice' ? 'Emergency Card Text' : 'Side Card Text'; ?></label>
                         <input type="text" name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][panel_text]" value="<?php echo htmlspecialchars($block['panel_text'] ?? ''); ?>" class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[11px] focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
                     </div>
                 </div>
@@ -1041,14 +1212,23 @@ require_once __DIR__ . '/includes/header.php';
                 </div>
                 <?php endif; ?>
 
+                <?php if ($isFlowPage): ?>
+                <details class="text-[10px] text-slate-500">
+                    <summary class="cursor-pointer font-bold text-slate-600 hover:text-slate-800"><i class="fas fa-sliders mr-1"></i> Advanced layout options (JSON)</summary>
+                    <p class="mt-1.5 mb-1">Design settings for this section (layout variant, image side, colours, accent photos…). Edit carefully — it must stay valid JSON. Leave as is if unsure.</p>
+                    <textarea name="page_blocks[<?php echo htmlspecialchars($blockKey); ?>][options_json]" rows="3" spellcheck="false" class="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-[11px] font-mono leading-relaxed focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"><?php echo htmlspecialchars(json_encode((isset($block['options']) && is_array($block['options'])) ? $block['options'] : new stdClass(), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)); ?></textarea>
+                </details>
+                <?php endif; ?>
+
+                <?php if (empty($meta['no_items'])): ?>
                 <div class="pt-2 border-t border-slate-100">
                     <div class="flex items-center justify-between mb-2">
                         <label class="text-[11px] font-bold text-slate-700">
-                            <?php echo htmlspecialchars($meta['item_label']); ?>s (<?php echo count($blockItems); ?>)
+                            <?php echo htmlspecialchars($meta['item_label'] ?? 'Item'); ?>s (<?php echo count($blockItems); ?>)
                         </label>
                         <button type="button" onclick="pageBlockAddItem(this)" class="px-2.5 py-1.5 bg-brand-blue hover:bg-blue-700 text-white text-[11px] font-bold rounded-lg transition-colors flex items-center space-x-1">
                             <i class="fas fa-plus text-[9px]"></i>
-                            <span>Add <?php echo htmlspecialchars($meta['item_label']); ?></span>
+                            <span>Add <?php echo htmlspecialchars($meta['item_label'] ?? 'Item'); ?></span>
                         </button>
                     </div>
 
@@ -1056,7 +1236,7 @@ require_once __DIR__ . '/includes/header.php';
                         <?php foreach ($blockItems as $ii => $item): ?>
                         <div class="page-block-item bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-2">
                             <div class="flex items-center justify-between">
-                                <span class="text-[10px] font-bold text-slate-500"><span class="drag-handle cursor-grab text-slate-300 hover:text-slate-500 mr-1.5" title="Drag to reorder"><i class="fas fa-grip-vertical"></i></span><?php echo htmlspecialchars($meta['item_label']); ?> <span class="sort-position"><?php echo (int)$ii + 1; ?></span></span>
+                                <span class="text-[10px] font-bold text-slate-500"><span class="drag-handle cursor-grab text-slate-300 hover:text-slate-500 mr-1.5" title="Drag to reorder"><i class="fas fa-grip-vertical"></i></span><?php echo htmlspecialchars($meta['item_label'] ?? 'Item'); ?> <span class="sort-position"><?php echo (int)$ii + 1; ?></span></span>
                                 <button type="button" onclick="pageBlockRemoveItem(this)" class="text-[10px] text-red-500 font-bold hover:underline">
                                     <i class="fas fa-trash text-[9px]"></i> Remove
                                 </button>
@@ -1069,13 +1249,14 @@ require_once __DIR__ . '/includes/header.php';
                     <template id="page-block-item-template-<?php echo htmlspecialchars($blockType); ?>">
                         <div class="page-block-item bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-2">
                             <div class="flex items-center justify-between">
-                                <span class="text-[10px] font-bold text-slate-500"><span class="drag-handle cursor-grab text-slate-300 hover:text-slate-500 mr-1.5" title="Drag to reorder"><i class="fas fa-grip-vertical"></i></span>New <?php echo htmlspecialchars($meta['item_label']); ?></span>
+                                <span class="text-[10px] font-bold text-slate-500"><span class="drag-handle cursor-grab text-slate-300 hover:text-slate-500 mr-1.5" title="Drag to reorder"><i class="fas fa-grip-vertical"></i></span>New <?php echo htmlspecialchars($meta['item_label'] ?? 'Item'); ?></span>
                                 <button type="button" onclick="pageBlockRemoveItem(this)" class="text-[10px] text-red-500 font-bold hover:underline"><i class="fas fa-trash text-[9px]"></i> Remove</button>
                             </div>
                             <?php $renderItemFields($blockType, '__KEY__', '__INDEX__', []); ?>
                         </div>
                     </template>
                 </div>
+                <?php endif; ?>
             </div>
 
             <?php else: ?>

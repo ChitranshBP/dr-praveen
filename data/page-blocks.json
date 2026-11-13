@@ -4356,5 +4356,835 @@
             "description": "Ready to prioritize your health? Schedule a consultation with Dr. Praveen Gupta today and take the first step towards a healthier tomorrow.",
             "wrap": false
         }
+    },
+    "index": {
+        "_flow": true,
+        "hero": {
+            "type": "banner-slider",
+            "label": "Hero banner slider",
+            "title": "Dr. Praveen Gupta Best Neurologist in India | Transforming Brain & Spine Care with Precision"
+        },
+        "services": {
+            "type": "services-grid",
+            "label": "Services",
+            "badge": "How We Can Help",
+            "badge_icon": "fa-stethoscope",
+            "title": "Comprehensive Care for Every <span class=\"gradient-text\">Brain & Spine</span> Condition",
+            "description": "Expert diagnosis, advanced treatment, and personalized recovery—all under one roof.",
+            "options": {
+                "title_html": true
+            },
+            "wrap": {
+                "bg": "bg-soft-cyan/30"
+            }
+        },
+        "slideshow": {
+            "type": "slideshow",
+            "label": "Banner slideshow",
+            "items": [
+                {
+                    "image": "assets/full-image/Dr-Praveen-Banner-1.webp",
+                    "image_alt": "Dr. Praveen Gupta Slide 1"
+                },
+                {
+                    "image": "assets/full-image/Dr-Praveen-Banner-2.webp",
+                    "image_alt": "Dr. Praveen Gupta Slide 2"
+                },
+                {
+                    "image": "assets/full-image/Dr-Praveen-Banner-6.webp",
+                    "image_alt": "Dr. Praveen Gupta Slide 3"
+                }
+            ],
+            "wrap": {
+                "bg": "bg-white"
+            }
+        },
+        "stats": {
+            "type": "stats",
+            "label": "Statistics",
+            "variant": "home",
+            "items": [
+                {
+                    "icon": "fas fa-user-group",
+                    "title": "{stats_patients}",
+                    "subtitle": "Patients Treated",
+                    "text": "We take pride in the trust of over {stats_patients} patients whose health and recovery remain our top priorities."
+                },
+                {
+                    "icon": "fas fa-face-smile",
+                    "title": "{stats_success}",
+                    "subtitle": "Success Stories",
+                    "text": "Documenting over 100,000 patient success stories driven by advanced neuro-clinical treatments."
+                },
+                {
+                    "icon": "fas fa-award",
+                    "title": "{stats_awards}",
+                    "subtitle": "Global Awards",
+                    "text": "Recognized globally with prestigious awards for pioneering achievements in neurosciences."
+                },
+                {
+                    "icon": "fas fa-user-doctor",
+                    "title": "{stats_experience}",
+                    "subtitle": "Years of Experience",
+                    "text": "Providing over two decades of expert clinical diagnosis, treatment, and neurological care."
+                }
+            ],
+            "wrap": {
+                "bg": "bg-soft-cyan/30"
+            }
+        },
+        "about": {
+            "type": "text-media",
+            "label": "About Dr. Praveen",
+            "badge": "About Dr. Praveen Gupta",
+            "badge_icon": "fa-user-md",
+            "title": "Dr. Praveen Gupta  <span class=\"gradient-text\">Best Neurologist</span> in India",
+            "image": "assets/dpg-1.webp",
+            "image_alt": "Dr. Praveen Gupta, Neurologist",
+            "items": [
+                {
+                    "icon": "fa-solid fa-award",
+                    "text": "Chairman  Marengo Asia International Institute of Neuro and Spine"
+                },
+                {
+                    "icon": "fa-solid fa-chart-line",
+                    "text": "Chief Clinical Strategy Growth and Innovation, North India"
+                },
+                {
+                    "icon": "fa-solid fa-lightbulb",
+                    "text": "Chief Mentor for Start-ups"
+                }
+            ],
+            "text": "Neurology is one of the most complex medical fields, requiring precision, innovation, and compassionate care. At the heart of this field stands Dr. Praveen Gupta, a name synonymous with excellence and trust in neurology across India and beyond. With over 20 years of clinical experience, Dr. Praveen Gupta has emerged as a pioneering force in the diagnosis, treatment, and advancement of neurological sciences.\n\n<strong>A true innovator, he has been responsible for several firsts in the country's neurology landscape:</strong>",
+            "bullets": [
+                "Founder of the first stroke centre in Gurugram",
+                "Performed the first solo mechanical thrombolysis in the region",
+                "Led the first Deep Brain Stimulation (DBS) procedure in Gurugram",
+                "Conducted the first epileptic DBS surgery in Asia",
+                "Pioneered Bone Marrow Transplant (BMT) for autoimmune neurological disorders"
+            ],
+            "text_after": "Through his vision and dedication, Dr. Gupta has transformed neurological care in India and positioned himself as one of the best neurologists in India.",
+            "button_text": "More About Us",
+            "button_url": "about",
+            "options": {
+                "title_html": true,
+                "image_side": "left"
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "id": "about"
+            }
+        },
+        "why-trust": {
+            "type": "feature-split",
+            "label": "Why Patients Trust Us",
+            "badge": "Why Patients Trust Us",
+            "badge_icon": "fa-heart",
+            "title": "Compassionate Care That <span class=\"gradient-text\">Puts You First</span>",
+            "description": "When it comes to your brain and spine health, expert care makes all the difference. At NeuroDoc, we combine expert clinical care, advanced neuroscience, and compassionate support to guide you from diagnosis to recovery—with confidence at every step.",
+            "image": "assets/full-image/dpg-award.webp",
+            "image_alt": "Dr. Praveen Gupta receiving an award",
+            "items": [
+                {
+                    "icon": "fa-solid fa-hand-holding-heart",
+                    "title": "Patient-First Care",
+                    "text": "We listen closely to your concerns, explain things simply, and tailor treatments to your life."
+                },
+                {
+                    "icon": "fa-solid fa-lightbulb",
+                    "title": "Pioneering Treatment",
+                    "text": "Access to India's latest advancements in stroke recovery, brain therapies, and care."
+                },
+                {
+                    "icon": "fa-solid fa-circle-check",
+                    "title": "Proven Recovery",
+                    "text": "Over 20 years of experience helping thousands of families return to active, healthy lives."
+                },
+                {
+                    "icon": "fa-solid fa-shield-halved",
+                    "title": "Complete Support",
+                    "text": "From consultations to home care guidelines, we stand by your family through healing."
+                }
+            ],
+            "button_text": "Get Started",
+            "button_url": "contact-us-top-neurologist-delhi-ncr",
+            "options": {
+                "title_html": true,
+                "image_side": "right"
+            },
+            "wrap": {
+                "bg": "bg-soft-cyan/30"
+            }
+        },
+        "virtual-consultation": {
+            "type": "strip",
+            "label": "Virtual consultation strip",
+            "badge": "Virtual Consultation",
+            "badge_icon": "fa-video",
+            "title": "Consult Dr. Praveen Gupta from Anywhere",
+            "description": "Secure online video consultations for new diagnoses, treatment reviews and second opinions — no travel required.",
+            "button_text": "Book Video Consultation",
+            "button_url": "online-neurologist-consultation",
+            "button2_text": "{phone}",
+            "button2_url": "{phone}",
+            "options": {
+                "watermark_icon": "fa-laptop-medical"
+            },
+            "wrap": {
+                "id": "virtual-consultation"
+            }
+        },
+        "technology": {
+            "type": "cards",
+            "label": "Advanced Technology",
+            "badge": "Advanced Technology",
+            "badge_icon": "fa-microchip",
+            "title": "Smart Tech for <span class=\"gradient-text\">Faster Recovery</span>",
+            "description": "We combine clinical expertise with state-of-the-art diagnostic and recovery tracking tools to ensure precise treatments.",
+            "items": [
+                {
+                    "icon": "none",
+                    "image": "assets/webp/services/rehab.webp",
+                    "image_alt": "Phezee Biofeedback",
+                    "title": "PHEZEE - Smart Biofeedback",
+                    "text": "A smart wearable device used during physiotherapy sessions to monitor muscle health, track joint Range of Motion (ROM), and log precise electromyography (EMG) recovery trends in real-time."
+                },
+                {
+                    "icon": "none",
+                    "image": "assets/webp/services/movement.webp",
+                    "image_alt": "Fall Risk Assessment",
+                    "title": "OPD Fall Risk Assessment",
+                    "text": "A comprehensive screening protocol conducted on an Outpatient (OPD) basis. We assess gait patterns, coordination, and muscular stability to prevent sudden falls and fractures, especially in senior patients."
+                }
+            ],
+            "options": {
+                "header_style": "pill",
+                "title_html": true,
+                "grid": "grid md:grid-cols-2 gap-8 max-w-5xl mx-auto",
+                "card_class": "bg-white border border-silver-grey/50 p-8 rounded-3xl space-y-4 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 observe",
+                "item_title_class": "text-xl font-bold text-deep-indigo font-serif",
+                "item_text_class": "text-xs text-dark-grey/65 leading-relaxed",
+                "item_image_class": "relative w-full aspect-video rounded-2xl overflow-hidden bg-silver-grey mb-4"
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-10 md:py-14",
+                "class": "relative overflow-hidden"
+            }
+        },
+        "team": {
+            "type": "team-grid",
+            "label": "Our Care Team",
+            "badge": "Our Team",
+            "badge_icon": "fa-user-group",
+            "title": "Our Care <span class=\"gradient-text\">Team</span>",
+            "description": "The approach is simple: understand what's causing the problem, explain it clearly, and guide you toward the right treatment and recovery plan.",
+            "limit": 4,
+            "button_text": "View Full Team Details",
+            "button_url": "team",
+            "options": {
+                "title_html": true
+            },
+            "wrap": {
+                "bg": "bg-soft-cyan/30"
+            }
+        },
+        "written-testimonials": {
+            "type": "testimonials",
+            "label": "Written testimonials",
+            "variant": "marquee",
+            "badge": "Written Testimonials",
+            "badge_icon": "fa-quote-right",
+            "title": "What Our <span class=\"gradient-text\">Patients</span> Say",
+            "description": "Real stories from real patients who experienced exceptional neurological care.",
+            "button_text": "Read All Patient Reviews",
+            "button_url": "patient-reviews",
+            "options": {
+                "title_html": true
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "id": "written-testimonials"
+            }
+        },
+        "video-testimonials": {
+            "type": "video-testimonials",
+            "label": "Video Testimonials",
+            "options": {
+                "limit": 4
+            }
+        },
+        "blog": {
+            "type": "blog-grid",
+            "label": "Latest Articles",
+            "variant": "teaser",
+            "limit": 4,
+            "badge": "Blogs",
+            "badge_icon": "fa-newspaper",
+            "title": "Latest <span class=\"gradient-text\">Articles</span>",
+            "description": "Guidance on neurological conditions, treatments and recovery — written for patients and their families.",
+            "button_text": "See All Blogs",
+            "button_url": "dr-praveen-gupta-blog",
+            "options": {
+                "title_html": true
+            },
+            "wrap": {
+                "bg": "bg-white"
+            }
+        },
+        "awards": {
+            "type": "collection-grid",
+            "label": "Awards & Recognition",
+            "collection": "awards",
+            "variant": "awards-home",
+            "badge": "Awards & Recognition",
+            "badge_icon": "fa-trophy",
+            "title": "Honours & <span class=\"gradient-text\">Achievements</span>",
+            "description": "National and international recognition for pioneering work in neurology and stroke care.",
+            "options": {
+                "title_html": true
+            },
+            "wrap": {
+                "bg": "bg-soft-cyan/30"
+            }
+        },
+        "education-videos": {
+            "type": "collection-grid",
+            "label": "Knowledge & Awareness videos",
+            "collection": "videos",
+            "variant": "videos-home",
+            "limit": 6,
+            "badge": "Education",
+            "badge_icon": "fa-graduation-cap",
+            "title": "Knowledge & <span class=\"gradient-text\">Awareness</span>",
+            "description": "Short, practical explainers on symptoms, treatments and everyday brain health.",
+            "options": {
+                "title_html": true
+            },
+            "wrap": {
+                "bg": "bg-white"
+            }
+        },
+        "instagram": {
+            "type": "reels",
+            "label": "Instagram Reels",
+            "badge": "Latest Reels",
+            "badge_icon": "fab fa-instagram",
+            "title": "Follow the Journey on <span class=\"gradient-text\">Instagram</span>",
+            "description": "Quick neurology insights, patient moments and behind-the-scenes from the clinic.",
+            "image": "assets/dpg-1.webp",
+            "image_alt": "Dr. Praveen Gupta on Instagram",
+            "button_text": "Follow on Instagram",
+            "button_url": "",
+            "options": {
+                "title_html": true
+            },
+            "wrap": {
+                "bg": "bg-soft-cyan/30",
+                "id": "instagram-reels"
+            }
+        },
+        "faq": {
+            "type": "faq",
+            "label": "FAQ Section"
+        }
+    },
+    "about": {
+        "_flow": true,
+        "hero-roles": {
+            "type": "hero-list",
+            "label": "Banner designation lines",
+            "placement": "hero",
+            "items": [
+                {
+                    "icon": "fa-award",
+                    "color": "cyan-accent",
+                    "text": "Chairman MAIINS (Marengo Asia International Institute of Neuro & Spine), MAH Gurgaon"
+                },
+                {
+                    "icon": "fa-user-md",
+                    "color": "cyan-accent",
+                    "text": "Chief Clinical Strategy, Growth and Innovation, North India"
+                },
+                {
+                    "icon": "fa-lightbulb",
+                    "color": "cyan-accent",
+                    "text": "Chief Mentor for Start-up and Clinical Innovation for Neurosciences, Mental Health and Neuro Rehab Programs"
+                }
+            ]
+        },
+        "bio": {
+            "type": "text-media",
+            "label": "About / biography",
+            "badge": "About",
+            "title": "Pioneering the Future of <span class=\"gradient-text\">Neurology in India</span>",
+            "image": "assets/awards/AWARD-PRAVEEN.webp",
+            "image_alt": "Dr. Praveen Gupta Award Recognition",
+            "text": "Driven by passion and precision, Dr. Gupta has played a pioneering role in shaping the future of neurology in India. He established <strong class=\"text-deep-indigo\">Gurgaon's first dedicated stroke centre</strong> and became the first neurologist to perform solo mechanical thrombolysis in the region.\n\nHis groundbreaking achievements include conducting the <strong class=\"text-deep-indigo\">first Deep Brain Stimulation (DBS) procedure in Gurugram</strong> and performing the <strong class=\"text-deep-indigo\">first epileptic DBS in Asia</strong> — setting new benchmarks for neurological innovation.",
+            "items": [
+                {
+                    "icon": "fa-bolt",
+                    "color": "electric-blue",
+                    "title": "Pioneer of Stroke Care",
+                    "text": "Gurgaon's 1st stroke centre"
+                },
+                {
+                    "icon": "fa-brain",
+                    "color": "electric-blue",
+                    "title": "First DBS, Gurugram",
+                    "text": "Deep brain stimulation"
+                },
+                {
+                    "icon": "fa-globe-asia",
+                    "color": "electric-blue",
+                    "title": "First Epileptic DBS, Asia",
+                    "text": "Continental benchmark"
+                },
+                {
+                    "icon": "fa-stethoscope",
+                    "color": "electric-blue",
+                    "title": "20+ Years of Practice",
+                    "text": "Neurology expertise"
+                }
+            ],
+            "options": {
+                "title_html": true,
+                "header_style": "line",
+                "items_style": "tiles",
+                "image_side": "left",
+                "image_aspect": "aspect-[3/4]",
+                "container": "max-w-6xl"
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-14 lg:py-20",
+                "class": "overflow-hidden"
+            }
+        },
+        "stats": {
+            "type": "stats",
+            "label": "Numbers strip",
+            "variant": "strip",
+            "items": [
+                {
+                    "icon": "none",
+                    "title": "20+",
+                    "subtitle": "Years"
+                },
+                {
+                    "icon": "none",
+                    "title": "500K+",
+                    "subtitle": "Patients"
+                },
+                {
+                    "icon": "none",
+                    "title": "70+",
+                    "subtitle": "Publications"
+                },
+                {
+                    "icon": "none",
+                    "title": "{stats_rating}",
+                    "subtitle": "Rating"
+                }
+            ]
+        },
+        "expertise": {
+            "type": "cards",
+            "label": "Areas of Expertise",
+            "badge": "Clinical Excellence",
+            "title": "Areas of <span class=\"gradient-text\">Expertise</span>",
+            "description": "A deep commitment to patient-centric care and innovation has shaped comprehensive stroke, epilepsy, and movement disorder programs — setting new benchmarks in neurology.",
+            "items": [
+                {
+                    "icon": "fa-heartbeat",
+                    "color": "electric-blue",
+                    "image": "assets/services/stroke.png",
+                    "image_alt": "Stroke & Vascular Neurology",
+                    "title": "Stroke & Vascular",
+                    "text": "Pioneer of Gurgaon's first dedicated stroke centre with advanced management protocols."
+                },
+                {
+                    "icon": "fa-bolt",
+                    "color": "electric-blue",
+                    "image": "assets/services/epilepsy.png",
+                    "image_alt": "Epilepsy & Seizure Management",
+                    "title": "Epilepsy & Seizures",
+                    "text": "Performed the first epileptic DBS in Asia — redefining advanced epilepsy treatment."
+                },
+                {
+                    "icon": "fa-walking",
+                    "color": "electric-blue",
+                    "image": "assets/services/parkinsons.png",
+                    "image_alt": "Movement Disorders & Parkinson's",
+                    "title": "Movement Disorders",
+                    "text": "Conducted the first Deep Brain Stimulation (DBS) procedure in Gurugram."
+                },
+                {
+                    "icon": "fa-head-side-virus",
+                    "color": "electric-blue",
+                    "image": "assets/services/headache.png",
+                    "image_alt": "Headache & Migraine",
+                    "title": "Headache & Migraine",
+                    "text": "Comprehensive therapeutic approaches for chronic and complex headache disorders."
+                },
+                {
+                    "icon": "fa-ribbon",
+                    "color": "electric-blue",
+                    "image": "assets/services/ms.png",
+                    "image_alt": "Multiple Sclerosis",
+                    "title": "Multiple Sclerosis",
+                    "text": "Advanced immunomodulatory therapies and tailored symptom management."
+                },
+                {
+                    "icon": "fa-hand-holding-medical",
+                    "color": "electric-blue",
+                    "image": "assets/services/neuropathy.png",
+                    "image_alt": "Peripheral Neuropathy",
+                    "title": "Peripheral Neuropathy",
+                    "text": "Expert diagnosis and targeted treatments for nerve damage and neurodegenerative conditions."
+                }
+            ],
+            "options": {
+                "title_html": true,
+                "header_style": "line",
+                "header_margin": "mb-10",
+                "grid": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6",
+                "card_class": "group bg-white rounded-2xl overflow-hidden border border-silver-grey/50 hover:shadow-xl transition-all duration-500",
+                "item_image_class": "relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-soft-cyan to-silver-grey",
+                "item_body_class": "p-6",
+                "item_icon_class": "w-9 h-9 rounded-full border border-electric-blue/30 flex items-center justify-center mb-3",
+                "item_title_class": "text-base font-semibold text-deep-indigo mb-2",
+                "item_text_class": "text-sm text-dark-grey/60 leading-relaxed"
+            },
+            "wrap": {
+                "id": "specializations",
+                "bg": "bg-soft-cyan/30",
+                "padding": "py-14 lg:py-20",
+                "class": "relative overflow-hidden",
+                "container": "max-w-6xl"
+            }
+        },
+        "firsts": {
+            "type": "text-media",
+            "label": "Achievements — A Career of Firsts",
+            "badge": "Achievements",
+            "title": "A Career of <span class=\"gradient-text\">Firsts</span>",
+            "image": "assets/full-image/dpg-award.webp",
+            "image_alt": "Dr. Praveen Gupta - Award Recognition",
+            "text": "A career decorated with honors, awards, and milestones that reflect a relentless pursuit of medical excellence and innovation in Indian neurology.",
+            "items": [
+                {
+                    "icon": "fa-check",
+                    "color": "electric-blue",
+                    "title": "First Dedicated Stroke Centre in Gurgaon",
+                    "text": "Established pioneering stroke protocols for the region"
+                },
+                {
+                    "icon": "fa-check",
+                    "color": "electric-blue",
+                    "title": "First Solo Mechanical Thrombolysis in the Region",
+                    "text": "A breakthrough in advanced stroke intervention"
+                },
+                {
+                    "icon": "fa-check",
+                    "color": "electric-blue",
+                    "title": "First Deep Brain Stimulation in Gurugram",
+                    "text": "Transforming treatment for movement disorders"
+                },
+                {
+                    "icon": "fa-check",
+                    "color": "electric-blue",
+                    "title": "First Epileptic DBS in Asia",
+                    "text": "Setting a continental benchmark in epilepsy care"
+                }
+            ],
+            "options": {
+                "title_html": true,
+                "header_style": "line",
+                "items_style": "list",
+                "image_side": "left",
+                "image_aspect": "aspect-[3/4]",
+                "container": "max-w-6xl",
+                "title_class": "text-4xl md:text-5xl font-serif font-bold text-deep-indigo mb-5 leading-tight",
+                "accent_images": [
+                    {
+                        "image": "assets/awards/1.jpg",
+                        "alt": "Award"
+                    },
+                    {
+                        "image": "assets/awards/3.jpg",
+                        "alt": "Award"
+                    }
+                ]
+            },
+            "wrap": {
+                "bg": "bg-white",
+                "padding": "py-14 lg:py-20",
+                "class": "overflow-hidden"
+            }
+        },
+        "awards-gallery": {
+            "type": "collection-grid",
+            "label": "Awards gallery",
+            "collection": "awards",
+            "variant": "awards-tiles",
+            "badge": "Gallery",
+            "title": "Moments of <span class=\"gradient-text\">Recognition</span>",
+            "description": "A curated glimpse into the awards, honors, and milestones that have shaped a career dedicated to neurological excellence.",
+            "button_text": "View All Recognitions",
+            "button_url": "awards-and-recognition",
+            "options": {
+                "title_html": true
+            }
+        },
+        "vision": {
+            "type": "quote",
+            "label": "Vision quote",
+            "badge": "Vision",
+            "title": "Technology with <span class=\"gradient-text\">Empathy</span>",
+            "text": "Integrating technology with empathy — ensuring every patient receives personalized, evidence-based treatment aimed at improving quality of life.",
+            "description": "As one of India's leading neurologists, Dr. Gupta's vision extends beyond treatment — focusing on awareness, prevention, and rehabilitation to make advanced neurological therapies more accessible and affordable.",
+            "options": {
+                "title_html": true
+            }
+        },
+        "testimonials": {
+            "type": "testimonials",
+            "label": "Patient testimonials slider",
+            "variant": "slider",
+            "badge": "Testimonials",
+            "title": "What Patients <span class=\"gradient-text\">Say</span>",
+            "options": {
+                "title_html": true
+            }
+        },
+        "main-body": {
+            "type": "intro",
+            "label": "Main Body Section Content",
+            "options": {
+                "layout": "split"
+            }
+        }
+    },
+    "why-choose-dr-praveen-gupta": {
+        "_flow": true,
+        "leadership": {
+            "type": "stats",
+            "label": "Clinical Leadership & Experience",
+            "variant": "split",
+            "badge": "Clinical Excellence",
+            "title": "Pioneering Neurological Treatments with a Human Touch",
+            "description": "Dr. Praveen Gupta is recognized as a leader in neurology, serving as the Chairman of Marengo Asia Neuro & Spine Institute. He is widely praised for his diagnostic precision and comprehensive treatment planning.",
+            "bullets": [
+                "<strong class=\"text-deep-indigo\">Advanced Stroke Management:</strong> First to offer mechanical thrombectomy services in Gurgaon, ensuring life-saving intervention.",
+                "<strong class=\"text-deep-indigo\">Comprehensive Specialty Care:</strong> Deep expertise across epilepsy, movement disorders, multiple sclerosis, and neuropathic pain management.",
+                "<strong class=\"text-deep-indigo\">Holistic Rehabilitation:</strong> Combines medical treatment with physical, speech, and occupational therapies to achieve outstanding recovery rates."
+            ],
+            "items": [
+                {
+                    "icon": "none",
+                    "title": "20+",
+                    "subtitle": "Years of Experience",
+                    "text": "Providing expert medical diagnosis and advanced neurological care."
+                },
+                {
+                    "icon": "none",
+                    "title": "500K+",
+                    "subtitle": "Patients Served",
+                    "text": "Trusted by half a million patients whose lives and health are our priority."
+                },
+                {
+                    "icon": "none",
+                    "title": "1st",
+                    "subtitle": "DBS in Gurugram",
+                    "text": "Pioneered Deep Brain Stimulation for Parkinson's disease in the region."
+                },
+                {
+                    "icon": "none",
+                    "title": "70+",
+                    "subtitle": "Publications",
+                    "text": "Actively contributing to global medical research with published papers."
+                }
+            ]
+        },
+        "milestones": {
+            "type": "cards",
+            "label": "Key Clinical Milestones",
+            "badge": "Milestones",
+            "title": "Pioneering Milestones & Leadership",
+            "description": "A legacy of innovation, clinical execution, and dedication to pushing boundaries in medical science.",
+            "items": [
+                {
+                    "icon": "fa-brain",
+                    "color": "electric-blue",
+                    "title": "First DBS in Gurgaon",
+                    "text": "Successfully introduced Deep Brain Stimulation (DBS) to Gurugram, offering dramatic symptomatic relief for advanced Parkinson's disease."
+                },
+                {
+                    "icon": "fa-heartbeat",
+                    "color": "cyan-accent",
+                    "title": "24/7 Stroke Protocols",
+                    "text": "Developed unified stroke codes and rapid response protocols that have saved thousands of patients during the critical golden hour of brain stroke."
+                },
+                {
+                    "icon": "fa-microscope",
+                    "color": "deep-indigo",
+                    "title": "Clinical Research Hub",
+                    "text": "Over 70 peer-reviewed articles and clinical trials published globally in standard neurology literature, advancing neurology diagnostics."
+                }
+            ],
+            "options": {
+                "header_margin": "mb-12",
+                "badge_class": "text-cyan-accent font-bold text-xs uppercase tracking-wider",
+                "grid": "grid md:grid-cols-3 gap-8",
+                "card_class": "bg-white p-8 rounded-3xl shadow-sm border border-silver-grey/30 space-y-4",
+                "item_title_class": "text-lg font-bold text-deep-indigo",
+                "item_text_class": "text-xs text-dark-grey/65 leading-relaxed"
+            },
+            "wrap": {
+                "bg": "bg-slate-50",
+                "padding": "py-16",
+                "class": "border-t border-b border-silver-grey/40"
+            }
+        },
+        "philosophy": {
+            "type": "split-panel",
+            "label": "Patient-First Philosophy + Quick Appointment card",
+            "badge": "Patient Care Philosophy",
+            "title": "Treating the Person, Not Just the Symptoms",
+            "text": "We believe that successful treatment starts with listening, empathy, and transparent communication. Every neurological condition affects people differently, which is why we build tailored care plans designed around each patient's unique lifestyle and diagnostic profile.",
+            "items": [
+                {
+                    "title": "Tailored Treatment Plans",
+                    "text": "No generic prescriptions. We analyze your genetic background, daily activities, and rehabilitation limits."
+                },
+                {
+                    "title": "Accessible Communication",
+                    "text": "Clear terminology, thorough breakdowns of test results, and clear guidance for caregivers."
+                },
+                {
+                    "title": "Multidisciplinary Support",
+                    "text": "Seamless integration with occupational therapists, dietitians, and pain management experts."
+                },
+                {
+                    "title": "Dedicated Follow-up",
+                    "text": "Continuous post-consultation care and monitoring to adapt plans as healing progresses."
+                }
+            ],
+            "panel_title": "Quick Appointment",
+            "panel_text": "Schedule a clinical consultation with Dr. Praveen Gupta. Outstation and international cases are fast-tracked for prompt diagnostic evaluations.",
+            "button_text": "Book Appointment Online",
+            "button_url": "contact-us-top-neurologist-delhi-ncr",
+            "options": {
+                "show_phone": true,
+                "show_email": true,
+                "title_class": "text-3xl font-bold text-deep-indigo font-serif"
+            }
+        },
+        "main-body": {
+            "type": "intro",
+            "label": "Main Body Section Content",
+            "options": {
+                "layout": "split"
+            }
+        }
+    },
+    "team": {
+        "_flow": true,
+        "leadership": {
+            "type": "team-grid",
+            "label": "Clinical Director",
+            "variant": "leader",
+            "badge": "Leadership",
+            "title": "Clinical Director",
+            "button_text": "Why Choose Dr. Praveen",
+            "button_url": "why-choose-dr-praveen-gupta"
+        },
+        "specialists": {
+            "type": "team-grid",
+            "label": "Specialty & Rehabilitation Team",
+            "variant": "grid",
+            "badge": "Associate Specialists",
+            "title": "Specialty & Rehabilitation Team",
+            "description": "Our specialists provide dedicated diagnostics, care, and recovery assistance."
+        },
+        "coordination": {
+            "type": "split-panel",
+            "label": "Patient coordination + contact card",
+            "badge": "Patient Coordination",
+            "title": "Seamless Patient Experience Support",
+            "text": "Our patient coordinators are dedicated to easing your journey, managing schedules, coordinating diagnostic tests, handling outstation or international cases, and providing emergency helpline coordination.",
+            "items": [
+                {
+                    "title": "Appointment Scheduling",
+                    "text": "Assists with booking slots for in-person, online, and emergency evaluations."
+                },
+                {
+                    "title": "Emergency Coordination",
+                    "text": "Helps dispatch stroke ambulance codes and coordinates with emergency ICU teams."
+                }
+            ],
+            "panel_title": "Contact Coordination",
+            "panel_text": "Have questions about consultation slots, documentation, or outstation visits? Get in touch with our team.",
+            "options": {
+                "show_phone": true,
+                "point_text_class": "text-sm text-dark-grey/65 leading-relaxed",
+                "panel_text_class": "text-sm text-white/80 leading-relaxed"
+            }
+        },
+        "main-body": {
+            "type": "intro",
+            "label": "Main Body Section Content",
+            "options": {
+                "layout": "split"
+            }
+        }
+    },
+    "awards-and-recognition": {
+        "_flow": true,
+        "gallery": {
+            "type": "collection-grid",
+            "label": "Honors gallery",
+            "collection": "awards",
+            "variant": "cards",
+            "badge": "Honors Gallery",
+            "title": "Clinical Milestones & Awards",
+            "description": "A visual showcase of awards, academic commendations, and recognitions received by Dr. Praveen Gupta.",
+            "options": {
+                "header_style": "plain"
+            },
+            "wrap": {
+                "padding": "py-16"
+            }
+        },
+        "accreditations": {
+            "type": "split-panel",
+            "label": "Certifications & Accreditations + credentials card",
+            "badge": "Professional Status",
+            "title": "Certifications & Accreditations",
+            "text": "Over his distinguished career, Dr. Praveen Gupta has established high clinical standards in neurology, leading specialized care initiatives at premier hospitals across India.",
+            "items": [
+                {
+                    "title": "Director of Neurology:",
+                    "text": "Chairman position leading critical care neuro services."
+                },
+                {
+                    "title": "National Board Certified:",
+                    "text": "Board certified specialist with credentials matching global care indices."
+                }
+            ],
+            "panel_title": "Clinical Credentials",
+            "panel_text": "For detailed reviews of published research, clinical cases, or academic lectures, please consult our dedicated medical resources hubs.",
+            "button_text": "Book Consultation",
+            "button_url": "contact-us-top-neurologist-delhi-ncr",
+            "options": {
+                "point_style": "check",
+                "title_class": "text-3xl font-bold text-deep-indigo font-serif"
+            },
+            "wrap": {
+                "bg": "bg-slate-50",
+                "class": "border-t border-b border-silver-grey/40"
+            }
+        }
     }
 }

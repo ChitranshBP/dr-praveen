@@ -16,6 +16,7 @@ require_once __DIR__ . '/page-ctas.php';
 // Hero breadcrumb trail (labels/parents from each page's SEO card)
 require_once __DIR__ . '/breadcrumb.php';
 
+
 // Load dynamic settings from CMS if present
 $cmsSettingsFile = dirname(__DIR__) . '/data/settings.json';
 $cmsSettings = [];
@@ -299,33 +300,6 @@ if (!isset($services)) {
 ];
 }
 
-// Stats - Dynamic from CMS
-$stats = [
-    [
-        'number' => $cmsSettings['stats_patients'] ?? '3,00,000+',
-        'label' => 'Patients Treated',
-        'icon' => 'fas fa-user-group',
-        'description' => 'We take pride in the trust of over ' . ($cmsSettings['stats_patients'] ?? '300,000') . ' patients whose health and recovery remain our top priorities.'
-    ],
-    [
-        'number' => $cmsSettings['stats_success'] ?? '1,00,000+',
-        'label' => 'Success Stories',
-        'icon' => 'fas fa-face-smile',
-        'description' => 'Documenting over 100,000 patient success stories driven by advanced neuro-clinical treatments.'
-    ],
-    [
-        'number' => $cmsSettings['stats_awards'] ?? '50+',
-        'label' => 'Global Awards',
-        'icon' => 'fas fa-award',
-        'description' => 'Recognized globally with prestigious awards for pioneering achievements in neurosciences.'
-    ],
-    [
-        'number' => $cmsSettings['stats_experience'] ?? '20+',
-        'label' => 'Years of Experience',
-        'icon' => 'fas fa-user-doctor',
-        'description' => 'Providing over two decades of expert clinical diagnosis, treatment, and neurological care.'
-    ],
-];
 
 // Prefer CMS-managed testimonials; fall back to the built-in list above.
 // "Featured" reviews are listed first (stable: original order kept otherwise).
@@ -627,7 +601,8 @@ function cms_section_paragraphs($text, $class = 'text-dark-grey/70 leading-relax
     foreach ($paras as $i => $para) {
         $margin = ($i === $count - 1) ? $lastMargin : 'mb-6';
         $out .= '<p class="' . htmlspecialchars(trim($class . ' ' . $margin), ENT_QUOTES) . '">'
-              . cms_render_html($para) . '</p>';
+              . cms_render_html($para) . '</p>' . "
+";
     }
     return $out;
 }

@@ -133,6 +133,12 @@
                 "text": "Get Started",
                 "url": "#appointment"
             }
+        },
+        "why-choose-dr-praveen-gupta": {
+            "hero-primary": {
+                "text": "Book a Consultation",
+                "url": "contact-us-top-neurologist-delhi-ncr"
+            }
         }
     }
 }
