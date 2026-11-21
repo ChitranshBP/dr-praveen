@@ -299,7 +299,7 @@ if (!function_exists('cms_collection_variant_video_player')) {
         <div class="grid lg:grid-cols-12 gap-8 items-center">
             <div class="lg:col-span-8 bg-black rounded-[32px] overflow-hidden shadow-2xl border border-slate-200/40 aspect-video relative group">
                 <iframe id="main-video-player" class="w-full h-full border-0"
-                        src="https://www.youtube.com/embed/<?php echo htmlspecialchars($featured['youtube_id'] ?? ''); ?>?rel=0&modestbranding=1"
+                        src="https://www.youtube-nocookie.com/embed/<?php echo htmlspecialchars($featured['youtube_id'] ?? ''); ?>?rel=0&modestbranding=1"
                         title="<?php echo htmlspecialchars($featured['title'] ?? ''); ?>"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen loading="lazy"></iframe>
@@ -429,14 +429,14 @@ let currentPage = 1;
 let filteredCards = [];
 <?php if ($mode === 'inline'): ?>
 function loadPlayer(container, videoId) {
-    container.innerHTML = '<iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+    container.innerHTML = '<iframe class="absolute inset-0 w-full h-full" src="https://www.youtube-nocookie.com/embed/' + videoId + '?autoplay=1&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
     container.removeAttribute('onclick');
 }
 <?php else: ?>
 function playVideo(id, title, desc) {
     const player = document.getElementById('main-video-player');
     if (!player) { window.open('https://www.youtube.com/watch?v=' + id, '_blank'); return; }
-    player.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1';
+    player.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1';
     const t = document.getElementById('main-video-title'); if (t) t.innerText = title;
     const d = document.getElementById('main-video-desc'); if (d) d.innerText = desc;
     window.scrollTo({ top: player.closest('section').offsetTop - 100, behavior: 'smooth' });
@@ -518,7 +518,7 @@ if (!function_exists('cms_collection_variant_case_studies')) {
                     $order = $first ? ' order-2 lg:order-1' : '';
                     if ($csYt !== ''): ?>
                 <div class="lg:col-span-5<?php echo $order; ?> relative aspect-video lg:h-full bg-black flex items-center justify-center overflow-hidden">
-                    <iframe class="w-full h-full lg:absolute lg:inset-0" src="https://www.youtube.com/embed/<?php echo htmlspecialchars($csYt); ?>?rel=0&modestbranding=1" title="<?php echo htmlspecialchars($cs['title'] ?? 'Patient story'); ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    <iframe class="w-full h-full lg:absolute lg:inset-0" src="https://www.youtube-nocookie.com/embed/<?php echo htmlspecialchars($csYt); ?>?rel=0&modestbranding=1" title="<?php echo htmlspecialchars($cs['title'] ?? 'Patient story'); ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                 </div>
                     <?php else: ?>
                 <div class="lg:col-span-5<?php echo $order; ?> relative aspect-[4/3] lg:h-full overflow-hidden bg-gradient-to-br from-soft-cyan to-silver-grey">
@@ -639,7 +639,7 @@ if (!function_exists('cms_testimonials_variant_video_grid')) {
             <?php foreach ($videos as $vid): ?>
             <div class="bg-slate-50 border border-slate-200/50 rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300">
                 <div class="relative aspect-[9/16] bg-black">
-                    <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/<?php echo htmlspecialchars($vid['id'] ?? ''); ?>?rel=0" title="<?php echo htmlspecialchars($vid['title'] ?? ''); ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+                    <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube-nocookie.com/embed/<?php echo htmlspecialchars($vid['id'] ?? ''); ?>?rel=0" title="<?php echo htmlspecialchars($vid['title'] ?? ''); ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
                 </div>
                 <div class="p-5 text-center">
                     <h3 class="text-xs font-bold text-deep-indigo leading-snug"><?php echo htmlspecialchars($vid['title'] ?? ''); ?></h3>

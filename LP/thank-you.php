@@ -3,6 +3,9 @@
  * Dedicated Landing Page Thank You Page
  * URL: https://drpraveengupta.com/enquire/thank-you
  */
+// Shared site settings + DPDP/NMC helpers (disclaimers, cookie banner)
+require_once dirname(__DIR__) . '/includes/config.php';
+
 $phonePrimary = '+91 98114 56789';
 $phoneClean   = '919811456789';
 $hospitalName = 'Marengo Asia Hospitals, Gurugram';
@@ -13,13 +16,7 @@ $address      = 'Sector 56, Gurugram, Haryana 122011';
 <head>
     <meta charset="UTF-8">
     <base href="/">
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-TF2TXQLK');</script>
-    <!-- End Google Tag Manager -->
+    <?php cms_render_consent_loader(); // GTM (same container) loads only after cookie consent ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, follow">
     <title>Thank You | Appointment Request Received – Dr. Praveen Gupta</title>
@@ -83,11 +80,6 @@ $address      = 'Sector 56, Gurugram, Haryana 122011';
     </style>
 </head>
 <body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between antialiased selection:bg-cyan-accent selection:text-deep-indigo">
-
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TF2TXQLK"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
 
     <!-- Top Standalone Header -->
     <header class="w-full bg-slate-950/80 backdrop-blur-md border-b border-white/10 sticky top-0 z-50">
@@ -222,14 +214,20 @@ $address      = 'Sector 56, Gurugram, Haryana 122011';
     <!-- Standalone LP Footer -->
     <footer class="w-full bg-slate-950 border-t border-slate-800 py-6 text-center text-xs text-slate-500">
         <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <?php cms_render_legal_disclaimers('text-left'); ?>
             <p>&copy; <?php echo date('Y'); ?> Dr. Praveen Gupta. All Rights Reserved. Marengo Asia Hospitals, Gurugram.</p>
-            <div class="flex items-center justify-center space-x-4 text-[11px] text-slate-400">
-                <a href="/privacy-policy" class="hover:text-cyan-400 transition-colors">Privacy Policy</a>
+            <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-[11px] text-slate-400">
+                <?php foreach (cms_footer_legal_links() as $li => $legal): ?>
+                <?php if ($li > 0): ?><span>&bull;</span><?php endif; ?>
+                <a href="/<?php echo htmlspecialchars(ltrim((string)$legal['url'], '/')); ?>" class="hover:text-cyan-400 transition-colors"><?php echo htmlspecialchars($legal['label']); ?></a>
+                <?php endforeach; ?>
                 <span>&bull;</span>
-                <a href="/terms-of-service" class="hover:text-cyan-400 transition-colors">Terms of Service</a>
+                <button type="button" data-dpg-cookie-settings class="dpg-cookie-link hover:text-cyan-400 transition-colors"><?php echo htmlspecialchars(cms_text('cookie_settings_label')); ?></button>
             </div>
         </div>
     </footer>
+
+    <?php cms_render_cookie_banner(); ?>
 
 </body>
 </html>

@@ -37,7 +37,7 @@ if (!function_exists('cms_block_type_catalog_extra')) {
             'feature-split'   => ['label' => 'Feature list + photo', 'item_label' => 'Feature', 'fields' => ['badge', 'badge_icon', 'title', 'description', 'button_text', 'button_url'], 'block_image' => true, 'item_fields' => ['icon_color', 'title', 'text']],
             'strip'           => ['label' => 'Highlight strip (gradient banner with buttons)', 'no_items' => true, 'fields' => ['badge', 'badge_icon', 'title', 'description', 'button_text', 'button_url', 'button2_text', 'button2_url']],
             'team-grid'       => ['label' => 'Team cards', 'no_items' => true, 'fields' => ['badge', 'badge_icon', 'title', 'description', 'limit', 'button_text', 'button_url'], 'help' => 'Doctors are managed in CMS → Our Medical Team.'],
-            'testimonials'    => ['label' => 'Testimonials', 'no_items' => true, 'fields' => ['badge', 'badge_icon', 'title', 'description', 'variant', 'limit', 'button_text', 'button_url'], 'help' => 'Reviews are managed in CMS → Testimonials. Variants: marquee, slider, grid, cards, stories (type "story" entries), video-grid (video testimonials).'],
+            'testimonials'    => ['label' => 'Testimonials (retired — not shown publicly, NMC)', 'retired' => true, 'no_items' => true, 'fields' => ['badge', 'badge_icon', 'title', 'description', 'variant', 'limit', 'button_text', 'button_url'], 'help' => 'Patient testimonials, reviews and ratings are not published on the website (NMC advertising rules), so this section prints nothing.'],
             'blog-grid'       => ['label' => 'Blog articles', 'no_items' => true, 'fields' => ['badge', 'badge_icon', 'title', 'description', 'variant', 'limit', 'button_text', 'button_url'], 'block_panel' => true, 'help' => 'Articles are managed in CMS → Blog Posts. Variants: teaser (homepage cards), all (3-column grid of every article), list (article list + categories sidebar + newsletter box: side card title/text and button text).'],
             'collection-grid' => ['label' => 'Collection grid (awards / gallery / videos / press / cases)', 'no_items' => true, 'fields' => ['badge', 'badge_icon', 'title', 'description', 'collection', 'variant', 'limit', 'button_text', 'button_url'], 'help' => 'Items come from the chosen collection screen in the CMS.'],
             'reels'           => ['label' => 'Instagram reels', 'no_items' => true, 'fields' => ['badge', 'badge_icon', 'title', 'description', 'button_text', 'button_url'], 'help' => 'Reels are managed in CMS → Instagram Reels; the handle comes from the Instagram URL in Settings.'],
@@ -1878,7 +1878,7 @@ if (!function_exists('cms_collection_variant_videos_home')) {
         <div class="sm:hidden flex overflow-x-auto snap-x snap-mandatory scrollbar-none gap-6 -mx-4 px-4 pb-4">
             <?php foreach ($items as $video): ?>
                 <div class="flex-shrink-0 w-[80vw] snap-start bg-white rounded-3xl overflow-hidden border border-silver-grey/50 shadow-lg">
-                    <div class="relative w-full aspect-video bg-dark-grey video-facade cursor-pointer group" data-embed="https://www.youtube.com/embed/<?php echo htmlspecialchars($video['youtube_id']); ?>?rel=0&modestbranding=1&autoplay=1">
+                    <div class="relative w-full aspect-video bg-dark-grey video-facade cursor-pointer group" data-embed="https://www.youtube-nocookie.com/embed/<?php echo htmlspecialchars($video['youtube_id']); ?>?rel=0&modestbranding=1&autoplay=1">
                         <img src="https://img.youtube.com/vi/<?php echo htmlspecialchars($video['youtube_id']); ?>/hqdefault.jpg" alt="<?php echo htmlspecialchars($video['title']); ?>" loading="lazy" class="w-full h-full object-cover">
                         <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/10 transition-colors">
                             <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
@@ -1900,7 +1900,7 @@ if (!function_exists('cms_collection_variant_videos_home')) {
                     <div class="min-w-full grid grid-cols-2 lg:grid-cols-3 gap-8">
                         <?php foreach ($epPage as $video): ?>
                             <div class="group bg-white rounded-3xl overflow-hidden border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 observe">
-                                <div class="relative w-full aspect-video bg-dark-grey video-facade cursor-pointer group" data-embed="https://www.youtube.com/embed/<?php echo htmlspecialchars($video['youtube_id']); ?>?rel=0&modestbranding=1&autoplay=1">
+                                <div class="relative w-full aspect-video bg-dark-grey video-facade cursor-pointer group" data-embed="https://www.youtube-nocookie.com/embed/<?php echo htmlspecialchars($video['youtube_id']); ?>?rel=0&modestbranding=1&autoplay=1">
                                     <img src="https://img.youtube.com/vi/<?php echo htmlspecialchars($video['youtube_id']); ?>/hqdefault.jpg" alt="<?php echo htmlspecialchars($video['title']); ?>" loading="lazy" class="w-full h-full object-cover">
                                     <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/10 transition-colors">
                                         <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
@@ -1996,6 +1996,8 @@ if (!function_exists('cms_render_block_reels')) {
         cms_block_section_open($block, 'bg-soft-cyan/30');
         $wrap = isset($block['wrap']) && is_array($block['wrap']) ? $block['wrap'] : [];
         $sectionId = trim((string)($wrap['id'] ?? 'instagram-reels'));
+        // Instagram's embed script (Meta) may set cookies: the cookie banner must be shown.
+        $GLOBALS['cms_needs_consent'] = true;
         ?>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center max-w-3xl mx-auto mb-10 md:mb-12 observe">
@@ -2077,7 +2079,11 @@ if (!function_exists('cms_render_block_reels')) {
             document.body.appendChild(script);
             ['scroll', 'mousemove', 'touchstart', 'click'].forEach(evt => { window.removeEventListener(evt, loadInstagram); });
         };
-        ['scroll', 'mousemove', 'touchstart', 'click'].forEach(evt => { window.addEventListener(evt, loadInstagram, { passive: true, once: true }); });
+        // Embedded posts load only after cookie consent; until then the cards link to Instagram.
+        const armInstagram = () => {
+            ['scroll', 'mousemove', 'touchstart', 'click'].forEach(evt => { window.addEventListener(evt, loadInstagram, { passive: true, once: true }); });
+        };
+        if (window.dpgConsent) { window.dpgConsent.onAccept(armInstagram); }
     });
     </script>
 </section>

@@ -326,13 +326,14 @@ function cms_navigation() {
         if (!isset($nav[$k]) || !is_array($nav[$k])) {
             $nav[$k] = [];
         }
+        // Retired pages (testimonials, reviews, case studies — see includes/compliance.php) never appear in a menu.
         $nav[$k] = array_values(array_filter($nav[$k], function ($it) {
-            return is_array($it) && trim((string)($it['label'] ?? '')) !== '';
+            return is_array($it) && trim((string)($it['label'] ?? '')) !== '' && !cms_is_retired_url($it['url'] ?? '');
         }));
     }
     foreach ($nav['main'] as &$item) {
         $item['children'] = isset($item['children']) && is_array($item['children'])
-            ? array_values(array_filter($item['children'], function ($c) { return is_array($c) && trim((string)($c['label'] ?? '')) !== ''; }))
+            ? array_values(array_filter($item['children'], function ($c) { return is_array($c) && trim((string)($c['label'] ?? '')) !== '' && !cms_is_retired_url($c['url'] ?? ''); }))
             : [];
     }
     unset($item);
@@ -454,6 +455,23 @@ function cms_site_text_fields() {
         'bp_related_heading'     => ['Blog article page', 'Related articles heading', 'More Health Articles', 'text'],
         'bp_read_label'          => ['Blog article page', 'Related card link text', 'Read', 'text'],
         'bp_back_label'          => ['Blog article page', 'Back link text', 'Back to All Articles', 'text'],
+        // DPDP Act 2023 / NMC: disclaimers, form consent, cookie banner ({site} = site name, {privacy} = link to the Privacy Policy)
+        'footer_medical_disclaimer_label' => ['Compliance & consent', 'Footer — medical disclaimer label', 'Medical Disclaimer:', 'text'],
+        'footer_medical_disclaimer' => ['Compliance & consent', 'Footer — medical disclaimer', 'The information on this website is for general awareness only and is not a substitute for professional medical advice, diagnosis, or treatment. Please consult a qualified doctor.', 'textarea'],
+        'footer_medical_disclaimer_link' => ['Compliance & consent', 'Footer — link to the full Medical Disclaimer page', 'Read the full disclaimer', 'text'],
+        'footer_ai_disclaimer_label' => ['Compliance & consent', 'Footer — AI content disclaimer label', 'AI-Generated Content Disclaimer:', 'text'],
+        'footer_ai_disclaimer'   => ['Compliance & consent', 'Footer — AI content disclaimer', 'Certain images, illustrations, or textual content on this website may be generated or assisted by artificial intelligence (AI). Such content is intended for informational and illustrative purposes only. AI-generated content is not intended to misrepresent actual patients, medical professionals, clinical outcomes, or healthcare services.', 'textarea'],
+        'privacy_link_label'     => ['Compliance & consent', 'Text of the {privacy} link', 'Privacy Policy', 'text'],
+        'form_privacy_notice'    => ['Compliance & consent', 'Enquiry forms — privacy notice above the consent box', 'We collect your name, contact details and anything you write or upload (which may include health information) only to respond to your enquiry and arrange your consultation. See our {privacy} for how we use, protect and delete it.', 'textarea'],
+        'form_consent_label'     => ['Compliance & consent', 'Enquiry forms — consent checkbox text', 'I consent to {site} collecting and using my personal data, including any health information I share, to respond to my enquiry, as described in the {privacy}. I can withdraw this consent at any time.', 'textarea'],
+        'newsletter_privacy_notice' => ['Compliance & consent', 'Newsletter form — privacy notice', 'We collect only your email address, to send you health articles and updates. See our {privacy}.', 'textarea'],
+        'newsletter_consent_label' => ['Compliance & consent', 'Newsletter form — consent checkbox text', 'I consent to {site} using my email address to send me health articles and updates, as described in the {privacy}. I can withdraw this consent and unsubscribe at any time.', 'textarea'],
+        'form_error_consent'     => ['Compliance & consent', 'Message when a form arrives without consent', 'Please tick the consent box so that we can respond to your enquiry.', 'text'],
+        'cookie_banner_text'     => ['Compliance & consent', 'Cookie banner text', 'We use essential browser storage to run this website. With your permission we would also like to load analytics and marketing tools (Google Tag Manager and the tags it runs) and embedded social media content, which may set cookies. You can change your choice at any time from "Cookie Settings" in the footer. See our {privacy}.', 'textarea'],
+        'cookie_accept_label'    => ['Compliance & consent', 'Cookie banner — accept button', 'Accept', 'text'],
+        'cookie_reject_label'    => ['Compliance & consent', 'Cookie banner — reject button', 'Reject', 'text'],
+        'cookie_settings_label'  => ['Compliance & consent', 'Footer link that reopens the cookie banner', 'Cookie Settings', 'text'],
+        'whatsapp_notice'        => ['Compliance & consent', 'Notice under the WhatsApp button label', 'Opens WhatsApp. Please share only what is needed to book; see our Privacy Policy.', 'text'],
     ];
     return $fields;
 }
@@ -528,3 +546,6 @@ function cms_lp_settings() {
     $lp = cms_json_read(CMS_DATA_DIR . '/lp.json');
     return is_array($lp) ? $lp : [];
 }
+
+// DPDP / NMC helpers: retired pages + sections, consent fields, disclaimers, cookie banner
+require_once __DIR__ . '/compliance.php';

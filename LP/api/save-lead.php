@@ -29,6 +29,12 @@ if (!empty($_POST['website'])) {
     exit;
 }
 
+// ---- Consent (DPDP Act 2023): nothing is forwarded without it ---------------
+if (($_POST['consent'] ?? '') !== 'yes') {
+    header('Location: ../index.php?error=consent');
+    exit;
+}
+
 // ---- Basic rate limit: 10 submissions / 10 minutes / IP ---------------------
 $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
 $rlFile = sys_get_temp_dir() . '/lp_lead_rl_' . md5($ip);
@@ -87,6 +93,8 @@ if (function_exists('curl_init')) {
         'subject'   => $subject,
         'condition' => $subject,
         'message'   => $message,
+        'consent'   => 'yes',
+        'consent_at'=> date('c'),
     ];
     $ch = curl_init($FORMESTER_URL);
     curl_setopt_array($ch, [

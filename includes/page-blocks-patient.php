@@ -85,6 +85,7 @@ if (!function_exists('cms_render_block_checklist')) {
                         <?php endif; ?>
                     </div>
                     <?php endforeach; ?>
+                    <?php cms_consent_fields($uid, $dark ? 'dark' : 'light', 'enquiry'); ?>
                     <div>
                         <button type="submit" class="block w-full text-center <?php echo $dark ? 'bg-cyan-accent hover:bg-cyan-500 text-deep-indigo' : 'bg-deep-indigo hover:bg-electric-blue text-white'; ?> font-bold py-2.5 rounded-xl transition-all duration-300 text-xs shadow-md"><?php echo htmlspecialchars($button); ?></button>
                     </div>
@@ -148,6 +149,7 @@ if (!function_exists('cms_render_block_form_card')) {
                         <textarea id="<?php echo $uid . '-' . $f; ?>" name="<?php echo $f; ?>" rows="3" required placeholder="<?php echo htmlspecialchars($d['placeholder']); ?>" class="<?php echo $inputCls; ?>"></textarea>
                     </div>
                     <?php endforeach; ?>
+                    <?php cms_consent_fields($uid, 'dark', 'enquiry'); ?>
                     <div class="pt-2">
                         <button type="submit" class="block w-full text-center <?php echo $red ? 'bg-red-600 hover:bg-red-700 text-white shadow-red-600/20' : 'bg-cyan-accent hover:bg-cyan-500 text-deep-indigo shadow-cyan-accent/20'; ?> font-bold py-3 rounded-xl transition-all duration-300 transform active:scale-95 text-xs shadow-lg"><?php echo htmlspecialchars($button); ?></button>
                     </div>

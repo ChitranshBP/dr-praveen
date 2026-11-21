@@ -38,7 +38,7 @@ if (isset($_GET['export']) && $_GET['export'] === 'csv') {
     header('Content-Type: text/csv');
     header('Content-Disposition: attachment; filename="leads_' . date('Y-m-d') . '.csv"');
     $out = fopen('php://output', 'w');
-    fputcsv($out, ['ID', 'Date', 'Name', 'Phone', 'Email', 'Subject', 'Source', 'Status', 'Message']);
+    fputcsv($out, ['ID', 'Date', 'Name', 'Phone', 'Email', 'Subject', 'Source', 'Status', 'Message', 'Consent Given At', 'Consent Wording Version']);
     foreach ($leads as $l) {
         fputcsv($out, [
             $l['id'] ?? '',
@@ -49,7 +49,9 @@ if (isset($_GET['export']) && $_GET['export'] === 'csv') {
             $l['subject'] ?? '',
             $l['source'] ?? '',
             $l['status'] ?? 'new',
-            $l['message'] ?? ''
+            $l['message'] ?? '',
+            $l['consent_at'] ?? '',
+            $l['consent_version'] ?? ''
         ]);
     }
     fclose($out);
@@ -96,7 +98,14 @@ $statusClasses = ['new' => 'bg-blue-50 text-blue-700', 'contacted' => 'bg-amber-
                 <tbody class="divide-y divide-slate-100 font-medium">
                     <?php foreach ($leads as $lead): $st = $lead['status'] ?? 'new'; ?>
                     <tr class="hover:bg-slate-50 transition-colors align-top">
-                        <td class="p-3.5 text-slate-400 whitespace-nowrap"><?php echo htmlspecialchars($lead['created_at'] ?? ''); ?></td>
+                        <td class="p-3.5 text-slate-400 whitespace-nowrap">
+                            <?php echo htmlspecialchars($lead['created_at'] ?? ''); ?>
+                            <?php if (($lead['consent'] ?? '') === 'yes'): ?>
+                            <div class="text-[10px] font-bold text-emerald-600 mt-1" title="Consent wording version <?php echo htmlspecialchars($lead['consent_version'] ?? ''); ?>"><i class="fas fa-check-circle"></i> Consent <?php echo htmlspecialchars(substr((string)($lead['consent_at'] ?? ''), 0, 10)); ?></div>
+                            <?php else: ?>
+                            <div class="text-[10px] font-bold text-amber-600 mt-1">No consent record</div>
+                            <?php endif; ?>
+                        </td>
                         <td class="p-3.5 font-bold text-slate-900"><?php echo htmlspecialchars($lead['name'] ?? ''); ?></td>
                         <td class="p-3.5 whitespace-nowrap"><a href="tel:<?php echo htmlspecialchars($lead['phone'] ?? ''); ?>" class="text-brand-blue hover:underline"><?php echo htmlspecialchars($lead['phone'] ?? ''); ?></a></td>
                         <td class="p-3.5"><?php echo htmlspecialchars($lead['email'] ?? ''); ?></td>

@@ -256,16 +256,23 @@ $footerMapsLink = trim((string)($cmsSettings['maps_link'] ?? '')) !== ''
         </div>
 
 
+        <!-- Medical + AI-generated content disclaimers (CMS → Site Text → Compliance & consent) -->
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <?php cms_render_legal_disclaimers(); ?>
+        </div>
+
         <!-- Bottom Bar -->
         <div class="relative border-t border-white/10">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
                 <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/60">
                     <p><?php echo str_replace(htmlspecialchars(SITE_NAME), '<span class="text-white font-semibold">' . htmlspecialchars(SITE_NAME) . '</span>', htmlspecialchars(cms_text('footer_copyright'))); ?></p>
-                    <div class="flex items-center space-x-1">
-                        <?php foreach ($footerNav['footer_legal_links'] as $li => $legal): ?>
+                    <div class="flex flex-wrap items-center justify-center">
+                        <?php foreach (cms_footer_legal_links() as $li => $legal): ?>
                         <?php if ($li > 0): ?><span class="text-white/20">&bull;</span><?php endif; ?>
                         <a href="<?php echo htmlspecialchars(cms_nav_href($legal['url'])); ?>" class="px-3 py-1.5 rounded-full hover:bg-white/5 hover:text-cyan-accent transition-all"><?php echo htmlspecialchars($legal['label']); ?></a>
                         <?php endforeach; ?>
+                        <span class="text-white/20">&bull;</span>
+                        <button type="button" data-dpg-cookie-settings class="dpg-cookie-link px-3 py-1.5 rounded-full hover:bg-white/5 hover:text-cyan-accent transition-all"><?php echo htmlspecialchars(cms_text('cookie_settings_label')); ?></button>
                     </div>
                 </div>
             </div>
@@ -284,6 +291,7 @@ $footerMapsLink = trim((string)($cmsSettings['maps_link'] ?? '')) !== ''
         <!-- Hover label (desktop) -->
         <span class="hidden lg:block absolute right-full mr-3 whitespace-nowrap bg-deep-indigo text-white text-xs font-semibold px-3 py-2 rounded-full shadow-lg opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none">
             <?php echo htmlspecialchars(cms_text('float_whatsapp_label')); ?>
+            <span class="block text-[10px] font-medium text-white/70"><?php echo htmlspecialchars(cms_text('whatsapp_notice')); ?></span>
         </span>
     </a>
 
@@ -374,6 +382,7 @@ $footerMapsLink = trim((string)($cmsSettings['maps_link'] ?? '')) !== ''
             observer.observe(el);
         });
     </script>
+    <?php cms_render_cookie_banner(); ?>
     <?php if (!empty($cmsSettings['custom_body_scripts'])): ?>
     <!-- Custom body scripts (CMS → Settings) -->
     <?php echo $cmsSettings['custom_body_scripts']; ?>
