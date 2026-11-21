@@ -1359,7 +1359,7 @@ require_once __DIR__ . '/includes/header.php';
                     <p class="text-[10px] text-slate-500 mt-0.5">The section is added at the bottom with sample content; drag it into place, edit its text, then save.</p>
                 </div>
                 <select id="add-block-type-select" class="px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-semibold">
-                    <?php foreach ($blockTypeCatalog as $tKey => $tMeta): if (in_array($tKey, ['intro'], true)) continue; ?>
+                    <?php foreach ($blockTypeCatalog as $tKey => $tMeta): if (in_array($tKey, ['intro'], true) || !empty($tMeta['retired'])) continue; ?>
                     <option value="<?php echo htmlspecialchars($tKey); ?>"><?php echo htmlspecialchars($tMeta['label']); ?></option>
                     <?php endforeach; ?>
                 </select>

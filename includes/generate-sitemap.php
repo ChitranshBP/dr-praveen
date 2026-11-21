@@ -32,7 +32,12 @@ function generate_sitemap_xml() {
     ];
     // Pages that must never be listed
     $skipSlugs = ['thank-you', 'blog-post', '404'];
-    $legalSlugs = ['privacy-policy', 'terms-of-service'];
+    // Retired pages (testimonials, reviews, case studies) 301 elsewhere — includes/compliance.php
+    if (!function_exists('cms_retired_pages')) {
+        require_once __DIR__ . '/compliance.php';
+    }
+    $skipSlugs = array_merge($skipSlugs, array_keys(cms_retired_pages()));
+    $legalSlugs = ['privacy-policy', 'terms-of-service', 'medical-disclaimer'];
 
     $readJson = function ($file) {
         if (!is_file($file)) return null;

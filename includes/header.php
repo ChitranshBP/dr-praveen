@@ -59,14 +59,8 @@ if (empty($canonicalPath) && trim((string)($cmsPageData['canonical'] ?? '')) !==
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','<?php echo GTM_ID; ?>');</script>
-    <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
+    <?php cms_render_consent_loader(); // GTM (CMS → Settings), GA4 and Meta Pixel load only after cookie consent ?>
     <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="<?php echo htmlspecialchars($robotsMeta); ?>">
@@ -321,16 +315,7 @@ if (empty($canonicalPath) && trim((string)($cmsPageData['canonical'] ?? '')) !==
 
     <!-- Schema.org JSON-LD Structured Data -->
     <?php require_once __DIR__ . '/schema.php'; ?>
-    <?php if ($ga4Id !== ''): ?>
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo htmlspecialchars($ga4Id); ?>"></script>
-    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','<?php echo htmlspecialchars($ga4Id); ?>');</script>
-    <?php endif; ?>
-    <?php if ($metaPixelId !== ''): ?>
-    <!-- Meta Pixel -->
-    <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','<?php echo htmlspecialchars($metaPixelId); ?>');fbq('track','PageView');</script>
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=<?php echo htmlspecialchars($metaPixelId); ?>&ev=PageView&noscript=1" alt=""></noscript>
-    <?php endif; ?>
+    <?php /* Google Analytics 4 ($ga4Id) and Meta Pixel ($metaPixelId) are loaded by cms_render_consent_loader() after consent. */ ?>
     <?php if (!empty($cmsSettings['custom_head_scripts'])): ?>
     <!-- Custom head scripts (CMS → Settings) -->
     <?php echo $cmsSettings['custom_head_scripts']; ?>
@@ -338,10 +323,7 @@ if (empty($canonicalPath) && trim((string)($cmsPageData['canonical'] ?? '')) !==
     <?php endif; ?>
 </head>
 <body class="bg-white text-dark-grey antialiased overflow-x-hidden">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<?php echo htmlspecialchars(GTM_ID); ?>"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+    <?php /* No GTM <noscript> iframe: without JavaScript the cookie banner cannot collect consent. */ ?>
 
     <!-- Top Bar - Modern -->
     <!-- <div class="bg-gradient-to-r from-deep-indigo via-[#1E1B4B] to-deep-indigo text-white py-2.5 text-xs hidden md:block relative overflow-hidden">

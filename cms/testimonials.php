@@ -99,6 +99,11 @@ $pageTitle = 'Testimonials & Reviews';
 require_once __DIR__ . '/includes/header.php';
 ?>
 
+<div class="max-w-7xl mb-6 p-4 rounded-2xl border border-amber-200 bg-amber-50 text-amber-900 text-xs leading-relaxed">
+    <i class="fas fa-triangle-exclamation mr-1"></i>
+    <strong>Not shown on the website.</strong> Patient testimonials, reviews, ratings and recovery stories are not published under the NMC advertising rules, so testimonial sections print nothing on public pages. Entries are kept here only as an internal record.
+</div>
+
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-7xl">
     <div class="lg:col-span-7 space-y-4">
         <h2 class="text-sm font-bold text-slate-800 uppercase tracking-wider">Patient Testimonials (<?php echo count($testimonials); ?>)</h2>

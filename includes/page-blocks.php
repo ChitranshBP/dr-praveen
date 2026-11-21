@@ -1692,7 +1692,7 @@ if (!function_exists('cms_block_type_catalog')) {
             'notice'     => ['label' => 'Alert panel', 'item_label' => 'Point', 'block_panel' => true],
             'intro'      => ['label' => 'Intro / text + photo section', 'item_label' => 'Item'],
             'faq'        => ['label' => 'FAQ section (from Page FAQs)', 'item_label' => 'Question'],
-            'video-testimonials' => ['label' => 'Video testimonials slider', 'item_label' => 'Video'],
+            'video-testimonials' => ['label' => 'Video testimonials slider (retired — not shown publicly, NMC)', 'item_label' => 'Video', 'retired' => true],
             'related-videos'     => ['label' => 'Watch & Learn (related videos)', 'item_label' => 'Video'],
         ];
         if (function_exists('cms_block_type_catalog_extra')) {
@@ -1713,6 +1713,11 @@ if (!function_exists('cms_render_page_block')) {
         try {
             $block = cms_page_block($slug, $key);
             if ($block === null) {
+                return;
+            }
+            // Patient testimonials / video testimonials / case-study outcomes are
+            // not published (NMC) — see includes/compliance.php.
+            if (function_exists('cms_block_is_retired') && cms_block_is_retired($block)) {
                 return;
             }
             if (isset($block['options']) && is_array($block['options'])) {

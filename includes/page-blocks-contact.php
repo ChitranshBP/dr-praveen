@@ -67,6 +67,7 @@ if (!function_exists('cms_render_block_contact_form')) {
             <div class="lg:col-span-7 bg-slate-50/50 rounded-3xl p-6 md:p-10 border border-slate-200/60 observe">
                 <?php if ($pTitle !== ''): ?><h3 class="text-2xl font-bold text-dark-grey mb-2"><?php echo htmlspecialchars($pTitle); ?></h3><?php endif; ?>
                 <?php if ($pText !== ''): ?><p class="text-sm text-dark-grey/60 mb-8"><?php echo htmlspecialchars($pText); ?></p><?php endif; ?>
+                <?php cms_form_error_notice(); ?>
 
                 <form id="contact-form" class="space-y-6" accept-charset="UTF-8" action="<?php echo htmlspecialchars($action); ?>" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="form_type" value="<?php echo htmlspecialchars($formType); ?>">
@@ -124,6 +125,7 @@ if (!function_exists('cms_render_block_contact_form')) {
                         </div>
                     </div>
                     <?php endif; ?>
+                    <?php cms_consent_fields('contact-form', 'light', 'enquiry'); ?>
                     <button type="submit" class="w-full inline-flex items-center justify-center space-x-2.5 bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold py-3.5 rounded-xl hover:shadow-xl hover:shadow-electric-blue/30 transition-all duration-300">
                         <span><?php echo htmlspecialchars($submit); ?></span>
                         <i class="fas fa-paper-plane text-xs"></i>
@@ -369,7 +371,8 @@ if (!function_exists('cms_blog_grid_variant_list')) {
                     <form class="space-y-3" accept-charset="UTF-8" action="<?php echo htmlspecialchars($options['action'] ?? 'api/save-lead.php'); ?>" method="POST">
                         <input type="hidden" name="form_type" value="<?php echo htmlspecialchars($options['form_type'] ?? 'Blog Newsletter Subscription'); ?>">
                         <div class="hidden" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
-                        <input type="email" name="email" required placeholder="<?php echo htmlspecialchars($options['email_placeholder'] ?? 'Your email address'); ?>" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-cyan-accent text-sm text-white placeholder-white/40">
+                        <input type="email" name="email" required aria-label="<?php echo htmlspecialchars($options['email_placeholder'] ?? 'Your email address'); ?>" placeholder="<?php echo htmlspecialchars($options['email_placeholder'] ?? 'Your email address'); ?>" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl focus:outline-none focus:border-cyan-accent text-sm text-white placeholder-white/40">
+                        <?php cms_consent_fields('blog-newsletter', 'dark', 'newsletter'); ?>
                         <button type="submit" class="w-full bg-gradient-to-r from-electric-blue to-cyan-accent text-white font-semibold py-3 rounded-xl hover:shadow-lg transition-all duration-300"><?php echo htmlspecialchars($subscribe !== '' ? $subscribe : 'Subscribe'); ?></button>
                     </form>
                 </div>

@@ -48,3 +48,24 @@ optional email, uploads to `data/lead-uploads/`). CMS → Leads lists them.
 * Verify editor changes with a “save without changes” round-trip: `git diff data/` must stay empty
   (other than first-save copies of block defaults into `data/pages/*.json`).
 * Never hard-code copy in templates or renderers: add a field (block, Site Text key or setting).
+
+## Compliance (DPDP Act 2023 + NMC advertising rules, Nov 2026)
+
+* `includes/compliance.php` (loaded by `cms-load.php`) holds the code-level guards, so they apply to
+  live data too: retired pages `cms_retired_pages()` (testimonials, reviews, success stories, case
+  studies → 301), retired section types `cms_block_is_retired()` (`testimonials`, `video-testimonials`,
+  case-study `collection-grid`) skipped by `cms_render_page_block()`, nav links to retired pages dropped
+  in `cms_navigation()`, footer disclaimers + legal links, and the cookie banner.
+* GTM / GA4 / Meta Pixel and Instagram embeds load only after cookie consent (`cms_render_consent_loader()`
+  in `<head>`, `window.dpgConsent.onAccept(fn)` for anything else non-essential). Never add a tracker
+  that loads unconditionally. YouTube embeds use `youtube-nocookie.com`.
+* Every lead form must call `cms_consent_fields($uid, $theme, $purpose)` before its submit button;
+  `api/save-lead.php` rejects posts without `consent=yes` and stores `consent_at` / `consent_version`.
+  Bump `CMS_CONSENT_VERSION` when the consent wording or tracker list changes.
+* Copy rules: no patient testimonials, reviews, recovery stories or inducements (discounts, offers,
+  "free consultation"). Clinical claims, "first-in" milestones, statistics and ratings are kept as
+  the owner wrote them (owner decision, 21 Nov 2026) — do not rewrite them without being asked.
+  Disclaimer / consent / cookie copy lives in Site Text group "Compliance & consent".
+* After deploying + `scripts/merge-live-data.php`, run `php scripts/compliance-dpdp-nmc.php` once
+  (idempotent; `--dry-run` first). It removes retired sections/links, installs the Privacy Policy
+  and Medical Disclaimer, and lists any testimonial wording it could not remove.

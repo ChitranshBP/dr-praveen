@@ -465,7 +465,8 @@ function cms_render_html($content) {
 
     // 4. Style Quill video embeds and images
     $content = preg_replace_callback('/<iframe([^>]+src=["\']([^"\']+)["\'][^>]*)><\/iframe>/is', function($matches) {
-        $attrs = $matches[1];
+        // YouTube's privacy-enhanced domain sets no cookies until the visitor plays the video
+        $attrs = preg_replace('#//(?:www\.)?youtube\.com/embed/#i', '//www.youtube-nocookie.com/embed/', $matches[1]);
         return '<div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-lg my-6 bg-slate-900"><iframe class="absolute inset-0 w-full h-full border-0" ' . trim($attrs) . ' allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
     }, $content);
 

@@ -239,7 +239,7 @@ if (!empty($videoTestimonials)) {
                 if (card.dataset.playing === 'true') return;
                 card.dataset.playing = 'true';
                 card.innerHTML = '<iframe class="absolute inset-0 w-full h-full" '
-                    + 'src="https://www.youtube.com/embed/' + card.dataset.videoId
+                    + 'src="https://www.youtube-nocookie.com/embed/' + card.dataset.videoId
                     + '?autoplay=1&rel=0&modestbranding=1&playsinline=1" '
                     + 'title="Patient video testimonial" frameborder="0" '
                     + 'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" '

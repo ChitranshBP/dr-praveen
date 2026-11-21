@@ -10,7 +10,7 @@
         "hero_bg": "assets/breadcrumbs/about.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Dr. Praveen Gupta",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Dr. Praveen Gupta.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Dr. Praveen Gupta.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/about.png"
     },
     {
@@ -24,7 +24,7 @@
         "hero_bg": "assets/breadcrumbs/about.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Awards & Recognition",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Awards & Recognition.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Awards & Recognition.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/about.png"
     },
     {
@@ -38,7 +38,7 @@
         "hero_bg": "assets/services/migraine.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Blog Post",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Blog Post.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Blog Post.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/services/migraine.png"
     },
     {
@@ -52,7 +52,7 @@
         "hero_bg": "assets/services/migraine.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Blog",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Blog.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Blog.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/services/migraine.png"
     },
     {
@@ -66,7 +66,7 @@
         "hero_bg": "assets/breadcrumbs/dr-parveen-services-breadcrumb/brain%20health.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Brain Health Hub",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Brain Health Hub.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Brain Health Hub.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/dr-parveen-services-breadcrumb/brain%20health.png"
     },
     {
@@ -80,7 +80,7 @@
         "hero_bg": "assets/breadcrumbs/patient.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to 24/7 Brain Stroke Helpline",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for 24/7 Brain Stroke Helpline.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for 24/7 Brain Stroke Helpline.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/patient.png"
     },
     {
@@ -94,22 +94,8 @@
         "hero_bg": "assets/breadcrumbs/dr-parveen-services-breadcrumb/Brain%20Tumor%20Surgery.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Brain Tumor Surgery",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Brain Tumor Surgery.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Brain Tumor Surgery.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/dr-parveen-services-breadcrumb/Brain%20Tumor%20Surgery.png"
-    },
-    {
-        "slug": "case-studies",
-        "file": "case-studies.php",
-        "title": "Neurology Case Studies",
-        "category": "Patient Info",
-        "hero_badge": "Patient Info Guide",
-        "hero_title": "Neurology Case Studies",
-        "hero_desc": "Explore real clinical histories demonstrating the effectiveness of advanced stroke treatments, DBS programming, and specialized neurology interventions.",
-        "hero_bg": "assets/breadcrumbs/patient.png",
-        "section1_badge": "Specialist Care",
-        "section1_title": "Expert Clinical Approach to Neurology Case Studies",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Neurology Case Studies.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
-        "section1_image": "assets/breadcrumbs/patient.png"
     },
     {
         "slug": "contact-us-top-neurologist-delhi-ncr",
@@ -122,7 +108,7 @@
         "hero_bg": "assets/breadcrumbs/contact.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Get in Touch with Us",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Get in Touch with Us.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Get in Touch with Us.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/contact.png"
     },
     {
@@ -136,7 +122,7 @@
         "hero_bg": "assets/services/stroke.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to The Neurology Blog",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for The Neurology Blog.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for The Neurology Blog.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/services/stroke.png"
     },
     {
@@ -150,7 +136,7 @@
         "hero_bg": "assets/breadcrumbs/patient.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Emergency Neurology Care",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Emergency Neurology Care.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Emergency Neurology Care.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/patient.png"
     },
     {
@@ -164,7 +150,7 @@
         "hero_bg": "assets/breadcrumbs/dr-parveen-epilepsy.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Expert Epilepsy Treatment",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Expert Epilepsy Treatment.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Expert Epilepsy Treatment.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/dr-parveen-epilepsy.png"
     },
     {
@@ -178,7 +164,7 @@
         "hero_bg": "assets/breadcrumbs/about.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Frequently Asked Questions",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Frequently Asked Questions.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Frequently Asked Questions.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/about.png"
     },
     {
@@ -192,7 +178,7 @@
         "hero_bg": "assets/breadcrumbs/dr-parveen-services-breadcrumb/Functional%20Neurosurgery.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Functional Neurosurgery",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Functional Neurosurgery.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Functional Neurosurgery.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/dr-parveen-services-breadcrumb/Functional%20Neurosurgery.png"
     },
     {
@@ -206,7 +192,7 @@
         "hero_bg": "assets/breadcrumbs/media.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Media & Event Gallery",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Media & Event Gallery.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Media & Event Gallery.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/media.png"
     },
     {
@@ -220,7 +206,7 @@
         "hero_bg": "assets/breadcrumbs/dr-parveen-headache.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Expert Headache Treatment",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Expert Headache Treatment.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Expert Headache Treatment.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/dr-parveen-headache.png"
     },
     {
@@ -248,7 +234,7 @@
         "hero_bg": "assets/breadcrumbs/media.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Media Coverage & Appearances",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Media Coverage & Appearances.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Media Coverage & Appearances.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/media.png"
     },
     {
@@ -262,7 +248,7 @@
         "hero_bg": "assets/breadcrumbs/dr-parveen-services-breadcrumb/memory.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Memory & Cognitive Center",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Memory & Cognitive Center.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Memory & Cognitive Center.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/dr-parveen-services-breadcrumb/memory.png"
     },
     {
@@ -276,7 +262,7 @@
         "hero_bg": "assets/breadcrumbs/dr-parveen-migraine.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Expert Migraine Treatment",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Expert Migraine Treatment.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Expert Migraine Treatment.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/dr-parveen-migraine.png"
     },
     {
@@ -290,7 +276,7 @@
         "hero_bg": "assets/breadcrumbs/conditions/Movement%20Disorder.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Expert Movement Disorders Treatment",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Expert Movement Disorders Treatment.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Expert Movement Disorders Treatment.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/conditions/Movement%20Disorder.png"
     },
     {
@@ -304,7 +290,7 @@
         "hero_bg": "assets/breadcrumbs/conditions/Multiple%20Sclerosis.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Expert Multiple Sclerosis Care",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Expert Multiple Sclerosis Care.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Expert Multiple Sclerosis Care.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/conditions/Multiple%20Sclerosis.png"
     },
     {
@@ -318,7 +304,7 @@
         "hero_bg": "assets/breadcrumbs/dr-parveen-services-breadcrumb/rehab.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Neurological Rehabilitation Hub",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Neurological Rehabilitation Hub.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Neurological Rehabilitation Hub.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/dr-parveen-services-breadcrumb/rehab.png"
     },
     {
@@ -332,7 +318,7 @@
         "hero_bg": "assets/breadcrumbs/dr-parveen-services-breadcrumb/Neurocritical%20%26%20Acute%20Stroke.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Neurocritical & Acute Stroke Care",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Neurocritical & Acute Stroke Care.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Neurocritical & Acute Stroke Care.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/dr-parveen-services-breadcrumb/Neurocritical%20%26%20Acute%20Stroke.png"
     },
     {
@@ -346,7 +332,7 @@
         "hero_bg": "assets/services/stroke.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Neurological Conditions",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Neurological Conditions.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Neurological Conditions.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/services/stroke.png"
     },
     {
@@ -360,7 +346,7 @@
         "hero_bg": "assets/breadcrumbs/about.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Neurological Symptoms",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Neurological Symptoms.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Neurological Symptoms.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/about.png"
     },
     {
@@ -374,7 +360,7 @@
         "hero_bg": "assets/breadcrumbs/patient.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Your Neurology Consultation",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Your Neurology Consultation.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Your Neurology Consultation.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/patient.png"
     },
     {
@@ -388,21 +374,7 @@
         "hero_bg": "assets/breadcrumbs/patient.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Neurology FAQs",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Neurology FAQs.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
-        "section1_image": "assets/breadcrumbs/patient.png"
-    },
-    {
-        "slug": "neurology-patient-testimonials",
-        "file": "neurology-patient-testimonials.php",
-        "title": "Patient Success Stories",
-        "category": "Patient Info",
-        "hero_badge": "Patient Info Guide",
-        "hero_title": "Patient Success Stories",
-        "hero_desc": "Read inspiring recovery stories from patients treated by Dr. Praveen Gupta for various complex neurological conditions.",
-        "hero_bg": "assets/breadcrumbs/patient.png",
-        "section1_badge": "Specialist Care",
-        "section1_title": "Expert Clinical Approach to Patient Success Stories",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Patient Success Stories.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Neurology FAQs.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/patient.png"
     },
     {
@@ -416,7 +388,7 @@
         "hero_bg": "assets/breadcrumbs/about.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Neurology Procedures",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Neurology Procedures.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Neurology Procedures.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/about.png"
     },
     {
@@ -430,7 +402,7 @@
         "hero_bg": "assets/breadcrumbs/patient.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Neurology Second Opinion",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Neurology Second Opinion.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Neurology Second Opinion.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/patient.png"
     },
     {
@@ -444,7 +416,7 @@
         "hero_bg": "assets/breadcrumbs/media.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Neurology Video Library",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Neurology Video Library.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Neurology Video Library.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/media.png"
     },
     {
@@ -458,7 +430,7 @@
         "hero_bg": "assets/breadcrumbs/conditions/Peripheral%20Neuropathy.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Expert Neuropathy Treatment",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Expert Neuropathy Treatment.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Expert Neuropathy Treatment.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/conditions/Peripheral%20Neuropathy.png"
     },
     {
@@ -472,7 +444,7 @@
         "hero_bg": "assets/breadcrumbs/dr-parveen-services-breadcrumb/Neurovascular%20Surgery.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Neurovascular Surgery",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Neurovascular Surgery.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Neurovascular Surgery.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/dr-parveen-services-breadcrumb/Neurovascular%20Surgery.png"
     },
     {
@@ -486,7 +458,7 @@
         "hero_bg": "assets/breadcrumbs/patient.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Online Neurology Consultation",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Online Neurology Consultation.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Online Neurology Consultation.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/patient.png"
     },
     {
@@ -500,7 +472,7 @@
         "hero_bg": "assets/services/parkinsons.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Expert Parkinson's Treatment",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Expert Parkinson's Treatment.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Expert Parkinson's Treatment.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/services/parkinsons.png"
     },
     {
@@ -514,35 +486,7 @@
         "hero_bg": "assets/breadcrumbs/patient.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Patient Information & Resources",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Patient Information & Resources.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
-        "section1_image": "assets/breadcrumbs/patient.png"
-    },
-    {
-        "slug": "patient-reviews",
-        "file": "patient-reviews.php",
-        "title": "Patient Reviews",
-        "category": "Patient Info",
-        "hero_badge": "Patient Info Guide",
-        "hero_title": "Patient Reviews",
-        "hero_desc": "Read direct reviews, feedback, and statements left by patients regarding their diagnostic experiences and treatment outcomes.",
-        "hero_bg": "assets/breadcrumbs/patient.png",
-        "section1_badge": "Specialist Care",
-        "section1_title": "Expert Clinical Approach to Patient Reviews",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Patient Reviews.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
-        "section1_image": "assets/breadcrumbs/patient.png"
-    },
-    {
-        "slug": "patient-success-stories",
-        "file": "patient-success-stories.php",
-        "title": "Patient Success Stories",
-        "category": "Patient Info",
-        "hero_badge": "Patient Info Guide",
-        "hero_title": "Patient Success Stories",
-        "hero_desc": "Read recovery stories, letters of appreciation, and medical updates shared directly by our patients and their families.",
-        "hero_bg": "assets/breadcrumbs/patient.png",
-        "section1_badge": "Specialist Care",
-        "section1_title": "Expert Clinical Approach to Patient Success Stories",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Patient Success Stories.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Patient Information & Resources.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/patient.png"
     },
     {
@@ -556,7 +500,7 @@
         "hero_bg": "assets/breadcrumbs/about.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Privacy Policy",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Privacy Policy.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Privacy Policy.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/about.png"
     },
     {
@@ -570,7 +514,7 @@
         "hero_bg": "assets/breadcrumbs/dr-parveen-services-breadcrumb/rtms.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Advanced rTMS Therapy",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Advanced rTMS Therapy.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Advanced rTMS Therapy.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/dr-parveen-services-breadcrumb/rtms.png"
     },
     {
@@ -584,7 +528,7 @@
         "hero_bg": "assets/breadcrumbs/about.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Neurological Services & Treatments",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Neurological Services & Treatments.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Neurological Services & Treatments.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/about.png"
     },
     {
@@ -598,7 +542,7 @@
         "hero_bg": "assets/breadcrumbs/dr-parveen-services-breadcrumb/spine%20surgery.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Spine Surgery",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Spine Surgery.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Spine Surgery.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/dr-parveen-services-breadcrumb/spine%20surgery.png"
     },
     {
@@ -612,7 +556,7 @@
         "hero_bg": "assets/services/stroke.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Expert Stroke Care & Rehab",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Expert Stroke Care & Rehab.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Expert Stroke Care & Rehab.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/services/stroke.png"
     },
     {
@@ -626,7 +570,7 @@
         "hero_bg": "assets/breadcrumbs/about.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Team",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Team.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Team.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/about.png"
     },
     {
@@ -640,7 +584,7 @@
         "hero_bg": "assets/breadcrumbs/about.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Terms of Service",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Terms of Service.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Terms of Service.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/about.png"
     },
     {
@@ -654,7 +598,7 @@
         "hero_bg": "assets/breadcrumbs/about.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Thank You!",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Thank You!.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Thank You!.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/about.png"
     },
     {
@@ -668,22 +612,8 @@
         "hero_bg": "assets/services/vertigo.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Expert Vertigo Treatment",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Expert Vertigo Treatment.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Expert Vertigo Treatment.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/services/vertigo.png"
-    },
-    {
-        "slug": "video-testimonials",
-        "file": "video-testimonials.php",
-        "title": "Video Testimonials",
-        "category": "Media & Blog",
-        "hero_badge": "Media & Blog Guide",
-        "hero_title": "Video Testimonials",
-        "hero_desc": "Watch verified recovery stories shared by patients who underwent advanced neurology treatments under the direction of Dr. Praveen Gupta.",
-        "hero_bg": "assets/breadcrumbs/media.png",
-        "section1_badge": "Specialist Care",
-        "section1_title": "Expert Clinical Approach to Video Testimonials",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Video Testimonials.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
-        "section1_image": "assets/breadcrumbs/media.png"
     },
     {
         "slug": "videos",
@@ -696,7 +626,7 @@
         "hero_bg": "assets/breadcrumbs/media.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Neurology Video Hub",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Neurology Video Hub.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Neurology Video Hub.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/media.png"
     },
     {
@@ -710,7 +640,17 @@
         "hero_bg": "assets/breadcrumbs/about.png",
         "section1_badge": "Specialist Care",
         "section1_title": "Expert Clinical Approach to Why Choose Dr. Praveen Gupta",
-        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Why Choose Dr. Praveen Gupta.\n\nWith over 20 years of experience and more than 300,000 satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
+        "section1_text": "Dr. Praveen Gupta provides world-class diagnostic evaluation and cutting-edge treatments for Why Choose Dr. Praveen Gupta.\n\nWith over 20 years of experience and 3,00,000+ satisfied patients, our multidisciplinary team ensures the highest standard of neurological excellence.",
         "section1_image": "assets/breadcrumbs/about.png"
+    },
+    {
+        "slug": "medical-disclaimer",
+        "file": "medical-disclaimer.php",
+        "title": "Medical Disclaimer",
+        "category": "Contact & Legal",
+        "hero_badge": "",
+        "hero_title": "Medical Disclaimer",
+        "hero_desc": "How to use the health information on this website, and what to do in an emergency.",
+        "hero_bg": ""
     }
 ]

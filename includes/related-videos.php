@@ -56,7 +56,7 @@ if (!empty($relatedVideos)):
                                 <div class="relative w-full aspect-video bg-dark-grey">
                                     <iframe
                                         class="w-full h-full"
-                                        src="https://www.youtube.com/embed/<?php echo htmlspecialchars($video['youtube_id']); ?>?rel=0&modestbranding=1"
+                                        src="https://www.youtube-nocookie.com/embed/<?php echo htmlspecialchars($video['youtube_id']); ?>?rel=0&modestbranding=1"
                                         title="<?php echo htmlspecialchars($video['title'] ?? ''); ?>"
                                         frameborder="0"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

@@ -41,7 +41,7 @@ if (is_file($dataDir . '/settings.json')) {
 }
 $FORMESTER_URLS = [
     'main' => trim((string)($siteSettings['formester_url'] ?? '')) !== '' ? trim((string)$siteSettings['formester_url']) : 'https://app.formester.com/forms/MUVNkRKYA/submissions',
-    'lp'   => 'https://app.formester.com/forms/4a08Yw78e/submissions',
+    'lp'   => trim((string)($siteSettings['formester_lp_url'] ?? '')) !== '' ? trim((string)$siteSettings['formester_lp_url']) : 'https://app.formester.com/forms/4a08Yw78e/submissions',
 ];
 $formKey       = ($_POST['form_key'] ?? '') === 'lp' ? 'lp' : 'main';
 $FORMESTER_URL = $FORMESTER_URLS[$formKey];
@@ -51,6 +51,16 @@ if (!empty($_POST['website'])) {
     $thankYouUrl = ($formKey === 'lp') ? '/enquire/thank-you' : '/thank-you';
     lead_respond(true, $thankYouUrl);
 }
+
+// ---- Consent (DPDP Act 2023): nothing is stored or forwarded without it ------
+// Every form prints a required, unticked "consent" checkbox (cms_consent_fields()).
+require_once dirname(__DIR__) . '/includes/compliance.php';
+$CONSENT_VERSION = CMS_CONSENT_VERSION;
+if (($_POST['consent'] ?? '') !== 'yes') {
+    $consentBack = ($formKey === 'lp') ? '/enquire?error=consent' : '/contact-us-top-neurologist-delhi-ncr?error=consent';
+    lead_respond(false, $consentBack, 'Please tick the consent box so that we can respond to your enquiry.');
+}
+$consentAt = date('c');
 
 // ---- Basic rate limit: 10 submissions / 10 minutes / IP ---------------------
 $ip     = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
@@ -149,6 +159,10 @@ $leads[] = [
     'report'     => $savedFile,
     'status'     => 'new',
     'ip'         => $ip,
+    // Proof of consent: when it was given and which wording was shown
+    'consent'         => 'yes',
+    'consent_at'      => $consentAt,
+    'consent_version' => $CONSENT_VERSION,
 ];
 $leadsJson = json_encode($leads, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 if ($leadsJson !== false) {
@@ -180,6 +194,8 @@ if (function_exists('curl_init')) {
         'subject'   => $subject,
         'condition' => $subject,
         'message'   => $message,
+        'consent'   => 'yes',
+        'consent_at'=> $consentAt,
     ];
     $ch = curl_init($FORMESTER_URL);
     curl_setopt_array($ch, [

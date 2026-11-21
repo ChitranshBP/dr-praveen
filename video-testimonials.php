@@ -1,18 +1,8 @@
-﻿<?php
+<?php
 /**
- * Video Testimonials Page - Dr. Praveen Gupta
- * Videos: CMS → Testimonials (video entries). Banner + sections: CMS → All Pages → Video Testimonials.
+ * Retired page (DPDP / NMC compliance, Nov 2026): video testimonials are no
+ * longer published. Permanent redirect; the target is set in
+ * cms_retired_pages() (includes/compliance.php).
  */
-$isDarkHero = true;
-require_once __DIR__ . '/includes/header.php';
-
-$pageContent = cms_render_page_hero('video-testimonials', [
-    'hero_badge' => 'Video Patient Reviews & Recovery Stories',
-    'hero_title' => 'Video <span class="text-cyan-accent">Testimonials</span>',
-    'hero_desc'  => 'Watch verified recovery stories shared by patients who underwent advanced neurology treatments under the direction of Dr. Praveen Gupta.',
-    'hero_bg'    => 'assets/breadcrumbs/media.png'
-], ['style' => 'cover', 'icon' => 'fa-video', 'badge_border' => true, 'blob' => true]);
-
-cms_render_page_flow('video-testimonials');
-
-require_once __DIR__ . '/includes/footer.php';
+require_once __DIR__ . '/includes/cms-load.php';
+cms_redirect_retired_page('video-testimonials');

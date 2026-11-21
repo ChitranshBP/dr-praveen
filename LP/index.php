@@ -5,6 +5,9 @@
  * Assets are referenced from the parent directory via assets/
  */
 
+// Shared site settings + DPDP/NMC helpers (consent fields, disclaimers, cookie banner)
+require_once dirname(__DIR__) . '/includes/config.php';
+
 // Settings managed from the CMS (/cms/lp-manager.php)
 $lp = [];
 if (is_file(dirname(__DIR__) . '/data/lp.json')) {
@@ -38,37 +41,13 @@ $conditions = [
     ['title' => 'Peripheral Neuropathy',     'desc' => 'Nerve pain, diabetic neuropathy and neuro-rehabilitation.',      'image' => 'assets/services/neuropathy.png'],
 ];
 
-$testimonials = [
-    ['name' => 'Atul Saxena',   'role' => "Patient's Son",  'message' => "I would like to express my heartfelt gratitude to Dr. Praveen Gupta and his outstanding team for the exceptional care during my mother's treatment for acute neuropathy. Dr. Gupta's clinical expertise, calm approach, and ability to explain every aspect of the treatment gave our family immense confidence."],
-    ['name' => 'Yashu Jindal',  'role' => "Patient's Son",  'message' => "We are extremely grateful to Dr. Praveen Gupta for the exceptional care and treatment provided to my father during his brain stroke surgery. From the very beginning, Dr. Gupta guided us with confidence, clarity, and compassion during a very difficult time for our family."],
-    ['name' => 'Dheeraj Tiwari','role' => 'Patient',        'message' => "Really good experience at Dr. Praveen Gupta's clinic. My vertigo and dizziness improved a lot. My condition was explained in a way I could easily understand. I felt much better after following the treatment. Highly recommended."],
-    ['name' => 'Syed Mazhar Kandhlavi','role' => 'Patient', 'message' => "Dr. Praveen Gupta is a brilliant, empathetic, and very supportive physician. I struggled with a neurological disorder for a decade, but under his care, I was completely cured in 10 days. He is genuinely an embodiment of compassion and healing."],
-    ['name' => 'Vandana Gera',  'role' => 'Patient',        'message' => "I am extremely grateful to Dr. Praveen Gupta for the exceptional care and attention throughout my treatment. The diagnosis was made after thorough and well-planned investigations, and treatment was started at the right time, making a significant difference."],
-    ['name' => 'Seema Saini',   'role' => "Patient's Wife", 'message' => "My husband had been suffering from epilepsy for the last 3 years. Dr. Praveen Gupta told me in our very first meeting that my husband would get well, and the results are better now. My husband is doing well. Thank you, Sir."],
-    ['name' => 'Jyoti Singh',   'role' => "Patient's Family",'message' => "My family member was admitted under Dr. Praveen Gupta and we are very thankful for the excellent treatment and attention provided throughout the stay. The doctor regularly monitored the patient's condition, explained progress clearly, and addressed all our concerns."],
-    ['name' => 'Manjit Singh',  'role' => 'Patient',        'message' => "I would like to express my heartfelt gratitude to Dr. Praveen Gupta for his exceptional care and dedication. His vast knowledge, calm nature, and ability to patiently listen give immense confidence. He is always reachable and responds on time when needed."],
-];
-
-$videos = [
-    ['id' => 'QhoPKOgHrwY', 'title' => 'Patient Recovery Story 1'],
-    ['id' => 'kEwXD0aT_rQ', 'title' => 'Patient Recovery Story 2'],
-    ['id' => 'jg4e8bjYl-A', 'title' => 'Patient Recovery Story 3'],
-    ['id' => 'LNxm9G-IYZE', 'title' => 'Patient Recovery Story 4'],
-    ['id' => '6UCSDoYncK8', 'title' => 'Patient Recovery Story 5'],
-    ['id' => 'qj3Z1NhVxqU', 'title' => 'Patient Recovery Story 6'],
-];
+// Patient testimonials and video "recovery stories" were removed (NMC advertising rules).
 ?>
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-TF2TXQLK');</script>
-    <!-- End Google Tag Manager -->
+    <?php cms_render_consent_loader(); // GTM (same container) loads only after cookie consent ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dr. Praveen Gupta &ndash; Best Neurologist in Gurgaon | Book Appointment</title>
     <meta name="description" content="Consult Dr. Praveen Gupta, Chairman &ndash; Marengo Asia International Institute of Neuro & Spine. 20+ years of experience, 3,00,000+ patients treated. Book your appointment today.">
@@ -411,7 +390,7 @@ $videos = [
         .navbar-solid .nav-link:hover {
             background: rgba(0, 0, 0, 0.05) !important;
         }
-            @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } } .marquee-track { animation: marquee-scroll 50s linear infinite; will-change: transform; } .marquee-track.marquee-reverse { animation-duration: 60s; animation-direction: reverse; } .marquee-wrap:hover .marquee-track { animation-play-state: paused; } @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } } @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } } .animate-fade-in-up { animation: fadeInUp 0.8s ease-out both; } </style>
+            @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } } .animate-fade-in-up { animation: fadeInUp 0.8s ease-out both; } </style>
 </head>
 <body class="bg-white text-dark-grey antialiased">
 
@@ -432,8 +411,6 @@ $videos = [
                 <a href="#book" class="nav-pill-link">Home</a>
                 <a href="#conditions" class="nav-pill-link">Conditions</a>
                 <a href="#about" class="nav-pill-link">About</a>
-                <a href="#testimonials" class="nav-pill-link">Testimonials</a>
-                <a href="#videos" class="nav-pill-link">Videos</a>
             </div>
 
             <!-- Right Actions -->
@@ -466,14 +443,6 @@ $videos = [
                     </a>
                     <a href="#about" class="flex items-center justify-between px-4 py-2.5 rounded-full bg-white/70 border border-slate-200/80 shadow-sm text-sm font-semibold text-deep-indigo hover:bg-electric-blue/10 hover:text-electric-blue hover:border-electric-blue/30 transition-all duration-200">
                         <span><i class="fas fa-user-doctor w-6 text-xs text-cyan-accent mr-2"></i>About Dr. Praveen</span>
-                        <i class="fas fa-chevron-right text-[10px] text-slate-400"></i>
-                    </a>
-                    <a href="#testimonials" class="flex items-center justify-between px-4 py-2.5 rounded-full bg-white/70 border border-slate-200/80 shadow-sm text-sm font-semibold text-deep-indigo hover:bg-electric-blue/10 hover:text-electric-blue hover:border-electric-blue/30 transition-all duration-200">
-                        <span><i class="fas fa-quote-right w-6 text-xs text-cyan-accent mr-2"></i>Testimonials</span>
-                        <i class="fas fa-chevron-right text-[10px] text-slate-400"></i>
-                    </a>
-                    <a href="#videos" class="flex items-center justify-between px-4 py-2.5 rounded-full bg-white/70 border border-slate-200/80 shadow-sm text-sm font-semibold text-deep-indigo hover:bg-electric-blue/10 hover:text-electric-blue hover:border-electric-blue/30 transition-all duration-200">
-                        <span><i class="fas fa-video w-6 text-xs text-cyan-accent mr-2"></i>Videos</span>
                         <i class="fas fa-chevron-right text-[10px] text-slate-400"></i>
                     </a>
                 </nav>
@@ -682,6 +651,10 @@ $videos = [
                             <textarea id="lp-message" name="message" rows="2" placeholder="Briefly describe your symptoms..."
                                       class="w-full px-3.5 py-2.5 sm:px-5 sm:py-3.5 rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-50/50 text-xs sm:text-sm font-medium focus:outline-none focus:bg-white focus:ring-4 focus:ring-electric-blue/10 focus:border-electric-blue transition-all resize-none shadow-sm sm:rows-3"></textarea>
                         </div>
+
+                        <!-- DPDP consent: required + unticked; also sent to Formester as consent / consent_at -->
+                        <input type="hidden" name="consent_at" id="lp-consent-at" value="">
+                        <?php cms_consent_fields('lp', 'light', 'enquiry'); ?>
 
                         <button type="submit"
                                 class="btn-shimmer relative w-full inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-electric-blue to-cyan-accent hover:from-deep-indigo hover:to-electric-blue text-white font-bold py-3 sm:py-4 rounded-xl shadow-xl shadow-electric-blue/30 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden text-xs sm:text-sm">
@@ -922,106 +895,7 @@ $videos = [
     </div>
 </section>
 
-<!-- Testimonials -->
-<section id="testimonials" class="py-12 md:py-16 bg-soft-cyan/30 relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-10 md:mb-12 observe">
-            <div class="inline-flex items-center space-x-2 bg-electric-blue/10 px-4 py-2 rounded-full mb-4">
-                <i class="fas fa-quote-right text-electric-blue text-sm"></i>
-                <span class="text-electric-blue text-sm font-semibold">Testimonials</span>
-            </div>
-            <h2 class="text-3xl md:text-4xl font-serif font-bold text-deep-indigo mb-3">
-                What Our <span class="gradient-text">Patients</span> Say
-            </h2>
-            <p class="text-lg text-dark-grey/70">Real stories from real patients who experienced exceptional neurological care.</p>
-        </div>
-    </div>
-
-    <div class="marquee-wrap relative observe">
-        <div class="overflow-hidden">
-            <div class="marquee-track flex w-max">
-                <?php foreach ($testimonials as $t): ?>
-                    <div class="quote-card w-[300px] sm:w-[360px] flex-shrink-0 mr-6">
-                        <div class="h-full bg-white rounded-3xl p-7 border border-silver-grey/50 shadow-lg hover:shadow-2xl transition-shadow duration-500 flex flex-col">
-                            <div class="flex items-center space-x-1 mb-4 text-amber-400 text-sm">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                            <p class="text-dark-grey/75 text-sm leading-relaxed flex-1 mb-5"><?php echo $t['message']; ?></p>
-                            <div class="w-full h-px bg-silver-grey mb-4"></div>
-                            <div class="flex items-center space-x-3">
-                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-blue to-cyan-accent flex items-center justify-center text-white font-bold text-sm shadow-md flex-shrink-0">
-                                    <?php echo strtoupper(substr($t['name'], 0, 1)); ?>
-                                </div>
-                                <div>
-                                    <p class="font-bold text-deep-indigo text-sm leading-tight"><?php echo $t['name']; ?></p>
-                                    <p class="text-xs text-cyan-accent font-medium mt-0.5"><?php echo $t['role']; ?></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-
-        <div class="absolute inset-y-0 left-0 w-12 md:w-32 bg-gradient-to-r from-soft-cyan to-transparent pointer-events-none z-10"></div>
-        <div class="absolute inset-y-0 right-0 w-12 md:w-32 bg-gradient-to-l from-soft-cyan to-transparent pointer-events-none z-10"></div>
-        <div class="mt-10 text-center observe relative z-20">
-            <a href="#book" class="btn-shimmer group relative inline-flex items-center space-x-2.5 bg-gradient-to-r from-electric-blue to-cyan-accent hover:from-deep-indigo hover:to-electric-blue text-white font-bold px-7 py-3.5 rounded-full shadow-lg shadow-electric-blue/25 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
-                <span>Book Appointment</span>
-                <i class="fas fa-arrow-right text-xs transition-transform duration-300 group-hover:translate-x-1"></i>
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- Videos -->
-<section id="videos" class="py-12 md:py-16 bg-deep-indigo relative overflow-hidden">
-    <div class="absolute -top-24 -left-24 w-96 h-96 bg-electric-blue/20 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-cyan-accent/10 rounded-full blur-3xl pointer-events-none"></div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="text-center max-w-3xl mx-auto mb-10 md:mb-12 observe">
-            <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full mb-4">
-                <i class="fas fa-play-circle text-cyan-accent text-sm"></i>
-                <span class="text-white text-sm font-semibold">Video Testimonials</span>
-            </div>
-            <h2 class="text-3xl md:text-4xl font-serif font-bold text-white mb-3">
-                Hear It From Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 to-cyan-accent">Patients</span>
-            </h2>
-            <p class="text-lg text-white/70">Watch patients share their recovery journeys with Dr. Praveen Gupta in their own words.</p>
-        </div>
-
-        <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-none gap-6 pb-4 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-3 lg:grid-cols-6 md:pb-0">
-            <?php foreach ($videos as $video): ?>
-                <div class="w-[62vw] sm:w-[38vw] md:w-auto flex-shrink-0 snap-start">
-                    <div class="group relative w-full aspect-[9/16] rounded-3xl overflow-hidden bg-black/40 border border-white/10 shadow-xl hover:shadow-cyan-accent/20 hover:-translate-y-1.5 transition-all duration-500 cursor-pointer video-card" data-video-id="<?php echo $video['id']; ?>">
-                        <img src="https://img.youtube.com/vi/<?php echo $video['id']; ?>/hqdefault.jpg"
-                             alt="<?php echo htmlspecialchars($video['title']); ?>" loading="lazy"
-                             class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-deep-indigo/90 via-deep-indigo/10 to-transparent"></div>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <span class="w-14 h-14 rounded-full bg-white/15 backdrop-blur-md border border-white/40 flex items-center justify-center text-white text-lg shadow-lg group-hover:bg-cyan-accent group-hover:scale-110 transition-all duration-300">
-                                <i class="fas fa-play ml-1"></i>
-                            </span>
-                        </div>
-                        <div class="absolute bottom-0 left-0 right-0 p-4 pointer-events-none">
-                            <p class="text-white font-bold text-xs leading-snug"><?php echo htmlspecialchars($video['title']); ?></p>
-                            <p class="text-cyan-200 text-[10px] font-medium mt-1">Patient Testimonial</p>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        </div>
-
-        
-        <div class="mt-10 text-center observe">
-            <a href="#book" class="btn-shimmer group relative inline-flex items-center space-x-2.5 bg-gradient-to-r from-electric-blue to-cyan-accent hover:from-deep-indigo hover:to-electric-blue text-white font-bold px-7 py-3.5 rounded-full shadow-lg shadow-electric-blue/25 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
-                <span>Book Appointment</span>
-                <i class="fas fa-arrow-right text-xs transition-transform duration-300 group-hover:translate-x-1"></i>
-            </a>
-        </div>
-    </div>
-</section>
+<!-- Patient testimonials and video testimonials removed (NMC advertising rules). -->
 
 <!-- Footer -->
 <footer class="bg-deep-indigo text-white relative overflow-hidden border-t border-white/10">
@@ -1039,7 +913,7 @@ $videos = [
                 </p>
                 <div class="flex items-center space-x-4 mb-6">
                     <div class="px-3 py-2 rounded-lg bg-white/5 border border-white/10">
-                        <div class="text-lg font-bold text-white">300K+</div>
+                        <div class="text-lg font-bold text-white">3,00,000+</div>
                         <div class="text-[10px] text-white/60 uppercase tracking-wide">Patients</div>
                     </div>
                     <div class="px-3 py-2 rounded-lg bg-white/5 border border-white/10">
@@ -1082,8 +956,6 @@ $videos = [
                     <li><a href="#book" class="text-white/70 hover:text-cyan-accent transition-colors flex items-center space-x-2 group"><i class="fas fa-chevron-right text-[10px] text-cyan-accent/60"></i><span>Book Appointment</span></a></li>
                     <li><a href="#conditions" class="text-white/70 hover:text-cyan-accent transition-colors flex items-center space-x-2 group"><i class="fas fa-chevron-right text-[10px] text-cyan-accent/60"></i><span>Conditions We Treat</span></a></li>
                     <li><a href="#about" class="text-white/70 hover:text-cyan-accent transition-colors flex items-center space-x-2 group"><i class="fas fa-chevron-right text-[10px] text-cyan-accent/60"></i><span>About Dr. Praveen</span></a></li>
-                    <li><a href="#testimonials" class="text-white/70 hover:text-cyan-accent transition-colors flex items-center space-x-2 group"><i class="fas fa-chevron-right text-[10px] text-cyan-accent/60"></i><span>Testimonials</span></a></li>
-                    <li><a href="#videos" class="text-white/70 hover:text-cyan-accent transition-colors flex items-center space-x-2 group"><i class="fas fa-chevron-right text-[10px] text-cyan-accent/60"></i><span>Videos</span></a></li>
                     <li><a href="../index" class="text-white/70 hover:text-cyan-accent transition-colors flex items-center space-x-2 group"><i class="fas fa-chevron-right text-[10px] text-cyan-accent/60"></i><span>Main Website</span></a></li>
                 </ul>
             </div>
@@ -1143,14 +1015,20 @@ $videos = [
         </div>
     </div>
 
+    <!-- Medical + AI-generated content disclaimers (CMS → Site Text → Compliance & consent) -->
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <?php cms_render_legal_disclaimers(); ?>
+    </div>
+
     <div class="relative border-t border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/60">
                 <p>&copy; <?php echo date('Y'); ?> <span class="text-white font-semibold">Dr. Praveen Gupta</span>. All rights reserved.</p>
-                <div class="flex items-center space-x-1">
-                    <a href="../privacy-policy" class="px-3 py-1.5 rounded-full hover:bg-white/5 hover:text-cyan-accent transition-all">Privacy Policy</a>
-                    
-                    <a href="../terms-of-service" class="px-3 py-1.5 rounded-full hover:bg-white/5 hover:text-cyan-accent transition-all">Terms of Service</a>
+                <div class="flex flex-wrap items-center justify-center">
+                    <?php foreach (cms_footer_legal_links() as $legal): ?>
+                    <a href="/<?php echo htmlspecialchars(ltrim((string)$legal['url'], '/')); ?>" class="px-3 py-1.5 rounded-full hover:bg-white/5 hover:text-cyan-accent transition-all"><?php echo htmlspecialchars($legal['label']); ?></a>
+                    <?php endforeach; ?>
+                    <button type="button" data-dpg-cookie-settings class="dpg-cookie-link px-3 py-1.5 rounded-full hover:bg-white/5 hover:text-cyan-accent transition-all"><?php echo htmlspecialchars(cms_text('cookie_settings_label')); ?></button>
                 </div>
             </div>
         </div>
@@ -1185,6 +1063,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 e.preventDefault();
                 return;
             }
+            // DPDP: never submit without the consent box ticked (backs up the "required" attribute)
+            var consentBox = form.querySelector('input[name="consent"]');
+            if (!consentBox || !consentBox.checked) {
+                e.preventDefault();
+                if (consentBox) { consentBox.focus(); }
+                showStatus(<?php echo json_encode(cms_text('form_error_consent')); ?>, true);
+                return;
+            }
+            var consentAt = document.getElementById('lp-consent-at');
+            if (consentAt) { consentAt.value = new Date().toISOString(); }
             isSubmitting = true;
             if (btnText) {
                 btnText.textContent = 'Submitting...';
@@ -1197,18 +1085,6 @@ document.addEventListener('DOMContentLoaded', function () {
             // Allow native form POST to https://app.formester.com/forms/4a08Yw78e/submissions
         });
     }
-
-    document.querySelectorAll('.video-card').forEach(function (card) {
-        card.addEventListener('click', function () {
-            if (card.querySelector('iframe')) return;
-            card.innerHTML = '<iframe class="absolute inset-0 w-full h-full" '
-                + 'src="https://www.youtube.com/embed/' + card.dataset.videoId
-                + '?autoplay=1&rel=0&modestbranding=1&playsinline=1" '
-                + 'title="Patient video testimonial" frameborder="0" '
-                + 'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" '
-                + 'allowfullscreen></iframe>';
-        });
-    });
 
     var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
@@ -1250,10 +1126,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
     </script>
 
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TF2TXQLK"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+    <?php cms_render_cookie_banner(); ?>
     <script>const scrollProgress = document.getElementById('scroll-progress'); window.addEventListener('scroll', () => { const scrollY = window.scrollY; const docHeight = document.documentElement.scrollHeight - window.innerHeight; const progress = docHeight > 0 ? (scrollY / docHeight) * 100 : 0; scrollProgress.style.width = progress + '%'; });</script>
 </body>
 </html>
